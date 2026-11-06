@@ -1,0 +1,1305 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain341",
+ "order": 684,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain341",
+  "order": 684,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery."
+ },
+ "item_view_sha256": "73d05f67c5abc724cc2b511fafdabb8e7c5cb0b9990c33e5668c9970a2d8d169",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "869f079739957d2c78fb45dc8dbef17ad748ed6ec2a1b84290add7268ea81177",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792872722.7634718,
+      "end_wall": 1792872723.885279,
+      "error": null
+     }
+    ],
+    "start_wall": 1792872722.7634718,
+    "start_mono": 542279.474378,
+    "end_wall": 1792872723.885279,
+    "end_mono": 542280.596182791,
+    "raw_response": "{\"query\": \"diabetes remission conventional therapy vs laparoscopic adjustable gastric banding\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1120146875,
+     "load_duration": 117929334,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 340698667,
+     "eval_count": 16,
+     "eval_duration": 485730045,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:03.88463Z"
+    },
+    "elapsed_s": 1.122,
+    "query_used": "diabetes remission conventional therapy vs laparoscopic adjustable gastric banding",
+    "query_source": "json",
+    "query_arrival_seq": 3420
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "diabetes remission conventional therapy vs laparoscopic adjustable gastric banding",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7098463:0",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:7098463:2",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:7098463:1",
+       "score_q": 753
+      },
+      {
+       "passage_key": "scifact:26058927:1",
+       "score_q": 668
+      },
+      {
+       "passage_key": "scifact:7873737:1",
+       "score_q": 654
+      }
+     ],
+     "retrieval_sha256": "ae447b5c1d2868aa4547749a0d076ce918b101f12d2ca53e49da144a819dc719"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ae447b5c1d2868aa4547749a0d076ce918b101f12d2ca53e49da144a819dc719",
+    "query_embedding_sha256": "77205fc03cf9632791e590a805bfc00e901952e5015a198c961cc14923db9e0f",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7098463:0",
+      "content_sha256": "f3f3b76e890d0fa8eb564340d40aad76d46213ed63850339ecd9623931561671",
+      "chars": 946
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7098463:2",
+      "content_sha256": "64e2362ee8f5e3ef79583719d5b7a8506659e6537557617cf3ca6f641e8398ce",
+      "chars": 417
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7098463:1",
+      "content_sha256": "0b21d446b804dbda214e8b23b258f263423ce5ca52995826e21899d6eeaaf196",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:26058927:1",
+      "content_sha256": "a350f6c25f3ee4a4491d0e57e635aa6c9967c8a9bef0a44d56940a7502f7a04f",
+      "chars": 952
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7873737:1",
+      "content_sha256": "ae85c8bf35d5d06d46cc449a1faae4e7d58db8bcf508852620a753db1d76507d",
+      "chars": 909
+     }
+    ],
+    "elapsed_s": 3.7192
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nEvidence passages from your search for \"diabetes remission conventional therapy vs laparoscopic adjustable gastric banding\":\n<<<PASSAGES\n[P1] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONTEXT Observational studies suggest that surgically induced loss of weight may be effective therapy for type 2 diabetes. OBJECTIVE To determine if surgically induced weight loss results in better glycemic control and less need for diabetes medications than conventional approaches to weight loss and diabetes control. DESIGN, SETTING, AND PARTICIPANTS Unblinded randomized controlled trial conducted from December 2002 through December 2006 at the University Obesity Research Center in Australia, with general community recruitment to established treatment programs. Participants were 60 obese patients (BMI >30 and <40) with recently diagnosed (<2 years) type 2 diabetes. INTERVENTIONS Conventional diabetes therapy with a focus on weight loss by lifestyle change vs laparoscopic adjustable gastric banding with conventional diabetes care.\n\n[P2] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONCLUSIONS Participants randomized to surgical therapy were more likely to achieve remission of type 2 diabetes through greater weight loss. These results need to be confirmed in a larger, more diverse population and have long-term efficacy assessed. TRIAL REGISTRATION actr.org Identifier: ACTRN012605000159651.\n\n[P3] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nMAIN OUTCOME MEASURES Remission of type 2 diabetes (fasting glucose level <126 mg/dL [7.0 mmol/L] and glycated hemoglobin [HbA1c] value <6.2% while taking no glycemic therapy). Secondary measures included weight and components of the metabolic syndrome. Analysis was by intention-to-treat. RESULTS Of the 60 patients enrolled, 55 (92%) completed the 2-year follow-up. Remission of type 2 diabetes was achieved by 22 (73%) in the surgical group and 4 (13%) in the conventional-therapy group. Relative risk of remission for the surgical group was 5.5 (95% confidence interval, 2.2-14.0). Surgical and conventional-therapy groups lost a mean (SD) of 20.7% (8.6%) and 1.7% (5.2%) of weight, respectively, at 2 years (P < .001). Remission of type 2 diabetes was related to weight loss (R2 = 0.46, P < .001) and lower baseline HbA1c levels (combined R2 = 0.52, P < .001). There were no serious complications in either group.\n\n[P4] Thiazolidinediones improve beta-cell function in type 2 diabetic patients.\nPioglitazone and rosiglitazone similarly improved FPG, mean plasma glucose during OGTT, Hb A1c, and insulin-mediated total body glucose disposal (Rd) and decreased mean plasma FFA during OGTT (all P<0.01, ANOVA). The insulin secretion/insulin resistance (disposition) index [DeltaISR(AUC)/Deltaglucose(AUC)/IR] was significantly improved in all TZD-treated groups: +1.8+/-0.7 (PIO+drug-naïve diabetics), +0.7+/-0.3 (PIO+sulfonylurea-treated diabetics), and 0.7+/-0.2 (ROSI+sulfonylurea-withdrawn diabetics) vs. -0.2+/-0.3 in the two placebo groups (P<0.01, all TZDs vs. placebo, ANOVA). Improved insulin secretion correlated positively with increased body weight, fat mass, and Rd and inversely with decreased plasma glucose and FFA during the OGTT. In T2DM patients, TZD treatment leads to improved beta-cell function, which correlates strongly with improved glycemic control.\n\n[P5] Platelet glycoprotein IIb/IIIa inhibitors reduce mortality in diabetic patients with non-ST-segment-elevation acute coronary syndromes.\nAmong 1279 diabetic patients undergoing percutaneous coronary intervention (PCI) during index hospitalization, the use of these agents was associated with a mortality reduction at 30 days from 4.0% to 1.2% (OR 0.30; 95% CI 0.14 to 0.69; P=0.002). CONCLUSIONS This meta-analysis, including the entire large-scale trial experience of intravenous platelet GP IIb/IIIa inhibitors for the medical management of non-ST-segment-elevation ACS, shows that these agents may significantly reduce mortality at 30 days in diabetic patients. Although not based on a randomized assessment, the survival benefit appears to be of greater magnitude in patients undergoing PCI. Therefore, the use of platelet GP IIb/IIIa inhibitors should be strongly considered in diabetic patients with ACS.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3bb6a1e16fa9452cfcb5832b5693ecebc7685a1b57548fd0c967fa2ea89e8d22",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792872727.604934,
+      "end_wall": 1792872744.693367,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3420,
+    "start_wall": 1792872727.604934,
+    "start_mono": 542284.315832541,
+    "end_wall": 1792872744.693367,
+    "end_mono": 542301.404239833,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that surgically induced weight loss through adjustable gastric banding leads to better glycemic control and less need for diabetes medications, which implies a higher chance of achieving remission compared to conventional therapy.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17085535167,
+     "load_duration": 5289551125,
+     "prompt_eval_count": 1395,
+     "prompt_eval_duration": 3313838666,
+     "eval_count": 76,
+     "eval_duration": 7708682498,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:24.691614Z"
+    },
+    "elapsed_s": 17.088,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3420,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:7098463:1",
+     "scifact:26058927:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 252,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "869f079739957d2c78fb45dc8dbef17ad748ed6ec2a1b84290add7268ea81177",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792872722.762707,
+      "end_wall": 1792872726.7452428,
+      "error": null
+     }
+    ],
+    "start_wall": 1792872722.762707,
+    "start_mono": 542279.473612958,
+    "end_wall": 1792872726.7452428,
+    "end_mono": 542283.456141666,
+    "raw_response": "{\"query\": \"diabetes remission conventional therapy vs lap band surgery\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3979516209,
+     "load_duration": 2632490709,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 663307375,
+     "eval_count": 16,
+     "eval_duration": 541104458,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:06.744153Z"
+    },
+    "elapsed_s": 3.983,
+    "query_used": "diabetes remission conventional therapy vs lap band surgery",
+    "query_source": "json",
+    "query_arrival_seq": 3423
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "diabetes remission conventional therapy vs lap band surgery",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7098463:1",
+       "score_q": 12262
+      },
+      {
+       "passage_key": "scifact:7098463:2",
+       "score_q": 10598
+      },
+      {
+       "passage_key": "scifact:7098463:0",
+       "score_q": 9760
+      },
+      {
+       "passage_key": "scifact:71341302:1",
+       "score_q": 6884
+      },
+      {
+       "passage_key": "scifact:40156901:1",
+       "score_q": 6832
+      }
+     ],
+     "retrieval_sha256": "944adf7fff9192679c1c9057888ec8ebd54ae55c2d3a9730136c9ec348134913"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "944adf7fff9192679c1c9057888ec8ebd54ae55c2d3a9730136c9ec348134913",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7098463:1",
+      "content_sha256": "0b21d446b804dbda214e8b23b258f263423ce5ca52995826e21899d6eeaaf196",
+      "chars": 1022
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7098463:2",
+      "content_sha256": "64e2362ee8f5e3ef79583719d5b7a8506659e6537557617cf3ca6f641e8398ce",
+      "chars": 417
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7098463:0",
+      "content_sha256": "f3f3b76e890d0fa8eb564340d40aad76d46213ed63850339ecd9623931561671",
+      "chars": 946
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:71341302:1",
+      "content_sha256": "58c6263f66135cca4803b1793a7f80c095877c00dda64b8dadd071cd5add9184",
+      "chars": 635
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40156901:1",
+      "content_sha256": "0de5cc82ffe540bc60c90f4607eb83028a6dccc4598518d012762a1ecfb529bc",
+      "chars": 1049
+     }
+    ],
+    "elapsed_s": 0.0019
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nEvidence passages from your search for \"diabetes remission conventional therapy vs lap band surgery\":\n<<<PASSAGES\n[P1] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nMAIN OUTCOME MEASURES Remission of type 2 diabetes (fasting glucose level <126 mg/dL [7.0 mmol/L] and glycated hemoglobin [HbA1c] value <6.2% while taking no glycemic therapy). Secondary measures included weight and components of the metabolic syndrome. Analysis was by intention-to-treat. RESULTS Of the 60 patients enrolled, 55 (92%) completed the 2-year follow-up. Remission of type 2 diabetes was achieved by 22 (73%) in the surgical group and 4 (13%) in the conventional-therapy group. Relative risk of remission for the surgical group was 5.5 (95% confidence interval, 2.2-14.0). Surgical and conventional-therapy groups lost a mean (SD) of 20.7% (8.6%) and 1.7% (5.2%) of weight, respectively, at 2 years (P < .001). Remission of type 2 diabetes was related to weight loss (R2 = 0.46, P < .001) and lower baseline HbA1c levels (combined R2 = 0.52, P < .001). There were no serious complications in either group.\n\n[P2] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONCLUSIONS Participants randomized to surgical therapy were more likely to achieve remission of type 2 diabetes through greater weight loss. These results need to be confirmed in a larger, more diverse population and have long-term efficacy assessed. TRIAL REGISTRATION actr.org Identifier: ACTRN012605000159651.\n\n[P3] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONTEXT Observational studies suggest that surgically induced loss of weight may be effective therapy for type 2 diabetes. OBJECTIVE To determine if surgically induced weight loss results in better glycemic control and less need for diabetes medications than conventional approaches to weight loss and diabetes control. DESIGN, SETTING, AND PARTICIPANTS Unblinded randomized controlled trial conducted from December 2002 through December 2006 at the University Obesity Research Center in Australia, with general community recruitment to established treatment programs. Participants were 60 obese patients (BMI >30 and <40) with recently diagnosed (<2 years) type 2 diabetes. INTERVENTIONS Conventional diabetes therapy with a focus on weight loss by lifestyle change vs laparoscopic adjustable gastric banding with conventional diabetes care.\n\n[P4] Vegetarian vs. conventional diabetic diet – A 1-year follow-up\nHypoglycemic agents were increased by 14% in V and by 26% in C; insulin therapy was introduced in 5% in V and in 13% in C one year after the end of the intervention. Neither weight nor waist circumference changed significantly in either group. HbA1c increased ( p ≤ 0.05) similarly in both groups (+0.49 ± 1.04% in V vs. +0.42 ± 0.8% in C). Blood lipids did not change in either group. Conclusion One year after the end of the intervention, the positive effects of a vegetarian diet on cardiovascular risk factors compared to a conventional diet were partially maintained.\n\n[P5] Dose-dependent effect of statins on the incidence of acute kidney injury after cardiac surgery.\nRESULTS Of the 2,104 patients, 1,435 (68%) were taking statins (638 high-dose) and 495 (24%) developed AKI (25% high-dose vs 40% low-dose vs 35% no-statin; p = 0.014). Estimated preoperative glomerular filtration rate (p = 0.003), diabetes mellitus (p=0.02), valve surgery with or without coronary artery bypass graft (p = 0.024), cardiopulmonary bypass time (p = 0.001), and intraaortic balloon pump (p = 0.055) were independent predictors of AKI. After propensity adjustment statin treatment was not associated with postoperative AKI (odds ratio 0.79; 95% confidence interval 0.59 to 1.06; p = 0.11 for high-dose v. no-statin). After full adjustment for all independent predictors of AKI, the results did not change. Statins also had no effect on the incidence of postoperative hemodialysis (0.8% high-dose vs 1.9% low-dose vs 1% no-statin; p = 0.15). CONCLUSIONS Statin treatment is not associated with a lower incidence of AKI after cardiac surgery.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e0321abc5d70a56b4bdea18a0cb59673f9c5d129e04ca7e6c6fe052851563cf5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792872726.7482471,
+      "end_wall": 1792872752.7096431,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3421,
+    "start_wall": 1792872726.7482471,
+    "start_mono": 542283.45914725,
+    "end_wall": 1792872752.7096431,
+    "end_mono": 542309.420505,
+    "raw_response": "{\"reasoning\": \"The passages P1, P2, and P3 provide evidence that diabetes remission is more common in people treated with conventional therapy compared to those treated with laparoscopic adjustable gastric banding surgery. P1 states that remission occurred in 73% of the surgical group and 13% of the conventional-therapy group. P2 and P3 both conclude that surgery led to higher remission rates due to greater weight loss and better glycemic control, despite noting the need for further confirmation and long-term efficacy assessment. These findings collectively support the claim that conventional therapy is more\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25957952834,
+     "load_duration": 45416917,
+     "prompt_eval_count": 1286,
+     "prompt_eval_duration": 4780264583,
+     "eval_count": 152,
+     "eval_duration": 19816996075,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:32.706974Z"
+    },
+    "elapsed_s": 25.961,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3421,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:7098463:1",
+     "scifact:7098463:2",
+     "scifact:7098463:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "869f079739957d2c78fb45dc8dbef17ad748ed6ec2a1b84290add7268ea81177",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792872722.76292,
+      "end_wall": 1792872724.537184,
+      "error": null
+     }
+    ],
+    "start_wall": 1792872722.76292,
+    "start_mono": 542279.473826083,
+    "end_wall": 1792872724.537184,
+    "end_mono": 542281.24808525,
+    "raw_response": "{\"query\": \"diabetes remission rates conventional therapy vs gastric banding surgery\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1771351208,
+     "load_duration": 64069958,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 476332750,
+     "eval_count": 18,
+     "eval_duration": 1088181586,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:04.535553Z"
+    },
+    "elapsed_s": 1.774,
+    "query_used": "diabetes remission rates conventional therapy vs gastric banding surgery",
+    "query_source": "json",
+    "query_arrival_seq": 3421
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "diabetes remission rates conventional therapy vs gastric banding surgery",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7098463:2",
+       "score_q": 847
+      },
+      {
+       "passage_key": "scifact:7098463:1",
+       "score_q": 830
+      },
+      {
+       "passage_key": "scifact:7098463:0",
+       "score_q": 811
+      },
+      {
+       "passage_key": "scifact:5824985:1",
+       "score_q": 700
+      },
+      {
+       "passage_key": "scifact:750781:0",
+       "score_q": 695
+      }
+     ],
+     "retrieval_sha256": "8cc5483d3611b52493bb5851b4ef560b168fc0162564e713624e3a405039a3f2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8cc5483d3611b52493bb5851b4ef560b168fc0162564e713624e3a405039a3f2",
+    "query_embedding_sha256": "96034a4635a5ffefd3665c1a055b50270cfc8ba1c1c3434af4760e61ffb9a06b",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7098463:2",
+      "content_sha256": "64e2362ee8f5e3ef79583719d5b7a8506659e6537557617cf3ca6f641e8398ce",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7098463:1",
+      "content_sha256": "0b21d446b804dbda214e8b23b258f263423ce5ca52995826e21899d6eeaaf196",
+      "chars": 1022
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7098463:0",
+      "content_sha256": "f3f3b76e890d0fa8eb564340d40aad76d46213ed63850339ecd9623931561671",
+      "chars": 946
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5824985:1",
+      "content_sha256": "b27316d3ab8a66d3971af63998760eee8ab10fda925eedcf27c1c83bc0e2702f",
+      "chars": 917
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:750781:0",
+      "content_sha256": "37c133d3ab389a1de12e4430c5d9f6881a2de7b0fe0945a01b78df97df38d4b8",
+      "chars": 1075
+     }
+    ],
+    "elapsed_s": 3.2961
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nEvidence passages from your search for \"diabetes remission rates conventional therapy vs gastric banding surgery\":\n<<<PASSAGES\n[P1] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONCLUSIONS Participants randomized to surgical therapy were more likely to achieve remission of type 2 diabetes through greater weight loss. These results need to be confirmed in a larger, more diverse population and have long-term efficacy assessed. TRIAL REGISTRATION actr.org Identifier: ACTRN012605000159651.\n\n[P2] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nMAIN OUTCOME MEASURES Remission of type 2 diabetes (fasting glucose level <126 mg/dL [7.0 mmol/L] and glycated hemoglobin [HbA1c] value <6.2% while taking no glycemic therapy). Secondary measures included weight and components of the metabolic syndrome. Analysis was by intention-to-treat. RESULTS Of the 60 patients enrolled, 55 (92%) completed the 2-year follow-up. Remission of type 2 diabetes was achieved by 22 (73%) in the surgical group and 4 (13%) in the conventional-therapy group. Relative risk of remission for the surgical group was 5.5 (95% confidence interval, 2.2-14.0). Surgical and conventional-therapy groups lost a mean (SD) of 20.7% (8.6%) and 1.7% (5.2%) of weight, respectively, at 2 years (P < .001). Remission of type 2 diabetes was related to weight loss (R2 = 0.46, P < .001) and lower baseline HbA1c levels (combined R2 = 0.52, P < .001). There were no serious complications in either group.\n\n[P3] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONTEXT Observational studies suggest that surgically induced loss of weight may be effective therapy for type 2 diabetes. OBJECTIVE To determine if surgically induced weight loss results in better glycemic control and less need for diabetes medications than conventional approaches to weight loss and diabetes control. DESIGN, SETTING, AND PARTICIPANTS Unblinded randomized controlled trial conducted from December 2002 through December 2006 at the University Obesity Research Center in Australia, with general community recruitment to established treatment programs. Participants were 60 obese patients (BMI >30 and <40) with recently diagnosed (<2 years) type 2 diabetes. INTERVENTIONS Conventional diabetes therapy with a focus on weight loss by lifestyle change vs laparoscopic adjustable gastric banding with conventional diabetes care.\n\n[P4] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nThe main outcome measures were change in weight and body mass index over 4 y; incident diagnoses of type 2 diabetes mellitus (T2DM), hypertension, angina, myocardial infarction (MI), stroke, fractures, obstructive sleep apnoea, and cancer; mortality; and resolution of hypertension and T2DM. Weight measures were available for 3,847 patients between 1 and 4 mo, 2,884 patients between 5 and 12 mo, and 2,258 patients between 13 and 48 mo post-procedure. Bariatric surgery patients exhibited rapid weight loss for the first four postoperative months, at a rate of 4.98 kg/mo (95% CI 4.88-5.08). Slower weight loss was sustained to the end of 4 y. Gastric bypass (6.56 kg/mo) and sleeve gastrectomy (6.29 kg/mo) were associated with greater initial weight reduction than gastric banding (2.77 kg/mo).\n\n[P5] Coronary bypass graft patency in patients with diabetes in the Bypass Angioplasty Revascularization Investigation (BARI).\nBACKGROUND Few studies have compared long-term status of bypass grafts between patients with and without diabetes, and uncertainty exists as to whether diabetes independently predicts poor clinical outcome after CABG. METHODS AND RESULTS Among 1526 patients in BARI who underwent CABG as initial revascularization, 99 of 292 (34%) with treated diabetes mellitus (TDM) (those on insulin or oral hypoglycemic agents) and 469 of 1234 (38%) without TDM had follow-up angiography. Angiograms with the longest interval from initial surgery and before any percutaneous graft intervention (mean 3.9 years) were reviewed. An average of 3.0 grafts were placed at initial CABG for patients with TDM (n=297; internal mammary artery [IMA], 33%) and 2.9 grafts for patients without TDM (n=1347; IMA, 34%). Patients with TDM were more likely than those without to have small (<1.5 mm) grafted distal vessels (29% versus 22%) and vessels of poor quality (9% versus 6%).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "16f21b92b615dd05c47fea69466cac6bc52c2b3b76811dd464776000137b2883",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792872727.834235,
+      "end_wall": 1792872753.061388,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3422,
+    "start_wall": 1792872727.834235,
+    "start_mono": 542284.545133958,
+    "end_wall": 1792872753.061388,
+    "end_mono": 542309.772247333,
+    "raw_response": "{\"reasoning\": \"The evidence from randomized controlled trial passages (P2) clearly indicates that remission of type 2 diabetes was significantly higher in the surgical group (laparoscopic adjustable gastric banding surgery) compared to the conventional therapy group, with remission rates at 73% versus 13% respectively. This directly supports the claim that remission occurs more frequently in those treated with surgical intervention than with conventional therapy alone.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25222063167,
+     "load_duration": 5979692292,
+     "prompt_eval_count": 1427,
+     "prompt_eval_duration": 7241093917,
+     "eval_count": 112,
+     "eval_duration": 11092667953,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:33.057249Z"
+    },
+    "elapsed_s": 25.227,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3422,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:7098463:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 458,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "869f079739957d2c78fb45dc8dbef17ad748ed6ec2a1b84290add7268ea81177",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792872722.762579,
+      "end_wall": 1792872724.759588,
+      "error": null
+     }
+    ],
+    "start_wall": 1792872722.762579,
+    "start_mono": 542279.473485083,
+    "end_wall": 1792872724.759588,
+    "end_mono": 542281.4704895,
+    "raw_response": "{\"query\": \"diabetes remission conventional therapy vs lap band\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1994375416,
+     "load_duration": 1187263333,
+     "prompt_eval_count": 198,
+     "prompt_eval_duration": 367528458,
+     "eval_count": 18,
+     "eval_duration": 364075709,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:04.758498Z"
+    },
+    "elapsed_s": 1.997,
+    "query_used": "diabetes remission conventional therapy vs lap band",
+    "query_source": "json",
+    "query_arrival_seq": 3422
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "diabetes remission conventional therapy vs lap band",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7098463:2",
+       "score_q": 739
+      },
+      {
+       "passage_key": "scifact:7098463:0",
+       "score_q": 721
+      },
+      {
+       "passage_key": "scifact:7098463:1",
+       "score_q": 706
+      },
+      {
+       "passage_key": "scifact:26058927:1",
+       "score_q": 659
+      },
+      {
+       "passage_key": "scifact:7873737:1",
+       "score_q": 656
+      }
+     ],
+     "retrieval_sha256": "7277ecf79499988075c8f182f0313e2895cc3c0e3b6ef609f3e313080b9e8ac6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7277ecf79499988075c8f182f0313e2895cc3c0e3b6ef609f3e313080b9e8ac6",
+    "query_embedding_sha256": "4b6f36abc6e9533535cd0dc27af3ef9a4df78ddafe999133b6287e04ec4f2e47",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7098463:2",
+      "content_sha256": "64e2362ee8f5e3ef79583719d5b7a8506659e6537557617cf3ca6f641e8398ce",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7098463:0",
+      "content_sha256": "f3f3b76e890d0fa8eb564340d40aad76d46213ed63850339ecd9623931561671",
+      "chars": 946
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7098463:1",
+      "content_sha256": "0b21d446b804dbda214e8b23b258f263423ce5ca52995826e21899d6eeaaf196",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:26058927:1",
+      "content_sha256": "a350f6c25f3ee4a4491d0e57e635aa6c9967c8a9bef0a44d56940a7502f7a04f",
+      "chars": 952
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7873737:1",
+      "content_sha256": "ae85c8bf35d5d06d46cc449a1faae4e7d58db8bcf508852620a753db1d76507d",
+      "chars": 909
+     }
+    ],
+    "elapsed_s": 3.2216
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nEvidence passages from your search for \"diabetes remission conventional therapy vs lap band\":\n<<<PASSAGES\n[P1] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONCLUSIONS Participants randomized to surgical therapy were more likely to achieve remission of type 2 diabetes through greater weight loss. These results need to be confirmed in a larger, more diverse population and have long-term efficacy assessed. TRIAL REGISTRATION actr.org Identifier: ACTRN012605000159651.\n\n[P2] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONTEXT Observational studies suggest that surgically induced loss of weight may be effective therapy for type 2 diabetes. OBJECTIVE To determine if surgically induced weight loss results in better glycemic control and less need for diabetes medications than conventional approaches to weight loss and diabetes control. DESIGN, SETTING, AND PARTICIPANTS Unblinded randomized controlled trial conducted from December 2002 through December 2006 at the University Obesity Research Center in Australia, with general community recruitment to established treatment programs. Participants were 60 obese patients (BMI >30 and <40) with recently diagnosed (<2 years) type 2 diabetes. INTERVENTIONS Conventional diabetes therapy with a focus on weight loss by lifestyle change vs laparoscopic adjustable gastric banding with conventional diabetes care.\n\n[P3] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nMAIN OUTCOME MEASURES Remission of type 2 diabetes (fasting glucose level <126 mg/dL [7.0 mmol/L] and glycated hemoglobin [HbA1c] value <6.2% while taking no glycemic therapy). Secondary measures included weight and components of the metabolic syndrome. Analysis was by intention-to-treat. RESULTS Of the 60 patients enrolled, 55 (92%) completed the 2-year follow-up. Remission of type 2 diabetes was achieved by 22 (73%) in the surgical group and 4 (13%) in the conventional-therapy group. Relative risk of remission for the surgical group was 5.5 (95% confidence interval, 2.2-14.0). Surgical and conventional-therapy groups lost a mean (SD) of 20.7% (8.6%) and 1.7% (5.2%) of weight, respectively, at 2 years (P < .001). Remission of type 2 diabetes was related to weight loss (R2 = 0.46, P < .001) and lower baseline HbA1c levels (combined R2 = 0.52, P < .001). There were no serious complications in either group.\n\n[P4] Thiazolidinediones improve beta-cell function in type 2 diabetic patients.\nPioglitazone and rosiglitazone similarly improved FPG, mean plasma glucose during OGTT, Hb A1c, and insulin-mediated total body glucose disposal (Rd) and decreased mean plasma FFA during OGTT (all P<0.01, ANOVA). The insulin secretion/insulin resistance (disposition) index [DeltaISR(AUC)/Deltaglucose(AUC)/IR] was significantly improved in all TZD-treated groups: +1.8+/-0.7 (PIO+drug-naïve diabetics), +0.7+/-0.3 (PIO+sulfonylurea-treated diabetics), and 0.7+/-0.2 (ROSI+sulfonylurea-withdrawn diabetics) vs. -0.2+/-0.3 in the two placebo groups (P<0.01, all TZDs vs. placebo, ANOVA). Improved insulin secretion correlated positively with increased body weight, fat mass, and Rd and inversely with decreased plasma glucose and FFA during the OGTT. In T2DM patients, TZD treatment leads to improved beta-cell function, which correlates strongly with improved glycemic control.\n\n[P5] Platelet glycoprotein IIb/IIIa inhibitors reduce mortality in diabetic patients with non-ST-segment-elevation acute coronary syndromes.\nAmong 1279 diabetic patients undergoing percutaneous coronary intervention (PCI) during index hospitalization, the use of these agents was associated with a mortality reduction at 30 days from 4.0% to 1.2% (OR 0.30; 95% CI 0.14 to 0.69; P=0.002). CONCLUSIONS This meta-analysis, including the entire large-scale trial experience of intravenous platelet GP IIb/IIIa inhibitors for the medical management of non-ST-segment-elevation ACS, shows that these agents may significantly reduce mortality at 30 days in diabetic patients. Although not based on a randomized assessment, the survival benefit appears to be of greater magnitude in patients undergoing PCI. Therefore, the use of platelet GP IIb/IIIa inhibitors should be strongly considered in diabetic patients with ACS.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "97af1d2db65785123dbf98848c6e4def9e303032c6e0c91d95d5a3cbe8799221",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792872727.981602,
+      "end_wall": 1792872754.948342,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3423,
+    "start_wall": 1792872727.981602,
+    "start_mono": 542284.6925,
+    "end_wall": 1792872754.948342,
+    "end_mono": 542311.659200583,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages suggest that surgical interventions, specifically laparoscopic adjustable gastric banding, can lead to a higher incidence of diabetes remission compared to conventional therapy. The randomized controlled trials (P1, P2, P3) indicate that participants undergoing surgical therapy were more likely to achieve diabetes remission due to greater weight loss, as indicated by remission rate (73% vs. 13%).\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26963212666,
+     "load_duration": 18124923583,
+     "prompt_eval_count": 1617,
+     "prompt_eval_duration": 3304017875,
+     "eval_count": 147,
+     "eval_duration": 4942882628,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:34.945847Z"
+    },
+    "elapsed_s": 26.967,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3423,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:7098463:2",
+     "scifact:7098463:0",
+     "scifact:7098463:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 430,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "869f079739957d2c78fb45dc8dbef17ad748ed6ec2a1b84290add7268ea81177",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792872722.7631202,
+      "end_wall": 1792872731.409258,
+      "error": null
+     }
+    ],
+    "start_wall": 1792872722.7631202,
+    "start_mono": 542279.474026125,
+    "end_wall": 1792872731.409258,
+    "end_mono": 542288.120150583,
+    "raw_response": "{\"query\": \"diabetes remission conventional therapy laparoscopic adjustable gastric banding surgery\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8643384208,
+     "load_duration": 4217123542,
+     "prompt_eval_count": 183,
+     "prompt_eval_duration": 935350000,
+     "eval_count": 15,
+     "eval_duration": 3189578749,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:11.408014Z"
+    },
+    "elapsed_s": 8.646,
+    "query_used": "diabetes remission conventional therapy laparoscopic adjustable gastric banding surgery",
+    "query_source": "json",
+    "query_arrival_seq": 3424
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "diabetes remission conventional therapy laparoscopic adjustable gastric banding surgery",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7098463:0",
+       "score_q": 22890
+      },
+      {
+       "passage_key": "scifact:7098463:2",
+       "score_q": 21606
+      },
+      {
+       "passage_key": "scifact:7098463:1",
+       "score_q": 20297
+      },
+      {
+       "passage_key": "scifact:5824985:1",
+       "score_q": 9490
+      },
+      {
+       "passage_key": "scifact:33127778:0",
+       "score_q": 7093
+      }
+     ],
+     "retrieval_sha256": "dab65869a8b24c8bc3a646d80ffb97d183f983017c8e6de9a6cbf9e5fb918b8b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "dab65869a8b24c8bc3a646d80ffb97d183f983017c8e6de9a6cbf9e5fb918b8b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7098463:0",
+      "content_sha256": "f3f3b76e890d0fa8eb564340d40aad76d46213ed63850339ecd9623931561671",
+      "chars": 946
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7098463:2",
+      "content_sha256": "64e2362ee8f5e3ef79583719d5b7a8506659e6537557617cf3ca6f641e8398ce",
+      "chars": 417
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7098463:1",
+      "content_sha256": "0b21d446b804dbda214e8b23b258f263423ce5ca52995826e21899d6eeaaf196",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5824985:1",
+      "content_sha256": "b27316d3ab8a66d3971af63998760eee8ab10fda925eedcf27c1c83bc0e2702f",
+      "chars": 917
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:33127778:0",
+      "content_sha256": "d4452a456ebe4f6dcfb644c0e388d1e338f984d0e528e238afaac33417de439b",
+      "chars": 753
+     }
+    ],
+    "elapsed_s": 0.0022
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Diabetes remission occurs more in people treated with conventional therapy than in people treated with laparoscopic adjustable gastric banding surgery.\n\nEvidence passages from your search for \"diabetes remission conventional therapy laparoscopic adjustable gastric banding surgery\":\n<<<PASSAGES\n[P1] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONTEXT Observational studies suggest that surgically induced loss of weight may be effective therapy for type 2 diabetes. OBJECTIVE To determine if surgically induced weight loss results in better glycemic control and less need for diabetes medications than conventional approaches to weight loss and diabetes control. DESIGN, SETTING, AND PARTICIPANTS Unblinded randomized controlled trial conducted from December 2002 through December 2006 at the University Obesity Research Center in Australia, with general community recruitment to established treatment programs. Participants were 60 obese patients (BMI >30 and <40) with recently diagnosed (<2 years) type 2 diabetes. INTERVENTIONS Conventional diabetes therapy with a focus on weight loss by lifestyle change vs laparoscopic adjustable gastric banding with conventional diabetes care.\n\n[P2] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nCONCLUSIONS Participants randomized to surgical therapy were more likely to achieve remission of type 2 diabetes through greater weight loss. These results need to be confirmed in a larger, more diverse population and have long-term efficacy assessed. TRIAL REGISTRATION actr.org Identifier: ACTRN012605000159651.\n\n[P3] Adjustable gastric banding and conventional therapy for type 2 diabetes: a randomized controlled trial.\nMAIN OUTCOME MEASURES Remission of type 2 diabetes (fasting glucose level <126 mg/dL [7.0 mmol/L] and glycated hemoglobin [HbA1c] value <6.2% while taking no glycemic therapy). Secondary measures included weight and components of the metabolic syndrome. Analysis was by intention-to-treat. RESULTS Of the 60 patients enrolled, 55 (92%) completed the 2-year follow-up. Remission of type 2 diabetes was achieved by 22 (73%) in the surgical group and 4 (13%) in the conventional-therapy group. Relative risk of remission for the surgical group was 5.5 (95% confidence interval, 2.2-14.0). Surgical and conventional-therapy groups lost a mean (SD) of 20.7% (8.6%) and 1.7% (5.2%) of weight, respectively, at 2 years (P < .001). Remission of type 2 diabetes was related to weight loss (R2 = 0.46, P < .001) and lower baseline HbA1c levels (combined R2 = 0.52, P < .001). There were no serious complications in either group.\n\n[P4] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nThe main outcome measures were change in weight and body mass index over 4 y; incident diagnoses of type 2 diabetes mellitus (T2DM), hypertension, angina, myocardial infarction (MI), stroke, fractures, obstructive sleep apnoea, and cancer; mortality; and resolution of hypertension and T2DM. Weight measures were available for 3,847 patients between 1 and 4 mo, 2,884 patients between 5 and 12 mo, and 2,258 patients between 13 and 48 mo post-procedure. Bariatric surgery patients exhibited rapid weight loss for the first four postoperative months, at a rate of 4.98 kg/mo (95% CI 4.88-5.08). Slower weight loss was sustained to the end of 4 y. Gastric bypass (6.56 kg/mo) and sleeve gastrectomy (6.29 kg/mo) were associated with greater initial weight reduction than gastric banding (2.77 kg/mo).\n\n[P5] Early gastric cancer and dysplasia.\nSince the concept of early gastric cancer was first described in Japan in 1962, its treatment has evolved from curative surgical resection to endoscopic resection, initially with polypectomy to more recently with endoscopic submucosal dissection. As worldwide experience with these endoscopic techniques evolve and gain acceptance, studies have confirmed its comparable effectiveness with historical surgical outcomes in carefully selected patients. The criteria for endoscopic resection have expanded to offer more patients improved quality of life, avoiding the morbidity and mortality associated with surgery. This article summarizes the evolutional role of endoscopic and surgical therapy in early gastric cancer.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "399879ff0212cf613fbbdf6c3ca36fd5fd6ee021327e68c3e351e211036d64cf",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792872731.4118888,
+      "end_wall": 1792872761.355336,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3424,
+    "start_wall": 1792872731.4118888,
+    "start_mono": 542288.122782458,
+    "end_wall": 1792872761.355336,
+    "end_mono": 542318.066185416,
+    "raw_response": "{\"reasoning\": \"The study showed that surgical therapy was more effective in achieving remission of type 2 diabetes compared to conventional therapy, due to greater weight loss.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29938893375,
+     "load_duration": 25594040042,
+     "prompt_eval_count": 1236,
+     "prompt_eval_duration": 1919775876,
+     "eval_count": 61,
+     "eval_duration": 1283423626,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:12:41.351742Z"
+    },
+    "elapsed_s": 29.943,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3424,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:7098463:2",
+     "scifact:7098463:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 161,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "ae447b5c1d2868aa4547749a0d076ce918b101f12d2ca53e49da144a819dc719",
+  "olmo2:7b": "944adf7fff9192679c1c9057888ec8ebd54ae55c2d3a9730136c9ec348134913",
+  "exaone3.5:7.8b": "8cc5483d3611b52493bb5851b4ef560b168fc0162564e713624e3a405039a3f2",
+  "granite3.3:2b": "7277ecf79499988075c8f182f0313e2895cc3c0e3b6ef609f3e313080b9e8ac6",
+  "nemotron-mini:4b": "dab65869a8b24c8bc3a646d80ffb97d183f983017c8e6de9a6cbf9e5fb918b8b"
+ },
+ "item_start_wall": 1792872722.7621791,
+ "item_wall_s": 38.593,
+ "ollama_ps_samples": [
+  [
+   1792872722.762,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792872724.766,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792872726.777,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792872728.78,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792872730.791,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792872732.795,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792872734.804,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792872736.816,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792872738.823,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792872740.827,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792872742.831,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792872744.84,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792872746.851,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792872748.855,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792872750.857,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792872752.866,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792872754.872,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792872756.883,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792872758.885,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792872760.891,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,134 @@
+name: verify-then-vote
+
+# Artifact checks for papers/verify-then-vote. The PDF build for every paper
+# runs in papers.yml.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  ART: papers/verify-then-vote/artifact
+
+jobs:
+  rust:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust 1.93.0
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal
+          rustup default 1.93.0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ${{ env.ART }}/overturn/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('papers/verify-then-vote/artifact/overturn/Cargo.lock') }}
+      - name: Reducer tests
+        working-directory: ${{ env.ART }}/overturn
+        run: cargo test --release --locked
+      - name: Property checks, in-memory and from-file replay
+        working-directory: ${{ env.ART }}
+        run: make test-quick replay-file
+
+  lean:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch the Mathlib cache
+        working-directory: ${{ env.ART }}/lean
+        run: lake exe cache get
+      - name: Build the proofs and audit the axioms
+        working-directory: ${{ env.ART }}/lean
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+          if grep -E "sorryAx|declaration uses 'sorry'" build.log; then
+            echo "the proofs use sorry"; exit 1
+          fi
+          audit='depends on axioms: [propext, Classical.choice, Quot.sound]'
+          test "$(grep -Fc "$audit" build.log)" -eq 32
+          if grep 'depends on axioms:' build.log | grep -Fv "$audit"; then
+            echo "unexpected proof axiom list"; exit 1
+          fi
+
+  python:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the pinned packages
+        run: pip install -r ${{ env.ART }}/requirements.txt
+      - name: Check frozen inputs and exact public redactions
+        working-directory: ${{ env.ART }}
+        run: python -c "from reproduction.portable import verify_freezes; verify_freezes()"
+      - name: Python test suites (local mocks, no hosted calls)
+        working-directory: ${{ env.ART }}
+        run: python -m pytest -q -p no:cacheprovider
+
+  package:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install build tools
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal
+          rustup default 1.93.0
+          python -m pip install build hatchling pytest
+      - name: Build and install the platform wheel
+        working-directory: ${{ env.ART }}/bindings/python
+        run: |
+          python scripts/build_wheel.py --cargo --outdir dist
+          python scripts/check_wheel.py dist/*.whl
+          python -m pip install --no-deps dist/*.whl
+      - name: Test the installed package and verification gate
+        working-directory: ${{ env.ART }}/bindings/python
+        env:
+          OVERTURN_TEST_INSTALLED: "1"
+        run: |
+          python -m pytest -q -p no:cacheprovider
+          python examples/verify_then_vote.py
+
+  reanalysis:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Rust
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal
+          rustup default 1.93.0
+      - name: Install analysis dependencies
+        run: python -m pip install -r ${{ env.ART }}/requirements.txt
+      - name: Test reconstruction integrity checks
+        working-directory: ${{ env.ART }}
+        run: python -m unittest discover -s reproduction -p 'test_*.py'
+      - name: Reconstruct all studies from public sealed records
+        working-directory: ${{ env.ART }}
+        run: make portable-reanalysis memoryonly-reanalysis freetext-identifiers PY=python3
+      - name: Reproduce and compare reviewer analyses
+        working-directory: ${{ env.ART }}
+        run: |
+          python reproduction/matched_gate.py --bin overturn/target/release/overturn --out bench-output/reviewer-matched
+          python reproduction/audit_validation.py --out bench-output/reviewer-audit
+          python reproduction/check_review_outputs.py --matched bench-output/reviewer-matched --audit bench-output/reviewer-audit

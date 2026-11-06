@@ -1,0 +1,73 @@
+\section{Synthetic Workload}
+\label[appendix]{app:workload}
+
+\label[appendix]{sec:workload}
+
+How does the reducer behave as inputs grow? A generator draws contributions for three fixed topic banks (Australia's capital, factual; TCP reliability, technical; saturated fat, contested) from 20 agent personalities, emitting triples directly. It assigns correctness, evidence, and lowering grade by construction: correct claims get citation or empirical evidence of weight 0.80--0.95, misconceptions reasoning-only evidence of weight 0.2--0.4 or none. The workload therefore tests whether the scorer uses the signals it is given, which cooperative agents supply and adversaries would withhold.
+
+\begin{table}[t]
+  \centering
+  \caption[Synthetic workload]{Synthetic workload, one end-to-end compilation per cell: slots / false positives / precision / median time over five runs (release build, single-threaded, seed 42, Apple M3 Pro, shared machine).}
+  \label{tab:workload}
+  \small
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{tabular}{@{}rlll@{}}
+    \toprule
+    $N$ & Australia & TCP & Saturated fat \\
+    \midrule
+    10 & 4 / 0 / 100\% / 0.4\,ms & 9 / 3 / 67\% / 0.3\,ms & 7 / 1 / 86\% / 0.3\,ms \\
+    100 & 4 / 0 / 100\% / 2.7\,ms & 14 / 3 / 79\% / 2.7\,ms & 15 / 5 / 67\% / 3.0\,ms \\
+    1,000 & 4 / 0 / 100\% / 24.2\,ms & 14 / 3 / 79\% / 28.3\,ms & 15 / 5 / 67\% / 26.9\,ms \\
+    5,000 & 4 / 0 / 100\% / 128\,ms & 14 / 3 / 79\% / 135\,ms & 15 / 5 / 67\% / 140\,ms \\
+    10,000 & 4 / 0 / 100\% / 273\,ms & 14 / 3 / 79\% / 284\,ms & 15 / 5 / 67\% / 305\,ms \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Time grew about 10--11$\times$ from $N = 1{,}000$ to $N = 10{,}000$ as claims grew about 10$\times$. The deadband is entered in nearly every conflict set from $N = 100$ upward and its sets grow with $N$, which is why the Schulze implementation matters: the reference algorithm took 7.50\,s for Australia at $N = 10{,}000$, 27$\times$ longer (Runtime, below). These are workload measurements rather than complexity bounds, and the stable slot counts reflect each bank's fixed size. They do establish that arbitration is cheap at realistic sizes: a whole 100-agent compilation takes about 3\,ms, while the five agents of \cref{sec:freetext} took a median of 48.3\,s (range 15.6--79.1\,s) to answer one question, more than four orders of magnitude longer. On OVERTURN the same holds per decision: 6\,ms of reduction (\paperref{main-paper audit and cost results}) against a median of about 25\,s for the five agents to answer an item.
+
+Two selection findings carry over to real data. Most false positives are uncontested: at $N = 100$, all 3 TCP and all 5 saturated-fat false positives were admitted without any conflict, such as ``guarantees zero data loss,'' which puts them beyond any reducer's reach. And separation erodes as $N$ grows while the winners stay correct (\cref{tab:margins-synth}), exactly the case \cref{sec:selection} anticipates: at large $N$ correct winners come from the score distribution, not the guarantee.
+
+\begin{table}[t]
+  \centering
+  \caption{Measured total-score margin $\Delta_w$ on synthetic contradiction sets.}
+  \label{tab:margins-synth}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    Topic (contradiction sets) & $N = 100$ & $N = 1{,}000$ & $N = 10{,}000$ \\
+    \midrule
+    Australia (1) & separated (0.051) & below $\delta$ (0.004) & inverted ($-0.012$) \\
+    TCP (3) & 2 separated; 1 at 0.036 & all inverted (min $-0.191$) & all inverted (min $-0.237$) \\
+    Saturated fat (1) & separated (0.170) & below $\delta$ (0.042) & below $\delta$ (0.022) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+\paragraph{Runtime.} On the three banks the claim count grew from 1,561 to 15,743 for Australia between $N = 1{,}000$ and $N = 10{,}000$. From $N = 100$ upward the deadband was entered in 4 of 4 Australia, 13 of 14 TCP, and 15 of 15 saturated-fat conflict sets, and at $N = 10{,}000$ the Australia deadband sets held 967--1,148 candidates. The reference Schulze algorithm, timed in a single run, took 7.50\,s, 1.40\,s, and 1.95\,s on the three banks at $N = 10{,}000$, against 273\,ms, 284\,ms, and 305\,ms for the implementation: 27$\times$ for Australia and 5--6$\times$ for the others, with identical outputs. In a per-pass breakdown for Australia at $N = 10{,}000$ (median total 316\,ms), selection took about 58\,ms, of which Schulze about 26\,ms over four deadband sets of 967--1,148 candidates, and commit dominated at about 196\,ms.
+
+\paragraph{Baselines} ($N = 100$, 50 seeds; mean false positives / mean precision).
+
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+  \toprule
+  Method & Australia & TCP & Saturated fat \\
+  \midrule
+  Reducer & 0.0 / 100\% & 2.7 / 80.3\% & 5.0 / 66.8\% \\
+  Majority vote & 0.0 / 99.0\% & 3.2 / 76.5\% & 5.0 / 66.8\% \\
+  Best confidence & 0.2 / 95.0\% & 2.8 / 79.7\% & 5.2 / 65.3\% \\
+  Last writer & 0.2 / 95.0\% & 3.3 / 76.0\% & 5.2 / 65.2\% \\
+  Random & 0.5 / 86.5\% & 3.7 / 72.8\% & 5.2 / 65.1\% \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+Because the generator gives correct claims stronger evidence by construction, a small advantage for an evidence-weighted reducer is expected by design and confirms only that the scorer uses its inputs.
+
+\paragraph{Adversarial-ratio sweep} (seed 42; 0, 20, 40, 60, 80, and 90\% adversarial agents, drawn from a separate eight-template roster, which is why TCP has 2 false positives at 0\%). TCP false positives were 2 at every ratio for the reducer and for best-confidence, 2, 2, 2, 2, 4, 4 for majority vote, and 2, 3, 3, 2, 4, 4 for random selection. Australia had 0 for every method except majority and random at 90\% (1 each); saturated fat had 4--5 for all methods. These adversaries are generator archetypes with weak or no evidence, so the sweep tests weak-evidence adversaries; source misrepresentation is the separate threat of \paperref{main-paper setting}.
+
+\paragraph{Ablation} (ten profiles: default, each single weight zeroed and the rest renormalized, evidence-only, confidence-only, critique-only, uniform). False-positive counts stayed the same under every profile (Australia 0, TCP 3, saturated fat 5). The three single-component profiles are three of the five simplex vertices, but the convex-hull extension of \cref{cor:robustness} applies only to statistics linear in the weights, which excludes false-positive counts. Which copy wins does change: with evidence zeroed, 3 of 4 Australia winners differ.

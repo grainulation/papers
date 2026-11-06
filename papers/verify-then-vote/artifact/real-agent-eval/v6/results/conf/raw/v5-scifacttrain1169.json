@@ -1,0 +1,1289 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1169",
+ "order": 538,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1169",
+  "order": 538,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity."
+ },
+ "item_view_sha256": "41830c0ecfa15ff4a159e6a0c6b2c643a666dac6e640863b9801ec27281c612b",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d33f0a7174dacad0c973d692b2c64e9619950c0d6ad0daed1343453c657c9ad6",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868426.6169732,
+      "end_wall": 1792868427.627441,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868426.6169732,
+    "start_mono": 537983.327087208,
+    "end_wall": 1792868427.627441,
+    "end_mono": 537984.337549583,
+    "raw_response": "{\"query\": \"M2-phenotype brown adipose tissue macrophages thermogenic activity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1008003375,
+     "load_duration": 90565417,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 237761917,
+     "eval_count": 19,
+     "eval_duration": 449655376,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:27.62679Z"
+    },
+    "elapsed_s": 1.01,
+    "query_used": "M2-phenotype brown adipose tissue macrophages thermogenic activity",
+    "query_source": "json",
+    "query_arrival_seq": 2690
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "M2-phenotype brown adipose tissue macrophages thermogenic activity",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 800
+      },
+      {
+       "passage_key": "scifact:43192375:0",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:4319174:1",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:17973161:0",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 750
+      }
+     ],
+     "retrieval_sha256": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf",
+    "query_embedding_sha256": "eb18c2faa0b3ae3661596839118714f7f672d98899974f75efae550a2f151efb",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:43192375:0",
+      "content_sha256": "9254e33e788590e10d1fd4e07945722f391d7371c1bc5eda7723bd7fff7d5c93",
+      "chars": 971
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4319174:1",
+      "content_sha256": "a6a8ff6e83e62c14be28453293340661bdeb0c3dba5e5e7536fb74df14599e09",
+      "chars": 723
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:17973161:0",
+      "content_sha256": "49ac02ab33104bdb5e76f480a31cbdf7c928b12ff7da284ef802a1e08b4c7ab0",
+      "chars": 995
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     }
+    ],
+    "elapsed_s": 4.8461
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nEvidence passages from your search for \"M2-phenotype brown adipose tissue macrophages thermogenic activity\":\n<<<PASSAGES\n[P1] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P2] Obesity induces a phenotypic switch in adipose tissue macrophage polarization.\nAdipose tissue macrophages (ATMs) infiltrate adipose tissue during obesity and contribute to insulin resistance. We hypothesized that macrophages migrating to adipose tissue upon high-fat feeding may differ from those that reside there under normal diet conditions. To this end, we found a novel F4/80(+)CD11c(+) population of ATMs in adipose tissue of obese mice that was not seen in lean mice. ATMs from lean mice expressed many genes characteristic of M2 or \"alternatively activated\" macrophages, including Ym1, arginase 1, and Il10. Diet-induced obesity decreased expression of these genes in ATMs while increasing expression of genes such as those encoding TNF-alpha and iNOS that are characteristic of M1 or \"classically activated\" macrophages. Interestingly, ATMs from obese C-C motif chemokine receptor 2-KO (Ccr2-KO) mice express M2 markers at levels similar to those from lean mice.\n\n[P3] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nExposure to cold temperature rapidly promoted alternative activation of adipose tissue macrophages, which secrete catecholamines to induce thermogenic gene expression in brown adipose tissue and lipolysis in white adipose tissue. Absence of alternatively activated macrophages impaired metabolic adaptations to cold, whereas administration of IL-4 increased thermogenic gene expression, fatty acid mobilization and energy expenditure, all in a macrophage-dependent manner. Thus, we have discovered a role for alternatively activated macrophages in the orchestration of an important mammalian stress response, the response to cold.\n\n[P4] Human ‘brite / beige’ adipocytes develop from capillary networks and their implantation improves metabolic homeostasis in mice\nUncoupling protein 1 (UCP1) is highly expressed in brown adipose tissue, where it generates heat by uncoupling electron transport from ATP production. UCP1 is also found outside classical brown adipose tissue depots, in adipocytes that are termed 'brite' (brown-in-white) or 'beige'. In humans, the presence of brite or beige (brite/beige) adipocytes is correlated with a lean, metabolically healthy phenotype, but whether a causal relationship exists is not clear. Here we report that human brite/beige adipocyte progenitors proliferate in response to pro-angiogenic factors, in association with expanding capillary networks. Adipocytes formed from these progenitors transform in response to adenylate cyclase activation from being UCP1 negative to being UCP1 positive, which is a defining feature of the beige/brite phenotype, while displaying uncoupled respiration.\n\n[P5] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "083e245ea65b2c22475c5e1ebbe79adc0d69f1743071c597e55cce1bf4d1107d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868432.474056,
+      "end_wall": 1792868445.2986171,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2690,
+    "start_wall": 1792868432.474056,
+    "start_mono": 537989.184146708,
+    "end_wall": 1792868445.2986171,
+    "end_mono": 538002.008654833,
+    "raw_response": "{\"reasoning\": \"The M2-phenotype in brown adipose tissue macrophages is associated with increased thermogenic activity, as supported by passages P1 and P5. This indicates that the claim is supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P5\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12821191375,
+     "load_duration": 4941728167,
+     "prompt_eval_count": 1199,
+     "prompt_eval_duration": 2473203167,
+     "eval_count": 74,
+     "eval_duration": 4596686374,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:45.296682Z"
+    },
+    "elapsed_s": 12.825,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2690,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:14865329:1",
+     "scifact:4319174:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 183,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d33f0a7174dacad0c973d692b2c64e9619950c0d6ad0daed1343453c657c9ad6",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868426.6165318,
+      "end_wall": 1792868431.295454,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868426.6165318,
+    "start_mono": 537983.326646,
+    "end_wall": 1792868431.295454,
+    "end_mono": 537988.005548625,
+    "raw_response": "{\"query\": \"M2 macrophages brown adipose thermogenic activity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4675681416,
+     "load_duration": 3200217666,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 738618958,
+     "eval_count": 17,
+     "eval_duration": 590766583,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:31.294473Z"
+    },
+    "elapsed_s": 4.679,
+    "query_used": "M2 macrophages brown adipose thermogenic activity",
+    "query_source": "json",
+    "query_arrival_seq": 2693
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "M2 macrophages brown adipose thermogenic activity",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4319174:1",
+       "score_q": 13474
+      },
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 12258
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 10391
+      },
+      {
+       "passage_key": "scifact:52865789:1",
+       "score_q": 10048
+      },
+      {
+       "passage_key": "scifact:43192375:0",
+       "score_q": 9550
+      }
+     ],
+     "retrieval_sha256": "866ba74647f2c0b670349ac7987e152ed196c6bc2238f62eb82d6f30d2597dfa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "866ba74647f2c0b670349ac7987e152ed196c6bc2238f62eb82d6f30d2597dfa",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4319174:1",
+      "content_sha256": "a6a8ff6e83e62c14be28453293340661bdeb0c3dba5e5e7536fb74df14599e09",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:52865789:1",
+      "content_sha256": "6fb9429b399d5104855efb9a536479a95eeeb568cc3e55071538e8e81d8fac36",
+      "chars": 817
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:43192375:0",
+      "content_sha256": "9254e33e788590e10d1fd4e07945722f391d7371c1bc5eda7723bd7fff7d5c93",
+      "chars": 971
+     }
+    ],
+    "elapsed_s": 0.0045
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nEvidence passages from your search for \"M2 macrophages brown adipose thermogenic activity\":\n<<<PASSAGES\n[P1] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nExposure to cold temperature rapidly promoted alternative activation of adipose tissue macrophages, which secrete catecholamines to induce thermogenic gene expression in brown adipose tissue and lipolysis in white adipose tissue. Absence of alternatively activated macrophages impaired metabolic adaptations to cold, whereas administration of IL-4 increased thermogenic gene expression, fatty acid mobilization and energy expenditure, all in a macrophage-dependent manner. Thus, we have discovered a role for alternatively activated macrophages in the orchestration of an important mammalian stress response, the response to cold.\n\n[P2] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P3] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\n\n[P4] Deficiency of Interleukin-15 Confers Resistance to Obesity by Diminishing Inflammation and Enhancing the Thermogenic Function of Adipose Tissues\nGene expression analysis also revealed elevated expression of genes associated with adaptive thermogenesis in the brown and subcutaneous adipose tissues of IL-15 KO mice. Accordingly, oxygen consumption was increased in the brown adipocytes from IL-15 KO mice. In addition, IL-15 KO mice showed decreased expression of pro-inflammatory mediators in their adipose tissues. CONCLUSIONS Absence of IL-15 results in decreased accumulation of fat in the white adipose tissues and increased lipid utilization via adaptive thermogenesis. IL-15 also promotes inflammation in adipose tissues that could sustain chronic inflammation leading to obesity-associated metabolic syndrome.\n\n[P5] Obesity induces a phenotypic switch in adipose tissue macrophage polarization.\nAdipose tissue macrophages (ATMs) infiltrate adipose tissue during obesity and contribute to insulin resistance. We hypothesized that macrophages migrating to adipose tissue upon high-fat feeding may differ from those that reside there under normal diet conditions. To this end, we found a novel F4/80(+)CD11c(+) population of ATMs in adipose tissue of obese mice that was not seen in lean mice. ATMs from lean mice expressed many genes characteristic of M2 or \"alternatively activated\" macrophages, including Ym1, arginase 1, and Il10. Diet-induced obesity decreased expression of these genes in ATMs while increasing expression of genes such as those encoding TNF-alpha and iNOS that are characteristic of M1 or \"classically activated\" macrophages. Interestingly, ATMs from obese C-C motif chemokine receptor 2-KO (Ccr2-KO) mice express M2 markers at levels similar to those from lean mice.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fc6dd700bf63343ab54794cc9232493b4f77e0bef12cad154f2deb2f9e54236c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868431.300398,
+      "end_wall": 1792868449.071896,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2691,
+    "start_wall": 1792868431.300398,
+    "start_mono": 537988.010493916,
+    "end_wall": 1792868449.071896,
+    "end_mono": 538005.781918166,
+    "raw_response": "{\"reasoning\": \"The passages P1, P3, and P4 support the claim by describing how M2 macrophages in brown adipose tissue increase thermogenic activity through the production of catecholamines in response to cold exposure, demonstrating their role in adaptive thermogenesis. P1 and P4 specifically mention the production of catecholamines by these macrophages as a mechanism to increase thermogenic activity, while P3 reinforces the concept through the context of adaptive thermogenesis. The passage P5 indirectly supports the claim by indicating a phenotypic switch in adipose tissue macrophages during obesity, which,\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17767982125,
+     "load_duration": 46222417,
+     "prompt_eval_count": 1156,
+     "prompt_eval_duration": 4455574999,
+     "eval_count": 147,
+     "eval_duration": 11915856416,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:49.069116Z"
+    },
+    "elapsed_s": 17.771,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2691,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d33f0a7174dacad0c973d692b2c64e9619950c0d6ad0daed1343453c657c9ad6",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868426.61678,
+      "end_wall": 1792868427.666134,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868426.61678,
+    "start_mono": 537983.326894666,
+    "end_wall": 1792868427.666134,
+    "end_mono": 537984.376243541,
+    "raw_response": "{\"query\": \"M2-phenotype brown adipose tissue macrophages thermogenic activity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1046775959,
+     "load_duration": 35867417,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 304948000,
+     "eval_count": 25,
+     "eval_duration": 592760499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:27.665318Z"
+    },
+    "elapsed_s": 1.049,
+    "query_used": "M2-phenotype brown adipose tissue macrophages thermogenic activity",
+    "query_source": "json",
+    "query_arrival_seq": 2691
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "M2-phenotype brown adipose tissue macrophages thermogenic activity",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 800
+      },
+      {
+       "passage_key": "scifact:43192375:0",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:4319174:1",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:17973161:0",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 750
+      }
+     ],
+     "retrieval_sha256": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf",
+    "query_embedding_sha256": "eb18c2faa0b3ae3661596839118714f7f672d98899974f75efae550a2f151efb",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:43192375:0",
+      "content_sha256": "9254e33e788590e10d1fd4e07945722f391d7371c1bc5eda7723bd7fff7d5c93",
+      "chars": 971
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4319174:1",
+      "content_sha256": "a6a8ff6e83e62c14be28453293340661bdeb0c3dba5e5e7536fb74df14599e09",
+      "chars": 723
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:17973161:0",
+      "content_sha256": "49ac02ab33104bdb5e76f480a31cbdf7c928b12ff7da284ef802a1e08b4c7ab0",
+      "chars": 995
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     }
+    ],
+    "elapsed_s": 4.9943
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nEvidence passages from your search for \"M2-phenotype brown adipose tissue macrophages thermogenic activity\":\n<<<PASSAGES\n[P1] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P2] Obesity induces a phenotypic switch in adipose tissue macrophage polarization.\nAdipose tissue macrophages (ATMs) infiltrate adipose tissue during obesity and contribute to insulin resistance. We hypothesized that macrophages migrating to adipose tissue upon high-fat feeding may differ from those that reside there under normal diet conditions. To this end, we found a novel F4/80(+)CD11c(+) population of ATMs in adipose tissue of obese mice that was not seen in lean mice. ATMs from lean mice expressed many genes characteristic of M2 or \"alternatively activated\" macrophages, including Ym1, arginase 1, and Il10. Diet-induced obesity decreased expression of these genes in ATMs while increasing expression of genes such as those encoding TNF-alpha and iNOS that are characteristic of M1 or \"classically activated\" macrophages. Interestingly, ATMs from obese C-C motif chemokine receptor 2-KO (Ccr2-KO) mice express M2 markers at levels similar to those from lean mice.\n\n[P3] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nExposure to cold temperature rapidly promoted alternative activation of adipose tissue macrophages, which secrete catecholamines to induce thermogenic gene expression in brown adipose tissue and lipolysis in white adipose tissue. Absence of alternatively activated macrophages impaired metabolic adaptations to cold, whereas administration of IL-4 increased thermogenic gene expression, fatty acid mobilization and energy expenditure, all in a macrophage-dependent manner. Thus, we have discovered a role for alternatively activated macrophages in the orchestration of an important mammalian stress response, the response to cold.\n\n[P4] Human ‘brite / beige’ adipocytes develop from capillary networks and their implantation improves metabolic homeostasis in mice\nUncoupling protein 1 (UCP1) is highly expressed in brown adipose tissue, where it generates heat by uncoupling electron transport from ATP production. UCP1 is also found outside classical brown adipose tissue depots, in adipocytes that are termed 'brite' (brown-in-white) or 'beige'. In humans, the presence of brite or beige (brite/beige) adipocytes is correlated with a lean, metabolically healthy phenotype, but whether a causal relationship exists is not clear. Here we report that human brite/beige adipocyte progenitors proliferate in response to pro-angiogenic factors, in association with expanding capillary networks. Adipocytes formed from these progenitors transform in response to adenylate cyclase activation from being UCP1 negative to being UCP1 positive, which is a defining feature of the beige/brite phenotype, while displaying uncoupled respiration.\n\n[P5] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "083e245ea65b2c22475c5e1ebbe79adc0d69f1743071c597e55cce1bf4d1107d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868432.660933,
+      "end_wall": 1792868449.614156,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2692,
+    "start_wall": 1792868432.660933,
+    "start_mono": 537989.371023166,
+    "end_wall": 1792868449.614156,
+    "end_mono": 538006.324176041,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests a direct relationship between M2-phenotype in brown adipose tissue macrophages and increased thermogenic activity in brown adipose tissue. Several passages support this: [P3] states that M2 macrophages secrete catecholamines to induce thermogenic gene expression in brown adipose tissue, and [P5] confirms IL-4-stimulated M2 macrophage activation plays a role in adaptive thermogenesis, which aligns with the increase in brown adipose tissue thermogenic activity. No contradictory evidence is found in the provided passages.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P3\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16949126250,
+     "load_duration": 5880695917,
+     "prompt_eval_count": 1473,
+     "prompt_eval_duration": 3481864125,
+     "eval_count": 178,
+     "eval_duration": 6782189495,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:49.61135Z"
+    },
+    "elapsed_s": 16.953,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2692,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:4319174:1",
+     "scifact:4319174:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 543,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d33f0a7174dacad0c973d692b2c64e9619950c0d6ad0daed1343453c657c9ad6",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868426.616863,
+      "end_wall": 1792868435.92463,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868426.616863,
+    "start_mono": 537983.326977083,
+    "end_wall": 1792868435.92463,
+    "end_mono": 537992.634706166,
+    "raw_response": "{\"query\": \"M2 phenotype brown adipose tissue macrophages thermogenic activity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9304484125,
+     "load_duration": 5257363042,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 925920625,
+     "eval_count": 16,
+     "eval_duration": 2785481083,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:35.923129Z"
+    },
+    "elapsed_s": 9.308,
+    "query_used": "M2 phenotype brown adipose tissue macrophages thermogenic activity",
+    "query_source": "json",
+    "query_arrival_seq": 2694
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "M2 phenotype brown adipose tissue macrophages thermogenic activity",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4319174:1",
+       "score_q": 15606
+      },
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 13656
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 12097
+      },
+      {
+       "passage_key": "scifact:43192375:0",
+       "score_q": 11770
+      },
+      {
+       "passage_key": "scifact:29381091:0",
+       "score_q": 11113
+      }
+     ],
+     "retrieval_sha256": "07e132522e4665ed6847ad0eb5808187eb5c378863e08aab0ffa30ac3799be1f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "07e132522e4665ed6847ad0eb5808187eb5c378863e08aab0ffa30ac3799be1f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4319174:1",
+      "content_sha256": "a6a8ff6e83e62c14be28453293340661bdeb0c3dba5e5e7536fb74df14599e09",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:43192375:0",
+      "content_sha256": "9254e33e788590e10d1fd4e07945722f391d7371c1bc5eda7723bd7fff7d5c93",
+      "chars": 971
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29381091:0",
+      "content_sha256": "cb7664cb74ed3d146e62ab093424daf7138e02e6bd08ad905350c9a1c4cae2be",
+      "chars": 1103
+     }
+    ],
+    "elapsed_s": 0.0015
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nEvidence passages from your search for \"M2 phenotype brown adipose tissue macrophages thermogenic activity\":\n<<<PASSAGES\n[P1] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nExposure to cold temperature rapidly promoted alternative activation of adipose tissue macrophages, which secrete catecholamines to induce thermogenic gene expression in brown adipose tissue and lipolysis in white adipose tissue. Absence of alternatively activated macrophages impaired metabolic adaptations to cold, whereas administration of IL-4 increased thermogenic gene expression, fatty acid mobilization and energy expenditure, all in a macrophage-dependent manner. Thus, we have discovered a role for alternatively activated macrophages in the orchestration of an important mammalian stress response, the response to cold.\n\n[P2] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P3] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\n\n[P4] Obesity induces a phenotypic switch in adipose tissue macrophage polarization.\nAdipose tissue macrophages (ATMs) infiltrate adipose tissue during obesity and contribute to insulin resistance. We hypothesized that macrophages migrating to adipose tissue upon high-fat feeding may differ from those that reside there under normal diet conditions. To this end, we found a novel F4/80(+)CD11c(+) population of ATMs in adipose tissue of obese mice that was not seen in lean mice. ATMs from lean mice expressed many genes characteristic of M2 or \"alternatively activated\" macrophages, including Ym1, arginase 1, and Il10. Diet-induced obesity decreased expression of these genes in ATMs while increasing expression of genes such as those encoding TNF-alpha and iNOS that are characteristic of M1 or \"classically activated\" macrophages. Interestingly, ATMs from obese C-C motif chemokine receptor 2-KO (Ccr2-KO) mice express M2 markers at levels similar to those from lean mice.\n\n[P5] Brown and white adipose tissues: intrinsic differences in gene expression and response to cold exposure in mice\nBrown adipocytes dissipate energy, whereas white adipocytes are an energy storage site. We explored the plasticity of different white adipose tissue depots in acquiring a brown phenotype by cold exposure. By comparing cold-induced genes in white fat to those enriched in brown compared with white fat, at thermoneutrality we defined a \"brite\" transcription signature. We identified the genes, pathways, and promoter regulatory motifs associated with \"browning,\" as these represent novel targets for understanding this process. For example, neuregulin 4 was more highly expressed in brown adipose tissue and upregulated in white fat upon cold exposure, and cell studies showed that it is a neurite outgrowth-promoting adipokine, indicative of a role in increasing adipose tissue innervation in response to cold. A cell culture system that allows us to reproduce the differential properties of the discrete adipose depots was developed to study depot-specific differences at an in vitro level.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "73efa4c77702e535ce6211b26b86dde4ae1ea4733612716f07d8b82998385adb",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868435.9267101,
+      "end_wall": 1792868463.579999,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2693,
+    "start_wall": 1792868435.9267101,
+    "start_mono": 537992.636787166,
+    "end_wall": 1792868463.579999,
+    "end_mono": 538020.289964125,
+    "raw_response": "{\"reasoning\": \"The claim is supported by passages P1 and P2. In P1, the alternative activated macrophages in brown adipose tissue secrete catecholamines to induce thermogenic gene expression and lipolysis in white adipose tissue, which increases brown adipose tissue thermogenic activity. P2 discusses the possibility of increasing browning and its efficiency in increasing whole brown fat activity, which supports the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27647850375,
+     "load_duration": 16984848000,
+     "prompt_eval_count": 1143,
+     "prompt_eval_duration": 4300639041,
+     "eval_count": 106,
+     "eval_duration": 4146317208,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:01:03.575624Z"
+    },
+    "elapsed_s": 27.653,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2693,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:4319174:1",
+     "scifact:14865329:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 410,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d33f0a7174dacad0c973d692b2c64e9619950c0d6ad0daed1343453c657c9ad6",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868426.616662,
+      "end_wall": 1792868430.091609,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868426.616662,
+    "start_mono": 537983.326775916,
+    "end_wall": 1792868430.091609,
+    "end_mono": 537986.801708625,
+    "raw_response": "{\"query\": \"M2 macrophages brown adipose tissue thermogenic activity studies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3471808583,
+     "load_duration": 1768151458,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 721959625,
+     "eval_count": 17,
+     "eval_duration": 838115915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:00:30.090533Z"
+    },
+    "elapsed_s": 3.475,
+    "query_used": "M2 macrophages brown adipose tissue thermogenic activity studies",
+    "query_source": "json",
+    "query_arrival_seq": 2692
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "M2 macrophages brown adipose tissue thermogenic activity studies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4319174:1",
+       "score_q": 799
+      },
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 784
+      },
+      {
+       "passage_key": "scifact:43192375:0",
+       "score_q": 777
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:17973161:0",
+       "score_q": 741
+      }
+     ],
+     "retrieval_sha256": "5617e71a2be20fc886bccc33636228bcffe7319bbf4e69e71b59997dedf3ee71"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5617e71a2be20fc886bccc33636228bcffe7319bbf4e69e71b59997dedf3ee71",
+    "query_embedding_sha256": "9eabda20fc7edd39e10e0d3df987c9e6179a291862a2ffc13276fd9930c2ecdc",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4319174:1",
+      "content_sha256": "a6a8ff6e83e62c14be28453293340661bdeb0c3dba5e5e7536fb74df14599e09",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:43192375:0",
+      "content_sha256": "9254e33e788590e10d1fd4e07945722f391d7371c1bc5eda7723bd7fff7d5c93",
+      "chars": 971
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:17973161:0",
+      "content_sha256": "49ac02ab33104bdb5e76f480a31cbdf7c928b12ff7da284ef802a1e08b4c7ab0",
+      "chars": 995
+     }
+    ],
+    "elapsed_s": 2.7343
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The M2-phenotype in brown adipose tissue macrophages increases brown adipose tissue thermogenic activity.\n\nEvidence passages from your search for \"M2 macrophages brown adipose tissue thermogenic activity studies\":\n<<<PASSAGES\n[P1] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nExposure to cold temperature rapidly promoted alternative activation of adipose tissue macrophages, which secrete catecholamines to induce thermogenic gene expression in brown adipose tissue and lipolysis in white adipose tissue. Absence of alternatively activated macrophages impaired metabolic adaptations to cold, whereas administration of IL-4 increased thermogenic gene expression, fatty acid mobilization and energy expenditure, all in a macrophage-dependent manner. Thus, we have discovered a role for alternatively activated macrophages in the orchestration of an important mammalian stress response, the response to cold.\n\n[P2] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P3] Obesity induces a phenotypic switch in adipose tissue macrophage polarization.\nAdipose tissue macrophages (ATMs) infiltrate adipose tissue during obesity and contribute to insulin resistance. We hypothesized that macrophages migrating to adipose tissue upon high-fat feeding may differ from those that reside there under normal diet conditions. To this end, we found a novel F4/80(+)CD11c(+) population of ATMs in adipose tissue of obese mice that was not seen in lean mice. ATMs from lean mice expressed many genes characteristic of M2 or \"alternatively activated\" macrophages, including Ym1, arginase 1, and Il10. Diet-induced obesity decreased expression of these genes in ATMs while increasing expression of genes such as those encoding TNF-alpha and iNOS that are characteristic of M1 or \"classically activated\" macrophages. Interestingly, ATMs from obese C-C motif chemokine receptor 2-KO (Ccr2-KO) mice express M2 markers at levels similar to those from lean mice.\n\n[P4] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\n\n[P5] Human ‘brite / beige’ adipocytes develop from capillary networks and their implantation improves metabolic homeostasis in mice\nUncoupling protein 1 (UCP1) is highly expressed in brown adipose tissue, where it generates heat by uncoupling electron transport from ATP production. UCP1 is also found outside classical brown adipose tissue depots, in adipocytes that are termed 'brite' (brown-in-white) or 'beige'. In humans, the presence of brite or beige (brite/beige) adipocytes is correlated with a lean, metabolically healthy phenotype, but whether a causal relationship exists is not clear. Here we report that human brite/beige adipocyte progenitors proliferate in response to pro-angiogenic factors, in association with expanding capillary networks. Adipocytes formed from these progenitors transform in response to adenylate cyclase activation from being UCP1 negative to being UCP1 positive, which is a defining feature of the beige/brite phenotype, while displaying uncoupled respiration.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c562c2398d5467c2bbbec6a0b52db07e88a2713483433ffb66213f73003e872d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868432.826381,
+      "end_wall": 1792868464.153684,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2694,
+    "start_wall": 1792868432.826381,
+    "start_mono": 537989.53647025,
+    "end_wall": 1792868464.153684,
+    "end_mono": 538020.863646416,
+    "raw_response": "{\"reasoning\": \"Passages P1 and P4 specifically mention the role of alternatively activated macrophages (which include M2 macrophages) in increasing thermogenic gene expression in brown adipose tissue and sustaining adaptive thermogenesis through mechanisms like catecholamine secretion and IL-4 stimulation. This supports the claim that the M2-phenotype in brown adipose tissue macrophages enhances brown adipose tissue thermogenic activity.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 31323250500,
+     "load_duration": 17992980667,
+     "prompt_eval_count": 1177,
+     "prompt_eval_duration": 6176575001,
+     "eval_count": 109,
+     "eval_duration": 6277248032,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:01:04.150627Z"
+    },
+    "elapsed_s": 31.327,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2694,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:4319174:1",
+     "scifact:4319174:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 426,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf",
+  "olmo2:7b": "866ba74647f2c0b670349ac7987e152ed196c6bc2238f62eb82d6f30d2597dfa",
+  "granite3.3:2b": "4b426c99fc9a3d9ae555129727029eb5a7e330943c7ab0f1e076836e42d43fdf",
+  "nemotron-mini:4b": "07e132522e4665ed6847ad0eb5808187eb5c378863e08aab0ffa30ac3799be1f",
+  "exaone3.5:7.8b": "5617e71a2be20fc886bccc33636228bcffe7319bbf4e69e71b59997dedf3ee71"
+ },
+ "item_start_wall": 1792868426.616311,
+ "item_wall_s": 37.537,
+ "ollama_ps_samples": [
+  [
+   1792868426.616,
+   [
+    "granite3.3:2b",
+    "falcon3:3b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792868428.629,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792868430.631,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868432.636,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792868434.644,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792868436.647,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868438.652,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868440.66,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868442.665,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868444.669,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868446.681,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868448.689,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868450.698,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792868452.709,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868454.72,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868456.723,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868458.731,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868460.739,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868462.75,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

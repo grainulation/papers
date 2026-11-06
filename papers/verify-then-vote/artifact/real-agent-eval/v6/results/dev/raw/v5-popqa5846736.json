@@ -1,0 +1,1256 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-popqa5846736",
+ "order": 71,
+ "split": "dev",
+ "answer_format": "entity",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-popqa5846736",
+  "order": 71,
+  "split": "dev",
+  "item_type": "entity",
+  "answer_format": "entity",
+  "answer_schema": {
+   "maxLength": 60,
+   "type": "string"
+  },
+  "corpus": "fever17",
+  "question": "Who is the mother of Otto von Habsburg?"
+ },
+ "item_view_sha256": "5e7dc7726d72998c3fe9175c47bafd17a5d3ea944641414366c23df16d8523d2",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Otto von Habsburg?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "970e0357ff62149f523e1788f817999fc0f7bb05bdc7b863162f980d1b741d32",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792841972.563817,
+      "end_wall": 1792841973.513132,
+      "error": null
+     }
+    ],
+    "start_wall": 1792841972.563817,
+    "start_mono": 511529.338900333,
+    "end_wall": 1792841973.513132,
+    "end_mono": 511530.288201708,
+    "raw_response": "{\"query\": \"mother Otto von Habsburg\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 947173125,
+     "load_duration": 116469166,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 325199542,
+     "eval_count": 12,
+     "eval_duration": 382622042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:33.512227Z"
+    },
+    "elapsed_s": 0.949,
+    "query_used": "mother Otto von Habsburg",
+    "query_source": "json",
+    "query_arrival_seq": 355
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mother Otto von Habsburg",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Von_Habsburg:0",
+       "score_q": 15734
+      },
+      {
+       "passage_key": "fever17:Michaela_von_Habsburg:0",
+       "score_q": 14915
+      },
+      {
+       "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+       "score_q": 14462
+      },
+      {
+       "passage_key": "fever17:Andrea_von_Habsburg:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Monika_von_Habsburg:0",
+       "score_q": 14179
+      }
+     ],
+     "retrieval_sha256": "bc7b710cebb95084ef590c8364305a18c3fac7b1b68623716bcc93b63c784cf5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bc7b710cebb95084ef590c8364305a18c3fac7b1b68623716bcc93b63c784cf5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Von_Habsburg:0",
+      "content_sha256": "b6fd748034fd2237aa08f9884150bb1561e40c5c689caec72df22b8b828456a5",
+      "chars": 454
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michaela_von_Habsburg:0",
+      "content_sha256": "96e911d91b10f5d1f88f8d3c2113bda1d2128091d59154ecd8e0c12ace947405",
+      "chars": 950
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+      "content_sha256": "5bc799a5324a174c663d6c51283f4afdb125924ad605bd5f788463c21070fc8d",
+      "chars": 499
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Andrea_von_Habsburg:0",
+      "content_sha256": "68950464a26256bd4301e3962dee8fee0add790e600c431f2958860f1a8cae79",
+      "chars": 292
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Monika_von_Habsburg:0",
+      "content_sha256": "84740595f04e0800882660db667f2f6f960015505154cda9b6a5a5b3e008611a",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.0325
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Otto von Habsburg?\n\nEvidence passages from your search for \"mother Otto von Habsburg\":\n<<<PASSAGES\n[P1] Von Habsburg\nVon Habsburg is a surname . Notable people with the surname include : Francesca von Habsburg ( born 1958 ) , Archduchess of Austria Gabriela von Habsburg ( born 1956 ) , Archduchess of Austria Géza von Habsburg ( born 1940 ) , Archduke of Austria Karl von Habsburg , ( born 1961 ) , Austrian politician , current Head of the House of Habsburg-Lorraine and son of Otto von Habsburg Otto von Habsburg ( 1912 -- 2011 ) , Crown Prince of Austria\n\n[P2] Michaela von Habsburg\nMichaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Archduchess Michaela of Austria ( born 13 September 1954 , in Würzburg ) , The family name of Michaela Habsburg 's father was declared to be Habsburg-Lothringen by an Austrian ministerial decision in 1957 and by a German court ( Landgericht Würzburg ) on 16 July 1958 . Otto was de facto stateless , living in Germany with a Spanish diplomatic passport , and was denied both entry to Austria and an Austrian passport . Otto 's official name as a German citizen from 1978 was Otto von Habsburg . Michaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Princess Imperial and Archduchess of Austria , Princess Royal of Hungary and Bohemia , Countess of Kageneck ( born 13 September 1954 , in Würzburg ) , is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Monika von Habsburg .\n\n[P3] Otto II, Count of Habsburg\nOtto II ( died 8 November 1111 ) was a Graf ( Count ) of Habsburg and one of the founding members of the Habsburg family . He was the son of Werner I , Count of Habsburg . In 1108 , Otto accompanied Kaiser Heinrich V on a campaign against Hungary . On his return , in 1111 , he was murdered . Otto was probably the first person to adopt the title Graf von Habsburg . He married Hilla , countess von Pfirt ( died ) , with whom he had two children , Werner II and Adelheid .\n\n[P4] Andrea von Habsburg\nAndrea von Habsburg ( Andrea Maria von Habsburg-Lothringen ) Archduchess of Austria , Hereditary Countess of Neipperg , ( born 30 May 1953 , in Würzburg , Bavaria ) , the first child and oldest daughter of Otto von Habsburg and his wife Princess Regina of Saxe-Meiningen .\n\n[P5] Monika von Habsburg\nMonika von Habsburg ( née Monika Maria Roberta Antonia Raphaela Habsburg-Lothringen ) , Archduchess of Austria , Princess Royal of Hungary , Duchess de Santangelo ( born 13 September 1954 , in Würzburg ) , the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Michaela von Habsburg .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4cb483a4017a3a6565a13c74037b87d10dd5e2dbbcd8f38997eda7b9f7759265",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792841973.545952,
+      "end_wall": 1792841982.580571,
+      "error": null
+     }
+    ],
+    "arrival_seq": 355,
+    "start_wall": 1792841973.545952,
+    "start_mono": 511530.321022625,
+    "end_wall": 1792841982.580571,
+    "end_mono": 511539.355521458,
+    "raw_response": "{\"reasoning\": \"From the evidence, it is clear that Otto von Habsburg's mother is Princess Regina of Saxe-Meiningen, as she was mentioned as his wife in multiple passages.\", \"answer\": \"Princess Regina of Saxe-Meiningen\", \"citations\": [\"P2\", \"P4\", \"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9032217375,
+     "load_duration": 69863083,
+     "prompt_eval_count": 1071,
+     "prompt_eval_duration": 2553591166,
+     "eval_count": 89,
+     "eval_duration": 5495532381,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:42.579134Z"
+    },
+    "elapsed_s": 9.034,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 355,
+   "parsed": {
+    "status": "ok",
+    "answer": "Princess Regina of Saxe-Meiningen",
+    "citations": [
+     "P2",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Michaela_von_Habsburg:0",
+     "fever17:Andrea_von_Habsburg:0",
+     "fever17:Monika_von_Habsburg:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 155,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Otto von Habsburg?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "970e0357ff62149f523e1788f817999fc0f7bb05bdc7b863162f980d1b741d32",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792841972.563699,
+      "end_wall": 1792841974.608681,
+      "error": null
+     }
+    ],
+    "start_wall": 1792841972.563699,
+    "start_mono": 511529.3387825,
+    "end_wall": 1792841974.608681,
+    "end_mono": 511531.383736916,
+    "raw_response": "{\"query\": \"mother of Otto von Habsburg\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2043023833,
+     "load_duration": 64706375,
+     "prompt_eval_count": 157,
+     "prompt_eval_duration": 488974875,
+     "eval_count": 13,
+     "eval_duration": 1385826707,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:34.607934Z"
+    },
+    "elapsed_s": 2.045,
+    "query_used": "mother of Otto von Habsburg",
+    "query_source": "json",
+    "query_arrival_seq": 356
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mother of Otto von Habsburg",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Von_Habsburg:0",
+       "score_q": 15734
+      },
+      {
+       "passage_key": "fever17:Michaela_von_Habsburg:0",
+       "score_q": 14915
+      },
+      {
+       "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+       "score_q": 14462
+      },
+      {
+       "passage_key": "fever17:Andrea_von_Habsburg:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Monika_von_Habsburg:0",
+       "score_q": 14179
+      }
+     ],
+     "retrieval_sha256": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Von_Habsburg:0",
+      "content_sha256": "b6fd748034fd2237aa08f9884150bb1561e40c5c689caec72df22b8b828456a5",
+      "chars": 454
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michaela_von_Habsburg:0",
+      "content_sha256": "96e911d91b10f5d1f88f8d3c2113bda1d2128091d59154ecd8e0c12ace947405",
+      "chars": 950
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+      "content_sha256": "5bc799a5324a174c663d6c51283f4afdb125924ad605bd5f788463c21070fc8d",
+      "chars": 499
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Andrea_von_Habsburg:0",
+      "content_sha256": "68950464a26256bd4301e3962dee8fee0add790e600c431f2958860f1a8cae79",
+      "chars": 292
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Monika_von_Habsburg:0",
+      "content_sha256": "84740595f04e0800882660db667f2f6f960015505154cda9b6a5a5b3e008611a",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.0125
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Otto von Habsburg?\n\nEvidence passages from your search for \"mother of Otto von Habsburg\":\n<<<PASSAGES\n[P1] Von Habsburg\nVon Habsburg is a surname . Notable people with the surname include : Francesca von Habsburg ( born 1958 ) , Archduchess of Austria Gabriela von Habsburg ( born 1956 ) , Archduchess of Austria Géza von Habsburg ( born 1940 ) , Archduke of Austria Karl von Habsburg , ( born 1961 ) , Austrian politician , current Head of the House of Habsburg-Lorraine and son of Otto von Habsburg Otto von Habsburg ( 1912 -- 2011 ) , Crown Prince of Austria\n\n[P2] Michaela von Habsburg\nMichaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Archduchess Michaela of Austria ( born 13 September 1954 , in Würzburg ) , The family name of Michaela Habsburg 's father was declared to be Habsburg-Lothringen by an Austrian ministerial decision in 1957 and by a German court ( Landgericht Würzburg ) on 16 July 1958 . Otto was de facto stateless , living in Germany with a Spanish diplomatic passport , and was denied both entry to Austria and an Austrian passport . Otto 's official name as a German citizen from 1978 was Otto von Habsburg . Michaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Princess Imperial and Archduchess of Austria , Princess Royal of Hungary and Bohemia , Countess of Kageneck ( born 13 September 1954 , in Würzburg ) , is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Monika von Habsburg .\n\n[P3] Otto II, Count of Habsburg\nOtto II ( died 8 November 1111 ) was a Graf ( Count ) of Habsburg and one of the founding members of the Habsburg family . He was the son of Werner I , Count of Habsburg . In 1108 , Otto accompanied Kaiser Heinrich V on a campaign against Hungary . On his return , in 1111 , he was murdered . Otto was probably the first person to adopt the title Graf von Habsburg . He married Hilla , countess von Pfirt ( died ) , with whom he had two children , Werner II and Adelheid .\n\n[P4] Andrea von Habsburg\nAndrea von Habsburg ( Andrea Maria von Habsburg-Lothringen ) Archduchess of Austria , Hereditary Countess of Neipperg , ( born 30 May 1953 , in Würzburg , Bavaria ) , the first child and oldest daughter of Otto von Habsburg and his wife Princess Regina of Saxe-Meiningen .\n\n[P5] Monika von Habsburg\nMonika von Habsburg ( née Monika Maria Roberta Antonia Raphaela Habsburg-Lothringen ) , Archduchess of Austria , Princess Royal of Hungary , Duchess de Santangelo ( born 13 September 1954 , in Würzburg ) , the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Michaela von Habsburg .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6493bac4e95d3402150c1d1ef1308c1e8306e9cdb1c0f0cd12ba5b85165a452f",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792841974.621463,
+      "end_wall": 1792841991.43105,
+      "error": null
+     }
+    ],
+    "arrival_seq": 356,
+    "start_wall": 1792841974.621463,
+    "start_mono": 511531.396518958,
+    "end_wall": 1792841991.43105,
+    "end_mono": 511548.205884458,
+    "raw_response": "{\"reasoning\": \"The evidence passages indicate that Michaela von Habsburg is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen. She is the only child mentioned in the passages who is clearly identified as a daughter of Otto von Habsburg, supporting the conclusion that she is his mother.\", \"answer\": \"Michaela von Habsburg\", \"citations\": [\"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16806306250,
+     "load_duration": 45789125,
+     "prompt_eval_count": 974,
+     "prompt_eval_duration": 4281136666,
+     "eval_count": 94,
+     "eval_duration": 11682745796,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:51.429209Z"
+    },
+    "elapsed_s": 16.809,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 356,
+   "parsed": {
+    "status": "ok",
+    "answer": "Michaela von Habsburg",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Michaela_von_Habsburg:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 293,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Otto von Habsburg?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "970e0357ff62149f523e1788f817999fc0f7bb05bdc7b863162f980d1b741d32",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792841972.563946,
+      "end_wall": 1792841979.0997992,
+      "error": null
+     }
+    ],
+    "start_wall": 1792841972.563946,
+    "start_mono": 511529.339029416,
+    "end_wall": 1792841979.0997992,
+    "end_mono": 511535.874794833,
+    "raw_response": "{\"query\": \"Margaret of Austria Otto von Habsburg\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6533618875,
+     "load_duration": 1185484584,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 793247209,
+     "eval_count": 20,
+     "eval_duration": 4473985291,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:39.098683Z"
+    },
+    "elapsed_s": 6.536,
+    "query_used": "Margaret of Austria Otto von Habsburg",
+    "query_source": "json",
+    "query_arrival_seq": 357
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Margaret of Austria Otto von Habsburg",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Von_Habsburg:0",
+       "score_q": 19941
+      },
+      {
+       "passage_key": "fever17:Michaela_von_Habsburg:0",
+       "score_q": 18158
+      },
+      {
+       "passage_key": "fever17:Archduchess_Margaret_of_Austria_-LRB-nun-RRB-:0",
+       "score_q": 18102
+      },
+      {
+       "passage_key": "fever17:Andrea_von_Habsburg:0",
+       "score_q": 17198
+      },
+      {
+       "passage_key": "fever17:Archduke_Otto_of_Austria:0",
+       "score_q": 17043
+      }
+     ],
+     "retrieval_sha256": "9615a3ddac0730a1b743564281c7b5b3f44c14117983c2a4f4ee17a5accc7638"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9615a3ddac0730a1b743564281c7b5b3f44c14117983c2a4f4ee17a5accc7638",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Von_Habsburg:0",
+      "content_sha256": "b6fd748034fd2237aa08f9884150bb1561e40c5c689caec72df22b8b828456a5",
+      "chars": 454
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michaela_von_Habsburg:0",
+      "content_sha256": "96e911d91b10f5d1f88f8d3c2113bda1d2128091d59154ecd8e0c12ace947405",
+      "chars": 950
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Archduchess_Margaret_of_Austria_-LRB-nun-RRB-:0",
+      "content_sha256": "45b7cad4fd082ce60179641457957f2616d905b2774fdcdad004f7f3258fc786",
+      "chars": 143
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Andrea_von_Habsburg:0",
+      "content_sha256": "68950464a26256bd4301e3962dee8fee0add790e600c431f2958860f1a8cae79",
+      "chars": 292
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Archduke_Otto_of_Austria:0",
+      "content_sha256": "299cbdd60135e90dfbc571c490ebe3ea309090e1c17736e6d2cbf7c76417f967",
+      "chars": 326
+     }
+    ],
+    "elapsed_s": 0.0193
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Otto von Habsburg?\n\nEvidence passages from your search for \"Margaret of Austria Otto von Habsburg\":\n<<<PASSAGES\n[P1] Von Habsburg\nVon Habsburg is a surname . Notable people with the surname include : Francesca von Habsburg ( born 1958 ) , Archduchess of Austria Gabriela von Habsburg ( born 1956 ) , Archduchess of Austria Géza von Habsburg ( born 1940 ) , Archduke of Austria Karl von Habsburg , ( born 1961 ) , Austrian politician , current Head of the House of Habsburg-Lorraine and son of Otto von Habsburg Otto von Habsburg ( 1912 -- 2011 ) , Crown Prince of Austria\n\n[P2] Michaela von Habsburg\nMichaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Archduchess Michaela of Austria ( born 13 September 1954 , in Würzburg ) , The family name of Michaela Habsburg 's father was declared to be Habsburg-Lothringen by an Austrian ministerial decision in 1957 and by a German court ( Landgericht Würzburg ) on 16 July 1958 . Otto was de facto stateless , living in Germany with a Spanish diplomatic passport , and was denied both entry to Austria and an Austrian passport . Otto 's official name as a German citizen from 1978 was Otto von Habsburg . Michaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Princess Imperial and Archduchess of Austria , Princess Royal of Hungary and Bohemia , Countess of Kageneck ( born 13 September 1954 , in Würzburg ) , is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Monika von Habsburg .\n\n[P3] Archduchess Margaret of Austria (nun)\nMargaret of Austria ( Margarethe von Österreich-Habsburg ) ( 1536 -- 67 ) was an Archduchess of Austria .\n\n[P4] Andrea von Habsburg\nAndrea von Habsburg ( Andrea Maria von Habsburg-Lothringen ) Archduchess of Austria , Hereditary Countess of Neipperg , ( born 30 May 1953 , in Würzburg , Bavaria ) , the first child and oldest daughter of Otto von Habsburg and his wife Princess Regina of Saxe-Meiningen .\n\n[P5] Archduke Otto of Austria\nArchduke Otto of Austria can refer to the following members of the Austrian Royal or Imperial family : Archduke Otto of Austria ( 1865 -- 1906 ) , `` Otto der Schöne '' - father of the last Emperor of Austria . Otto von Habsburg , eldest son of Karl , the last Emperor of Austria and King of Hungary .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bbabcbd73c9f0f1cd66b4f8b20c4dd420ab05827fe1f42c15b907ac77971cd56",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792841979.119457,
+      "end_wall": 1792841998.6156201,
+      "error": null
+     }
+    ],
+    "arrival_seq": 357,
+    "start_wall": 1792841979.119457,
+    "start_mono": 511535.894454,
+    "end_wall": 1792841998.6156201,
+    "end_mono": 511555.390360083,
+    "raw_response": "{\n  \"reasoning\": \"Otto von Habsburg, also known as Crown Prince Otto of Austria, was married twice. His first marriage was to Princess Maria of Austria, and they had one daughter named Michaela von Habsburg. Later, he married Regina of Saxe-Meiningen, and they had two daughters, including Andrea von Habsburg. Given that the question specifically asks for Otto von Habsburg's mother, and considering the context, Michaela von Habsburg is the most likely candidate as she is the first child and eldest daughter of Otto von Habsburg.\",\n  \"answer\": \"Michaela von Habsburg\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19493142916,
+     "load_duration": 10135968166,
+     "prompt_eval_count": 1070,
+     "prompt_eval_duration": 2225474416,
+     "eval_count": 184,
+     "eval_duration": 6021129545,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:58.61373Z"
+    },
+    "elapsed_s": 19.496,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 357,
+   "parsed": {
+    "status": "ok",
+    "answer": "Michaela von Habsburg",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Von_Habsburg:0",
+     "fever17:Michaela_von_Habsburg:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 514,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Otto von Habsburg?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "970e0357ff62149f523e1788f817999fc0f7bb05bdc7b863162f980d1b741d32",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792841972.563549,
+      "end_wall": 1792841983.513356,
+      "error": null
+     }
+    ],
+    "start_wall": 1792841972.563549,
+    "start_mono": 511529.338631958,
+    "end_wall": 1792841983.513356,
+    "end_mono": 511540.288293458,
+    "raw_response": "{\"query\": \"Otto von Habsburg mother name\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10946808458,
+     "load_duration": 8985237583,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 913687875,
+     "eval_count": 15,
+     "eval_duration": 926301834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:43.511969Z"
+    },
+    "elapsed_s": 10.95,
+    "query_used": "Otto von Habsburg mother name",
+    "query_source": "json",
+    "query_arrival_seq": 358
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Otto von Habsburg mother name",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Michaela_von_Habsburg:0",
+       "score_q": 16310
+      },
+      {
+       "passage_key": "fever17:Von_Habsburg:0",
+       "score_q": 15734
+      },
+      {
+       "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+       "score_q": 14462
+      },
+      {
+       "passage_key": "fever17:Andrea_von_Habsburg:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Monika_von_Habsburg:0",
+       "score_q": 14179
+      }
+     ],
+     "retrieval_sha256": "93369fcbe88a52f3e240aea9249605527d9bd8fb47261d3de6da7b60918f99f8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "93369fcbe88a52f3e240aea9249605527d9bd8fb47261d3de6da7b60918f99f8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Michaela_von_Habsburg:0",
+      "content_sha256": "96e911d91b10f5d1f88f8d3c2113bda1d2128091d59154ecd8e0c12ace947405",
+      "chars": 950
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Von_Habsburg:0",
+      "content_sha256": "b6fd748034fd2237aa08f9884150bb1561e40c5c689caec72df22b8b828456a5",
+      "chars": 454
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+      "content_sha256": "5bc799a5324a174c663d6c51283f4afdb125924ad605bd5f788463c21070fc8d",
+      "chars": 499
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Andrea_von_Habsburg:0",
+      "content_sha256": "68950464a26256bd4301e3962dee8fee0add790e600c431f2958860f1a8cae79",
+      "chars": 292
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Monika_von_Habsburg:0",
+      "content_sha256": "84740595f04e0800882660db667f2f6f960015505154cda9b6a5a5b3e008611a",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.035
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Otto von Habsburg?\n\nEvidence passages from your search for \"Otto von Habsburg mother name\":\n<<<PASSAGES\n[P1] Michaela von Habsburg\nMichaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Archduchess Michaela of Austria ( born 13 September 1954 , in Würzburg ) , The family name of Michaela Habsburg 's father was declared to be Habsburg-Lothringen by an Austrian ministerial decision in 1957 and by a German court ( Landgericht Würzburg ) on 16 July 1958 . Otto was de facto stateless , living in Germany with a Spanish diplomatic passport , and was denied both entry to Austria and an Austrian passport . Otto 's official name as a German citizen from 1978 was Otto von Habsburg . Michaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Princess Imperial and Archduchess of Austria , Princess Royal of Hungary and Bohemia , Countess of Kageneck ( born 13 September 1954 , in Würzburg ) , is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Monika von Habsburg .\n\n[P2] Von Habsburg\nVon Habsburg is a surname . Notable people with the surname include : Francesca von Habsburg ( born 1958 ) , Archduchess of Austria Gabriela von Habsburg ( born 1956 ) , Archduchess of Austria Géza von Habsburg ( born 1940 ) , Archduke of Austria Karl von Habsburg , ( born 1961 ) , Austrian politician , current Head of the House of Habsburg-Lorraine and son of Otto von Habsburg Otto von Habsburg ( 1912 -- 2011 ) , Crown Prince of Austria\n\n[P3] Otto II, Count of Habsburg\nOtto II ( died 8 November 1111 ) was a Graf ( Count ) of Habsburg and one of the founding members of the Habsburg family . He was the son of Werner I , Count of Habsburg . In 1108 , Otto accompanied Kaiser Heinrich V on a campaign against Hungary . On his return , in 1111 , he was murdered . Otto was probably the first person to adopt the title Graf von Habsburg . He married Hilla , countess von Pfirt ( died ) , with whom he had two children , Werner II and Adelheid .\n\n[P4] Andrea von Habsburg\nAndrea von Habsburg ( Andrea Maria von Habsburg-Lothringen ) Archduchess of Austria , Hereditary Countess of Neipperg , ( born 30 May 1953 , in Würzburg , Bavaria ) , the first child and oldest daughter of Otto von Habsburg and his wife Princess Regina of Saxe-Meiningen .\n\n[P5] Monika von Habsburg\nMonika von Habsburg ( née Monika Maria Roberta Antonia Raphaela Habsburg-Lothringen ) , Archduchess of Austria , Princess Royal of Hungary , Duchess de Santangelo ( born 13 September 1954 , in Würzburg ) , the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Michaela von Habsburg .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "79fd5f52efd33ca000d0397c4e10057e44079e0f8e63b38b08695965dc540fd4",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792841983.548733,
+      "end_wall": 1792842001.2441652,
+      "error": null
+     }
+    ],
+    "arrival_seq": 358,
+    "start_wall": 1792841983.548733,
+    "start_mono": 511540.32367225,
+    "end_wall": 1792842001.2441652,
+    "end_mono": 511558.018870041,
+    "raw_response": "{\n  \"reasoning\": \"Multiple passages confirm that Otto von Habsburg's wife was Princess Regina of Saxe-Meiningen, indicating she was his mother by marriage rather than blood relation as typically understood for a mother. However, based on familial context and naming conventions, Otto von Habsburg's biological mother was likely a member of royal lineage preceding Regina, though specific identity isn't provided in the given evidence. Given the direct familial role highlighted, Princess Regina stands out as his wife and thus mother figure prominently mentioned.\",\n  \"answer\": \"Princess Regina of Saxe-Meiningen\",\n  \"citations\": [\"P1\", \"P4\", \"P5\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17691322292,
+     "load_duration": 54212375,
+     "prompt_eval_count": 1057,
+     "prompt_eval_duration": 4581753833,
+     "eval_count": 162,
+     "eval_duration": 11394330080,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:40:01.241293Z"
+    },
+    "elapsed_s": 17.695,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 358,
+   "parsed": {
+    "status": "ok",
+    "answer": "Princess Regina of Saxe-Meiningen",
+    "citations": [
+     "P1",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Michaela_von_Habsburg:0",
+     "fever17:Andrea_von_Habsburg:0",
+     "fever17:Monika_von_Habsburg:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 545,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Otto von Habsburg?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "970e0357ff62149f523e1788f817999fc0f7bb05bdc7b863162f980d1b741d32",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792841972.564092,
+      "end_wall": 1792841988.0922701,
+      "error": null
+     }
+    ],
+    "start_wall": 1792841972.564092,
+    "start_mono": 511529.339175125,
+    "end_wall": 1792841988.0922701,
+    "end_mono": 511544.867147791,
+    "raw_response": "{\"query\": \"mother of Otto von Habsburg\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15526178584,
+     "load_duration": 11598155959,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 903837000,
+     "eval_count": 11,
+     "eval_duration": 2821462957,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:39:48.091266Z"
+    },
+    "elapsed_s": 15.528,
+    "query_used": "mother of Otto von Habsburg",
+    "query_source": "json",
+    "query_arrival_seq": 359
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mother of Otto von Habsburg",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Von_Habsburg:0",
+       "score_q": 15734
+      },
+      {
+       "passage_key": "fever17:Michaela_von_Habsburg:0",
+       "score_q": 14915
+      },
+      {
+       "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+       "score_q": 14462
+      },
+      {
+       "passage_key": "fever17:Andrea_von_Habsburg:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Monika_von_Habsburg:0",
+       "score_q": 14179
+      }
+     ],
+     "retrieval_sha256": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Von_Habsburg:0",
+      "content_sha256": "b6fd748034fd2237aa08f9884150bb1561e40c5c689caec72df22b8b828456a5",
+      "chars": 454
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michaela_von_Habsburg:0",
+      "content_sha256": "96e911d91b10f5d1f88f8d3c2113bda1d2128091d59154ecd8e0c12ace947405",
+      "chars": 950
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Otto_II,_Count_of_Habsburg:0",
+      "content_sha256": "5bc799a5324a174c663d6c51283f4afdb125924ad605bd5f788463c21070fc8d",
+      "chars": 499
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Andrea_von_Habsburg:0",
+      "content_sha256": "68950464a26256bd4301e3962dee8fee0add790e600c431f2958860f1a8cae79",
+      "chars": 292
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Monika_von_Habsburg:0",
+      "content_sha256": "84740595f04e0800882660db667f2f6f960015505154cda9b6a5a5b3e008611a",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.0122
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Otto von Habsburg?\n\nEvidence passages from your search for \"mother of Otto von Habsburg\":\n<<<PASSAGES\n[P1] Von Habsburg\nVon Habsburg is a surname . Notable people with the surname include : Francesca von Habsburg ( born 1958 ) , Archduchess of Austria Gabriela von Habsburg ( born 1956 ) , Archduchess of Austria Géza von Habsburg ( born 1940 ) , Archduke of Austria Karl von Habsburg , ( born 1961 ) , Austrian politician , current Head of the House of Habsburg-Lorraine and son of Otto von Habsburg Otto von Habsburg ( 1912 -- 2011 ) , Crown Prince of Austria\n\n[P2] Michaela von Habsburg\nMichaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Archduchess Michaela of Austria ( born 13 September 1954 , in Würzburg ) , The family name of Michaela Habsburg 's father was declared to be Habsburg-Lothringen by an Austrian ministerial decision in 1957 and by a German court ( Landgericht Würzburg ) on 16 July 1958 . Otto was de facto stateless , living in Germany with a Spanish diplomatic passport , and was denied both entry to Austria and an Austrian passport . Otto 's official name as a German citizen from 1978 was Otto von Habsburg . Michaela von Habsburg ( Michaela Maria Madeleine Kiliana Habsburg-Lothringen ) Princess Imperial and Archduchess of Austria , Princess Royal of Hungary and Bohemia , Countess of Kageneck ( born 13 September 1954 , in Würzburg ) , is the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Monika von Habsburg .\n\n[P3] Otto II, Count of Habsburg\nOtto II ( died 8 November 1111 ) was a Graf ( Count ) of Habsburg and one of the founding members of the Habsburg family . He was the son of Werner I , Count of Habsburg . In 1108 , Otto accompanied Kaiser Heinrich V on a campaign against Hungary . On his return , in 1111 , he was murdered . Otto was probably the first person to adopt the title Graf von Habsburg . He married Hilla , countess von Pfirt ( died ) , with whom he had two children , Werner II and Adelheid .\n\n[P4] Andrea von Habsburg\nAndrea von Habsburg ( Andrea Maria von Habsburg-Lothringen ) Archduchess of Austria , Hereditary Countess of Neipperg , ( born 30 May 1953 , in Würzburg , Bavaria ) , the first child and oldest daughter of Otto von Habsburg and his wife Princess Regina of Saxe-Meiningen .\n\n[P5] Monika von Habsburg\nMonika von Habsburg ( née Monika Maria Roberta Antonia Raphaela Habsburg-Lothringen ) , Archduchess of Austria , Princess Royal of Hungary , Duchess de Santangelo ( born 13 September 1954 , in Würzburg ) , the daughter of Otto von Habsburg and Princess Regina of Saxe-Meiningen . She is the twin sister of Michaela von Habsburg .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6493bac4e95d3402150c1d1ef1308c1e8306e9cdb1c0f0cd12ba5b85165a452f",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792841988.1048162,
+      "end_wall": 1792842003.3092291,
+      "error": null
+     }
+    ],
+    "arrival_seq": 359,
+    "start_wall": 1792841988.1048162,
+    "start_mono": 511544.879695375,
+    "end_wall": 1792842003.3092291,
+    "end_mono": 511560.08390775,
+    "raw_response": "{\"reasoning\": \"Otto von Habsburg is the son of Otto von Habsburg, so he is the father of Otto von Habsburg, the Crown Prince of Austria.\", \"answer\": \"Otto von Habsburg\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15200593333,
+     "load_duration": 11316775708,
+     "prompt_eval_count": 919,
+     "prompt_eval_duration": 1782725792,
+     "eval_count": 53,
+     "eval_duration": 1136006706,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:40:03.306796Z"
+    },
+    "elapsed_s": 15.204,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 359,
+   "parsed": {
+    "status": "ok",
+    "answer": "Otto von Habsburg",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 121,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "bc7b710cebb95084ef590c8364305a18c3fac7b1b68623716bcc93b63c784cf5",
+  "olmo2:7b": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492",
+  "granite3.3:2b": "9615a3ddac0730a1b743564281c7b5b3f44c14117983c2a4f4ee17a5accc7638",
+  "exaone3.5:7.8b": "93369fcbe88a52f3e240aea9249605527d9bd8fb47261d3de6da7b60918f99f8",
+  "nemotron-mini:4b": "7a77a62ad12162cf421b534285dabb1d00407d82c244ad6e343f0fe6ccd30492"
+ },
+ "item_start_wall": 1792841972.5633001,
+ "item_wall_s": 30.746,
+ "ollama_ps_samples": [
+  [
+   1792841972.563,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792841974.572,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841976.579,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841978.589,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841980.59,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792841982.595,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792841984.606,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792841986.618,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792841988.629,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792841990.636,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841992.645,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841994.655,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841996.666,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792841998.669,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792842000.68,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792842002.692,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,1263 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain246",
+ "order": 144,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain246",
+  "order": 144,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Charcoal shows no benefit for acute paraquat poisoning."
+ },
+ "item_view_sha256": "020fb435f5ed2518c267f15f5406343cb69c7f587ef4a6539fe344d111b0db13",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "exaone3.5:2.4b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Charcoal shows no benefit for acute paraquat poisoning.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e4c0e134a625611b3ef2ec8cb78c9d7751ab2f42a5f0e45e54b61e3a149f4b16",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837631.451141,
+      "end_wall": 1792837637.329163,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837631.451141,
+    "start_mono": 507188.28354825,
+    "end_wall": 1792837637.329163,
+    "end_mono": 507194.161500291,
+    "raw_response": "{\"query\": \"charcoal acute paraquat poisoning benefits\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5875042875,
+     "load_duration": 1903362166,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 754861292,
+     "eval_count": 14,
+     "eval_duration": 3074814916,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:17.328522Z"
+    },
+    "elapsed_s": 5.878,
+    "query_used": "charcoal acute paraquat poisoning benefits",
+    "query_source": "json",
+    "query_arrival_seq": 722
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "charcoal acute paraquat poisoning benefits",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3430789:1",
+       "score_q": 823
+      },
+      {
+       "passage_key": "scifact:3430789:0",
+       "score_q": 807
+      },
+      {
+       "passage_key": "scifact:24097933:0",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:33203108:0",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:22547508:1",
+       "score_q": 744
+      }
+     ],
+     "retrieval_sha256": "3316c63e2fd0c53ffd7f4e0c2aa44b13740e572575859a3cc7fb57b4a912f128"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3316c63e2fd0c53ffd7f4e0c2aa44b13740e572575859a3cc7fb57b4a912f128",
+    "query_embedding_sha256": "fcb98a8c6b4051e94f844c7a6a0c9442f6380eac5ece0eb88b7307504f447c1e",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3430789:1",
+      "content_sha256": "ec77fc602657e50d6bdb1e5add6248fb19b975578c2c11af462193d8a7f57587",
+      "chars": 392
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3430789:0",
+      "content_sha256": "047f2046f3b7755e14c7733a48c2040b56f931cd98099ee1b8dd392c38a22010",
+      "chars": 991
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:24097933:0",
+      "content_sha256": "c6e50189f16e0de93a832a807b552b6a79910d5103f544b030ac7df622366a7e",
+      "chars": 985
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:33203108:0",
+      "content_sha256": "dce00f6166751b9a7a6850d222479f10711055fefd428db43a9864cbad7b0650",
+      "chars": 1043
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22547508:1",
+      "content_sha256": "5216085cd0abf108ebff63e5c6f11edecf8b30833c68bbbd3dd7b1f61610eba0",
+      "chars": 876
+     }
+    ],
+    "elapsed_s": 1.5596
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Charcoal shows no benefit for acute paraquat poisoning.\n\nEvidence passages from your search for \"charcoal acute paraquat poisoning benefits\":\n<<<PASSAGES\n[P1] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nTherefore, it was concluded that in patients with normal renal function, the elimination kinetics of PQ by the kidneys were only associated with the plasma PQ concentration. Activated charcoal hemoperfusion had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.\n\n[P2] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nThe present study retrospectively analyzed 19 patients diagnosed with paraquat (PQ) poisoning with the aim to investigate the effect of activated charcoal hemoperfusion on renal function and PQ elimination. The results indicated that 7 patients died and 12 survived. Non-oliguric renal failure occurred in all of the 7 patients who died. Among the 12 surviving patients, 10 had normal renal function and 2 developed non-oliguric renal failure. There was a linear correlation between plasma and urine paraquat concentration prior to and during activated charcoal hemoperfusion. The equation parameters together with the correlation coefficient on admission were as follows: Y=0.5820+1.7348X (R2=0.678; F=35.768; P<0.0001). The equation parameters together with the correlation coefficient were as follows during activated charcoal hemoperfusion: Y=0.6827+1.2649X (R2=0.626; F=50.308; P<0.0001).\n\n[P3] Failure of continuous venovenous hemofiltration to prevent death in paraquat poisoning.\nParaquat poisoning is characterized by multiorgan failure and pulmonary fibrosis with respiratory failure. Multiorgan failure with circulatory collapse is a major cause of early death within 3 days of paraquat ingestion. Recent studies suggested that continuous venovenous hemofiltration (CVVH) had a role in the treatment of multiorgan failure by promoting hemodynamic stability. We therefore evaluated the effect of prophylactic CVVH in 80 patients with paraquat poisoning (August 1996 to February 1999). The amount ingested was 2.1 +/- 1.0 mouthfuls (as 20% concentrate). All patients were treated with hemoperfusion (HP; duration, 6.4 +/- 3.0 hours) within 24 hours of ingestion and then randomly assigned to the HP-alone or HP-CVVH group. Forty-four patients underwent HP only, and 36 patients underwent CVVH (duration, 57.4 +/- 31.3 hours; ultrafiltration volume, 40.2 +/- 4.8 L/d) after HP.\n\n[P4] Golden Hours in Severe Paraquat Poisoning-The Role of Early Haemoperfusion Therapy.\nINTRODUCTION Paraquat is a commonly ingested poison especially in Southern India. There is no antidote for paraquat poison and consumption is often fatal. The usual cause of death is either acute lung injury or multi-organ failure. AIM To evaluate the role of early haemoperfusion as a therapy in paraquat poisoned patients. MATERIALS AND METHODS This study was a retrospective analysis of patients admitted to a Tertiary Medical College Hospital between January 2012 and December 2015 with history of paraquat consumption, comparing outcomes in those who received only gastric lavage and symptomatic treatment with those who received haemoperfusion as a therapy. The role of early haemoperfusion (≤ 6 hours) vs late haemoperfusion (> 6 hours) in paraquat poisoned patients was also compared. The data of these patients was extracted and analysed with respect to age, sex, mode of treatment, the outcome in patients who received early and late haemoperfusion.\n\n[P5] Predictors of survival after acute paraquat poisoning.\nSome patients (55.5%) survived after oral ingestion of paraquat, whereas all those exposed to paraquat percutaneous or inhalational route survived. The amount of paraquat (24.5% concentrate of 1,1'-dimethyl-4,4'-bipyridium dichloride) ingested was 45.6 +/- 74.1 mL (mean +/- SD). In addition to degree of paraquat exposure, survival after acute paraquat poisoning was associated with age, respiratory rate, pH, PaCO2, hemoglobin, white-blood-cell count, blood urea nitrogen, amylase, and the number of failed organs in multiple logistic regression analysis. In conclusion, young age, percutaneous or inhalational route, exposure to less paraquat, and lesser degrees of leukocytosis, acidosis, and renal, hepatic, and pancreatic failures on admission are good prognostic factors of survival after acute paraquat poisoning.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a9df4f512410dd60ebe7eee7ac0243519c547a1c97ad2beee61dfaf9448ca2d3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837638.889208,
+      "end_wall": 1792837647.4779782,
+      "error": null
+     }
+    ],
+    "arrival_seq": 720,
+    "start_wall": 1792837638.889208,
+    "start_mono": 507195.721527291,
+    "end_wall": 1792837647.4779782,
+    "end_mono": 507204.310195291,
+    "raw_response": "{\"reasoning\": \"Charcoal is generally used as an antidote for poisoning, and there is evidence suggesting its effectiveness in paraquat poisoning, particularly in early administration.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P5\"] , \"confidence\": \"low\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8586101541,
+     "load_duration": 2213142500,
+     "prompt_eval_count": 1316,
+     "prompt_eval_duration": 3300940167,
+     "eval_count": 62,
+     "eval_duration": 2418250204,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:27.476248Z"
+    },
+    "elapsed_s": 8.589,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 720,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:22547508:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 168,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Charcoal shows no benefit for acute paraquat poisoning.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e4c0e134a625611b3ef2ec8cb78c9d7751ab2f42a5f0e45e54b61e3a149f4b16",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837631.452536,
+      "end_wall": 1792837632.906791,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837631.452536,
+    "start_mono": 507188.284943166,
+    "end_wall": 1792837632.906791,
+    "end_mono": 507189.739178666,
+    "raw_response": "{\"query\": \"charcoal paraquat poisoning benefits\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1451897917,
+     "load_duration": 422593209,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 321339208,
+     "eval_count": 15,
+     "eval_duration": 630780998,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:12.90535Z"
+    },
+    "elapsed_s": 1.454,
+    "query_used": "charcoal paraquat poisoning benefits",
+    "query_source": "json",
+    "query_arrival_seq": 721
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "charcoal paraquat poisoning benefits",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3430789:1",
+       "score_q": 820
+      },
+      {
+       "passage_key": "scifact:3430789:0",
+       "score_q": 802
+      },
+      {
+       "passage_key": "scifact:24097933:0",
+       "score_q": 752
+      },
+      {
+       "passage_key": "scifact:25104843:0",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:40005757:1",
+       "score_q": 744
+      }
+     ],
+     "retrieval_sha256": "b41ff89fe61b2266a0bb6d748443d8cf66080e66a9fb93165761539c4393e7f7"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b41ff89fe61b2266a0bb6d748443d8cf66080e66a9fb93165761539c4393e7f7",
+    "query_embedding_sha256": "c58bf35b9c1cfb877966d0b6ca8da6f3e4ea50c52bbffc42be48324ecf2e07d5",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3430789:1",
+      "content_sha256": "ec77fc602657e50d6bdb1e5add6248fb19b975578c2c11af462193d8a7f57587",
+      "chars": 392
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3430789:0",
+      "content_sha256": "047f2046f3b7755e14c7733a48c2040b56f931cd98099ee1b8dd392c38a22010",
+      "chars": 991
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:24097933:0",
+      "content_sha256": "c6e50189f16e0de93a832a807b552b6a79910d5103f544b030ac7df622366a7e",
+      "chars": 985
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:25104843:0",
+      "content_sha256": "0a770b2870deb2645e774dd87dfc29a644f90dbfef9ec29c6b5566e89783f8b0",
+      "chars": 1060
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40005757:1",
+      "content_sha256": "a4353858a11dedbbb0cc7e3b4870480e7aa059a92212af3093288bcdbe6cfca1",
+      "chars": 338
+     }
+    ],
+    "elapsed_s": 5.9576
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Charcoal shows no benefit for acute paraquat poisoning.\n\nEvidence passages from your search for \"charcoal paraquat poisoning benefits\":\n<<<PASSAGES\n[P1] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nTherefore, it was concluded that in patients with normal renal function, the elimination kinetics of PQ by the kidneys were only associated with the plasma PQ concentration. Activated charcoal hemoperfusion had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.\n\n[P2] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nThe present study retrospectively analyzed 19 patients diagnosed with paraquat (PQ) poisoning with the aim to investigate the effect of activated charcoal hemoperfusion on renal function and PQ elimination. The results indicated that 7 patients died and 12 survived. Non-oliguric renal failure occurred in all of the 7 patients who died. Among the 12 surviving patients, 10 had normal renal function and 2 developed non-oliguric renal failure. There was a linear correlation between plasma and urine paraquat concentration prior to and during activated charcoal hemoperfusion. The equation parameters together with the correlation coefficient on admission were as follows: Y=0.5820+1.7348X (R2=0.678; F=35.768; P<0.0001). The equation parameters together with the correlation coefficient were as follows during activated charcoal hemoperfusion: Y=0.6827+1.2649X (R2=0.626; F=50.308; P<0.0001).\n\n[P3] Failure of continuous venovenous hemofiltration to prevent death in paraquat poisoning.\nParaquat poisoning is characterized by multiorgan failure and pulmonary fibrosis with respiratory failure. Multiorgan failure with circulatory collapse is a major cause of early death within 3 days of paraquat ingestion. Recent studies suggested that continuous venovenous hemofiltration (CVVH) had a role in the treatment of multiorgan failure by promoting hemodynamic stability. We therefore evaluated the effect of prophylactic CVVH in 80 patients with paraquat poisoning (August 1996 to February 1999). The amount ingested was 2.1 +/- 1.0 mouthfuls (as 20% concentrate). All patients were treated with hemoperfusion (HP; duration, 6.4 +/- 3.0 hours) within 24 hours of ingestion and then randomly assigned to the HP-alone or HP-CVVH group. Forty-four patients underwent HP only, and 36 patients underwent CVVH (duration, 57.4 +/- 31.3 hours; ultrafiltration volume, 40.2 +/- 4.8 L/d) after HP.\n\n[P4] Hemoperfusion-hemodialysis ineffective for paraquat removal in life-threatening poisoning?\nWe report on a patient treated with hemoperfusion-hemodialysis (HP-HD) for severe paraquat poisoning. This procedure was adopted since the combination of adsorption and dialysis may improve overall drug removal. On admission blood paraquat was 15.8 micrograms/ml. He received conventional treatment and combined HP-HD which started within 3 hours after ingestion of the chemical and lasted 5 hours. Blood samples were obtained during and after HP-HD. The samples during HP-HD were taken before the charcoal column, between the charcoal column and the artificial kidney and after the artificial kidney. Blood clearances of paraquat were 116 +/- 32 ml/min (n=6) for the charcoal column (HP), 90 +/- 54 ml/min (n=6) for the artificial kidney (HD) and 151 +/- 37 ml/min (n=6) for the combined systems (HP-HD). After HP-HD a limited rebound of blood paraquat level was seen. One day after admission renal and hepatic failure had developed, and the patient died after 5 days.\n\n[P5] Survival in a case of massive paraquat ingestion.\nThis observation suggests that early administration of an antioxidant therapy, including deferoxamine and acetylcysteine could be usefully associated with measures that prevent digestive absorption or enhance elimination to limit systemic toxicity in potentially fatal paraquat poisoning.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4882fda2c53f3de0b2b5d05ff1638cb7e976dd98e1d5aac8c0740ccb87cadc8f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837638.864883,
+      "end_wall": 1792837649.461408,
+      "error": null
+     }
+    ],
+    "arrival_seq": 721,
+    "start_wall": 1792837638.864883,
+    "start_mono": 507195.697202833,
+    "end_wall": 1792837649.461408,
+    "end_mono": 507206.293601375,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages indicate that activated charcoal hemoperfusion (HP) and hemoperfusion-hemodialysis (HP-HD) did not effectively prevent acute kidney injury or renal failure in patients with paraquat poisoning, despite their use in treating this condition.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10592548584,
+     "load_duration": 1547595709,
+     "prompt_eval_count": 1367,
+     "prompt_eval_duration": 3976006792,
+     "eval_count": 109,
+     "eval_duration": 4536910293,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:29.458571Z"
+    },
+    "elapsed_s": 10.596,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 721,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:3430789:1",
+     "scifact:3430789:0",
+     "scifact:25104843:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 269,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Charcoal shows no benefit for acute paraquat poisoning.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e4c0e134a625611b3ef2ec8cb78c9d7751ab2f42a5f0e45e54b61e3a149f4b16",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837631.452087,
+      "end_wall": 1792837632.863921,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837631.452087,
+    "start_mono": 507188.284493916,
+    "end_wall": 1792837632.863921,
+    "end_mono": 507189.696309583,
+    "raw_response": "{\"query\": \"charcoal paraquat poisoning effectiveness\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1409204333,
+     "load_duration": 68253000,
+     "prompt_eval_count": 162,
+     "prompt_eval_duration": 339296875,
+     "eval_count": 12,
+     "eval_duration": 881721874,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:12.862673Z"
+    },
+    "elapsed_s": 1.412,
+    "query_used": "charcoal paraquat poisoning effectiveness",
+    "query_source": "json",
+    "query_arrival_seq": 720
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "charcoal paraquat poisoning effectiveness",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3430789:1",
+       "score_q": 13180
+      },
+      {
+       "passage_key": "scifact:3430789:0",
+       "score_q": 12966
+      },
+      {
+       "passage_key": "scifact:25104843:0",
+       "score_q": 12492
+      },
+      {
+       "passage_key": "scifact:41294031:0",
+       "score_q": 10700
+      },
+      {
+       "passage_key": "scifact:22547508:0",
+       "score_q": 9687
+      }
+     ],
+     "retrieval_sha256": "08b700833a480f4a0d86d312eb9aafb86cfc9d666c2f194e6765867c2eb6143e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "08b700833a480f4a0d86d312eb9aafb86cfc9d666c2f194e6765867c2eb6143e",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3430789:1",
+      "content_sha256": "ec77fc602657e50d6bdb1e5add6248fb19b975578c2c11af462193d8a7f57587",
+      "chars": 392
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3430789:0",
+      "content_sha256": "047f2046f3b7755e14c7733a48c2040b56f931cd98099ee1b8dd392c38a22010",
+      "chars": 991
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25104843:0",
+      "content_sha256": "0a770b2870deb2645e774dd87dfc29a644f90dbfef9ec29c6b5566e89783f8b0",
+      "chars": 1060
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:41294031:0",
+      "content_sha256": "9f6b2848d002435bf56ca314ad85d3690212dd53730420c305418c33eb096053",
+      "chars": 942
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22547508:0",
+      "content_sha256": "2aa1549c30ce5996ba34175f03406694dd9968e77a5115970ed753b85a26358d",
+      "chars": 950
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Charcoal shows no benefit for acute paraquat poisoning.\n\nEvidence passages from your search for \"charcoal paraquat poisoning effectiveness\":\n<<<PASSAGES\n[P1] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nTherefore, it was concluded that in patients with normal renal function, the elimination kinetics of PQ by the kidneys were only associated with the plasma PQ concentration. Activated charcoal hemoperfusion had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.\n\n[P2] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nThe present study retrospectively analyzed 19 patients diagnosed with paraquat (PQ) poisoning with the aim to investigate the effect of activated charcoal hemoperfusion on renal function and PQ elimination. The results indicated that 7 patients died and 12 survived. Non-oliguric renal failure occurred in all of the 7 patients who died. Among the 12 surviving patients, 10 had normal renal function and 2 developed non-oliguric renal failure. There was a linear correlation between plasma and urine paraquat concentration prior to and during activated charcoal hemoperfusion. The equation parameters together with the correlation coefficient on admission were as follows: Y=0.5820+1.7348X (R2=0.678; F=35.768; P<0.0001). The equation parameters together with the correlation coefficient were as follows during activated charcoal hemoperfusion: Y=0.6827+1.2649X (R2=0.626; F=50.308; P<0.0001).\n\n[P3] Hemoperfusion-hemodialysis ineffective for paraquat removal in life-threatening poisoning?\nWe report on a patient treated with hemoperfusion-hemodialysis (HP-HD) for severe paraquat poisoning. This procedure was adopted since the combination of adsorption and dialysis may improve overall drug removal. On admission blood paraquat was 15.8 micrograms/ml. He received conventional treatment and combined HP-HD which started within 3 hours after ingestion of the chemical and lasted 5 hours. Blood samples were obtained during and after HP-HD. The samples during HP-HD were taken before the charcoal column, between the charcoal column and the artificial kidney and after the artificial kidney. Blood clearances of paraquat were 116 +/- 32 ml/min (n=6) for the charcoal column (HP), 90 +/- 54 ml/min (n=6) for the artificial kidney (HD) and 151 +/- 37 ml/min (n=6) for the combined systems (HP-HD). After HP-HD a limited rebound of blood paraquat level was seen. One day after admission renal and hepatic failure had developed, and the patient died after 5 days.\n\n[P4] Glucocorticoid with cyclophosphamide for paraquat-induced lung fibrosis.\nBACKGROUND Paraquat is an effective and widely used herbicide but is also a lethal poison. In many developing countries paraquat is widely available and inexpensive, making poisoning prevention difficult. However most of the people who become poisoned from paraquat have taken it as a means of suicide. Standard treatment for paraquat poisoning both prevents further absorption and reduces the load of paraquat in the blood through haemoperfusion or haemodialysis. The effectiveness of standard treatments is extremely limited. The immune system plays an important role in exacerbating paraquat-induced lung fibrosis. Immunosuppressive treatment using glucocorticoid and cyclophosphamide in combination is being developed and studied. OBJECTIVES To assess the effects of glucocorticoid with cyclophosphamide on mortality in patients with paraquat-induced lung fibrosis.\n\n[P5] Predictors of survival after acute paraquat poisoning.\nAcute paraquat poisoning is often fatal. Many studies have investigated successful treatment modalities, but no standard treatment yet exists. The purpose of this study was to determine the predictors of survival after acute paraquat poisoning in 602 patients. The paraquat exposure was assessed based on the amount of ingested paraquat and a semiquantitative measure of the urine level of paraquat. Initial clinical parameters including vital signs, hemoglobin, white-blood-cell count, pH, PaCO2, PaO2, blood urea nitrogen, creatinine, aspartate aminotransferase, alanine aminotransferase, total bilirubin, amylase, and glucose were obtained at the time of arrival at the emergency room. Outcomes after acute paraquat poisoning were categorized as survivors and nonsurvivors. Multiple logistic regression analysis was applied to assess the predictors of survival after acute paraquat poisoning.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6b5be66916dcaec8f1eb22e914049075e2db15bb1fff537b4aa4f49c599a4b41",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837632.8661451,
+      "end_wall": 1792837650.496455,
+      "error": null
+     }
+    ],
+    "arrival_seq": 722,
+    "start_wall": 1792837632.8661451,
+    "start_mono": 507189.698534916,
+    "end_wall": 1792837650.496455,
+    "end_mono": 507207.328637041,
+    "raw_response": "{\"reasoning\": \"The evidence provided indicates that while activated charcoal hemoperfusion can remove some paraquat from the bloodstream, it is not highly effective at preventing acute kidney injury or improving survival in severe cases of paraquat poisoning. [P1] and [P2] suggest that activated charcoal hemoperfusion does little to avoid acute kidney injury in patients with severe PQ poisoning, even when there is a linear correlation between plasma and urine PQ concentration. [P3] reports a limited rebound of blood paraquat level after hemoperfusion-hemodialysis, and [P4] highlights the effectiveness of hae\"\n\n,\"answer\": \"REFUTED\",\n\n\"citations\": [\"P1\", \"P2\", \"P3\"],\n\n\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17626299083,
+     "load_duration": 55981292,
+     "prompt_eval_count": 1201,
+     "prompt_eval_duration": 4706984708,
+     "eval_count": 155,
+     "eval_duration": 11385213671,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:30.493925Z"
+    },
+    "elapsed_s": 17.63,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 722,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:3430789:1",
+     "scifact:3430789:0",
+     "scifact:25104843:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Charcoal shows no benefit for acute paraquat poisoning.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e4c0e134a625611b3ef2ec8cb78c9d7751ab2f42a5f0e45e54b61e3a149f4b16",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837631.45027,
+      "end_wall": 1792837632.6334012,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837632.633474,
+      "end_wall": 1792837638.804116,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837638.804193,
+      "end_wall": 1792837639.608585,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792837631.45027,
+    "start_mono": null,
+    "end_wall": 1792837639.608585,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Charcoal shows no benefit for acute paraquat poisoning.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 724
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Charcoal shows no benefit for acute paraquat poisoning.",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3430789:1",
+       "score_q": 15087
+      },
+      {
+       "passage_key": "scifact:3430789:0",
+       "score_q": 12966
+      },
+      {
+       "passage_key": "scifact:25104843:0",
+       "score_q": 12492
+      },
+      {
+       "passage_key": "scifact:12209494:0",
+       "score_q": 12405
+      },
+      {
+       "passage_key": "scifact:22547508:0",
+       "score_q": 12263
+      }
+     ],
+     "retrieval_sha256": "a593506af194d4c8ea39b9f00d14c072628c75edee813a7654f7f2f089f1bb28"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a593506af194d4c8ea39b9f00d14c072628c75edee813a7654f7f2f089f1bb28",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3430789:1",
+      "content_sha256": "ec77fc602657e50d6bdb1e5add6248fb19b975578c2c11af462193d8a7f57587",
+      "chars": 392
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3430789:0",
+      "content_sha256": "047f2046f3b7755e14c7733a48c2040b56f931cd98099ee1b8dd392c38a22010",
+      "chars": 991
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25104843:0",
+      "content_sha256": "0a770b2870deb2645e774dd87dfc29a644f90dbfef9ec29c6b5566e89783f8b0",
+      "chars": 1060
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:12209494:0",
+      "content_sha256": "44a9d64798ebd387f8b93cce10eed0553b36e93d280d8a18183f930285003b91",
+      "chars": 1084
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22547508:0",
+      "content_sha256": "2aa1549c30ce5996ba34175f03406694dd9968e77a5115970ed753b85a26358d",
+      "chars": 950
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Charcoal shows no benefit for acute paraquat poisoning.\n\nEvidence passages from your search for \"Charcoal shows no benefit for acute paraquat poisoning.\":\n<<<PASSAGES\n[P1] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nTherefore, it was concluded that in patients with normal renal function, the elimination kinetics of PQ by the kidneys were only associated with the plasma PQ concentration. Activated charcoal hemoperfusion had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.\n\n[P2] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nThe present study retrospectively analyzed 19 patients diagnosed with paraquat (PQ) poisoning with the aim to investigate the effect of activated charcoal hemoperfusion on renal function and PQ elimination. The results indicated that 7 patients died and 12 survived. Non-oliguric renal failure occurred in all of the 7 patients who died. Among the 12 surviving patients, 10 had normal renal function and 2 developed non-oliguric renal failure. There was a linear correlation between plasma and urine paraquat concentration prior to and during activated charcoal hemoperfusion. The equation parameters together with the correlation coefficient on admission were as follows: Y=0.5820+1.7348X (R2=0.678; F=35.768; P<0.0001). The equation parameters together with the correlation coefficient were as follows during activated charcoal hemoperfusion: Y=0.6827+1.2649X (R2=0.626; F=50.308; P<0.0001).\n\n[P3] Hemoperfusion-hemodialysis ineffective for paraquat removal in life-threatening poisoning?\nWe report on a patient treated with hemoperfusion-hemodialysis (HP-HD) for severe paraquat poisoning. This procedure was adopted since the combination of adsorption and dialysis may improve overall drug removal. On admission blood paraquat was 15.8 micrograms/ml. He received conventional treatment and combined HP-HD which started within 3 hours after ingestion of the chemical and lasted 5 hours. Blood samples were obtained during and after HP-HD. The samples during HP-HD were taken before the charcoal column, between the charcoal column and the artificial kidney and after the artificial kidney. Blood clearances of paraquat were 116 +/- 32 ml/min (n=6) for the charcoal column (HP), 90 +/- 54 ml/min (n=6) for the artificial kidney (HD) and 151 +/- 37 ml/min (n=6) for the combined systems (HP-HD). After HP-HD a limited rebound of blood paraquat level was seen. One day after admission renal and hepatic failure had developed, and the patient died after 5 days.\n\n[P4] Multiple-dose activated charcoal in acute self-poisoning: a randomised controlled trial\nBACKGROUND The case-fatality for intentional self-poisoning in the rural developing world is 10-50-fold higher than that in industrialised countries, mostly because of the use of highly toxic pesticides and plants. We therefore aimed to assess whether routine treatment with multiple-dose activated charcoal, to interrupt enterovascular or enterohepatic circulations, offers benefit compared with no charcoal in such an environment. METHODS We did an open-label, parallel group, randomised, controlled trial of six 50 g doses of activated charcoal at 4-h intervals versus no charcoal versus one 50 g dose of activated charcoal in three Sri Lankan hospitals. 4632 patients were randomised to receive no charcoal (n=1554), one dose of charcoal (n=1545), or six doses of charcoal (n=1533); outcomes were available for 4629 patients. 2338 (51%) individuals had ingested pesticides, whereas 1647 (36%) had ingested yellow oleander (Thevetia peruviana) seeds. Mortality was the primary outcome measure.\n\n[P5] Predictors of survival after acute paraquat poisoning.\nAcute paraquat poisoning is often fatal. Many studies have investigated successful treatment modalities, but no standard treatment yet exists. The purpose of this study was to determine the predictors of survival after acute paraquat poisoning in 602 patients. The paraquat exposure was assessed based on the amount of ingested paraquat and a semiquantitative measure of the urine level of paraquat. Initial clinical parameters including vital signs, hemoglobin, white-blood-cell count, pH, PaCO2, PaO2, blood urea nitrogen, creatinine, aspartate aminotransferase, alanine aminotransferase, total bilirubin, amylase, and glucose were obtained at the time of arrival at the emergency room. Outcomes after acute paraquat poisoning were categorized as survivors and nonsurvivors. Multiple logistic regression analysis was applied to assess the predictors of survival after acute paraquat poisoning.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e250e5601464e75639e5b59bbbf1d7a8c4e28feca9ebec3dff55b59399e8565b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837639.611673,
+      "end_wall": 1792837654.920484,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837654.920678,
+      "end_wall": 1792837657.355346,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837657.355435,
+      "end_wall": 1792837659.789891,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 723,
+    "start_wall": 1792837639.611673,
+    "start_mono": null,
+    "end_wall": 1792837659.789891,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 723,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Charcoal shows no benefit for acute paraquat poisoning.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e4c0e134a625611b3ef2ec8cb78c9d7751ab2f42a5f0e45e54b61e3a149f4b16",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837631.452815,
+      "end_wall": 1792837637.774603,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837631.452815,
+    "start_mono": 507188.285221416,
+    "end_wall": 1792837637.774603,
+    "end_mono": 507194.606934583,
+    "raw_response": "{\"query\": \"acute paraquat poisoning charcoal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6319729042,
+     "load_duration": 3424244458,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 876743917,
+     "eval_count": 11,
+     "eval_duration": 1803179291,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:17.773427Z"
+    },
+    "elapsed_s": 6.322,
+    "query_used": "acute paraquat poisoning charcoal",
+    "query_source": "json",
+    "query_arrival_seq": 723
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "acute paraquat poisoning charcoal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3430789:1",
+       "score_q": 817
+      },
+      {
+       "passage_key": "scifact:3430789:0",
+       "score_q": 816
+      },
+      {
+       "passage_key": "scifact:40005757:0",
+       "score_q": 775
+      },
+      {
+       "passage_key": "scifact:33203108:0",
+       "score_q": 774
+      },
+      {
+       "passage_key": "scifact:24525112:0",
+       "score_q": 772
+      }
+     ],
+     "retrieval_sha256": "8dcc8a3424760ee4453ffe870f216a6caf436c4334177c99d3c5f408871eb44e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8dcc8a3424760ee4453ffe870f216a6caf436c4334177c99d3c5f408871eb44e",
+    "query_embedding_sha256": "2db48f8107cd7c84eee7bb1ae2d9c8f7b27b6f5f82b621b38469d76a396767f3",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3430789:1",
+      "content_sha256": "ec77fc602657e50d6bdb1e5add6248fb19b975578c2c11af462193d8a7f57587",
+      "chars": 392
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3430789:0",
+      "content_sha256": "047f2046f3b7755e14c7733a48c2040b56f931cd98099ee1b8dd392c38a22010",
+      "chars": 991
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:40005757:0",
+      "content_sha256": "c35eb609e577906ed86adf537ce0b8eafe85da72f09fe665205da77ab9a70773",
+      "chars": 1004
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:33203108:0",
+      "content_sha256": "dce00f6166751b9a7a6850d222479f10711055fefd428db43a9864cbad7b0650",
+      "chars": 1043
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:24525112:0",
+      "content_sha256": "c0f082af8b23e8e281ef8e60d085d826676c4d81869d33045c6b0d79f622a60f",
+      "chars": 765
+     }
+    ],
+    "elapsed_s": 1.2153
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Charcoal shows no benefit for acute paraquat poisoning.\n\nEvidence passages from your search for \"acute paraquat poisoning charcoal\":\n<<<PASSAGES\n[P1] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nTherefore, it was concluded that in patients with normal renal function, the elimination kinetics of PQ by the kidneys were only associated with the plasma PQ concentration. Activated charcoal hemoperfusion had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.\n\n[P2] Effect of activated charcoal hemoperfusion on renal function in patients with paraquat poisoning.\nThe present study retrospectively analyzed 19 patients diagnosed with paraquat (PQ) poisoning with the aim to investigate the effect of activated charcoal hemoperfusion on renal function and PQ elimination. The results indicated that 7 patients died and 12 survived. Non-oliguric renal failure occurred in all of the 7 patients who died. Among the 12 surviving patients, 10 had normal renal function and 2 developed non-oliguric renal failure. There was a linear correlation between plasma and urine paraquat concentration prior to and during activated charcoal hemoperfusion. The equation parameters together with the correlation coefficient on admission were as follows: Y=0.5820+1.7348X (R2=0.678; F=35.768; P<0.0001). The equation parameters together with the correlation coefficient were as follows during activated charcoal hemoperfusion: Y=0.6827+1.2649X (R2=0.626; F=50.308; P<0.0001).\n\n[P3] Survival in a case of massive paraquat ingestion.\nSerious exposure to the herbicide paraquat usually results in death, either due to gastrointestinal caustic lesions, shock, and acute respiratory distress syndrome or related to the progressive development of pulmonary fibrosis associated with refractory hypoxemia. We report a case of suicidal paraquat ingestion in a 59-year-old man. Most of the indicators of poor prognosis were encountered in this patient. Treatment consisted of early digestive decontamination and hemodialysis, followed by antioxidant therapy, including the administration of deferoxamine (100 mg/kg in 24 h) and a continuous infusion of acetylcysteine (300 mg/kg/d during 3 weeks). The patient only developed a nonoliguric acute renal failure, a mild alteration of liver tests, and an impairment of CO transfer factor without any respiratory complaint. Renal and hepatic disturbances completely resolved within 1 month, whereas CO transfer factor remained altered 14 months later.\n\n[P4] Golden Hours in Severe Paraquat Poisoning-The Role of Early Haemoperfusion Therapy.\nINTRODUCTION Paraquat is a commonly ingested poison especially in Southern India. There is no antidote for paraquat poison and consumption is often fatal. The usual cause of death is either acute lung injury or multi-organ failure. AIM To evaluate the role of early haemoperfusion as a therapy in paraquat poisoned patients. MATERIALS AND METHODS This study was a retrospective analysis of patients admitted to a Tertiary Medical College Hospital between January 2012 and December 2015 with history of paraquat consumption, comparing outcomes in those who received only gastric lavage and symptomatic treatment with those who received haemoperfusion as a therapy. The role of early haemoperfusion (≤ 6 hours) vs late haemoperfusion (> 6 hours) in paraquat poisoned patients was also compared. The data of these patients was extracted and analysed with respect to age, sex, mode of treatment, the outcome in patients who received early and late haemoperfusion.\n\n[P5] A case of paraquat intoxication caused by intravenous injection.\nParaquat intoxication is a fatal problem. Most paraquat intoxications happen through oral administration. We report a case of death after intravenous paraquat injection. There is little clinical data on parenteral paraquat exposure, and we describe this case and fatal progression. Toxic symptoms and severe organ function impairment developed soon after injection. Treatment with repeated activated charcoal hemoperfusion with pulse steroids, cyclophosphamide, and antioxidants was attempted. The patient died from multiple organ failure 3 days after intoxication. This case indicates that paraquat intoxication via intravenous injection, even in very small amounts, has an extremely poor prognosis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a541b7c3f763522a26facbb66e4f583efd94f08512d5fb1ba5aa0e611ec09edb",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837638.990346,
+      "end_wall": 1792837663.025312,
+      "error": null
+     }
+    ],
+    "arrival_seq": 724,
+    "start_wall": 1792837638.990346,
+    "start_mono": 507195.822664083,
+    "end_wall": 1792837663.025312,
+    "end_mono": 507219.857347291,
+    "raw_response": "{\"reasoning\": \"The passages (P2, P3) suggest that activated charcoal hemoperfusion is ineffective in preventing acute kidney injury and improving renal function in patients with paraquat poisoning. On the other hand, P4 and P5 support the notion that early haemoperfusion therapy can improve the outcome in paraquat poisoned patients. However, the passage P4 does not specifically mention charcoal hemoperfusion as a treatment, but rather early haemoperfusion therapy. Since there is no evidence in favor of charcoal hemoperfusion, the claim is REFUTED.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24029674458,
+     "load_duration": 12266795000,
+     "prompt_eval_count": 1165,
+     "prompt_eval_duration": 2615863416,
+     "eval_count": 133,
+     "eval_duration": 6495144659,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:27:43.021134Z"
+    },
+    "elapsed_s": 24.035,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 724,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 538,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "3316c63e2fd0c53ffd7f4e0c2aa44b13740e572575859a3cc7fb57b4a912f128",
+  "granite3.3:2b": "b41ff89fe61b2266a0bb6d748443d8cf66080e66a9fb93165761539c4393e7f7",
+  "olmo2:7b": "08b700833a480f4a0d86d312eb9aafb86cfc9d666c2f194e6765867c2eb6143e",
+  "exaone3.5:2.4b": "a593506af194d4c8ea39b9f00d14c072628c75edee813a7654f7f2f089f1bb28",
+  "nemotron-mini:4b": "8dcc8a3424760ee4453ffe870f216a6caf436c4334177c99d3c5f408871eb44e"
+ },
+ "item_start_wall": 1792837631.4493701,
+ "item_wall_s": 31.576,
+ "ollama_ps_samples": [
+  [
+   1792837631.45,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792837633.453,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837635.463,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837637.465,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837639.474,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837641.485,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837643.492,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837645.502,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837647.507,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837649.519,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837651.52,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837653.53,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837655.535,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837657.547,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837659.548,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837661.56,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,1308 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain335",
+ "order": 384,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain335",
+  "order": 384,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice."
+ },
+ "item_view_sha256": "6ba54a10ce452c102ea46b8099ec5aa6efbe5be1119d0cf2e6043cec13131c96",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d3d13ed2f16283ec809e90f71a3aed8c06fa3f62987622967966bca3d6ea1be",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863827.2765539,
+      "end_wall": 1792863828.442053,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863827.2765539,
+    "start_mono": 533384.026078958,
+    "end_wall": 1792863828.442053,
+    "end_mono": 533385.191576833,
+    "raw_response": "{\"query\": \"deregulation HAND2 crucial step endometrial carcinogenesis mice\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1162346375,
+     "load_duration": 110606083,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 333042167,
+     "eval_count": 17,
+     "eval_duration": 530662584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:43:48.441249Z"
+    },
+    "elapsed_s": 1.165,
+    "query_used": "deregulation HAND2 crucial step endometrial carcinogenesis mice",
+    "query_source": "json",
+    "query_arrival_seq": 1920
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deregulation HAND2 crucial step endometrial carcinogenesis mice",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1780819:2",
+       "score_q": 756
+      },
+      {
+       "passage_key": "scifact:1780819:0",
+       "score_q": 744
+      },
+      {
+       "passage_key": "scifact:32721137:1",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:3210545:0",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:13777138:0",
+       "score_q": 729
+      }
+     ],
+     "retrieval_sha256": "584dbaf82e746c849cd7022d2f68ca423480f94847835d77f8f66f4e1216ce6e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "584dbaf82e746c849cd7022d2f68ca423480f94847835d77f8f66f4e1216ce6e",
+    "query_embedding_sha256": "563cd664fe47227a814647f63cb6246ff609c1dad80d805487612debb31e27a4",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1780819:2",
+      "content_sha256": "a3562e4d76f8129ac5030644f56ae87a730d95d1065ad7843cd37feb3b533c17",
+      "chars": 1079
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1780819:0",
+      "content_sha256": "c41796cd395d5cdb607b45244712d5a9469369f6e1c94ee8885b06151e5478a3",
+      "chars": 985
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:32721137:1",
+      "content_sha256": "69b3e0b0cae95044c15dc112c24e00672832ec8ad7162dfd11005f0881105c53",
+      "chars": 979
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3210545:0",
+      "content_sha256": "1eb9c59f51169e2559b640283d2df62863af877e2c0b1a33e63a8c95ea7c955b",
+      "chars": 971
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13777138:0",
+      "content_sha256": "fc9eb64bafee9db8f412b7125a0847533aee58268286eef38431cdf3a5c3f610",
+      "chars": 1051
+     }
+    ],
+    "elapsed_s": 5.3233
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nEvidence passages from your search for \"deregulation HAND2 crucial step endometrial carcinogenesis mice\":\n<<<PASSAGES\n[P1] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nHAND2 methylation analysis of endometrial secretions collected using high vaginal swabs taken from women with postmenopausal bleeding specifically identified those patients with early stage endometrial cancer with both high sensitivity and high specificity (receiver operating characteristics area under the curve = 0.91 for stage 1A and 0.97 for higher than stage 1A). Finally, mice harbouring a Hand2 knock-out specifically in their endometrium were shown to develop precancerous endometrial lesions with increasing age, and these lesions also demonstrated a lack of PTEN expression. CONCLUSIONS HAND2 methylation is a common and crucial molecular alteration in endometrial cancer that could potentially be employed as a biomarker for early detection of endometrial cancer and as a predictor of treatment response. The true clinical utility of HAND2 DNA methylation, however, requires further validation in prospective studies. Please see later in the article for the Editors' Summary.\n\n[P2] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nBACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role of epigenetic factors in endometrial cancer development. METHODS AND FINDINGS Epigenome-wide methylation analysis of >27,000 CpG sites in endometrial cancer tissue samples (n = 64) and control samples (n = 23) revealed that HAND2 (a gene encoding a transcription factor expressed in the endometrial stroma) is one of the most commonly hypermethylated and silenced genes in endometrial cancer.\n\n[P3] Integrated genomic profiling of endometrial carcinoma associates aggressive tumors with indicators of PI3 kinase activation.\nMoreover, samples with PIK3CA amplification carried signatures associated with in vitro activation of PI3 kinase (PI3K), a signature that was shared by aggressive tumors without PIK3CA amplification. Tumors with loss of PTEN expression or PIK3CA overexpression that did not have PIK3CA amplification also shared the PI3K activation signature, high protein expression of the PI3K pathway member STMN1, and an aggressive phenotype in test and validation datasets. However, mutations of PTEN or PIK3CA were not associated with the same expression profile or aggressive phenotype. STMN1 expression had independent prognostic value. The results affirm the utility of systematic characterization of the cancer genome in clinically annotated specimens and suggest the particular importance of the PI3K pathway in patients who have aggressive endometrial cancer.\n\n[P4] KRAS gene amplification and overexpression but not mutation associates with aggressive and metastatic endometrial cancer\nBACKGROUND Three quarter of endometrial carcinomas are treated at early stage. Still, 15 to 20% of these patients experience recurrence, with little effect from systemic therapies. Homo sapiens v-Ki-ras2 Kirsten rat sarcoma viral oncogenes homologue (KRAS) mutations have been reported to have an important role in tumorigenesis for human cancers, but there is limited knowledge regarding clinical relevance of KRAS status in endometrial carcinomas. METHODS We have performed a comprehensive and integrated characterisation of genome-wide expression related to KRAS mutations and copy-number alterations in primary- and metastatic endometrial carcinoma lesions in relation to clinical and histopathological data. A primary investigation set and clinical validation set was applied, consisting of 414 primary tumours and 61 metastatic lesions totally.\n\n[P5] Tet1 and Tet2 regulate 5-hydroxymethylcytosine production and cell lineage specification in mouse embryonic stem cells.\nTET family enzymes convert 5-methylcytosine (5mC) to 5-hydroxymethylcytosine (5hmC) in DNA. Here, we show that Tet1 and Tet2 are Oct4-regulated enzymes that together sustain 5hmC in mouse embryonic stem cells (ESCs) and are induced concomitantly with 5hmC during reprogramming of fibroblasts to induced pluripotent stem cells. ESCs depleted of Tet1 by RNAi show diminished expression of the Nodal antagonist Lefty1 and display hyperactive Nodal signaling and skewed differentiation into the endoderm-mesoderm lineage in embryoid bodies in vitro. In Fgf4- and heparin-supplemented culture conditions, Tet1-depleted ESCs activate the trophoblast stem cell lineage determinant Elf5 and can colonize the placenta in midgestation embryo chimeras. Consistent with these findings, Tet1-depleted ESCs form aggressive hemorrhagic teratomas with increased endoderm, reduced neuroectoderm, and ectopic appearance of trophoblastic giant cells.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d7aeb6dae40a7b4083d07f3086a9dca481844e4104e4c00409ef909b278e3842",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863833.766377,
+      "end_wall": 1792863842.186989,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1920,
+    "start_wall": 1792863833.766377,
+    "start_mono": 533390.515906375,
+    "end_wall": 1792863842.186989,
+    "end_mono": 533398.936524333,
+    "raw_response": "{\"reasoning\": \"The evidence provided in passages P2 and P3 strongly supports the claim that deregulation of HAND2 is a crucial step in endometrial carcinogenesis, as evidenced by methylation and epigenetic silencing of HAND2 in endometrial cancer tissues.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8417709792,
+     "load_duration": 1978936333,
+     "prompt_eval_count": 1324,
+     "prompt_eval_duration": 2726357916,
+     "eval_count": 82,
+     "eval_duration": 2868587042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:44:02.185144Z"
+    },
+    "elapsed_s": 8.421,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1920,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:1780819:0",
+     "scifact:32721137:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 240,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d3d13ed2f16283ec809e90f71a3aed8c06fa3f62987622967966bca3d6ea1be",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863827.2774231,
+      "end_wall": 1792863829.2418299,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863827.2774231,
+    "start_mono": 533384.026948416,
+    "end_wall": 1792863829.2418299,
+    "end_mono": 533385.991354958,
+    "raw_response": "{\"query\": \"HAND2 deregulation endometrial carcinogenesis mice\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1961859417,
+     "load_duration": 1178864375,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 340876417,
+     "eval_count": 20,
+     "eval_duration": 361739498,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:43:49.240881Z"
+    },
+    "elapsed_s": 1.964,
+    "query_used": "HAND2 deregulation endometrial carcinogenesis mice",
+    "query_source": "json",
+    "query_arrival_seq": 1922
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HAND2 deregulation endometrial carcinogenesis mice",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1780819:2",
+       "score_q": 11000
+      },
+      {
+       "passage_key": "scifact:1780819:1",
+       "score_q": 10069
+      },
+      {
+       "passage_key": "scifact:1780819:0",
+       "score_q": 9038
+      },
+      {
+       "passage_key": "scifact:6121668:1",
+       "score_q": 6191
+      },
+      {
+       "passage_key": "scifact:4767806:0",
+       "score_q": 5062
+      }
+     ],
+     "retrieval_sha256": "cb72cdeb9100b8dcd11b332c8706ffc090e5ac3b59f39f3632a3aa17c39c1d52"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "cb72cdeb9100b8dcd11b332c8706ffc090e5ac3b59f39f3632a3aa17c39c1d52",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1780819:2",
+      "content_sha256": "a3562e4d76f8129ac5030644f56ae87a730d95d1065ad7843cd37feb3b533c17",
+      "chars": 1079
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1780819:1",
+      "content_sha256": "7143013ae5607ebd1086cecff55ea5343fd832a252164441cceec809f5b2652e",
+      "chars": 723
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:1780819:0",
+      "content_sha256": "c41796cd395d5cdb607b45244712d5a9469369f6e1c94ee8885b06151e5478a3",
+      "chars": 985
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6121668:1",
+      "content_sha256": "865d6d9f8379589b328a3bbd5d30a593bd10f4484292d42c5620592499ded711",
+      "chars": 885
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4767806:0",
+      "content_sha256": "8f2fd8d4da190ad12bf4b199d7e1192a45f48094b0c62b0a58e708d1cf1e88f4",
+      "chars": 962
+     }
+    ],
+    "elapsed_s": 0.0026
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nEvidence passages from your search for \"HAND2 deregulation endometrial carcinogenesis mice\":\n<<<PASSAGES\n[P1] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nHAND2 methylation analysis of endometrial secretions collected using high vaginal swabs taken from women with postmenopausal bleeding specifically identified those patients with early stage endometrial cancer with both high sensitivity and high specificity (receiver operating characteristics area under the curve = 0.91 for stage 1A and 0.97 for higher than stage 1A). Finally, mice harbouring a Hand2 knock-out specifically in their endometrium were shown to develop precancerous endometrial lesions with increasing age, and these lesions also demonstrated a lack of PTEN expression. CONCLUSIONS HAND2 methylation is a common and crucial molecular alteration in endometrial cancer that could potentially be employed as a biomarker for early detection of endometrial cancer and as a predictor of treatment response. The true clinical utility of HAND2 DNA methylation, however, requires further validation in prospective studies. Please see later in the article for the Editors' Summary.\n\n[P2] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nA novel integrative epigenome-transcriptome-interactome analysis further revealed that HAND2 is the hub of the most highly ranked differential methylation hotspot in endometrial cancer. These findings were validated using candidate gene methylation analysis in multiple clinical sample sets of tissue samples from a total of 272 additional women. Increased HAND2 methylation was a feature of premalignant endometrial lesions and was seen to parallel a decrease in RNA and protein levels. Furthermore, women with high endometrial HAND2 methylation in their premalignant lesions were less likely to respond to progesterone treatment.\n\n[P3] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nBACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role of epigenetic factors in endometrial cancer development. METHODS AND FINDINGS Epigenome-wide methylation analysis of >27,000 CpG sites in endometrial cancer tissue samples (n = 64) and control samples (n = 23) revealed that HAND2 (a gene encoding a transcription factor expressed in the endometrial stroma) is one of the most commonly hypermethylated and silenced genes in endometrial cancer.\n\n[P4] COX-2 and survivin are overexpressed and positively correlated in endometrial carcinoma.\nFurthermore, we found survivin and COX-2 to be positively correlated, which was also statistically significant (p=0.0001, r=0.46). Neither survivin nor COX-2 expression was correlated with classical prognostic factors of endometrial carcinoma such as myometrial invasion, grade or lymph node metastasis (p>0.05). Neither COX-2 nor survivin had an impact on overall survival (p>0.05). CONCLUSIONS Both survivin and COX-2 are overexpressed, and they seem to be early events in the occurrence of EC. Moreover, protein products of these two genes are positively correlated. COX-2 and survivin might share a common molecular pathway or enhance each other's actions in the developmental pathway of EC. Molecular basis of such a relationship should be further investigated in endometrial carcinogenesis.\n\n[P5] Exploring and exploiting the systemic effects of deregulated replication licensing.\nMaintenance and accurate propagation of the genetic material are key features for physiological development and wellbeing. The replication licensing machinery is crucial for replication precision as it ensures that replication takes place once per cell cycle. Thus, the expression status of the components comprising the replication licensing apparatus is tightly regulated to avoid re-replication; a form of replication stress that leads to genomic instability, a hallmark of cancer. In the present review we discuss the mechanistic basis of replication licensing deregulation, which leads to systemic effects, exemplified by its role in carcinogenesis and a variety of genetic syndromes. In addition, new insights demonstrate that above a particular threshold, the replication licensing factor Cdc6 acts as global transcriptional regulator, outlining new lines of exploration.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f936050983807db6e4987b474d42fb3619ede42b883e1fabbc89cd87420cb1c6",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863829.245358,
+      "end_wall": 1792863842.824687,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1921,
+    "start_wall": 1792863829.245358,
+    "start_mono": 533385.994884458,
+    "end_wall": 1792863842.824687,
+    "end_mono": 533399.574222375,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that HAND2 deregulation is crucial in endometrial carcinogenesis in mice. Multiple evidence passages support this claim. Passage [P1] discusses mice with a Hand2 knock-out in their endometrium developing precancerous lesions. Passage [P2] confirms increased HAND2 methylation in premalignant endometrial lesions, linking it to decreased RNA and protein levels. Passage [P3] identifies HAND2 as one of the most commonly hypermethylated and silenced genes in endometrial cancer. These findings collectively imply that HAND2 deregulation plays a significant role in endometrial carcin\"\n,\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13575694833,
+     "load_duration": 24571208,
+     "prompt_eval_count": 1425,
+     "prompt_eval_duration": 3070814167,
+     "eval_count": 196,
+     "eval_duration": 9650813920,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:44:02.821792Z"
+    },
+    "elapsed_s": 13.579,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1921,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:1780819:2",
+     "scifact:1780819:1",
+     "scifact:1780819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d3d13ed2f16283ec809e90f71a3aed8c06fa3f62987622967966bca3d6ea1be",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863827.276955,
+      "end_wall": 1792863833.343105,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863827.276955,
+    "start_mono": 533384.026480291,
+    "end_wall": 1792863833.343105,
+    "end_mono": 533390.092633708,
+    "raw_response": "{\"query\": \"deregulation of HAND2 AND mice AND endometrial AND carcinogenesis\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6063061875,
+     "load_duration": 3943302750,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 682278042,
+     "eval_count": 18,
+     "eval_duration": 1047274875,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:43:53.341967Z"
+    },
+    "elapsed_s": 6.066,
+    "query_used": "deregulation of HAND2 AND mice AND endometrial AND carcinogenesis",
+    "query_source": "json",
+    "query_arrival_seq": 1924
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deregulation of HAND2 AND mice AND endometrial AND carcinogenesis",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1780819:2",
+       "score_q": 11000
+      },
+      {
+       "passage_key": "scifact:1780819:1",
+       "score_q": 10069
+      },
+      {
+       "passage_key": "scifact:1780819:0",
+       "score_q": 9038
+      },
+      {
+       "passage_key": "scifact:6121668:1",
+       "score_q": 6191
+      },
+      {
+       "passage_key": "scifact:4767806:0",
+       "score_q": 5062
+      }
+     ],
+     "retrieval_sha256": "d0d067e0d05d9c5f2ed9b3729f11889b7a501fddedf6af5ba19b81e9c7961045"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d0d067e0d05d9c5f2ed9b3729f11889b7a501fddedf6af5ba19b81e9c7961045",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1780819:2",
+      "content_sha256": "a3562e4d76f8129ac5030644f56ae87a730d95d1065ad7843cd37feb3b533c17",
+      "chars": 1079
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1780819:1",
+      "content_sha256": "7143013ae5607ebd1086cecff55ea5343fd832a252164441cceec809f5b2652e",
+      "chars": 723
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:1780819:0",
+      "content_sha256": "c41796cd395d5cdb607b45244712d5a9469369f6e1c94ee8885b06151e5478a3",
+      "chars": 985
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6121668:1",
+      "content_sha256": "865d6d9f8379589b328a3bbd5d30a593bd10f4484292d42c5620592499ded711",
+      "chars": 885
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4767806:0",
+      "content_sha256": "8f2fd8d4da190ad12bf4b199d7e1192a45f48094b0c62b0a58e708d1cf1e88f4",
+      "chars": 962
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nEvidence passages from your search for \"deregulation of HAND2 AND mice AND endometrial AND carcinogenesis\":\n<<<PASSAGES\n[P1] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nHAND2 methylation analysis of endometrial secretions collected using high vaginal swabs taken from women with postmenopausal bleeding specifically identified those patients with early stage endometrial cancer with both high sensitivity and high specificity (receiver operating characteristics area under the curve = 0.91 for stage 1A and 0.97 for higher than stage 1A). Finally, mice harbouring a Hand2 knock-out specifically in their endometrium were shown to develop precancerous endometrial lesions with increasing age, and these lesions also demonstrated a lack of PTEN expression. CONCLUSIONS HAND2 methylation is a common and crucial molecular alteration in endometrial cancer that could potentially be employed as a biomarker for early detection of endometrial cancer and as a predictor of treatment response. The true clinical utility of HAND2 DNA methylation, however, requires further validation in prospective studies. Please see later in the article for the Editors' Summary.\n\n[P2] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nA novel integrative epigenome-transcriptome-interactome analysis further revealed that HAND2 is the hub of the most highly ranked differential methylation hotspot in endometrial cancer. These findings were validated using candidate gene methylation analysis in multiple clinical sample sets of tissue samples from a total of 272 additional women. Increased HAND2 methylation was a feature of premalignant endometrial lesions and was seen to parallel a decrease in RNA and protein levels. Furthermore, women with high endometrial HAND2 methylation in their premalignant lesions were less likely to respond to progesterone treatment.\n\n[P3] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nBACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role of epigenetic factors in endometrial cancer development. METHODS AND FINDINGS Epigenome-wide methylation analysis of >27,000 CpG sites in endometrial cancer tissue samples (n = 64) and control samples (n = 23) revealed that HAND2 (a gene encoding a transcription factor expressed in the endometrial stroma) is one of the most commonly hypermethylated and silenced genes in endometrial cancer.\n\n[P4] COX-2 and survivin are overexpressed and positively correlated in endometrial carcinoma.\nFurthermore, we found survivin and COX-2 to be positively correlated, which was also statistically significant (p=0.0001, r=0.46). Neither survivin nor COX-2 expression was correlated with classical prognostic factors of endometrial carcinoma such as myometrial invasion, grade or lymph node metastasis (p>0.05). Neither COX-2 nor survivin had an impact on overall survival (p>0.05). CONCLUSIONS Both survivin and COX-2 are overexpressed, and they seem to be early events in the occurrence of EC. Moreover, protein products of these two genes are positively correlated. COX-2 and survivin might share a common molecular pathway or enhance each other's actions in the developmental pathway of EC. Molecular basis of such a relationship should be further investigated in endometrial carcinogenesis.\n\n[P5] Exploring and exploiting the systemic effects of deregulated replication licensing.\nMaintenance and accurate propagation of the genetic material are key features for physiological development and wellbeing. The replication licensing machinery is crucial for replication precision as it ensures that replication takes place once per cell cycle. Thus, the expression status of the components comprising the replication licensing apparatus is tightly regulated to avoid re-replication; a form of replication stress that leads to genomic instability, a hallmark of cancer. In the present review we discuss the mechanistic basis of replication licensing deregulation, which leads to systemic effects, exemplified by its role in carcinogenesis and a variety of genetic syndromes. In addition, new insights demonstrate that above a particular threshold, the replication licensing factor Cdc6 acts as global transcriptional regulator, outlining new lines of exploration.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d6316f19a7834ef78631bcf26e0d92906ffae588342335a3c1274c5f5bf1b20c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863833.343919,
+      "end_wall": 1792863843.5228748,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1922,
+    "start_wall": 1792863833.343919,
+    "start_mono": 533390.093448416,
+    "end_wall": 1792863843.5228748,
+    "end_mono": 533400.272409083,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that HAND2 methylation is a common and crucial molecular alteration in endometrial cancer, which could potentially serve as a biomarker for early detection and treatment response. The passage P2 specifically mentions that increased HAND2 methylation is associated with premalignant endometrial lesions and a decrease in response to progesterone treatment.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10172685709,
+     "load_duration": 1202640917,
+     "prompt_eval_count": 1177,
+     "prompt_eval_duration": 2929315250,
+     "eval_count": 89,
+     "eval_duration": 4237499455,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:44:03.517744Z"
+    },
+    "elapsed_s": 10.179,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1922,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:1780819:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 382,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d3d13ed2f16283ec809e90f71a3aed8c06fa3f62987622967966bca3d6ea1be",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863827.277791,
+      "end_wall": 1792863828.907211,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863827.277791,
+    "start_mono": 533384.027316458,
+    "end_wall": 1792863828.907211,
+    "end_mono": 533385.656736208,
+    "raw_response": "{\"query\": \"HAND2 deregulation endometrial carcinogenesis mice studies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1627126667,
+     "load_duration": 62319708,
+     "prompt_eval_count": 183,
+     "prompt_eval_duration": 489009500,
+     "eval_count": 15,
+     "eval_duration": 961427378,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:43:48.906165Z"
+    },
+    "elapsed_s": 1.629,
+    "query_used": "HAND2 deregulation endometrial carcinogenesis mice studies",
+    "query_source": "json",
+    "query_arrival_seq": 1921
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HAND2 deregulation endometrial carcinogenesis mice studies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1780819:2",
+       "score_q": 785
+      },
+      {
+       "passage_key": "scifact:1780819:0",
+       "score_q": 778
+      },
+      {
+       "passage_key": "scifact:3210545:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:1780819:1",
+       "score_q": 756
+      },
+      {
+       "passage_key": "scifact:11271123:0",
+       "score_q": 754
+      }
+     ],
+     "retrieval_sha256": "2e676b10b0ae5cb9c872a89508fc4024f8143911604888665c7d37ebbe9ee63e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2e676b10b0ae5cb9c872a89508fc4024f8143911604888665c7d37ebbe9ee63e",
+    "query_embedding_sha256": "043112d76c50e9300b00502258d7adb60fe00639f1151d769750e2f9a3612984",
+    "query_embedding_f32_b64": "sT1oPTFBhjwoWRq+D/1Gu6/cQD04inU8PNsRvbvpv7su5Bc8ry+Wu2zzCj0fn4M9ClyoPb0GOLq5q2g9hjfVu3Grar2/IZG8JGYivX93yz0YMUe9RX8IveX8Hr1K4io9bevCPQwlqj1skhI9kemJO7ZOmz0bCp09STdOPcgNlb2Re5w8JamYvHvgXL1MNl696AeMPTtnET3W8jK8K72+O3Iurj2x2VC6n9y9OzBlI72XpUm9kmW0uizXwDx303S7/pmCPRwZZr1wvBM9m5Y8PdS2yjz7zBK9od1iPR1wMryC9jk8imQ4vUV7xTz8mUk7+idYPZCU8zx78rK9arOQvPxExjzllmq9k9ymvEFdGD1xFJo8OyizvPlzIz1TMgQ7W4oKPQr0DT321AU9B/O3vIQIfbz/E/S8Pac9O/62nLxJsNm8HuqrPOX2qrts2Ag9kK6cPNxYHj0k2DS98uqGvXmby7c5t+I8hk2NPQ8QQT0gZxW9+gCJPepdAb22UdQ88xV4PEaTXzwRTJI8nmReu+7QU72B2H085qzdPBvAwjwUZtY8r5pnPak2Nz3Jvk+9upQmPYELmTuPDX29sj3sN0BWd70NzIw8a8CJPfNEyLxzSec8epflu0/qbT2Il189XEuVO1iEXb0Q7ok8V2ksPTfmg7x7sUk9dmxdvWuf3buAnr08rbAnvZhJC73I44y8nqdDPLAcFz0KUtA8ir4HPRr8j72aVi29NItWvIAePD1VLb687PGoOyZpxzx/po68AfGCvT4fmrtoQIM9OYgivTbtiL0DvoO6SyyEPLb3qjx7RpO7hSc4vfOjGT3Jx7w66sLMvAXYG7w5Hh29Ek80POkkAD07IPo7QeBBvbdNKT0hivG8AfofvUKrEz2fE4A84k1bPISvirsZFGy9b1N4vVCTjrtOvxg8G3vxPNh4lLyp2SW7NSIrvTiIjT1efyu7f9mAPYHMlzw6HNE8hG4ZPZu9SD2YJze9mCBCPDRJS70bYwu9Ng72u/ZVDrwB+Dw9Ut5mvT/+c70ErR+9eOICvfAJMz3Ad0+8TsxpPR5OCL25VR+9+8YPvCzUJb1ZmI48a8usPKwmKj0LfFm8lckkO5xvJr1y0MW7sUpRPQO4oTx7o6m85uBcvLqXqbuI2nG9QYoAPDQIgLxaED682hv4POtSQjyLDzy9tP06vKqVqLsEiis9lygyO2/PFb01SmC9uJChvJJVfTu1mAy9xAyrvH88mj1tER68PhUFvZor9Ttk6pY5mEiZPAhMDDwLi688jtOLOjT3qTw5MHS8rfCzO/PmLb0bqMM7mRErPcUevjuCXo674D5BPf08A7z2CB28zDEovShkKj3B74M9Aof8vDT8Rb0Ke4Y8NlVZPFoOYT3mYbg85VeAvHMWBj0a3XG9QUG6vMh6irp0gv+7i800vfD6CbtMwi69tDIzPAitPz1BT1E82SlYPSY3hDwhYwW8pArHPCmkAL0cbge9wiMivVvAKb1u19k8mDMwvAG+jLxSEJC8LcZdPWiIijvIeeG7AmQ7PH+Jizw7k4A8HH06vVeW5rx/1Qs9bJjRPAYcyjxWSSQ9gXhNvUEofzqw4X+88gbTPI6/5TooDxY9NuhEPR7RHr3cXoG7F0whPXXPq7z1b+I8x872vFrkJLvfcVS9f0Dhupt3ajuMnCq9acvQPKQwNjytoa88a2lyPTpjLj1CbH89ZQGsO8ojWLx6eyO9ObzBPB7/4DuRG1A8TDQdPHYLF70Rpi29DuMKvPnIZz1uQL48r+AJuz1FOL1XLJA8cmMZvDe9cT3o0gm7MhOOPaEMvTtQk2Q8sQY5PZccF72uJiG8AnspPOoLkL2UwK47piHkPKZ/KD0qXya9vpiTPLnEl7xwhyq9B6cjPbBn7zulWiI8DKp1uuUeTby1h3m9ej1NuhTI+bwBjgW9K2oivXssAz2e3Xc9OLE2PeD4WzxgMAg9H6AgPNkbQ71Xnxw9mnOAvMpNGz1xa5w7D0yYPaXcFr1jHqY8EHgcvWrOBzytYqi7tZgfvcZ7ozyUwTE9cSMBvH5kTTvaBoG7j98evccBOL0ReYo8Kc6IvC3OOb0AMd68YN+DvJ8jVjyNUQ2972fxPCn+VTzPPmM9rRYpvBOdA71mw4S9lCWrvN/CUzyqRh89oIAcPUSpWr0n3h+950aEPESwBT3z44E9+HjqPN3faTwAnZO8oWejPFyK+bkMmqY8GJP0vGXpLL0vHHY81K+1PDM2DDyyIVy8FTiYPAmWUD3aOBA9xYgNPEHdQTxKDJi7B+WEvby5DT0ppTY9xVUjvLzslLxBMwi9LVsJPXkmjroa1RA9iHSavRi8gD1nWg09p5mYvRRHnbxpiZW8AatQPXf4rT0rvZA9mQz4vPGIpzwmu4E97j3LvImzOTx7DHA9fjqHPItmWD2I0BC9i6wBPW2FrDxJciK9siWiOwLbX7zO+Cc9i6pEvQyOgbw4AAK8oDwvvJXd8zuIXgi8qwiKPMJ9ez0p7I29525Bvd3F1Ltoe468kRG3vIqmyLucrma8sD8tva7I4LpRn1Y9IVc9PZNwory8bW29NSTXvWQYtby1VkI9IdefuUjtHL035KI8ydMFvNutAb0uVpq8UbKvPEjyizuTqx89V13cvL8qqjyxXe+6rcq1PB6ig73uXIY9nBigu4f8OLsNYae7x+oVPYt4v7zUl/g8fuR/vfFKh72ye+G89zycvDiDWD34r4s9Jd1VPCb1tLx2nRc9+tKAvBrFFj00H+e8gocwvJZdtDyaXvG7XSmFPFqzYLt4zcA8joEBOyVnXT0LKUa8YQDUPC1vBj09BIy7R/C2vFwoDLxaHia7O0c1vMYUUryoOHw8x9CDO8wLDT3v6F08VAbpPKRfJjwciIM82nsVOvbwxbwo0oo8fQEvvfscGT0oaom9kaVgvVUpmbuc+QK+05wRPaiP7TobUO068/KNvUChITzUAC480XMNvZiHlzxq0Jq81QOePKfEgj3k/WO8HBdIPF2WFb0e2cU76W+ju6y3Lj07cs880uoePCQCsrt9PMe8z2S+vB+Lf7w4q6u8+wdXPODo97sU9DC9My0nvdcHGD0jyb29AV1Xva2oDD03yCw7RLXEPGBCxLwgqRC8nr8SvD4vhr2rSqW8jSOnuxwgfbylwjg8mj4rvGTQijzzEYO8QLscvIAQBzvO4OS8YgeyvPGOP70htC099ycbvaTH7Lv/uHq8YOCmvIO3rTwP2oA8d8wVvKagiz2JNDG9DNcsvIJ9QL3yYo48+1ImOn5NmbnLUFm91VIZvQC46DyjDJO7eHtuu8dgSTzQ35m7cz98PX7oNjz1bu+8Ci6Nvba4F7viGmI9l+KqvD0dTDyXLJW9i82VvV48rb3TxAo9w1gGvdnGAj0QyyE9eNmnPGv2Nj3RPrU6I5XovG/ITT1gsTg8Q9G+OxrNIroAAp+7DeYFPRJYkbzGKbU8JALKPDxx4TvvMze9QmoyPUMAIj2TY489qHKOvRPVCL1nkJm9ZHCKvCRaaTzgZAM7oUxSO/Q3kjyku3a9idudOxRErLuiIa69t8sJvR2sIT2GuuC8xmXsvHELCT3aDCO8xhvUPOuEDz2rugI9BU+EPB2Zn7uJjoo8b3S0vOKrMD0eWIY7Qj4MvWlQnb10oJI92H6CvVoff7xQQuw8pQgqvXq2kb1HISa92AnRPG9rv7v2VZo8ajtYPU7CrzyWdE+7H56FPbIwZTz8h3477BnbO4hugjxWJbG8blQEPNfIzTxhUgo9UVtgPLg5KLyJ/Fa8UZagPODQBb2y2VQ8lRO9u3OK4TzVOey76waNvZAfITzJE2U9Lq3Eugeo6bwld2+9VfghvR2DKLoPKTO9DkQCvKftDLxp53c9Rwuqu+FQRbxmq2G8NcHBOj07ajwhX+S7lC1kvCDLXL0p3y69t2ldvRwdsjrh6Qm8KGuAu7Zhszt++z+8b341uuVxKj1YXhs80X11PVKacT2gI+E8vq60PBEY4byVuOm80W3SPHRPhzzbO6C8kwD1uuTudTthWz49RK6kuyOQMT2mI4a9V0iyPESpHj1zGYe99pNSvZcbCb3ycPI6",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1780819:2",
+      "content_sha256": "a3562e4d76f8129ac5030644f56ae87a730d95d1065ad7843cd37feb3b533c17",
+      "chars": 1079
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1780819:0",
+      "content_sha256": "c41796cd395d5cdb607b45244712d5a9469369f6e1c94ee8885b06151e5478a3",
+      "chars": 985
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3210545:0",
+      "content_sha256": "1eb9c59f51169e2559b640283d2df62863af877e2c0b1a33e63a8c95ea7c955b",
+      "chars": 971
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:1780819:1",
+      "content_sha256": "7143013ae5607ebd1086cecff55ea5343fd832a252164441cceec809f5b2652e",
+      "chars": 723
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11271123:0",
+      "content_sha256": "41bf236cc8b5dccf2480d205e0fbe610c1ab57a17b6ef656f4844154050881a0",
+      "chars": 1133
+     }
+    ],
+    "elapsed_s": 4.8929
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nEvidence passages from your search for \"HAND2 deregulation endometrial carcinogenesis mice studies\":\n<<<PASSAGES\n[P1] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nHAND2 methylation analysis of endometrial secretions collected using high vaginal swabs taken from women with postmenopausal bleeding specifically identified those patients with early stage endometrial cancer with both high sensitivity and high specificity (receiver operating characteristics area under the curve = 0.91 for stage 1A and 0.97 for higher than stage 1A). Finally, mice harbouring a Hand2 knock-out specifically in their endometrium were shown to develop precancerous endometrial lesions with increasing age, and these lesions also demonstrated a lack of PTEN expression. CONCLUSIONS HAND2 methylation is a common and crucial molecular alteration in endometrial cancer that could potentially be employed as a biomarker for early detection of endometrial cancer and as a predictor of treatment response. The true clinical utility of HAND2 DNA methylation, however, requires further validation in prospective studies. Please see later in the article for the Editors' Summary.\n\n[P2] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nBACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role of epigenetic factors in endometrial cancer development. METHODS AND FINDINGS Epigenome-wide methylation analysis of >27,000 CpG sites in endometrial cancer tissue samples (n = 64) and control samples (n = 23) revealed that HAND2 (a gene encoding a transcription factor expressed in the endometrial stroma) is one of the most commonly hypermethylated and silenced genes in endometrial cancer.\n\n[P3] KRAS gene amplification and overexpression but not mutation associates with aggressive and metastatic endometrial cancer\nBACKGROUND Three quarter of endometrial carcinomas are treated at early stage. Still, 15 to 20% of these patients experience recurrence, with little effect from systemic therapies. Homo sapiens v-Ki-ras2 Kirsten rat sarcoma viral oncogenes homologue (KRAS) mutations have been reported to have an important role in tumorigenesis for human cancers, but there is limited knowledge regarding clinical relevance of KRAS status in endometrial carcinomas. METHODS We have performed a comprehensive and integrated characterisation of genome-wide expression related to KRAS mutations and copy-number alterations in primary- and metastatic endometrial carcinoma lesions in relation to clinical and histopathological data. A primary investigation set and clinical validation set was applied, consisting of 414 primary tumours and 61 metastatic lesions totally.\n\n[P4] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nA novel integrative epigenome-transcriptome-interactome analysis further revealed that HAND2 is the hub of the most highly ranked differential methylation hotspot in endometrial cancer. These findings were validated using candidate gene methylation analysis in multiple clinical sample sets of tissue samples from a total of 272 additional women. Increased HAND2 methylation was a feature of premalignant endometrial lesions and was seen to parallel a decrease in RNA and protein levels. Furthermore, women with high endometrial HAND2 methylation in their premalignant lesions were less likely to respond to progesterone treatment.\n\n[P5] Molecular characterization of endometrial cancer: a correlative study assessing microsatellite instability, MLH1 hypermethylation, DNA mismatch repair protein expression, and PTEN, PIK3CA, KRAS, and BRAF mutation analysis.\nEndometrial cancer is associated with numeric and structural chromosomal abnormalities, microsatellite instability (MSI), and alterations that activate oncogenes and inactivate tumor suppressor genes. The aim of this study was to characterize a set of endometrial cancers using multiple molecular genetic and immunohistochemical techniques. Ninety-six cases were examined for genomic alterations by MSI, MLH1 promoter hypermethylation, p53 and mismatch repair protein expression (MLH1, MSH2, MSH6, PMS2), and PTEN, PIK3CA, KRAS, and BRAF mutation analysis. At least 1 alteration was identified in 48 of 87 (55%) specimens tested for PTEN, making it the most common abnormality in this study. A PIK3CA alteration was observed in 16 (17%) specimens. Twenty-nine of 94 (31%) MSI tested tumors exhibited an MSI-H phenotype. Of the 29 MSI-H cases, 24 (83%) were positive for methylation of the MLH1 promoter region.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5ecb74e1083b76ed51b3e8fad9f87341b1fbb48f898e58e761a4872e23a62638",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863833.800568,
+      "end_wall": 1792863864.293229,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1923,
+    "start_wall": 1792863833.800568,
+    "start_mono": 533390.550098083,
+    "end_wall": 1792863864.293229,
+    "end_mono": 533421.042779416,
+    "raw_response": "{\n  \"reasoning\": \"Multiple studies (P1, P2, P4) indicate that deregulation, specifically hypermethylation leading to silencing of HAND2, is frequently observed in endometrial cancer development in mice and humans, correlating with the progression towards premalignant lesions and impacting treatment response. This strongly suggests that HAND2 deregulation plays a crucial role in endometrial carcinogenesis.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30488079875,
+     "load_duration": 12677569791,
+     "prompt_eval_count": 1282,
+     "prompt_eval_duration": 8401288375,
+     "eval_count": 118,
+     "eval_duration": 8483151242,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:44:24.289407Z"
+    },
+    "elapsed_s": 30.493,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1923,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:1780819:2",
+     "scifact:1780819:0",
+     "scifact:1780819:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 390,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d3d13ed2f16283ec809e90f71a3aed8c06fa3f62987622967966bca3d6ea1be",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863827.27612,
+      "end_wall": 1792863833.098403,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863827.27612,
+    "start_mono": 533384.025645583,
+    "end_wall": 1792863833.098403,
+    "end_mono": 533389.847930958,
+    "raw_response": "{\"query\": \"Deregulation HAND2 endometrial carcinogenesis mice\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5818582083,
+     "load_duration": 2369930250,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 1190900750,
+     "eval_count": 17,
+     "eval_duration": 2105418040,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:43:53.097444Z"
+    },
+    "elapsed_s": 5.822,
+    "query_used": "Deregulation HAND2 endometrial carcinogenesis mice",
+    "query_source": "json",
+    "query_arrival_seq": 1923
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Deregulation HAND2 endometrial carcinogenesis mice",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1780819:2",
+       "score_q": 795
+      },
+      {
+       "passage_key": "scifact:1780819:0",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:3210545:0",
+       "score_q": 776
+      },
+      {
+       "passage_key": "scifact:16346504:1",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:16201748:0",
+       "score_q": 756
+      }
+     ],
+     "retrieval_sha256": "c3be1c7e4645cc0646db5eb6c696c6c403c7d4449642da25f27beba49a5af400"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c3be1c7e4645cc0646db5eb6c696c6c403c7d4449642da25f27beba49a5af400",
+    "query_embedding_sha256": "522ac042088dd89c41d0883b8296827ca9fca55a90e0d1b842f62be4c00cf834",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1780819:2",
+      "content_sha256": "a3562e4d76f8129ac5030644f56ae87a730d95d1065ad7843cd37feb3b533c17",
+      "chars": 1079
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1780819:0",
+      "content_sha256": "c41796cd395d5cdb607b45244712d5a9469369f6e1c94ee8885b06151e5478a3",
+      "chars": 985
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3210545:0",
+      "content_sha256": "1eb9c59f51169e2559b640283d2df62863af877e2c0b1a33e63a8c95ea7c955b",
+      "chars": 971
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16346504:1",
+      "content_sha256": "077f2e52f818178a61f1d2f3960c450ee9a7882590b4e20c8af6d32bf0e6a061",
+      "chars": 637
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:16201748:0",
+      "content_sha256": "b4a4bbd44b36860f537f6ba89e9bdf63650d39bd8fc921431c56218e813afc47",
+      "chars": 987
+     }
+    ],
+    "elapsed_s": 0.7345
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice.\n\nEvidence passages from your search for \"Deregulation HAND2 endometrial carcinogenesis mice\":\n<<<PASSAGES\n[P1] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nHAND2 methylation analysis of endometrial secretions collected using high vaginal swabs taken from women with postmenopausal bleeding specifically identified those patients with early stage endometrial cancer with both high sensitivity and high specificity (receiver operating characteristics area under the curve = 0.91 for stage 1A and 0.97 for higher than stage 1A). Finally, mice harbouring a Hand2 knock-out specifically in their endometrium were shown to develop precancerous endometrial lesions with increasing age, and these lesions also demonstrated a lack of PTEN expression. CONCLUSIONS HAND2 methylation is a common and crucial molecular alteration in endometrial cancer that could potentially be employed as a biomarker for early detection of endometrial cancer and as a predictor of treatment response. The true clinical utility of HAND2 DNA methylation, however, requires further validation in prospective studies. Please see later in the article for the Editors' Summary.\n\n[P2] Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development\nBACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role of epigenetic factors in endometrial cancer development. METHODS AND FINDINGS Epigenome-wide methylation analysis of >27,000 CpG sites in endometrial cancer tissue samples (n = 64) and control samples (n = 23) revealed that HAND2 (a gene encoding a transcription factor expressed in the endometrial stroma) is one of the most commonly hypermethylated and silenced genes in endometrial cancer.\n\n[P3] KRAS gene amplification and overexpression but not mutation associates with aggressive and metastatic endometrial cancer\nBACKGROUND Three quarter of endometrial carcinomas are treated at early stage. Still, 15 to 20% of these patients experience recurrence, with little effect from systemic therapies. Homo sapiens v-Ki-ras2 Kirsten rat sarcoma viral oncogenes homologue (KRAS) mutations have been reported to have an important role in tumorigenesis for human cancers, but there is limited knowledge regarding clinical relevance of KRAS status in endometrial carcinomas. METHODS We have performed a comprehensive and integrated characterisation of genome-wide expression related to KRAS mutations and copy-number alterations in primary- and metastatic endometrial carcinoma lesions in relation to clinical and histopathological data. A primary investigation set and clinical validation set was applied, consisting of 414 primary tumours and 61 metastatic lesions totally.\n\n[P4] LncRNA-GAS5 induces PTEN expression through inhibiting miR-103 in endometrial cancer cells\nFinally, we found that miR-103 mimic could decrease the mRNA and protein levels of PTEN through luciferase reporter assay and western blotting, and GAS5 plasmid may reverse this regulation effect in endometrial cancer cells. CONCLUSION In summary, we demonstrate that GAS5 acts as an tumor suppressor lncRNA in endometrial cancer. Through inhibiting the expression of miR-103, GAS5 significantly enhanced the expression of PTEN to promote cancer cell apoptosis, and, thus, could be an important mediator in the pathogenesis of endometrial cancer.\n\n[P5] Altered PTEN expression; a diagnostic marker for differentiating normal, hyperplastic and neoplastic endometrium\nBACKGROUND Different molecular alterations have been described in endometrioid endometrial carcinoma (EECA). Among them the most frequently altered is loss of the PTEN protein, a tumor suppressor gene. The purpose of this study was to evaluate the expression pattern of PTEN gene in normal, hyperplastic and neoplastic endometrium. METHODS In a study in a referral gynecologic hospital in Tehran, Iran, immunohistochemical (IHC) evaluation of PTEN was performed on 87 consecutive specimens to the following three groups; group A- normal proliferative endometrium(n = 29); group B- hyperplastic endometrium [including simple hyperplasia without atypia(n = 21) and complex hyperplasia with atypia (n = 8)] and group C- EECA(n = 29). Immunostaining of cells was analyzed by arbitrary quantitative methods according to both slide's area staining and intensity of color reaction.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "aecfc817293152490815055dd4c61f24af58ce681b9bef387ec3f62b65f77f05",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863833.833396,
+      "end_wall": 1792863867.0739892,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1924,
+    "start_wall": 1792863833.833396,
+    "start_mono": 533390.582925833,
+    "end_wall": 1792863867.0739892,
+    "end_mono": 533423.823542125,
+    "raw_response": "{\"reasoning\": \"The claim suggests that deregulation of HAND2 is a crucial step in endometrial carcinogenesis in mice. Evidence [P1] and [P2] show that HAND2 methylation is a common and crucial molecular alteration in endometrial cancer, while [P3] indicates that KRAS gene amplification and overexpression are associated with aggressive and metastatic endometrial cancer, not mutation. Evidence [P4] shows that lncRNA-GAS5 induces PTEN expression through inhibiting miR-103 in endometrial cancer cells. Evidence [P5] shows that altered PTEN expression serves as a diagnostic marker for differentiating normal, hyper\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 33235779583,
+     "load_duration": 14085451292,
+     "prompt_eval_count": 1265,
+     "prompt_eval_duration": 7990745334,
+     "eval_count": 170,
+     "eval_duration": 9665414877,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:44:27.070011Z"
+    },
+    "elapsed_s": 33.241,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1924,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:1780819:2",
+     "scifact:1780819:0",
+     "scifact:16346504:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "584dbaf82e746c849cd7022d2f68ca423480f94847835d77f8f66f4e1216ce6e",
+  "granite3.3:2b": "cb72cdeb9100b8dcd11b332c8706ffc090e5ac3b59f39f3632a3aa17c39c1d52",
+  "nemotron-mini:4b": "d0d067e0d05d9c5f2ed9b3729f11889b7a501fddedf6af5ba19b81e9c7961045",
+  "exaone3.5:7.8b": "2e676b10b0ae5cb9c872a89508fc4024f8143911604888665c7d37ebbe9ee63e",
+  "olmo2:7b": "c3be1c7e4645cc0646db5eb6c696c6c403c7d4449642da25f27beba49a5af400"
+ },
+ "item_start_wall": 1792863827.2754838,
+ "item_wall_s": 39.799,
+ "ollama_ps_samples": [
+  [
+   1792863827.276,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792863829.283,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792863831.295,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863833.305,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863835.317,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792863837.328,
+   [
+    "falcon3:3b",
+    "granite3.3:2b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863839.339,
+   [
+    "falcon3:3b",
+    "granite3.3:2b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863841.351,
+   [
+    "falcon3:3b",
+    "granite3.3:2b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863843.353,
+   [
+    "granite3.3:2b",
+    "falcon3:3b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863845.364,
+   [
+    "granite3.3:2b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863847.367,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863849.373,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863851.375,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863853.377,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863855.386,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863857.393,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863859.405,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863861.416,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863863.418,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863865.425,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ]
+ ]
+}

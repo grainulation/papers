@@ -1,0 +1,1216 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever110887",
+ "order": 110,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever110887",
+  "order": 110,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "On June 28, 1991, Seohyun was born."
+ },
+ "item_view_sha256": "c3ce0a34401edfdfb66166d797d266054ac2bffccf19708f1a353dffaa92feab",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "qwen2.5:3b",
+  "llama3.2:3b",
+  "phi3:mini",
+  "mistral",
+  "gemma2:2b"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b",
+  "mistral"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: On June 28, 1991, Seohyun was born.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f4f11a149dc77a9b690000b39d489759c921005103718bd2e2822d98ada56158",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693007.275917,
+      "end_wall": 1792693008.221165,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693007.275917,
+    "start_mono": 362564.469305875,
+    "end_wall": 1792693008.221165,
+    "end_mono": 362565.414557666,
+    "raw_response": "{\"query\": \"Seohyun Wikipedia birthdate June 28 1991\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 943429083,
+     "load_duration": 92310042,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 247274667,
+     "eval_count": 18,
+     "eval_duration": 413538124,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:48.220596Z"
+    },
+    "elapsed_s": 0.945,
+    "query_used": "Seohyun Wikipedia birthdate June 28 1991",
+    "query_source": "json",
+    "query_arrival_seq": 60
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Seohyun Wikipedia birthdate June 28 1991",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Hindi_Wikipedia:0",
+       "score_q": 11062
+      },
+      {
+       "passage_key": "fever17:Deon_Joubert:0",
+       "score_q": 10046
+      },
+      {
+       "passage_key": "fever17:Seohyun:0",
+       "score_q": 9990
+      },
+      {
+       "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+       "score_q": 9745
+      },
+      {
+       "passage_key": "fever17:Yiddish_Wikipedia:0",
+       "score_q": 9113
+      }
+     ],
+     "retrieval_sha256": "c44ffc62b5da7b8df456ad7378ef96d96a319aaef40d63762d5eb034e31db046"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c44ffc62b5da7b8df456ad7378ef96d96a319aaef40d63762d5eb034e31db046",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Hindi_Wikipedia:0",
+      "content_sha256": "ad12d0c48d2c1edda2cb9fb6d66ad13a74b168f6de3d4c9a44ad7e3397325edc",
+      "chars": 158
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Deon_Joubert:0",
+      "content_sha256": "79f888a41e17fa7d7c903e19fe223f9a13f3d2aa95f2eb70c8f57c455efde84a",
+      "chars": 193
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Seohyun:0",
+      "content_sha256": "36425f436391057ae24a3a6ef53c4d84b175de389eaf0ad29c19b9c36a1d2636",
+      "chars": 832
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+      "content_sha256": "f9fdf7aec7bbb6b464ab9ef563d9103bc962c85de2710de0e2f16caf99b02ba6",
+      "chars": 311
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Yiddish_Wikipedia:0",
+      "content_sha256": "e0dbdcc3645d6aedfb4f92c41101ec939521983a02e20749ceb072f749832ccb",
+      "chars": 178
+     }
+    ],
+    "elapsed_s": 0.0258
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: On June 28, 1991, Seohyun was born.\n\nEvidence passages from your search for \"Seohyun Wikipedia birthdate June 28 1991\":\n<<<PASSAGES\n[P1] Hindi Wikipedia\nThe Hindi Wikipedia is the Hindi language edition of Wikipedia . It was launched in July 2003 . As of 28 June 2016 , it had 104,325 articles .\n\n[P2] Deon Joubert\nDeon Joubert ( born June 1953ATP have his birthdate recorded as 10 June 1953 . ITF have 19 June 1953 as his birthdate . ) is a former professional tennis player from South Africa .\n\n[P3] Seohyun\nSeo Ju-hyun ( born June 28 , 1991 ) , known professionally as Seohyun , is a South Korean singer and actress . She debuted as a member of girl group Girls ' Generation ( and later its subgroup TTS ) in August 2007 , who went on to be one of the best-selling artists in South Korea and one of South Korea 's most popular girl groups worldwide . Apart from her group 's activities , she has established herself as an actress , notably through her participation in the original and Korean versions of stage musicals including Moon Embracing the Sun , Gone with the Wind and Mamma Mia . She also starred in the drama `` Moon Lovers : Scarlet Heart Ryeo '' . She debuted as a solo artist with her debut mini album , Do n't Say No , on January 17 , 2017 , making her the third Girls ' Generation member to debut as a solo artist .\n\n[P4] Don't Say No (Seohyun EP)\nDo n't Say No is the debut extended play by South Korean singer Seohyun . It was released by S.M. Entertainment on January 17 , 2017 . The EP marked the official solo debut of Seohyun , who had been known as a member of South Korean girl group Girls ' Generation for nearly ten years .\n\n[P5] Yiddish Wikipedia\nYiddish Wikipedia is the Yiddish-language version of Wikipedia . It was founded on March 3 , 2004 , and the first article was written November 28 of that year .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e59fa6a11feb92da3f2d26516ac1c26b3de696a80322f7dd32e6c7f1a00561d5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693008.2472188,
+      "end_wall": 1792693012.9678369,
+      "error": null
+     }
+    ],
+    "arrival_seq": 60,
+    "start_wall": 1792693008.2472188,
+    "start_mono": 362565.440613041,
+    "end_wall": 1792693012.9678369,
+    "end_mono": 362570.161255916,
+    "raw_response": "{\"reasoning\": \"The claim is supported because Seohyun's birthdate is explicitly stated as June 28, 1991, in two reliable sources, P3 and P4.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4718671250,
+     "load_duration": 86610292,
+     "prompt_eval_count": 709,
+     "prompt_eval_duration": 1849505791,
+     "eval_count": 65,
+     "eval_duration": 2147962255,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:52.96684Z"
+    },
+    "elapsed_s": 4.721,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 60,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Seohyun:0",
+     "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 125,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: On June 28, 1991, Seohyun was born.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f4f11a149dc77a9b690000b39d489759c921005103718bd2e2822d98ada56158",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693007.276698,
+      "end_wall": 1792693008.801783,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693007.276698,
+    "start_mono": 362564.470086333,
+    "end_wall": 1792693008.801783,
+    "end_mono": 362565.995178916,
+    "raw_response": "{\"query\": \"Seohyun birth date June 28 1991\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1523446250,
+     "load_duration": 95295500,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 241371833,
+     "eval_count": 21,
+     "eval_duration": 790078463,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:48.800831Z"
+    },
+    "elapsed_s": 1.525,
+    "query_used": "Seohyun birth date June 28 1991",
+    "query_source": "json",
+    "query_arrival_seq": 61
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Seohyun birth date June 28 1991",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Seohyun:0",
+       "score_q": 9990
+      },
+      {
+       "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+       "score_q": 9745
+      },
+      {
+       "passage_key": "fever17:M._G._Mukherjee:0",
+       "score_q": 9115
+      },
+      {
+       "passage_key": "fever17:Johann_Schobert:0",
+       "score_q": 9046
+      },
+      {
+       "passage_key": "fever17:Bransby_Key:1",
+       "score_q": 8832
+      }
+     ],
+     "retrieval_sha256": "2bcb4c61de82094a5e63bc3a857b32f9c9410b6134498a41d74d56244f55fa1a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2bcb4c61de82094a5e63bc3a857b32f9c9410b6134498a41d74d56244f55fa1a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Seohyun:0",
+      "content_sha256": "36425f436391057ae24a3a6ef53c4d84b175de389eaf0ad29c19b9c36a1d2636",
+      "chars": 832
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+      "content_sha256": "f9fdf7aec7bbb6b464ab9ef563d9103bc962c85de2710de0e2f16caf99b02ba6",
+      "chars": 311
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:M._G._Mukherjee:0",
+      "content_sha256": "945db01949eb862090be1fbb116f7d21459d4e36024ca9f11c6385f3918e8e72",
+      "chars": 147
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Johann_Schobert:0",
+      "content_sha256": "2861cb5710539ecdaa34260da3b6d1d501faf9bafb39b9ac89a1d9d37e579f9c",
+      "chars": 250
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bransby_Key:1",
+      "content_sha256": "6a1889acf47d78f09a3381a6960763153a918ed3f0fc4d54cfb8e76571d12504",
+      "chars": 259
+     }
+    ],
+    "elapsed_s": 0.0308
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: On June 28, 1991, Seohyun was born.\n\nEvidence passages from your search for \"Seohyun birth date June 28 1991\":\n<<<PASSAGES\n[P1] Seohyun\nSeo Ju-hyun ( born June 28 , 1991 ) , known professionally as Seohyun , is a South Korean singer and actress . She debuted as a member of girl group Girls ' Generation ( and later its subgroup TTS ) in August 2007 , who went on to be one of the best-selling artists in South Korea and one of South Korea 's most popular girl groups worldwide . Apart from her group 's activities , she has established herself as an actress , notably through her participation in the original and Korean versions of stage musicals including Moon Embracing the Sun , Gone with the Wind and Mamma Mia . She also starred in the drama `` Moon Lovers : Scarlet Heart Ryeo '' . She debuted as a solo artist with her debut mini album , Do n't Say No , on January 17 , 2017 , making her the third Girls ' Generation member to debut as a solo artist .\n\n[P2] Don't Say No (Seohyun EP)\nDo n't Say No is the debut extended play by South Korean singer Seohyun . It was released by S.M. Entertainment on January 17 , 2017 . The EP marked the official solo debut of Seohyun , who had been known as a member of South Korean girl group Girls ' Generation for nearly ten years .\n\n[P3] M. G. Mukherjee\nM. G. Mukherjee ( date of birth unknown , died 28 February 2004 ) was an Indian cricket umpire . He stood in one ODI game in 1986 .\n\n[P4] Johann Schobert\nJohann Schobert ( c. 1720 , 1735 or 1740 -- 28 August 1767 ) was a composer and harpsichordist . His date of birth is given variously as about 1720 , about 1735 , or about 1740 , his place of birth as Silesia , Alsace , or Nuremberg .\n\n[P5] Bransby Key\nMina Julia Key born on 6 October 1875 , married Caleb George Warner Atkinson on 19 June 1900 , St Johns Cathedral ; Edmund Bransby Key born on 11 May 1878 ; Evelyn Margaret Key - date of birth unknown ; Ellen Georgina Key - date of birth unknown .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1630be8bfe001fdb1f14ad47d4446f3b830234c7d92bb2eea8f7713c312abd1a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693008.8328562,
+      "end_wall": 1792693013.6526358,
+      "error": null
+     }
+    ],
+    "arrival_seq": 61,
+    "start_wall": 1792693008.8328562,
+    "start_mono": 362566.026253,
+    "end_wall": 1792693013.6526358,
+    "end_mono": 362570.846058291,
+    "raw_response": "{\"reasoning\": \"The evidence passage explicitly states that Seohyun was born on June 28, 1991. This supports the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4816206042,
+     "load_duration": 92481500,
+     "prompt_eval_count": 798,
+     "prompt_eval_duration": 1646930333,
+     "eval_count": 62,
+     "eval_duration": 2003372288,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:53.650295Z"
+    },
+    "elapsed_s": 4.82,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 61,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Seohyun:0",
+     "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+     "fever17:M._G._Mukherjee:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 103,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: On June 28, 1991, Seohyun was born.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f4f11a149dc77a9b690000b39d489759c921005103718bd2e2822d98ada56158",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693007.276167,
+      "end_wall": 1792693011.323361,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693007.276167,
+    "start_mono": 362564.46955525,
+    "end_wall": 1792693011.323361,
+    "end_mono": 362568.516768875,
+    "raw_response": "{\"query\": \"Seohyun birthdate June 28, 1991\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4045106958,
+     "load_duration": 1388399500,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 1131351459,
+     "eval_count": 24,
+     "eval_duration": 1462048584,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:51.322245Z"
+    },
+    "elapsed_s": 4.047,
+    "query_used": "Seohyun birthdate June 28, 1991",
+    "query_source": "json",
+    "query_arrival_seq": 62
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Seohyun birthdate June 28, 1991",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Deon_Joubert:0",
+       "score_q": 10046
+      },
+      {
+       "passage_key": "fever17:Seohyun:0",
+       "score_q": 9990
+      },
+      {
+       "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+       "score_q": 9745
+      },
+      {
+       "passage_key": "fever17:Disappearance_of_Sherlyn_Cadapan_and_Karen_Empeño:0",
+       "score_q": 8386
+      },
+      {
+       "passage_key": "fever17:Seohyun_discography:0",
+       "score_q": 8187
+      }
+     ],
+     "retrieval_sha256": "3cd6719c2c217ce69f6ad32d431dcca20d1dc22431f998c531f3aa9d5e11a2dc"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3cd6719c2c217ce69f6ad32d431dcca20d1dc22431f998c531f3aa9d5e11a2dc",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Deon_Joubert:0",
+      "content_sha256": "79f888a41e17fa7d7c903e19fe223f9a13f3d2aa95f2eb70c8f57c455efde84a",
+      "chars": 193
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Seohyun:0",
+      "content_sha256": "36425f436391057ae24a3a6ef53c4d84b175de389eaf0ad29c19b9c36a1d2636",
+      "chars": 832
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+      "content_sha256": "f9fdf7aec7bbb6b464ab9ef563d9103bc962c85de2710de0e2f16caf99b02ba6",
+      "chars": 311
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Disappearance_of_Sherlyn_Cadapan_and_Karen_Empeño:0",
+      "content_sha256": "432a3c3ead157c3578d40b64ea274d7b75646fadb5d75221c7f5571ece6ab7b4",
+      "chars": 220
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Seohyun_discography:0",
+      "content_sha256": "c22fc59cf99874d61f4e16bb7a57c63f2c0c259ae40aca5a0b647c5ba49e923a",
+      "chars": 395
+     }
+    ],
+    "elapsed_s": 0.0337
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: On June 28, 1991, Seohyun was born.\n\nEvidence passages from your search for \"Seohyun birthdate June 28, 1991\":\n<<<PASSAGES\n[P1] Deon Joubert\nDeon Joubert ( born June 1953ATP have his birthdate recorded as 10 June 1953 . ITF have 19 June 1953 as his birthdate . ) is a former professional tennis player from South Africa .\n\n[P2] Seohyun\nSeo Ju-hyun ( born June 28 , 1991 ) , known professionally as Seohyun , is a South Korean singer and actress . She debuted as a member of girl group Girls ' Generation ( and later its subgroup TTS ) in August 2007 , who went on to be one of the best-selling artists in South Korea and one of South Korea 's most popular girl groups worldwide . Apart from her group 's activities , she has established herself as an actress , notably through her participation in the original and Korean versions of stage musicals including Moon Embracing the Sun , Gone with the Wind and Mamma Mia . She also starred in the drama `` Moon Lovers : Scarlet Heart Ryeo '' . She debuted as a solo artist with her debut mini album , Do n't Say No , on January 17 , 2017 , making her the third Girls ' Generation member to debut as a solo artist .\n\n[P3] Don't Say No (Seohyun EP)\nDo n't Say No is the debut extended play by South Korean singer Seohyun . It was released by S.M. Entertainment on January 17 , 2017 . The EP marked the official solo debut of Seohyun , who had been known as a member of South Korean girl group Girls ' Generation for nearly ten years .\n\n[P4] Disappearance of Sherlyn Cadapan and Karen Empeño\nSherlyn Cadapan ( birthdate unknown ~ June 26 , 2006 ) and Karen Empeño ( July 22 , 1983 ~ June 26 , 2006 ) were both disappeared in Hagonoy , Bulacan on June 26 , 2006 .\n\n[P5] Seohyun discography\nSeohyun ( born Seo Joo-hyun ) is a South Korean singer , member of Girls ' Generation and its subgroup Girls ' Generation-TTS . Since debuting in 2007 , she has collaborated with various artists and released several original soundtracks for South Korean TV series . Her career as a solo singer began in January 2017 with the release of her debut extended play Do n't Say No .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "38b0189a31f8e4bc2912dac2ae8f94dcd726988de552f0ff8eed04457f6b7ca7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693011.357389,
+      "end_wall": 1792693024.377703,
+      "error": null
+     }
+    ],
+    "arrival_seq": 62,
+    "start_wall": 1792693011.357389,
+    "start_mono": 362568.550799083,
+    "end_wall": 1792693024.377703,
+    "end_mono": 362581.571182916,
+    "raw_response": "{\n  \"reasoning\": \"Seohyun's birthdate is confirmed to be June 28, 1991, as stated in passage P2.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\"],\n  \"confidence\": \"high\"\n}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13017614291,
+     "load_duration": 4709837875,
+     "prompt_eval_count": 908,
+     "prompt_eval_duration": 3543562042,
+     "eval_count": 73,
+     "eval_duration": 4596286545,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:04.375812Z"
+    },
+    "elapsed_s": 13.02,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 62,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Seohyun:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 78,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: On June 28, 1991, Seohyun was born.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f4f11a149dc77a9b690000b39d489759c921005103718bd2e2822d98ada56158",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693007.2756338,
+      "end_wall": 1792693020.507614,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693007.2756338,
+    "start_mono": 362564.469023,
+    "end_wall": 1792693020.507614,
+    "end_mono": 362577.70107175,
+    "raw_response": "{\"query\": \"Seohyun birth date June 28 1991 Wikipedia\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13229088375,
+     "load_duration": 7415120083,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 394995208,
+     "eval_count": 21,
+     "eval_duration": 5173305169,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:00.506159Z"
+    },
+    "elapsed_s": 13.232,
+    "query_used": "Seohyun birth date June 28 1991 Wikipedia",
+    "query_source": "json",
+    "query_arrival_seq": 64
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Seohyun birth date June 28 1991 Wikipedia",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Hindi_Wikipedia:0",
+       "score_q": 11062
+      },
+      {
+       "passage_key": "fever17:Seohyun:0",
+       "score_q": 9990
+      },
+      {
+       "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+       "score_q": 9745
+      },
+      {
+       "passage_key": "fever17:Judaeo-Spanish_Wikipedia:0",
+       "score_q": 9604
+      },
+      {
+       "passage_key": "fever17:M._G._Mukherjee:0",
+       "score_q": 9115
+      }
+     ],
+     "retrieval_sha256": "527a44c7d9e613cf2552f8ad70c7f369f3afd2ace0ee6a0dfebc81d4132c6e71"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "527a44c7d9e613cf2552f8ad70c7f369f3afd2ace0ee6a0dfebc81d4132c6e71",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Hindi_Wikipedia:0",
+      "content_sha256": "ad12d0c48d2c1edda2cb9fb6d66ad13a74b168f6de3d4c9a44ad7e3397325edc",
+      "chars": 158
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Seohyun:0",
+      "content_sha256": "36425f436391057ae24a3a6ef53c4d84b175de389eaf0ad29c19b9c36a1d2636",
+      "chars": 832
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+      "content_sha256": "f9fdf7aec7bbb6b464ab9ef563d9103bc962c85de2710de0e2f16caf99b02ba6",
+      "chars": 311
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Judaeo-Spanish_Wikipedia:0",
+      "content_sha256": "97763e11725018ea90eee0de106bb1cc603186c4ed27b0a548821f9f29123f9b",
+      "chars": 211
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:M._G._Mukherjee:0",
+      "content_sha256": "945db01949eb862090be1fbb116f7d21459d4e36024ca9f11c6385f3918e8e72",
+      "chars": 147
+     }
+    ],
+    "elapsed_s": 0.0366
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: On June 28, 1991, Seohyun was born.\n\nEvidence passages from your search for \"Seohyun birth date June 28 1991 Wikipedia\":\n<<<PASSAGES\n[P1] Hindi Wikipedia\nThe Hindi Wikipedia is the Hindi language edition of Wikipedia . It was launched in July 2003 . As of 28 June 2016 , it had 104,325 articles .\n\n[P2] Seohyun\nSeo Ju-hyun ( born June 28 , 1991 ) , known professionally as Seohyun , is a South Korean singer and actress . She debuted as a member of girl group Girls ' Generation ( and later its subgroup TTS ) in August 2007 , who went on to be one of the best-selling artists in South Korea and one of South Korea 's most popular girl groups worldwide . Apart from her group 's activities , she has established herself as an actress , notably through her participation in the original and Korean versions of stage musicals including Moon Embracing the Sun , Gone with the Wind and Mamma Mia . She also starred in the drama `` Moon Lovers : Scarlet Heart Ryeo '' . She debuted as a solo artist with her debut mini album , Do n't Say No , on January 17 , 2017 , making her the third Girls ' Generation member to debut as a solo artist .\n\n[P3] Don't Say No (Seohyun EP)\nDo n't Say No is the debut extended play by South Korean singer Seohyun . It was released by S.M. Entertainment on January 17 , 2017 . The EP marked the official solo debut of Seohyun , who had been known as a member of South Korean girl group Girls ' Generation for nearly ten years .\n\n[P4] Judaeo-Spanish Wikipedia\nJudaeo-Spanish Wikipedia or Ladino Wikipedia is the Judaeo-Spanish-language version of Wikipedia . It was approved on December 21 , 2006 , but its earliest articles date to August 2006 .\n\n[P5] M. G. Mukherjee\nM. G. Mukherjee ( date of birth unknown , died 28 February 2004 ) was an Indian cricket umpire . He stood in one ODI game in 1986 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6e41939839fe7a9ad27025036c98be7c4a5d8a7c1e9cf0e0d6c3d4cd9ed53039",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693020.5446022,
+      "end_wall": 1792693026.332562,
+      "error": null
+     }
+    ],
+    "arrival_seq": 63,
+    "start_wall": 1792693020.5446022,
+    "start_mono": 362577.738061875,
+    "end_wall": 1792693026.332562,
+    "end_mono": 362583.526051458,
+    "raw_response": "{\n  \"reasoning\": \"The evidence provided includes a passage about Seohyun's birth date, which directly supports the claim that Seohyun was born on June 28, 1991.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [ \"P2\" ],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5784111000,
+     "load_duration": 89371417,
+     "prompt_eval_count": 737,
+     "prompt_eval_duration": 1340831875,
+     "eval_count": 72,
+     "eval_duration": 3488637370,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:06.330005Z"
+    },
+    "elapsed_s": 5.788,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 63,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Seohyun:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 142,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: On June 28, 1991, Seohyun was born.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f4f11a149dc77a9b690000b39d489759c921005103718bd2e2822d98ada56158",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693007.276525,
+      "end_wall": 1792693014.9752991,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693007.276525,
+    "start_mono": 362564.469913125,
+    "end_wall": 1792693014.9752991,
+    "end_mono": 362572.168727333,
+    "raw_response": "{\"query\": \"Seohyun birth date June 28, 1991 Wikipedia\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7696879792,
+     "load_duration": 5925410917,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 722603291,
+     "eval_count": 23,
+     "eval_duration": 988131998,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:16:54.97422Z"
+    },
+    "elapsed_s": 7.699,
+    "query_used": "Seohyun birth date June 28, 1991 Wikipedia",
+    "query_source": "json",
+    "query_arrival_seq": 63
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Seohyun birth date June 28, 1991 Wikipedia",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Hindi_Wikipedia:0",
+       "score_q": 11062
+      },
+      {
+       "passage_key": "fever17:Seohyun:0",
+       "score_q": 9990
+      },
+      {
+       "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+       "score_q": 9745
+      },
+      {
+       "passage_key": "fever17:Judaeo-Spanish_Wikipedia:0",
+       "score_q": 9604
+      },
+      {
+       "passage_key": "fever17:M._G._Mukherjee:0",
+       "score_q": 9115
+      }
+     ],
+     "retrieval_sha256": "1a1f5cf25ef5ded6b8e3c6beae85a74a9749b04c29484eedf6714b0d8b9f9b74"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1a1f5cf25ef5ded6b8e3c6beae85a74a9749b04c29484eedf6714b0d8b9f9b74",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Hindi_Wikipedia:0",
+      "content_sha256": "ad12d0c48d2c1edda2cb9fb6d66ad13a74b168f6de3d4c9a44ad7e3397325edc",
+      "chars": 158
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Seohyun:0",
+      "content_sha256": "36425f436391057ae24a3a6ef53c4d84b175de389eaf0ad29c19b9c36a1d2636",
+      "chars": 832
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Don't_Say_No_-LRB-Seohyun_EP-RRB-:0",
+      "content_sha256": "f9fdf7aec7bbb6b464ab9ef563d9103bc962c85de2710de0e2f16caf99b02ba6",
+      "chars": 311
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Judaeo-Spanish_Wikipedia:0",
+      "content_sha256": "97763e11725018ea90eee0de106bb1cc603186c4ed27b0a548821f9f29123f9b",
+      "chars": 211
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:M._G._Mukherjee:0",
+      "content_sha256": "945db01949eb862090be1fbb116f7d21459d4e36024ca9f11c6385f3918e8e72",
+      "chars": 147
+     }
+    ],
+    "elapsed_s": 0.0282
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: On June 28, 1991, Seohyun was born.\n\nEvidence passages from your search for \"Seohyun birth date June 28, 1991 Wikipedia\":\n<<<PASSAGES\n[P1] Hindi Wikipedia\nThe Hindi Wikipedia is the Hindi language edition of Wikipedia . It was launched in July 2003 . As of 28 June 2016 , it had 104,325 articles .\n\n[P2] Seohyun\nSeo Ju-hyun ( born June 28 , 1991 ) , known professionally as Seohyun , is a South Korean singer and actress . She debuted as a member of girl group Girls ' Generation ( and later its subgroup TTS ) in August 2007 , who went on to be one of the best-selling artists in South Korea and one of South Korea 's most popular girl groups worldwide . Apart from her group 's activities , she has established herself as an actress , notably through her participation in the original and Korean versions of stage musicals including Moon Embracing the Sun , Gone with the Wind and Mamma Mia . She also starred in the drama `` Moon Lovers : Scarlet Heart Ryeo '' . She debuted as a solo artist with her debut mini album , Do n't Say No , on January 17 , 2017 , making her the third Girls ' Generation member to debut as a solo artist .\n\n[P3] Don't Say No (Seohyun EP)\nDo n't Say No is the debut extended play by South Korean singer Seohyun . It was released by S.M. Entertainment on January 17 , 2017 . The EP marked the official solo debut of Seohyun , who had been known as a member of South Korean girl group Girls ' Generation for nearly ten years .\n\n[P4] Judaeo-Spanish Wikipedia\nJudaeo-Spanish Wikipedia or Ladino Wikipedia is the Judaeo-Spanish-language version of Wikipedia . It was approved on December 21 , 2006 , but its earliest articles date to August 2006 .\n\n[P5] M. G. Mukherjee\nM. G. Mukherjee ( date of birth unknown , died 28 February 2004 ) was an Indian cricket umpire . He stood in one ODI game in 1986 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "91160e92e73c3ec59a66bb0b58d41ddcfc282de69d7496899e8ea3401fc656d8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693015.003818,
+      "end_wall": 1792693026.337999,
+      "error": null
+     }
+    ],
+    "arrival_seq": 64,
+    "start_wall": 1792693015.003818,
+    "start_mono": 362572.197248541,
+    "end_wall": 1792693026.337999,
+    "end_mono": 362583.531489583,
+    "raw_response": "{\"reasoning\": \"The claim states that Seohyun was born on June 28, 1991. Passage [P2] provides the birth date of Seohyun as June 28, 1991. Therefore, the claim is supported by the evidence.\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P2\"],\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11330851791,
+     "load_duration": 14376791,
+     "prompt_eval_count": 807,
+     "prompt_eval_duration": 4331498416,
+     "eval_count": 92,
+     "eval_duration": 6742268628,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:06.33585Z"
+    },
+    "elapsed_s": 11.334,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 64,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Seohyun:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 173,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "c44ffc62b5da7b8df456ad7378ef96d96a319aaef40d63762d5eb034e31db046",
+  "gemma2:2b": "2bcb4c61de82094a5e63bc3a857b32f9c9410b6134498a41d74d56244f55fa1a",
+  "phi3:mini": "3cd6719c2c217ce69f6ad32d431dcca20d1dc22431f998c531f3aa9d5e11a2dc",
+  "qwen2.5:3b": "527a44c7d9e613cf2552f8ad70c7f369f3afd2ace0ee6a0dfebc81d4132c6e71",
+  "mistral": "1a1f5cf25ef5ded6b8e3c6beae85a74a9749b04c29484eedf6714b0d8b9f9b74"
+ },
+ "item_start_wall": 1792693007.275132,
+ "item_wall_s": 19.063,
+ "ollama_ps_samples": [
+  [
+   1792693007.275,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693009.279,
+   [
+    "llama3.2:3b",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693011.28,
+   [
+    "llama3.2:3b",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693013.287,
+   [
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792693015.293,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693017.299,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693019.306,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693021.31,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693023.313,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693025.318,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

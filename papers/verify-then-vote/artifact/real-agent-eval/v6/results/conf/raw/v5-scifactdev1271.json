@@ -1,0 +1,1324 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1271",
+ "order": 824,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1271",
+  "order": 824,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI."
+ },
+ "item_view_sha256": "3a1739a01a5906b535f3b2c6c0e370a2ca6fbdc5c7d1ff0e3933a6d460c528a9",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d97e2e148750cf0030840e8f8b67008ffde9bd95daf9cce7aad901090c246c96",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876709.903389,
+      "end_wall": 1792876711.770637,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876709.903389,
+    "start_mono": 546266.5572555,
+    "end_wall": 1792876711.770637,
+    "end_mono": 546268.4244995,
+    "raw_response": "{\"query\": \"cardiac involvement amyloidosis degree transmurality late gadolinium enhancement MRI\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1865097292,
+     "load_duration": 123237292,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 444446833,
+     "eval_count": 22,
+     "eval_duration": 1018731625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:31.769824Z"
+    },
+    "elapsed_s": 1.867,
+    "query_used": "cardiac involvement amyloidosis degree transmurality late gadolinium enhancement MRI",
+    "query_source": "json",
+    "query_arrival_seq": 4120
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "cardiac involvement amyloidosis degree transmurality late gadolinium enhancement MRI",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13768432:0",
+       "score_q": 858
+      },
+      {
+       "passage_key": "scifact:13768432:1",
+       "score_q": 758
+      },
+      {
+       "passage_key": "scifact:38040186:1",
+       "score_q": 736
+      },
+      {
+       "passage_key": "scifact:21323758:1",
+       "score_q": 716
+      },
+      {
+       "passage_key": "scifact:2496002:1",
+       "score_q": 716
+      }
+     ],
+     "retrieval_sha256": "c6e75430d15d98783306a3eacf35f2bbc149c1fbcc9831739ccbc6885a82be7f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c6e75430d15d98783306a3eacf35f2bbc149c1fbcc9831739ccbc6885a82be7f",
+    "query_embedding_sha256": "f62bff88ec9d723c174d143ce3bad5e55e1d56cd488fbace1da02498d9b0661a",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13768432:0",
+      "content_sha256": "41a12e2ab8ead1d7f5ab2ab24bd6ab6661e3f5a248089b86621a7e1b24a188f9",
+      "chars": 1105
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13768432:1",
+      "content_sha256": "ea472b9968eead3faa0b112a6ec1198de9f9dff82672d276aebbad0bf4d2ca3a",
+      "chars": 1006
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:38040186:1",
+      "content_sha256": "5f6390b4a41ac032a3f2c45e255c13824a42a2df20ba19dafa05db1026a91f3c",
+      "chars": 702
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21323758:1",
+      "content_sha256": "ab7b81dabdf49c338e2716b553617e1d8ca54cfd88bbcd707fa7d277bd448ba7",
+      "chars": 1017
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2496002:1",
+      "content_sha256": "0ad409789a47b532ed84b913a97dcdd9e50a77aceba16dffc2ae545ddac3ca22",
+      "chars": 1103
+     }
+    ],
+    "elapsed_s": 4.2352
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nEvidence passages from your search for \"cardiac involvement amyloidosis degree transmurality late gadolinium enhancement MRI\":\n<<<PASSAGES\n[P1] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nBACKGROUND The prognosis and treatment of the 2 main types of cardiac amyloidosis, immunoglobulin light chain (AL) and transthyretin (ATTR) amyloidosis, are substantially influenced by cardiac involvement. Cardiovascular magnetic resonance with late gadolinium enhancement (LGE) is a reference standard for the diagnosis of cardiac amyloidosis, but its potential for stratifying risk is unknown. METHODS AND RESULTS Two hundred fifty prospectively recruited subjects, 122 patients with ATTR amyloid, 9 asymptomatic mutation carriers, and 119 patients with AL amyloidosis, underwent LGE cardiovascular magnetic resonance. Subjects were followed up for a mean of 24±13 months. LGE was performed with phase-sensitive inversion recovery (PSIR) and without (magnitude only). These were compared with extracellular volume measured with T1 mapping. PSIR was superior to magnitude-only inversion recovery LGE because PSIR always nulled the tissue (blood or myocardium) with the longest T1 (least gadolinium).\n\n[P2] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nLGE was classified into 3 patterns: none, subendocardial, and transmural, which were associated with increasing amyloid burden as defined by extracellular volume (P<0.0001), with transitions from none to subendocardial LGE at an extracellular volume of 0.40 to 0.43 (AL) and 0.39 to 0.40 (ATTR) and to transmural at 0.48 to 0.55 (AL) and 0.47 to 0.59 (ATTR). Sixty-seven patients (27%) died. Transmural LGE predicted death (hazard ratio, 5.4; 95% confidence interval, 2.1-13.7; P<0.0001) and remained independent after adjustment for N-terminal pro-brain natriuretic peptide, ejection fraction, stroke volume index, E/E', and left ventricular mass index (hazard ratio, 4.1; 95% confidence interval, 1.3-13.1; P<0.05). CONCLUSIONS There is a continuum of cardiac involvement in systemic AL and ATTR amyloidosis. Transmural LGE is determined reliably by PSIR and represents advanced cardiac amyloidosis.\n\n[P3] Familial amyloidosis: a study of 52 North American-born patients examined during a 30-year period.\nThe presence of cardiomyopathy and an interactive variable of age and the presence of autonomic neuropathy were powerful predictors of survival. Of the 52 patients, 22 died, 12 (55%) of cardiac failure or cardiac arrhythmia. Nine patients (41%) died of inanition in conjunction with progressive peripheral or autonomic neuropathy. Transthyretin was identified by immunohistochemical studies in 31 of the 34 tissue specimens tested. A transthyretin mutation was identified in 24 of the 31. A transthyretin mutation was found in five additional patients for whom tissue was unavailable for immunostaining.\n\n[P4] Monitoring effectiveness and safety of Tafamidis in transthyretin amyloidosis in Italy: a longitudinal multicenter study in a non-endemic area\nOne-third of patients did not show significant progression along 36 months, independently from mutation type and disease stage. Neurological function worsened particularly in the first 6 months but progression slowed significantly thereafter. Autonomic function remained stable in 33 %, worsened in 56 % and improved in 10 %. Fifteen percent of patients showed cardiac disease progression and 30 % new onset of cardiomyopathy. Overall, Tafamidis was not able to prevent functional progression of the disease in 23 (43 %) subjects, including 16 patients who worsened in their walking ability and 12 patients who reached a higher NYHA score during the follow-up period. A higher mBMI at baseline was associated with better preservation of neurological function. In conclusion, neuropathy and cardiomyopathy progressed in a significant proportion of patients despite treatment.\n\n[P5] Familial amyloidotic polyneuropathy: current and emerging treatment options for transthyretin-mediated amyloidosis\nThe symptoms include orthostatic hypotension, constipation alternating with diarrhea, erectile dysfunction, anhydrosis, and urinary retention or incontinence. Later, involvement of motor fibers causes rapidly progressive weakness and gait disturbances. In addition to the peripheral nervous system, the heart and the gut are frequently affected. Onset of symptoms is bimodal, with one peak at age 33 years (early onset) and another distinct peak in the sixth decade of life (late onset). The course of TTR-FAP is uniformly progressive and fatal. Death occurs an average of 10.8 years after the onset of symptoms in Portuguese patients, and 7.3 years in late-onset Japanese patients. Common causes include cachexia, cardiac failure, arrhythmia, and secondary infections. Liver transplantation is the standard therapy for patients who are in a clinical condition good enough to tolerate this intervention because it stops progression of neuropathy by removing the main source of mutant TTR.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f9c25632a59dfb693dd8580647c04a778508afa2f55063dbf46904f6f0f988e7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876716.006505,
+      "end_wall": 1792876734.97095,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4120,
+    "start_wall": 1792876716.006505,
+    "start_mono": 546272.660358541,
+    "end_wall": 1792876734.97095,
+    "end_mono": 546291.624711291,
+    "raw_response": "{\"reasoning\": \"The claim is supported by the evidence that transmural late gadolinium enhancement (LGE) in MRI is associated with increasing amyloid burden and predictive of death in cardiac amyloidosis, as shown in multiple studies.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18960876875,
+     "load_duration": 6345140042,
+     "prompt_eval_count": 1451,
+     "prompt_eval_duration": 3245656624,
+     "eval_count": 87,
+     "eval_duration": 8415789999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:54.968889Z"
+    },
+    "elapsed_s": 18.964,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4120,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:13768432:1",
+     "scifact:38040186:1",
+     "scifact:21323758:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 218,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d97e2e148750cf0030840e8f8b67008ffde9bd95daf9cce7aad901090c246c96",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876709.9032478,
+      "end_wall": 1792876715.137027,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876709.9032478,
+    "start_mono": 546266.557115125,
+    "end_wall": 1792876715.137027,
+    "end_mono": 546271.790882333,
+    "raw_response": "{\"query\": \"amyloidosis cardiac involvement MRI transmurality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5231623000,
+     "load_duration": 3940192125,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 664955250,
+     "eval_count": 15,
+     "eval_duration": 493290462,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:35.136041Z"
+    },
+    "elapsed_s": 5.234,
+    "query_used": "amyloidosis cardiac involvement MRI transmurality",
+    "query_source": "json",
+    "query_arrival_seq": 4123
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "amyloidosis cardiac involvement MRI transmurality",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13768432:0",
+       "score_q": 9474
+      },
+      {
+       "passage_key": "scifact:13768432:1",
+       "score_q": 8793
+      },
+      {
+       "passage_key": "scifact:5597586:1",
+       "score_q": 7827
+      },
+      {
+       "passage_key": "scifact:38040186:0",
+       "score_q": 7719
+      },
+      {
+       "passage_key": "scifact:46266579:0",
+       "score_q": 7510
+      }
+     ],
+     "retrieval_sha256": "a48514cdfdec2f1987e4dfe5d178eff838df56cf1a378ca06bae9f398a1d55aa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a48514cdfdec2f1987e4dfe5d178eff838df56cf1a378ca06bae9f398a1d55aa",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13768432:0",
+      "content_sha256": "41a12e2ab8ead1d7f5ab2ab24bd6ab6661e3f5a248089b86621a7e1b24a188f9",
+      "chars": 1105
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13768432:1",
+      "content_sha256": "ea472b9968eead3faa0b112a6ec1198de9f9dff82672d276aebbad0bf4d2ca3a",
+      "chars": 1006
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5597586:1",
+      "content_sha256": "69d02c32311bb87a16e9b05a249ebb53b8c6d536a41fff17083b194b5312648e",
+      "chars": 818
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:38040186:0",
+      "content_sha256": "dfc95f3109f200093c047ad1b4988a104c072430c48e3b1ea8f07b1153db5f04",
+      "chars": 1023
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:46266579:0",
+      "content_sha256": "22341afd3da69099c97ba7258874a3563ac6c688324499e3b0f99d185c7d07df",
+      "chars": 1050
+     }
+    ],
+    "elapsed_s": 0.0021
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nEvidence passages from your search for \"amyloidosis cardiac involvement MRI transmurality\":\n<<<PASSAGES\n[P1] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nBACKGROUND The prognosis and treatment of the 2 main types of cardiac amyloidosis, immunoglobulin light chain (AL) and transthyretin (ATTR) amyloidosis, are substantially influenced by cardiac involvement. Cardiovascular magnetic resonance with late gadolinium enhancement (LGE) is a reference standard for the diagnosis of cardiac amyloidosis, but its potential for stratifying risk is unknown. METHODS AND RESULTS Two hundred fifty prospectively recruited subjects, 122 patients with ATTR amyloid, 9 asymptomatic mutation carriers, and 119 patients with AL amyloidosis, underwent LGE cardiovascular magnetic resonance. Subjects were followed up for a mean of 24±13 months. LGE was performed with phase-sensitive inversion recovery (PSIR) and without (magnitude only). These were compared with extracellular volume measured with T1 mapping. PSIR was superior to magnitude-only inversion recovery LGE because PSIR always nulled the tissue (blood or myocardium) with the longest T1 (least gadolinium).\n\n[P2] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nLGE was classified into 3 patterns: none, subendocardial, and transmural, which were associated with increasing amyloid burden as defined by extracellular volume (P<0.0001), with transitions from none to subendocardial LGE at an extracellular volume of 0.40 to 0.43 (AL) and 0.39 to 0.40 (ATTR) and to transmural at 0.48 to 0.55 (AL) and 0.47 to 0.59 (ATTR). Sixty-seven patients (27%) died. Transmural LGE predicted death (hazard ratio, 5.4; 95% confidence interval, 2.1-13.7; P<0.0001) and remained independent after adjustment for N-terminal pro-brain natriuretic peptide, ejection fraction, stroke volume index, E/E', and left ventricular mass index (hazard ratio, 4.1; 95% confidence interval, 1.3-13.1; P<0.05). CONCLUSIONS There is a continuum of cardiac involvement in systemic AL and ATTR amyloidosis. Transmural LGE is determined reliably by PSIR and represents advanced cardiac amyloidosis.\n\n[P3] Stem cell transplantation in patients with autonomic neuropathy due to primary (AL) amyloidosis.\nAtrial fibrillation occurred in all patients with AN but in only 1 control patient (p < 0.0001). Median overall survival (OS) for patients with AN was 29 months but >60 months for controls (p < 0.0001). On univariate analysis, cardiac involvement (p = 0.0132), AN (p = 0.0011), glomerular filtration rate (p = 0.038), number of organs involved (p = 0.0064), and NT-pro-BNP (p = 0.039) all had an impact on OS. On multivariate analysis, AN retained an independent adverse impact on OS. CONCLUSIONS Patients with autonomic neuropathy secondary to AL amyloidosis can undergo autologous stem cell transplantation with relative safety. Autonomic neuropathy is an independent, adverse determinant of survival in these patients.\n\n[P4] Familial amyloidosis: a study of 52 North American-born patients examined during a 30-year period.\nBetween 1961 and 1990, 52 patients with biopsy-proven familial amyloidosis born in North America were examined at the Mayo Clinic. At the time of diagnosis of familial amyloidosis, 83% of these patients had peripheral neuropathy, 33% had autonomic neuropathy, and 27% had cardiomyopathy. Renal disease was noted in fewer than 10%, and liver involvement was rare. The median age at diagnosis was 64 years. The sensitivity of various diagnostic biopsies was similar to that for primary amyloidosis: deposits of amyloid were found in 77 and 78% of the subcutaneous fat aspirates or rectal biopsy specimens, respectively, and in 41% of specimens of bone marrow. The median duration of survival of 5.8 years for patients with inherited amyloidosis was superior to that for patients with primary amyloidosis. When patients were stratified by organ involvement, the survival of patients with familial amyloidosis remained superior.\n\n[P5] Therapeutic Clearance of Amyloid by Antibodies to Serum Amyloid P Component.\nBACKGROUND The amyloid fibril deposits that cause systemic amyloidosis always contain the nonfibrillar normal plasma protein, serum amyloid P component (SAP). The drug (R)-1-[6-[(R)-2-carboxy-pyrrolidin-1-yl]-6-oxo-hexanoyl]pyrrolidine-2-carboxylic acid (CPHPC) efficiently depletes SAP from the plasma but leaves some SAP in amyloid deposits that can be specifically targeted by therapeutic IgG anti-SAP antibodies. In murine amyloid A type amyloidosis, the binding of these antibodies to the residual SAP in amyloid deposits activates complement and triggers the rapid clearance of amyloid by macrophage-derived multinucleated giant cells. METHODS We conducted an open-label, single-dose-escalation, phase 1 trial involving 15 patients with systemic amyloidosis. After first using CPHPC to deplete circulating SAP, we infused a fully humanized monoclonal IgG1 anti-SAP antibody. Patients with clinical evidence of cardiac involvement were not included for safety reasons.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0e9094840a89cb94700be62adb64baf0e6ea23afafaf68af5f4485bb0333148c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876715.139603,
+      "end_wall": 1792876742.707527,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4121,
+    "start_wall": 1792876715.139603,
+    "start_mono": 546271.793459041,
+    "end_wall": 1792876742.707527,
+    "end_mono": 546299.36124175,
+    "raw_response": "{\"reasoning\": \"The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI as evidenced by passages P2 and P3 which discuss the relationship between LGE patterns (none, subendocardial, and transmural) and extracellular volume to amyloid burden, and the prognostic impact of transmural LGE on death. Passage P4 provides additional context that in familial amyloidosis, cardiac involvement is one of the common manifestations. Passage P5 discusses a therapeutic approach to clear amyloid using antibodies to SAP, which indirectly supports a\" , \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\", \"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27563874625,
+     "load_duration": 52690458,
+     "prompt_eval_count": 1501,
+     "prompt_eval_duration": 5647389166,
+     "eval_count": 160,
+     "eval_duration": 20438619994,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:19:02.704577Z"
+    },
+    "elapsed_s": 27.568,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4121,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:13768432:1",
+     "scifact:5597586:1",
+     "scifact:38040186:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d97e2e148750cf0030840e8f8b67008ffde9bd95daf9cce7aad901090c246c96",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876709.9037282,
+      "end_wall": 1792876712.035083,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876709.9037282,
+    "start_mono": 546266.557594708,
+    "end_wall": 1792876712.035083,
+    "end_mono": 546268.688945208,
+    "raw_response": "{\"query\": \"transmurality late gadolinium enhancement amyloidosis cardiac severity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2129155750,
+     "load_duration": 71864000,
+     "prompt_eval_count": 193,
+     "prompt_eval_duration": 632553791,
+     "eval_count": 19,
+     "eval_duration": 1241209043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:32.033777Z"
+    },
+    "elapsed_s": 2.131,
+    "query_used": "transmurality late gadolinium enhancement amyloidosis cardiac severity",
+    "query_source": "json",
+    "query_arrival_seq": 4121
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "transmurality late gadolinium enhancement amyloidosis cardiac severity",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13768432:0",
+       "score_q": 820
+      },
+      {
+       "passage_key": "scifact:13768432:1",
+       "score_q": 737
+      },
+      {
+       "passage_key": "scifact:21323758:1",
+       "score_q": 707
+      },
+      {
+       "passage_key": "scifact:38040186:1",
+       "score_q": 704
+      },
+      {
+       "passage_key": "scifact:2496002:1",
+       "score_q": 694
+      }
+     ],
+     "retrieval_sha256": "71d2d5d04b4340ae451bbde328a2ac9dd2cf0d2055a669ebb92d67a844f7b0ba"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "71d2d5d04b4340ae451bbde328a2ac9dd2cf0d2055a669ebb92d67a844f7b0ba",
+    "query_embedding_sha256": "38728745642b186f0e9a119d4f23e215ba9c20b689acabbcf3cd9da3b06fb9e0",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13768432:0",
+      "content_sha256": "41a12e2ab8ead1d7f5ab2ab24bd6ab6661e3f5a248089b86621a7e1b24a188f9",
+      "chars": 1105
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13768432:1",
+      "content_sha256": "ea472b9968eead3faa0b112a6ec1198de9f9dff82672d276aebbad0bf4d2ca3a",
+      "chars": 1006
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:21323758:1",
+      "content_sha256": "ab7b81dabdf49c338e2716b553617e1d8ca54cfd88bbcd707fa7d277bd448ba7",
+      "chars": 1017
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:38040186:1",
+      "content_sha256": "5f6390b4a41ac032a3f2c45e255c13824a42a2df20ba19dafa05db1026a91f3c",
+      "chars": 702
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2496002:1",
+      "content_sha256": "0ad409789a47b532ed84b913a97dcdd9e50a77aceba16dffc2ae545ddac3ca22",
+      "chars": 1103
+     }
+    ],
+    "elapsed_s": 4.1652
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nEvidence passages from your search for \"transmurality late gadolinium enhancement amyloidosis cardiac severity\":\n<<<PASSAGES\n[P1] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nBACKGROUND The prognosis and treatment of the 2 main types of cardiac amyloidosis, immunoglobulin light chain (AL) and transthyretin (ATTR) amyloidosis, are substantially influenced by cardiac involvement. Cardiovascular magnetic resonance with late gadolinium enhancement (LGE) is a reference standard for the diagnosis of cardiac amyloidosis, but its potential for stratifying risk is unknown. METHODS AND RESULTS Two hundred fifty prospectively recruited subjects, 122 patients with ATTR amyloid, 9 asymptomatic mutation carriers, and 119 patients with AL amyloidosis, underwent LGE cardiovascular magnetic resonance. Subjects were followed up for a mean of 24±13 months. LGE was performed with phase-sensitive inversion recovery (PSIR) and without (magnitude only). These were compared with extracellular volume measured with T1 mapping. PSIR was superior to magnitude-only inversion recovery LGE because PSIR always nulled the tissue (blood or myocardium) with the longest T1 (least gadolinium).\n\n[P2] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nLGE was classified into 3 patterns: none, subendocardial, and transmural, which were associated with increasing amyloid burden as defined by extracellular volume (P<0.0001), with transitions from none to subendocardial LGE at an extracellular volume of 0.40 to 0.43 (AL) and 0.39 to 0.40 (ATTR) and to transmural at 0.48 to 0.55 (AL) and 0.47 to 0.59 (ATTR). Sixty-seven patients (27%) died. Transmural LGE predicted death (hazard ratio, 5.4; 95% confidence interval, 2.1-13.7; P<0.0001) and remained independent after adjustment for N-terminal pro-brain natriuretic peptide, ejection fraction, stroke volume index, E/E', and left ventricular mass index (hazard ratio, 4.1; 95% confidence interval, 1.3-13.1; P<0.05). CONCLUSIONS There is a continuum of cardiac involvement in systemic AL and ATTR amyloidosis. Transmural LGE is determined reliably by PSIR and represents advanced cardiac amyloidosis.\n\n[P3] Monitoring effectiveness and safety of Tafamidis in transthyretin amyloidosis in Italy: a longitudinal multicenter study in a non-endemic area\nOne-third of patients did not show significant progression along 36 months, independently from mutation type and disease stage. Neurological function worsened particularly in the first 6 months but progression slowed significantly thereafter. Autonomic function remained stable in 33 %, worsened in 56 % and improved in 10 %. Fifteen percent of patients showed cardiac disease progression and 30 % new onset of cardiomyopathy. Overall, Tafamidis was not able to prevent functional progression of the disease in 23 (43 %) subjects, including 16 patients who worsened in their walking ability and 12 patients who reached a higher NYHA score during the follow-up period. A higher mBMI at baseline was associated with better preservation of neurological function. In conclusion, neuropathy and cardiomyopathy progressed in a significant proportion of patients despite treatment.\n\n[P4] Familial amyloidosis: a study of 52 North American-born patients examined during a 30-year period.\nThe presence of cardiomyopathy and an interactive variable of age and the presence of autonomic neuropathy were powerful predictors of survival. Of the 52 patients, 22 died, 12 (55%) of cardiac failure or cardiac arrhythmia. Nine patients (41%) died of inanition in conjunction with progressive peripheral or autonomic neuropathy. Transthyretin was identified by immunohistochemical studies in 31 of the 34 tissue specimens tested. A transthyretin mutation was identified in 24 of the 31. A transthyretin mutation was found in five additional patients for whom tissue was unavailable for immunostaining.\n\n[P5] Familial amyloidotic polyneuropathy: current and emerging treatment options for transthyretin-mediated amyloidosis\nThe symptoms include orthostatic hypotension, constipation alternating with diarrhea, erectile dysfunction, anhydrosis, and urinary retention or incontinence. Later, involvement of motor fibers causes rapidly progressive weakness and gait disturbances. In addition to the peripheral nervous system, the heart and the gut are frequently affected. Onset of symptoms is bimodal, with one peak at age 33 years (early onset) and another distinct peak in the sixth decade of life (late onset). The course of TTR-FAP is uniformly progressive and fatal. Death occurs an average of 10.8 years after the onset of symptoms in Portuguese patients, and 7.3 years in late-onset Japanese patients. Common causes include cachexia, cardiac failure, arrhythmia, and secondary infections. Liver transplantation is the standard therapy for patients who are in a clinical condition good enough to tolerate this intervention because it stops progression of neuropathy by removing the main source of mutant TTR.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ac8a99f8b566044faec8455b50dedf836c25cad07c72bb099529a4b0c54c4b9b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876716.200742,
+      "end_wall": 1792876744.44452,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4122,
+    "start_wall": 1792876716.200742,
+    "start_mono": 546272.854594833,
+    "end_wall": 1792876744.44452,
+    "end_mono": 546301.098224208,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from passages P1 and P2 specifically indicate that late gadolinium enhancement (LGE) patterns, particularly transmural LGE, correlate strongly with the severity of cardiac amyloidosis involvement. Transmurality in LGE signifies deeper myocardial penetration by amyloid deposits, which is linked to higher amyloid burden and worse prognosis. This directly supports the claim that the severity of cardiac involvement can be assessed by the degree of transmurality in LGE MRI findings.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28238506417,
+     "load_duration": 7326191709,
+     "prompt_eval_count": 1438,
+     "prompt_eval_duration": 7120847918,
+     "eval_count": 138,
+     "eval_duration": 12681946838,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:19:04.440756Z"
+    },
+    "elapsed_s": 28.244,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4122,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:13768432:0",
+     "scifact:13768432:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 495,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d97e2e148750cf0030840e8f8b67008ffde9bd95daf9cce7aad901090c246c96",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876709.903541,
+      "end_wall": 1792876712.155893,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876709.903541,
+    "start_mono": 546266.557408375,
+    "end_wall": 1792876712.155893,
+    "end_mono": 546268.809754125,
+    "raw_response": "{\"query\": \"amyloidosis cardiac transmurality MRI severity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2249890750,
+     "load_duration": 1187745458,
+     "prompt_eval_count": 197,
+     "prompt_eval_duration": 418728417,
+     "eval_count": 19,
+     "eval_duration": 536355918,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:32.154557Z"
+    },
+    "elapsed_s": 2.252,
+    "query_used": "amyloidosis cardiac transmurality MRI severity",
+    "query_source": "json",
+    "query_arrival_seq": 4122
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "amyloidosis cardiac transmurality MRI severity",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13768432:1",
+       "score_q": 789
+      },
+      {
+       "passage_key": "scifact:13768432:0",
+       "score_q": 781
+      },
+      {
+       "passage_key": "scifact:38040186:1",
+       "score_q": 747
+      },
+      {
+       "passage_key": "scifact:21323758:1",
+       "score_q": 746
+      },
+      {
+       "passage_key": "scifact:2496002:1",
+       "score_q": 733
+      }
+     ],
+     "retrieval_sha256": "7da663a417c3d0a4e2e4dfc361c3bf4072ac2d7ca770a7b4f19dd11f2ede626e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7da663a417c3d0a4e2e4dfc361c3bf4072ac2d7ca770a7b4f19dd11f2ede626e",
+    "query_embedding_sha256": "f3fbfc0b3271dc580481abde9ebf05b79937f282975ff0b70531b7f6c3d07f4f",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13768432:1",
+      "content_sha256": "ea472b9968eead3faa0b112a6ec1198de9f9dff82672d276aebbad0bf4d2ca3a",
+      "chars": 1006
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13768432:0",
+      "content_sha256": "41a12e2ab8ead1d7f5ab2ab24bd6ab6661e3f5a248089b86621a7e1b24a188f9",
+      "chars": 1105
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:38040186:1",
+      "content_sha256": "5f6390b4a41ac032a3f2c45e255c13824a42a2df20ba19dafa05db1026a91f3c",
+      "chars": 702
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21323758:1",
+      "content_sha256": "ab7b81dabdf49c338e2716b553617e1d8ca54cfd88bbcd707fa7d277bd448ba7",
+      "chars": 1017
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2496002:1",
+      "content_sha256": "0ad409789a47b532ed84b913a97dcdd9e50a77aceba16dffc2ae545ddac3ca22",
+      "chars": 1103
+     }
+    ],
+    "elapsed_s": 4.2205
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nEvidence passages from your search for \"amyloidosis cardiac transmurality MRI severity\":\n<<<PASSAGES\n[P1] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nLGE was classified into 3 patterns: none, subendocardial, and transmural, which were associated with increasing amyloid burden as defined by extracellular volume (P<0.0001), with transitions from none to subendocardial LGE at an extracellular volume of 0.40 to 0.43 (AL) and 0.39 to 0.40 (ATTR) and to transmural at 0.48 to 0.55 (AL) and 0.47 to 0.59 (ATTR). Sixty-seven patients (27%) died. Transmural LGE predicted death (hazard ratio, 5.4; 95% confidence interval, 2.1-13.7; P<0.0001) and remained independent after adjustment for N-terminal pro-brain natriuretic peptide, ejection fraction, stroke volume index, E/E', and left ventricular mass index (hazard ratio, 4.1; 95% confidence interval, 1.3-13.1; P<0.05). CONCLUSIONS There is a continuum of cardiac involvement in systemic AL and ATTR amyloidosis. Transmural LGE is determined reliably by PSIR and represents advanced cardiac amyloidosis.\n\n[P2] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nBACKGROUND The prognosis and treatment of the 2 main types of cardiac amyloidosis, immunoglobulin light chain (AL) and transthyretin (ATTR) amyloidosis, are substantially influenced by cardiac involvement. Cardiovascular magnetic resonance with late gadolinium enhancement (LGE) is a reference standard for the diagnosis of cardiac amyloidosis, but its potential for stratifying risk is unknown. METHODS AND RESULTS Two hundred fifty prospectively recruited subjects, 122 patients with ATTR amyloid, 9 asymptomatic mutation carriers, and 119 patients with AL amyloidosis, underwent LGE cardiovascular magnetic resonance. Subjects were followed up for a mean of 24±13 months. LGE was performed with phase-sensitive inversion recovery (PSIR) and without (magnitude only). These were compared with extracellular volume measured with T1 mapping. PSIR was superior to magnitude-only inversion recovery LGE because PSIR always nulled the tissue (blood or myocardium) with the longest T1 (least gadolinium).\n\n[P3] Familial amyloidosis: a study of 52 North American-born patients examined during a 30-year period.\nThe presence of cardiomyopathy and an interactive variable of age and the presence of autonomic neuropathy were powerful predictors of survival. Of the 52 patients, 22 died, 12 (55%) of cardiac failure or cardiac arrhythmia. Nine patients (41%) died of inanition in conjunction with progressive peripheral or autonomic neuropathy. Transthyretin was identified by immunohistochemical studies in 31 of the 34 tissue specimens tested. A transthyretin mutation was identified in 24 of the 31. A transthyretin mutation was found in five additional patients for whom tissue was unavailable for immunostaining.\n\n[P4] Monitoring effectiveness and safety of Tafamidis in transthyretin amyloidosis in Italy: a longitudinal multicenter study in a non-endemic area\nOne-third of patients did not show significant progression along 36 months, independently from mutation type and disease stage. Neurological function worsened particularly in the first 6 months but progression slowed significantly thereafter. Autonomic function remained stable in 33 %, worsened in 56 % and improved in 10 %. Fifteen percent of patients showed cardiac disease progression and 30 % new onset of cardiomyopathy. Overall, Tafamidis was not able to prevent functional progression of the disease in 23 (43 %) subjects, including 16 patients who worsened in their walking ability and 12 patients who reached a higher NYHA score during the follow-up period. A higher mBMI at baseline was associated with better preservation of neurological function. In conclusion, neuropathy and cardiomyopathy progressed in a significant proportion of patients despite treatment.\n\n[P5] Familial amyloidotic polyneuropathy: current and emerging treatment options for transthyretin-mediated amyloidosis\nThe symptoms include orthostatic hypotension, constipation alternating with diarrhea, erectile dysfunction, anhydrosis, and urinary retention or incontinence. Later, involvement of motor fibers causes rapidly progressive weakness and gait disturbances. In addition to the peripheral nervous system, the heart and the gut are frequently affected. Onset of symptoms is bimodal, with one peak at age 33 years (early onset) and another distinct peak in the sixth decade of life (late onset). The course of TTR-FAP is uniformly progressive and fatal. Death occurs an average of 10.8 years after the onset of symptoms in Portuguese patients, and 7.3 years in late-onset Japanese patients. Common causes include cachexia, cardiac failure, arrhythmia, and secondary infections. Liver transplantation is the standard therapy for patients who are in a clinical condition good enough to tolerate this intervention because it stops progression of neuropathy by removing the main source of mutant TTR.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ddb5c7b1488270a27c6f6640b63c89ccef7791978ad3ba332eb25afc87a4772d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876716.377703,
+      "end_wall": 1792876746.816917,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4123,
+    "start_wall": 1792876716.377703,
+    "start_mono": 546273.031555208,
+    "end_wall": 1792876746.816917,
+    "end_mono": 546303.470604958,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that the severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI. Several passages support this claim. [P1] and [P2] discuss the correlation between the degree of transmural LGE and the extracellular volume in both AL and ATTR amyloidosis, implying a direct relationship between cardiac involvement and transmurality. [P3] highlights the significance of cardiomyopathy and autonomic neuropathy as predictors of survival, emphasizing the role of cardiac involvement. [P4] and [P5] also touch upon cardiac a1\"\n,\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30434497958,
+     "load_duration": 19744741875,
+     "prompt_eval_count": 1731,
+     "prompt_eval_duration": 3532883958,
+     "eval_count": 203,
+     "eval_duration": 6338367330,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:19:06.813835Z"
+    },
+    "elapsed_s": 30.439,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4123,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:13768432:1",
+     "scifact:13768432:0",
+     "scifact:38040186:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d97e2e148750cf0030840e8f8b67008ffde9bd95daf9cce7aad901090c246c96",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876709.903908,
+      "end_wall": 1792876720.8642051,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876709.903908,
+    "start_mono": 546266.557775083,
+    "end_wall": 1792876720.8642051,
+    "end_mono": 546277.518038458,
+    "raw_response": "{\"query\": \"degree of transmurality late gadolinium enhancement cardiac amyloidosis MRI\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10958057917,
+     "load_duration": 5493663333,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 918938667,
+     "eval_count": 18,
+     "eval_duration": 4173264125,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:18:40.862738Z"
+    },
+    "elapsed_s": 10.96,
+    "query_used": "degree of transmurality late gadolinium enhancement cardiac amyloidosis MRI",
+    "query_source": "json",
+    "query_arrival_seq": 4124
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "degree of transmurality late gadolinium enhancement cardiac amyloidosis MRI",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13768432:0",
+       "score_q": 17736
+      },
+      {
+       "passage_key": "scifact:13768432:2",
+       "score_q": 17299
+      },
+      {
+       "passage_key": "scifact:13768432:1",
+       "score_q": 13770
+      },
+      {
+       "passage_key": "scifact:2587396:0",
+       "score_q": 6748
+      },
+      {
+       "passage_key": "scifact:32263707:0",
+       "score_q": 6583
+      }
+     ],
+     "retrieval_sha256": "5f548101402ddac3c6b11227e268acc767d39aaf70c17251cb207a712e337e24"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5f548101402ddac3c6b11227e268acc767d39aaf70c17251cb207a712e337e24",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13768432:0",
+      "content_sha256": "41a12e2ab8ead1d7f5ab2ab24bd6ab6661e3f5a248089b86621a7e1b24a188f9",
+      "chars": 1105
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13768432:2",
+      "content_sha256": "536778e61d3bda5bf9ec312a8abdcaba3c897dff04f46357f15c07741e39335f",
+      "chars": 219
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:13768432:1",
+      "content_sha256": "ea472b9968eead3faa0b112a6ec1198de9f9dff82672d276aebbad0bf4d2ca3a",
+      "chars": 1006
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2587396:0",
+      "content_sha256": "82831b4555664b055e0a3a6eadbe618294ab48255fc1879b0121250b0e1d45c7",
+      "chars": 1033
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:32263707:0",
+      "content_sha256": "4b0b339e627f84f3f48cdc6ab33c1971803bcf0f33d9103e9335310728e0eb9f",
+      "chars": 867
+     }
+    ],
+    "elapsed_s": 0.0024
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\n\nEvidence passages from your search for \"degree of transmurality late gadolinium enhancement cardiac amyloidosis MRI\":\n<<<PASSAGES\n[P1] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nBACKGROUND The prognosis and treatment of the 2 main types of cardiac amyloidosis, immunoglobulin light chain (AL) and transthyretin (ATTR) amyloidosis, are substantially influenced by cardiac involvement. Cardiovascular magnetic resonance with late gadolinium enhancement (LGE) is a reference standard for the diagnosis of cardiac amyloidosis, but its potential for stratifying risk is unknown. METHODS AND RESULTS Two hundred fifty prospectively recruited subjects, 122 patients with ATTR amyloid, 9 asymptomatic mutation carriers, and 119 patients with AL amyloidosis, underwent LGE cardiovascular magnetic resonance. Subjects were followed up for a mean of 24±13 months. LGE was performed with phase-sensitive inversion recovery (PSIR) and without (magnitude only). These were compared with extracellular volume measured with T1 mapping. PSIR was superior to magnitude-only inversion recovery LGE because PSIR always nulled the tissue (blood or myocardium) with the longest T1 (least gadolinium).\n\n[P2] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nThe PSIR technique provides incremental information on outcome even after adjustment for known prognostic factors.\n\n[P3] Prognostic Value of Late Gadolinium Enhancement Cardiovascular Magnetic Resonance in Cardiac Amyloidosis\nLGE was classified into 3 patterns: none, subendocardial, and transmural, which were associated with increasing amyloid burden as defined by extracellular volume (P<0.0001), with transitions from none to subendocardial LGE at an extracellular volume of 0.40 to 0.43 (AL) and 0.39 to 0.40 (ATTR) and to transmural at 0.48 to 0.55 (AL) and 0.47 to 0.59 (ATTR). Sixty-seven patients (27%) died. Transmural LGE predicted death (hazard ratio, 5.4; 95% confidence interval, 2.1-13.7; P<0.0001) and remained independent after adjustment for N-terminal pro-brain natriuretic peptide, ejection fraction, stroke volume index, E/E', and left ventricular mass index (hazard ratio, 4.1; 95% confidence interval, 1.3-13.1; P<0.05). CONCLUSIONS There is a continuum of cardiac involvement in systemic AL and ATTR amyloidosis. Transmural LGE is determined reliably by PSIR and represents advanced cardiac amyloidosis.\n\n[P4] Association of Blood Monocyte and Platelet Markers with Carotid Artery Characteristics: The Atherosclerosis Risk in Communities Carotid MRI Study\nBackground: Atherosclerosis is characterized by infiltration of inflammatory cells from circulating blood. Blood cell activation could play an important role in plaque formation. Methods: We analyzed the relationship between blood cellular markers and quantitative measures of carotid wall components in 1,546 participants from the ARIC (Atherosclerosis Risk in Communities) Carotid MRI Study. Carotid imaging was performed using a gadolinium contrast-enhanced MRI and cellular phenotyping by flow cytometry. Results: Monocyte Toll-like receptor (TLR)-2 is associated with larger plaques, while CD14, myeloperoxidase, and TLR-4 associate with smaller. Platelet CD40L is associated with smaller plaques and thinner caps, while P-selectin is associated with smaller core size. Conclusions: Blood cell activation is significantly associated with atherosclerotic changes of the carotid wall.\n\n[P5] Oral fingolimod (FTY720) for relapsing multiple sclerosis.\nBACKGROUND Fingolimod (FTY720) is a new oral immunomodulating agent under evaluation for the treatment of relapsing multiple sclerosis. METHODS We randomly assigned 281 patients to receive oral fingolimod, at a dose of 1.25 mg or 5.0 mg, or a placebo once daily, and we followed these patients for 6 months with magnetic resonance imaging (MRI) and clinical evaluations (core study, months 0 to 6). The primary end point was the total number of gadolinium-enhanced lesions recorded on T(1)-weighted MRI at monthly intervals for 6 months. In an extension study in which the investigators and patients remained unaware of the dose assignments (months 7 to 12), patients who received placebo underwent randomization again to one of the fingolimod doses. RESULTS A total of 255 patients completed the core study.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "75d2d74a2bce3f5502ff909d66eacc41b3642652155d6c7381eddb26d929209b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876720.868268,
+      "end_wall": 1792876753.576716,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4124,
+    "start_wall": 1792876720.868268,
+    "start_mono": 546277.522104083,
+    "end_wall": 1792876753.576716,
+    "end_mono": 546310.23035975,
+    "raw_response": "{\"reasoning\": \"The claim is supported by passage P3, which states that transmural LGE predicted death in patients with cardiac amyloidosis. This prediction remained independent after adjustment for other clinical and imaging factors.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 32702719333,
+     "load_duration": 28219809292,
+     "prompt_eval_count": 1253,
+     "prompt_eval_duration": 1969800708,
+     "eval_count": 65,
+     "eval_duration": 1344857500,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:19:13.572228Z"
+    },
+    "elapsed_s": 32.708,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4124,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:13768432:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 218,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "c6e75430d15d98783306a3eacf35f2bbc149c1fbcc9831739ccbc6885a82be7f",
+  "olmo2:7b": "a48514cdfdec2f1987e4dfe5d178eff838df56cf1a378ca06bae9f398a1d55aa",
+  "exaone3.5:7.8b": "71d2d5d04b4340ae451bbde328a2ac9dd2cf0d2055a669ebb92d67a844f7b0ba",
+  "granite3.3:2b": "7da663a417c3d0a4e2e4dfc361c3bf4072ac2d7ca770a7b4f19dd11f2ede626e",
+  "nemotron-mini:4b": "5f548101402ddac3c6b11227e268acc767d39aaf70c17251cb207a712e337e24"
+ },
+ "item_start_wall": 1792876709.902972,
+ "item_wall_s": 43.674,
+ "ollama_ps_samples": [
+  [
+   1792876709.903,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876711.91,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876713.918,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876715.927,
+   [
+    "olmo2:7b",
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876717.931,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876719.939,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876721.943,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792876723.952,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876725.96,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876727.968,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876729.972,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876731.975,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876733.979,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792876735.985,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792876737.993,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876739.995,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876742.001,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876744.013,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876746.018,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876748.027,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792876750.039,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792876752.043,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "overturn-arbiter"
+version = "0.1.0"
+description = "Deterministic, replayable, auditable arbitration for multi-agent LLM outputs (Python front end to the overturn reducer)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Grainulation" }]
+keywords = ["multi-agent", "llm", "arbitration", "consensus", "replay", "determinism", "langgraph"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+langgraph = ["langgraph>=0.2"]
+dev = ["pytest>=7", "build", "hatchling>=1.27"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/overturn_arbiter"]
+# _bin/ is git-ignored; include whatever scripts/build_wheel.py copied in.
+artifacts = ["src/overturn_arbiter/_bin/*"]
+
+[tool.hatch.build.targets.wheel.hooks.custom]
+path = "hatch_build.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = ["src/overturn_arbiter/_bin/overturn", "src/overturn_arbiter/_bin/overturn.exe", ".venv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

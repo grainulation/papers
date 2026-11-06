@@ -1,0 +1,1223 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever19176",
+ "order": 149,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever19176",
+  "order": 149,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Victoria Palace Theatre is opposite a central London railway terminus."
+ },
+ "item_view_sha256": "cadcb1326af6a6bc581fce83fe8eb18724302eb1a4b9a4ea1c8eb038c1375f30",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9281a09e4a21544695b05f5cfc5d823f104e71ef3d47e070f3fb51b16108fbd3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792857107.155007,
+      "end_wall": 1792857109.2101262,
+      "error": null
+     }
+    ],
+    "start_wall": 1792857107.155007,
+    "start_mono": 526663.90052775,
+    "end_wall": 1792857109.2101262,
+    "end_mono": 526665.955654958,
+    "raw_response": "{\"query\": \"Victoria Palace Theatre location opposite London terminus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2052003875,
+     "load_duration": 53021625,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 445193750,
+     "eval_count": 15,
+     "eval_duration": 1436842294,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:51:49.208712Z"
+    },
+    "elapsed_s": 2.055,
+    "query_used": "Victoria Palace Theatre location opposite London terminus",
+    "query_source": "json",
+    "query_arrival_seq": 745
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Victoria Palace Theatre location opposite London terminus",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Victoria_Palace_Theatre:0",
+       "score_q": 16988
+      },
+      {
+       "passage_key": "fever17:Victoria_Theatre:1",
+       "score_q": 12980
+      },
+      {
+       "passage_key": "fever17:Oliver_Taylor_-LRB-actor-RRB-:0",
+       "score_q": 11637
+      },
+      {
+       "passage_key": "fever17:Victoria_Palace:0",
+       "score_q": 11507
+      },
+      {
+       "passage_key": "fever17:St_James's_Park:0",
+       "score_q": 11467
+      }
+     ],
+     "retrieval_sha256": "7f8e0818b7e7178fee010b93f5082fef92403a51a13dc3e6af2d966b454722c8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7f8e0818b7e7178fee010b93f5082fef92403a51a13dc3e6af2d966b454722c8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Victoria_Palace_Theatre:0",
+      "content_sha256": "5cac47166801b18ad1292555da7373f95c0c1a23b67823c7ec426b982192243e",
+      "chars": 147
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Victoria_Theatre:1",
+      "content_sha256": "4334e081bd53e104db78e4c7818e61f7511fe1eb6d0420cd36e659dfc1cb4d4a",
+      "chars": 571
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Oliver_Taylor_-LRB-actor-RRB-:0",
+      "content_sha256": "fafdd943081ddf286b6c2130951d3100595398b68453d35ac511ad2eec0d6d08",
+      "chars": 196
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Victoria_Palace:0",
+      "content_sha256": "5dae25767ee77541cfff12e5964f1443091fe864c34e874c246f7e2c6aad2e7e",
+      "chars": 995
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:St_James's_Park:0",
+      "content_sha256": "dd99781e1b6a10a9093f34272699b88141eb712153bbdaf274359f8beba719d7",
+      "chars": 810
+     }
+    ],
+    "elapsed_s": 0.0366
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nEvidence passages from your search for \"Victoria Palace Theatre location opposite London terminus\":\n<<<PASSAGES\n[P1] Victoria Palace Theatre\nVictoria Palace Theatre is a West End theatre in Victoria Street , in the City of Westminster , opposite Victoria Station .\n\n[P2] Victoria Theatre\nVictoria Palace Theatre , located in the City of Westminster , England Apollo Victoria Theatre , ( formerly the New Victoria Theatre , and before that the New Victoria Cinema ) , also located in the City of Westminster , England New Victoria Theatre , located in Woking , England New Vic Theatre , a replacement for the Victoria Theatre , in Stoke , Staffordshire , England The Old Vic , ( originally the Royal Coburg Theatre , later known as the Royal Victoria Theatre ) located in London , England Victoria ( theatre company ) , Belgian theatre company\n\n[P3] Oliver Taylor (actor)\nOliver Taylor ( born 1994 ) is an English stage actor and dancer , best known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre , London .\n\n[P4] Victoria Palace\nFor the London , England theatre venue , see Victoria Palace Theatre . Victoria Palace is a palace on Victory Square in Bucharest . Built in 1937 , it serves as the headquarters of the Prime Minister of Romania and his cabinet . The palace was built under the supervision of Duiliu Marcu ( 1885 -- 1966 ) , student of the Bucharest Superior School of Architecture ( 1906 ) and of Paris Ecole de Beaux-Arts ( diplomat in 1912 ) . The monolithic structure materializes an austere expression of the neoclassical style . The building , which overtops the Victoriei Square ( Piaţa Victoriei ) , suffered heavy damages during the Second World War , which is why it underwent significant restoration works ( 1944 -- 1952 ) . Initially designed to be headquarters of the Foreign Ministry , Victoria Palace was the headquarters of Foreign Ministry and Council of Ministers during the Communist period and became , in 1990 , headquarters of the first government of post-communist Romania .\n\n[P5] St James's Park\nSt James 's Park is a 23 ha park in the City of Westminster , central London . The park lies at the southernmost tip of the St James 's area , which was named after a leper hospital dedicated to St James the Less . The park is the most easterly of a near-continuous chain of parks that comprises ( moving westward ) Green Park , Hyde Park , and Kensington Gardens . The park is bounded by Buckingham Palace to the west , the Mall to the north , Horse Guards to the east , and Birdcage Walk to the south . It meets Green Park at Queen 's Gardens with the Victoria Memorial at its centre , opposite the entrance to Buckingham Palace . St James 's Palace is on the opposite side of The Mall . The closest London Underground stations are St James 's Park , Green Park , Victoria , and Westminster .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1c672e8bb89202baddcde6ec4e5afc73eb4f3b08bdde0646fca7eab28d3d0782",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792857109.247172,
+      "end_wall": 1792857123.174228,
+      "error": null
+     }
+    ],
+    "arrival_seq": 745,
+    "start_wall": 1792857109.247172,
+    "start_mono": 526665.992702333,
+    "end_wall": 1792857123.174228,
+    "end_mono": 526679.919818958,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that Victoria Palace Theatre is opposite a central London railway terminus. Passage P1 directly supports this by mentioning that Victoria Palace Theatre is located opposite Victoria Station, which is indeed a central London railway terminus.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13923792500,
+     "load_duration": 72002458,
+     "prompt_eval_count": 921,
+     "prompt_eval_duration": 5646934709,
+     "eval_count": 84,
+     "eval_duration": 7543327118,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:52:03.171757Z"
+    },
+    "elapsed_s": 13.927,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 745,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Victoria_Palace_Theatre:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 258,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9281a09e4a21544695b05f5cfc5d823f104e71ef3d47e070f3fb51b16108fbd3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792857107.1543949,
+      "end_wall": 1792857109.65369,
+      "error": null
+     }
+    ],
+    "start_wall": 1792857107.1543949,
+    "start_mono": 526663.899916041,
+    "end_wall": 1792857109.65369,
+    "end_mono": 526666.399221416,
+    "raw_response": "{\"query\": \"Victoria Palace Theatre location\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2496012834,
+     "load_duration": 749595250,
+     "prompt_eval_count": 163,
+     "prompt_eval_duration": 792858083,
+     "eval_count": 10,
+     "eval_duration": 857465999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:51:49.652854Z"
+    },
+    "elapsed_s": 2.499,
+    "query_used": "Victoria Palace Theatre location",
+    "query_source": "json",
+    "query_arrival_seq": 746
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Victoria Palace Theatre location",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Victoria_Palace_Theatre:0",
+       "score_q": 13141
+      },
+      {
+       "passage_key": "fever17:Victoria_Theatre:1",
+       "score_q": 11305
+      },
+      {
+       "passage_key": "fever17:Victoria_Palace:0",
+       "score_q": 10205
+      },
+      {
+       "passage_key": "fever17:Oliver_Taylor_-LRB-actor-RRB-:0",
+       "score_q": 9315
+      },
+      {
+       "passage_key": "fever17:State_Theatre_-LRB-Ann_Arbor,_Michigan-RRB-:0",
+       "score_q": 9085
+      }
+     ],
+     "retrieval_sha256": "8fb5e45ea698f94b7cd716e454faf3e7100a0cd44ab7e858708114c7820f928b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8fb5e45ea698f94b7cd716e454faf3e7100a0cd44ab7e858708114c7820f928b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Victoria_Palace_Theatre:0",
+      "content_sha256": "5cac47166801b18ad1292555da7373f95c0c1a23b67823c7ec426b982192243e",
+      "chars": 147
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Victoria_Theatre:1",
+      "content_sha256": "4334e081bd53e104db78e4c7818e61f7511fe1eb6d0420cd36e659dfc1cb4d4a",
+      "chars": 571
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Victoria_Palace:0",
+      "content_sha256": "5dae25767ee77541cfff12e5964f1443091fe864c34e874c246f7e2c6aad2e7e",
+      "chars": 995
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Oliver_Taylor_-LRB-actor-RRB-:0",
+      "content_sha256": "fafdd943081ddf286b6c2130951d3100595398b68453d35ac511ad2eec0d6d08",
+      "chars": 196
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:State_Theatre_-LRB-Ann_Arbor,_Michigan-RRB-:0",
+      "content_sha256": "18583386a42d4be46a87ff7a0bcea0fd7ddc48a2cd8118ede8215f2cd651256d",
+      "chars": 301
+     }
+    ],
+    "elapsed_s": 0.0163
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nEvidence passages from your search for \"Victoria Palace Theatre location\":\n<<<PASSAGES\n[P1] Victoria Palace Theatre\nVictoria Palace Theatre is a West End theatre in Victoria Street , in the City of Westminster , opposite Victoria Station .\n\n[P2] Victoria Theatre\nVictoria Palace Theatre , located in the City of Westminster , England Apollo Victoria Theatre , ( formerly the New Victoria Theatre , and before that the New Victoria Cinema ) , also located in the City of Westminster , England New Victoria Theatre , located in Woking , England New Vic Theatre , a replacement for the Victoria Theatre , in Stoke , Staffordshire , England The Old Vic , ( originally the Royal Coburg Theatre , later known as the Royal Victoria Theatre ) located in London , England Victoria ( theatre company ) , Belgian theatre company\n\n[P3] Victoria Palace\nFor the London , England theatre venue , see Victoria Palace Theatre . Victoria Palace is a palace on Victory Square in Bucharest . Built in 1937 , it serves as the headquarters of the Prime Minister of Romania and his cabinet . The palace was built under the supervision of Duiliu Marcu ( 1885 -- 1966 ) , student of the Bucharest Superior School of Architecture ( 1906 ) and of Paris Ecole de Beaux-Arts ( diplomat in 1912 ) . The monolithic structure materializes an austere expression of the neoclassical style . The building , which overtops the Victoriei Square ( Piaţa Victoriei ) , suffered heavy damages during the Second World War , which is why it underwent significant restoration works ( 1944 -- 1952 ) . Initially designed to be headquarters of the Foreign Ministry , Victoria Palace was the headquarters of Foreign Ministry and Council of Ministers during the Communist period and became , in 1990 , headquarters of the first government of post-communist Romania .\n\n[P4] Oliver Taylor (actor)\nOliver Taylor ( born 1994 ) is an English stage actor and dancer , best known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre , London .\n\n[P5] State Theatre (Ann Arbor, Michigan)\nThe State Theatre is an operational former movie palace located at the intersection of State Street and Liberty Street in Ann Arbor , MI . The theater 's central location and distinctive green , yellow and red marquee have made it an icon of Ann Arbor 's downtown .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5db3634e562a22b5439051c5e2162524861081c522dc873c2ea01e24a1a7c867",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792857109.670279,
+      "end_wall": 1792857124.159316,
+      "error": null
+     }
+    ],
+    "arrival_seq": 746,
+    "start_wall": 1792857109.670279,
+    "start_mono": 526666.415810916,
+    "end_wall": 1792857124.159316,
+    "end_mono": 526680.904910833,
+    "raw_response": "{\"reasoning\": \"The claim states that the Victoria Palace Theatre is opposite a central London railway terminus. Passage P1 explicitly mentions that Victoria Palace Theatre is located in Victoria Street, opposite Victoria Station. Victoria Station is a major London railway terminus, making the claim supported by this specific evidence. There is no contradicting evidence from other passages, and all provided information aligns with the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14486082250,
+     "load_duration": 44434667,
+     "prompt_eval_count": 727,
+     "prompt_eval_duration": 5102431375,
+     "eval_count": 102,
+     "eval_duration": 8407445583,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:52:04.157448Z"
+    },
+    "elapsed_s": 14.489,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 746,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Victoria_Palace_Theatre:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 429,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9281a09e4a21544695b05f5cfc5d823f104e71ef3d47e070f3fb51b16108fbd3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792857107.1548538,
+      "end_wall": 1792857109.813787,
+      "error": null
+     }
+    ],
+    "start_wall": 1792857107.1548538,
+    "start_mono": 526663.900374833,
+    "end_wall": 1792857109.813787,
+    "end_mono": 526666.559319041,
+    "raw_response": "{\"query\": \"Victoria Palace Theatre proximity London railway terminus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2656146667,
+     "load_duration": 30781208,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 460630791,
+     "eval_count": 22,
+     "eval_duration": 2059460164,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:51:49.812991Z"
+    },
+    "elapsed_s": 2.659,
+    "query_used": "Victoria Palace Theatre proximity London railway terminus",
+    "query_source": "json",
+    "query_arrival_seq": 747
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Victoria Palace Theatre proximity London railway terminus",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Crystal_Palace_railway_station:0",
+       "score_q": 13951
+      },
+      {
+       "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+       "score_q": 13871
+      },
+      {
+       "passage_key": "fever17:Victoria_Palace_Theatre:0",
+       "score_q": 13141
+      },
+      {
+       "passage_key": "fever17:Victoria_Theatre:1",
+       "score_q": 12980
+      },
+      {
+       "passage_key": "fever17:Longhedge_Railway_Works_-LRB-Battersea-RRB-:0",
+       "score_q": 12609
+      }
+     ],
+     "retrieval_sha256": "4012d64c6ecf3c1f466a37c831258fadb098780aa5d8dd3750aba047afb6714c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4012d64c6ecf3c1f466a37c831258fadb098780aa5d8dd3750aba047afb6714c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Crystal_Palace_railway_station:0",
+      "content_sha256": "d422e6ebbcdc75e5288a46dd227cb55f1ae2350e7318e25b505abee247793e5c",
+      "chars": 978
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+      "content_sha256": "4583bab21eacce541c674854f21f3d804827555e0c8d01f7884e68a967d7bb7a",
+      "chars": 246
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Victoria_Palace_Theatre:0",
+      "content_sha256": "5cac47166801b18ad1292555da7373f95c0c1a23b67823c7ec426b982192243e",
+      "chars": 147
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Victoria_Theatre:1",
+      "content_sha256": "4334e081bd53e104db78e4c7818e61f7511fe1eb6d0420cd36e659dfc1cb4d4a",
+      "chars": 571
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Longhedge_Railway_Works_-LRB-Battersea-RRB-:0",
+      "content_sha256": "a2301124331654c21542a371ea2c78d93c72b40859f10060d6f00a72343236a9",
+      "chars": 291
+     }
+    ],
+    "elapsed_s": 0.0235
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nEvidence passages from your search for \"Victoria Palace Theatre proximity London railway terminus\":\n<<<PASSAGES\n[P1] Crystal Palace railway station\nCrystal Palace railway station is a Network Rail and London Overground station in the London Borough of Bromley in south London . It is located in the Anerley area between the town centres of Crystal Palace and Penge . It is one of two stations built to serve the site of the 1851 exhibition building , the Crystal Palace , when it was moved from Hyde Park to Sydenham Hill after 1851 . The station was opened on 10 June 1854 by the West End of London and Crystal Palace Railway ( WEL&CPR ) to take the crowds to the relocated Palace . It was formerly known as Crystal Palace ( Low Level ) to differentiate it from the nearby and now demolished Crystal Palace ( High Level ) railway station . The station serves trains running between London Bridge and London Victoria in addition to services terminating at Beckenham Junction and Sutton . Since 23 May 2010 , the station has also been a terminus of the East London Line of the London Overground .\n\n[P2] Upper Sydenham railway station\nThe Crystal Palace and South London Junction Railway was authorised to build a line from Peckham Rye railway station to a terminus at Crystal Palace in 1862 , in order to serve the attraction of the Crystal Palace .\n\n[P3] Victoria Palace Theatre\nVictoria Palace Theatre is a West End theatre in Victoria Street , in the City of Westminster , opposite Victoria Station .\n\n[P4] Victoria Theatre\nVictoria Palace Theatre , located in the City of Westminster , England Apollo Victoria Theatre , ( formerly the New Victoria Theatre , and before that the New Victoria Cinema ) , also located in the City of Westminster , England New Victoria Theatre , located in Woking , England New Vic Theatre , a replacement for the Victoria Theatre , in Stoke , Staffordshire , England The Old Vic , ( originally the Royal Coburg Theatre , later known as the Royal Victoria Theatre ) located in London , England Victoria ( theatre company ) , Belgian theatre company\n\n[P5] Longhedge Railway Works (Battersea)\nLonghedge railway works was a locomotive and carriage works built by the London , Chatham and Dover Railway in the borough of Battersea , South London to serve their new London terminus at Victoria . The facility existed between 1862 until the mid-1950s .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "62b75a46c17bd6bdf60ae03c17560c30f5b2295ffc4bc2e27820996322981d28",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792857109.8375401,
+      "end_wall": 1792857124.9612448,
+      "error": null
+     }
+    ],
+    "arrival_seq": 747,
+    "start_wall": 1792857109.8375401,
+    "start_mono": 526666.583073083,
+    "end_wall": 1792857124.9612448,
+    "end_mono": 526681.7068425,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that Victoria Palace Theatre is opposite a central London railway terminus. The passage provides specific information that Victoria Palace Theatre is located in Victoria Street, opposite Victoria Station, a well-known central London terminus. No contradictory evidence was found.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15121396916,
+     "load_duration": 9164350083,
+     "prompt_eval_count": 946,
+     "prompt_eval_duration": 1780231334,
+     "eval_count": 101,
+     "eval_duration": 3751277922,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:52:04.959558Z"
+    },
+    "elapsed_s": 15.124,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 747,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Victoria_Palace_Theatre:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 296,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9281a09e4a21544695b05f5cfc5d823f104e71ef3d47e070f3fb51b16108fbd3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792857107.154721,
+      "end_wall": 1792857115.550584,
+      "error": null
+     }
+    ],
+    "start_wall": 1792857107.154721,
+    "start_mono": 526663.900241958,
+    "end_wall": 1792857115.550584,
+    "end_mono": 526672.29614075,
+    "raw_response": "{\"query\": \"Victoria Palace Theatre opposite central london railway terminus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8393577667,
+     "load_duration": 3613339708,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 1328796625,
+     "eval_count": 15,
+     "eval_duration": 3259114251,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:51:55.549896Z"
+    },
+    "elapsed_s": 8.396,
+    "query_used": "Victoria Palace Theatre opposite central london railway terminus",
+    "query_source": "json",
+    "query_arrival_seq": 748
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Victoria Palace Theatre opposite central london railway terminus",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Victoria_Palace_Theatre:0",
+       "score_q": 16988
+      },
+      {
+       "passage_key": "fever17:Leighton_Buzzard_railway_station:1",
+       "score_q": 14183
+      },
+      {
+       "passage_key": "fever17:Crystal_Palace_railway_station:0",
+       "score_q": 13951
+      },
+      {
+       "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+       "score_q": 13871
+      },
+      {
+       "passage_key": "fever17:Vauxhall_station_-LRB-London-RRB-:0",
+       "score_q": 13665
+      }
+     ],
+     "retrieval_sha256": "d375c914a2be132d18e2544979ae48181e3c9de6432fdb98fda8909563f82c58"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d375c914a2be132d18e2544979ae48181e3c9de6432fdb98fda8909563f82c58",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Victoria_Palace_Theatre:0",
+      "content_sha256": "5cac47166801b18ad1292555da7373f95c0c1a23b67823c7ec426b982192243e",
+      "chars": 147
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Leighton_Buzzard_railway_station:1",
+      "content_sha256": "de50bab11893131dc143dbae80c96d758172300ee676d2999eb93cc33ac34222",
+      "chars": 344
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Crystal_Palace_railway_station:0",
+      "content_sha256": "d422e6ebbcdc75e5288a46dd227cb55f1ae2350e7318e25b505abee247793e5c",
+      "chars": 978
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+      "content_sha256": "4583bab21eacce541c674854f21f3d804827555e0c8d01f7884e68a967d7bb7a",
+      "chars": 246
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Vauxhall_station_-LRB-London-RRB-:0",
+      "content_sha256": "3d130a4cc349cb5d1031ef80b3126c77dd65b499404495b33841ac169c6391e3",
+      "chars": 728
+     }
+    ],
+    "elapsed_s": 0.0325
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nEvidence passages from your search for \"Victoria Palace Theatre opposite central london railway terminus\":\n<<<PASSAGES\n[P1] Victoria Palace Theatre\nVictoria Palace Theatre is a West End theatre in Victoria Street , in the City of Westminster , opposite Victoria Station .\n\n[P2] Leighton Buzzard railway station\nPlatforms 3 & 4 are served by slower London Midland services to/from London Euston and by Southern services between East Croydon and Milton Keynes Central . Page 's Park railway station , terminus for the Leighton Buzzard Light Railway ( a narrow gauge heritage railway ) , is on the opposite side of the town .\n\n[P3] Crystal Palace railway station\nCrystal Palace railway station is a Network Rail and London Overground station in the London Borough of Bromley in south London . It is located in the Anerley area between the town centres of Crystal Palace and Penge . It is one of two stations built to serve the site of the 1851 exhibition building , the Crystal Palace , when it was moved from Hyde Park to Sydenham Hill after 1851 . The station was opened on 10 June 1854 by the West End of London and Crystal Palace Railway ( WEL&CPR ) to take the crowds to the relocated Palace . It was formerly known as Crystal Palace ( Low Level ) to differentiate it from the nearby and now demolished Crystal Palace ( High Level ) railway station . The station serves trains running between London Bridge and London Victoria in addition to services terminating at Beckenham Junction and Sutton . Since 23 May 2010 , the station has also been a terminus of the East London Line of the London Overground .\n\n[P4] Upper Sydenham railway station\nThe Crystal Palace and South London Junction Railway was authorised to build a line from Peckham Rye railway station to a terminus at Crystal Palace in 1862 , in order to serve the attraction of the Crystal Palace .\n\n[P5] Vauxhall station (London)\nVauxhall ( [ ˈvɒksɔːl ] , ) is a National Rail , London Underground and London Buses interchange station in central London . It is at the Vauxhall Cross road junction opposite the southern approach to Vauxhall Bridge over the River Thames in the London district of Vauxhall . The station is on the boundary of zones 1 and 2 of the London Travelcard area and , although a through station , it is a central London railway terminus for ticketing purposes . . It is on a viaduct with eight platforms . The bus station , at ground level across the road from the rail station , has a photovoltaic roof supplying much of its electricity . It is the second busiest London bus station , after that at Victoria .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dd81def68e4c2c56cb6b49bea7d1492ebd24372fe12250a5f0e06546f669fed0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792857115.583442,
+      "end_wall": 1792857129.54125,
+      "error": null
+     }
+    ],
+    "arrival_seq": 748,
+    "start_wall": 1792857115.583442,
+    "start_mono": 526672.328999708,
+    "end_wall": 1792857129.54125,
+    "end_mono": 526686.286867625,
+    "raw_response": "{\"reasoning\": \"Victoria Palace Theatre is located opposite Victoria Station, which is a central London railway terminus.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13955595292,
+     "load_duration": 10068063459,
+     "prompt_eval_count": 879,
+     "prompt_eval_duration": 1351012084,
+     "eval_count": 49,
+     "eval_duration": 2090173880,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:52:09.539769Z"
+    },
+    "elapsed_s": 13.958,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 748,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Victoria_Palace_Theatre:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 105,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9281a09e4a21544695b05f5cfc5d823f104e71ef3d47e070f3fb51b16108fbd3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792857107.154565,
+      "end_wall": 1792857117.848522,
+      "error": null
+     }
+    ],
+    "start_wall": 1792857107.154565,
+    "start_mono": 526663.900085583,
+    "end_wall": 1792857117.848522,
+    "end_mono": 526674.5940885,
+    "raw_response": "{\"query\": \"Victoria Palace Theatre near London railway terminus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10690845792,
+     "load_duration": 9210473125,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 402307291,
+     "eval_count": 13,
+     "eval_duration": 804251293,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:51:57.847186Z"
+    },
+    "elapsed_s": 10.694,
+    "query_used": "Victoria Palace Theatre near London railway terminus",
+    "query_source": "json",
+    "query_arrival_seq": 749
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Victoria Palace Theatre near London railway terminus",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Crystal_Palace_railway_station:0",
+       "score_q": 13951
+      },
+      {
+       "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+       "score_q": 13871
+      },
+      {
+       "passage_key": "fever17:Victoria_Palace_Theatre:0",
+       "score_q": 13141
+      },
+      {
+       "passage_key": "fever17:Victoria_Theatre:1",
+       "score_q": 12980
+      },
+      {
+       "passage_key": "fever17:Victoria_Park_railway_station_-LRB-London-RRB-:0",
+       "score_q": 12633
+      }
+     ],
+     "retrieval_sha256": "f58de3d972d4910e8895da3d799750f75323aac89d9b4d3ccca523b7cd12f565"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f58de3d972d4910e8895da3d799750f75323aac89d9b4d3ccca523b7cd12f565",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Crystal_Palace_railway_station:0",
+      "content_sha256": "d422e6ebbcdc75e5288a46dd227cb55f1ae2350e7318e25b505abee247793e5c",
+      "chars": 978
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Upper_Sydenham_railway_station:0",
+      "content_sha256": "4583bab21eacce541c674854f21f3d804827555e0c8d01f7884e68a967d7bb7a",
+      "chars": 246
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Victoria_Palace_Theatre:0",
+      "content_sha256": "5cac47166801b18ad1292555da7373f95c0c1a23b67823c7ec426b982192243e",
+      "chars": 147
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Victoria_Theatre:1",
+      "content_sha256": "4334e081bd53e104db78e4c7818e61f7511fe1eb6d0420cd36e659dfc1cb4d4a",
+      "chars": 571
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Victoria_Park_railway_station_-LRB-London-RRB-:0",
+      "content_sha256": "038788879406b0ad06f5a0bf3465120b9f0f72c2311b66f3f18e802dce7bb3d6",
+      "chars": 882
+     }
+    ],
+    "elapsed_s": 0.0282
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Victoria Palace Theatre is opposite a central London railway terminus.\n\nEvidence passages from your search for \"Victoria Palace Theatre near London railway terminus\":\n<<<PASSAGES\n[P1] Crystal Palace railway station\nCrystal Palace railway station is a Network Rail and London Overground station in the London Borough of Bromley in south London . It is located in the Anerley area between the town centres of Crystal Palace and Penge . It is one of two stations built to serve the site of the 1851 exhibition building , the Crystal Palace , when it was moved from Hyde Park to Sydenham Hill after 1851 . The station was opened on 10 June 1854 by the West End of London and Crystal Palace Railway ( WEL&CPR ) to take the crowds to the relocated Palace . It was formerly known as Crystal Palace ( Low Level ) to differentiate it from the nearby and now demolished Crystal Palace ( High Level ) railway station . The station serves trains running between London Bridge and London Victoria in addition to services terminating at Beckenham Junction and Sutton . Since 23 May 2010 , the station has also been a terminus of the East London Line of the London Overground .\n\n[P2] Upper Sydenham railway station\nThe Crystal Palace and South London Junction Railway was authorised to build a line from Peckham Rye railway station to a terminus at Crystal Palace in 1862 , in order to serve the attraction of the Crystal Palace .\n\n[P3] Victoria Palace Theatre\nVictoria Palace Theatre is a West End theatre in Victoria Street , in the City of Westminster , opposite Victoria Station .\n\n[P4] Victoria Theatre\nVictoria Palace Theatre , located in the City of Westminster , England Apollo Victoria Theatre , ( formerly the New Victoria Theatre , and before that the New Victoria Cinema ) , also located in the City of Westminster , England New Victoria Theatre , located in Woking , England New Vic Theatre , a replacement for the Victoria Theatre , in Stoke , Staffordshire , England The Old Vic , ( originally the Royal Coburg Theatre , later known as the Royal Victoria Theatre ) located in London , England Victoria ( theatre company ) , Belgian theatre company\n\n[P5] Victoria Park railway station (London)\nVictoria Park ( opened as Victoria Park & Hackney Wick ) was a railway station near Victoria Park , east London , that was on the North London Railway ( NLR ) between Homerton and Old Ford . The station was situated on the north-east corner of the park , near Wick Road . It opened in June 1856 , six years after the opening of the track to the NLR 's original terminus at Bow , and two years after the opening of a spur line linking it to the Eastern Counties Railway ( ECR ) line at Stratford . The original station on the north side of Wick Road was replaced in March 1866 by a larger station at the junction itself to the south of the road , to cope with increased passenger numbers . The line east of Dalston Junction was cut off after bomb damage in the Blitz of World War II and Victoria Park station was fully closed in November 1943 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "53a34fa691dffe1d9baa5bb8211d21f5efd48561257caea5cc39d5d71047d6b1",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792857117.877011,
+      "end_wall": 1792857130.955466,
+      "error": null
+     }
+    ],
+    "arrival_seq": 749,
+    "start_wall": 1792857117.877011,
+    "start_mono": 526674.622579333,
+    "end_wall": 1792857130.955466,
+    "end_mono": 526687.701090625,
+    "raw_response": "{\n  \"reasoning\": \"The Victoria Palace Theatre is in Victoria Street, Westminster, opposite Victoria Station, but the evidence passages do not mention it being near a railway terminus.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13074892541,
+     "load_duration": 8816120000,
+     "prompt_eval_count": 896,
+     "prompt_eval_duration": 1587576417,
+     "eval_count": 64,
+     "eval_duration": 1536341757,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:52:10.952843Z"
+    },
+    "elapsed_s": 13.079,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 749,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 165,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "exaone3.5:7.8b": "7f8e0818b7e7178fee010b93f5082fef92403a51a13dc3e6af2d966b454722c8",
+  "olmo2:7b": "8fb5e45ea698f94b7cd716e454faf3e7100a0cd44ab7e858708114c7820f928b",
+  "granite3.3:2b": "4012d64c6ecf3c1f466a37c831258fadb098780aa5d8dd3750aba047afb6714c",
+  "falcon3:3b": "d375c914a2be132d18e2544979ae48181e3c9de6432fdb98fda8909563f82c58",
+  "nemotron-mini:4b": "f58de3d972d4910e8895da3d799750f75323aac89d9b4d3ccca523b7cd12f565"
+ },
+ "item_start_wall": 1792857107.1541362,
+ "item_wall_s": 23.802,
+ "ollama_ps_samples": [
+  [
+   1792857107.154,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792857109.166,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792857111.174,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792857113.186,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792857115.197,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792857117.201,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792857119.213,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792857121.222,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792857123.232,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792857125.243,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792857127.255,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792857129.265,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

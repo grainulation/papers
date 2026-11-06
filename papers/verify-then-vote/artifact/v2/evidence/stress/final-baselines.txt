@@ -1,0 +1,93 @@
+
+────────────────────────────────────────────────────────────────
+  BASELINE COMPARISON: Bran vs Majority-Vote vs Best-Confidence vs Last-Writer vs Random
+────────────────────────────────────────────────────────────────
+
+  N=100, 50 seeds × 3 topics. Comparing selection strategies on identical conflict sets.
+
+  australia — What is the capital of Australia?
+
+    ┌────────────┬────────────────┬────────┬───────┬───────┬──────────┬──────────┐
+    │   Topic    │     Method     │Mean FP │Min FP │Max FP │Mean Prec │ Std Prec │
+    ├────────────┼────────────────┼────────┼───────┼───────┼──────────┼──────────┤
+    │ australia  │ Bran (scored)  │  0.0   │   0   │   0   │  100.0%  │  0.00%   │
+    │            │ Majority vote  │  0.0   │   0   │   1   │  99.0%   │  4.90%   │
+    │            │Best confidence │  0.2   │   0   │   1   │  95.0%   │  10.00%  │
+    │            │  Last writer   │  0.2   │   0   │   1   │  95.0%   │  10.00%  │
+    │            │     Random     │  0.5   │   0   │   1   │  86.5%   │  12.46%  │
+    └────────────┴────────────────┴────────┴───────┴───────┴──────────┴──────────┘
+
+  tcp — How does TCP ensure reliable data delivery?
+
+    ┌────────────┬────────────────┬────────┬───────┬───────┬──────────┬──────────┐
+    │   Topic    │     Method     │Mean FP │Min FP │Max FP │Mean Prec │ Std Prec │
+    ├────────────┼────────────────┼────────┼───────┼───────┼──────────┼──────────┤
+    │    tcp     │ Bran (scored)  │  2.7   │   2   │   3   │  80.3%   │  2.80%   │
+    │            │ Majority vote  │  3.2   │   2   │   5   │  76.5%   │  5.64%   │
+    │            │Best confidence │  2.8   │   2   │   4   │  79.7%   │  3.45%   │
+    │            │  Last writer   │  3.3   │   2   │   5   │  76.0%   │  5.77%   │
+    │            │     Random     │  3.7   │   2   │   6   │  72.8%   │  6.29%   │
+    └────────────┴────────────────┴────────┴───────┴───────┴──────────┴──────────┘
+
+  nutrition — Is saturated fat bad for heart health?
+
+    ┌────────────┬────────────────┬────────┬───────┬───────┬──────────┬──────────┐
+    │   Topic    │     Method     │Mean FP │Min FP │Max FP │Mean Prec │ Std Prec │
+    ├────────────┼────────────────┼────────┼───────┼───────┼──────────┼──────────┤
+    │ nutrition  │ Bran (scored)  │  5.0   │   4   │   5   │  66.8%   │  1.00%   │
+    │            │ Majority vote  │  5.0   │   4   │   5   │  66.8%   │  1.00%   │
+    │            │Best confidence │  5.2   │   4   │   6   │  65.3%   │  2.79%   │
+    │            │  Last writer   │  5.2   │   4   │   6   │  65.2%   │  3.09%   │
+    │            │     Random     │  5.2   │   4   │   6   │  65.1%   │  2.96%   │
+    └────────────┴────────────────┴────────┴───────┴───────┴──────────┴──────────┘
+
+
+  ▸ Adversarial Resilience: Bran vs Majority Vote
+  ························································
+  N=100, single seed=42, adversarial ratio sweep
+
+  australia
+    ┌──────────┬───────┬─────────┬───────────┬────────────┬──────────┐
+    │  Topic   │ Adv % │ Bran FP │MajVote FP │BestConf FP │Random FP │
+    ├──────────┼───────┼─────────┼───────────┼────────────┼──────────┤
+    │australia │  0%   │    0    │     0     │     0      │    0     │
+    │          │  20%  │    0    │     0     │     0      │    0     │
+    │          │  40%  │    0    │     0     │     0      │    0     │
+    │          │  60%  │    0    │     0     │     0      │    0     │
+    │          │  80%  │    0    │     0     │     0      │    0     │
+    │          │  90%  │    0    │     1     │     0      │    1     │
+    └──────────┴───────┴─────────┴───────────┴────────────┴──────────┘
+
+  tcp
+    ┌──────────┬───────┬─────────┬───────────┬────────────┬──────────┐
+    │  Topic   │ Adv % │ Bran FP │MajVote FP │BestConf FP │Random FP │
+    ├──────────┼───────┼─────────┼───────────┼────────────┼──────────┤
+    │   tcp    │  0%   │    2    │     2     │     2      │    2     │
+    │          │  20%  │    2    │     2     │     2      │    3     │
+    │          │  40%  │    2    │     2     │     2      │    3     │
+    │          │  60%  │    2    │     2     │     2      │    2     │
+    │          │  80%  │    2    │     4     │     2      │    4     │
+    │          │  90%  │    2    │     4     │     2      │    4     │
+    └──────────┴───────┴─────────┴───────────┴────────────┴──────────┘
+
+  nutrition
+    ┌──────────┬───────┬─────────┬───────────┬────────────┬──────────┐
+    │  Topic   │ Adv % │ Bran FP │MajVote FP │BestConf FP │Random FP │
+    ├──────────┼───────┼─────────┼───────────┼────────────┼──────────┤
+    │nutrition │  0%   │    4    │     4     │     4      │    4     │
+    │          │  20%  │    5    │     5     │     5      │    5     │
+    │          │  40%  │    5    │     5     │     5      │    5     │
+    │          │  60%  │    4    │     4     │     4      │    4     │
+    │          │  80%  │    5    │     5     │     5      │    5     │
+    │          │  90%  │    5    │     5     │     5      │    5     │
+    └──────────┴───────┴─────────┴───────────┴────────────┴──────────┘
+
+
+  ▸ Verdict
+  ························································
+  Bran's evidence scoring selects winners based on evidence QUALITY,
+  not evidence QUANTITY. Majority vote fails when misconceptions are
+  popular (many agents repeat them). Best-confidence fails because
+  hallucinators report high confidence. Last-writer-wins is arbitrary.
+  Random provides the expected-value lower bound.
+

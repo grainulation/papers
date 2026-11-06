@@ -1,0 +1,1265 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-tqa0421",
+ "order": 26,
+ "split": "dev",
+ "answer_format": "letter",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-tqa0421",
+  "order": 26,
+  "split": "dev",
+  "item_type": "multiple_choice",
+  "answer_format": "letter",
+  "answer_schema": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Roeser"
+   },
+   {
+    "letter": "B",
+    "text": "His name is Donald Trump"
+   },
+   {
+    "letter": "C",
+    "text": "Donald Trump"
+   },
+   {
+    "letter": "D",
+    "text": "Trump"
+   }
+  ]
+ },
+ "item_view_sha256": "691e62069de8febfa9df6662191e3811cc3767085a920f188c9c1b8b407b2a68",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "exaone3.5:2.4b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "02d913c102b71ff4c03798fde0c3d3afc1d1a3aa06b4065fc11af317abcd32ae",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792834782.952055,
+      "end_wall": 1792834788.5871239,
+      "error": null
+     }
+    ],
+    "start_wall": 1792834782.952055,
+    "start_mono": 504339.866538208,
+    "end_wall": 1792834788.5871239,
+    "end_mono": 504345.501589291,
+    "raw_response": "{\"query\": \"Clarkson alum born 1940s Queens NY Donald Trump\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5632782667,
+     "load_duration": 2851413458,
+     "prompt_eval_count": 208,
+     "prompt_eval_duration": 843888000,
+     "eval_count": 22,
+     "eval_duration": 1671044045,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:39:48.586247Z"
+    },
+    "elapsed_s": 5.635,
+    "query_used": "Clarkson alum born 1940s Queens NY Donald Trump",
+    "query_source": "json",
+    "query_arrival_seq": 133
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Clarkson alum born 1940s Queens NY Donald Trump",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Donald_Trump_-LRB-disambiguation-RRB-:0",
+       "score_q": 12704
+      },
+      {
+       "passage_key": "fever17:Donald_Trump:0",
+       "score_q": 12624
+      },
+      {
+       "passage_key": "fever17:Donald_Trump_presidential_campaign:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q1:0",
+       "score_q": 12028
+      },
+      {
+       "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q2:0",
+       "score_q": 12028
+      }
+     ],
+     "retrieval_sha256": "dcd904660e8f0885f92e56854dc4b45d1f719bb54a714614d340a60e9a89df9a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "dcd904660e8f0885f92e56854dc4b45d1f719bb54a714614d340a60e9a89df9a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Donald_Trump_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "c82b6ab646642a28a2af6fc13125f87d0a1332250aef81f73483ddeb4e365f98",
+      "chars": 188
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Donald_Trump:0",
+      "content_sha256": "d3212f968fb86b4d1b6ad459d6f021e28f54edbf5a6d9ee90ff5d64003e17be5",
+      "chars": 855
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Donald_Trump_presidential_campaign:0",
+      "content_sha256": "2b967a07cebd1fcad10d8bfd35ff4a8a392bb808f856c4334d6ef1841b95f2ea",
+      "chars": 575
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q1:0",
+      "content_sha256": "fdf93b82b6912b1de1cdf45e55cb58c4b136c4a21f410f2d970d7d29ea11fd5c",
+      "chars": 411
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q2:0",
+      "content_sha256": "7d5988ad5aea93ebcdb91d2cea93dc21e6106c14f9a2d1b5e8d13e72558e68f5",
+      "chars": 412
+     }
+    ],
+    "elapsed_s": 0.0441
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nOptions:\nA. Roeser\nB. His name is Donald Trump\nC. Donald Trump\nD. Trump\n\nEvidence passages from your search for \"Clarkson alum born 1940s Queens NY Donald Trump\":\n<<<PASSAGES\n[P1] Donald Trump (disambiguation)\nDonald Trump ( born 1946 ) is the 45th President of the United States , as well as a businessman and television personality . Donald Trump may also refer to :\n\n[P2] Donald Trump\nDonald John Trump ( born June 14 , 1946 ) is the 45th and current President of the United States . Before entering politics , he was a businessman and television personality . Trump was born and raised in Queens , New York City , and earned an economics degree from the Wharton School . He then took charge of The Trump Organization , the real estate and construction firm founded by his paternal grandmother , which he ran for 45 years until 2016 . During his real estate career , Trump built , renovated , and managed numerous office towers , hotels , casinos , and golf courses . Besides real estate , he started several side ventures and has licensed the use of his name for the branding of various products and properties , including Trump Entertainment Resorts , Trump Steaks , and Trump Vodka . He was the founder of Trump University .\n\n[P3] Donald Trump presidential campaign\nThere have been three presidential campaigns waged by Donald Trump for President of the United States . He has additionally mused about running on several other occasions . Donald Trump presidential campaign may refer to : Donald Trump presidential campaign , 2000 ( Trump 2000 ) [ unsuccessful ] Donald Trump presidential campaign , 2016 ( Trump 2016 ) [ successful ] Donald Trump becomes the 45th U.S. President Donald Trump presidential campaign , 2020 ( Trump 2020 ) [ underway ] Donald Trump bids to become re-elected as U.S. President\n\n[P4] Timeline of the Trump presidency, 2017 Q1\nThe following is a timeline of the presidency of Donald Trump during the first quarter of 2017 . Other articles relating to Donald Trump 's post-election activities are : Presidential transition of Donald Trump First 100 days of Donald Trump 's presidency List of executive actions by Donald Trump List of presidential trips made by Donald Trump ( international trips )\n\n[P5] Timeline of the Trump presidency, 2017 Q2\nThe following is a timeline of the presidency of Donald Trump during the second quarter of 2017 . Other articles relating to Donald Trump 's post-election activities are : Presidential transition of Donald Trump First 100 days of Donald Trump 's presidency List of executive actions by Donald Trump List of presidential trips made by Donald Trump ( international trips )\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "33de637e067a16a5d5273ebccaf70cd8216570db3bf8c371916ceeffaab3700c",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792834788.631619,
+      "end_wall": 1792834794.538964,
+      "error": null
+     }
+    ],
+    "arrival_seq": 130,
+    "start_wall": 1792834788.631619,
+    "start_mono": 504345.546085875,
+    "end_wall": 1792834794.538964,
+    "end_mono": 504351.453413041,
+    "raw_response": "{\"reasoning\": \"The passage clearly states that Donald Trump is the 45th President of the United States and was born in 1946, which is incorrect as he was born in 1946 but the specific year mentioned in the evidence is 1946. However, the closest correct year is 1946, which matches the information given in the passage.\", \"answer\": \"B\", \"citations\": [\"P2\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5904794333,
+     "load_duration": 62826917,
+     "prompt_eval_count": 968,
+     "prompt_eval_duration": 1540302042,
+     "eval_count": 112,
+     "eval_duration": 3065833245,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:39:54.537564Z"
+    },
+    "elapsed_s": 5.907,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 130,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Donald_Trump:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 303,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "02d913c102b71ff4c03798fde0c3d3afc1d1a3aa06b4065fc11af317abcd32ae",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792834782.952229,
+      "end_wall": 1792834784.427087,
+      "error": null
+     }
+    ],
+    "start_wall": 1792834782.952229,
+    "start_mono": 504339.866712708,
+    "end_wall": 1792834784.427087,
+    "end_mono": 504341.341564625,
+    "raw_response": "{\"query\": \"donald jackson tv host\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1472219542,
+     "load_duration": 52925583,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 649406542,
+     "eval_count": 12,
+     "eval_duration": 646584459,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:39:44.425704Z"
+    },
+    "elapsed_s": 1.475,
+    "query_used": "donald jackson tv host",
+    "query_source": "json",
+    "query_arrival_seq": 131
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "donald jackson tv host",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Donald_Jackson_-LRB-disambiguation-RRB-:0",
+       "score_q": 9853
+      },
+      {
+       "passage_key": "fever17:The_Playbook:0",
+       "score_q": 9511
+      },
+      {
+       "passage_key": "fever17:Fresh_Sunday:0",
+       "score_q": 8882
+      },
+      {
+       "passage_key": "fever17:Don_Webster_-LRB-media_personality-RRB-:0",
+       "score_q": 8874
+      },
+      {
+       "passage_key": "fever17:Jim_Jackson_-LRB-sportscaster-RRB-:0",
+       "score_q": 8628
+      }
+     ],
+     "retrieval_sha256": "6dbd2824766c62b1bf8dfb3bf84701b1b04f51acb18cec4cd1b83644c38736f8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6dbd2824766c62b1bf8dfb3bf84701b1b04f51acb18cec4cd1b83644c38736f8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Donald_Jackson_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "ca85600b802be7ebfa454279407c4a53ab3f01700059e27e31772d310c9d0efd",
+      "chars": 836
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:The_Playbook:0",
+      "content_sha256": "aa441571b932c81fc9e971c0bf6565feaafdc77047dbeb80c62455ac46caedff",
+      "chars": 539
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Fresh_Sunday:0",
+      "content_sha256": "adb86fd2bbd4707690acbe2d4ef73c6d3647cc7e55f089771f7939b0cb78ab34",
+      "chars": 164
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Don_Webster_-LRB-media_personality-RRB-:0",
+      "content_sha256": "a2700a0b263c69f8cb6a47634e9121b1be58edd9dd1b5ac4ae286ca79a428acb",
+      "chars": 327
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Jim_Jackson_-LRB-sportscaster-RRB-:0",
+      "content_sha256": "d5df02d5a5cf7cc1991e514d0638ff3c6ca316dd58d7aa8f22e0b7d719bd837b",
+      "chars": 390
+     }
+    ],
+    "elapsed_s": 0.0181
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nOptions:\nA. Roeser\nB. His name is Donald Trump\nC. Donald Trump\nD. Trump\n\nEvidence passages from your search for \"donald jackson tv host\":\n<<<PASSAGES\n[P1] Donald Jackson (disambiguation)\nDonald Jackson is a Canadian figure skater . Donald Jackson may also refer to : Don Jackson ( American football ) ( born 1993 ) , American football running back for the Green Bay Packers Donald L. Jackson ( 1910 -- 1981 ) , U.S. Representative from California Donald deAvila Jackson ( 1920 -- 1968 ) , American psychiatrist Donald Jackson ( calligrapher ) ( born 1938 ) , English calligrapher Donald G. Jackson ( 1943 -- 2003 ) , American filmmaker Don Jackson ( ice hockey ) ( born 1956 ) , retired ice hockey player Donald Jackson ( pair skater ) ( born 1986 ) , Canadian pair skater who won gold at the 2007 -- 2008 ISU Junior Grand Prix Don Jackson ( radio personality ) , Canadian radio personality Donald Jackson ( Canadian politician ) ( born 1930 ) , member of the Legislative Assembly of Ontario\n\n[P2] The Playbook\nThe Playbook is a half-hour comedy series produced by Hip TV Inc. and hosted by Donald Faison for Spike TV . The Playbook revolves around a typical young male trying to figure out dating and relationships as if they were plays in a sports playbook . The original pilot for the series debuted on February 3 , 2005 and featured Steve Sobel as host . When Spike TV picked up the series , Donald Faison was hired to replace Steve Sobel as the series host . No more than ten episodes were produced before the series was cancelled .\n\n[P3] Fresh Sunday\nFresh Sunday is a Chinese cooking-variety show hosted by popular host He Jiong and Chinese Got7 member Jackson Wang . It aired every Sunday on Hunan TV\n\n[P4] Don Webster (media personality)\nDonald `` Don '' Webster ( born 1939 in Chatham , Ontario , Canada ) is a retired television host , weather forecaster , and station manager who is best known as the host of the nationally syndicated music program Upbeat and the longtime weatherman for Cleveland , Ohio ABC affiliate WEWS-TV 5 .\n\n[P5] Jim Jackson (sportscaster)\nJim Jackson ( born March 23 , 1963 ) is an American professional sportscaster . He currently serves as the TV play-by-play announcer for the Philadelphia Flyers and pre-game and post-game radio host for the Philadelphia Phillies . In addition , Jackson has also picked up radio play-by-play broadcasting duties for the 4th and 5th innings of Phillies home games .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9d2e0b465a2ba1536026bdf4c5178c0b96e3924940e9c1bf183409e1c28941dc",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792834784.445556,
+      "end_wall": 1792834802.052875,
+      "error": null
+     }
+    ],
+    "arrival_seq": 131,
+    "start_wall": 1792834784.445556,
+    "start_mono": 504341.360035833,
+    "end_wall": 1792834802.052875,
+    "end_mono": 504358.967302,
+    "raw_response": "{\"reasoning\": \"Donald Jackson, born in the 1940s in Queens, New York City, and following a career path similar to his father, who is a US Representative from California, likely refers to Donald deAvila Jackson (1910--1981). Donald deAvila Jackson is known to have been a psychiatrist and is documented in P1. Donald G. Jackson (1943--2003), an American filmmaker, is also a possibility but does not fit the career path description. There is no evidence linking him to being a TV host or gaining a cult following as per the provided passages. Donald Faison is an actor and not the host of The Playbook in P2. Don and\" ,\"answer\": \"C\", \"citations\": [\"P1\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17603633584,
+     "load_duration": 48157042,
+     "prompt_eval_count": 834,
+     "prompt_eval_duration": 3254789333,
+     "eval_count": 166,
+     "eval_duration": 12815621173,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:40:02.050619Z"
+    },
+    "elapsed_s": 17.607,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 131,
+   "parsed": {
+    "status": "ok",
+    "answer": "C",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Donald_Jackson_-LRB-disambiguation-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "02d913c102b71ff4c03798fde0c3d3afc1d1a3aa06b4065fc11af317abcd32ae",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792834782.952306,
+      "end_wall": 1792834788.316243,
+      "error": null
+     }
+    ],
+    "start_wall": 1792834782.952306,
+    "start_mono": 504339.866789708,
+    "end_wall": 1792834788.316243,
+    "end_mono": 504345.230708916,
+    "raw_response": "{\"query\": \"Donald Trump bio\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5361112667,
+     "load_duration": 3871962875,
+     "prompt_eval_count": 203,
+     "prompt_eval_duration": 835802667,
+     "eval_count": 9,
+     "eval_duration": 469764626,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:39:48.314766Z"
+    },
+    "elapsed_s": 5.364,
+    "query_used": "Donald Trump bio",
+    "query_source": "json",
+    "query_arrival_seq": 132
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Donald Trump bio",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Donald_Trump_presidential_campaign:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q1:0",
+       "score_q": 12028
+      },
+      {
+       "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q2:0",
+       "score_q": 12028
+      },
+      {
+       "passage_key": "fever17:Bibliography_of_Donald_Trump:0",
+       "score_q": 11705
+      },
+      {
+       "passage_key": "fever17:Never_Enough-COLON-_Donald_Trump_and_the_Pursuit_of_Success:0",
+       "score_q": 11641
+      }
+     ],
+     "retrieval_sha256": "d169bd664d43b2912ab83085ec0083dcf5e216c3d2338baf5afe247aaa84086a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d169bd664d43b2912ab83085ec0083dcf5e216c3d2338baf5afe247aaa84086a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Donald_Trump_presidential_campaign:0",
+      "content_sha256": "2b967a07cebd1fcad10d8bfd35ff4a8a392bb808f856c4334d6ef1841b95f2ea",
+      "chars": 575
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q1:0",
+      "content_sha256": "fdf93b82b6912b1de1cdf45e55cb58c4b136c4a21f410f2d970d7d29ea11fd5c",
+      "chars": 411
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Timeline_of_the_Trump_presidency,_2017_Q2:0",
+      "content_sha256": "7d5988ad5aea93ebcdb91d2cea93dc21e6106c14f9a2d1b5e8d13e72558e68f5",
+      "chars": 412
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Bibliography_of_Donald_Trump:0",
+      "content_sha256": "2459e906f6cf0b33131c1aabfb3901b3398e1f3d6b44841f9bd282ff22bcd91a",
+      "chars": 162
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Never_Enough-COLON-_Donald_Trump_and_the_Pursuit_of_Success:0",
+      "content_sha256": "ad3f6fd01b580bc77eacda275f0082fab4992458b2d89c8b48d7862e649da500",
+      "chars": 217
+     }
+    ],
+    "elapsed_s": 0.0282
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nOptions:\nA. Roeser\nB. His name is Donald Trump\nC. Donald Trump\nD. Trump\n\nEvidence passages from your search for \"Donald Trump bio\":\n<<<PASSAGES\n[P1] Donald Trump presidential campaign\nThere have been three presidential campaigns waged by Donald Trump for President of the United States . He has additionally mused about running on several other occasions . Donald Trump presidential campaign may refer to : Donald Trump presidential campaign , 2000 ( Trump 2000 ) [ unsuccessful ] Donald Trump presidential campaign , 2016 ( Trump 2016 ) [ successful ] Donald Trump becomes the 45th U.S. President Donald Trump presidential campaign , 2020 ( Trump 2020 ) [ underway ] Donald Trump bids to become re-elected as U.S. President\n\n[P2] Timeline of the Trump presidency, 2017 Q1\nThe following is a timeline of the presidency of Donald Trump during the first quarter of 2017 . Other articles relating to Donald Trump 's post-election activities are : Presidential transition of Donald Trump First 100 days of Donald Trump 's presidency List of executive actions by Donald Trump List of presidential trips made by Donald Trump ( international trips )\n\n[P3] Timeline of the Trump presidency, 2017 Q2\nThe following is a timeline of the presidency of Donald Trump during the second quarter of 2017 . Other articles relating to Donald Trump 's post-election activities are : Presidential transition of Donald Trump First 100 days of Donald Trump 's presidency List of executive actions by Donald Trump List of presidential trips made by Donald Trump ( international trips )\n\n[P4] Bibliography of Donald Trump\nThis bibliography of Donald Trump is a list of written and published works about Donald Trump , 45th President of the United States .\n\n[P5] Never Enough: Donald Trump and the Pursuit of Success\nNever Enough : Donald Trump and the Pursuit of Success is a 2015 biography of Donald Trump by Michael D'Antonio , who interviewed Trump prior to writing the book .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d9b04b5fd8b7e51483412f8de456ecdca49f8f4b76271365aa30cc7dd6625969",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792834788.344773,
+      "end_wall": 1792834803.176219,
+      "error": null
+     }
+    ],
+    "arrival_seq": 132,
+    "start_wall": 1792834788.344773,
+    "start_mono": 504345.259240875,
+    "end_wall": 1792834803.176219,
+    "end_mono": 504360.090643666,
+    "raw_response": "{\n  \"reasoning\": \"The evidence shows that Donald Trump is the 45th President of the United States, and his birth name is also Donald Trump. Therefore, the correct answer is 'C'.\",\n  \"answer\": \"C\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14828075209,
+     "load_duration": 8367151417,
+     "prompt_eval_count": 739,
+     "prompt_eval_duration": 2147221666,
+     "eval_count": 70,
+     "eval_duration": 2928514035,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:40:03.173768Z"
+    },
+    "elapsed_s": 14.831,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 132,
+   "parsed": {
+    "status": "ok",
+    "answer": "C",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 159,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "02d913c102b71ff4c03798fde0c3d3afc1d1a3aa06b4065fc11af317abcd32ae",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792834782.95196,
+      "end_wall": 1792834784.33073,
+      "error": null
+     }
+    ],
+    "start_wall": 1792834782.95196,
+    "start_mono": 504339.866442958,
+    "end_wall": 1792834784.33073,
+    "end_mono": 504341.245207041,
+    "raw_response": "{\"query\": \"Donald Trump Queens New York\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1375366083,
+     "load_duration": 29978625,
+     "prompt_eval_count": 212,
+     "prompt_eval_duration": 602950709,
+     "eval_count": 15,
+     "eval_duration": 662663748,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:39:44.328939Z"
+    },
+    "elapsed_s": 1.379,
+    "query_used": "Donald Trump Queens New York",
+    "query_source": "json",
+    "query_arrival_seq": 130
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Donald Trump Queens New York",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:List_of_grants_made_by_the_Donald_J._Trump_Foundation:0",
+       "score_q": 14228
+      },
+      {
+       "passage_key": "fever17:Donald_J._Trump_State_Park:0",
+       "score_q": 13969
+      },
+      {
+       "passage_key": "fever17:Donald_Trump:0",
+       "score_q": 13604
+      },
+      {
+       "passage_key": "fever17:Donald_J._Trump_Foundation:0",
+       "score_q": 13496
+      },
+      {
+       "passage_key": "fever17:Fred_Trump:0",
+       "score_q": 13249
+      }
+     ],
+     "retrieval_sha256": "a0a29778ab5356a94b90d49106ce574487ebce878533926811f5d11e6215e12a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a0a29778ab5356a94b90d49106ce574487ebce878533926811f5d11e6215e12a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:List_of_grants_made_by_the_Donald_J._Trump_Foundation:0",
+      "content_sha256": "1541c476fcd5fdfdef6d2d4a6bb0ff96dd01c066b9ac8c2449ab942bed2c68df",
+      "chars": 275
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Donald_J._Trump_State_Park:0",
+      "content_sha256": "b34ce133b0f0f4ea5da7c52d12d3c0691bce132b366cc537aa6cc5763af9b4cc",
+      "chars": 405
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Donald_Trump:0",
+      "content_sha256": "d3212f968fb86b4d1b6ad459d6f021e28f54edbf5a6d9ee90ff5d64003e17be5",
+      "chars": 855
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Donald_J._Trump_Foundation:0",
+      "content_sha256": "f4794dd73f17929fb24c4e36bbfc600f2e680d4b74653dbcf20d08028019b4cc",
+      "chars": 465
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Fred_Trump:0",
+      "content_sha256": "b79026828005a42ca8ecd1cdf9b9fd6415a41499375c16c34ca5ebd8809ac118",
+      "chars": 982
+     }
+    ],
+    "elapsed_s": 0.0354
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nOptions:\nA. Roeser\nB. His name is Donald Trump\nC. Donald Trump\nD. Trump\n\nEvidence passages from your search for \"Donald Trump Queens New York\":\n<<<PASSAGES\n[P1] List of grants made by the Donald J. Trump Foundation\nThe Donald J. Trump Foundation is a New York-based charitable foundation founded by Donald Trump , President of the United States . The following is a partial list of grants made by the foundation from 2006 through 2009 .\n\n[P2] Donald J. Trump State Park\nDonald J. Trump State Park is a 436 acre undeveloped state park located within the towns of Yorktown and Putnam Valley in Westchester County and Putnam County , New York . The park consists of property donated to New York State in 2006 by Donald Trump . Maintenance of the park was halted in 2010 due to budget constraints , and the park remains largely undeveloped as of 2015 .\n\n[P3] Donald Trump\nDonald John Trump ( born June 14 , 1946 ) is the 45th and current President of the United States . Before entering politics , he was a businessman and television personality . Trump was born and raised in Queens , New York City , and earned an economics degree from the Wharton School . He then took charge of The Trump Organization , the real estate and construction firm founded by his paternal grandmother , which he ran for 45 years until 2016 . During his real estate career , Trump built , renovated , and managed numerous office towers , hotels , casinos , and golf courses . Besides real estate , he started several side ventures and has licensed the use of his name for the branding of various products and properties , including Trump Entertainment Resorts , Trump Steaks , and Trump Vodka . He was the founder of Trump University .\n\n[P4] Donald J. Trump Foundation\nThe Donald J. Trump Foundation is a New York-based private foundation founded and chaired by President of the United States Donald Trump . It has been a source of controversy , criticism and scrutiny . The foundation has been fined for making political contributions and admitted engaging in self-dealing practices to benefit Trump , his family , and businesses . On December 24 , 2016 , Trump said he intends to dissolve the foundation .\n\n[P5] Fred Trump\nFrederick Christ Trump ( October 11 , 1905 -- June 25 , 1999 ) was an American real estate developer and philanthropist , primarily in New York City , and father of Donald Trump , the 45th President of the United States , and Maryanne Trump Barry , a United States Court of Appeals judge . Trump 's father , Frederick , died when Trump was 13 years old . By 15 , in partnership with his mother , Elizabeth Christ Trump , and non-family investors , Trump had begun a career in home construction and sales . The development company was incorporated as E. Trump & Son in 1927 , and grew to build and manage single-family houses in Queens , barracks and garden apartments for U.S. Navy personnel near major shipyards along the East Coast , and more than 27,000 apartments in New York City . Trump was investigated by a U.S. Senate committee for wartime profiteering ( 1954 ) , and by the U.S. Justice Department 's Civil Rights Division for civil rights violations ( 1973 ) .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "091aafcf08233c857b007b10044ee162731e570309ac399fbd556fa2fef3e55b",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792834784.366548,
+      "end_wall": 1792834804.4679492,
+      "error": null
+     }
+    ],
+    "arrival_seq": 133,
+    "start_wall": 1792834784.366548,
+    "start_mono": 504341.281027791,
+    "end_wall": 1792834804.4679492,
+    "end_mono": 504361.382370291,
+    "raw_response": "{\n  \"reasoning\": \"The query asks for the American born in Queens, New York City, in the 1940s, who followed a career path like his father and gained fame and a cult following, with the name 'Donald'. The passages indicate that Donald Trump fits these criteria, being the 45th President of the United States, born in Queens, New York City, in 1946, and following a successful career in real estate like his father. His full name is Donald John Trump.\",\n  \"answer\": \"B\",\n  \"citations\": [\"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20098263250,
+     "load_duration": 11321017833,
+     "prompt_eval_count": 1225,
+     "prompt_eval_duration": 3021114625,
+     "eval_count": 150,
+     "eval_duration": 5113502160,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:40:04.465787Z"
+    },
+    "elapsed_s": 20.101,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 133,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Donald_Trump:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 431,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "02d913c102b71ff4c03798fde0c3d3afc1d1a3aa06b4065fc11af317abcd32ae",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792834782.95216,
+      "end_wall": 1792834783.918175,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792834783.918251,
+      "end_wall": 1792834789.8128629,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792834789.812923,
+      "end_wall": 1792834803.940085,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792834782.95216,
+    "start_mono": null,
+    "end_wall": 1792834803.940085,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 134
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Andrew_Cuomo:0",
+       "score_q": 16676
+      },
+      {
+       "passage_key": "fever17:Pharoahe_Monch:0",
+       "score_q": 16378
+      },
+      {
+       "passage_key": "fever17:Dave_Attell:0",
+       "score_q": 16228
+      },
+      {
+       "passage_key": "fever17:Charles_J._Vallone:0",
+       "score_q": 15806
+      },
+      {
+       "passage_key": "fever17:Colton_Ford:0",
+       "score_q": 15635
+      }
+     ],
+     "retrieval_sha256": "c0d0ff880031488651f0a7f06098cbdaba3bc7444a7405204debd6b4a96e2271"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c0d0ff880031488651f0a7f06098cbdaba3bc7444a7405204debd6b4a96e2271",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Andrew_Cuomo:0",
+      "content_sha256": "6f6688b0fde5d0cbbda9362f6a51df60aa2f9dc107d53c96dd0e6b0600acab36",
+      "chars": 820
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Pharoahe_Monch:0",
+      "content_sha256": "90dc247a6d28c47add541357ab2c72252b562878ac41fc80ddb26d901125ea60",
+      "chars": 262
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dave_Attell:0",
+      "content_sha256": "0d3b2c4652118a9db9d88c951cf8fe27b12a609cbdd39d7378dcfe91aec7a7ce",
+      "chars": 436
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Charles_J._Vallone:0",
+      "content_sha256": "66aab95eda5a4fd53027c2536d7eabdec8d59e38b4ac0ab0aab509a46a3931a2",
+      "chars": 698
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Colton_Ford:0",
+      "content_sha256": "72c7af84770670627af4b375cdcdac29a965e9a934cb870ecfec0a22f004a68b",
+      "chars": 273
+     }
+    ],
+    "elapsed_s": 0.058
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\n\nOptions:\nA. Roeser\nB. His name is Donald Trump\nC. Donald Trump\nD. Trump\n\nEvidence passages from your search for \"A Clarkson alum, this American was born in the 1940s in Queens, New York City, followed the same career path as his father and gained a cult following and fame. His name is \"Donald\" what?\":\n<<<PASSAGES\n[P1] Andrew Cuomo\nAndrew Mark Cuomo ( [ ˈkwoʊmoʊ ] born December 6 , 1957 ) is an American politician and attorney who has been the 56th Governor of New York since January 1 , 2011 . A member of the Democratic Party , he was elected in 2010 , holding the same position his father , Mario Cuomo , held for three terms from 1983 to 1995 . Born in Queens , New York City , Cuomo is a graduate of Fordham University and Albany Law School of Union University , New York in New York . He began his career working as the campaign manager for his father , and then he was an Assistant District Attorney in New York City before entering private law practice . He founded HELP USA ( Housing Enterprise for the Less Privileged ) , and was appointed Chair of the New York City Homeless Commission , a position he held from 1990 to 1993 .\n\n[P2] Pharoahe Monch\nTroy Donald Jamerson ( born October 31 , 1972 ) , better known by his stage name Pharoahe Monch , is an American rapper from Queens , New York . He is known for his complex lyrics , complex delivery , and internal and multisyllabic rhyme schemes .\n\n[P3] Dave Attell\nDavid Attell ( born January 18 , 1965 ) is an American stand-up comedian , writer and actor , best known as the host of Comedy Central 's Insomniac with Dave Attell , which gave him a cult following . Born in Queens , New York , he grew up in Rockville Centre , New York with his cousins the Small family and now lives in New York City . Patton Oswalt and Bill Burr have hailed him as the greatest off-color comedian alive .\n\n[P4] Charles J. Vallone\nCharles J. Vallone ( 1901 -- March 15 , 1967 ) was an Italian-American judge . He served on the Queens County Civil Court . Vallone was born in Italy . Robert F. Wagner , Jr. , the Mayor of New York City , appointed Vallone to the Municipal Court in 1955 . He lived in Astoria , Queens , and died in his chambers in Kew Gardens , Queens . Vallone was the father of law and politician Peter Vallone , Sr. , and grandfather of lawyers and politicians Peter Vallone , Jr. , and Paul Vallone . The Judge Charles J. Vallone School is named after him . His grandson Peter Vallone , Jr. is now a judge with the New York City Civil Court in Queens , the same role Charles had served in .\n\n[P5] Colton Ford\nColton Ford ( born October 12 , 1962 , in Pasadena , California ) is the stage name of the former American gay pornographic actor , Glenn Soukesian , who returned to his original career path of singer , and actor . As of May 2007 , he resides in New York City .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "da33a623b36a9f1a7f5e6e0c9a2d8d5ecdda371b7cc895bc814c1df6886b9b44",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792834803.9984808,
+      "end_wall": 1792834805.873584,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792834805.873743,
+      "end_wall": 1792834807.749525,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792834807.749598,
+      "end_wall": 1792834809.625372,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 134,
+    "start_wall": 1792834803.9984808,
+    "start_mono": null,
+    "end_wall": 1792834809.625372,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 134,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "dcd904660e8f0885f92e56854dc4b45d1f719bb54a714614d340a60e9a89df9a",
+  "olmo2:7b": "6dbd2824766c62b1bf8dfb3bf84701b1b04f51acb18cec4cd1b83644c38736f8",
+  "nemotron-mini:4b": "d169bd664d43b2912ab83085ec0083dcf5e216c3d2338baf5afe247aaa84086a",
+  "granite3.3:2b": "a0a29778ab5356a94b90d49106ce574487ebce878533926811f5d11e6215e12a",
+  "exaone3.5:2.4b": "c0d0ff880031488651f0a7f06098cbdaba3bc7444a7405204debd6b4a96e2271"
+ },
+ "item_start_wall": 1792834782.951777,
+ "item_wall_s": 26.674,
+ "ollama_ps_samples": [
+  [
+   1792834782.952,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834784.964,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792834786.975,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792834788.981,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834790.983,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834792.995,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834795.006,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834797.01,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792834799.021,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792834801.033,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792834803.044,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792834805.056,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834807.063,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792834809.07,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

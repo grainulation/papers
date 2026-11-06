@@ -1,0 +1,1259 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain382",
+ "order": 534,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain382",
+  "order": 534,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system."
+ },
+ "item_view_sha256": "b837ebf491c103d418b0751426cf9669d1c866aff800738fb543c933e61cc623",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "dense",
+  "phi3:mini": "dense",
+  "qwen2.5:3b": "dense"
+ },
+ "dispatch_order": [
+  "gemma2:2b",
+  "llama3.2:3b",
+  "qwen2.5:3b",
+  "mistral",
+  "phi3:mini"
+ ],
+ "arrival_order": [
+  "gemma2:2b",
+  "llama3.2:3b",
+  "mistral",
+  "qwen2.5:3b",
+  "phi3:mini"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e7194d85959723b808eec308752d018199c27326b4b052ce0ef2dc0f0c93aeb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792718611.532882,
+      "end_wall": 1792718612.789567,
+      "error": null
+     }
+    ],
+    "start_wall": 1792718611.532882,
+    "start_mono": 388168.574695416,
+    "end_wall": 1792718612.789567,
+    "end_mono": 388169.831373583,
+    "raw_response": "{\"query\": \"molecule-induced senescence disease modeling\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1254515708,
+     "load_duration": 121744792,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 356227000,
+     "eval_count": 13,
+     "eval_duration": 502686959,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:32.788396Z"
+    },
+    "elapsed_s": 1.257,
+    "query_used": "molecule-induced senescence disease modeling",
+    "query_source": "json",
+    "query_arrival_seq": 2670
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "molecule-induced senescence disease modeling",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11659421:0",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:17412260:0",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:25419778:0",
+       "score_q": 743
+      },
+      {
+       "passage_key": "scifact:11659421:1",
+       "score_q": 740
+      },
+      {
+       "passage_key": "scifact:35543846:0",
+       "score_q": 737
+      }
+     ],
+     "retrieval_sha256": "d8b8857baa3aece1b26356800cea8c0ce60650e8e0aa748cb184bc12aa5212de"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d8b8857baa3aece1b26356800cea8c0ce60650e8e0aa748cb184bc12aa5212de",
+    "query_embedding_sha256": "2a8c152884cbc0fdc5a17937335bde32c854e54d72017b21979da7a654c37082",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11659421:0",
+      "content_sha256": "056a48cea966190b10ed185bd3ddb6f052737435796563e4fee954c68afc6970",
+      "chars": 1040
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17412260:0",
+      "content_sha256": "f58ecfa856f97ccc3e0f2e3f12489eafa795ae618f3b07457f0881fb5ddaf003",
+      "chars": 1053
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25419778:0",
+      "content_sha256": "4afd5cdc9a38c48265c8b657fb21448223dd762175e4dfd1569e7b552b63cc1b",
+      "chars": 889
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11659421:1",
+      "content_sha256": "021b20573a3bce949d1d1681e9bb50a2eaae49b802807b5c7148f3d422a5c0cd",
+      "chars": 221
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:35543846:0",
+      "content_sha256": "a00998d2f3ede408c74f101d1aa11de7cf55e18d52663604322ab0a5c0d4aa4b",
+      "chars": 903
+     }
+    ],
+    "elapsed_s": 8.0527
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nEvidence passages from your search for \"molecule-induced senescence disease modeling\":\n<<<PASSAGES\n[P1] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nReprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin in iPSC-derived fibroblasts and neurons induces multiple aging-related markers and characteristics, including dopamine-specific phenotypes such as neuromelanin accumulation. Induced aging in PD iPSC-derived dopamine neurons revealed disease phenotypes that require both aging and genetic susceptibility, such as pronounced dendrite degeneration, progressive loss of tyrosine hydroxylase (TH) expression, and enlarged mitochondria or Lewy-body-precursor inclusions.\n\n[P2] A complex secretory program orchestrated by the inflammasome controls paracrine senescence\nOncogene-induced senescence (OIS) is crucial for tumour suppression. Senescent cells implement a complex pro-inflammatory response termed the senescence-associated secretory phenotype (SASP). The SASP reinforces senescence, activates immune surveillance and paradoxically also has pro-tumorigenic properties. Here, we present evidence that the SASP can also induce paracrine senescence in normal cells both in culture and in human and mouse models of OIS in vivo. Coupling quantitative proteomics with small-molecule screens, we identified multiple SASP components mediating paracrine senescence, including TGF-β family ligands, VEGF, CCL2 and CCL20. Amongst them, TGF-β ligands play a major role by regulating p15(INK4b) and p21(CIP1). Expression of the SASP is controlled by inflammasome-mediated IL-1 signalling. The inflammasome and IL-1 signalling are activated in senescent cells and IL-1α expression can reproduce SASP activation, resulting in senescence.\n\n[P3] Identification of Senescent Cells in the Bone Microenvironment.\nCellular senescence is a fundamental mechanism by which cells remain metabolically active yet cease dividing and undergo distinct phenotypic alterations, including upregulation of p16Ink4a , profound secretome changes, telomere shortening, and decondensation of pericentromeric satellite DNA. Because senescent cells accumulate in multiple tissues with aging, these cells and the dysfunctional factors they secrete, termed the senescence-associated secretory phenotype (SASP), are increasingly recognized as promising therapeutic targets to prevent age-related degenerative pathologies, including osteoporosis. However, the cell type(s) within the bone microenvironment that undergoes senescence with aging in vivo has remained poorly understood, largely because previous studies have focused on senescence in cultured cells.\n\n[P4] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nThus, our study suggests that progerin-induced aging can be used to reveal late-onset age-related disease features in hiPSC-based disease models.\n\n[P5] Metabolic analysis of senescent human fibroblasts reveals a role for AMP in cellular senescence.\nCellular senescence is considered a major tumour-suppressor mechanism in mammals, and many oncogenic insults, such as the activation of the ras proto-oncogene, trigger initiation of the senescence programme. Although it was shown that activation of the senescence programme involves the up-regulation of cell-cycle regulators such as the inhibitors of cyclin-dependent kinases p16INK4A and p21CIP-1, the mechanisms underlying the senescence response remain to be resolved. In the case of stress-induced premature senescence, reactive oxygen species are considered important intermediates contributing to the phenotype. Moreover, distinct alterations of the cellular carbohydrate metabolism are known to contribute to oncogenic transformation, as is best documented for the phenomenon of aerobic glycolysis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3ed56ee4b9c38640f9ed4133df36e70254ae6252ad9332c65f0e7bf08d130001",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792718620.842724,
+      "end_wall": 1792718631.4878469,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2670,
+    "start_wall": 1792718620.842724,
+    "start_mono": 388177.884491291,
+    "end_wall": 1792718631.4878469,
+    "end_mono": 388188.529560041,
+    "raw_response": "{\"reasoning\": \"The passages suggest that specific molecules can induce senescence in disease models. While they mainly focus on progerin and the SASP, the core idea of using specific molecules to model senescence aligns with the claim. \", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10638584666,
+     "load_duration": 1711672791,
+     "prompt_eval_count": 1096,
+     "prompt_eval_duration": 3254082792,
+     "eval_count": 64,
+     "eval_duration": 4243737581,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:51.482827Z"
+    },
+    "elapsed_s": 10.645,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2670,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 221,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e7194d85959723b808eec308752d018199c27326b4b052ce0ef2dc0f0c93aeb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792718611.5330088,
+      "end_wall": 1792718621.800898,
+      "error": null
+     }
+    ],
+    "start_wall": 1792718611.5330088,
+    "start_mono": 388168.5748225,
+    "end_wall": 1792718621.800898,
+    "end_mono": 388178.842659541,
+    "raw_response": "{\"query\": \"molecules added to culture system mimic environmentally induced senescence\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10266169709,
+     "load_duration": 8876263417,
+     "prompt_eval_count": 182,
+     "prompt_eval_duration": 411750292,
+     "eval_count": 18,
+     "eval_duration": 754166292,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:41.80013Z"
+    },
+    "elapsed_s": 10.268,
+    "query_used": "molecules added to culture system mimic environmentally induced senescence",
+    "query_source": "json",
+    "query_arrival_seq": 2674
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "molecules added to culture system mimic environmentally induced senescence",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17412260:0",
+       "score_q": 6724
+      },
+      {
+       "passage_key": "scifact:15521377:0",
+       "score_q": 6559
+      },
+      {
+       "passage_key": "scifact:31293581:0",
+       "score_q": 6257
+      },
+      {
+       "passage_key": "scifact:25419778:1",
+       "score_q": 5591
+      },
+      {
+       "passage_key": "scifact:35543846:0",
+       "score_q": 5398
+      }
+     ],
+     "retrieval_sha256": "7a0ac3102299e8ca3a5a0c926b08b1d89c46f5ce9cdb9c435eee939deaaa4aa0"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7a0ac3102299e8ca3a5a0c926b08b1d89c46f5ce9cdb9c435eee939deaaa4aa0",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17412260:0",
+      "content_sha256": "f58ecfa856f97ccc3e0f2e3f12489eafa795ae618f3b07457f0881fb5ddaf003",
+      "chars": 1053
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:15521377:0",
+      "content_sha256": "76cab16298e0778e177c6a6d582077e65c80eb34923941f81156a546ca2fc61d",
+      "chars": 1016
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:31293581:0",
+      "content_sha256": "f85842551dce40ee9d8a8702e683b927f3e0edd61529c49d00e20fdf74e6bcae",
+      "chars": 1107
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:25419778:1",
+      "content_sha256": "1c173696c04473705315af3eab6abfc590090c4b5b5341b7ed7971ab7fd60296",
+      "chars": 923
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:35543846:0",
+      "content_sha256": "a00998d2f3ede408c74f101d1aa11de7cf55e18d52663604322ab0a5c0d4aa4b",
+      "chars": 903
+     }
+    ],
+    "elapsed_s": 0.0015
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nEvidence passages from your search for \"molecules added to culture system mimic environmentally induced senescence\":\n<<<PASSAGES\n[P1] A complex secretory program orchestrated by the inflammasome controls paracrine senescence\nOncogene-induced senescence (OIS) is crucial for tumour suppression. Senescent cells implement a complex pro-inflammatory response termed the senescence-associated secretory phenotype (SASP). The SASP reinforces senescence, activates immune surveillance and paradoxically also has pro-tumorigenic properties. Here, we present evidence that the SASP can also induce paracrine senescence in normal cells both in culture and in human and mouse models of OIS in vivo. Coupling quantitative proteomics with small-molecule screens, we identified multiple SASP components mediating paracrine senescence, including TGF-β family ligands, VEGF, CCL2 and CCL20. Amongst them, TGF-β ligands play a major role by regulating p15(INK4b) and p21(CIP1). Expression of the SASP is controlled by inflammasome-mediated IL-1 signalling. The inflammasome and IL-1 signalling are activated in senescent cells and IL-1α expression can reproduce SASP activation, resulting in senescence.\n\n[P2] Keeping your senescent cells under control\nCellular senescence is a stable form of cell-cycle arrest which is thought to limit the proliferative potential of premalignant cells [1]. The senescence phenotype was initially described by Hayflick and Moorhead in 1961 on human fibroblasts undergoing replicative exhaustion in culture [2]. It has been shown that senescence can be triggered in different cell types in response to diverse forms of cellular damage or stress (for review see [1]). Importantly, while senescence was denounced as a tissue culture phenomenon for many years, recent in vivo studies demonstrated that cellular senescence represents a potent failsafe mechanism against tumorigenesis and contributes to the cytotoxicity of certain anticancer agents (see for example [3-7]). Interestingly, senescent cells have also been observed in certain aged or damaged tissues and there is growing evidence that senescence checkpoints can affect the regenerative reserve of tissues and organismal aging [8-11].\n\n[P3] Ionizing radiation-induced long-term expression of senescence markers in mice is independent of p53 and immune status.\nExposure to IR has been shown to induce the formation of senescence markers, a phenotype that coincides with lifelong delayed repair and regeneration of irradiated tissues. We hypothesized that IR-induced senescence markers could persist long-term in vivo, possibly contributing to the permanent reduction in tissue functionality. Here, we show that mouse tissues exposed to a sublethal dose of IR display persistent (up to 45 weeks, the maximum time analyzed) DNA damage foci and increased p16(INK4a) expression, two hallmarks of cellular senescence and aging. BrdU-labeling experiments revealed that IR-induced damaged cells are preferentially eliminated, at least partially, in a tissue-dependent manner. Unexpectedly, the accumulation of damaged cells was found to occur independent from the DNA damage response modulator p53, and from an intact immune system, as their levels were similar in wild-type and Rag2(-/-) gammaC(-/-) mice, the latter being deficient in T, B, and NK cells.\n\n[P4] Identification of Senescent Cells in the Bone Microenvironment.\nThus in young (age 6 months) and old (age 24 months) mice, we measured senescence and SASP markers in vivo in highly enriched cell populations, all rapidly isolated from bone/marrow without in vitro culture. In both females and males, p16Ink4a expression by real-time quantitative polymerase chain reaction (rt-qPCR) was significantly higher with aging in B cells, T cells, myeloid cells, osteoblast progenitors, osteoblasts, and osteocytes. Further, in vivo quantification of senescence-associated distension of satellites (SADS), ie, large-scale unraveling of pericentromeric satellite DNA, revealed significantly more senescent osteocytes in old compared with young bone cortices (11% versus 2%, p < 0.001). In addition, primary osteocytes from old mice had sixfold more (p < 0.001) telomere dysfunction-induced foci (TIFs) than osteocytes from young mice.\n\n[P5] Metabolic analysis of senescent human fibroblasts reveals a role for AMP in cellular senescence.\nCellular senescence is considered a major tumour-suppressor mechanism in mammals, and many oncogenic insults, such as the activation of the ras proto-oncogene, trigger initiation of the senescence programme. Although it was shown that activation of the senescence programme involves the up-regulation of cell-cycle regulators such as the inhibitors of cyclin-dependent kinases p16INK4A and p21CIP-1, the mechanisms underlying the senescence response remain to be resolved. In the case of stress-induced premature senescence, reactive oxygen species are considered important intermediates contributing to the phenotype. Moreover, distinct alterations of the cellular carbohydrate metabolism are known to contribute to oncogenic transformation, as is best documented for the phenomenon of aerobic glycolysis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "18e53059aa2ce810edb018b7e264e49d6fad2ed5ac08e6bdb503b9154d3add6c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792718621.8029199,
+      "end_wall": 1792718631.750284,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2671,
+    "start_wall": 1792718621.8029199,
+    "start_mono": 388178.84468225,
+    "end_wall": 1792718631.750284,
+    "end_mono": 388188.791995458,
+    "raw_response": "{\"reasoning\": \"The claim is supported because the passages describe the addition of specific molecules to the culture system, such as SASP components like TGF-β ligands, VEGF, CCL2, and CCL20, which mimic environmentally-induced senescence in disease modeling.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9944395833,
+     "load_duration": 94062666,
+     "prompt_eval_count": 1392,
+     "prompt_eval_duration": 3769088334,
+     "eval_count": 86,
+     "eval_duration": 5003023173,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:51.748287Z"
+    },
+    "elapsed_s": 9.947,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2671,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:17412260:0",
+     "scifact:15521377:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 245,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e7194d85959723b808eec308752d018199c27326b4b052ce0ef2dc0f0c93aeb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792718611.5331998,
+      "end_wall": 1792718613.530667,
+      "error": null
+     }
+    ],
+    "start_wall": 1792718611.5331998,
+    "start_mono": 388168.575013291,
+    "end_wall": 1792718613.530667,
+    "end_mono": 388170.572469041,
+    "raw_response": "{\"query\": \"environmentally-induced senescence disease modeling molecules mimic\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1995427209,
+     "load_duration": 49890167,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 478886709,
+     "eval_count": 20,
+     "eval_duration": 1410511415,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:33.529565Z"
+    },
+    "elapsed_s": 1.997,
+    "query_used": "environmentally-induced senescence disease modeling molecules mimic",
+    "query_source": "json",
+    "query_arrival_seq": 2671
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "environmentally-induced senescence disease modeling molecules mimic",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:29638116:0",
+       "score_q": 6734
+      },
+      {
+       "passage_key": "scifact:13814480:1",
+       "score_q": 6472
+      },
+      {
+       "passage_key": "scifact:11659421:1",
+       "score_q": 6318
+      },
+      {
+       "passage_key": "scifact:11659421:0",
+       "score_q": 6099
+      },
+      {
+       "passage_key": "scifact:23036207:1",
+       "score_q": 5609
+      }
+     ],
+     "retrieval_sha256": "4f50e078b231c27e60c56cc1d9f73e801d122243848a62a75274abff8cb6ecae"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4f50e078b231c27e60c56cc1d9f73e801d122243848a62a75274abff8cb6ecae",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:29638116:0",
+      "content_sha256": "7a3ec2cc1be4326776286e5c9522ab2c862b5ed0d352662475d704469f9cf08f",
+      "chars": 718
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13814480:1",
+      "content_sha256": "4f7c6ac43e7095f12000d2a47461be931746c981e5a1fe41ec7bcf33e26be23c",
+      "chars": 583
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11659421:1",
+      "content_sha256": "021b20573a3bce949d1d1681e9bb50a2eaae49b802807b5c7148f3d422a5c0cd",
+      "chars": 221
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11659421:0",
+      "content_sha256": "056a48cea966190b10ed185bd3ddb6f052737435796563e4fee954c68afc6970",
+      "chars": 1040
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23036207:1",
+      "content_sha256": "4c440627509ba97c0e42a75c6b96397a9c696638bc378e01cf2948367610e00c",
+      "chars": 765
+     }
+    ],
+    "elapsed_s": 0.0018
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nEvidence passages from your search for \"environmentally-induced senescence disease modeling molecules mimic\":\n<<<PASSAGES\n[P1] Complex Tissue and Disease Modeling using hiPSCs.\nDefined genetic models based on human pluripotent stem cells have opened new avenues for understanding disease mechanisms and drug screening. Many of these models assume cell-autonomous mechanisms of disease but it is possible that disease phenotypes or drug responses will only be evident if all cellular and extracellular components of a tissue are present and functionally mature. To derive optimal benefit from such models, complex multicellular structures with vascular components that mimic tissue niches will thus likely be necessary. Here we consider emerging research creating human tissue mimics and provide some recommendations for moving the field forward.\n\n[P2] Induced pluripotent stem cells in Alzheimer’s disease: applications for disease modeling and cell-replacement therapy\nAlthough considerable progress has been achieved, a number of key challenges still require to be addressed in iPSCs research, including the identification of robust disease phenotypes in AD modeling and the clinical availabilities of iPSCs-based cell-replacement therapy in human. In this review, we highlight recent progresses of iPSCs research and discuss the translational challenges of AD patients-derived iPSCs in disease modeling and cell-replacement therapy.\n\n[P3] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nThus, our study suggests that progerin-induced aging can be used to reveal late-onset age-related disease features in hiPSC-based disease models.\n\n[P4] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nReprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin in iPSC-derived fibroblasts and neurons induces multiple aging-related markers and characteristics, including dopamine-specific phenotypes such as neuromelanin accumulation. Induced aging in PD iPSC-derived dopamine neurons revealed disease phenotypes that require both aging and genetic susceptibility, such as pronounced dendrite degeneration, progressive loss of tyrosine hydroxylase (TH) expression, and enlarged mitochondria or Lewy-body-precursor inclusions.\n\n[P5] Transient delivery of modified mRNA encoding TERT rapidly extends telomeres in human cells.\nHowever, the refractory period was transient as a later fourth transfection increased fibroblast proliferative capacity by an additional 15.2 ± 1.1 PDs, similar to the first transfection. Overall, these treatments led to an increase in absolute cell number of more than 10(12)-fold. Notably, unlike immortalized cells, all treated cell populations eventually stopped increasing in number and expressed senescence markers to the same extent as untreated cells. This rapid method of extending telomeres and increasing cell proliferative capacity without risk of insertional mutagenesis should have broad utility in disease modeling, drug screening, and regenerative medicine.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "13a12cb0fcbc068488973f0665f54401e10d89e9ba6d67687885c584b6beb272",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792718613.532897,
+      "end_wall": 1792718636.401846,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2672,
+    "start_wall": 1792718613.532897,
+    "start_mono": 388170.5747005,
+    "end_wall": 1792718636.401846,
+    "end_mono": 388193.443534625,
+    "raw_response": "{\"reasoning\": \"The provided passages suggest that specific molecules, such as progerin, are used to induce aging-related features in human induced pluripotent stem cell (hiPSC)-derived lineages for disease modeling. This process mimics environmentally-induced senescence, as the aging process is environmentally influenced and the addition of these molecules represents an environmental factor. The passages do not explicitly mention the addition of specific molecules to culture systems to mimic disease modeling, but the induction of aging-related features in hiPSCs for disease modeling can be seen as a method a\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P4\"],\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22864373541,
+     "load_duration": 15417666,
+     "prompt_eval_count": 1091,
+     "prompt_eval_duration": 4906816750,
+     "eval_count": 161,
+     "eval_duration": 17473777503,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:56.39841Z"
+    },
+    "elapsed_s": 22.869,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2672,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:11659421:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e7194d85959723b808eec308752d018199c27326b4b052ce0ef2dc0f0c93aeb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792718611.533113,
+      "end_wall": 1792718618.767714,
+      "error": null
+     }
+    ],
+    "start_wall": 1792718611.533113,
+    "start_mono": 388168.574925625,
+    "end_wall": 1792718618.767714,
+    "end_mono": 388175.809489375,
+    "raw_response": "{\"query\": \"environmental molecules senescence disease modeling\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7232150542,
+     "load_duration": 2463502708,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 991498833,
+     "eval_count": 14,
+     "eval_duration": 3605711750,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:38.766188Z"
+    },
+    "elapsed_s": 7.235,
+    "query_used": "environmental molecules senescence disease modeling",
+    "query_source": "json",
+    "query_arrival_seq": 2672
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "environmental molecules senescence disease modeling",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:25419778:0",
+       "score_q": 742
+      },
+      {
+       "passage_key": "scifact:17412260:0",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:11659421:0",
+       "score_q": 728
+      },
+      {
+       "passage_key": "scifact:35543846:0",
+       "score_q": 722
+      },
+      {
+       "passage_key": "scifact:9159495:1",
+       "score_q": 714
+      }
+     ],
+     "retrieval_sha256": "652de2a55fd22cbbd67aeaea49a56b816c26aed5e29e4e92fc54205290406152"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "652de2a55fd22cbbd67aeaea49a56b816c26aed5e29e4e92fc54205290406152",
+    "query_embedding_sha256": "33daa80fc4267a22fdba6315f869d40ee1624622bc4e32ac0e3ff7c8e921921f",
+    "query_embedding_f32_b64": "oA+jPJOHKrywfTW+oPkivT9lFj3DKRA9d6B3vIvhgry/roA8kIq3O0TLCz30koY8mF3JPSKtgzvQQpa8M350vJ1Nm7y5CFK9MVkDvI3eQD0vHry93aydvbu9PLx+OnC8QJotPLRY2z0Zd2i7c6oSux89Kj3EpjM9+y55PZB6j7zRpEe9c0xmvJ1I5LsRvjq9EuGkPaWJhT3O4F49lFHUPJAKLD0KoJO9uSYePePNK73jO9g8NMTyPK4f9DzKWCS9ylNLPbb7/7y+6hE9oltQPMwLIL0Awxs8J4ZNPSaG7jyrxW+8mCcyvNntVTz0+Ck8Q+9ePQS7pz0v1Xm92K6bPK/OjT3penG9GuRevJbFrTy4TfI8H+0gvRzv1jz/BGI8I5+4PNPD3jy3XMg84AUTPLytJr1m2Sq8Nq5BvKte8TsT84m8S+JQPWyQgz2nw9E8+s4OPbESDrx9qya9aIH+OwGBVL3aF1E99NEQPQ22ujwtKI+8bBFAvLor1rzaLN48wDcvvFz11TwjKEe9SMBFvYGW9byFgkq9PzrQO5OQp7s3AAG8E98cPVtE9byMkHa76Ud2PMsNiDx021+9SKi7PFaLjb0r9Z08q3gtPW1pR72i4gw97DPovF/AATyH0yw9CfW3vAyqtDz8+9A8cyI0PBxaiLyLzaM9naJlvV23rzucWb089svvvFczIj2WTpa8/HMavZylPzxjNKg8X43CPPZd3r0XQ7I8PWoEO3JJTbxovTA9rU34vAC/tjyDbBU7lq6rvYMAkLt0nHs9iigkvOmlN73hrjC9fkIePKiTeTzRSmo6u6Xouz8l7jwZ1hG9KsutvN1sZbpK6aW8k/wTvLKHvrvZ0gi6o5ejvDbkTz1IsIi9VJAlvbSfFj0DZBY9jDFivN9YFz2xbZ69P4f/vBiIcjzMTZM8dvglPe9lxrkk7OI6nAsCvYMuqLxj2eW6iX2QPSItO73MZQA9oqiguGeynruph2q8DPwNPGLdjrx1nGG8W044vbwpE72koiU9bf23vMuPpb1ckka8n0yGvC4VzzyN7Je8L5xDPdOqDb2KYai8+0OCvC7fGr1Lu/U85TGGPPKSSrx2eaW7O+KfPMi+ITzzUhs8pks3O3rG/zxNzpC7IfydvO8XY7znYaO9JL7vvJCrjzzEEQW9qJlQvELn8jlP3qC8BmGZPBGzCT0kDJg9K+IBvJGUMr3F2zE954c9vUt/PbumOPg6xuKJvYFvODz6wsU8yimEPFSc9jwEmby5OS8/PLz2NDy8VtK8v/EEPdZ/lT3Utf28uYoUvOfFQ7xdzMY8WW+Puz8Jgr3YVRy9kewuPUJrWLwpB7E8dJlxPOwflbyvmxk9NGX4vAYbOr2Lrp48HdkxPVvthDjO5sE7+xiSvFSjjbt2hXK95zkBvTqN0bxsXlG9VGvbvOw5j7z4YMm8YJI+Pe39Xz3yutK8BEoEPW+LDz3bdl48ImpmvNt6GTyRdKi9Opatu/aLuru7xEC9h8QXvUK1Bbzp6Tw9bjcQPf1Zvz1fMK08hQXxPFsDDD16fqk8O2voOoP3i7w7soQ9nAUovTXYTj13rAs9n9xsvVhbqDzPX7Q8RorOPB0T2jyD41Y9I+wRPQSKubylZNm80MGhORLpqbxnBH49PfR0vHGgVb0Uj0W9eVeWvICYFj2MHwe9GxE2PVvPirzyJ+e7a7eRPV292rw1RSg90MpxvchYMDx+Hzi92vnGPKjuJD14EAK9Wvk9vSf5ZDzokxU80HuEPcrc2TwElkQ9G1hOvHmYGbyKIs08+Q5NvY8hNT1zXue8f6yFOy6h/rs45QC9U8DIPO1gfb0tfAa9L+G+vCXVrr2/izA9l3KyOzU7t7s9nUS87IodPCNBV7yAuJg7Pp9WPAEgabxW9+s8hiyCO7Z2Aj0rrWu7gYkgPQypN7wycke8DPHnOvZWBT3vsWA9I405PccWAryuvo89N4AJvARTLL1pkUM9DXIuvRiLBzwxQjG8SJMKPC60ib2sHjo8ZH8CvbzUTT3WLy88mvE4vTDROrxsi9M8ZvI8PSi2NrxrR8M8UA88vSLAsbyZ8eA88zhlO9jP57yYxBu9V5dlvDWeATzRnYO8JH0UPYu+BD2UL/A8+jYMPPA2CrxeyJI7TANvO7/sDD2eGBk9vfIKPBc+hb2TgCq9i8RZPGIN0TzVq0w9hlewPbJSuTyGV3S9iliWvGUz8TxUKbE8WcWVvFFxb7wzqow9L7mjPKCqBD19TxW9DN9EOxOWDTzpGoE8MLWjPFB4PD3Beoq8/b1avVezy7xL5IM9eY/rO2+yirzyEHa8beLaPM6mhzxoTws8Fy9JvDBgLj3LGoQ9to8qvRTYmzw43kg7qU9KvPrC6j355z49p2crveK04bz+pWs9IRXFvEnIyjyZRzG6/8L2PF3qAT0zUQW9+kBoOuu9Oz0tmhO8Sp32PFRMfb3HvXY9AtRWvZWhYLwIlxW99W/HvCZPUDxBLNA7O0wpPCd4FT3++VK9KHdXvV0T4ztuG4i8j1f/OwGwLr02iTQ7+PYGvbm5nTwbiws9O+7ePK09BTxIzBe9Da4BvVJvvLuPMws8EzmaPEuiujsitIs8Awbpu9emDzoItBg9iGEtPebmsLy5koy8iAK7vCzjsjwI/kQ707Utux1kjrwXeIM86QOHPcpfG7vHMF28OhNIPSx/JT22EFo98dnKvbUSV7z62+48m6WIvNyfiDtt68A8inF1PV+R4ro5hDA8Nag3vQ5yMT2dEla9Z3w0vPJwyjwOnTy9WNgZvfLAhTvE6fm8OUK7PHtEgjumcoa8ExFePVkKvjxH2pc8luv7vKdzR725zfw8+VPfPBvd6bykaya9MNiiPd+jAz2kL9Y8zOUPPV/q5Tzw0h48vV3QOCziPj3hBZw8jhkNPGAbgT3crR+9iwMRvD5mnjyiBj69FIY7Pa7w07weBIs93JjHvL85lzxxaDu9juINvBAo3zylVie8ASONPIxHPj0HOle8vj2+PIaIGb3Etqo7HEiSPB5o3TxfI5o8GY2JPNoTr7xe7747/qrTvNY+Ib2lBu+86AimO2YeBL3jJpO9HmVUvFAgGTy0+0i9JDPlvDyPaT2M9gg8uh4wusUDQLxjKiy971R5PSVwPT2o6wU7UufRO53byru4jPS8KMB3vMj4nTyqykW9+P6TvQ8+wryak529fo0avYppdbwqv9k8ECrQvcCOaT2Cmn09CyGovOPmYD2Z/vW6ap7VvBXORbvlgBS9h+uXPE5eHb2IQQI7kTO9vOORNz1WqVc9iLHQvbFmgLu5LWu8OS5vu/WFjz2Q76a8YQIhPW9hZLzWffO8UMN+vengJ7waUiY9H14zvDabMLtQaha942tquzOlyLviAUQ8E4lcvDn8DTw/gg08y+eSPKNjLTxq+fK8BtItva+0wLtmTok8Q5IXvZYzdT29uEI9DclyPPEjnbzXheg9AwwiPcdSUD0SA428WRXEPDckkTxe/k083TqIvWB0Ab1fDKq8KulgveVQgLwLVn48fHe8vJbh2juOV4e8/AvXPGUiXrz9+R+9ZY/KvJuchzyfU7K8YIpavFtRHL1xAJ+7fIcuPYKukjt3fCY9f9VxvKDqfL0Vc54995D5PI4ZKj1cI628Ert7vNL72rx4Vv88HXmyvGN357vTkZA7EK+nvEGUmTsAWq68vasAvE29Cr3yU4y6B3YQPRQOFDzio4q9P1YrPRSxFDwN+ms91BSgPJNNwLs4rCy9DTCRvP/iab3/m048L9z2PMuPM7xbXBC93P0cPA0nzTvYcZY8f+bLPLTkTjymJWa78zaHvQB3F708lzw9Ipl+vMlq1DwEX4u9KqgVvOlCobvQAl+9XLAyPIK4F7rWAFc9LG4UvcXTPr0d/GM8PW1cvbKuF72t0eu8hFEiPbVfd7x4Rdi870UUvRgop7y7/aG9hmAGvQz/KT1GOgm72x85vK6ajrw8HNG81ZcHvFsuBTvbuCM8+VjaPCs5Lb0vexc7XjETPdwhI7uQwOi8yx5IPboRPz3+OKY9R1XjvHPUlrqyXWS9VzE5PSf+IT3S0oO8xQwGvVlcrbztKEg7",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:25419778:0",
+      "content_sha256": "4afd5cdc9a38c48265c8b657fb21448223dd762175e4dfd1569e7b552b63cc1b",
+      "chars": 889
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17412260:0",
+      "content_sha256": "f58ecfa856f97ccc3e0f2e3f12489eafa795ae618f3b07457f0881fb5ddaf003",
+      "chars": 1053
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11659421:0",
+      "content_sha256": "056a48cea966190b10ed185bd3ddb6f052737435796563e4fee954c68afc6970",
+      "chars": 1040
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:35543846:0",
+      "content_sha256": "a00998d2f3ede408c74f101d1aa11de7cf55e18d52663604322ab0a5c0d4aa4b",
+      "chars": 903
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9159495:1",
+      "content_sha256": "43ff13c09c1274d19dd3915b609abc7c7a93c1d133672e55ef09d278ea1fd518",
+      "chars": 275
+     }
+    ],
+    "elapsed_s": 2.1198
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nEvidence passages from your search for \"environmental molecules senescence disease modeling\":\n<<<PASSAGES\n[P1] Identification of Senescent Cells in the Bone Microenvironment.\nCellular senescence is a fundamental mechanism by which cells remain metabolically active yet cease dividing and undergo distinct phenotypic alterations, including upregulation of p16Ink4a , profound secretome changes, telomere shortening, and decondensation of pericentromeric satellite DNA. Because senescent cells accumulate in multiple tissues with aging, these cells and the dysfunctional factors they secrete, termed the senescence-associated secretory phenotype (SASP), are increasingly recognized as promising therapeutic targets to prevent age-related degenerative pathologies, including osteoporosis. However, the cell type(s) within the bone microenvironment that undergoes senescence with aging in vivo has remained poorly understood, largely because previous studies have focused on senescence in cultured cells.\n\n[P2] A complex secretory program orchestrated by the inflammasome controls paracrine senescence\nOncogene-induced senescence (OIS) is crucial for tumour suppression. Senescent cells implement a complex pro-inflammatory response termed the senescence-associated secretory phenotype (SASP). The SASP reinforces senescence, activates immune surveillance and paradoxically also has pro-tumorigenic properties. Here, we present evidence that the SASP can also induce paracrine senescence in normal cells both in culture and in human and mouse models of OIS in vivo. Coupling quantitative proteomics with small-molecule screens, we identified multiple SASP components mediating paracrine senescence, including TGF-β family ligands, VEGF, CCL2 and CCL20. Amongst them, TGF-β ligands play a major role by regulating p15(INK4b) and p21(CIP1). Expression of the SASP is controlled by inflammasome-mediated IL-1 signalling. The inflammasome and IL-1 signalling are activated in senescent cells and IL-1α expression can reproduce SASP activation, resulting in senescence.\n\n[P3] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nReprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin in iPSC-derived fibroblasts and neurons induces multiple aging-related markers and characteristics, including dopamine-specific phenotypes such as neuromelanin accumulation. Induced aging in PD iPSC-derived dopamine neurons revealed disease phenotypes that require both aging and genetic susceptibility, such as pronounced dendrite degeneration, progressive loss of tyrosine hydroxylase (TH) expression, and enlarged mitochondria or Lewy-body-precursor inclusions.\n\n[P4] Metabolic analysis of senescent human fibroblasts reveals a role for AMP in cellular senescence.\nCellular senescence is considered a major tumour-suppressor mechanism in mammals, and many oncogenic insults, such as the activation of the ras proto-oncogene, trigger initiation of the senescence programme. Although it was shown that activation of the senescence programme involves the up-regulation of cell-cycle regulators such as the inhibitors of cyclin-dependent kinases p16INK4A and p21CIP-1, the mechanisms underlying the senescence response remain to be resolved. In the case of stress-induced premature senescence, reactive oxygen species are considered important intermediates contributing to the phenotype. Moreover, distinct alterations of the cellular carbohydrate metabolism are known to contribute to oncogenic transformation, as is best documented for the phenomenon of aerobic glycolysis.\n\n[P5] A microRNA feedback loop regulates global microRNA abundance during aging.\nThus, the progressive molecular decline often thought to be the result of accumulated damage over an organism's life may be partially explained by a miRNA-directed mechanism of age-associated decline.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "360145d872c5cdac6324611d56b29cb321d2de5a594d180beddee4728bb21f28",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792718620.888012,
+      "end_wall": 1792718642.671015,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2673,
+    "start_wall": 1792718620.888012,
+    "start_mono": 388177.929778583,
+    "end_wall": 1792718642.671015,
+    "end_mono": 388199.712671916,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages do not directly support the claim about environmental-induced senescence being mimicked by adding specific molecules in a culture system. They discuss cellular senescence and its associated mechanisms but not the environmental mimicry aspect or the use of specific molecules.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21778041250,
+     "load_duration": 13060273667,
+     "prompt_eval_count": 1154,
+     "prompt_eval_duration": 4053306834,
+     "eval_count": 82,
+     "eval_duration": 3380869038,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:24:02.667246Z"
+    },
+    "elapsed_s": 21.783,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2673,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 297,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e7194d85959723b808eec308752d018199c27326b4b052ce0ef2dc0f0c93aeb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792718611.5333161,
+      "end_wall": 1792718618.8279722,
+      "error": null
+     }
+    ],
+    "start_wall": 1792718611.5333161,
+    "start_mono": 388168.575129375,
+    "end_wall": 1792718618.8279722,
+    "end_mono": 388175.869747916,
+    "raw_response": "{\"query\": \"Molecules mimicking environmentally-induced senescence in disease models\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7292497500,
+     "load_duration": 1429031959,
+     "prompt_eval_count": 198,
+     "prompt_eval_duration": 525896541,
+     "eval_count": 26,
+     "eval_duration": 5267459586,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:23:38.826587Z"
+    },
+    "elapsed_s": 7.295,
+    "query_used": "Molecules mimicking environmentally-induced senescence in disease models",
+    "query_source": "json",
+    "query_arrival_seq": 2673
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Molecules mimicking environmentally-induced senescence in disease models",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11659421:0",
+       "score_q": 732
+      },
+      {
+       "passage_key": "scifact:17412260:0",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:31293581:1",
+       "score_q": 728
+      },
+      {
+       "passage_key": "scifact:31293581:0",
+       "score_q": 726
+      },
+      {
+       "passage_key": "scifact:25419778:0",
+       "score_q": 717
+      }
+     ],
+     "retrieval_sha256": "9aeb822e37380fbf4ae8df8cb34dcf94c2af0c7653a6ad0d5fc6a7e1751a8aaa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9aeb822e37380fbf4ae8df8cb34dcf94c2af0c7653a6ad0d5fc6a7e1751a8aaa",
+    "query_embedding_sha256": "770afed177ac947f885e860b22cc48b4968931ea71d60172f1ff91205a92f056",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11659421:0",
+      "content_sha256": "056a48cea966190b10ed185bd3ddb6f052737435796563e4fee954c68afc6970",
+      "chars": 1040
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17412260:0",
+      "content_sha256": "f58ecfa856f97ccc3e0f2e3f12489eafa795ae618f3b07457f0881fb5ddaf003",
+      "chars": 1053
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:31293581:1",
+      "content_sha256": "91b4e5c3fd0ead44c9f6b4b641c537496106370840df2a553f343ca8604c72de",
+      "chars": 344
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:31293581:0",
+      "content_sha256": "f85842551dce40ee9d8a8702e683b927f3e0edd61529c49d00e20fdf74e6bcae",
+      "chars": 1107
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:25419778:0",
+      "content_sha256": "4afd5cdc9a38c48265c8b657fb21448223dd762175e4dfd1569e7b552b63cc1b",
+      "chars": 889
+     }
+    ],
+    "elapsed_s": 2.107
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system.\n\nEvidence passages from your search for \"Molecules mimicking environmentally-induced senescence in disease models\":\n<<<PASSAGES\n[P1] Human iPSC-based modeling of late-onset disease via progerin-induced aging.\nReprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin in iPSC-derived fibroblasts and neurons induces multiple aging-related markers and characteristics, including dopamine-specific phenotypes such as neuromelanin accumulation. Induced aging in PD iPSC-derived dopamine neurons revealed disease phenotypes that require both aging and genetic susceptibility, such as pronounced dendrite degeneration, progressive loss of tyrosine hydroxylase (TH) expression, and enlarged mitochondria or Lewy-body-precursor inclusions.\n\n[P2] A complex secretory program orchestrated by the inflammasome controls paracrine senescence\nOncogene-induced senescence (OIS) is crucial for tumour suppression. Senescent cells implement a complex pro-inflammatory response termed the senescence-associated secretory phenotype (SASP). The SASP reinforces senescence, activates immune surveillance and paradoxically also has pro-tumorigenic properties. Here, we present evidence that the SASP can also induce paracrine senescence in normal cells both in culture and in human and mouse models of OIS in vivo. Coupling quantitative proteomics with small-molecule screens, we identified multiple SASP components mediating paracrine senescence, including TGF-β family ligands, VEGF, CCL2 and CCL20. Amongst them, TGF-β ligands play a major role by regulating p15(INK4b) and p21(CIP1). Expression of the SASP is controlled by inflammasome-mediated IL-1 signalling. The inflammasome and IL-1 signalling are activated in senescent cells and IL-1α expression can reproduce SASP activation, resulting in senescence.\n\n[P3] Ionizing radiation-induced long-term expression of senescence markers in mice is independent of p53 and immune status.\nTogether, our results provide compelling evidence that exposure to IR induces long-term expression of senescence markers in vivo, an effect that may contribute to the reduced tissue functionality observed in cancer survivors.\n\n[P4] Ionizing radiation-induced long-term expression of senescence markers in mice is independent of p53 and immune status.\nExposure to IR has been shown to induce the formation of senescence markers, a phenotype that coincides with lifelong delayed repair and regeneration of irradiated tissues. We hypothesized that IR-induced senescence markers could persist long-term in vivo, possibly contributing to the permanent reduction in tissue functionality. Here, we show that mouse tissues exposed to a sublethal dose of IR display persistent (up to 45 weeks, the maximum time analyzed) DNA damage foci and increased p16(INK4a) expression, two hallmarks of cellular senescence and aging. BrdU-labeling experiments revealed that IR-induced damaged cells are preferentially eliminated, at least partially, in a tissue-dependent manner. Unexpectedly, the accumulation of damaged cells was found to occur independent from the DNA damage response modulator p53, and from an intact immune system, as their levels were similar in wild-type and Rag2(-/-) gammaC(-/-) mice, the latter being deficient in T, B, and NK cells.\n\n[P5] Identification of Senescent Cells in the Bone Microenvironment.\nCellular senescence is a fundamental mechanism by which cells remain metabolically active yet cease dividing and undergo distinct phenotypic alterations, including upregulation of p16Ink4a , profound secretome changes, telomere shortening, and decondensation of pericentromeric satellite DNA. Because senescent cells accumulate in multiple tissues with aging, these cells and the dysfunctional factors they secrete, termed the senescence-associated secretory phenotype (SASP), are increasingly recognized as promising therapeutic targets to prevent age-related degenerative pathologies, including osteoporosis. However, the cell type(s) within the bone microenvironment that undergoes senescence with aging in vivo has remained poorly understood, largely because previous studies have focused on senescence in cultured cells.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9b87fc73d657469ef4152be7e572d08d76ad396434302683b3a022a9dd141308",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792718620.9355159,
+      "end_wall": 1792718643.0830379,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2674,
+    "start_wall": 1792718620.9355159,
+    "start_mono": 388177.977282333,
+    "end_wall": 1792718643.0830379,
+    "end_mono": 388200.124694083,
+    "raw_response": "{\n  \"reasoning\": \"The claim that environmentally-induced senescence is mimicked in disease modeling by adding specific molecules to the culture system is supported by the evidence. Passages P1, P2, and P5 discuss the induction of senescence-like features in cell cultures using various methods, including the addition of molecules like progerin and components of the SASP, which mimic the effects of environmental senescence.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22143504916,
+     "load_duration": 11451443083,
+     "prompt_eval_count": 1514,
+     "prompt_eval_duration": 5309850125,
+     "eval_count": 142,
+     "eval_duration": 4911818706,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:24:03.080088Z"
+    },
+    "elapsed_s": 22.147,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2674,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:11659421:0",
+     "scifact:17412260:0",
+     "scifact:25419778:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 407,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "gemma2:2b": "d8b8857baa3aece1b26356800cea8c0ce60650e8e0aa748cb184bc12aa5212de",
+  "llama3.2:3b": "7a0ac3102299e8ca3a5a0c926b08b1d89c46f5ce9cdb9c435eee939deaaa4aa0",
+  "mistral": "4f50e078b231c27e60c56cc1d9f73e801d122243848a62a75274abff8cb6ecae",
+  "qwen2.5:3b": "652de2a55fd22cbbd67aeaea49a56b816c26aed5e29e4e92fc54205290406152",
+  "phi3:mini": "9aeb822e37380fbf4ae8df8cb34dcf94c2af0c7653a6ad0d5fc6a7e1751a8aaa"
+ },
+ "item_start_wall": 1792718611.532684,
+ "item_wall_s": 31.55,
+ "ollama_ps_samples": [
+  [
+   1792718611.533,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718613.538,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718615.545,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792718617.548,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792718619.558,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718621.569,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718623.576,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792718625.584,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792718627.588,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792718629.596,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792718631.599,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718633.608,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718635.617,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718637.629,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718639.64,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792718641.651,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

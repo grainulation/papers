@@ -1,0 +1,1299 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain367",
+ "order": 345,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain367",
+  "order": 345,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality."
+ },
+ "item_view_sha256": "98da62f6d03c74f1faf1686f5931cf34ea0a60cd85fe23c0949a65358a42b95a",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d84391a1ebed999533961bbe3fd846ef06d4afee63bb4ba65ff3054ac786fca",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792862701.759609,
+      "end_wall": 1792862702.865914,
+      "error": null
+     }
+    ],
+    "start_wall": 1792862701.759609,
+    "start_mono": 532258.515883083,
+    "end_wall": 1792862702.865914,
+    "end_mono": 532259.622189416,
+    "raw_response": "{\"query\": \"early patent ductus arteriosus screening mortality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1104135333,
+     "load_duration": 107864000,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 352854750,
+     "eval_count": 16,
+     "eval_duration": 470118208,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:02.865316Z"
+    },
+    "elapsed_s": 1.106,
+    "query_used": "early patent ductus arteriosus screening mortality",
+    "query_source": "json",
+    "query_arrival_seq": 1725
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "early patent ductus arteriosus screening mortality",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27099731:0",
+       "score_q": 825
+      },
+      {
+       "passage_key": "scifact:25691541:1",
+       "score_q": 744
+      },
+      {
+       "passage_key": "scifact:25691541:0",
+       "score_q": 736
+      },
+      {
+       "passage_key": "scifact:9967265:4",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:9967265:1",
+       "score_q": 730
+      }
+     ],
+     "retrieval_sha256": "769622f2f08de399703ba3cac0df74ed0540b0e2a7ad8776d487894a96cd16e6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "769622f2f08de399703ba3cac0df74ed0540b0e2a7ad8776d487894a96cd16e6",
+    "query_embedding_sha256": "4c479e8a4ecfc6d3f2131d4208d2e0bb28cc183f8b7c090ba03fb62d896023bc",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27099731:0",
+      "content_sha256": "01230b1ad4607f9380e5cb63037b01da248b5f38657ed74009434b9393c17415",
+      "chars": 1115
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:25691541:1",
+      "content_sha256": "7e800478b35d50f75ebf0a11f5374885fe29d1dfd8d7272a00b802f2d733d58f",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25691541:0",
+      "content_sha256": "ecbd49200490816ab21ccb166be2cd88c074cbe38db0f1cd2193b7b9c6a2faeb",
+      "chars": 965
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9967265:4",
+      "content_sha256": "8dbb221f127e47801fcec247cc1d8d1088d5054a06a6cc1e1c867d4c069359fd",
+      "chars": 565
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9967265:1",
+      "content_sha256": "acfaa3533debf48e6845ca9cb7da9aa23d2bfa5b2ea0192a346914cfe85a9de9",
+      "chars": 1090
+     }
+    ],
+    "elapsed_s": 12.726
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nEvidence passages from your search for \"early patent ductus arteriosus screening mortality\":\n<<<PASSAGES\n[P1] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nIMPORTANCE There is currently no consensus for the screening and treatment of patent ductus arteriosus (PDA) in extremely preterm infants. Less pharmacological closure and more supportive management have been observed without evidence to support these changes. OBJECTIVE To evaluate the association between early screening echocardiography for PDA and in-hospital mortality. DESIGN, SETTING, AND PARTICIPANTS Comparison of screened and not screened preterm infants enrolled in the EPIPAGE 2 national prospective population-based cohort study that included all preterm infants born at less than 29 weeks of gestation and hospitalized in 68 neonatal intensive care units in France from April through December 2011. Two main analyses were performed to adjust for potential selection bias, one using propensity score matching and one using neonatal unit preference for early screening echocardiography as an instrumental variable. EXPOSURES Early screening echocardiography before day 3 of life.\n\n[P2] Preterm patent ductus arteriosus: A continuing conundrum for the neonatologist?\nObservations of very early postnatal haemodynamic significance suggest that targeting treatment on the basis of the early postnatal constrictive response of the duct may optimize benefits. A pilot trial of this strategy showed reduction in the incidence of pulmonary haemorrhage but more trials of this strategy are needed.\n\n[P3] Preterm patent ductus arteriosus: A continuing conundrum for the neonatologist?\nHow to manage the preterm patent ductus arteriosus (PDA) remains a conundrum. On the one hand, physiology and statistical association with adverse outcomes suggest that it is pathological. On the other hand, clinical trials of treatment strategies have failed to show any long-term benefit. Ultrasound studies of PDA have suggested that the haemodynamic impact may be much earlier after birth than previously thought (in the first hours); however, we still do not know when to treat PDA. Studies that have tested symptomatic or pre-symptomatic treatment are mainly historical and have not tested the effect of no treatment. Prophylactic treatment is the best-studied regimen but improvements in some short-term outcomes do not translate to any difference in longer-term outcomes. Neonatologists have been reluctant to engage in trials that test treatment against almost never treating.\n\n[P4] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nIt should be noted that three recent observational studies indicated an increased risk for one or more of the following outcomes associated with PDA ligation; chronic lung disease, retinopathy of prematurity and neurosensory impairment . It is possible that the duration of the \"waiting-time\" and transport to another facility with surgical capacity to have the PDA ligated could adversely affect outcomes, as could the perioperative care.\n\n[P5] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nThis included search of electronic databases: Cochrane Central Register of Controlled Trials (CENTRAL, The Cochrane Library, Issue 2, 2007), MEDLINE (1966 - July 2007), CINAHL (1982 - July 2007), EMBASE (1980 - July 2007); and hand search of abstracts of Pediatric Academic Societies annual meetings published in Pediatric Research (1990 - April 2002) or on line from May 2002 -July 2007. No language restrictions were applied. SELECTION CRITERIA All trials 1) using randomized or quasi-randomized patient allocation, 2) in preterm infants < 37 weeks gestational age or low-birth-weight infants (< 2500 grams) with symptomatic PDA in the neonatal period (< 28 days) and 3) comparing surgical ligation with medical treatment with cyclooxygenase inhibitors, each used as the initial treatment for closure of PDA. DATA COLLECTION AND ANALYSIS Assessment of methodological quality and extraction of data for included trials was undertaken independently by the authors.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d3a1ac4421ed96ef09b152e4cc018cd430c1ca4a5045ddee2b414a175c583cdd",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792862715.592391,
+      "end_wall": 1792862723.584552,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1725,
+    "start_wall": 1792862715.592391,
+    "start_mono": 532272.348695666,
+    "end_wall": 1792862723.584552,
+    "end_mono": 532280.340874416,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that early screening for patent ductus arteriosus (PDA) may decrease in-hospital mortality among extremely preterm infants, as supported by observational studies and some trials.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P4\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7989121834,
+     "load_duration": 1302432125,
+     "prompt_eval_count": 1170,
+     "prompt_eval_duration": 1983338876,
+     "eval_count": 77,
+     "eval_duration": 3873140832,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:23.582938Z"
+    },
+    "elapsed_s": 7.992,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1725,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:27099731:0",
+     "scifact:9967265:4"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 200,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d84391a1ebed999533961bbe3fd846ef06d4afee63bb4ba65ff3054ac786fca",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792862701.758847,
+      "end_wall": 1792862703.239692,
+      "error": null
+     }
+    ],
+    "start_wall": 1792862701.758847,
+    "start_mono": 532258.515120916,
+    "end_wall": 1792862703.239692,
+    "end_mono": 532259.995967541,
+    "raw_response": "{\"query\": \"early PDA screening mortality reduction infants\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1477411334,
+     "load_duration": 58941750,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 482602333,
+     "eval_count": 14,
+     "eval_duration": 830131792,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:03.238343Z"
+    },
+    "elapsed_s": 1.481,
+    "query_used": "early PDA screening mortality reduction infants",
+    "query_source": "json",
+    "query_arrival_seq": 1726
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "early PDA screening mortality reduction infants",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27099731:0",
+       "score_q": 13672
+      },
+      {
+       "passage_key": "scifact:27099731:1",
+       "score_q": 12325
+      },
+      {
+       "passage_key": "scifact:9967265:0",
+       "score_q": 11082
+      },
+      {
+       "passage_key": "scifact:34544514:1",
+       "score_q": 10126
+      },
+      {
+       "passage_key": "scifact:27099731:2",
+       "score_q": 9041
+      }
+     ],
+     "retrieval_sha256": "d7baa0973e62ca64c6fb94a8e1f8de72922be89a826f27bcf10fd102a7dc5063"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d7baa0973e62ca64c6fb94a8e1f8de72922be89a826f27bcf10fd102a7dc5063",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27099731:0",
+      "content_sha256": "01230b1ad4607f9380e5cb63037b01da248b5f38657ed74009434b9393c17415",
+      "chars": 1115
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:27099731:1",
+      "content_sha256": "cefba47d6bce1fbf89be0f5285bc5f755eaea9adb6b279d31f07e44718a7bf7b",
+      "chars": 1058
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9967265:0",
+      "content_sha256": "0c3d430b5358a3e0dc8946095d920500c8e609def555984151a33b9bed22959d",
+      "chars": 965
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34544514:1",
+      "content_sha256": "185bc3e126f577ce33217e81fc578ed2884305c15bb36d1f973a5c548fa0081f",
+      "chars": 1066
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27099731:2",
+      "content_sha256": "56feb13b8ad658da12ea92b5ecb0a9b6619f3011cb6eabe69da4ae3268eef52a",
+      "chars": 895
+     }
+    ],
+    "elapsed_s": 0.003
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nEvidence passages from your search for \"early PDA screening mortality reduction infants\":\n<<<PASSAGES\n[P1] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nIMPORTANCE There is currently no consensus for the screening and treatment of patent ductus arteriosus (PDA) in extremely preterm infants. Less pharmacological closure and more supportive management have been observed without evidence to support these changes. OBJECTIVE To evaluate the association between early screening echocardiography for PDA and in-hospital mortality. DESIGN, SETTING, AND PARTICIPANTS Comparison of screened and not screened preterm infants enrolled in the EPIPAGE 2 national prospective population-based cohort study that included all preterm infants born at less than 29 weeks of gestation and hospitalized in 68 neonatal intensive care units in France from April through December 2011. Two main analyses were performed to adjust for potential selection bias, one using propensity score matching and one using neonatal unit preference for early screening echocardiography as an instrumental variable. EXPOSURES Early screening echocardiography before day 3 of life.\n\n[P2] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nMAIN OUTCOMES AND MEASURES The primary outcome was death between day 3 and discharge. The secondary outcomes were major neonatal morbidities (pulmonary hemorrhage, severe bronchopulmonary dysplasia, severe cerebral lesions, and necrotizing enterocolitis). RESULTS Among the 1513 preterm infants with data available to determine exposure, 847 were screened for PDA and 666 were not; 605 infants from each group could be paired. Exposed infants were treated for PDA more frequently during their hospitalization than nonexposed infants (55.1% vs 43.1%; odds ratio [OR], 1.62 [95% CI, 1.31 to 2.00]; absolute risk reduction [ARR] in events per 100 infants, -12.0 [95% CI, -17.3 to -6.7). Exposed infants had a lower hospital death rate (14.2% vs 18.5% ; OR, 0.73 [95% CI, 0.54 to 0.98]; ARR, 4.3 [95% CI, 0.3 to 8.3]) and a lower rate of pulmonary hemorrhage (5.6% vs 8.9%; OR, 0.60 [95% CI, 0.38 to 0.95]; ARR, 3.3 [95% CI, 0.4 to 6.3]).\n\n[P3] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nBACKGROUND Patent ductus arteriosus (PDA) with significant left to right shunt in preterm infants increases morbidity and mortality. Early closure of the ductus arteriosus may be achieved pharmacologically using cyclooxygenase inhibitors or by surgery. The efficacy of both treatment modalities is well established. However, the preferred initial treatment of a symptomatic PDA in a preterm infant, surgical ligation or treatment with indomethacin, has not been well established. OBJECTIVES To compare the effect of surgical ligation of PDA vs. medical treatment with cyclooxygenase inhibitors (using indomethacin, ibuprofen, or mefenamic acid), each used as the initial treatment, on neonatal mortality in preterm infants with a symptomatic PDA. SEARCH STRATEGY The standard search strategy of the Cochrane Neonatal Review Group was used.\n\n[P4] Ibuprofen for the treatment of patent ductus arteriosus in preterm or low birth weight (or both) infants.\nTwo studies compared intravenous (iv) ibuprofen versus placebo (270 infants). In one study (134 infants) ibuprofen reduced the incidence of failure to close a PDA (risk ratio (RR) 0.71, 95% confidence interval (CI) 0.51 to 0.99; risk difference (RD) -0.18, 95% CI -0.35 to -0.01; number needed to treat for an additional beneficial outcome (NNTB) 6, 95% CI 3 to 100). In one study (136 infants), ibuprofen reduced the composite outcome of infant mortality, infants who dropped out, or infants who required rescue treatment (RR 0.58, 95% CI 0.38 to 0.89; RD -0.22, 95% CI -0.38 to -0.06; NNTB 5, 95% CI 3 to 17). One study (64 infants) compared oral ibuprofen with placebo and noted a significant reduction in failure to close a PDA (RR 0.26, 95% CI 0.11 to 0.62; RD -0.44, 95% CI -0.65 to -0.23; NNTB 2, 95% CI 2 to 4).Twenty-one studies (1102 infants) reported failure rates for PDA closure with ibuprofen (oral or iv) compared with indomethacin (oral or iv).\n\n[P5] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nNo differences in rates of necrotizing enterocolitis, severe bronchopulmonary dysplasia, or severe cerebral lesions were observed. In the overall cohort, instrumental variable analysis yielded an adjusted OR for in-hospital mortality of 0.62 [95% CI, 0.37 to 1.04]. CONCLUSIONS AND RELEVANCE In this national population-based cohort of extremely preterm infants, screening echocardiography before day 3 of life was associated with lower in-hospital mortality and likelihood of pulmonary hemorrhage but not with differences in necrotizing enterocolitis, severe bronchopulmonary dysplasia, or severe cerebral lesions. However, results of the instrumental variable analysis leave some ambiguity in the interpretation, and longer-term evaluation is needed to provide clarity.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b9de91334bac32241646babb84769c5770a25f9c90cd4f4183ede76a36d9e314",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792862703.245518,
+      "end_wall": 1792862728.657624,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1726,
+    "start_wall": 1792862703.245518,
+    "start_mono": 532260.001795333,
+    "end_wall": 1792862728.657624,
+    "end_mono": 532285.413957333,
+    "raw_response": "{\"reasoning\": \"The evidence from Passage P2 specifically indicates that preterm infants screened for PDA early (before day 3 of life) had a lower in-hospital mortality rate (14.2% vs 18.5%) compared to those not screened, with an absolute risk reduction noted. This directly supports the claim that early PDA screening decreases in-hospital mortality among extremely preterm infants. Additional supporting context from Passage P5 further corroborates this finding, albeit noting the need for longer-term evaluations.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P5\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25407605166,
+     "load_duration": 46763583,
+     "prompt_eval_count": 1626,
+     "prompt_eval_duration": 6943184791,
+     "eval_count": 138,
+     "eval_duration": 17273882546,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:28.654122Z"
+    },
+    "elapsed_s": 25.412,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1726,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:27099731:1",
+     "scifact:27099731:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 501,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d84391a1ebed999533961bbe3fd846ef06d4afee63bb4ba65ff3054ac786fca",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792862701.760085,
+      "end_wall": 1792862710.82045,
+      "error": null
+     }
+    ],
+    "start_wall": 1792862701.760085,
+    "start_mono": 532258.5163585,
+    "end_wall": 1792862710.82045,
+    "end_mono": 532267.576742958,
+    "raw_response": "{\"query\": \"patent ductus ateriosus screening mortality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9057792417,
+     "load_duration": 2632069625,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 1509405834,
+     "eval_count": 16,
+     "eval_duration": 4764453415,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:10.819403Z"
+    },
+    "elapsed_s": 9.06,
+    "query_used": "patent ductus ateriosus screening mortality",
+    "query_source": "json",
+    "query_arrival_seq": 1728
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "patent ductus ateriosus screening mortality",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27099731:0",
+       "score_q": 11703
+      },
+      {
+       "passage_key": "scifact:27099731:2",
+       "score_q": 10336
+      },
+      {
+       "passage_key": "scifact:9967265:0",
+       "score_q": 9989
+      },
+      {
+       "passage_key": "scifact:25612629:1",
+       "score_q": 8741
+      },
+      {
+       "passage_key": "scifact:14831629:0",
+       "score_q": 8549
+      }
+     ],
+     "retrieval_sha256": "07cffe1783a4a53d6650a3cf4c351ed9be5a30831d8c6971af2eaf20b71a9a89"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "07cffe1783a4a53d6650a3cf4c351ed9be5a30831d8c6971af2eaf20b71a9a89",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27099731:0",
+      "content_sha256": "01230b1ad4607f9380e5cb63037b01da248b5f38657ed74009434b9393c17415",
+      "chars": 1115
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:27099731:2",
+      "content_sha256": "56feb13b8ad658da12ea92b5ecb0a9b6619f3011cb6eabe69da4ae3268eef52a",
+      "chars": 895
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9967265:0",
+      "content_sha256": "0c3d430b5358a3e0dc8946095d920500c8e609def555984151a33b9bed22959d",
+      "chars": 965
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:25612629:1",
+      "content_sha256": "6c868f7c2cc8024dbccd9108b908552e9a1f962b76f93ce4a3b934446c8a14fb",
+      "chars": 312
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14831629:0",
+      "content_sha256": "bfe50c7ff116fccd3e97b03578e391c0eefeb3c18546ca89bf33eef561f1cbdd",
+      "chars": 726
+     }
+    ],
+    "elapsed_s": 0.0015
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nEvidence passages from your search for \"patent ductus ateriosus screening mortality\":\n<<<PASSAGES\n[P1] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nIMPORTANCE There is currently no consensus for the screening and treatment of patent ductus arteriosus (PDA) in extremely preterm infants. Less pharmacological closure and more supportive management have been observed without evidence to support these changes. OBJECTIVE To evaluate the association between early screening echocardiography for PDA and in-hospital mortality. DESIGN, SETTING, AND PARTICIPANTS Comparison of screened and not screened preterm infants enrolled in the EPIPAGE 2 national prospective population-based cohort study that included all preterm infants born at less than 29 weeks of gestation and hospitalized in 68 neonatal intensive care units in France from April through December 2011. Two main analyses were performed to adjust for potential selection bias, one using propensity score matching and one using neonatal unit preference for early screening echocardiography as an instrumental variable. EXPOSURES Early screening echocardiography before day 3 of life.\n\n[P2] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nNo differences in rates of necrotizing enterocolitis, severe bronchopulmonary dysplasia, or severe cerebral lesions were observed. In the overall cohort, instrumental variable analysis yielded an adjusted OR for in-hospital mortality of 0.62 [95% CI, 0.37 to 1.04]. CONCLUSIONS AND RELEVANCE In this national population-based cohort of extremely preterm infants, screening echocardiography before day 3 of life was associated with lower in-hospital mortality and likelihood of pulmonary hemorrhage but not with differences in necrotizing enterocolitis, severe bronchopulmonary dysplasia, or severe cerebral lesions. However, results of the instrumental variable analysis leave some ambiguity in the interpretation, and longer-term evaluation is needed to provide clarity.\n\n[P3] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nBACKGROUND Patent ductus arteriosus (PDA) with significant left to right shunt in preterm infants increases morbidity and mortality. Early closure of the ductus arteriosus may be achieved pharmacologically using cyclooxygenase inhibitors or by surgery. The efficacy of both treatment modalities is well established. However, the preferred initial treatment of a symptomatic PDA in a preterm infant, surgical ligation or treatment with indomethacin, has not been well established. OBJECTIVES To compare the effect of surgical ligation of PDA vs. medical treatment with cyclooxygenase inhibitors (using indomethacin, ibuprofen, or mefenamic acid), each used as the initial treatment, on neonatal mortality in preterm infants with a symptomatic PDA. SEARCH STRATEGY The standard search strategy of the Cochrane Neonatal Review Group was used.\n\n[P4] Patent ductus arteriosus: are current neonatal treatment options better or worse than no treatment at all?\nBy contrast, ductus ligation, while eliminating the detrimental effects of a PDA on lung development, may create its own set of morbidities that counteract many of the benefits derived from ductus closure.\n\n[P5] Patent ductus arteriosus: lack of evidence for common treatments.\nPatent ductus arteriosus (PDA) is a common diagnosis among extremely premature infants, especially in those with lung disease. Treatments are often used to close the PDA. Despite nearly three decades of research, the question of whether the benefits of treatments to prevent ductal patency or promote closure outweigh the risks of these treatments remains unanswered. The authors rarely use treatments designed to close the PDA. This article reviews three considerations in support of this restrained approach: rates of spontaneous closure of the ductus arteriosus; adverse effect of persistent ductal patency; and benefits and risks of treatments for closure.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "497f02279a376a1be8983c75d54e92813b24503d43395633ffe26cb1afbca3f6",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792862710.8225658,
+      "end_wall": 1792862731.008407,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1727,
+    "start_wall": 1792862710.8225658,
+    "start_mono": 532267.578859875,
+    "end_wall": 1792862731.008407,
+    "end_mono": 532287.764745708,
+    "raw_response": "{\"reasoning\": \"The passages [P1] and [P2] provide evidence that early screening echocardiography for PDA before day 3 of life is associated with lower in-hospital mortality and pulmonary hemorrhage in extremely preterm infants. [P1] shows that screening was associated with a lower in-hospital mortality rate using a propensity score matched analysis and an instrumental variable analysis. [P2] presents similar findings but with an odds ratio of 0.62, indicating a 38% reduction in in-hospital mortality risk. These findings, combined with the lack of evidence in [P5] that current treatments outweigh the risks, [\",\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20180130875,
+     "load_duration": 52380750,
+     "prompt_eval_count": 1099,
+     "prompt_eval_duration": 4163453500,
+     "eval_count": 160,
+     "eval_duration": 14361608204,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:31.003512Z"
+    },
+    "elapsed_s": 20.186,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1727,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:27099731:0",
+     "scifact:27099731:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d84391a1ebed999533961bbe3fd846ef06d4afee63bb4ba65ff3054ac786fca",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792862701.759287,
+      "end_wall": 1792862708.17748,
+      "error": null
+     }
+    ],
+    "start_wall": 1792862701.759287,
+    "start_mono": 532258.515561416,
+    "end_wall": 1792862708.17748,
+    "end_mono": 532264.933767041,
+    "raw_response": "{\"query\": \"PDA screening mortality reduction study\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6415461125,
+     "load_duration": 1185694792,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 318367750,
+     "eval_count": 14,
+     "eval_duration": 4845890253,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:08.176657Z"
+    },
+    "elapsed_s": 6.418,
+    "query_used": "PDA screening mortality reduction study",
+    "query_source": "json",
+    "query_arrival_seq": 1727
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PDA screening mortality reduction study",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:21050357:0",
+       "score_q": 668
+      },
+      {
+       "passage_key": "scifact:26067999:7",
+       "score_q": 663
+      },
+      {
+       "passage_key": "scifact:23704559:1",
+       "score_q": 660
+      },
+      {
+       "passage_key": "scifact:26067999:6",
+       "score_q": 655
+      },
+      {
+       "passage_key": "scifact:32423829:0",
+       "score_q": 654
+      }
+     ],
+     "retrieval_sha256": "c9ed6bf2433a048b2669576c8ae10affec81e8e4bcd75af25ca604d129cb6e62"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c9ed6bf2433a048b2669576c8ae10affec81e8e4bcd75af25ca604d129cb6e62",
+    "query_embedding_sha256": "c4c4fab786886a4acbc9928475dcb355bbcde06c59793bf17ba0bb68245311c5",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:21050357:0",
+      "content_sha256": "5f13a39d198875792fc6a34530f4b8590836dc7b173c45d4be6da81e12067b8a",
+      "chars": 1073
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:26067999:7",
+      "content_sha256": "2eb46305bc5d4df99d4caeb54e625cc415cd541bf03dea06b6496ccab88da5d2",
+      "chars": 1025
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23704559:1",
+      "content_sha256": "f1cfb6a437230281943ec105b64cb1effcab5fcbe9ed623fc8ae3ae4dc934fc7",
+      "chars": 364
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:26067999:6",
+      "content_sha256": "cc740f3f2c630abbff34a944a00c8d14193c2cb11e938630383b59371053c305",
+      "chars": 970
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:32423829:0",
+      "content_sha256": "03030b7b7dbb00a8505c83cad80843d66ede8f4a033814979f9c40c7465bd90c",
+      "chars": 1025
+     }
+    ],
+    "elapsed_s": 7.4575
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nEvidence passages from your search for \"PDA screening mortality reduction study\":\n<<<PASSAGES\n[P1] Research Priorities in Sudden Unexpected Infant Death: An International Consensus.\nDespite the success of safe sleep campaigns and the progress in understanding risk factors, the rate of reduction in the cases of sudden infant death syndrome has now slowed and it remains a leading cause of postneonatal mortality in many developed countries. Strategic action is needed to tackle this problem and it is now vital to identify how the sudden infant death research community may best target its efforts. The Global Action and Prioritization of Sudden Infant Death Project was an international consensus process that aimed to define and direct future research by investigating the priorities of expert and lay members of the sudden unexpected infant death (SUID) community across countries. The aim was to identify which areas of research should be prioritized to reduce the number of SUID deaths globally. Scientific researchers, clinicians, counselors, educators, and SUID parents from 25 countries took part across 2 online surveys to identify potential research priorities.\n\n[P2] Screening for Lung Cancer: U.S. Preventive Services Task Force Recommendation Statement\nA program that annually screens adults aged 55 to 80 years who have a 30 pack-year smoking history and currently smoke or have quit within the past 15 years is projected to have a reasonable balance of benefits and harms. The model assumes that persons who achieve 15 years of smoking cessation during the screening program discontinue screening. This model predicts the outcomes of continuing the screening program used in the NLST through age 80 years. Screening may not be appropriate for patients with substantial comorbid conditions, particularly those at the upper end of the screening age range. The NLST excluded persons who were unlikely to complete curative lung cancer surgery and those with medical conditions that posed a substantial risk for death during the 8-year trial. The baseline characteristics of the NLST showed a relatively healthy sample, and fewer than 10% of enrolled participants were older than 70 years (5).\n\n[P3] Frequency of Intracranial Aneurysms Determined by Magnetic Resonance Angiography in Children (Mean Age 16) Having Operative or Endovascular Treatment of Coarctation of the Aorta (Mean Age 3).\nIn conclusion, our data suggest that early treatment of CofA can reduce the formation of IAs in children so as to make MRA screening less valuable in this young population.\n\n[P4] Screening for Lung Cancer: U.S. Preventive Services Task Force Recommendation Statement\nClinical Considerations Patient Population Under Consideration The risk for lung cancer increases with age and cumulative exposure to tobacco smoke and decreases with time since quitting smoking. The best evidence for the benefit of screening comes from the NLST, which enrolled adults aged 55 to 74 years who had at least a 30 pack-year smoking history and were current smokers or had quit within the past 15 years. As with all screening trials, the NLST tested a specific intervention over a finite period. Because initial eligibility extended through age 74 years and participants received 3 annual screening computed tomographic scans, the oldest participants in the trial were aged 77 years. The USPSTF used modeling studies to predict the benefits and harms of screening programs that use different screening intervals, age ranges, smoking histories, and times since quitting.\n\n[P5] A cluster randomized, controlled trial of breast and cervix cancer screening in Mumbai, India: methodology and interim results after three rounds of screening.\nCervix and Breast cancers are the most common cancers among women worldwide and extract a large toll in developing countries. In May 1998, supported by a grant from the NCI (US), the Tata Memorial Hospital, Mumbai, India, started a cluster-randomized, controlled, screening-trial for cervix and breast cancer using trained primary health workers to provide health-education, visual-inspection of cervix (with 4% acetic acid-VIA) and clinical breast examination (CBE) in the screening arm, and only health education in the control arm. Four rounds of screening at 2-year intervals will be followed by 8 years of monitoring for incidence and mortality from cervix and breast cancers. The methodology and interim results after three rounds of screening are presented here. Good randomization was achieved between the screening (n = 75360) and control arms (n = 76178).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "eb9b23c9e9aaed687d7fe6881e1800d36b79518004041bd33d2d68953368ecd3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792862715.6353762,
+      "end_wall": 1792862732.5586839,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1728,
+    "start_wall": 1792862715.6353762,
+    "start_mono": 532272.391681458,
+    "end_wall": 1792862732.5586839,
+    "end_mono": 532289.315026541,
+    "raw_response": "{\n  \"reasoning\": \"The claim pertains to the impact of early patent ductus arteriosus (PDA) screening on in-hospital mortality. However, the provided evidence passages discuss unrelated topics: screening for lung cancer, intracranial aneurysms, breast and cervical cancer screening, and a methodology for a screening trial in India. None of these passages discuss PDA screening or its effect on in-hospital mortality. Therefore, the claim is REFUTED.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16919210542,
+     "load_duration": 9101774875,
+     "prompt_eval_count": 1381,
+     "prompt_eval_duration": 2723951292,
+     "eval_count": 155,
+     "eval_duration": 4262888454,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:32.555861Z"
+    },
+    "elapsed_s": 16.923,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1728,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:21050357:0",
+     "scifact:26067999:7",
+     "scifact:23704559:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 431,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2d84391a1ebed999533961bbe3fd846ef06d4afee63bb4ba65ff3054ac786fca",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792862701.760422,
+      "end_wall": 1792862715.157388,
+      "error": null
+     }
+    ],
+    "start_wall": 1792862701.760422,
+    "start_mono": 532258.516695791,
+    "end_wall": 1792862715.157388,
+    "end_mono": 532271.91369025,
+    "raw_response": "{\"query\": \"early patent ductus arteriosus screening reduce in-hospital mortality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13394664917,
+     "load_duration": 8202198667,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 559144042,
+     "eval_count": 18,
+     "eval_duration": 4239532292,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:15.156128Z"
+    },
+    "elapsed_s": 13.397,
+    "query_used": "early patent ductus arteriosus screening reduce in-hospital mortality",
+    "query_source": "json",
+    "query_arrival_seq": 1729
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "early patent ductus arteriosus screening reduce in-hospital mortality",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27099731:0",
+       "score_q": 825
+      },
+      {
+       "passage_key": "scifact:25691541:1",
+       "score_q": 767
+      },
+      {
+       "passage_key": "scifact:34544514:2",
+       "score_q": 764
+      },
+      {
+       "passage_key": "scifact:9967265:4",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:9967265:1",
+       "score_q": 750
+      }
+     ],
+     "retrieval_sha256": "fb151ca2eafb007a3c6f592d2a5267e0cece3a1b535a5a679cf7006d13b6441c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "fb151ca2eafb007a3c6f592d2a5267e0cece3a1b535a5a679cf7006d13b6441c",
+    "query_embedding_sha256": "8c093877978fe1fcbf27b7a075b7626d34fd32fd3ca61873a82d4b12b34281b9",
+    "query_embedding_f32_b64": "N5iVPGzqgDwJATO+43gOvCTFhTzVpIY7zb0kPETKETy9JDk9kWo1valHTT3/7JE9OmKXPbXvPr2SFRI8TjaWvMU6ljxicaG96vMFvVrjjTyJyKK9rW8ZvcTVOLwG9rk8SrzAPd4WPz2elg484MOTPebw1rv3a349iJI+PU6pabzuh4K8nzRQvS4N9bzRQHi9/nlcPd+yujvQT+o6rCvuvMCsJDy3jqa8Y/g+PWG5q7wN41k8DbYfPNUVEbu6Ogc7KLUTPW86Xb1tYEo9dR8WvDSFNr0j1EA9gEsiPRmYXDw+SVi9Pf1+O8X5GD3geHi9m2pQPdzPhj2fOuC8AYpNPPIHUj2V8k+8I2A1PcxsJby84Tw9HddzPOw5vLxlRWk8/8vgPN70OT34VVE9qCD6PNsGYr2iuRa7gpnAO8EYFD1sioY8tD2pPHYxOzw94UK9v4gcPbNt9Lm2kg27S0C0vET3HL1d/Bo9pCRcPb5BTz2xYdO88vaJPf0RUL0nfNY9Eo0UPBddFT2H7YY5x9QXvaDNPb3/Ffa7WB6+uol9y7yuZPK8SD2hPJlHDD0cyRY8DLrGvIn79rxuGcQ7O0SZPPYg2LyOAmC9siksPYAE3zylFFQ9qmM0vNBvLrwbraY8uVYFvVBIBDzyYkQ9+uiLPcW0gDtIQ4g9t1GmvTPgLLxaNxk7b+DBu9JRXbzYh6o8WaV9vNwEL71IuAC88b9yPVqlb7waIRK8oRUrvCiN2jzgUWc70UbYPDP1/zyEYou7yWkUu+JdDb1vR705d9Upvbfjubxf1a88W81WOyClxTxE4yw9zUUSPE3z2jw6bVa9AXb4vKCKqTwWSF+8UpqIvN65eT196aO8oOxQvWg7pT3l1G69sVU5vXyq7rop6RU9RysPPWngGD36ueW82SmJvRwPPD2WJUC8n/PiPAE1xLzUoZO8D9y1vP4kNLz5Vmu97MPrPNluYb2SiMo6n0qQPeJWkbzlSFQ9zrTBOx62GD11gF28h3dWvVtNvzzRs008BNXGvcQ2Ab2sbPi8JtqwPDjbMT2FMHu81sPDPIBilbxp9ia9SV7MvNvZNb2vTg68xahwvL4rPD2lYFk8DGfpPLuurrp77d46cqdqPWifRrykKWy8k4MiO28S77zz7As8buwsPIyALrxiCSC9/cVoPWE5YTxAYhi9k6VuPP0Ym7wsndM70BIbvR0eYryAD1k8t8RIvfMmQr2dxCa8e3ftvIaVuzwgAx88NG2qu7NRhb1WyWQ8NPpcOzHcEzxR7AA9JBgavH9FujwygLQ8jOPXPMbToLvUEiQ9Ma0Xul6TGL3Tesc8GByaPC4MVbx/wf089rOrPODjajxz6gM8kSqKPDN1Ib0imyM9WFz+PJ1bzbs7h6c8dzbcvNMSej0D4zO9BphYvew9nDzPXvW8QtgevLuPyjwRAi+9Yk4JPXbuhT1t2sy8UyUzPSBDEz0tn7E8uZmfvBjU3LxUZ1O9MjZ6OmCHCb0CtFm9wE1UvaP6oLwrHri8wdsnPUBu3j2+xrW8PU4lO3tnurs+4RQ9Btm8vAOTsbyIlmE9NxOqPNB3DD3hnoE9Y7R1vJaq0Tyf/Py8zRdSPUBee7ztYfE8xvbdPGMcgrzhhzi8Wxv/O3mmErya3Jo91CmJvTuJvzwayHG8FAXCvGxgCb29mZ69gt2pO0cusLyarSS8/pf/PA99jz21/bE93+I4PUjua71Wmpy9L92HvAL9RTxROKI87T5IPezHc7yGkwO8kY7QO/M3Bj0BxQI9XtnhvKdrirw5SNw8ftNfvS8xUj2L84087J2SPT7RgzwZP3i9CGqfPC1yNr1cAaE8EzTOvErpDL3wqBc9VSPbu26NYLrC4JK8+/FyvPw4Jbxzqi+9HWuTPQy3CL0whG09igqmvK2Emjx1nda8jbA/PF7XkLxfR2q9w1XFO0/eSTt8vJ083yJzPdXMgLzhZqg91piJPFcBZb3zcZc85wUIO8l0fz0wbl69efPvPDP1n73i1ge9ZP40O8WlwTzYozA70mhUvMsMBjz/f4a9TsSwuqEzALwWOj09SVtmvYsUn7v+wxS9w48fvReKDjv5WXS9sSKevJRqu7y39F48eGsgPY47T7slG/m8A+9OPPJPjr2WvG69j4arvJetzzxCojY79nf7vN8+ab04E2a81fYpPWgdDTyolCg8qr5IPYmE8buPMxC90ugyPT6ynD0KkUo9PAubvHNJUT0/1kk8OUPfPfm03Tz656E8zozEPJVtwbsyXwY9EF41PRNdmrznIJ68c3kpvTnb+zuVtx89FT2lPNHcCrzP9dI7FcQnPeIxSL0n4g29lupIvBbhlj2kekA7kjSKvU0Hf7ylsW29lLFqPfK7XT2U2n09/He2vNF7xDxxU4M9a2tsOyRNyjwRo4g94qWiPFYcVj1U7la8tAmSPTCTbz3yqCk9z0E9PYrcQz3vAw09lrNwvS38hDxnuOM8NUwSvOIbnTzg1oi87PPlPAF+dLsuAAu9WZgcvfVqkTvbkWa9langvA67JLx6WLe8CM1wvKI5W7yTBSk953U9PQwpwLxFJRe9PlkcvZ4hqLseUwK8QEsJvNbxdjvvzRm9KMMtvHYbQDutMyc9o8h4PPfLCT2str47twCBvIW7sDzsUJG8YduxvAJCorzAMMs8LPKuup1oKDv1KTS9Dhm4u2O1vbz3kZI80EWFvbUPcL3/Ebk8OP7CvBGC3brVYxU9OpTGPNC00roZj2+9me2NOkUpFzwlvxS9k41DPO0wDTruF1a9n1fRvO+KLD3wLQq9DcwpvBsUDrzBykS86PzRvFlK+rzyclW8ANc4vMq0R7y1jlA8DfmPOl46LbuqQEe9jW8/vDBfED2NCQq9AyPxvDlDbzrmd1Y8K4y5vMScbL0UR5i8h92VveJ69bw+Ayu9vlUNvUfjJT2/nPu8gYNqPBA1Brs+zHS834Lyuzh5NT0FvWs7lNWZPA81p7z4zzo8CfgZvMwPjjtr/eG7aMGEPW5SFTxprNg8L9HPvAHkH7w65+I7W1q9PNKfNb2nWu680SbkO4O+3rwL5yA8TuQdvI+x3jvPgUG8wlrau8uEhb2Syt68d6+APCbYND3nhoM8Y/TdOwmVuLwi6G292BZcPBLUCL1AM+28lMmMvCdhzjyck8O8Qm8hvYLHcjwi9ji9g3X8Oy6jA72F1bE7bb2gvI9n07zncYQ8jsAQveoyrLw2am49+tlIPFvTR7xOLXM620/tu2blfT3mVRe9tfbhuxfla7wRyxM9EbUAvcz5UD01xau7VU6nvKPE2zyC2J88aiOQvOQXSzyJdB68TEhbPcpuM7zpxAy94wWDvSYPnrzpnpY9lDsrPHn0iDxO8pG9mIUFPNG1YLxl67Q8jFIYO0wL1DxGk9w8mljwPEnIZT02E8U5FS4Nvd8GRj3d0n09HbrIOysr7bvO4Xc9T62evIOTpDxl9nI9hWcgPRAxZD1xOjC9gF5ZPCg+Sb2Xiyg9iIMYveW+pb1lBYS9bi0EPG4hLDzW4q68VsVuPQPQEr1odIm9gIddvBfzqrybOQS9p9M5vaZN5zyR+U49Fbv0vELNmLyw3yg9X4t9PYDZBj3Y4SO9KS/wu7NH87xUcQO9EPgMvDwaRD1Pc8m8o1c6PCPU+jwe48m7bxQXvZRSozyG5/Q83FEzvVrZdb3TYsY8S7cpPPQA7zwdQCC9QBP7O20tTzwwxXi9S7IBPHq3a7xC5bc91yQUPU1d27t+jw27UX9EvGRVg7w+6Yi8D87VvDrH27w4AiU9UdyHPIV/oTwuidg8q8sCPSFxIjz1nxO8xcqxvYILvbvo6i497U8vPUkSHr2ee6G9jUwPvSOL67oVl/i8otNUPcAAf7wVIuK8g8g+vfW3Er2GLCO86mwIveko1TwkVd28tPnKvPiZ47wu3rS7tnzovKwnzTy3fim9Ly1TvNGapDzPqgE9Odj6O1JxPLtPpcw89aAePXdkljwRLqC8kFU7PApUBL1BiYy98SScPDi22buOncQ7Y9MiPf3daTyRaKQ9rEOJvPjcvTzCpUO9ZvJSPTldSz0QDHg8OG1jvSQ27rqtc0G9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27099731:0",
+      "content_sha256": "01230b1ad4607f9380e5cb63037b01da248b5f38657ed74009434b9393c17415",
+      "chars": 1115
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:25691541:1",
+      "content_sha256": "7e800478b35d50f75ebf0a11f5374885fe29d1dfd8d7272a00b802f2d733d58f",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34544514:2",
+      "content_sha256": "89dd971d9644a7022095484d0bd508c0d05030fb3c90db927b7e0e7337419276",
+      "chars": 1008
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9967265:4",
+      "content_sha256": "8dbb221f127e47801fcec247cc1d8d1088d5054a06a6cc1e1c867d4c069359fd",
+      "chars": 565
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9967265:1",
+      "content_sha256": "acfaa3533debf48e6845ca9cb7da9aa23d2bfa5b2ea0192a346914cfe85a9de9",
+      "chars": 1090
+     }
+    ],
+    "elapsed_s": 0.525
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Early patent ductus ateriosus (PDA) screening decreases in-hospital mortality.\n\nEvidence passages from your search for \"early patent ductus arteriosus screening reduce in-hospital mortality\":\n<<<PASSAGES\n[P1] Association Between Early Screening for Patent Ductus Arteriosus and In-Hospital Mortality Among Extremely Preterm Infants.\nIMPORTANCE There is currently no consensus for the screening and treatment of patent ductus arteriosus (PDA) in extremely preterm infants. Less pharmacological closure and more supportive management have been observed without evidence to support these changes. OBJECTIVE To evaluate the association between early screening echocardiography for PDA and in-hospital mortality. DESIGN, SETTING, AND PARTICIPANTS Comparison of screened and not screened preterm infants enrolled in the EPIPAGE 2 national prospective population-based cohort study that included all preterm infants born at less than 29 weeks of gestation and hospitalized in 68 neonatal intensive care units in France from April through December 2011. Two main analyses were performed to adjust for potential selection bias, one using propensity score matching and one using neonatal unit preference for early screening echocardiography as an instrumental variable. EXPOSURES Early screening echocardiography before day 3 of life.\n\n[P2] Preterm patent ductus arteriosus: A continuing conundrum for the neonatologist?\nObservations of very early postnatal haemodynamic significance suggest that targeting treatment on the basis of the early postnatal constrictive response of the duct may optimize benefits. A pilot trial of this strategy showed reduction in the incidence of pulmonary haemorrhage but more trials of this strategy are needed.\n\n[P3] Ibuprofen for the treatment of patent ductus arteriosus in preterm or low birth weight (or both) infants.\nThere was no significant difference between the groups (typical RR 1.00, 95% CI 0.84 to 1.20; I(2) = 0%; typical RD 0.00, 95% CI -0.05 to 0.05; I(2) = 0%). The risk of developing necrotising enterocolitis (NEC) was reduced for ibuprofen (16 studies, 948 infants; typical RR 0.64, 95% CI 0.45 to 0.93; typical RD -0.05, 95% CI -0.08 to -0.01; NNTB 20, 95% CI 13 to 100; I(2) = 0% for both RR and RD). The duration of ventilatory support was reduced with ibuprofen (oral or iv) compared with iv or oral indomethacin (six studies, 471 infants; mean difference (MD) -2.4 days, 95% CI -3.7 to -1.0; I(2) = 19%).Eight studies (272 infants) reported on failure rates for PDA closure in a subgroup of the above studies comparing oral ibuprofen with indomethacin (oral or iv). There was no significant difference between the groups (typical RR 0.96, 95% CI 0.73 to 1.27; typical RD -0.01, 95% CI -0.12 to 0.09).\n\n[P4] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nIt should be noted that three recent observational studies indicated an increased risk for one or more of the following outcomes associated with PDA ligation; chronic lung disease, retinopathy of prematurity and neurosensory impairment . It is possible that the duration of the \"waiting-time\" and transport to another facility with surgical capacity to have the PDA ligated could adversely affect outcomes, as could the perioperative care.\n\n[P5] Surgical versus medical treatment with cyclooxygenase inhibitors for symptomatic patent ductus arteriosus in preterm infants.\nThis included search of electronic databases: Cochrane Central Register of Controlled Trials (CENTRAL, The Cochrane Library, Issue 2, 2007), MEDLINE (1966 - July 2007), CINAHL (1982 - July 2007), EMBASE (1980 - July 2007); and hand search of abstracts of Pediatric Academic Societies annual meetings published in Pediatric Research (1990 - April 2002) or on line from May 2002 -July 2007. No language restrictions were applied. SELECTION CRITERIA All trials 1) using randomized or quasi-randomized patient allocation, 2) in preterm infants < 37 weeks gestational age or low-birth-weight infants (< 2500 grams) with symptomatic PDA in the neonatal period (< 28 days) and 3) comparing surgical ligation with medical treatment with cyclooxygenase inhibitors, each used as the initial treatment for closure of PDA. DATA COLLECTION AND ANALYSIS Assessment of methodological quality and extraction of data for included trials was undertaken independently by the authors.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d7868774d7452be666c5a419218723cf9f34e43a305f05aa5e40b6f276d77955",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792862715.682944,
+      "end_wall": 1792862741.297639,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1729,
+    "start_wall": 1792862715.682944,
+    "start_mono": 532272.439249291,
+    "end_wall": 1792862741.297639,
+    "end_mono": 532298.054000916,
+    "raw_response": "{\"reasoning\": \"The second passage suggests that targeting treatment on the basis of the early postnatal constrictive response of the duct may optimize benefits, but more trials are needed. Another passage mentions that less pharmacological closure and more supportive management have been observed without evidence to support these changes. The first and third passages discuss the lack of consensus on the screening and treatment of PDA in extremely preterm infants, and the fifth passage discusses the increased risk of complications associated with PDA ligation. Given these considerations, the claim is REFUTED.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25609744333,
+     "load_duration": 18644953708,
+     "prompt_eval_count": 1310,
+     "prompt_eval_duration": 2013464875,
+     "eval_count": 123,
+     "eval_duration": 2557022089,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:25:41.293758Z"
+    },
+    "elapsed_s": 25.615,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1729,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "769622f2f08de399703ba3cac0df74ed0540b0e2a7ad8776d487894a96cd16e6",
+  "exaone3.5:7.8b": "d7baa0973e62ca64c6fb94a8e1f8de72922be89a826f27bcf10fd102a7dc5063",
+  "olmo2:7b": "07cffe1783a4a53d6650a3cf4c351ed9be5a30831d8c6971af2eaf20b71a9a89",
+  "granite3.3:2b": "c9ed6bf2433a048b2669576c8ae10affec81e8e4bcd75af25ca604d129cb6e62",
+  "nemotron-mini:4b": "fb151ca2eafb007a3c6f592d2a5267e0cece3a1b535a5a679cf7006d13b6441c"
+ },
+ "item_start_wall": 1792862701.758177,
+ "item_wall_s": 39.54,
+ "ollama_ps_samples": [
+  [
+   1792862701.758,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862703.765,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862705.772,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862707.781,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862709.786,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862711.797,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792862713.8,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792862715.806,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862717.812,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792862719.817,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792862721.827,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792862723.829,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862725.837,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862727.849,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862729.852,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862731.858,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792862733.862,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862735.865,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862737.872,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792862739.874,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

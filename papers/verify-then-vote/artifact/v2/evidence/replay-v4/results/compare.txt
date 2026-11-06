@@ -1,0 +1,32 @@
+platforms: aarch64-apple-darwin, linux-amd64, linux-arm64, x86_64-apple-darwin-rosetta
+
+| topic | root_hash | policy_hash | certificate | outputs sha256 (canonical) | dump file sha256 | identical on all |
+|---|---|---|---|---|---|---|
+| australia | `72d1adcba1fefffb903a783c65a97e4a` | `dd8d36e6def3a6d598765e82d461a473` | `42036af57e216ec4` | `b6e61f4000b96da9…` | `8e09c3687565d6fd…` | yes |
+| pluto | `d597dd246286454c0e1fa143c89bbf2f` | `dd8d36e6def3a6d598765e82d461a473` | `755e36a26fb1edb3` | `280445f897355b29…` | `f47eaf6b5e8fa123…` | yes |
+| tides | `b4c616a090ea56ad23d05caad34a1a60` | `dd8d36e6def3a6d598765e82d461a473` | `dce7bbc9b940ec2c` | `e14c372b46f5158e…` | `328de4224d60bf66…` | yes |
+| tcp | `9bfc91230c6bb7612855ebc548567eb1` | `dd8d36e6def3a6d598765e82d461a473` | `19f12d080acac5d2` | `ab54e723066b99b1…` | `992016d506c6010a…` | yes |
+| nutrition | `a2fe7207935918831d3b0744bd5c4f03` | `dd8d36e6def3a6d598765e82d461a473` | `8aa3f15a170e66ec` | `bc5c9711104efb1b…` | `503178491ba3e737…` | yes |
+
+Replay matrix (replayer <- dumper: PASS count / 5 topics):
+| replayer \ dumper | aarch64-apple-darwin | linux-amd64 | linux-arm64 | x86_64-apple-darwin-rosetta |
+|---|---|---|---|---|
+| aarch64-apple-darwin | 5/5 | 5/5 | 5/5 | 5/5 |
+| linux-amd64 | 5/5 | 5/5 | 5/5 | 5/5 |
+| linux-arm64 | 5/5 | 5/5 | 5/5 | 5/5 |
+| x86_64-apple-darwin-rosetta | 5/5 | 5/5 | 5/5 | 5/5 |
+
+Tamper table (results/tamper-<build>.txt; exit code got / expected):
+| case | expected | aarch64-apple-darwin | linux-amd64 | linux-arm64 | x86_64-apple-darwin-rosetta |
+|---|---|---|---|---|---|
+| claim-edit-unsealed | 3 | 3 | 3 | 3 | 3 |
+| claim-edit-resealed-kept-id | 3 | 3 | 3 | 3 | 3 |
+| synthesis-in-set | 3 | 3 | 3 | 3 | 3 |
+| claim-edit-resealed-new-id | 1 | 1 | 1 | 1 | 1 |
+| policy-deadband-501 | 4 | 4 | 4 | 4 | 4 |
+| seq-plus-1000 | 3 | 3 | 3 | 3 | 3 |
+| winner-swap | 1 | 1 | 1 | 1 | 1 |
+| scheme-strip-v2-tag | 3 | 3 | 3 | 3 | 3 |
+| format-retag-only | 1 | 1 | 1 | 1 | 1 |
+
+ALL IDENTICAL / ALL PASS

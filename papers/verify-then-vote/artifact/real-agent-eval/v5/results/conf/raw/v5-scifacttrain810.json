@@ -1,0 +1,1263 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain810",
+ "order": 226,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain810",
+  "order": 226,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Mouse models can be generated using \"artificial spermatids.\""
+ },
+ "item_view_sha256": "f7d149903dd4842480379251ba49905a9b194457a8fdd1d953ca63e90540e7b1",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "dense",
+  "qwen2.5:3b": "dense"
+ },
+ "dispatch_order": [
+  "gemma2:2b",
+  "llama3.2:3b",
+  "mistral",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "phi3:mini",
+  "mistral",
+  "qwen2.5:3b",
+  "gemma2:2b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mouse models can be generated using \"artificial spermatids.\"\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e1c304bdbb19497ae7e5791f348139f09032044b9e8626e4c31f7f8601cb7402",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792710319.886484,
+      "end_wall": 1792710321.119848,
+      "error": null
+     }
+    ],
+    "start_wall": 1792710319.886484,
+    "start_mono": 379876.951209083,
+    "end_wall": 1792710321.119848,
+    "end_mono": 379878.184564333,
+    "raw_response": "{\"query\": \"artificial spermatids mouse models genetic engineering\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1230915625,
+     "load_duration": 118076416,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 405119750,
+     "eval_count": 15,
+     "eval_duration": 545883041,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:21.118694Z"
+    },
+    "elapsed_s": 1.233,
+    "query_used": "artificial spermatids mouse models genetic engineering",
+    "query_source": "json",
+    "query_arrival_seq": 1130
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "artificial spermatids mouse models genetic engineering",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13513790:0",
+       "score_q": 734
+      },
+      {
+       "passage_key": "scifact:949309:0",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:1381673:1",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:1381673:0",
+       "score_q": 728
+      },
+      {
+       "passage_key": "scifact:10086360:1",
+       "score_q": 719
+      }
+     ],
+     "retrieval_sha256": "2269e67257be1326f23d7362a000c5d365975361fdc2cbb3b47ec1f96f921478"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2269e67257be1326f23d7362a000c5d365975361fdc2cbb3b47ec1f96f921478",
+    "query_embedding_sha256": "0acc296b21f524fdfcecef3e7a032413ae14c4a5eec16bd29669f9d1d49b14f2",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13513790:0",
+      "content_sha256": "fc034dbff15048c8a6431b6ba815d6f7f3c9a35b059f3724afa40e263936a088",
+      "chars": 1007
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:949309:0",
+      "content_sha256": "eb897e5eb9296f5772b554e438fc087d35542717b6421c143b69a2815c49f2f4",
+      "chars": 1090
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:1381673:1",
+      "content_sha256": "f0ede67589a3d66ae12c41434a052f4e4c2c90c3594dd419ffbe29219c60f950",
+      "chars": 227
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:1381673:0",
+      "content_sha256": "5197acd1f29934a62b7f7d452f78f34140eb36c54b9915fd5be213211444f57e",
+      "chars": 1037
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10086360:1",
+      "content_sha256": "be489a7ed3cfd989128e70a3904405c5f560cab9ce07e5b110acbc2cd7ae16d4",
+      "chars": 504
+     }
+    ],
+    "elapsed_s": 9.5128
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mouse models can be generated using \"artificial spermatids.\"\n\nEvidence passages from your search for \"artificial spermatids mouse models genetic engineering\":\n<<<PASSAGES\n[P1] Generation of Genetically Modified Mice by Oocyte Injection of Androgenetic Haploid Embryonic Stem Cells\nHaploid cells are amenable for genetic analysis. Recent success in the derivation of mouse haploid embryonic stem cells (haESCs) via parthenogenesis has enabled genetic screening in mammalian cells. However, successful generation of live animals from these haESCs, which is needed to extend the genetic analysis to the organism level, has not been achieved. Here, we report the derivation of haESCs from androgenetic blastocysts. These cells, designated as AG-haESCs, partially maintain paternal imprints, express classical ESC pluripotency markers, and contribute to various tissues, including the germline, upon injection into diploid blastocysts. Strikingly, live mice can be obtained upon injection of AG-haESCs into MII oocytes, and these mice bear haESC-carried genetic traits and develop into fertile adults. Furthermore, gene targeting via homologous recombination is feasible in the AG-haESCs.\n\n[P2] Electroporation of Cas9 protein/sgRNA into early pronuclear zygotes generates non-mosaic mutants in the mouse.\nThe CRISPR/Cas9 system is a powerful tool for elucidating the roles of genes in a wide variety of organisms including mice. To obtain genetically modified embryos or mice by this method, Cas9 mRNA and sgRNA are usually introduced into zygotes by microinjection or electroporation. However, most mutants generated with this method are genetically mosaic, composed of several types of cells carrying different mutations, which complicates phenotype analysis in founder embryos or mice. To simplify the analysis and to elucidate the roles of genes involved in developmental processes, a method for producing non-mosaic mutants is needed. Here, we established a method for generating non-mosaic mouse mutant embryos. We introduced Cas9 protein and sgRNA into in vitro fertilized (IVF) zygotes by electroporation, which enabled the genome editing to occur before the first replication of the mouse genome. As a result, all of the cells in the mutant carried the same set of mutations.\n\n[P3] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThus, our results define an alternative and dynamic model for spermatogenic stem cell function in the mouse testis.\n\n[P4] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThe identity and behavior of mouse spermatogenic stem cells have been a long-standing focus of interest. In the prevailing \"As model,\" stem cell function is restricted to singly isolated (As) spermatogonia. By examining single-cell dynamics of GFRα1+ stem cells in vivo, we evaluate an alternative hypothesis that, through fragmentation, syncytial spermatogonia also contribute to stem cell function in homeostasis. We use live imaging and pulse labeling to quantitatively determine the fates of individual GFRα1+ cells and find that, during steady-state spermatogenesis, the entire GFRα1+ population comprises a single stem cell pool, in which cells continually interconvert between As and syncytial states. A minimal biophysical model, relying only on the rates of incomplete cell division and syncytial fragmentation, precisely predicts the stochastic fates of GFRα1+ cells during steady state and postinsult regeneration.\n\n[P5] High-resolution sperm typing of meiotic recombination in the mouse MHC Ebeta gene.\nThis asymmetry results in crossover products showing biased gene conversion in favour of hotspot markers from the non-initiating haplotype, and supports the double-strand break repair model of recombination, with haplotype s as the most efficient crossover initiator. The detailed behaviour of the E(beta) hotspot, including evidence for highly localized recombination initiation, is strikingly similar to human hotspots.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ad0c2d91e1def6fa77c5e666ba05ae3d37eb1db9317a83934be397ce20c03d26",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792710330.633085,
+      "end_wall": 1792710340.909035,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1130,
+    "start_wall": 1792710330.633085,
+    "start_mono": 379887.69773575,
+    "end_wall": 1792710340.909035,
+    "end_mono": 379897.973615083,
+    "raw_response": "{\n  \"reasoning\": \"The claim is supported because artificial spermatids can be used to generate mouse models, as demonstrated in passages P1 and P4.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10272760709,
+     "load_duration": 2789818792,
+     "prompt_eval_count": 1095,
+     "prompt_eval_duration": 3117320418,
+     "eval_count": 64,
+     "eval_duration": 3728929050,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:40.907541Z"
+    },
+    "elapsed_s": 10.276,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1130,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:13513790:0",
+     "scifact:1381673:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 129,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mouse models can be generated using \"artificial spermatids.\"\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e1c304bdbb19497ae7e5791f348139f09032044b9e8626e4c31f7f8601cb7402",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792710319.886633,
+      "end_wall": 1792710327.416068,
+      "error": null
+     }
+    ],
+    "start_wall": 1792710319.886633,
+    "start_mono": 379876.951358916,
+    "end_wall": 1792710327.416068,
+    "end_mono": 379884.480740833,
+    "raw_response": "{\"query\": \"research on mouse models using artificial spermatids\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7527308542,
+     "load_duration": 1665752875,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 1240306667,
+     "eval_count": 19,
+     "eval_duration": 4541568710,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:27.41509Z"
+    },
+    "elapsed_s": 7.529,
+    "query_used": "research on mouse models using artificial spermatids",
+    "query_source": "json",
+    "query_arrival_seq": 1132
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "research on mouse models using artificial spermatids",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19951373:0",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:1381673:1",
+       "score_q": 726
+      },
+      {
+       "passage_key": "scifact:1381673:0",
+       "score_q": 725
+      },
+      {
+       "passage_key": "scifact:13513790:0",
+       "score_q": 711
+      },
+      {
+       "passage_key": "scifact:19951373:1",
+       "score_q": 707
+      }
+     ],
+     "retrieval_sha256": "7eee5b1301801a544ba2d609ec0039fd9feb47150254a5a6566d593d585f6c41"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7eee5b1301801a544ba2d609ec0039fd9feb47150254a5a6566d593d585f6c41",
+    "query_embedding_sha256": "26f3b83610d0b498168d46b0340a1d85a334f41e6c4fbae4772ea5701a867667",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19951373:0",
+      "content_sha256": "3c544dbec78d89fdb0a6f9301b417071c4419c64e3fe130b9ec31cd8865efc37",
+      "chars": 942
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1381673:1",
+      "content_sha256": "f0ede67589a3d66ae12c41434a052f4e4c2c90c3594dd419ffbe29219c60f950",
+      "chars": 227
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:1381673:0",
+      "content_sha256": "5197acd1f29934a62b7f7d452f78f34140eb36c54b9915fd5be213211444f57e",
+      "chars": 1037
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:13513790:0",
+      "content_sha256": "fc034dbff15048c8a6431b6ba815d6f7f3c9a35b059f3724afa40e263936a088",
+      "chars": 1007
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:19951373:1",
+      "content_sha256": "744849fb628a80fd99bf0f214a06e16426f4e2ecce685b6f1b7f40f9fc550a95",
+      "chars": 377
+     }
+    ],
+    "elapsed_s": 3.2601
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mouse models can be generated using \"artificial spermatids.\"\n\nEvidence passages from your search for \"research on mouse models using artificial spermatids\":\n<<<PASSAGES\n[P1] Successful mouse cloning of an outbred strain by trichostatin A treatment after somatic nuclear transfer.\nAlthough the somatic cloning technique has been used for numerous applications and basic research of reprogramming in various species, extremely low success rates have plagued this technique for a decade. Further in mice, the \"clonable\" strains have been limited to mainly hybrid F1 strains such as B6D2F1. Recently, we established a new efficient cloning technique using trichostatin A (TSA) which leads to a 2-5 fold increase in success rates for mouse cloning of B6D2F1 cumulus cells. To further test the validity of this TSA cloning technique, we tried to clone the adult ICR mouse, an outbred strain, which has never been directly cloned before. Only when TSA was used did we obtain both male and female cloned mice from cumulus and fibroblast cells of adult ICR mice with 4-5% success rates, which is comparable to 5-7% of B6D2F1.\n\n[P2] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThus, our results define an alternative and dynamic model for spermatogenic stem cell function in the mouse testis.\n\n[P3] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThe identity and behavior of mouse spermatogenic stem cells have been a long-standing focus of interest. In the prevailing \"As model,\" stem cell function is restricted to singly isolated (As) spermatogonia. By examining single-cell dynamics of GFRα1+ stem cells in vivo, we evaluate an alternative hypothesis that, through fragmentation, syncytial spermatogonia also contribute to stem cell function in homeostasis. We use live imaging and pulse labeling to quantitatively determine the fates of individual GFRα1+ cells and find that, during steady-state spermatogenesis, the entire GFRα1+ population comprises a single stem cell pool, in which cells continually interconvert between As and syncytial states. A minimal biophysical model, relying only on the rates of incomplete cell division and syncytial fragmentation, precisely predicts the stochastic fates of GFRα1+ cells during steady state and postinsult regeneration.\n\n[P4] Generation of Genetically Modified Mice by Oocyte Injection of Androgenetic Haploid Embryonic Stem Cells\nHaploid cells are amenable for genetic analysis. Recent success in the derivation of mouse haploid embryonic stem cells (haESCs) via parthenogenesis has enabled genetic screening in mammalian cells. However, successful generation of live animals from these haESCs, which is needed to extend the genetic analysis to the organism level, has not been achieved. Here, we report the derivation of haESCs from androgenetic blastocysts. These cells, designated as AG-haESCs, partially maintain paternal imprints, express classical ESC pluripotency markers, and contribute to various tissues, including the germline, upon injection into diploid blastocysts. Strikingly, live mice can be obtained upon injection of AG-haESCs into MII oocytes, and these mice bear haESC-carried genetic traits and develop into fertile adults. Furthermore, gene targeting via homologous recombination is feasible in the AG-haESCs.\n\n[P5] Successful mouse cloning of an outbred strain by trichostatin A treatment after somatic nuclear transfer.\nThus, the TSA treatment is the first cloning technique to allow us to successfully clone outbred mice, demonstrating that this technique not only improves the success rates of cloning from hybrid strains, but also enables mouse cloning from normally \"unclonable\" strains.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "73ccf3e5b10a4ae5d2c7fdc571371e0e0e9ea73968aa658b86201c16b78f8138",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792710330.676647,
+      "end_wall": 1792710341.255594,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1131,
+    "start_wall": 1792710330.676647,
+    "start_mono": 379887.741297541,
+    "end_wall": 1792710341.255594,
+    "end_mono": 379898.320170958,
+    "raw_response": "{\n  \"reasoning\": \"The claim is supported by passage P5, which explicitly states that the TSA treatment technique led to the successful cloning of an outbred mouse strain, which was previously 'unclonable'.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P5\"],\n  \"confidence\": \"high\"\n}\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10570959709,
+     "load_duration": 931927042,
+     "prompt_eval_count": 1260,
+     "prompt_eval_duration": 3989828000,
+     "eval_count": 85,
+     "eval_duration": 5433966791,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:41.248797Z"
+    },
+    "elapsed_s": 10.579,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1131,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:19951373:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 187,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "dense"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mouse models can be generated using \"artificial spermatids.\"\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e1c304bdbb19497ae7e5791f348139f09032044b9e8626e4c31f7f8601cb7402",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792710319.886558,
+      "end_wall": 1792710321.281051,
+      "error": null
+     }
+    ],
+    "start_wall": 1792710319.886558,
+    "start_mono": 379876.951283125,
+    "end_wall": 1792710321.281051,
+    "end_mono": 379878.345765958,
+    "raw_response": "{\"query\": \"generation of mouse models using artificial spermatids\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1391077792,
+     "load_duration": 45552125,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 493408125,
+     "eval_count": 17,
+     "eval_duration": 808537165,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:21.278631Z"
+    },
+    "elapsed_s": 1.394,
+    "query_used": "generation of mouse models using artificial spermatids",
+    "query_source": "json",
+    "query_arrival_seq": 1131
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "generation of mouse models using artificial spermatids",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22186938:0",
+       "score_q": 6873
+      },
+      {
+       "passage_key": "scifact:25041967:0",
+       "score_q": 5652
+      },
+      {
+       "passage_key": "scifact:3847200:0",
+       "score_q": 5526
+      },
+      {
+       "passage_key": "scifact:7239105:0",
+       "score_q": 5342
+      },
+      {
+       "passage_key": "scifact:22186938:1",
+       "score_q": 5224
+      }
+     ],
+     "retrieval_sha256": "046ade521a9f7c94ef216c98b73b930443e06eabb7fde2446ca96b928c8c3444"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "046ade521a9f7c94ef216c98b73b930443e06eabb7fde2446ca96b928c8c3444",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22186938:0",
+      "content_sha256": "c2d51933d101ab91daecfa1ae5f28e8dd6e7cc7b86e407912f8cb8c02f9cb4d6",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:25041967:0",
+      "content_sha256": "14f843eac00bff7691b8bb742f3af1aed223717e281e23dc87d784f7406313fb",
+      "chars": 1130
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3847200:0",
+      "content_sha256": "57aad6a7058c4a96f69fad73e91f9a64f5ac871b1babe68846096fcf1e873fb7",
+      "chars": 1014
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7239105:0",
+      "content_sha256": "e8160fe3d9d08b3d4a6fb829af25e323ad1f4853c38e96677ced81b604f3c15b",
+      "chars": 744
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22186938:1",
+      "content_sha256": "39e43daf020d6d215f333e36e87042b21610defa7da489316e3695c21a607b0e",
+      "chars": 788
+     }
+    ],
+    "elapsed_s": 0.0122
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mouse models can be generated using \"artificial spermatids.\"\n\nEvidence passages from your search for \"generation of mouse models using artificial spermatids\":\n<<<PASSAGES\n[P1] Human artificial chromosomes containing chromosome 17 alphoid DNA maintain an active centromere in murine cells but are not stable.\nHuman artificial chromosomes (HACs) are autonomous molecules that can function and segregate as normal chromosomes in human cells. De novo HACs have successfully been used as gene expression vectors to complement genetic deficiencies in human cultured cells. HACs now offer the possibility of studying the regulation and expression of large genes in a variety of cell types from different tissues and correcting gene deficiencies caused by human inherited diseases. Complementary gene expression studies in mice, especially in mouse models of human genetic diseases, are also important in determining if large human transgenes can be expressed appropriately from artificial chromosomes. Toward this aim we are establishing artificial chromosomes in murine cells as novel gene expression vectors. Initially we transferred HAC vectors into murine cells, but were unable to generate de novo HACs at a reasonable frequency.\n\n[P2] Human artificial chromosomes with alpha satellite-based de novo centromeres show increased frequency of nondisjunction and anaphase lag.\nHuman artificial chromosomes have been used to model requirements for human chromosome segregation and to explore the nature of sequences competent for centromere function. Normal human centromeres require specialized chromatin that consists of alpha satellite DNA complexed with epigenetically modified histones and centromere-specific proteins. While several types of alpha satellite DNA have been used to assemble de novo centromeres in artificial chromosome assays, the extent to which they fully recapitulate normal centromere function has not been explored. Here, we have used two kinds of alpha satellite DNA, DXZ1 (from the X chromosome) and D17Z1 (from chromosome 17), to generate human artificial chromosomes. Although artificial chromosomes are mitotically stable over many months in culture, when we examined their segregation in individual cell divisions using an anaphase assay, artificial chromosomes exhibited more segregation errors than natural human chromosomes (P < 0.001).\n\n[P3] Direct Reprogramming of Hepatic Myofibroblasts into Hepatocytes In Vivo Attenuates Liver Fibrosis.\nDirect induction of induced hepatocytes (iHeps) from fibroblasts holds potential as a strategy for regenerative medicine but until now has only been shown in culture settings. Here, we describe in vivo iHep formation using transcription factor induction and genetic fate tracing in mouse models of chronic liver disease. We show that ectopic expression of the transcription factors FOXA3, GATA4, HNF1A, and HNF4A from a polycistronic lentiviral vector converts mouse myofibroblasts into cells with a hepatocyte phenotype. In vivo expression of the same set of transcription factors from a p75 neurotrophin receptor peptide (p75NTRp)-tagged adenovirus enabled the generation of hepatocyte-like cells from myofibroblasts in fibrotic mouse livers and reduced liver fibrosis. We have therefore been able to convert pro-fibrogenic myofibroblasts in the liver into hepatocyte-like cells with positive functional benefits.\n\n[P4] The use of mouse models to understand and improve cognitive deficits in Down syndrome\nRemarkable advances have been made in recent years towards therapeutics for cognitive impairment in individuals with Down syndrome (DS) by using mouse models. In this review, we briefly describe the phenotypes of mouse models that represent outcome targets for drug testing, the behavioral tests used to assess impairments in cognition and the known mechanisms of action of several drugs that are being used in preclinical studies or are likely to be tested in clinical trials. Overlaps in the distribution of targets and in the pathways that are affected by these diverse drugs in the trisomic brain suggest new avenues for DS research and drug development.\n\n[P5] Human artificial chromosomes containing chromosome 17 alphoid DNA maintain an active centromere in murine cells but are not stable.\nWe then transferred HACs previously established in human HT1080 cells to three different murine cell types by microcell fusion, followed by positive selection. We observed that the HACs in murine cells bound centromere protein C (CENP-C), a marker of active centromeres, and were detected under selection but rapidly lost when selection was removed. These results suggest that the HACs maintain at least a partially functional centromere complex in murine cells, but other factors are required for stability and segregation. Artificial chromosomes containing mouse centromeric sequences may be required for better stability and maintenance in murine cells.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bc604bcdea76581cbfe86955222dcf8adbd0b67f8a831baac176d4af87e2e0a2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792710321.2937212,
+      "end_wall": 1792710341.348707,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1132,
+    "start_wall": 1792710321.2937212,
+    "start_mono": 379878.358437291,
+    "end_wall": 1792710341.348707,
+    "end_mono": 379898.413283625,
+    "raw_response": "{\n  \"reasoning\": \"The passages indicate that human artificial chromosomes (HACs) have been successfully used as gene expression vectors in murine cells, with some success in transferring HACs from human cells to murine cells. However, the stability and segregation of HACs in murine cells is found to be a problem, suggesting that the creation of mouse models using artificial spermatids might be possible but requires further research and development of more stable HACs. The passages do not explicitly refute the claim, but rather provide evidence that supports it with some caveats.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P5\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20049020583,
+     "load_duration": 14857458,
+     "prompt_eval_count": 1387,
+     "prompt_eval_duration": 6119874293,
+     "eval_count": 162,
+     "eval_duration": 13472797754,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:41.343491Z"
+    },
+    "elapsed_s": 20.055,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1132,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:22186938:0",
+     "scifact:22186938:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 567,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mouse models can be generated using \"artificial spermatids.\"\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e1c304bdbb19497ae7e5791f348139f09032044b9e8626e4c31f7f8601cb7402",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792710319.886719,
+      "end_wall": 1792710327.6370938,
+      "error": null
+     }
+    ],
+    "start_wall": 1792710319.886719,
+    "start_mono": 379876.951444875,
+    "end_wall": 1792710327.6370938,
+    "end_mono": 379884.701764583,
+    "raw_response": "{\"query\": \"Mouse models artificial spermatids generation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7748099583,
+     "load_duration": 3989963083,
+     "prompt_eval_count": 163,
+     "prompt_eval_duration": 945083166,
+     "eval_count": 13,
+     "eval_duration": 2643940915,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:27.635923Z"
+    },
+    "elapsed_s": 7.75,
+    "query_used": "Mouse models artificial spermatids generation",
+    "query_source": "json",
+    "query_arrival_seq": 1133
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Mouse models artificial spermatids generation",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1381673:0",
+       "score_q": 718
+      },
+      {
+       "passage_key": "scifact:1381673:1",
+       "score_q": 711
+      },
+      {
+       "passage_key": "scifact:29638116:0",
+       "score_q": 673
+      },
+      {
+       "passage_key": "scifact:6477740:0",
+       "score_q": 671
+      },
+      {
+       "passage_key": "scifact:22362025:1",
+       "score_q": 661
+      }
+     ],
+     "retrieval_sha256": "36bfffa976854fb2d750070ae1e21730296f75826aef4574fe83971a355def0c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "36bfffa976854fb2d750070ae1e21730296f75826aef4574fe83971a355def0c",
+    "query_embedding_sha256": "c07abf84c30b066ea5625e078400d9c6123fda74b7172ac51f06eb23f7467198",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1381673:0",
+      "content_sha256": "5197acd1f29934a62b7f7d452f78f34140eb36c54b9915fd5be213211444f57e",
+      "chars": 1037
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1381673:1",
+      "content_sha256": "f0ede67589a3d66ae12c41434a052f4e4c2c90c3594dd419ffbe29219c60f950",
+      "chars": 227
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:29638116:0",
+      "content_sha256": "7a3ec2cc1be4326776286e5c9522ab2c862b5ed0d352662475d704469f9cf08f",
+      "chars": 718
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6477740:0",
+      "content_sha256": "c75354ae22991c58ce83e8e17048e9f8553a1efc0849afb82c8b69e2df6fb2fe",
+      "chars": 1023
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22362025:1",
+      "content_sha256": "30f663a5b161134c03790000add5404bcbbae3222f85c42ebec9f7afa4c4d43a",
+      "chars": 730
+     }
+    ],
+    "elapsed_s": 3.0879
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mouse models can be generated using \"artificial spermatids.\"\n\nEvidence passages from your search for \"Mouse models artificial spermatids generation\":\n<<<PASSAGES\n[P1] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThe identity and behavior of mouse spermatogenic stem cells have been a long-standing focus of interest. In the prevailing \"As model,\" stem cell function is restricted to singly isolated (As) spermatogonia. By examining single-cell dynamics of GFRα1+ stem cells in vivo, we evaluate an alternative hypothesis that, through fragmentation, syncytial spermatogonia also contribute to stem cell function in homeostasis. We use live imaging and pulse labeling to quantitatively determine the fates of individual GFRα1+ cells and find that, during steady-state spermatogenesis, the entire GFRα1+ population comprises a single stem cell pool, in which cells continually interconvert between As and syncytial states. A minimal biophysical model, relying only on the rates of incomplete cell division and syncytial fragmentation, precisely predicts the stochastic fates of GFRα1+ cells during steady state and postinsult regeneration.\n\n[P2] Mouse Spermatogenic Stem Cells Continually Interconvert between Equipotent Singly Isolated and Syncytial States\nThus, our results define an alternative and dynamic model for spermatogenic stem cell function in the mouse testis.\n\n[P3] Complex Tissue and Disease Modeling using hiPSCs.\nDefined genetic models based on human pluripotent stem cells have opened new avenues for understanding disease mechanisms and drug screening. Many of these models assume cell-autonomous mechanisms of disease but it is possible that disease phenotypes or drug responses will only be evident if all cellular and extracellular components of a tissue are present and functionally mature. To derive optimal benefit from such models, complex multicellular structures with vascular components that mimic tissue niches will thus likely be necessary. Here we consider emerging research creating human tissue mimics and provide some recommendations for moving the field forward.\n\n[P4] Efficient Generation of Fully Reprogrammed Human iPS Cells via Polycistronic Retroviral Vector and a New Cocktail of Chemical Compounds\nDirect reprogramming of human somatic cells into induced pluripotent stem (iPS) cells by defined transcription factors (TFs) provides great potential for regenerative medicine and biomedical research. This procedure has many challenges, including low reprogramming efficiency, many partially reprogrammed colonies, somatic coding mutations in the genome, etc. Here, we describe a simple approach for generating fully reprogrammed human iPS cells by using a single polycistronic retroviral vector expressing four human TFs in a single open reading frame (ORF), combined with a cocktail containing three small molecules (Sodium butyrate, SB431542, and PD0325901). Our results demonstrate that human iPS cells generated by this approach express human ES cells markers and exhibit pluripotency demonstrated by their abilities to differentiate into the three germ layers in vitro and in vivo.\n\n[P5] Requirement for the ERI/DICER complex in endogenous RNA interference and sperm development in Caenorhabditis elegans.\nWe define a subset of Eri mutant animals (including eri-1, rrf-3, eri-3, and dcr-1, but not eri-9 or ergo-1) that exhibit temperature-sensitive, sperm-specific sterility and defects in X chromosome segregation. Among these mutants we find multiple aberrations in sperm development beginning with cytokinesis and extending through terminal differentiation. These results identify novel components of the endo RNAi machinery, demonstrate differential requirements for the Eri factors in the sperm-producing germline, and begin to delineate the functional requirement for the ERI/DICER complex in sperm development.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0f9717d3a50229f3049ad49056997938bd7e988c38b4187f9e42c2eb3665fafc",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792710330.725555,
+      "end_wall": 1792710349.2093282,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1133,
+    "start_wall": 1792710330.725555,
+    "start_mono": 379887.790205333,
+    "end_wall": 1792710349.2093282,
+    "end_mono": 379906.273849833,
+    "raw_response": "{\n  \"reasoning\": \"The passages discuss various aspects of mouse spermatogenesis and stem cells, but do not provide evidence directly supporting the claim about generating mouse models using artificial spermatids.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18476714541,
+     "load_duration": 13380983458,
+     "prompt_eval_count": 1037,
+     "prompt_eval_duration": 1703448708,
+     "eval_count": 64,
+     "eval_duration": 2528327745,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:49.203147Z"
+    },
+    "elapsed_s": 18.484,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1133,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 194,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mouse models can be generated using \"artificial spermatids.\"\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e1c304bdbb19497ae7e5791f348139f09032044b9e8626e4c31f7f8601cb7402",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792710319.886393,
+      "end_wall": 1792710330.899328,
+      "error": null
+     }
+    ],
+    "start_wall": 1792710319.886393,
+    "start_mono": 379876.951118708,
+    "end_wall": 1792710330.899328,
+    "end_mono": 379887.963976708,
+    "raw_response": "{\"query\": \"artificial spermatids mouse models\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11010390959,
+     "load_duration": 10040851500,
+     "prompt_eval_count": 169,
+     "prompt_eval_duration": 319647833,
+     "eval_count": 12,
+     "eval_duration": 396938332,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:30.897947Z"
+    },
+    "elapsed_s": 11.013,
+    "query_used": "artificial spermatids mouse models",
+    "query_source": "json",
+    "query_arrival_seq": 1134
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "artificial spermatids mouse models",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22186938:0",
+       "score_q": 6873
+      },
+      {
+       "passage_key": "scifact:22186938:1",
+       "score_q": 5224
+      },
+      {
+       "passage_key": "scifact:25041967:0",
+       "score_q": 4886
+      },
+      {
+       "passage_key": "scifact:25041967:1",
+       "score_q": 4719
+      },
+      {
+       "passage_key": "scifact:39776978:1",
+       "score_q": 4444
+      }
+     ],
+     "retrieval_sha256": "bffa656d6e0f795dfab6193d042cd75a951e2412658af3a7023671759e0619bd"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bffa656d6e0f795dfab6193d042cd75a951e2412658af3a7023671759e0619bd",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22186938:0",
+      "content_sha256": "c2d51933d101ab91daecfa1ae5f28e8dd6e7cc7b86e407912f8cb8c02f9cb4d6",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22186938:1",
+      "content_sha256": "39e43daf020d6d215f333e36e87042b21610defa7da489316e3695c21a607b0e",
+      "chars": 788
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25041967:0",
+      "content_sha256": "14f843eac00bff7691b8bb742f3af1aed223717e281e23dc87d784f7406313fb",
+      "chars": 1130
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:25041967:1",
+      "content_sha256": "f04fe521a30fd4883a4e21f3ce57908a9a7f769870ffa9d6af74f6f7de3100cf",
+      "chars": 601
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:39776978:1",
+      "content_sha256": "ac4afe65cc74cfb12042b5d09ac670b27401c43c72bec3060047914bb57fe400",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.0006
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mouse models can be generated using \"artificial spermatids.\"\n\nEvidence passages from your search for \"artificial spermatids mouse models\":\n<<<PASSAGES\n[P1] Human artificial chromosomes containing chromosome 17 alphoid DNA maintain an active centromere in murine cells but are not stable.\nHuman artificial chromosomes (HACs) are autonomous molecules that can function and segregate as normal chromosomes in human cells. De novo HACs have successfully been used as gene expression vectors to complement genetic deficiencies in human cultured cells. HACs now offer the possibility of studying the regulation and expression of large genes in a variety of cell types from different tissues and correcting gene deficiencies caused by human inherited diseases. Complementary gene expression studies in mice, especially in mouse models of human genetic diseases, are also important in determining if large human transgenes can be expressed appropriately from artificial chromosomes. Toward this aim we are establishing artificial chromosomes in murine cells as novel gene expression vectors. Initially we transferred HAC vectors into murine cells, but were unable to generate de novo HACs at a reasonable frequency.\n\n[P2] Human artificial chromosomes containing chromosome 17 alphoid DNA maintain an active centromere in murine cells but are not stable.\nWe then transferred HACs previously established in human HT1080 cells to three different murine cell types by microcell fusion, followed by positive selection. We observed that the HACs in murine cells bound centromere protein C (CENP-C), a marker of active centromeres, and were detected under selection but rapidly lost when selection was removed. These results suggest that the HACs maintain at least a partially functional centromere complex in murine cells, but other factors are required for stability and segregation. Artificial chromosomes containing mouse centromeric sequences may be required for better stability and maintenance in murine cells.\n\n[P3] Human artificial chromosomes with alpha satellite-based de novo centromeres show increased frequency of nondisjunction and anaphase lag.\nHuman artificial chromosomes have been used to model requirements for human chromosome segregation and to explore the nature of sequences competent for centromere function. Normal human centromeres require specialized chromatin that consists of alpha satellite DNA complexed with epigenetically modified histones and centromere-specific proteins. While several types of alpha satellite DNA have been used to assemble de novo centromeres in artificial chromosome assays, the extent to which they fully recapitulate normal centromere function has not been explored. Here, we have used two kinds of alpha satellite DNA, DXZ1 (from the X chromosome) and D17Z1 (from chromosome 17), to generate human artificial chromosomes. Although artificial chromosomes are mitotically stable over many months in culture, when we examined their segregation in individual cell divisions using an anaphase assay, artificial chromosomes exhibited more segregation errors than natural human chromosomes (P < 0.001).\n\n[P4] Human artificial chromosomes with alpha satellite-based de novo centromeres show increased frequency of nondisjunction and anaphase lag.\nNaturally occurring, but abnormal small ring chromosomes derived from chromosome 17 and the X chromosome also missegregate more than normal chromosomes, implicating overall chromosome size and/or structure in the fidelity of chromosome segregation. As different artificial chromosomes missegregate over a fivefold range, the data suggest that variable centromeric DNA content and/or epigenetic assembly can influence the mitotic behavior of artificial chromosomes.\n\n[P5] Advances in osteoclast biology: old findings and new insights from mouse models\nThis Review focuses on the principal observations in osteoclast biology derived from genetic mouse models, and highlights emerging concepts that describe how the osteoclast is thought to contribute to the maintenance of adequate bone mass and integrity throughout life.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4768726518e8f812189271302a7e395183afb5b9550ead52240779ebabda98be",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792710330.900358,
+      "end_wall": 1792710352.17185,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1134,
+    "start_wall": 1792710330.900358,
+    "start_mono": 379887.965007333,
+    "end_wall": 1792710352.17185,
+    "end_mono": 379909.236351833,
+    "raw_response": "{\"reasoning\": \"The provided passages discuss the use of artificial chromosomes in research, particularly focusing on their behavior in mouse cells.  While the studies mention the creation of artificial chromosomes for gene expression studies, the passages do not explicitly mention the use of these chromosomes to create mouse models. The focus is on studying the function of these chromosomes and their relationship to chromosome segregation in mouse cells, but not on creating mouse models.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21266914083,
+     "load_duration": 15446823750,
+     "prompt_eval_count": 999,
+     "prompt_eval_duration": 1281084542,
+     "eval_count": 102,
+     "eval_duration": 2062356630,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T23:05:52.168216Z"
+    },
+    "elapsed_s": 21.271,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1134,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 477,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "2269e67257be1326f23d7362a000c5d365975361fdc2cbb3b47ec1f96f921478",
+  "phi3:mini": "7eee5b1301801a544ba2d609ec0039fd9feb47150254a5a6566d593d585f6c41",
+  "mistral": "046ade521a9f7c94ef216c98b73b930443e06eabb7fde2446ca96b928c8c3444",
+  "qwen2.5:3b": "36bfffa976854fb2d750070ae1e21730296f75826aef4574fe83971a355def0c",
+  "gemma2:2b": "bffa656d6e0f795dfab6193d042cd75a951e2412658af3a7023671759e0619bd"
+ },
+ "item_start_wall": 1792710319.886213,
+ "item_wall_s": 32.286,
+ "ollama_ps_samples": [
+  [
+   1792710319.886,
+   [
+    "llama3.2:3b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710321.89,
+   [
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792710323.895,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792710325.901,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792710327.903,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710329.917,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710331.921,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710333.928,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792710335.934,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792710337.941,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792710339.947,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792710341.951,
+   [
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792710343.955,
+   [
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792710345.959,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710347.961,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710349.962,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792710351.965,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,51 @@
+\section{IR Schema and Lowering Examples}
+\label[appendix]{app:schema}
+
+The schema below follows the implementation; wire names are shown in code font. The lowering examples are hand-traced illustrations of the rule cascade, and their numeric values are illustrative.
+
+\begin{small}
+\begin{verbatim}
+Contribution {
+  id:          first 128 bits of SHA-256 over the canonical form of
+               (agent_id, kind, canonical_form, confidence, evidence,
+               lowering_confidence, raw_text, scheme tag); excludes seq
+  seq:         u64; recorded arrival index, inside the root hash
+  agent_id:    String; a label bound into id; unauthenticated
+  kind:        ASSERTION | CRITIQUE  (SYNTHESIS is rejected)
+  canonical_form:      CanonicalTriple | null
+  confidence:          [0, 1]
+  evidence:            EvidenceItem[]
+  raw_text:            String; original agent output
+  lowering_confidence: HIGH | MEDIUM | LOW
+}
+CanonicalTriple { subject, predicate, object,
+                  polarity: AFFIRM | NEGATE }
+EvidenceItem {
+  typ:          TOOL_RESULT | EMPIRICAL | CITATION
+                | AUTHORITY | REASONING
+  source:       String; URI, tool call id or reasoning text
+  weight:       [0, 1]
+  reachable:    bool; agent-reported
+  verification: UNVERIFIED | REACHABILITY_CHECKED
+                | CONTENT_HASHED | CROSS_REFERENCED | STALE
+  capture_ref:  String?; id of a sealed capture record
+  support_ref:  String?; id of a sealed support record
+}
+\end{verbatim}
+\end{small}
+
+\begin{sloppypar}\raggedright
+Slot key: \code{(subject, predicate)} for functional predicates; \code{(subject, predicate, normalized object)} for non-functional ones, or \code{(subject, predicate, group)} when the object belongs to a declared group in \code{incompatible\_values}. Redundancy key: \code{(subject, predicate, object, polarity)}. The intent is a goal string with a list of acceptance \code{criteria}; the calibration snapshot is the sealed \code{calibration} map. Policy options in \cref{sec:selection} have these wire names: recency-free tie-break voters, \code{schulze\_dims = 23} (bitmask over ev, conf, cs, rec, ca; default 31); residual-tie order, \code{tiebreak\_order = seq | id}; score-then-canonical, \code{tiebreak = score\_then\_canonical}; value-level candidates, \code{candidate\_mode = value:max | value:pooled}; evidence policy, \code{evidence} with \code{accepted\_checkers}.
+\end{sloppypar}
+
+\begin{sloppypar}
+\paragraph{Example 1 (medical).} ``Metformin reduces HbA1c levels by approximately 1--1.5\% in type 2 diabetes patients, according to the ADA Standards of Care (2024).'' One clause yields \code{(metformin, reduces, HbA1c levels by 1\textendash1.5\%)}, AFFIRM; the hedge ``approximately'' maps to a high confidence band (0.85); the citation becomes a CITATION item of weight 0.8; the lowering grade is HIGH.
+\end{sloppypar}
+
+\begin{sloppypar}
+\paragraph{Example 2 (legal).} ``Under GDPR Article 17, data subjects have the right to erasure, but this right is not absolute and can be overridden by legitimate interests.'' Segmentation at ``but'' yields \code{(data subjects, have\_right\_to, erasure)} AFFIRM, \code{(right to erasure, is, absolute)} NEGATE, and \code{(right to erasure, can\_be\_overridden\_by, legitimate interests)} AFFIRM, with one CITATION item.
+\end{sloppypar}
+
+\paragraph{Example 3 (technical).} ``TCP uses sequence numbers and acknowledgments to ensure reliable delivery. Lost packets are retransmitted after a timeout.'' The conjunction splits into \code{(TCP, uses, sequence numbers)} and \code{(TCP, uses, acknowledgments)}; because \code{uses} is non-functional, the two occupy separate slots and are compatible. The passive clause yields \code{(lost packets, are\_retransmitted\_after, timeout)}. The evidence is REASONING only.
+
+\paragraph{Known failure modes.} A double negative (``It is not uncommon for TCP connections to experience packet loss'') is lowered with NEGATE polarity although its meaning is affirmative; the grade drops to MEDIUM but the triple is wrong. Modality is lost (``Vitamin D supplementation might reduce the risk of respiratory infections'' becomes an unqualified \code{reduces}), with the hedge lowering confidence to about 0.55 but conflict detection treating it like an assertion. Temporal qualification is lost (``Pluto was classified as a planet until 2006\ldots'' yields \code{(Pluto, classified\_as, planet)}), which creates a false conflict with agents asserting the dwarf-planet classification.

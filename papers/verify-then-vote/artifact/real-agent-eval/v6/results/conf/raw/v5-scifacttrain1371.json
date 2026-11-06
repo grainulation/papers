@@ -1,0 +1,1296 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1371",
+ "order": 635,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1371",
+  "order": 635,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Vitamin D is an important factor in the relationship between calcium and parathyroid hormone."
+ },
+ "item_view_sha256": "8baa9be5cdaed49a8f63f4c0516036a710745aba942c6c11581530966f02262a",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0948dd9fd972273690fe8ce3c1b15894a1bd7364ac731de8eadae59a8cb210e4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871280.5171468,
+      "end_wall": 1792871281.556691,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871280.5171468,
+    "start_mono": 540837.219186625,
+    "end_wall": 1792871281.556691,
+    "end_mono": 540838.258726,
+    "raw_response": "{\"query\": \"vitamin d calcium parathyroid hormone relationship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1038162375,
+     "load_duration": 107704709,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 348841833,
+     "eval_count": 14,
+     "eval_duration": 433808542,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:01.556072Z"
+    },
+    "elapsed_s": 1.04,
+    "query_used": "vitamin d calcium parathyroid hormone relationship",
+    "query_source": "json",
+    "query_arrival_seq": 3175
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "vitamin d calcium parathyroid hormone relationship",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16256507:1",
+       "score_q": 749
+      },
+      {
+       "passage_key": "scifact:16256507:0",
+       "score_q": 741
+      },
+      {
+       "passage_key": "scifact:16256507:2",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:9555784:0",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:23908217:1",
+       "score_q": 723
+      }
+     ],
+     "retrieval_sha256": "7fee3b342bdea2be2c622609f066d12fb2fe7c8ae84868c721bbeac7912db86a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7fee3b342bdea2be2c622609f066d12fb2fe7c8ae84868c721bbeac7912db86a",
+    "query_embedding_sha256": "d12078aa5b54e7387ab1269515f6ca8ff7c7f5aa658a604237f0fcbbbf807b9a",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16256507:1",
+      "content_sha256": "1fa16de51fdba0fa811d53a76f3d5d5808f3c9e803b19ebba533919b510b49ed",
+      "chars": 994
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16256507:0",
+      "content_sha256": "f97c3b60f7b712eed156bf3b2724680010cf165ef2e0179e6f8401d434c2b3f1",
+      "chars": 908
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16256507:2",
+      "content_sha256": "57ee43f44b38e619ca87869ada677dfd9426d15441bd56c9c2ba628570583d53",
+      "chars": 336
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9555784:0",
+      "content_sha256": "9f9ffa4eb6f2583ee3adad745b0d5dc23110b96e1f58e61b355f488ec872c4dc",
+      "chars": 1009
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23908217:1",
+      "content_sha256": "edf8c5e87de5d683d562965f1a85968f3a1692dcab003975eb443eebc680d935",
+      "chars": 816
+     }
+    ],
+    "elapsed_s": 5.3318
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nEvidence passages from your search for \"vitamin d calcium parathyroid hormone relationship\":\n<<<PASSAGES\n[P1] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nParticipants were further divided into groups according to calcium intake (<800 mg/d, 800-1200 mg/d, and >1200 mg/d) and serum 25-hydroxyvitamin D level (<10 ng/mL, 10-18 ng/mL, and >18 ng/mL). MAIN OUTCOME MEASURE Serum intact PTH as determined by calcium intake and vitamin D. RESULTS A total of 944 healthy participants completed all parts of the study. After adjusting for relevant factors, serum PTH was lowest in the group with a serum 25-hydroxyvitamin D level of more than 18 ng/mL but highest in the group with a serum 25-hydroxyvitamin D level of less than 10 ng/mL. At the low serum 25-hydroxyvitamin D level (<10 ng/mL), calcium intake of less than 800 mg/d vs more than 1200 mg/d was significantly associated with higher serum PTH (P = .04); and at a calcium intake of more than 1200 mg/d, there was a significant difference between the lowest and highest vitamin D groups (P = .04).\n\n[P2] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONTEXT Adequate vitamin D status for optimum bone health has received increased recognition in recent years; however, the ideal intake is not known. Serum 25-hydroxyvitamin D is the generally accepted indicator of vitamin D status, but no universal reference level has been reached. OBJECTIVE To investigate the relative importance of high calcium intake and serum 25-hydroxyvitamin D for calcium homeostasis, as determined by serum intact parathyroid hormone (PTH). DESIGN, SETTING, AND PARTICIPANTS Cross-sectional study of 2310 healthy Icelandic adults who were divided equally into 3 age groups (30-45 years, 50-65 years, or 70-85 years) and recruited from February 2001 to January 2003. They were administered a semi-quantitative food frequency questionnaire, which assessed vitamin D and calcium intake.\n\n[P3] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONCLUSIONS As long as vitamin D status is ensured, calcium intake levels of more than 800 mg/d may be unnecessary for maintaining calcium metabolism. Vitamin D supplements are necessary for adequate vitamin D status in northern climates.\n\n[P4] Vitamin d deficiency in postmenopausal women - biological correlates.\nINTRODUCTION Low vitamin D (VD) is associated with secondary hyperparathyroidism and both contribute to deleterious consequences (reduced bone mineral density (BMD), risk of fractures and falls). OBJECTIVE To study the VD status and biological correlates in a group of postmenopausal women. MATERIAL AND METHODS We studied 123 postmenopausal women evaluated in the C.I.Parhon National Institute of Endocrinology, the Pituitary and Neuroendocrine Diseases department. All cases had been reffered for the evaluation of BMD by the general practitioner. The evaluation included serum measurements of total and ionised calcium, phosphorus, alkaline phosphatase (ALP), 25 hydroxi vitaminD (25OHD), parathyroid hormone (PTH), osteocalcin, betacrosslaps. Central DXA osteodensitometry was performed. RESULTS 91.9% of cases had 25OHD serum levels below 30 ng/ml (74.8% had VD deficiency, 17.1% VD insufficiency). Only 8.1% had sufficient VD levels.\n\n[P5] Bone disease in pediatric patients undergoing dialysis with CAPD or CCPD.\nBone formation rate (BFR) correlated with serum parathyroid hormone (PTH), r = 0.55, P less than 0.001; BFR was inversely related to bone aluminum content (r = -0.42, P less than 0.01), even in patients with OF (r = -0.66, P less than 0.05). All patients with SA greater than 30% had normal or reduced BFR when compared to those with SA less than 30%; chi 2 = 12.2, P less than 0.005. Based on SA greater than 30%, six patients were classified as aluminum-related bone disease: three OM, one AP, and two NH. Two-thirds of pediatric patients undergoing CAPD/CCPD have persistent hyperparathyroidism despite treatment with calcitriol, but aluminum can adversely affect BFR when SA exceeds 30% regardless of histologic lesion or serum PTH level.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d3c47294b3b4dce6a435c16d9960b1d8925a2f02a8a000d45525a85631031b33",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871286.88895,
+      "end_wall": 1792871296.6944761,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3175,
+    "start_wall": 1792871286.88895,
+    "start_mono": 540843.590966041,
+    "end_wall": 1792871296.6944761,
+    "end_mono": 540853.39645375,
+    "raw_response": "{\"reasoning\": \"The evidence shows a relationship between vitamin D, calcium, and parathyroid hormone, suggesting that vitamin D status affects parathyroid hormone levels, which in turn influence calcium metabolism.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9803006834,
+     "load_duration": 1576180834,
+     "prompt_eval_count": 1361,
+     "prompt_eval_duration": 3913182042,
+     "eval_count": 78,
+     "eval_duration": 3498450750,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:16.692781Z"
+    },
+    "elapsed_s": 9.805,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3175,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:16256507:1",
+     "scifact:16256507:0",
+     "scifact:16256507:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 199,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0948dd9fd972273690fe8ce3c1b15894a1bd7364ac731de8eadae59a8cb210e4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871280.517345,
+      "end_wall": 1792871282.289411,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871280.517345,
+    "start_mono": 540837.219384666,
+    "end_wall": 1792871282.289411,
+    "end_mono": 540838.99144325,
+    "raw_response": "{\"query\": \"Vitamin D calcium parathyroid relationship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1770582083,
+     "load_duration": 1168335917,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 291824375,
+     "eval_count": 17,
+     "eval_duration": 241308085,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:02.288499Z"
+    },
+    "elapsed_s": 1.772,
+    "query_used": "Vitamin D calcium parathyroid relationship",
+    "query_source": "json",
+    "query_arrival_seq": 3177
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Vitamin D calcium parathyroid relationship",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16256507:2",
+       "score_q": 13544
+      },
+      {
+       "passage_key": "scifact:16256507:0",
+       "score_q": 12005
+      },
+      {
+       "passage_key": "scifact:16256507:1",
+       "score_q": 10133
+      },
+      {
+       "passage_key": "scifact:25259746:0",
+       "score_q": 7238
+      },
+      {
+       "passage_key": "scifact:21553394:0",
+       "score_q": 7222
+      }
+     ],
+     "retrieval_sha256": "9cdc25e42609605b152bad5e4ea7c85b32954dbf7ac5123bba48bb203dc0c176"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9cdc25e42609605b152bad5e4ea7c85b32954dbf7ac5123bba48bb203dc0c176",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16256507:2",
+      "content_sha256": "57ee43f44b38e619ca87869ada677dfd9426d15441bd56c9c2ba628570583d53",
+      "chars": 336
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16256507:0",
+      "content_sha256": "f97c3b60f7b712eed156bf3b2724680010cf165ef2e0179e6f8401d434c2b3f1",
+      "chars": 908
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16256507:1",
+      "content_sha256": "1fa16de51fdba0fa811d53a76f3d5d5808f3c9e803b19ebba533919b510b49ed",
+      "chars": 994
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:25259746:0",
+      "content_sha256": "63258ab53a5ec7e705eb96848e24b982a6d2031157f3d430a3b318f4b71a07de",
+      "chars": 1083
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:21553394:0",
+      "content_sha256": "82eac067a15308b80127d0118d67227653247fd1cfa94aaa983b0205eb2e204d",
+      "chars": 957
+     }
+    ],
+    "elapsed_s": 0.0044
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nEvidence passages from your search for \"Vitamin D calcium parathyroid relationship\":\n<<<PASSAGES\n[P1] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONCLUSIONS As long as vitamin D status is ensured, calcium intake levels of more than 800 mg/d may be unnecessary for maintaining calcium metabolism. Vitamin D supplements are necessary for adequate vitamin D status in northern climates.\n\n[P2] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONTEXT Adequate vitamin D status for optimum bone health has received increased recognition in recent years; however, the ideal intake is not known. Serum 25-hydroxyvitamin D is the generally accepted indicator of vitamin D status, but no universal reference level has been reached. OBJECTIVE To investigate the relative importance of high calcium intake and serum 25-hydroxyvitamin D for calcium homeostasis, as determined by serum intact parathyroid hormone (PTH). DESIGN, SETTING, AND PARTICIPANTS Cross-sectional study of 2310 healthy Icelandic adults who were divided equally into 3 age groups (30-45 years, 50-65 years, or 70-85 years) and recruited from February 2001 to January 2003. They were administered a semi-quantitative food frequency questionnaire, which assessed vitamin D and calcium intake.\n\n[P3] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nParticipants were further divided into groups according to calcium intake (<800 mg/d, 800-1200 mg/d, and >1200 mg/d) and serum 25-hydroxyvitamin D level (<10 ng/mL, 10-18 ng/mL, and >18 ng/mL). MAIN OUTCOME MEASURE Serum intact PTH as determined by calcium intake and vitamin D. RESULTS A total of 944 healthy participants completed all parts of the study. After adjusting for relevant factors, serum PTH was lowest in the group with a serum 25-hydroxyvitamin D level of more than 18 ng/mL but highest in the group with a serum 25-hydroxyvitamin D level of less than 10 ng/mL. At the low serum 25-hydroxyvitamin D level (<10 ng/mL), calcium intake of less than 800 mg/d vs more than 1200 mg/d was significantly associated with higher serum PTH (P = .04); and at a calcium intake of more than 1200 mg/d, there was a significant difference between the lowest and highest vitamin D groups (P = .04).\n\n[P4] Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy.\nWe evaluated oral 1,25-vitamin D3 for as long as 26 months in six prepubescent children with renal osteodystrophy previously treated with vitamin D2. Therapy was given at 14 to 41 ng per kilogram per day to correct hypocalcemia and reverse bone disease. Serum levels of 1,25-vitamin D3 were initially reduced at 15 +/- 5 pg per milliliter (mean +/- S.E.M.) and after treatment rose to 54 +/- 13. Serum calcium rose from 7.5 +/- 1.6 mg per deciliter (mean +/- S.D.) to 9.8 +/- 0.6 after one month (P less than 0.02). Alkaline phosphatase activity fell from 536 +/- 298 to 208 +/- 91 IU per liter after 12 months (P less than 0.05). Serum immunoreactive parathyroid levels fell from 900 +/- 562 microliter eq per milliliter 411 +/- 377. Healing of rickets and subperiosteal erosions was found. Remineralization of bone was demonstrated by the photon absorption technic. In four patients growth velocity, evaluated for 12 months before and after therapy, increased from 2.6 +/- 0.8 to 8.0 +/-\n\n[P5] Vitamin D and obesity: current perspectives and future directions.\nIn recent years, new functional roles of vitamin D beyond its traditional role in calcium homoeostasis and bone metabolism have emerged linking the fat-soluble vitamin to various non-communicable diseases. Vitamin D deficiency (25-hydroxyvitamin D (25(OH)D) < 25-30 nmol/l) and sub-optimal status (25(OH)D < 50-100 nmol/l) are increasingly associated with unfavourable metabolic phenotypes, including insulin resistance, type 2 diabetes and CVD; conditions also commonly linked with overweight and obesity. Early studies reported poor vitamin D status in the morbidly obese. More recently, it has been observed that a graded relationship between vitamin D status and BMI, or specifically adiposity, exists in the general population. A number of hypotheses have been proposed to explain the potential mechanisms whereby alterations in the vitamin D endocrine system occur in the obese state.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2ed1d4d7cfdf55874a7a3f65f1db0d7a887253dbc89247e116ab2f9eb49e374d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871282.2947168,
+      "end_wall": 1792871300.313694,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3176,
+    "start_wall": 1792871282.2947168,
+    "start_mono": 540838.996750166,
+    "end_wall": 1792871300.313694,
+    "end_mono": 540857.01565775,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests a relationship between vitamin D, calcium, and parathyroid hormone. The evidence passages support this claim by demonstrating how vitamin D status affects parathyroid hormone levels and calcium metabolism. Specifically, P1 and P3 highlight the importance of vitamin D for calcium homeostasis, indicating that adequate vitamin D is necessary for maintaining appropriate parathyroid hormone levels and calcium intake. P4 provides an example of vitamin D3 treatment improving calcium levels and bone health in renal osteodystrophy patients, further emphasizing vitamin D's role in cal\"\n\n,\n\n\"answer\": \"SUPPORTED\",\n\n\"citations\": [\"P1\", \"P3\"],\n\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18015226792,
+     "load_duration": 24269333,
+     "prompt_eval_count": 1642,
+     "prompt_eval_duration": 3389157501,
+     "eval_count": 188,
+     "eval_duration": 13751657706,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:20.310792Z"
+    },
+    "elapsed_s": 18.019,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3176,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:16256507:2",
+     "scifact:16256507:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0948dd9fd972273690fe8ce3c1b15894a1bd7364ac731de8eadae59a8cb210e4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871280.51691,
+      "end_wall": 1792871286.3071969,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871280.51691,
+    "start_mono": 540837.218950125,
+    "end_wall": 1792871286.3071969,
+    "end_mono": 540843.00921375,
+    "raw_response": "{\"query\": \"Vitamin D calcium parathyroid hormone\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5788299875,
+     "load_duration": 2850281709,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 1215295333,
+     "eval_count": 14,
+     "eval_duration": 1592649501,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:06.306176Z"
+    },
+    "elapsed_s": 5.79,
+    "query_used": "Vitamin D calcium parathyroid hormone",
+    "query_source": "json",
+    "query_arrival_seq": 3178
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Vitamin D calcium parathyroid hormone",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16256507:2",
+       "score_q": 13930
+      },
+      {
+       "passage_key": "scifact:16256507:0",
+       "score_q": 13022
+      },
+      {
+       "passage_key": "scifact:16256507:1",
+       "score_q": 10380
+      },
+      {
+       "passage_key": "scifact:9555784:0",
+       "score_q": 8941
+      },
+      {
+       "passage_key": "scifact:25259746:0",
+       "score_q": 7238
+      }
+     ],
+     "retrieval_sha256": "3fe648b191f9b4478f6fbcd8eaa4b3b7dcdbf834b470f3b0621a956ae15a097f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3fe648b191f9b4478f6fbcd8eaa4b3b7dcdbf834b470f3b0621a956ae15a097f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16256507:2",
+      "content_sha256": "57ee43f44b38e619ca87869ada677dfd9426d15441bd56c9c2ba628570583d53",
+      "chars": 336
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16256507:0",
+      "content_sha256": "f97c3b60f7b712eed156bf3b2724680010cf165ef2e0179e6f8401d434c2b3f1",
+      "chars": 908
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16256507:1",
+      "content_sha256": "1fa16de51fdba0fa811d53a76f3d5d5808f3c9e803b19ebba533919b510b49ed",
+      "chars": 994
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9555784:0",
+      "content_sha256": "9f9ffa4eb6f2583ee3adad745b0d5dc23110b96e1f58e61b355f488ec872c4dc",
+      "chars": 1009
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:25259746:0",
+      "content_sha256": "63258ab53a5ec7e705eb96848e24b982a6d2031157f3d430a3b318f4b71a07de",
+      "chars": 1083
+     }
+    ],
+    "elapsed_s": 0.0008
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nEvidence passages from your search for \"Vitamin D calcium parathyroid hormone\":\n<<<PASSAGES\n[P1] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONCLUSIONS As long as vitamin D status is ensured, calcium intake levels of more than 800 mg/d may be unnecessary for maintaining calcium metabolism. Vitamin D supplements are necessary for adequate vitamin D status in northern climates.\n\n[P2] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONTEXT Adequate vitamin D status for optimum bone health has received increased recognition in recent years; however, the ideal intake is not known. Serum 25-hydroxyvitamin D is the generally accepted indicator of vitamin D status, but no universal reference level has been reached. OBJECTIVE To investigate the relative importance of high calcium intake and serum 25-hydroxyvitamin D for calcium homeostasis, as determined by serum intact parathyroid hormone (PTH). DESIGN, SETTING, AND PARTICIPANTS Cross-sectional study of 2310 healthy Icelandic adults who were divided equally into 3 age groups (30-45 years, 50-65 years, or 70-85 years) and recruited from February 2001 to January 2003. They were administered a semi-quantitative food frequency questionnaire, which assessed vitamin D and calcium intake.\n\n[P3] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nParticipants were further divided into groups according to calcium intake (<800 mg/d, 800-1200 mg/d, and >1200 mg/d) and serum 25-hydroxyvitamin D level (<10 ng/mL, 10-18 ng/mL, and >18 ng/mL). MAIN OUTCOME MEASURE Serum intact PTH as determined by calcium intake and vitamin D. RESULTS A total of 944 healthy participants completed all parts of the study. After adjusting for relevant factors, serum PTH was lowest in the group with a serum 25-hydroxyvitamin D level of more than 18 ng/mL but highest in the group with a serum 25-hydroxyvitamin D level of less than 10 ng/mL. At the low serum 25-hydroxyvitamin D level (<10 ng/mL), calcium intake of less than 800 mg/d vs more than 1200 mg/d was significantly associated with higher serum PTH (P = .04); and at a calcium intake of more than 1200 mg/d, there was a significant difference between the lowest and highest vitamin D groups (P = .04).\n\n[P4] Vitamin d deficiency in postmenopausal women - biological correlates.\nINTRODUCTION Low vitamin D (VD) is associated with secondary hyperparathyroidism and both contribute to deleterious consequences (reduced bone mineral density (BMD), risk of fractures and falls). OBJECTIVE To study the VD status and biological correlates in a group of postmenopausal women. MATERIAL AND METHODS We studied 123 postmenopausal women evaluated in the C.I.Parhon National Institute of Endocrinology, the Pituitary and Neuroendocrine Diseases department. All cases had been reffered for the evaluation of BMD by the general practitioner. The evaluation included serum measurements of total and ionised calcium, phosphorus, alkaline phosphatase (ALP), 25 hydroxi vitaminD (25OHD), parathyroid hormone (PTH), osteocalcin, betacrosslaps. Central DXA osteodensitometry was performed. RESULTS 91.9% of cases had 25OHD serum levels below 30 ng/ml (74.8% had VD deficiency, 17.1% VD insufficiency). Only 8.1% had sufficient VD levels.\n\n[P5] Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy.\nWe evaluated oral 1,25-vitamin D3 for as long as 26 months in six prepubescent children with renal osteodystrophy previously treated with vitamin D2. Therapy was given at 14 to 41 ng per kilogram per day to correct hypocalcemia and reverse bone disease. Serum levels of 1,25-vitamin D3 were initially reduced at 15 +/- 5 pg per milliliter (mean +/- S.E.M.) and after treatment rose to 54 +/- 13. Serum calcium rose from 7.5 +/- 1.6 mg per deciliter (mean +/- S.D.) to 9.8 +/- 0.6 after one month (P less than 0.02). Alkaline phosphatase activity fell from 536 +/- 298 to 208 +/- 91 IU per liter after 12 months (P less than 0.05). Serum immunoreactive parathyroid levels fell from 900 +/- 562 microliter eq per milliliter 411 +/- 377. Healing of rickets and subperiosteal erosions was found. Remineralization of bone was demonstrated by the photon absorption technic. In four patients growth velocity, evaluated for 12 months before and after therapy, increased from 2.6 +/- 0.8 to 8.0 +/-\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c8ffc8d24443b34549a1f22a6854efc6f2bf02333ed7114b4e01b9ef73becfe6",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871286.308904,
+      "end_wall": 1792871302.279757,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3177,
+    "start_wall": 1792871286.308904,
+    "start_mono": 540843.01092225,
+    "end_wall": 1792871302.279757,
+    "end_mono": 540858.981709583,
+    "raw_response": "{\"reasoning\": \"Multiple passages describe the relationship between vitamin D, calcium intake, and parathyroid hormone levels. P1 and P2 indicate that maintaining adequate vitamin D status allows for normal calcium metabolism, while P3 shows that low vitamin D levels increase serum PTH, particularly when calcium intake is below 800 mg/d. P4 confirms that vitamin D deficiency in postmenopausal women is associated with secondary hyperparathyroidism. P5 demonstrates that oral vitamin D3 supplementation in children with renal osteodystrophy leads to normalization of serum calcium and PTH levels, alongside healing\" , \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15966887875,
+     "load_duration": 45924917,
+     "prompt_eval_count": 1339,
+     "prompt_eval_duration": 6516504000,
+     "eval_count": 152,
+     "eval_duration": 8029473039,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:22.276791Z"
+    },
+    "elapsed_s": 15.971,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3177,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:16256507:2",
+     "scifact:16256507:0",
+     "scifact:16256507:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0948dd9fd972273690fe8ce3c1b15894a1bd7364ac731de8eadae59a8cb210e4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871280.5165818,
+      "end_wall": 1792871286.398658,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871280.5165818,
+    "start_mono": 540837.218621583,
+    "end_wall": 1792871286.398658,
+    "end_mono": 540843.100673666,
+    "raw_response": "{\"query\": \"vitamin D role parathyroid hormone calcium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5879740333,
+     "load_duration": 4409067125,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 658588416,
+     "eval_count": 12,
+     "eval_duration": 554484084,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:06.397617Z"
+    },
+    "elapsed_s": 5.882,
+    "query_used": "vitamin D role parathyroid hormone calcium",
+    "query_source": "json",
+    "query_arrival_seq": 3179
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "vitamin D role parathyroid hormone calcium",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16256507:0",
+       "score_q": 785
+      },
+      {
+       "passage_key": "scifact:16256507:2",
+       "score_q": 781
+      },
+      {
+       "passage_key": "scifact:8856690:0",
+       "score_q": 774
+      },
+      {
+       "passage_key": "scifact:8856690:1",
+       "score_q": 766
+      },
+      {
+       "passage_key": "scifact:16256507:1",
+       "score_q": 764
+      }
+     ],
+     "retrieval_sha256": "b3e824157ad01a4b735cfe22dfc47134bd5cf1a90dbd9ed9b0935637544d29b3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b3e824157ad01a4b735cfe22dfc47134bd5cf1a90dbd9ed9b0935637544d29b3",
+    "query_embedding_sha256": "3bbbf01f0827cf48e69acb5b9e466b7ef108d8c2372420e79254c0bc3e44052d",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16256507:0",
+      "content_sha256": "f97c3b60f7b712eed156bf3b2724680010cf165ef2e0179e6f8401d434c2b3f1",
+      "chars": 908
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16256507:2",
+      "content_sha256": "57ee43f44b38e619ca87869ada677dfd9426d15441bd56c9c2ba628570583d53",
+      "chars": 336
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8856690:0",
+      "content_sha256": "ef44a3d1b1119047a49d4b7c197ebc7ad614fe03d5a951bc7f71bc1f93dab676",
+      "chars": 689
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8856690:1",
+      "content_sha256": "40fc8b538bc7c16720ea89306179e7d1c8f0929694148445d074e1f36f1e3c20",
+      "chars": 992
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:16256507:1",
+      "content_sha256": "1fa16de51fdba0fa811d53a76f3d5d5808f3c9e803b19ebba533919b510b49ed",
+      "chars": 994
+     }
+    ],
+    "elapsed_s": 14.3843
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nEvidence passages from your search for \"vitamin D role parathyroid hormone calcium\":\n<<<PASSAGES\n[P1] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONTEXT Adequate vitamin D status for optimum bone health has received increased recognition in recent years; however, the ideal intake is not known. Serum 25-hydroxyvitamin D is the generally accepted indicator of vitamin D status, but no universal reference level has been reached. OBJECTIVE To investigate the relative importance of high calcium intake and serum 25-hydroxyvitamin D for calcium homeostasis, as determined by serum intact parathyroid hormone (PTH). DESIGN, SETTING, AND PARTICIPANTS Cross-sectional study of 2310 healthy Icelandic adults who were divided equally into 3 age groups (30-45 years, 50-65 years, or 70-85 years) and recruited from February 2001 to January 2003. They were administered a semi-quantitative food frequency questionnaire, which assessed vitamin D and calcium intake.\n\n[P2] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nCONCLUSIONS As long as vitamin D status is ensured, calcium intake levels of more than 800 mg/d may be unnecessary for maintaining calcium metabolism. Vitamin D supplements are necessary for adequate vitamin D status in northern climates.\n\n[P3] Molecular Mechanisms of Vitamin D Action\nThe hormonal metabolite of vitamin D, 1α,25-dihydroxyvitamin D3 (1,25D), initiates biological responses via binding to the vitamin D receptor (VDR). When occupied by 1,25D, VDR interacts with the retinoid X receptor (RXR) to form a heterodimer that binds to vitamin D responsive elements in the region of genes directly controlled by 1,25D. By recruiting complexes of either coactivators or corepressors, ligand-activated VDR-RXR modulates the transcription of genes encoding proteins that promulgate the traditional functions of vitamin D, including signaling intestinal calcium and phosphate absorption to effect skeletal and calcium homeostasis.\n\n[P4] Molecular Mechanisms of Vitamin D Action\nThus, vitamin D action in a particular cell depends upon the metabolic production or delivery of sufficient concentrations of the 1,25D ligand, expression of adequate VDR and RXR coreceptor proteins, and cell-specific programming of transcriptional responses to regulate select genes that encode proteins that function in mediating the effects of vitamin D. For example, 1,25D induces RANKL, SPP1 (osteopontin), and BGP (osteocalcin) to govern bone mineral remodeling; TRPV6, CaBP9k, and claudin 2 to promote intestinal calcium absorption; and TRPV5, klotho, and Npt2c to regulate renal calcium and phosphate reabsorption. VDR appears to function unliganded by 1,25D in keratinocytes to drive mammalian hair cycling via regulation of genes such as CASP14, S100A8, SOSTDC1, and others affecting Wnt signaling. Finally, alternative, low-affinity, non-vitamin D VDR ligands, e.g., lithocholic acid, docosahexaenoic acid, and curcumin, have been reported.\n\n[P5] Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.\nParticipants were further divided into groups according to calcium intake (<800 mg/d, 800-1200 mg/d, and >1200 mg/d) and serum 25-hydroxyvitamin D level (<10 ng/mL, 10-18 ng/mL, and >18 ng/mL). MAIN OUTCOME MEASURE Serum intact PTH as determined by calcium intake and vitamin D. RESULTS A total of 944 healthy participants completed all parts of the study. After adjusting for relevant factors, serum PTH was lowest in the group with a serum 25-hydroxyvitamin D level of more than 18 ng/mL but highest in the group with a serum 25-hydroxyvitamin D level of less than 10 ng/mL. At the low serum 25-hydroxyvitamin D level (<10 ng/mL), calcium intake of less than 800 mg/d vs more than 1200 mg/d was significantly associated with higher serum PTH (P = .04); and at a calcium intake of more than 1200 mg/d, there was a significant difference between the lowest and highest vitamin D groups (P = .04).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "448ba7ffe0c0ad06625ca66bd8869f9cb86691d1d376d543dada10e2ea2b66a3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871300.783432,
+      "end_wall": 1792871316.216681,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3178,
+    "start_wall": 1792871300.783432,
+    "start_mono": 540857.485394875,
+    "end_wall": 1792871316.216681,
+    "end_mono": 540872.9185845,
+    "raw_response": "{\"reasoning\": \"The passage (P2) states that as long as vitamin D status is ensured, calcium intake levels of more than 800 mg/d may be unnecessary for maintaining calcium metabolism. Therefore, the claim that vitamin D is an important factor in the relationship between calcium and parathyroid hormone is supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15428691959,
+     "load_duration": 5477405292,
+     "prompt_eval_count": 1233,
+     "prompt_eval_duration": 5042083542,
+     "eval_count": 88,
+     "eval_duration": 3121466041,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:36.213033Z"
+    },
+    "elapsed_s": 15.433,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3178,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:16256507:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 300,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0948dd9fd972273690fe8ce3c1b15894a1bd7364ac731de8eadae59a8cb210e4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871280.516716,
+      "end_wall": 1792871281.841422,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871280.516716,
+    "start_mono": 540837.218755875,
+    "end_wall": 1792871281.841422,
+    "end_mono": 540838.543455375,
+    "raw_response": "{\"query\": \"Vitamin D calcium parathyroid hormone interaction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1322463583,
+     "load_duration": 55377208,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 483667416,
+     "eval_count": 13,
+     "eval_duration": 684937999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:01.840378Z"
+    },
+    "elapsed_s": 1.325,
+    "query_used": "Vitamin D calcium parathyroid hormone interaction",
+    "query_source": "json",
+    "query_arrival_seq": 3176
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Vitamin D calcium parathyroid hormone interaction",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:23509593:1",
+       "score_q": 723
+      },
+      {
+       "passage_key": "scifact:21564598:0",
+       "score_q": 699
+      },
+      {
+       "passage_key": "scifact:31107919:1",
+       "score_q": 695
+      },
+      {
+       "passage_key": "scifact:8856690:0",
+       "score_q": 692
+      },
+      {
+       "passage_key": "scifact:21199527:1",
+       "score_q": 679
+      }
+     ],
+     "retrieval_sha256": "325c27a5bff7ccd0bfe9dcb10a104b0aba734cbbe599039bb364b225c3c200fa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "325c27a5bff7ccd0bfe9dcb10a104b0aba734cbbe599039bb364b225c3c200fa",
+    "query_embedding_sha256": "25fe3dca615ff162a70e4d7df103c322e22240adae0bbd74f57bf65463aea203",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:23509593:1",
+      "content_sha256": "174c7ef36235af0d52c49c10935914e4297ef5787e991993caec0df82f5abf48",
+      "chars": 1046
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:21564598:0",
+      "content_sha256": "cf4f8d23f0b80dfe79cbf07d6c0d5de85d20eb2ffb057a03714e017f49fc0bbb",
+      "chars": 1014
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:31107919:1",
+      "content_sha256": "03e92e21a93dce1b86cee6a619bcba725ff6c6a1cea4072e136a1ea2916f503a",
+      "chars": 839
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8856690:0",
+      "content_sha256": "ef44a3d1b1119047a49d4b7c197ebc7ad614fe03d5a951bc7f71bc1f93dab676",
+      "chars": 689
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:21199527:1",
+      "content_sha256": "e3a50e0bd7458605410c1e6792bbe421353a863abd3b03a2b945a854e0af2df7",
+      "chars": 951
+     }
+    ],
+    "elapsed_s": 5.173
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Vitamin D is an important factor in the relationship between calcium and parathyroid hormone.\n\nEvidence passages from your search for \"Vitamin D calcium parathyroid hormone interaction\":\n<<<PASSAGES\n[P1] The calcium sensor STIM1 is regulated by androgens in prostate stromal cells.\nWe identified key functional categories, within the androgen-induced gene expression signature, focusing on genes involved in calcium signaling. From this analysis, stromal interaction molecule-1 (STIM1) was identified as a significantly differentially expressed gene with four relevant associated GO terms. DNA sequence analysis showed that the promoter region of STIM1 contained putative androgen response element sequences in which AR binding ability of STIM1 was confirmed. Androgens directly regulated STIM1 expression and STIM1 effects on store-operated calcium entry were inhibited by STIM1 knock-down. Reduced STIM1 expression in prostate stromal cells led to a reduction in basal Ca2+ levels, the amount of Ca2+ released by thapsigargin and a reduction in store filling following TG-induced store depletion. CONCLUSIONS These results indicate that androgens modulate [Ca2+]i through the direct regulation of the STIM1 gene by AR binding to the STIM1 promoter.\n\n[P2] Regulation of beta catenin signaling and parathyroid hormone anabolic effects in bone by the matricellular protein periostin.\nPeriostin (Postn) is a matricellular protein preferentially expressed by osteocytes and periosteal osteoblasts in response to mechanical stimulation and parathyroid hormone (PTH). Whether and how periostin expression influences bone anabolism, however, remains unknown. We investigated the skeletal response of adult Postn(-/-) and Postn(+/+) mice to intermittent PTH. Compared with Postn(+/+), Postn(-/-) mice had a lower bone mass, cortical bone volume, and strength response to PTH. PTH-stimulated bone-forming indices were all significantly lower in Postn(-/-) mice, particularly at the periosteum. Furthermore, in vivo stimulation of Wnt-β-catenin signaling by PTH, as evaluated in TOPGAL reporter mice, was inhibited in the absence of periostin (TOPGAL;Postn(-/-) mice). PTH stimulated periostin and inhibited MEF2C and sclerostin (Sost) expression in bone and osteoblasts in vitro.\n\n[P3] Differential Requirement of the Extracellular Domain in Activation of Class B G Protein-coupled Receptors.\nIn one group, represented by corticotrophin-releasing factor receptor 1 (CRF1R), parathyroid hormone receptor (PTH1R), and pituitary adenylate cyclase activating polypeptide type 1 receptor (PAC1R), the ECD requirement for high affinity hormone binding can be bypassed by induced proximity and mass action effects, whereas in the other group, represented by glucagon receptor (GCGR) and glucagon-like peptide-1 receptor (GLP-1R), the ECD is required for signaling even when the hormone is covalently linked to the TMD. Furthermore, the activation of GLP-1R by small molecules that interact with the intracellular side of the receptor is dependent on the presence of its ECD, suggesting a direct role of the ECD in GLP-1R activation.\n\n[P4] Molecular Mechanisms of Vitamin D Action\nThe hormonal metabolite of vitamin D, 1α,25-dihydroxyvitamin D3 (1,25D), initiates biological responses via binding to the vitamin D receptor (VDR). When occupied by 1,25D, VDR interacts with the retinoid X receptor (RXR) to form a heterodimer that binds to vitamin D responsive elements in the region of genes directly controlled by 1,25D. By recruiting complexes of either coactivators or corepressors, ligand-activated VDR-RXR modulates the transcription of genes encoding proteins that promulgate the traditional functions of vitamin D, including signaling intestinal calcium and phosphate absorption to effect skeletal and calcium homeostasis.\n\n[P5] Parathyroid hormone induces E4bp4 messenger ribonucleic acid expression primarily through cyclic adenosine 3',5'-monophosphate signaling in osteoblasts.\nMoreover, PTH (3-34) that does not activate cAMP signaling did not increase E4bp4 expression. Prostaglandin E(2), which signals through cAMP, increased E4bp4 mRNA at all doses, whereas prostaglandin F(2alpha) that primarily activates PKC and calcium signaling, induced E4bp4 only at high doses and fluprostenol that only activates PKC and calcium signaling, had no effect. Finally, 80 microg/kg PTH (1-34) ip injection induced E4bp4 mRNA expression at 1 h in mice. In contrast, 80 microg/kg PTH (3-34) had no effect. Our data suggest that PTH-induced E4bp4 mRNA expression is mediated primarily through cAMP-PKA signaling in vitro and in vivo. In conjunction with our previous report, we hypothesize that E4bp4 attenuates transcription of osteoblastic genes possessing E4bp4 promoter binding sites.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c16766d999725efabf450b45ff08e677d2270670c8174a66e82b25363400fa5f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871287.015269,
+      "end_wall": 1792871318.442518,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3179,
+    "start_wall": 1792871287.015269,
+    "start_mono": 540843.717284458,
+    "end_wall": 1792871318.442518,
+    "end_mono": 540875.14441275,
+    "raw_response": "{\"reasoning\": \"Passage P4 explicitly states that the hormonal metabolite of vitamin D, 1,25-dihydroxyvitamin D3 (1,25D), plays a role in modulating genes involved in calcium absorption and parathyroid hormone (PTH) signaling pathways, which are crucial for maintaining calcium homeostasis. This interaction underscores Vitamin D's importance in the relationship between calcium absorption and PTH regulation. Although other passages do not directly address this specific interaction, P4 provides direct evidence supporting the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 31422569916,
+     "load_duration": 17444510916,
+     "prompt_eval_count": 1326,
+     "prompt_eval_duration": 6698177417,
+     "eval_count": 132,
+     "eval_duration": 6240901283,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:48:38.438864Z"
+    },
+    "elapsed_s": 31.427,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3179,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:8856690:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 518,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "7fee3b342bdea2be2c622609f066d12fb2fe7c8ae84868c721bbeac7912db86a",
+  "granite3.3:2b": "9cdc25e42609605b152bad5e4ea7c85b32954dbf7ac5123bba48bb203dc0c176",
+  "olmo2:7b": "3fe648b191f9b4478f6fbcd8eaa4b3b7dcdbf834b470f3b0621a956ae15a097f",
+  "nemotron-mini:4b": "b3e824157ad01a4b735cfe22dfc47134bd5cf1a90dbd9ed9b0935637544d29b3",
+  "exaone3.5:7.8b": "325c27a5bff7ccd0bfe9dcb10a104b0aba734cbbe599039bb364b225c3c200fa"
+ },
+ "item_start_wall": 1792871280.516263,
+ "item_wall_s": 37.926,
+ "ollama_ps_samples": [
+  [
+   1792871280.516,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871282.527,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871284.529,
+   [
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871286.533,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871288.544,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871290.548,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871292.555,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871294.558,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871296.569,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871298.579,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871300.582,
+   [
+    "nomic-embed-text:latest",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871302.593,
+   [
+    "olmo2:7b",
+    "nomic-embed-text:latest"
+   ]
+  ],
+  [
+   1792871304.599,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871306.608,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871308.616,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871310.619,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871312.621,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871314.628,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871316.633,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

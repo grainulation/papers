@@ -1,0 +1,31 @@
+% The arbitration boundary (coordinates on a 680 x 200 grid).
+\begin{tikzpicture}[x=0.0235cm,y=-0.0235cm,font=\footnotesize,
+    box/.style={draw,thin,minimum height=38*0.0235cm,inner sep=1pt,align=center},
+    key/.style={box,fill=blue!8,line width=0.9pt},
+    grey/.style={box,fill=black!5},
+    arr/.style={-{Stealth[length=4pt]},thin}]
+  \node[anchor=west,text=black!65] at (10,10) {artifact production (stochastic; every output recorded)};
+  \node[grey,minimum width=100*0.0235cm] (ag) at (60,39) {agents\\(free text)};
+  \node[box,minimum width=95*0.0235cm]  (p1) at (177.5,39) {P1 normalize};
+  \node[box,minimum width=95*0.0235cm]  (p2) at (292.5,39) {P2 lower};
+  \node[box,minimum width=95*0.0235cm]  (p3) at (407.5,39) {P3 validate};
+  \node[key,minimum width=195*0.0235cm] (seal) at (572.5,39) {SEAL: artifact set $A$\\canonical form, root hash};
+  \draw[arr] (ag) -- (p1);
+  \draw[arr] (p1) -- (p2);
+  \draw[arr] (p2) -- (p3);
+  \draw[arr] (p3) -- (seal);
+  % reducer frame
+  \draw[thin,dash pattern=on 5pt off 4pt] (135,92) rectangle (670,190);
+  \node[anchor=west,text=black!65,font=\scriptsize] at (140,180) {reducer $C(A, P)$: pure, reads only $A$ and $P$};
+  \node[anchor=east,text=black!65,font=\scriptsize] at (665,180) {certificate = $H$(root, policy hash, admitted ids)};
+  \node[box,minimum width=100*0.0235cm] (p4) at (200,137) {P4 conflicts};
+  \node[box,minimum width=100*0.0235cm] (p5) at (320,137) {P5 select};
+  \node[box,minimum width=100*0.0235cm] (p6) at (440,137) {P6 commit};
+  \node[grey,minimum width=150*0.0235cm] (out) at (585,137) {admitted ids\\+ certificate};
+  \node[key,minimum width=105*0.0235cm] (pol) at (62.5,137) {policy $P$\\frozen, hashed};
+  \draw[arr] (seal.south) -- (p4.north);
+  \draw[arr] (p4) -- (p5);
+  \draw[arr] (p5) -- (p6);
+  \draw[arr] (p6) -- (out);
+  \draw[arr] (pol) -- (p4);
+\end{tikzpicture}

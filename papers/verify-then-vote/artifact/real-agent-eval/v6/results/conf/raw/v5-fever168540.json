@@ -1,0 +1,1222 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever168540",
+ "order": 614,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever168540",
+  "order": 614,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Rick Yune was on a show that aired on Netflix."
+ },
+ "item_view_sha256": "cf9d21bdc111b78cc12e53db0010a0c51000f8b9ee8c700788cf08ca47802926",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rick Yune was on a show that aired on Netflix.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "443fe352a3449b3db3c433ccd10671c25a8a547034039af5ef2e4ca5993d1e3d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870684.5635478,
+      "end_wall": 1792870686.4147918,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870684.5635478,
+    "start_mono": 540241.270935458,
+    "end_wall": 1792870686.4147918,
+    "end_mono": 540243.122172625,
+    "raw_response": "{\"query\": \"rick yune netflix show\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1848667917,
+     "load_duration": 73384417,
+     "prompt_eval_count": 163,
+     "prompt_eval_duration": 663039042,
+     "eval_count": 12,
+     "eval_duration": 999381625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:06.413657Z"
+    },
+    "elapsed_s": 1.851,
+    "query_used": "rick yune netflix show",
+    "query_source": "json",
+    "query_arrival_seq": 3070
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "rick yune netflix show",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rick_Yune:0",
+       "score_q": 15601
+      },
+      {
+       "passage_key": "fever17:Yune:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Johnny_Yune:0",
+       "score_q": 13168
+      },
+      {
+       "passage_key": "fever17:Karl_Yune:0",
+       "score_q": 10164
+      },
+      {
+       "passage_key": "fever17:Michael_Roesch:1",
+       "score_q": 9568
+      }
+     ],
+     "retrieval_sha256": "39d05afb130f073136704f3dafc93e6da5efbe2f50753f45c5f4ebfa311846a9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "39d05afb130f073136704f3dafc93e6da5efbe2f50753f45c5f4ebfa311846a9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rick_Yune:0",
+      "content_sha256": "fa28643dd01b44dfbd1a66398c94082601716a877789af62a0393db9bdc776b8",
+      "chars": 431
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Yune:0",
+      "content_sha256": "97cd9ab72915ac50a9217bfd395da5dd85e23d7bfa873733961f41dc52a8efa2",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Johnny_Yune:0",
+      "content_sha256": "99f072b09f9803692947715bf90756debc4074ed8e270333876acfef65fcf182",
+      "chars": 797
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Karl_Yune:0",
+      "content_sha256": "717739fdd99e0d5a93de9465a6d4c86ea589e87d2b7ccf5d6d4b8808c500aa62",
+      "chars": 67
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Michael_Roesch:1",
+      "content_sha256": "1e1dc09eb51c51a855709c5c0a297662cdaa889531f515dae9654ad5706e7f54",
+      "chars": 350
+     }
+    ],
+    "elapsed_s": 0.0256
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rick Yune was on a show that aired on Netflix.\n\nEvidence passages from your search for \"rick yune netflix show\":\n<<<PASSAGES\n[P1] Rick Yune\nRick Yune ( born August 22 , 1971 ) is an American actor , screenwriter , producer , martial artist and former model . His most notable roles have been in the movies Snow Falling on Cedars , the first Fast and Furious film The Fast and the Furious , and in the James Bond movie Die Another Day . He was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12 , 2016 .\n\n[P2] Yune\nYune is a Korean surname , also spelled Yoon . Notable people with the surname include : Johnny Yune , a Korean-American actor and comedian Karl Yune ( born 1975 ) , an American actor Rick Yune ( born 1971 ) , an American actor Tommy Yune , a Korean American comic book author\n\n[P3] Johnny Yune\nJohnny Yune is a Korean -- American actor , singer and comedian . He played the lead in the 1980s films They Call Me Bruce ? and They Still Call Me Bruce . Yune 's big break came at The Tonight Show Starring Johnny Carson . Yune stated that because actor Charlton Heston did not arrive on time , he was given over twenty minutes on the show to make a good impression . Carson liked Yune and had him on the show over 30 times . Yune also appeared in his own special on NBC . Johnny Yune performed at the 1988 Summer Olympics at Seoul along with Bob Hope and Brooke Shields . From 1989 to 1990 , he hosted the Johnny Yune Show , the first Americanized talk show in Korea . The show was a great hit , but only after a year , Yune decided to leave KBS due to limited freedom of the media .\n\n[P4] Karl Yune\nKarl Yune ( born April 16 , 1975 ) is an American actor .\n\n[P5] Michael Roesch\nIn 2007 Roesch and Scheerer directed Alone in the Dark II , starring Rick Yune , Lance Henriksen and Danny Trejo . It is a sequel to the 2005 film Alone in the Dark . Among Roesch ´ s recent work as a producer is Prisoners of the Sun , directed by Academy Award winner Roger Christian and starring John Rhys-Davies and Carmen Chaplin .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b0f25619edb3ee511465e5756a7e87f942f4592e3df2df41443ebeb256f4b29f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870686.440694,
+      "end_wall": 1792870697.573437,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3070,
+    "start_wall": 1792870686.440694,
+    "start_mono": 540243.1480755,
+    "end_wall": 1792870697.573437,
+    "end_mono": 540254.280781208,
+    "raw_response": "{\"reasoning\": \"Rick Yune is mentioned in the context of being part of the main cast of the Netflix original series Marco Polo until the series was cancelled. This confirms his involvement in a show that aired on Netflix.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11129485500,
+     "load_duration": 61745083,
+     "prompt_eval_count": 748,
+     "prompt_eval_duration": 5159910041,
+     "eval_count": 67,
+     "eval_duration": 5352463710,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:17.571313Z"
+    },
+    "elapsed_s": 11.133,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3070,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Rick_Yune:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 205,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rick Yune was on a show that aired on Netflix.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "443fe352a3449b3db3c433ccd10671c25a8a547034039af5ef2e4ca5993d1e3d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870684.5629,
+      "end_wall": 1792870686.4586408,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870684.5629,
+    "start_mono": 540241.270287291,
+    "end_wall": 1792870686.4586408,
+    "end_mono": 540243.166021708,
+    "raw_response": "{\"query\": \"Rick Yune Netflix show cast\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1892451459,
+     "load_duration": 73530959,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 661319500,
+     "eval_count": 13,
+     "eval_duration": 1041646877,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:06.457313Z"
+    },
+    "elapsed_s": 1.896,
+    "query_used": "Rick Yune Netflix show cast",
+    "query_source": "json",
+    "query_arrival_seq": 3071
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rick Yune Netflix show cast",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rick_Yune:0",
+       "score_q": 18069
+      },
+      {
+       "passage_key": "fever17:Yune:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Johnny_Yune:0",
+       "score_q": 13168
+      },
+      {
+       "passage_key": "fever17:Prison_Break_-LRB-season_5-RRB-:1",
+       "score_q": 12212
+      },
+      {
+       "passage_key": "fever17:Alone_in_the_Dark_II_-LRB-film-RRB-:0",
+       "score_q": 10625
+      }
+     ],
+     "retrieval_sha256": "c886dcc9b4729d476f6ca264a019c080575ac24c0dbb08278c8e904d20391767"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c886dcc9b4729d476f6ca264a019c080575ac24c0dbb08278c8e904d20391767",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rick_Yune:0",
+      "content_sha256": "fa28643dd01b44dfbd1a66398c94082601716a877789af62a0393db9bdc776b8",
+      "chars": 431
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Yune:0",
+      "content_sha256": "97cd9ab72915ac50a9217bfd395da5dd85e23d7bfa873733961f41dc52a8efa2",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Johnny_Yune:0",
+      "content_sha256": "99f072b09f9803692947715bf90756debc4074ed8e270333876acfef65fcf182",
+      "chars": 797
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Prison_Break_-LRB-season_5-RRB-:1",
+      "content_sha256": "98ae45a1522fdb58281e29fd6d06aa7385ac31b6f625d17cc1a40bfd432e4b67",
+      "chars": 373
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Alone_in_the_Dark_II_-LRB-film-RRB-:0",
+      "content_sha256": "4f46067cd7a2df00dd829060eb88a9845a479b5ddf83bf8f1db7f91052515a45",
+      "chars": 505
+     }
+    ],
+    "elapsed_s": 0.0166
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rick Yune was on a show that aired on Netflix.\n\nEvidence passages from your search for \"Rick Yune Netflix show cast\":\n<<<PASSAGES\n[P1] Rick Yune\nRick Yune ( born August 22 , 1971 ) is an American actor , screenwriter , producer , martial artist and former model . His most notable roles have been in the movies Snow Falling on Cedars , the first Fast and Furious film The Fast and the Furious , and in the James Bond movie Die Another Day . He was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12 , 2016 .\n\n[P2] Yune\nYune is a Korean surname , also spelled Yoon . Notable people with the surname include : Johnny Yune , a Korean-American actor and comedian Karl Yune ( born 1975 ) , an American actor Rick Yune ( born 1971 ) , an American actor Tommy Yune , a Korean American comic book author\n\n[P3] Johnny Yune\nJohnny Yune is a Korean -- American actor , singer and comedian . He played the lead in the 1980s films They Call Me Bruce ? and They Still Call Me Bruce . Yune 's big break came at The Tonight Show Starring Johnny Carson . Yune stated that because actor Charlton Heston did not arrive on time , he was given over twenty minutes on the show to make a good impression . Carson liked Yune and had him on the show over 30 times . Yune also appeared in his own special on NBC . Johnny Yune performed at the 1988 Summer Olympics at Seoul along with Bob Hope and Brooke Shields . From 1989 to 1990 , he hosted the Johnny Yune Show , the first Americanized talk show in Korea . The show was a great hit , but only after a year , Yune decided to leave KBS due to limited freedom of the media .\n\n[P4] Prison Break (season 5)\nNew cast additions include Mark Feuerstein , Inbar Lavi , Augustus Prew , Marina Benedict , Rick Yune and Steve Mouzakis . A pilot was ordered in August 2015 and the series was greenlit in January 2016 . Production on the series began in April 2016 and filming took place in Vancouver and the Moroccan cities of Rabat , Casablanca , and Ouarzazate .\n\n[P5] Alone in the Dark II (film)\nAlone in the Dark II is a 2008 German-American horror film starring Rick Yune , Rachel Specter and Lance Henriksen . The film was directed by Peter Scheerer and Michael Roesch . It is a sequel to Uwe Boll 's 2005 film Alone in the Dark , although it features an entirely new cast and a story that is unrelated to the original film . Alone in the Dark II was filmed in New York City and Los Angeles . It is loosely based on the Infogrames ' Alone in the Dark video game series .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "29040c26e691ca00bdabe63c729ebdbb40ec4439b150284c751c36ac35f4acbf",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870686.475522,
+      "end_wall": 1792870699.375127,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3071,
+    "start_wall": 1792870686.475522,
+    "start_mono": 540243.1829035,
+    "end_wall": 1792870699.375127,
+    "end_mono": 540256.082465708,
+    "raw_response": "{\n  \"reasoning\": \"Rick Yune was notably part of the main cast of the Netflix original series 'Marco Polo', which directly supports the claim that he appeared on a show that aired on Netflix.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12896281333,
+     "load_duration": 50381458,
+     "prompt_eval_count": 941,
+     "prompt_eval_duration": 5747862749,
+     "eval_count": 78,
+     "eval_duration": 6512948456,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:19.37275Z"
+    },
+    "elapsed_s": 12.9,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3071,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Rick_Yune:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 172,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rick Yune was on a show that aired on Netflix.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "443fe352a3449b3db3c433ccd10671c25a8a547034039af5ef2e4ca5993d1e3d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870684.563094,
+      "end_wall": 1792870689.318826,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870684.563094,
+    "start_mono": 540241.270481625,
+    "end_wall": 1792870689.318826,
+    "end_mono": 540246.026196208,
+    "raw_response": "{\"query\": \"Rick Yune Netflix show\" }",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4753022584,
+     "load_duration": 940394750,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 401251584,
+     "eval_count": 14,
+     "eval_duration": 3338007206,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:09.317766Z"
+    },
+    "elapsed_s": 4.756,
+    "query_used": "Rick Yune Netflix show",
+    "query_source": "json",
+    "query_arrival_seq": 3072
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rick Yune Netflix show",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rick_Yune:0",
+       "score_q": 15601
+      },
+      {
+       "passage_key": "fever17:Yune:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Johnny_Yune:0",
+       "score_q": 13168
+      },
+      {
+       "passage_key": "fever17:Karl_Yune:0",
+       "score_q": 10164
+      },
+      {
+       "passage_key": "fever17:Michael_Roesch:1",
+       "score_q": 9568
+      }
+     ],
+     "retrieval_sha256": "910ced78a87bf7c0a897b081fc8faba695a7f25b7561a5747a69fe4d683b39d2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "910ced78a87bf7c0a897b081fc8faba695a7f25b7561a5747a69fe4d683b39d2",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rick_Yune:0",
+      "content_sha256": "fa28643dd01b44dfbd1a66398c94082601716a877789af62a0393db9bdc776b8",
+      "chars": 431
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Yune:0",
+      "content_sha256": "97cd9ab72915ac50a9217bfd395da5dd85e23d7bfa873733961f41dc52a8efa2",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Johnny_Yune:0",
+      "content_sha256": "99f072b09f9803692947715bf90756debc4074ed8e270333876acfef65fcf182",
+      "chars": 797
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Karl_Yune:0",
+      "content_sha256": "717739fdd99e0d5a93de9465a6d4c86ea589e87d2b7ccf5d6d4b8808c500aa62",
+      "chars": 67
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Michael_Roesch:1",
+      "content_sha256": "1e1dc09eb51c51a855709c5c0a297662cdaa889531f515dae9654ad5706e7f54",
+      "chars": 350
+     }
+    ],
+    "elapsed_s": 0.0214
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rick Yune was on a show that aired on Netflix.\n\nEvidence passages from your search for \"Rick Yune Netflix show\":\n<<<PASSAGES\n[P1] Rick Yune\nRick Yune ( born August 22 , 1971 ) is an American actor , screenwriter , producer , martial artist and former model . His most notable roles have been in the movies Snow Falling on Cedars , the first Fast and Furious film The Fast and the Furious , and in the James Bond movie Die Another Day . He was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12 , 2016 .\n\n[P2] Yune\nYune is a Korean surname , also spelled Yoon . Notable people with the surname include : Johnny Yune , a Korean-American actor and comedian Karl Yune ( born 1975 ) , an American actor Rick Yune ( born 1971 ) , an American actor Tommy Yune , a Korean American comic book author\n\n[P3] Johnny Yune\nJohnny Yune is a Korean -- American actor , singer and comedian . He played the lead in the 1980s films They Call Me Bruce ? and They Still Call Me Bruce . Yune 's big break came at The Tonight Show Starring Johnny Carson . Yune stated that because actor Charlton Heston did not arrive on time , he was given over twenty minutes on the show to make a good impression . Carson liked Yune and had him on the show over 30 times . Yune also appeared in his own special on NBC . Johnny Yune performed at the 1988 Summer Olympics at Seoul along with Bob Hope and Brooke Shields . From 1989 to 1990 , he hosted the Johnny Yune Show , the first Americanized talk show in Korea . The show was a great hit , but only after a year , Yune decided to leave KBS due to limited freedom of the media .\n\n[P4] Karl Yune\nKarl Yune ( born April 16 , 1975 ) is an American actor .\n\n[P5] Michael Roesch\nIn 2007 Roesch and Scheerer directed Alone in the Dark II , starring Rick Yune , Lance Henriksen and Danny Trejo . It is a sequel to the 2005 film Alone in the Dark . Among Roesch ´ s recent work as a producer is Prisoners of the Sun , directed by Academy Award winner Roger Christian and starring John Rhys-Davies and Carmen Chaplin .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "269d4db15ec0403dbe42f7d82909f15366504816d7044d788d2e4d5741c1043d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870689.340551,
+      "end_wall": 1792870700.781117,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3072,
+    "start_wall": 1792870689.340551,
+    "start_mono": 540246.047922875,
+    "end_wall": 1792870700.781117,
+    "end_mono": 540257.488451,
+    "raw_response": "{\n  \"reasoning\": \"Rick Yune is an American actor who was part of the Netflix original series Marco Polo, as confirmed by multiple sources including passage P1 and P5. No evidence contradicts this claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11438197000,
+     "load_duration": 8228447167,
+     "prompt_eval_count": 905,
+     "prompt_eval_duration": 1511768500,
+     "eval_count": 81,
+     "eval_duration": 1397834371,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:20.779514Z"
+    },
+    "elapsed_s": 11.441,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3072,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Rick_Yune:0",
+     "fever17:Michael_Roesch:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 184,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rick Yune was on a show that aired on Netflix.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "443fe352a3449b3db3c433ccd10671c25a8a547034039af5ef2e4ca5993d1e3d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870684.563769,
+      "end_wall": 1792870692.913731,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870684.563769,
+    "start_mono": 540241.271156666,
+    "end_wall": 1792870692.913731,
+    "end_mono": 540249.621090916,
+    "raw_response": "{\"query\": \"Rick Yune on Netflix show\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8347811167,
+     "load_duration": 6213648042,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 982412916,
+     "eval_count": 13,
+     "eval_duration": 990801624,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:12.912851Z"
+    },
+    "elapsed_s": 8.35,
+    "query_used": "Rick Yune on Netflix show",
+    "query_source": "json",
+    "query_arrival_seq": 3073
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rick Yune on Netflix show",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rick_Yune:0",
+       "score_q": 15601
+      },
+      {
+       "passage_key": "fever17:Yune:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Johnny_Yune:0",
+       "score_q": 13168
+      },
+      {
+       "passage_key": "fever17:Karl_Yune:0",
+       "score_q": 10164
+      },
+      {
+       "passage_key": "fever17:Michael_Roesch:1",
+       "score_q": 9568
+      }
+     ],
+     "retrieval_sha256": "8baa671cd7148ea69d15b551c2f636fc2f0b46a970b43ef91326b69e1a8042ab"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8baa671cd7148ea69d15b551c2f636fc2f0b46a970b43ef91326b69e1a8042ab",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rick_Yune:0",
+      "content_sha256": "fa28643dd01b44dfbd1a66398c94082601716a877789af62a0393db9bdc776b8",
+      "chars": 431
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Yune:0",
+      "content_sha256": "97cd9ab72915ac50a9217bfd395da5dd85e23d7bfa873733961f41dc52a8efa2",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Johnny_Yune:0",
+      "content_sha256": "99f072b09f9803692947715bf90756debc4074ed8e270333876acfef65fcf182",
+      "chars": 797
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Karl_Yune:0",
+      "content_sha256": "717739fdd99e0d5a93de9465a6d4c86ea589e87d2b7ccf5d6d4b8808c500aa62",
+      "chars": 67
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Michael_Roesch:1",
+      "content_sha256": "1e1dc09eb51c51a855709c5c0a297662cdaa889531f515dae9654ad5706e7f54",
+      "chars": 350
+     }
+    ],
+    "elapsed_s": 0.0156
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rick Yune was on a show that aired on Netflix.\n\nEvidence passages from your search for \"Rick Yune on Netflix show\":\n<<<PASSAGES\n[P1] Rick Yune\nRick Yune ( born August 22 , 1971 ) is an American actor , screenwriter , producer , martial artist and former model . His most notable roles have been in the movies Snow Falling on Cedars , the first Fast and Furious film The Fast and the Furious , and in the James Bond movie Die Another Day . He was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12 , 2016 .\n\n[P2] Yune\nYune is a Korean surname , also spelled Yoon . Notable people with the surname include : Johnny Yune , a Korean-American actor and comedian Karl Yune ( born 1975 ) , an American actor Rick Yune ( born 1971 ) , an American actor Tommy Yune , a Korean American comic book author\n\n[P3] Johnny Yune\nJohnny Yune is a Korean -- American actor , singer and comedian . He played the lead in the 1980s films They Call Me Bruce ? and They Still Call Me Bruce . Yune 's big break came at The Tonight Show Starring Johnny Carson . Yune stated that because actor Charlton Heston did not arrive on time , he was given over twenty minutes on the show to make a good impression . Carson liked Yune and had him on the show over 30 times . Yune also appeared in his own special on NBC . Johnny Yune performed at the 1988 Summer Olympics at Seoul along with Bob Hope and Brooke Shields . From 1989 to 1990 , he hosted the Johnny Yune Show , the first Americanized talk show in Korea . The show was a great hit , but only after a year , Yune decided to leave KBS due to limited freedom of the media .\n\n[P4] Karl Yune\nKarl Yune ( born April 16 , 1975 ) is an American actor .\n\n[P5] Michael Roesch\nIn 2007 Roesch and Scheerer directed Alone in the Dark II , starring Rick Yune , Lance Henriksen and Danny Trejo . It is a sequel to the 2005 film Alone in the Dark . Among Roesch ´ s recent work as a producer is Prisoners of the Sun , directed by Academy Award winner Roger Christian and starring John Rhys-Davies and Carmen Chaplin .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c2ccac437a041f9b1a8cf0ca2e682bf46850ff8a203ceb3c28bbd58ad15eb084",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870692.9296,
+      "end_wall": 1792870706.486308,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3073,
+    "start_wall": 1792870692.9296,
+    "start_mono": 540249.636961375,
+    "end_wall": 1792870706.486308,
+    "end_mono": 540263.193624583,
+    "raw_response": "{\"reasoning\": \"Rick Yune was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12, 2016.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13554707541,
+     "load_duration": 9302324541,
+     "prompt_eval_count": 849,
+     "prompt_eval_duration": 1171878000,
+     "eval_count": 67,
+     "eval_duration": 2433370879,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:26.485148Z"
+    },
+    "elapsed_s": 13.557,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3073,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Rick_Yune:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 130,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rick Yune was on a show that aired on Netflix.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "443fe352a3449b3db3c433ccd10671c25a8a547034039af5ef2e4ca5993d1e3d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870684.563304,
+      "end_wall": 1792870696.4032261,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870684.563304,
+    "start_mono": 540241.270691291,
+    "end_wall": 1792870696.4032261,
+    "end_mono": 540253.110573916,
+    "raw_response": "{\"query\": \"did rick yune appear on a netflix show\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11837240291,
+     "load_duration": 10184817250,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 399613834,
+     "eval_count": 15,
+     "eval_duration": 932207126,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:16.402061Z"
+    },
+    "elapsed_s": 11.84,
+    "query_used": "did rick yune appear on a netflix show",
+    "query_source": "json",
+    "query_arrival_seq": 3074
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "did rick yune appear on a netflix show",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rick_Yune:0",
+       "score_q": 15601
+      },
+      {
+       "passage_key": "fever17:Johnny_Yune:0",
+       "score_q": 14510
+      },
+      {
+       "passage_key": "fever17:Yune:0",
+       "score_q": 14322
+      },
+      {
+       "passage_key": "fever17:Karl_Yune:0",
+       "score_q": 10164
+      },
+      {
+       "passage_key": "fever17:Ultimate_Beastmaster:0",
+       "score_q": 9770
+      }
+     ],
+     "retrieval_sha256": "31f4bb25f0eca757f819b60d9acaa6340abbd75b545b3939fda8e1f85407b020"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "31f4bb25f0eca757f819b60d9acaa6340abbd75b545b3939fda8e1f85407b020",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rick_Yune:0",
+      "content_sha256": "fa28643dd01b44dfbd1a66398c94082601716a877789af62a0393db9bdc776b8",
+      "chars": 431
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Johnny_Yune:0",
+      "content_sha256": "99f072b09f9803692947715bf90756debc4074ed8e270333876acfef65fcf182",
+      "chars": 797
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Yune:0",
+      "content_sha256": "97cd9ab72915ac50a9217bfd395da5dd85e23d7bfa873733961f41dc52a8efa2",
+      "chars": 281
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Karl_Yune:0",
+      "content_sha256": "717739fdd99e0d5a93de9465a6d4c86ea589e87d2b7ccf5d6d4b8808c500aa62",
+      "chars": 67
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Ultimate_Beastmaster:0",
+      "content_sha256": "b6f4ef02b9e73c0c54ece28f8ed4d410bccdde64817e220999847994bce3c526",
+      "chars": 718
+     }
+    ],
+    "elapsed_s": 0.0234
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rick Yune was on a show that aired on Netflix.\n\nEvidence passages from your search for \"did rick yune appear on a netflix show\":\n<<<PASSAGES\n[P1] Rick Yune\nRick Yune ( born August 22 , 1971 ) is an American actor , screenwriter , producer , martial artist and former model . His most notable roles have been in the movies Snow Falling on Cedars , the first Fast and Furious film The Fast and the Furious , and in the James Bond movie Die Another Day . He was part of the main cast of the Netflix original series Marco Polo until the series was cancelled on December 12 , 2016 .\n\n[P2] Johnny Yune\nJohnny Yune is a Korean -- American actor , singer and comedian . He played the lead in the 1980s films They Call Me Bruce ? and They Still Call Me Bruce . Yune 's big break came at The Tonight Show Starring Johnny Carson . Yune stated that because actor Charlton Heston did not arrive on time , he was given over twenty minutes on the show to make a good impression . Carson liked Yune and had him on the show over 30 times . Yune also appeared in his own special on NBC . Johnny Yune performed at the 1988 Summer Olympics at Seoul along with Bob Hope and Brooke Shields . From 1989 to 1990 , he hosted the Johnny Yune Show , the first Americanized talk show in Korea . The show was a great hit , but only after a year , Yune decided to leave KBS due to limited freedom of the media .\n\n[P3] Yune\nYune is a Korean surname , also spelled Yoon . Notable people with the surname include : Johnny Yune , a Korean-American actor and comedian Karl Yune ( born 1975 ) , an American actor Rick Yune ( born 1971 ) , an American actor Tommy Yune , a Korean American comic book author\n\n[P4] Karl Yune\nKarl Yune ( born April 16 , 1975 ) is an American actor .\n\n[P5] Ultimate Beastmaster\nUltimate Beastmaster is an American competition reality show that premiered on Netflix on February 24 , 2017 . The show consists of 10 Beastmaster episodes which were released simultaneously on Netflix worldwide . The show was filmed in Santa Clarita , California , over the course of eight nights . The show differentiates itself from other competition shows by showcasing not only international talent , but by producing six localized versions , featuring select television hosts , actors , comedians and athletes as commentators from the six countries competing in the show . Reactions from all countries ' hosts appear in each localized versions , especially during course clearing victories .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f7a685c08b04e22361f9ad1791c0615b9d2696c4ce094f35ad42e2b6bd35e233",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870696.426883,
+      "end_wall": 1792870707.8673742,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3074,
+    "start_wall": 1792870696.426883,
+    "start_mono": 540253.134232708,
+    "end_wall": 1792870707.8673742,
+    "end_mono": 540264.5746855,
+    "raw_response": "{\n  \"reasoning\": \"The passage does not mention anything about Rick Yune being on a show that aired on Netflix, only mentioning his participation in the Marco Polo series.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11436829167,
+     "load_duration": 7362280792,
+     "prompt_eval_count": 831,
+     "prompt_eval_duration": 1366028916,
+     "eval_count": 64,
+     "eval_duration": 1561928879,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:38:27.864866Z"
+    },
+    "elapsed_s": 11.44,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3074,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 152,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "olmo2:7b": "39d05afb130f073136704f3dafc93e6da5efbe2f50753f45c5f4ebfa311846a9",
+  "exaone3.5:7.8b": "c886dcc9b4729d476f6ca264a019c080575ac24c0dbb08278c8e904d20391767",
+  "granite3.3:2b": "910ced78a87bf7c0a897b081fc8faba695a7f25b7561a5747a69fe4d683b39d2",
+  "falcon3:3b": "8baa671cd7148ea69d15b551c2f636fc2f0b46a970b43ef91326b69e1a8042ab",
+  "nemotron-mini:4b": "31f4bb25f0eca757f819b60d9acaa6340abbd75b545b3939fda8e1f85407b020"
+ },
+ "item_start_wall": 1792870684.562377,
+ "item_wall_s": 23.305,
+ "ollama_ps_samples": [
+  [
+   1792870684.563,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870686.566,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870688.578,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870690.583,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870692.59,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792870694.598,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870696.603,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870698.614,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870700.623,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870702.624,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870704.628,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870706.63,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

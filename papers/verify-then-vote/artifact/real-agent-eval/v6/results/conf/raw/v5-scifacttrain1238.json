@@ -1,0 +1,1308 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1238",
+ "order": 516,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1238",
+  "order": 516,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The most prevalent adverse events to Semaglutide are gastrointestinal."
+ },
+ "item_view_sha256": "49c0bc11faf5f4d6b7514cc4ab8b13579796a10aa7588f9e50dcb0f49297567e",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "1feedca322851b62a85e0e7031dbf8205839da59d2a491b59bce508865eadd2a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792867744.202142,
+      "end_wall": 1792867745.435835,
+      "error": null
+     }
+    ],
+    "start_wall": 1792867744.202142,
+    "start_mono": 537300.917038208,
+    "end_wall": 1792867745.435835,
+    "end_mono": 537302.150725833,
+    "raw_response": "{\"query\": \"Semaglutide adverse events prevalence gastrointestinal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1231493125,
+     "load_duration": 119724292,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 332820208,
+     "eval_count": 17,
+     "eval_duration": 587246001,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:05.435228Z"
+    },
+    "elapsed_s": 1.234,
+    "query_used": "Semaglutide adverse events prevalence gastrointestinal",
+    "query_source": "json",
+    "query_arrival_seq": 2580
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Semaglutide adverse events prevalence gastrointestinal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:21958900:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:42404093:1",
+       "score_q": 718
+      },
+      {
+       "passage_key": "scifact:44672703:1",
+       "score_q": 716
+      },
+      {
+       "passage_key": "scifact:29955650:0",
+       "score_q": 713
+      },
+      {
+       "passage_key": "scifact:44672703:0",
+       "score_q": 710
+      }
+     ],
+     "retrieval_sha256": "705503b1c5a34e78086f58b420861ccbd5ce9f8d840371a89270475345b1dd23"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "705503b1c5a34e78086f58b420861ccbd5ce9f8d840371a89270475345b1dd23",
+    "query_embedding_sha256": "32a91c28e09068e9c58945d0a5d944d54590b89574bd3de32089b6040fe846d9",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:21958900:0",
+      "content_sha256": "100395f99393a34e531d4b2a3eab6416b4294840e5cdd8cb41a40537beac4498",
+      "chars": 1127
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:42404093:1",
+      "content_sha256": "175b0a79714cd3c3b894c2106a64c7ce4f5a93d17a91a4a212d2682c62cac62b",
+      "chars": 1113
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44672703:1",
+      "content_sha256": "f81201cfc241563978bf39be8d4b817fae09c48b3725586cf3970d6ddde0c0a8",
+      "chars": 998
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29955650:0",
+      "content_sha256": "4865ff1c7479e979ec5ca91a60fe6defc1275e162a9cd0a3798ac20ad236752b",
+      "chars": 1089
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:44672703:0",
+      "content_sha256": "a0561ea347b143116da062279f17fd2752edcecdc89a658c9f0c1ff7a28ef0fa",
+      "chars": 1022
+     }
+    ],
+    "elapsed_s": 5.1539
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nEvidence passages from your search for \"Semaglutide adverse events prevalence gastrointestinal\":\n<<<PASSAGES\n[P1] Variability in risk of gastrointestinal complications with individual non-steroidal anti-inflammatory drugs: results of a collaborative meta-analysis.\nOBJECTIVE To compare the relative risks of serious gastrointestinal complications reported with individual non-steroidal anti-inflammatory drugs. DESIGN Systematic review of controlled epidemiological studies that found a relation between use of the drugs and admission to hospital for haemorrhage or perforation. SETTING Hospital and community based case-control and cohort studies. MAIN OUTCOME MEASURES (a) Estimated relative risks of gastrointestinal complications with use of individual drugs, exposure to ibuprofen being used as reference; (b) a ranking that best summarised the sequence of relative risks observed in the studies. RESULTS 12 studies met the inclusion criteria. 11 provided comparative data on ibuprofen and other drugs. Ibuprofen ranked lowest or equal lowest for risk in 10 of the 11 studies. Pooled relative risks calculated with exposure to ibuprofen used as reference were all significantly greater than 1.0 (interval of point estimates 1.6 to 9.2).\n\n[P2] Incidence of adverse drug events and potential adverse drug events. Implications for prevention. ADE Prevention Study Group.\nExtrapolated event rates were 6.5 ADEs and 5.5 potential ADEs per 100 nonobstetrical admissions, for mean numbers per hospital per year of approximately 1900 ADEs and 1600 potential ADEs. Of all ADEs, 1% were fatal (none preventable), 12% life-threatening, 30% serious, and 57% significant. Twenty-eight percent were judged preventable. Of the life-threatening and serious ADEs, 42% were preventable, compared with 18% of significant ADEs. Errors resulting in preventable ADEs occurred most often at the stages of ordering (56%) and administration (34%); transcription (6%) and dispensing errors (4%) were less common. Errors were much more likely to be intercepted if the error occurred earlier in the process: 48% at the ordering stage vs 0% at the administration stage. CONCLUSION Adverse drug events were common and often preventable; serious ADEs were more likely to be preventable. Most resulted from errors at the ordering stage, but many also occurred at the administration stage.\n\n[P3] Increased short- and long-term risk of inflammatory bowel disease after salmonella or campylobacter gastroenteritis.\nRESULTS A first-time diagnosis of IBD was reported in 107 exposed (1.2%) and 73 unexposed individuals (0.5%). By age, gender, and comorbidity adjusted Cox proportional hazards regression analysis, the hazard ratio (95% confidence interval) for IBD was 2.9 (2.2-3.9) for the whole period and 1.9 (1.4-2.6) if the first year after the Salmonella/Campylobacter infection was excluded. The increased risk in exposed subjects was observed throughout the 15-year observation period. The increased risk was similar for Salmonella (n = 6463) and Campylobacter (n = 6685) and for a first-time diagnosis of Crohn's disease (n = 47) and ulcerative colitis (n = 133). CONCLUSIONS In our population-based cohort study with complete follow-up, an increased risk of IBD was demonstrated in individuals notified in laboratory registries with an episode of Salmonella/Campylobacter gastroenteritis.\n\n[P4] Study of infectious intestinal disease in England: rates in the community, presenting to general practice, and reported to national surveillance. The Infectious Intestinal Disease Study Executive.\nOBJECTIVE To establish the incidence and aetiology of infectious intestinal disease in the community and presenting to general practitioners. Comparison with incidence and aetiology of cases reaching national laboratory based surveillance. DESIGN Population based community cohort incidence study, general practice based incidence studies, and case linkage to national laboratory surveillance. SETTING 70 general practices throughout England. PARTICIPANTS 459 975 patients served by the practices. Community surveillance of 9776 randomly selected patients. MAIN OUTCOME MEASURES Incidence of infectious intestinal disease in community and reported to general practice. RESULTS 781 cases were identified in the community cohort, giving an incidence of 19.4/100 person years (95% confidence interval 18.1 to 20.8). 8770 cases presented to general practice (3.3/100 person years (2.94 to 3.75)).\n\n[P5] Increased short- and long-term risk of inflammatory bowel disease after salmonella or campylobacter gastroenteritis.\nBACKGROUND & AIMS Various commensal enteric and potentially pathogenic bacteria may be involved in the pathogenesis of inflammatory bowel diseases (IBD). We compared the risk of IBD between a cohort of patients with documented Salmonella or Campylobacter gastroenteritis and an age- and gender-matched control group from the same population in Denmark. METHODS We identified 13,324 patients with Salmonella/Campylobacter gastroenteritis from laboratory registries in North Jutland and Aarhus counties, Denmark, from 1991 through 2003, and 26,648 unexposed controls from the same counties. Of these, 176 exposed patients with IBD before the infection, their 352 unexposed controls, and 80 unexposed individuals with IBD before the Salmonella/Campylobacter infection were excluded. The final study cohort of 13,148 exposed and 26,216 unexposed individuals were followed for up to 15 years (mean, 7.5 years).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a4ac9d49e4a293e21d26c455761ff511116bffbb0845e1165594a973e4870952",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792867750.590367,
+      "end_wall": 1792867765.9953122,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2580,
+    "start_wall": 1792867750.590367,
+    "start_mono": 537307.305240083,
+    "end_wall": 1792867765.9953122,
+    "end_mono": 537322.710127375,
+    "raw_response": "{\"reasoning\": \"The evidence from multiple passages indicates that gastrointestinal adverse events are a significant concern for patients using Semaglutide. This is supported by the occurrence of gastrointestinal events in various studies, although the severity and prevalence are not explicitly stated.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15402263333,
+     "load_duration": 6563572291,
+     "prompt_eval_count": 1530,
+     "prompt_eval_duration": 3957180459,
+     "eval_count": 89,
+     "eval_duration": 3924200625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:25.993518Z"
+    },
+    "elapsed_s": 15.405,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2580,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:21958900:0",
+     "scifact:42404093:1",
+     "scifact:29955650:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 287,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "1feedca322851b62a85e0e7031dbf8205839da59d2a491b59bce508865eadd2a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792867744.202073,
+      "end_wall": 1792867746.23699,
+      "error": null
+     }
+    ],
+    "start_wall": 1792867744.202073,
+    "start_mono": 537300.91696925,
+    "end_wall": 1792867746.23699,
+    "end_mono": 537302.951877875,
+    "raw_response": "{\"query\": \"Semaglutide adverse events gastrointestinal frequency\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2032215167,
+     "load_duration": 1202254333,
+     "prompt_eval_count": 182,
+     "prompt_eval_duration": 364353083,
+     "eval_count": 19,
+     "eval_duration": 388459835,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:06.23621Z"
+    },
+    "elapsed_s": 2.035,
+    "query_used": "Semaglutide adverse events gastrointestinal frequency",
+    "query_source": "json",
+    "query_arrival_seq": 2582
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Semaglutide adverse events gastrointestinal frequency",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3654468:2",
+       "score_q": 12162
+      },
+      {
+       "passage_key": "scifact:37628989:1",
+       "score_q": 8724
+      },
+      {
+       "passage_key": "scifact:3654468:1",
+       "score_q": 8161
+      },
+      {
+       "passage_key": "scifact:37628989:0",
+       "score_q": 8123
+      },
+      {
+       "passage_key": "scifact:29387024:3",
+       "score_q": 6932
+      }
+     ],
+     "retrieval_sha256": "c99b213f45dcfec61f1719f444c5b17c72da88f1ed7d0cf168a8fdf7bc5967d1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c99b213f45dcfec61f1719f444c5b17c72da88f1ed7d0cf168a8fdf7bc5967d1",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3654468:2",
+      "content_sha256": "6fe7154789c0a42bacd5a9af9905a3f07a67e167e6b314f0526c1b299def6676",
+      "chars": 1124
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:37628989:1",
+      "content_sha256": "e50d75537df84794b3632306700c1e1a224d69b7987d5d4522be6de224f9db47",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3654468:1",
+      "content_sha256": "03412dd245081385ae3067e6fd1e80fd232ad15f69b2d72f21b0a44dcb78ada2",
+      "chars": 1031
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:37628989:0",
+      "content_sha256": "5f385690126bb9df3b9c5dfa0e5b936cd483e833c4b128781359b1b52a1ac14a",
+      "chars": 1058
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29387024:3",
+      "content_sha256": "c5cd069a2ba1ff9ed73cc856dab8bea6aa4fca1d845d025df1dd27be82e8ee0c",
+      "chars": 1088
+     }
+    ],
+    "elapsed_s": 0.0033
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nEvidence passages from your search for \"Semaglutide adverse events gastrointestinal frequency\":\n<<<PASSAGES\n[P1] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nMean change in HbA1c level from baseline to week 26 decreased with oral semaglutide (dosage-dependent range, −0.7% to −1.9%) and subcutaneous semaglutide (−1.9%) and placebo (−0.3%); oral semaglutide reductions were significant vs placebo (dosage-dependent estimated treatment difference [ETD] range for oral semaglutide vs placebo, –0.4% to –1.6%; P = .01 for 2.5 mg, <.001 for all other dosages). Reductions in body weight were greater with oral semaglutide (dosage-dependent range, −2.1 kg to −6.9 kg) and subcutaneous semaglutide (−6.4 kg) vs placebo (−1.2 kg), and significant for oral semaglutide dosages of 10 mg or more vs placebo (dosage-dependent ETD range, –0.9 to –5.7 kg; P < .001). Adverse events were reported by 63% to 86% (371 of 490 patients) in the oral semaglutide groups, 81% (56 of 69 patients) in the subcutaneous semaglutide group, and 68% (48 of 71 patients) in the placebo group; mild to moderate gastrointestinal events were most common.\n\n[P2] The safety of intravenous fluorescein for confocal laser endomicroscopy in the gastrointestinal tract.\nThe most common dose of contrast agent was 2.5-5 mL of 10% sodium fluorescein. No serious adverse events were reported. Mild adverse events occurred in 1.4% of individuals, including nausea/vomiting, transient hypotension without shock, injection site erythema, diffuse rash and mild epigastric pain. The limitation is that only immediate post procedure events were actively monitored. CONCLUSIONS Use of intravenous fluorescein for gastrointestinal CLE appears to be safe with few acute complications.\n\n[P3] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nInterventions Once-daily oral semaglutide of 2.5 mg (n = 70), 5 mg (n = 70), 10 mg (n = 70), 20 mg (n = 70), 40-mg 4-week dose escalation (standard escalation; n = 71), 40-mg 8-week dose escalation (slow escalation; n = 70), 40-mg 2-week dose escalation (fast escalation, n = 70), oral placebo (n = 71; double-blind) or once-weekly subcutaneous semaglutide of 1.0 mg (n = 70) for 26 weeks. Main Outcomes and Measures The primary end point was change in hemoglobing A1c (HbA1c) from baseline to week 26. Secondary end points included change from baseline in body weight and adverse events. Results Baseline characteristics were comparable across treatment groups. Of the 632 randomized patients (mean age, 57.1 years [SD, 10.6]; men, 395 (62.7%); diabetes duration, 6.3 years [SD, 5.2]; body weight, 92.3 kg [SD, 16.8]; BMI, 31.7 [SD, 4.3]), 583 (92%) completed the trial.\n\n[P4] The safety of intravenous fluorescein for confocal laser endomicroscopy in the gastrointestinal tract.\nBACKGROUND Confocal laser endomicroscopy (CLE) is rapidly emerging as a valuable tool for gastrointestinal endoscopic imaging. Fluorescent contrast agents are used to optimize imaging with CLE, and intravenous fluorescein is the most widely used contrast agent. Fluorescein is FDA-cleared for diagnostic angiography of the retina. For these indications, the safety profile of fluorescein has been well-documented; however, to date, fluorescein is not cleared for use with CLE. AIMS To estimate the rate of serious and total adverse events attributable to intravenous fluorescein when used for gastrointestinal CLE. METHODS We performed a cross sectional survey of 16 International Academic Medical Centres with active research protocols in CLE that involved intravenous fluorescein. Centres using i.v. fluorescein for CLE who were actively monitored for adverse events were included. RESULTS Sixteen centres performed 2272 gastrointestinal CLE procedures.\n\n[P5] Continuous glucose monitoring in pregnant women with type 1 diabetes (CONCEPTT): a multicentre international randomised controlled trial\nSerious adverse events occurred in 13 (6%) participants in the pregnancy trial (eight [7%] CGM, five [5%] control) and in three (3%) participants in the planning pregnancy trial (two [4%] CGM and one [2%] control). The most common adverse events were skin reactions occurring in 49 (48%) of 103 CGM participants and eight (8%) of 104 control participants during pregnancy and in 23 (44%) of 52 CGM participants and five (9%) of 57 control participants in the planning pregnancy trial. The most common serious adverse events were gastrointestinal (nausea and vomiting in four participants during pregnancy and three participants planning pregnancy). INTERPRETATION Use of CGM during pregnancy in patients with type 1 diabetes is associated with improved neonatal outcomes, which are likely to be attributed to reduced exposure to maternal hyperglycaemia. CGM should be offered to all pregnant women with type 1 diabetes using intensive insulin therapy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "148863d834175513f34ce319121e7203a5c462bd06e39da8717807ea68236826",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792867746.24077,
+      "end_wall": 1792867767.1711519,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2581,
+    "start_wall": 1792867746.24077,
+    "start_mono": 537302.955658958,
+    "end_wall": 1792867767.1711519,
+    "end_mono": 537323.885964041,
+    "raw_response": "{\n  \"reasoning\": \"The claim asserts that Semaglutide's most prevalent adverse events are gastrointestinal. Examining the provided evidence passages, several sources confirm this: [P3] and [P5] both mention gastrointestinal events as one of the most common adverse effects associated with Semaglutide usage.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P3\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20926574417,
+     "load_duration": 9462201125,
+     "prompt_eval_count": 1845,
+     "prompt_eval_duration": 5506235584,
+     "eval_count": 109,
+     "eval_duration": 5488718453,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:27.168304Z"
+    },
+    "elapsed_s": 20.93,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2581,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:3654468:1",
+     "scifact:29387024:3"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 288,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "1feedca322851b62a85e0e7031dbf8205839da59d2a491b59bce508865eadd2a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792867744.2018619,
+      "end_wall": 1792867749.519625,
+      "error": null
+     }
+    ],
+    "start_wall": 1792867744.2018619,
+    "start_mono": 537300.9167585,
+    "end_wall": 1792867749.519625,
+    "end_mono": 537306.234501416,
+    "raw_response": "{\"query\": \"Semaglutide adverse events gastrointestinal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5314831042,
+     "load_duration": 3976045625,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 767212833,
+     "eval_count": 13,
+     "eval_duration": 460220334,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:09.518664Z"
+    },
+    "elapsed_s": 5.318,
+    "query_used": "Semaglutide adverse events gastrointestinal",
+    "query_source": "json",
+    "query_arrival_seq": 2583
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Semaglutide adverse events gastrointestinal",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3654468:2",
+       "score_q": 12162
+      },
+      {
+       "passage_key": "scifact:37628989:1",
+       "score_q": 8724
+      },
+      {
+       "passage_key": "scifact:3654468:1",
+       "score_q": 8161
+      },
+      {
+       "passage_key": "scifact:37628989:0",
+       "score_q": 8123
+      },
+      {
+       "passage_key": "scifact:29387024:3",
+       "score_q": 6932
+      }
+     ],
+     "retrieval_sha256": "526add0896c4875f8c40e065eeb3ecf364d431de911b734398c632d95141b3a8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "526add0896c4875f8c40e065eeb3ecf364d431de911b734398c632d95141b3a8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3654468:2",
+      "content_sha256": "6fe7154789c0a42bacd5a9af9905a3f07a67e167e6b314f0526c1b299def6676",
+      "chars": 1124
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:37628989:1",
+      "content_sha256": "e50d75537df84794b3632306700c1e1a224d69b7987d5d4522be6de224f9db47",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3654468:1",
+      "content_sha256": "03412dd245081385ae3067e6fd1e80fd232ad15f69b2d72f21b0a44dcb78ada2",
+      "chars": 1031
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:37628989:0",
+      "content_sha256": "5f385690126bb9df3b9c5dfa0e5b936cd483e833c4b128781359b1b52a1ac14a",
+      "chars": 1058
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29387024:3",
+      "content_sha256": "c5cd069a2ba1ff9ed73cc856dab8bea6aa4fca1d845d025df1dd27be82e8ee0c",
+      "chars": 1088
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nEvidence passages from your search for \"Semaglutide adverse events gastrointestinal\":\n<<<PASSAGES\n[P1] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nMean change in HbA1c level from baseline to week 26 decreased with oral semaglutide (dosage-dependent range, −0.7% to −1.9%) and subcutaneous semaglutide (−1.9%) and placebo (−0.3%); oral semaglutide reductions were significant vs placebo (dosage-dependent estimated treatment difference [ETD] range for oral semaglutide vs placebo, –0.4% to –1.6%; P = .01 for 2.5 mg, <.001 for all other dosages). Reductions in body weight were greater with oral semaglutide (dosage-dependent range, −2.1 kg to −6.9 kg) and subcutaneous semaglutide (−6.4 kg) vs placebo (−1.2 kg), and significant for oral semaglutide dosages of 10 mg or more vs placebo (dosage-dependent ETD range, –0.9 to –5.7 kg; P < .001). Adverse events were reported by 63% to 86% (371 of 490 patients) in the oral semaglutide groups, 81% (56 of 69 patients) in the subcutaneous semaglutide group, and 68% (48 of 71 patients) in the placebo group; mild to moderate gastrointestinal events were most common.\n\n[P2] The safety of intravenous fluorescein for confocal laser endomicroscopy in the gastrointestinal tract.\nThe most common dose of contrast agent was 2.5-5 mL of 10% sodium fluorescein. No serious adverse events were reported. Mild adverse events occurred in 1.4% of individuals, including nausea/vomiting, transient hypotension without shock, injection site erythema, diffuse rash and mild epigastric pain. The limitation is that only immediate post procedure events were actively monitored. CONCLUSIONS Use of intravenous fluorescein for gastrointestinal CLE appears to be safe with few acute complications.\n\n[P3] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nInterventions Once-daily oral semaglutide of 2.5 mg (n = 70), 5 mg (n = 70), 10 mg (n = 70), 20 mg (n = 70), 40-mg 4-week dose escalation (standard escalation; n = 71), 40-mg 8-week dose escalation (slow escalation; n = 70), 40-mg 2-week dose escalation (fast escalation, n = 70), oral placebo (n = 71; double-blind) or once-weekly subcutaneous semaglutide of 1.0 mg (n = 70) for 26 weeks. Main Outcomes and Measures The primary end point was change in hemoglobing A1c (HbA1c) from baseline to week 26. Secondary end points included change from baseline in body weight and adverse events. Results Baseline characteristics were comparable across treatment groups. Of the 632 randomized patients (mean age, 57.1 years [SD, 10.6]; men, 395 (62.7%); diabetes duration, 6.3 years [SD, 5.2]; body weight, 92.3 kg [SD, 16.8]; BMI, 31.7 [SD, 4.3]), 583 (92%) completed the trial.\n\n[P4] The safety of intravenous fluorescein for confocal laser endomicroscopy in the gastrointestinal tract.\nBACKGROUND Confocal laser endomicroscopy (CLE) is rapidly emerging as a valuable tool for gastrointestinal endoscopic imaging. Fluorescent contrast agents are used to optimize imaging with CLE, and intravenous fluorescein is the most widely used contrast agent. Fluorescein is FDA-cleared for diagnostic angiography of the retina. For these indications, the safety profile of fluorescein has been well-documented; however, to date, fluorescein is not cleared for use with CLE. AIMS To estimate the rate of serious and total adverse events attributable to intravenous fluorescein when used for gastrointestinal CLE. METHODS We performed a cross sectional survey of 16 International Academic Medical Centres with active research protocols in CLE that involved intravenous fluorescein. Centres using i.v. fluorescein for CLE who were actively monitored for adverse events were included. RESULTS Sixteen centres performed 2272 gastrointestinal CLE procedures.\n\n[P5] Continuous glucose monitoring in pregnant women with type 1 diabetes (CONCEPTT): a multicentre international randomised controlled trial\nSerious adverse events occurred in 13 (6%) participants in the pregnancy trial (eight [7%] CGM, five [5%] control) and in three (3%) participants in the planning pregnancy trial (two [4%] CGM and one [2%] control). The most common adverse events were skin reactions occurring in 49 (48%) of 103 CGM participants and eight (8%) of 104 control participants during pregnancy and in 23 (44%) of 52 CGM participants and five (9%) of 57 control participants in the planning pregnancy trial. The most common serious adverse events were gastrointestinal (nausea and vomiting in four participants during pregnancy and three participants planning pregnancy). INTERPRETATION Use of CGM during pregnancy in patients with type 1 diabetes is associated with improved neonatal outcomes, which are likely to be attributed to reduced exposure to maternal hyperglycaemia. CGM should be offered to all pregnant women with type 1 diabetes using intensive insulin therapy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dd893523bc351498695ef0488011573375f7c1df8e84432eff1ef91e9b2704af",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792867749.5203478,
+      "end_wall": 1792867778.0162401,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2582,
+    "start_wall": 1792867749.5203478,
+    "start_mono": 537306.235224875,
+    "end_wall": 1792867778.0162401,
+    "end_mono": 537334.731012291,
+    "raw_response": "{\"reasoning\": \"The claim states that the most prevalent adverse events to Semaglutide are gastrointestinal. Evidence passages P1, P3, and P5 mention adverse events associated with Semaglutide, specifically mentioning gastrointestinal issues such as nausea/vomiting and epigastric pain as common occurrences. These passages support the claim, as they directly indicate gastrointestinal adverse events are prevalent with Semaglutide use. No passages explicitly refute this claim, and considering the nature of the passages, they provide adequate evidence to support the claim. Adverse events like nausea/vomiting and \"\n\n,\"answer\": \"SUPPORTED\",\n\n\"citations\": [\"P1\", \"P3\", \"P5\"],\n\n\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28491375833,
+     "load_duration": 48043083,
+     "prompt_eval_count": 1515,
+     "prompt_eval_duration": 5829420042,
+     "eval_count": 150,
+     "eval_duration": 21236342166,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:38.012898Z"
+    },
+    "elapsed_s": 28.496,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2582,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:3654468:2",
+     "scifact:3654468:1",
+     "scifact:29387024:3"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "1feedca322851b62a85e0e7031dbf8205839da59d2a491b59bce508865eadd2a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792867744.202205,
+      "end_wall": 1792867754.543185,
+      "error": null
+     }
+    ],
+    "start_wall": 1792867744.202205,
+    "start_mono": 537300.917100833,
+    "end_wall": 1792867754.543185,
+    "end_mono": 537311.2580425,
+    "raw_response": "{\"query\": \"adverse events Semaglutide gastrointestinal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10338122750,
+     "load_duration": 5797071708,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 961679583,
+     "eval_count": 15,
+     "eval_duration": 3282453539,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:14.542073Z"
+    },
+    "elapsed_s": 10.341,
+    "query_used": "adverse events Semaglutide gastrointestinal",
+    "query_source": "json",
+    "query_arrival_seq": 2584
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "adverse events Semaglutide gastrointestinal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:21958900:0",
+       "score_q": 716
+      },
+      {
+       "passage_key": "scifact:11254040:1",
+       "score_q": 711
+      },
+      {
+       "passage_key": "scifact:44672703:0",
+       "score_q": 711
+      },
+      {
+       "passage_key": "scifact:44672703:1",
+       "score_q": 708
+      },
+      {
+       "passage_key": "scifact:42404093:0",
+       "score_q": 695
+      }
+     ],
+     "retrieval_sha256": "b0b098a37d38f29c56ec54bb3f2f2b05ec6664422499e811dc7269b3403533ef"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b0b098a37d38f29c56ec54bb3f2f2b05ec6664422499e811dc7269b3403533ef",
+    "query_embedding_sha256": "67de7221e17197e9d7eb26d1b089a6983cf7e1c64a1eca4ac2c3ef576bcbdf61",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:21958900:0",
+      "content_sha256": "100395f99393a34e531d4b2a3eab6416b4294840e5cdd8cb41a40537beac4498",
+      "chars": 1127
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11254040:1",
+      "content_sha256": "4ccabec1d2b28d48c791481a8ec8a8a4d9cd4ccd7dcb6e1682835f7877a2064b",
+      "chars": 921
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44672703:0",
+      "content_sha256": "a0561ea347b143116da062279f17fd2752edcecdc89a658c9f0c1ff7a28ef0fa",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:44672703:1",
+      "content_sha256": "f81201cfc241563978bf39be8d4b817fae09c48b3725586cf3970d6ddde0c0a8",
+      "chars": 998
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:42404093:0",
+      "content_sha256": "8fa304cb207953d4bcd92ed37cd00129adb99d280478aa602d45c60227d8aadc",
+      "chars": 1035
+     }
+    ],
+    "elapsed_s": 0.1341
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nEvidence passages from your search for \"adverse events Semaglutide gastrointestinal\":\n<<<PASSAGES\n[P1] Variability in risk of gastrointestinal complications with individual non-steroidal anti-inflammatory drugs: results of a collaborative meta-analysis.\nOBJECTIVE To compare the relative risks of serious gastrointestinal complications reported with individual non-steroidal anti-inflammatory drugs. DESIGN Systematic review of controlled epidemiological studies that found a relation between use of the drugs and admission to hospital for haemorrhage or perforation. SETTING Hospital and community based case-control and cohort studies. MAIN OUTCOME MEASURES (a) Estimated relative risks of gastrointestinal complications with use of individual drugs, exposure to ibuprofen being used as reference; (b) a ranking that best summarised the sequence of relative risks observed in the studies. RESULTS 12 studies met the inclusion criteria. 11 provided comparative data on ibuprofen and other drugs. Ibuprofen ranked lowest or equal lowest for risk in 10 of the 11 studies. Pooled relative risks calculated with exposure to ibuprofen used as reference were all significantly greater than 1.0 (interval of point estimates 1.6 to 9.2).\n\n[P2] Adverse Events Associated With the Treatment of Multidrug-Resistant Tuberculosis: A Systematic Review and Meta-analysis.\nThe 3 most common side effects were gastrointestinal disorders (32.1%), ototoxicity (14.6%), and psychiatric disorders (13.2%). Subgroup analyses based on each characteristic (study population, previous tuberculosis treated, human immunodeficiency virus prevalence, and length of treatment) did not show any significant difference between groups. Additionally, among 1519 patients who developed ADEs with available data of impact on MDR-TB therapy, 70.4% required change of MDR-TB treatment. Adverse events were common among MDR-TB cases, occurring in more than half of the cases, with over two-thirds requiring change of anti-MDR-TB treatment. MDR-TB patients should be monitored closely and managed aggressively for side effects during therapy, especially for ototoxicity and psychiatric disorders.\n\n[P3] Increased short- and long-term risk of inflammatory bowel disease after salmonella or campylobacter gastroenteritis.\nBACKGROUND & AIMS Various commensal enteric and potentially pathogenic bacteria may be involved in the pathogenesis of inflammatory bowel diseases (IBD). We compared the risk of IBD between a cohort of patients with documented Salmonella or Campylobacter gastroenteritis and an age- and gender-matched control group from the same population in Denmark. METHODS We identified 13,324 patients with Salmonella/Campylobacter gastroenteritis from laboratory registries in North Jutland and Aarhus counties, Denmark, from 1991 through 2003, and 26,648 unexposed controls from the same counties. Of these, 176 exposed patients with IBD before the infection, their 352 unexposed controls, and 80 unexposed individuals with IBD before the Salmonella/Campylobacter infection were excluded. The final study cohort of 13,148 exposed and 26,216 unexposed individuals were followed for up to 15 years (mean, 7.5 years).\n\n[P4] Increased short- and long-term risk of inflammatory bowel disease after salmonella or campylobacter gastroenteritis.\nRESULTS A first-time diagnosis of IBD was reported in 107 exposed (1.2%) and 73 unexposed individuals (0.5%). By age, gender, and comorbidity adjusted Cox proportional hazards regression analysis, the hazard ratio (95% confidence interval) for IBD was 2.9 (2.2-3.9) for the whole period and 1.9 (1.4-2.6) if the first year after the Salmonella/Campylobacter infection was excluded. The increased risk in exposed subjects was observed throughout the 15-year observation period. The increased risk was similar for Salmonella (n = 6463) and Campylobacter (n = 6685) and for a first-time diagnosis of Crohn's disease (n = 47) and ulcerative colitis (n = 133). CONCLUSIONS In our population-based cohort study with complete follow-up, an increased risk of IBD was demonstrated in individuals notified in laboratory registries with an episode of Salmonella/Campylobacter gastroenteritis.\n\n[P5] Incidence of adverse drug events and potential adverse drug events. Implications for prevention. ADE Prevention Study Group.\nOBJECTIVES To assess incidence and preventability of adverse drug events (ADEs) and potential ADEs. To analyze preventable events to develop prevention strategies. DESIGN Prospective cohort study. PARTICIPANTS All 4031 adult admissions to a stratified random sample of 11 medical and surgical units in two tertiary care hospitals over a 6-month period. Units included two medical and three surgical intensive care units and four medical and two surgical general care units. MAIN OUTCOME MEASURES Adverse drug events and potential ADEs. METHODS Incidents were detected by stimulated self-report by nurses and pharmacists and by daily review of all charts by nurse investigators. Incidents were subsequently classified by two independent reviewers as to whether they represented ADEs or potential ADEs and as to severity and preventability. RESULTS Over 6 months, 247 ADEs and 194 potential ADEs were identified.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4cb4fc32b72c2cc5c0b6b6837fe86ab4c8d1dc4c5440a59dc341b58e97491171",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792867754.677713,
+      "end_wall": 1792867783.7618802,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2583,
+    "start_wall": 1792867754.677713,
+    "start_mono": 537311.39257125,
+    "end_wall": 1792867783.7618802,
+    "end_mono": 537340.476631166,
+    "raw_response": "{\"reasoning\": \"The passages P2 and P3 support the claim. P2 states that gastrointestinal disorders are common side effects of MDR-TB treatment, and P3 shows that gastroenteritis caused by Salmonella or Campylobacter can increase the risk of IBD. Thus, Semaglutide, a medication used for treating obesity and diabetes, can cause gastrointestinal complications.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29078829833,
+     "load_duration": 16258054916,
+     "prompt_eval_count": 1379,
+     "prompt_eval_duration": 5788717708,
+     "eval_count": 102,
+     "eval_duration": 4899712965,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:43.757268Z"
+    },
+    "elapsed_s": 29.084,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2583,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:11254040:1",
+     "scifact:44672703:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 344,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "1feedca322851b62a85e0e7031dbf8205839da59d2a491b59bce508865eadd2a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792867744.201971,
+      "end_wall": 1792867745.968778,
+      "error": null
+     }
+    ],
+    "start_wall": 1792867744.201971,
+    "start_mono": 537300.916866666,
+    "end_wall": 1792867745.968778,
+    "end_mono": 537302.683666958,
+    "raw_response": "{\"query\": \"semaglutide common side effects gastrointestinal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1763929917,
+     "load_duration": 64779375,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 514477209,
+     "eval_count": 16,
+     "eval_duration": 1057463245,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:05.967695Z"
+    },
+    "elapsed_s": 1.767,
+    "query_used": "semaglutide common side effects gastrointestinal",
+    "query_source": "json",
+    "query_arrival_seq": 2581
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "semaglutide common side effects gastrointestinal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3654468:2",
+       "score_q": 771
+      },
+      {
+       "passage_key": "scifact:3654468:3",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:3654468:1",
+       "score_q": 741
+      },
+      {
+       "passage_key": "scifact:3654468:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:11254040:1",
+       "score_q": 679
+      }
+     ],
+     "retrieval_sha256": "c0a66756f548b8b9e8d9331c0340254191d284cfca24173da63de3d444f5182d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c0a66756f548b8b9e8d9331c0340254191d284cfca24173da63de3d444f5182d",
+    "query_embedding_sha256": "9fa51d3155ee70b42a009c7f85e81c43425a1dd7b79fc1fc433cd3be6163f343",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3654468:2",
+      "content_sha256": "6fe7154789c0a42bacd5a9af9905a3f07a67e167e6b314f0526c1b299def6676",
+      "chars": 1124
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3654468:3",
+      "content_sha256": "b758e5214863fd4b1fe96e311e680c3154a5ca8f6e9f43d9e67ec6ea435eb93f",
+      "chars": 468
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3654468:1",
+      "content_sha256": "03412dd245081385ae3067e6fd1e80fd232ad15f69b2d72f21b0a44dcb78ada2",
+      "chars": 1031
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3654468:0",
+      "content_sha256": "d1d4c173ddbc4171c3c314b0aed6e636d5da90a35b5b0ed4abf44c684cc13d04",
+      "chars": 995
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11254040:1",
+      "content_sha256": "4ccabec1d2b28d48c791481a8ec8a8a4d9cd4ccd7dcb6e1682835f7877a2064b",
+      "chars": 921
+     }
+    ],
+    "elapsed_s": 4.8108
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The most prevalent adverse events to Semaglutide are gastrointestinal.\n\nEvidence passages from your search for \"semaglutide common side effects gastrointestinal\":\n<<<PASSAGES\n[P1] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nMean change in HbA1c level from baseline to week 26 decreased with oral semaglutide (dosage-dependent range, −0.7% to −1.9%) and subcutaneous semaglutide (−1.9%) and placebo (−0.3%); oral semaglutide reductions were significant vs placebo (dosage-dependent estimated treatment difference [ETD] range for oral semaglutide vs placebo, –0.4% to –1.6%; P = .01 for 2.5 mg, <.001 for all other dosages). Reductions in body weight were greater with oral semaglutide (dosage-dependent range, −2.1 kg to −6.9 kg) and subcutaneous semaglutide (−6.4 kg) vs placebo (−1.2 kg), and significant for oral semaglutide dosages of 10 mg or more vs placebo (dosage-dependent ETD range, –0.9 to –5.7 kg; P < .001). Adverse events were reported by 63% to 86% (371 of 490 patients) in the oral semaglutide groups, 81% (56 of 69 patients) in the subcutaneous semaglutide group, and 68% (48 of 71 patients) in the placebo group; mild to moderate gastrointestinal events were most common.\n\n[P2] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nConclusions and Relevance Among patients with type 2 diabetes, oral semaglutide resulted in better glycemic control than placebo over 26 weeks. These findings support phase 3 studies to assess longer-term and clinical outcomes, as well as safety. Trial Registration clinicaltrials.gov Identifier: NCT01923181\n\n[P3] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nInterventions Once-daily oral semaglutide of 2.5 mg (n = 70), 5 mg (n = 70), 10 mg (n = 70), 20 mg (n = 70), 40-mg 4-week dose escalation (standard escalation; n = 71), 40-mg 8-week dose escalation (slow escalation; n = 70), 40-mg 2-week dose escalation (fast escalation, n = 70), oral placebo (n = 71; double-blind) or once-weekly subcutaneous semaglutide of 1.0 mg (n = 70) for 26 weeks. Main Outcomes and Measures The primary end point was change in hemoglobing A1c (HbA1c) from baseline to week 26. Secondary end points included change from baseline in body weight and adverse events. Results Baseline characteristics were comparable across treatment groups. Of the 632 randomized patients (mean age, 57.1 years [SD, 10.6]; men, 395 (62.7%); diabetes duration, 6.3 years [SD, 5.2]; body weight, 92.3 kg [SD, 16.8]; BMI, 31.7 [SD, 4.3]), 583 (92%) completed the trial.\n\n[P4] Effect of Oral Semaglutide Compared With Placebo and Subcutaneous Semaglutide on Glycemic Control in Patients With Type 2 Diabetes: A Randomized Clinical Trial\nImportance Glucagon-like peptide-1 (GLP-1) receptor agonists are effective therapies for the treatment of type 2 diabetes and are all currently available as an injection. Objectives To compare the effects of oral semaglutide with placebo (primary) and open-label subcutaneous semaglutide (secondary) on glycemic control in patients with type 2 diabetes. Design, Setting, and Patients Phase 2, randomized, parallel-group, dosage-finding, 26-week trial with 5-week follow-up at 100 sites (hospital clinics, general practices, and clinical research centers) in 14 countries conducted between December 2013 and December 2014. Of 1106 participants assessed, 632 with type 2 diabetes and insufficient glycemic control using diet and exercise alone or a stable dose of metformin were randomized. Randomization was stratified by metformin use.\n\n[P5] Adverse Events Associated With the Treatment of Multidrug-Resistant Tuberculosis: A Systematic Review and Meta-analysis.\nThe 3 most common side effects were gastrointestinal disorders (32.1%), ototoxicity (14.6%), and psychiatric disorders (13.2%). Subgroup analyses based on each characteristic (study population, previous tuberculosis treated, human immunodeficiency virus prevalence, and length of treatment) did not show any significant difference between groups. Additionally, among 1519 patients who developed ADEs with available data of impact on MDR-TB therapy, 70.4% required change of MDR-TB treatment. Adverse events were common among MDR-TB cases, occurring in more than half of the cases, with over two-thirds requiring change of anti-MDR-TB treatment. MDR-TB patients should be monitored closely and managed aggressively for side effects during therapy, especially for ototoxicity and psychiatric disorders.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4fe863d56b23605afde4f3529c089451322a7c77087783f7fce4710df16fc90d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792867750.780268,
+      "end_wall": 1792867784.1668868,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2584,
+    "start_wall": 1792867750.780268,
+    "start_mono": 537307.495140333,
+    "end_wall": 1792867784.1668868,
+    "end_mono": 537340.881637666,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages indicate that gastrointestinal events were among the most common adverse events reported in clinical trials involving semaglutide for type 2 diabetes patients, suggesting a prevalence linked to gastrointestinal issues. This supports the claim that gastrointestinal adverse events are prevalent with semaglutide use.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 33382077209,
+     "load_duration": 18094315792,
+     "prompt_eval_count": 1563,
+     "prompt_eval_duration": 9121296917,
+     "eval_count": 101,
+     "eval_duration": 5384398867,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:49:44.163372Z"
+    },
+    "elapsed_s": 33.386,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2584,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:3654468:2",
+     "scifact:3654468:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 337,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "705503b1c5a34e78086f58b420861ccbd5ce9f8d840371a89270475345b1dd23",
+  "granite3.3:2b": "c99b213f45dcfec61f1719f444c5b17c72da88f1ed7d0cf168a8fdf7bc5967d1",
+  "olmo2:7b": "526add0896c4875f8c40e065eeb3ecf364d431de911b734398c632d95141b3a8",
+  "nemotron-mini:4b": "b0b098a37d38f29c56ec54bb3f2f2b05ec6664422499e811dc7269b3403533ef",
+  "exaone3.5:7.8b": "c0a66756f548b8b9e8d9331c0340254191d284cfca24173da63de3d444f5182d"
+ },
+ "item_start_wall": 1792867744.2016482,
+ "item_wall_s": 39.965,
+ "ollama_ps_samples": [
+  [
+   1792867744.202,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792867746.209,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867748.215,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792867750.216,
+   [
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867752.22,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792867754.227,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792867756.233,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867758.239,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867760.245,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867762.251,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867764.256,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867766.261,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792867768.267,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867770.272,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867772.279,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867774.286,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867776.29,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867778.296,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792867780.301,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792867782.308,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

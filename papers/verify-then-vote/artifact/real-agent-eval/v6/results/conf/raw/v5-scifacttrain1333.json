@@ -1,0 +1,1287 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1333",
+ "order": 899,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1333",
+  "order": 899,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients."
+ },
+ "item_view_sha256": "5f5e9e5db11d9a729a86e40c6f3823e44fd2b41bbdd2e6829533830b4593c3d7",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a0e45f78ec636d9d94d44e53a65821745ee173c3d6bcdcdb3d504556a8aecca7",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878860.4465542,
+      "end_wall": 1792878862.351804,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878860.4465542,
+    "start_mono": 548417.150074166,
+    "end_wall": 1792878862.351804,
+    "end_mono": 548419.055328208,
+    "raw_response": "{\"query\": \"variant 6q21 radiation therapy-induced second malignancies pediatric hodgkin lymphoma\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1902346250,
+     "load_duration": 105516750,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 438688167,
+     "eval_count": 24,
+     "eval_duration": 1051226169,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:22.350889Z"
+    },
+    "elapsed_s": 1.905,
+    "query_used": "variant 6q21 radiation therapy-induced second malignancies pediatric hodgkin lymphoma",
+    "query_source": "json",
+    "query_arrival_seq": 4495
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "variant 6q21 radiation therapy-induced second malignancies pediatric hodgkin lymphoma",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1649738:0",
+       "score_q": 857
+      },
+      {
+       "passage_key": "scifact:2360905:1",
+       "score_q": 688
+      },
+      {
+       "passage_key": "scifact:27306942:0",
+       "score_q": 675
+      },
+      {
+       "passage_key": "scifact:4312169:0",
+       "score_q": 669
+      },
+      {
+       "passage_key": "scifact:2360905:0",
+       "score_q": 664
+      }
+     ],
+     "retrieval_sha256": "3ecadc961241e1e5d2473bd5a8a839abd8c9a7aaaf171f9f2a321189415aa313"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3ecadc961241e1e5d2473bd5a8a839abd8c9a7aaaf171f9f2a321189415aa313",
+    "query_embedding_sha256": "2180fe506ea5c1ac22c28c35f11ef9d6440690b1384cb50298ac011613048156",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1649738:0",
+      "content_sha256": "13bae46690e8cc56293834026c073eda17f7572d579a77b3cdc7e7fb994970b7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2360905:1",
+      "content_sha256": "4139bfe9dca4f8b0aa13659d26a55744b86fe8d69348263cc6fa12a68cf6b2ef",
+      "chars": 1030
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27306942:0",
+      "content_sha256": "fb434b84b558ba07f9572c48c0a6921109baa44c4399ebf1547aebdfe69fd10a",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4312169:0",
+      "content_sha256": "de471bfdb71eaf97db2d06739d79df5c21ffbc4a900ba8cd19fa40a8873448c7",
+      "chars": 803
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2360905:0",
+      "content_sha256": "94bbbf276b0f59173f4f8d021ce5bb9ca61d0060aaedb0267c951d33a8f28dff",
+      "chars": 1030
+     }
+    ],
+    "elapsed_s": 4.8595
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nEvidence passages from your search for \"variant 6q21 radiation therapy-induced second malignancies pediatric hodgkin lymphoma\":\n<<<PASSAGES\n[P1] Variants at 6q21 implicate PRDM1 in the etiology of therapy-induced second malignancies after Hodgkin's lymphoma\nSurvivors of pediatric Hodgkin's lymphoma are at risk for radiation therapy–induced second malignant neoplasms (SMNs). We identified two variants at chromosome 6q21 associated with SMNs in survivors of Hodgkin's lymphoma treated with radiation therapy as children but not as adults. The variants comprise a risk locus associated with decreased basal expression of PRDM1 (encoding PR domain containing 1, with ZNF domain) and impaired induction of the PRDM1 protein after radiation exposure. These data suggest a new gene-exposure interaction that may implicate PRDM1 in the etiology of radiation therapy-induced SMNs.\n\n[P2] Integrated molecular genetic profiling of pediatric high-grade gliomas reveals key differences with the adult disease.\nNo IDH1 hotspot mutations were found in pediatric tumors, highlighting molecular differences with adult secondary glioblastoma. Pediatric and adult glioblastomas were clearly distinguished by frequent gain of chromosome 1q (30% v 9%, respectively) and lower frequency of chromosome 7 gain (13% v 74%, respectively) and 10q loss (35% v 80%, respectively). PDGFRA amplification and 1q gain occurred at significantly higher frequency in irradiation-induced tumors, suggesting that these are initiating events in childhood gliomagenesis. A subset of pediatric HGGs showed minimal copy number changes. CONCLUSION Integrated molecular profiling showed substantial differences in the molecular features underlying pediatric and adult HGG, indicating that findings in adult tumors cannot be simply extrapolated to younger patients. PDGFRalpha may be a useful target for pediatric HGG, including diffuse pontine gliomas.\n\n[P3] Rearrangement of CRLF2 is associated with mutation of JAK kinases, alteration of IKZF1, Hispanic/Latino ethnicity, and a poor outcome in pediatric B-progenitor acute lymphoblastic leukemia.\nGene expression profiling of 207 uniformly treated children with high-risk B-progenitor acute lymphoblastic leukemia revealed 29 of 207 cases (14%) with markedly elevated expression of CRLF2 (cytokine receptor-like factor 2). Each of the 29 cases harbored a genomic rearrangement of CRLF2: 18 of 29 (62%) had a translocation of the immunoglobulin heavy chain gene IGH@ on 14q32 to CRLF2 in the pseudoautosomal region 1 of Xp22.3/Yp11.3, whereas 10 (34%) cases had a 320-kb interstitial deletion centromeric of CRLF2, resulting in a P2RY8-CRLF2 fusion. One case had both IGH@-CRLF2 and P2RY8-CRLF2, and another had a novel CRLF2 rearrangement. Only 2 of 29 cases were Down syndrome. CRLF2 rearrangements were significantly associated with activating mutations of JAK1 or JAK2, deletion or mutation of IKZF1, and Hispanic/Latino ethnicity (Fisher exact test, P < .001 for each).\n\n[P4] Driver mutations in histone H3.3 and chromatin remodelling genes in paediatric glioblastoma\nGlioblastoma multiforme (GBM) is a lethal brain tumour in adults and children. However, DNA copy number and gene expression signatures indicate differences between adult and paediatric cases. To explore the genetic events underlying this distinction, we sequenced the exomes of 48 paediatric GBM samples. Somatic mutations in the H3.3-ATRX-DAXX chromatin remodelling pathway were identified in 44% of tumours (21/48). Recurrent mutations in H3F3A, which encodes the replication-independent histone 3 variant H3.3, were observed in 31% of tumours, and led to amino acid substitutions at two critical positions within the histone tail (K27M, G34R/G34V) involved in key regulatory post-translational modifications.\n\n[P5] Integrated molecular genetic profiling of pediatric high-grade gliomas reveals key differences with the adult disease.\nPURPOSE To define copy number alterations and gene expression signatures underlying pediatric high-grade glioma (HGG). PATIENTS AND METHODS We conducted a high-resolution analysis of genomic imbalances in 78 de novo pediatric HGGs, including seven diffuse intrinsic pontine gliomas, and 10 HGGs arising in children who received cranial irradiation for a previous cancer using single nucleotide polymorphism microarray analysis. Gene expression was analyzed with gene expression microarrays for 53 tumors. Results were compared with publicly available data from adult tumors. RESULTS Significant differences in copy number alterations distinguish childhood and adult glioblastoma. PDGFRA was the predominant target of focal amplification in childhood HGG, including diffuse intrinsic pontine gliomas, and gene expression analyses supported an important role for deregulated PDGFRalpha signaling in pediatric HGG.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0009f31e4545aa5ba2d031dca4e7dcd0480c947514eb8cec8418cb2d13b1ece4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878867.2118871,
+      "end_wall": 1792878880.7092822,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4495,
+    "start_wall": 1792878867.2118871,
+    "start_mono": 548423.915423,
+    "end_wall": 1792878880.7092822,
+    "end_mono": 548437.412847958,
+    "raw_response": "{\"reasoning\": \"The claim is supported by the evidence that variants at chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients, as shown in passage P1.\",\"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] ,\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13493628541,
+     "load_duration": 6654960833,
+     "prompt_eval_count": 1381,
+     "prompt_eval_duration": 3319548999,
+     "eval_count": 69,
+     "eval_duration": 2760288130,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:40.706968Z"
+    },
+    "elapsed_s": 13.497,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4495,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:1649738:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 201,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a0e45f78ec636d9d94d44e53a65821745ee173c3d6bcdcdb3d504556a8aecca7",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878860.446292,
+      "end_wall": 1792878866.220036,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878860.446292,
+    "start_mono": 548417.149812458,
+    "end_wall": 1792878866.220036,
+    "end_mono": 548422.923568791,
+    "raw_response": "{\"query\": \"chromosome 6q21 variants and radiation therapy second malignancies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5770501500,
+     "load_duration": 4301178500,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 664418125,
+     "eval_count": 19,
+     "eval_duration": 636974293,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:26.21917Z"
+    },
+    "elapsed_s": 5.774,
+    "query_used": "chromosome 6q21 variants and radiation therapy second malignancies",
+    "query_source": "json",
+    "query_arrival_seq": 4498
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "chromosome 6q21 variants and radiation therapy second malignancies",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1649738:0",
+       "score_q": 21708
+      },
+      {
+       "passage_key": "scifact:26182390:0",
+       "score_q": 5887
+      },
+      {
+       "passage_key": "scifact:7986878:1",
+       "score_q": 5868
+      },
+      {
+       "passage_key": "scifact:11344428:1",
+       "score_q": 5627
+      },
+      {
+       "passage_key": "scifact:13025574:0",
+       "score_q": 5497
+      }
+     ],
+     "retrieval_sha256": "ae26fd0510ea0f95a06ce2c8165629de57e0c601b09a7dcc7c0261a86c5a79ec"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ae26fd0510ea0f95a06ce2c8165629de57e0c601b09a7dcc7c0261a86c5a79ec",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1649738:0",
+      "content_sha256": "13bae46690e8cc56293834026c073eda17f7572d579a77b3cdc7e7fb994970b7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:26182390:0",
+      "content_sha256": "70474f9781af3e397cc706aeec23cbf393a4f649ff6342ada65edbd4a35b1b02",
+      "chars": 855
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7986878:1",
+      "content_sha256": "19980c649510fdb6d2da94477e7bbd8aea4fc6bba3d4fa842bc9d0d43bd3555a",
+      "chars": 951
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11344428:1",
+      "content_sha256": "c768424871ac605d0ccf7b61bb4f89296fa009cb9a0d6a1fee8a563982ad8948",
+      "chars": 759
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13025574:0",
+      "content_sha256": "970c7ab198feabd93470b67d165ae7c559938cb40610ffeae3bd89c2f3e20176",
+      "chars": 1047
+     }
+    ],
+    "elapsed_s": 0.001
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nEvidence passages from your search for \"chromosome 6q21 variants and radiation therapy second malignancies\":\n<<<PASSAGES\n[P1] Variants at 6q21 implicate PRDM1 in the etiology of therapy-induced second malignancies after Hodgkin's lymphoma\nSurvivors of pediatric Hodgkin's lymphoma are at risk for radiation therapy–induced second malignant neoplasms (SMNs). We identified two variants at chromosome 6q21 associated with SMNs in survivors of Hodgkin's lymphoma treated with radiation therapy as children but not as adults. The variants comprise a risk locus associated with decreased basal expression of PRDM1 (encoding PR domain containing 1, with ZNF domain) and impaired induction of the PRDM1 protein after radiation exposure. These data suggest a new gene-exposure interaction that may implicate PRDM1 in the etiology of radiation therapy-induced SMNs.\n\n[P2] Premature chromosome condensation: evidence for in vivo cell fusion in human malignant tumours.\nPremature chromosome condensation (PCC) was studied in direct preparations of tissues from patients with haematological diseases and carcinomas of various histological types. PCC was found in 6 out of 166 malignancies (128 haematological cases, 35 carcinomas and 3 malignant effusions) analysed with the GTG-technique. Chromosome analysis revealed S-phase and G1-phase PCC in each case; the frequency of PCC varied between 1, 4 and 8.6% of the metaphases analysed. It is suggested that PCC chromosomes, which represent cell fusion in vivo, are not very rare in naturally-occurring human malignancies, and that cell fusion may affect the malignant phenotype. In conjunction with other factors they may also explain the heterogeneity of tumour cell populations.\n\n[P3] Anti-alphav integrin monoclonal antibody intetumumab enhances the efficacy of radiation therapy and reduces metastasis of human cancer xenografts in nude rats.\nTreatment with intetumumab also significantly reduced lung metastasis in the A549 NSCLC xenograft model. The oxygenation and blood perfusion in xenograft tumors measured by microbubble-enhanced ultrasound imaging were substantially increased after treatment with intetumumab. The combined use of intetumumab and radiation therapy reduced the microvessel density and increased apoptosis in tumor cells and the tumor microenvironment. Toxicity studies showed that treatment with intetumumab did not cause the histopathologic changes in the lungs and did not sensitize the sensitive gastrointestinal epithelium to the effect of radiation therapy. Intetumumab can potentiate the efficacy of fractionated radiation therapy in human cancer xenograft tumors in nude rats without increased toxicity.\n\n[P4] Development of leukemia in donor cells after allogeneic stem cell transplantation--a survey of the European Group for Blood and Marrow Transplantation (EBMT).\nNo type of conditioning, donor, graft manipulation, graft-versus-host disease prophylaxis or subsequent complications were identified as risk factors for DCL. Chemotherapy induced remissions in DCL and 2 of 5 patients remain alive in remission after a second transplant. None of the stem cell donors developed hematologic malignancies (median follow-up period of 9 years; range 6-30 years). DCL is an extremely rare complication of allogeneic SCT in which treatment attempts with chemotherapy and a second SCT are justified. Donors are not at an increased risk of developing hematologic malignancies.\n\n[P5] Cancer risks attributable to low doses of ionizing radiation: assessing what we really know.\nHigh doses of ionizing radiation clearly produce deleterious consequences in humans, including, but not exclusively, cancer induction. At very low radiation doses the situation is much less clear, but the risks of low-dose radiation are of societal importance in relation to issues as varied as screening tests for cancer, the future of nuclear power, occupational radiation exposure, frequent-flyer risks, manned space exploration, and radiological terrorism. We review the difficulties involved in quantifying the risks of low-dose radiation and address two specific questions. First, what is the lowest dose of x- or gamma-radiation for which good evidence exists of increased cancer risks in humans? The epidemiological data suggest that it is approximately 10-50 mSv for an acute exposure and approximately 50-100 mSv for a protracted exposure. Second, what is the most appropriate way to extrapolate such cancer risk estimates to still lower doses?\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9ef08db4b24987ccaeddda65ea6435839e39618507cb1693cd86623d2bbfbf65",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878866.221993,
+      "end_wall": 1792878883.892716,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4496,
+    "start_wall": 1792878866.221993,
+    "start_mono": 548422.925526916,
+    "end_wall": 1792878883.892716,
+    "end_mono": 548440.596288958,
+    "raw_response": "{\"reasoning\": \"The claim suggests a link between chromosome 6q21 variants and radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients. Passage [P1] provides direct evidence supporting this claim, as it identifies specific variants at chromosome 6q21 associated with SMNs after radiation therapy in pediatric Hodgkin lymphoma patients. Additionally, the passage mentions PRDM1's role, which further supports the claim. Passages [P2] and [P4] are unrelated to the claim and do not provide contradictory information. Passage [P3] discusses a monoclonal antibody enhancing radiation therapy\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17666442208,
+     "load_duration": 44931625,
+     "prompt_eval_count": 1196,
+     "prompt_eval_duration": 4398500501,
+     "eval_count": 147,
+     "eval_duration": 11905899994,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:43.88958Z"
+    },
+    "elapsed_s": 17.671,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4496,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:1649738:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a0e45f78ec636d9d94d44e53a65821745ee173c3d6bcdcdb3d504556a8aecca7",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878860.4464488,
+      "end_wall": 1792878863.054461,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878860.4464488,
+    "start_mono": 548417.149969041,
+    "end_wall": 1792878863.054461,
+    "end_mono": 548419.75798525,
+    "raw_response": "{\"query\": \"Chromosome 6q21 radiation therapy second malignancies pediatric Hodgkin lymphoma\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2604135708,
+     "load_duration": 1214108458,
+     "prompt_eval_count": 200,
+     "prompt_eval_duration": 433809792,
+     "eval_count": 32,
+     "eval_duration": 791890751,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:23.052865Z"
+    },
+    "elapsed_s": 2.608,
+    "query_used": "Chromosome 6q21 radiation therapy second malignancies pediatric Hodgkin lymphoma",
+    "query_source": "json",
+    "query_arrival_seq": 4497
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Chromosome 6q21 radiation therapy second malignancies pediatric Hodgkin lymphoma",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1649738:0",
+       "score_q": 29757
+      },
+      {
+       "passage_key": "scifact:23848916:1",
+       "score_q": 9197
+      },
+      {
+       "passage_key": "scifact:1153655:0",
+       "score_q": 8501
+      },
+      {
+       "passage_key": "scifact:15081770:0",
+       "score_q": 8280
+      },
+      {
+       "passage_key": "scifact:6559701:0",
+       "score_q": 7626
+      }
+     ],
+     "retrieval_sha256": "418c7edc51ce850736eb102c51d37d94dbfc500b978af80af22e1914640b9243"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "418c7edc51ce850736eb102c51d37d94dbfc500b978af80af22e1914640b9243",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1649738:0",
+      "content_sha256": "13bae46690e8cc56293834026c073eda17f7572d579a77b3cdc7e7fb994970b7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:23848916:1",
+      "content_sha256": "fc533970d5f408dd135fd3a38da9d291f2b6a59251f9ae5e46b1bd02438e77b9",
+      "chars": 937
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:1153655:0",
+      "content_sha256": "afb5204cd28865bf500cb13701f5eb6bf1e022771e0a040ec4c543e839c1100a",
+      "chars": 1069
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:15081770:0",
+      "content_sha256": "a223a3efdc824d5079c550f5b47444934ab4973fe06c8fbb643a9cf7e84232ef",
+      "chars": 1033
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:6559701:0",
+      "content_sha256": "7681ed1cb28aa00dc98af3fc1003e081d2c0bf9a107e59e8e0bf5bf330cc7e4a",
+      "chars": 773
+     }
+    ],
+    "elapsed_s": 0.0039
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nEvidence passages from your search for \"Chromosome 6q21 radiation therapy second malignancies pediatric Hodgkin lymphoma\":\n<<<PASSAGES\n[P1] Variants at 6q21 implicate PRDM1 in the etiology of therapy-induced second malignancies after Hodgkin's lymphoma\nSurvivors of pediatric Hodgkin's lymphoma are at risk for radiation therapy–induced second malignant neoplasms (SMNs). We identified two variants at chromosome 6q21 associated with SMNs in survivors of Hodgkin's lymphoma treated with radiation therapy as children but not as adults. The variants comprise a risk locus associated with decreased basal expression of PRDM1 (encoding PR domain containing 1, with ZNF domain) and impaired induction of the PRDM1 protein after radiation exposure. These data suggest a new gene-exposure interaction that may implicate PRDM1 in the etiology of radiation therapy-induced SMNs.\n\n[P2] Oridonin, a diterpenoid purified from Rabdosia rubescens, inhibits the proliferation of cells from lymphoid malignancies in association with blockade of the NF-kappa B signal pathways.\nOridonin also blocked tumor necrosis factor-alpha- and lipopolysaccharide-stimulated NF-kappa B activity in Jurkat cells as well as RAW264.7 murine macrophages. Of note, oridonin decreased survival of freshly isolated adult T-cell leukemia (three samples), acute lymphoblastic leukemia (one sample), chronic lymphocytic leukemia (one sample), non-Hodgkin's lymphoma (three samples), and MM (four samples) cells from patients in association with inhibition of NF-kappa B DNA-binding activity. On the other hand, oridonin did not affect survival of normal lymphoid cells from healthy volunteers. Taken together, oridonin might be useful as adjunctive therapy for individuals with lymphoid malignancies, including the lethal disease adult T-cell leukemia.\n\n[P3] Familial risk of lymphoproliferative tumors in families of patients with chronic lymphocytic leukemia: results from the Swedish Family-Cancer Database.\nThe importance of genetic factors in etiology of chronic lymphocytic leukemia (CLL) is suggested by family and population studies. However, the spectrum of malignancies sharing common genetic factors with CLL and the effects of sex and age on familial risk are unknown. We used the Swedish Family-Cancer Database to test for increased familial risks of CLL and other lymphoproliferative tumors. Cancer diagnoses from 1958 to 1998 were assessed in 14 336 first-degree relatives of 5918 CLL cases and in 28 876 first-degree relatives of 11 778 controls. Cancer risks in relatives of cases were compared with those in relatives of controls using marginal survival models. Relatives of cases were at significantly increased risk for CLL (relative risk [RR] = 7.52; 95% confidence interval [CI], 3.63-15.56), for non-Hodgkin lymphoma (RR = 1.45; 95% CI, 0.98-2.16), and for Hodgkin lymphoma (RR = 2.35; 95% CI, 1.08-5.08).\n\n[P4] The novel immunosuppressive enzyme IL4I1 is expressed by neoplastic cells of several B-cell lymphomas and by tumor-associated macrophages\nWe previously reported a strong IL4I1 gene expression in primary mediastinal B-cell lymphoma (PMBL) and recently identified the protein as a secreted L-phenylalanine oxidase, physiologically expressed by myeloid cells, which inhibits T-cell proliferation in vitro. Here, we analyzed the pattern of IL4I1 protein expression in 315 human lymphoid and non-lymphoid malignancies. Besides PMBL, IL4I1 expression in tumors was very frequent. IL4I1 was detected in tumor-associated macrophages from most of the tumors and in neoplastic cells from follicular lymphoma, classic and nodular lymphocyte predominant Hodgkin lymphomas and small lymphocytic lymphoma, three of which are germinal center derived. IL4I1-positive tumor cells were also detected in rare cases of solid cancers, mainly mesothelioma. The enzymatic activity paralleled protein expression, suggesting that IL4I1 is functional in vivo.\n\n[P5] Regulation of the latent-lytic switch in Epstein-Barr virus.\nEpstein-Barr virus (EBV) infection contributes to the development of several different types of human malignancy, including Burkitt lymphoma, Hodgkin lymphoma, and nasopharyngeal carcinoma. As a herpesvirus, EBV can establish latent or lytic infection in cells. EBV-positive tumors are composed almost exclusively of cells with latent EBV infection. Strategies for inducing the lytic form of EBV infection in tumor cells are being investigated as a potential therapy for EBV-positive tumors. In this article, we review how cellular and viral proteins regulate the latent-lytic EBV switch in infected B cells and epithelial cells, and discuss how harnessing lytic viral reactivation might be used therapeutically.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f9f49f9283f842ebf0d35a4032935441004182d21e48efee898b0ca94613dda8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878863.059624,
+      "end_wall": 1792878883.9312131,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4497,
+    "start_wall": 1792878863.059624,
+    "start_mono": 548419.763150833,
+    "end_wall": 1792878883.9312131,
+    "end_mono": 548440.634786833,
+    "raw_response": "{\n  \"reasoning\": \"The claim specifies variants at chromosome 6q21 associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients. Passage [P1] directly supports this claim by mentioning two variants at chromosome 6q21 linked to SMNs in Hodgkin lymphoma survivors who received radiation therapy as children, but not adults. This implies a potential genetic predisposition to radiation-induced malignancies in this population.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20868028250,
+     "load_duration": 9364294875,
+     "prompt_eval_count": 1691,
+     "prompt_eval_duration": 4574376292,
+     "eval_count": 147,
+     "eval_duration": 6291300875,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:43.928359Z"
+    },
+    "elapsed_s": 20.872,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4497,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:1649738:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 444,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a0e45f78ec636d9d94d44e53a65821745ee173c3d6bcdcdb3d504556a8aecca7",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878860.446644,
+      "end_wall": 1792878871.2598011,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878860.446644,
+    "start_mono": 548417.150164291,
+    "end_wall": 1792878871.2598011,
+    "end_mono": 548427.963344875,
+    "raw_response": "{\"query\": \"chromosome 6q21 variants OR Hodgkin lymphoma OR radiation therapy-induced second malignancies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10809904958,
+     "load_duration": 6122738333,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 983838250,
+     "eval_count": 24,
+     "eval_duration": 3180171249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:31.258464Z"
+    },
+    "elapsed_s": 10.813,
+    "query_used": "chromosome 6q21 variants OR Hodgkin lymphoma OR radiation therapy-induced second malignancies",
+    "query_source": "json",
+    "query_arrival_seq": 4499
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "chromosome 6q21 variants OR Hodgkin lymphoma OR radiation therapy-induced second malignancies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1649738:0",
+       "score_q": 914
+      },
+      {
+       "passage_key": "scifact:4414547:1",
+       "score_q": 711
+      },
+      {
+       "passage_key": "scifact:16732790:1",
+       "score_q": 701
+      },
+      {
+       "passage_key": "scifact:4414547:0",
+       "score_q": 701
+      },
+      {
+       "passage_key": "scifact:18914652:1",
+       "score_q": 700
+      }
+     ],
+     "retrieval_sha256": "5d9b72a1a71c8fa0cef04c28747d049af494efaa2cbced07a8d8c3e37cf7b4d0"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5d9b72a1a71c8fa0cef04c28747d049af494efaa2cbced07a8d8c3e37cf7b4d0",
+    "query_embedding_sha256": "237c697926ce81cd1b5cc61b53b51dbdb5e51bb164605aa04173e71086cee38b",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1649738:0",
+      "content_sha256": "13bae46690e8cc56293834026c073eda17f7572d579a77b3cdc7e7fb994970b7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4414547:1",
+      "content_sha256": "e538dfc1caaaccb4a4320d6992602d03dbc7db04ab5fe7bac34b62512944c787",
+      "chars": 985
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16732790:1",
+      "content_sha256": "c7b92210ac1d977aba4d7fac97d891a5c7f361b00dbbc30ae94096a93af5d31b",
+      "chars": 1018
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4414547:0",
+      "content_sha256": "d040eb9ee587ac3db45499aca55a9c0408fd6627a57666dfab9d71ec5c5d0cb6",
+      "chars": 1002
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18914652:1",
+      "content_sha256": "472336d3c6e50e63e362e94aef003b505b50cc7a1d3790b12eb39d6224a71690",
+      "chars": 931
+     }
+    ],
+    "elapsed_s": 0.0631
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nEvidence passages from your search for \"chromosome 6q21 variants OR Hodgkin lymphoma OR radiation therapy-induced second malignancies\":\n<<<PASSAGES\n[P1] Variants at 6q21 implicate PRDM1 in the etiology of therapy-induced second malignancies after Hodgkin's lymphoma\nSurvivors of pediatric Hodgkin's lymphoma are at risk for radiation therapy–induced second malignant neoplasms (SMNs). We identified two variants at chromosome 6q21 associated with SMNs in survivors of Hodgkin's lymphoma treated with radiation therapy as children but not as adults. The variants comprise a risk locus associated with decreased basal expression of PRDM1 (encoding PR domain containing 1, with ZNF domain) and impaired induction of the PRDM1 protein after radiation exposure. These data suggest a new gene-exposure interaction that may implicate PRDM1 in the etiology of radiation therapy-induced SMNs.\n\n[P2] Mosaic PPM1D mutations are associated with predisposition to breast and ovarian cancer\nNotably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region in the final exon of the gene, carboxy-terminal to the phosphatase catalytic domain. Functional studies demonstrate that the mutations result in enhanced suppression of p53 in response to ionizing radiation exposure, suggesting that the mutant alleles encode hyperactive PPM1D isoforms. Thus, although the mutations cause premature protein truncation, they do not result in the simple loss-of-function effect typically associated with this class of variant, but instead probably have a gain-of-function effect. Our results have implications for the detection and management of breast and ovarian cancer risk. More generally, these data provide new insights into the role of rare and of mosaic genetic variants in common conditions, and the use of sequencing in their identification.\n\n[P3] A Teratocarcinoma-Like Human Embryonic Stem Cell (hESC) Line and Four hESC Lines Reveal Potentially Oncogenic Genomic Changes\nThese features are similar to those observed in teratocarcinomas, and this explains the high malignancy. The CH-ES1 line was trisomic for chromosomes 1, 9, 12, 17, 19, 20 and X. Also the karyotypically (based on G-banding) normal hESC lines were also found to have several genomic changes that involved genes with known roles in cancer. The largest changes were found in the H1 line at passage number 56, when large 5 Mb duplications in chromosomes 1q32.2 and 22q12.2 were detected, but the losses and gains were seen already at passage 22. These changes found in the other lines highlight the importance of assessing the acquisition of genetic changes by hESCs before their use in regenerative medicine applications. They also point to the possibility that the acquisition of genetic changes by ESCs in culture may be used to explore certain aspects of the mechanisms regulating oncogenesis.\n\n[P4] Mosaic PPM1D mutations are associated with predisposition to breast and ovarian cancer\nImproved sequencing technologies offer unprecedented opportunities for investigating the role of rare genetic variation in common disease. However, there are considerable challenges with respect to study design, data analysis and replication. Using pooled next-generation sequencing of 507 genes implicated in the repair of DNA in 1,150 samples, an analytical strategy focused on protein-truncating variants (PTVs) and a large-scale sequencing case–control replication experiment in 13,642 individuals, here we show that rare PTVs in the p53-inducible protein phosphatase PPM1D are associated with predisposition to breast cancer and ovarian cancer. PPM1D PTV mutations were present in 25 out of 7,781 cases versus 1 out of 5,861 controls (P = 1.12 × 10−5), including 18 mutations in 6,912 individuals with breast cancer (P = 2.42 × 10−4) and 12 mutations in 1,121 individuals with ovarian cancer (P = 3.10 × 10−9).\n\n[P5] Critical Role of the Virus-Encoded MicroRNA-155 Ortholog in the Induction of Marek's Disease Lymphomas\nUsing viruses modified by reverse genetics of the infectious BAC clone of the oncogenic RB-1B strain of MDV, we show that the deletion of the six-miRNA cluster 1 from the viral genome abolished the oncogenicity of the virus. This loss of oncogenicity appeared to be primarily due to the single miRNA within the cluster, miR-M4, the ortholog of cellular miR-155, since its deletion or a 2-nucleotide mutation within its seed region was sufficient to inhibit the induction of lymphomas. The definitive role of this miR-155 ortholog in oncogenicity was further confirmed by the rescue of oncogenic phenotype by revertant viruses that expressed either the miR-M4 or the cellular homolog gga-miR-155. This is the first demonstration of the direct in vivo role of a virus-encoded miRNA in inducing tumors in a natural infection model.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7d28b6afd3d53885f110e83e176d39fa0052921aeda9e78f7280ddb9c45265dd",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878871.323582,
+      "end_wall": 1792878895.9925172,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4498,
+    "start_wall": 1792878871.323582,
+    "start_mono": 548428.027128,
+    "end_wall": 1792878895.9925172,
+    "end_mono": 548452.696118458,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that variants at 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients. It also states that mosaic PPM1D mutations are associated with predisposition to breast and ovarian cancer.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24664182792,
+     "load_duration": 15315248834,
+     "prompt_eval_count": 1370,
+     "prompt_eval_duration": 4961217000,
+     "eval_count": 79,
+     "eval_duration": 2819137538,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:55.988496Z"
+    },
+    "elapsed_s": 24.669,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4498,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:1649738:0",
+     "scifact:4414547:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 262,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a0e45f78ec636d9d94d44e53a65821745ee173c3d6bcdcdb3d504556a8aecca7",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878860.4467971,
+      "end_wall": 1792878862.7510579,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878860.4467971,
+    "start_mono": 548417.150317708,
+    "end_wall": 1792878862.7510579,
+    "end_mono": 548419.454582833,
+    "raw_response": "{\"query\": \"chromosome 6q21 variants radiation therapy pediatric Hodgkin lymphoma second malignancies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2301276875,
+     "load_duration": 55661667,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 632011416,
+     "eval_count": 22,
+     "eval_duration": 1404036749,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:22.749955Z"
+    },
+    "elapsed_s": 2.304,
+    "query_used": "chromosome 6q21 variants radiation therapy pediatric Hodgkin lymphoma second malignancies",
+    "query_source": "json",
+    "query_arrival_seq": 4496
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "chromosome 6q21 variants radiation therapy pediatric Hodgkin lymphoma second malignancies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1649738:0",
+       "score_q": 909
+      },
+      {
+       "passage_key": "scifact:2360905:1",
+       "score_q": 750
+      },
+      {
+       "passage_key": "scifact:27306942:0",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:2360905:0",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:10641715:1",
+       "score_q": 723
+      }
+     ],
+     "retrieval_sha256": "bf121663f5e8a0dda51a237f136f89e8da6e738597aa76595f4816a9b2246311"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bf121663f5e8a0dda51a237f136f89e8da6e738597aa76595f4816a9b2246311",
+    "query_embedding_sha256": "1f16bc615c6a84ab8a06230f1020ea5836cc6d4c993743c440aaa187c43c0639",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1649738:0",
+      "content_sha256": "13bae46690e8cc56293834026c073eda17f7572d579a77b3cdc7e7fb994970b7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2360905:1",
+      "content_sha256": "4139bfe9dca4f8b0aa13659d26a55744b86fe8d69348263cc6fa12a68cf6b2ef",
+      "chars": 1030
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27306942:0",
+      "content_sha256": "fb434b84b558ba07f9572c48c0a6921109baa44c4399ebf1547aebdfe69fd10a",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2360905:0",
+      "content_sha256": "94bbbf276b0f59173f4f8d021ce5bb9ca61d0060aaedb0267c951d33a8f28dff",
+      "chars": 1030
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10641715:1",
+      "content_sha256": "06db22a5069916219cc1e76b039c332dfbbb1d91bcc1dc4d46aa5a7ccf52e20f",
+      "chars": 453
+     }
+    ],
+    "elapsed_s": 4.679
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Two variants of chromosome 6q21 are associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\n\nEvidence passages from your search for \"chromosome 6q21 variants radiation therapy pediatric Hodgkin lymphoma second malignancies\":\n<<<PASSAGES\n[P1] Variants at 6q21 implicate PRDM1 in the etiology of therapy-induced second malignancies after Hodgkin's lymphoma\nSurvivors of pediatric Hodgkin's lymphoma are at risk for radiation therapy–induced second malignant neoplasms (SMNs). We identified two variants at chromosome 6q21 associated with SMNs in survivors of Hodgkin's lymphoma treated with radiation therapy as children but not as adults. The variants comprise a risk locus associated with decreased basal expression of PRDM1 (encoding PR domain containing 1, with ZNF domain) and impaired induction of the PRDM1 protein after radiation exposure. These data suggest a new gene-exposure interaction that may implicate PRDM1 in the etiology of radiation therapy-induced SMNs.\n\n[P2] Integrated molecular genetic profiling of pediatric high-grade gliomas reveals key differences with the adult disease.\nNo IDH1 hotspot mutations were found in pediatric tumors, highlighting molecular differences with adult secondary glioblastoma. Pediatric and adult glioblastomas were clearly distinguished by frequent gain of chromosome 1q (30% v 9%, respectively) and lower frequency of chromosome 7 gain (13% v 74%, respectively) and 10q loss (35% v 80%, respectively). PDGFRA amplification and 1q gain occurred at significantly higher frequency in irradiation-induced tumors, suggesting that these are initiating events in childhood gliomagenesis. A subset of pediatric HGGs showed minimal copy number changes. CONCLUSION Integrated molecular profiling showed substantial differences in the molecular features underlying pediatric and adult HGG, indicating that findings in adult tumors cannot be simply extrapolated to younger patients. PDGFRalpha may be a useful target for pediatric HGG, including diffuse pontine gliomas.\n\n[P3] Rearrangement of CRLF2 is associated with mutation of JAK kinases, alteration of IKZF1, Hispanic/Latino ethnicity, and a poor outcome in pediatric B-progenitor acute lymphoblastic leukemia.\nGene expression profiling of 207 uniformly treated children with high-risk B-progenitor acute lymphoblastic leukemia revealed 29 of 207 cases (14%) with markedly elevated expression of CRLF2 (cytokine receptor-like factor 2). Each of the 29 cases harbored a genomic rearrangement of CRLF2: 18 of 29 (62%) had a translocation of the immunoglobulin heavy chain gene IGH@ on 14q32 to CRLF2 in the pseudoautosomal region 1 of Xp22.3/Yp11.3, whereas 10 (34%) cases had a 320-kb interstitial deletion centromeric of CRLF2, resulting in a P2RY8-CRLF2 fusion. One case had both IGH@-CRLF2 and P2RY8-CRLF2, and another had a novel CRLF2 rearrangement. Only 2 of 29 cases were Down syndrome. CRLF2 rearrangements were significantly associated with activating mutations of JAK1 or JAK2, deletion or mutation of IKZF1, and Hispanic/Latino ethnicity (Fisher exact test, P < .001 for each).\n\n[P4] Integrated molecular genetic profiling of pediatric high-grade gliomas reveals key differences with the adult disease.\nPURPOSE To define copy number alterations and gene expression signatures underlying pediatric high-grade glioma (HGG). PATIENTS AND METHODS We conducted a high-resolution analysis of genomic imbalances in 78 de novo pediatric HGGs, including seven diffuse intrinsic pontine gliomas, and 10 HGGs arising in children who received cranial irradiation for a previous cancer using single nucleotide polymorphism microarray analysis. Gene expression was analyzed with gene expression microarrays for 53 tumors. Results were compared with publicly available data from adult tumors. RESULTS Significant differences in copy number alterations distinguish childhood and adult glioblastoma. PDGFRA was the predominant target of focal amplification in childhood HGG, including diffuse intrinsic pontine gliomas, and gene expression analyses supported an important role for deregulated PDGFRalpha signaling in pediatric HGG.\n\n[P5] Modelling and rescuing neurodevelopmental defect of Down syndrome using induced pluripotent stem cells from monozygotic twins discordant for trisomy 21\nFurthermore, we provide novel evidence that dual-specificity tyrosine-(Y)-phosphorylation regulated kinase 1A (DYRK1A) on chromosome 21 likely contributes to these defects. Importantly, we found that targeting DYRK1A pharmacologically or by shRNA results in a considerable correction of these defects.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e77a3501d2de4e727e2660844b2b606f69665ef3748762f27aad26c3273830d7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878867.43057,
+      "end_wall": 1792878897.67172,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4499,
+    "start_wall": 1792878867.43057,
+    "start_mono": 548424.134107,
+    "end_wall": 1792878897.67172,
+    "end_mono": 548454.375324958,
+    "raw_response": "{\n  \"reasoning\": \"Passage P1 directly supports the claim by identifying two variants at chromosome 6q21 associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients, implicating PRDM1 in this process. This evidence aligns precisely with the claim made regarding chromosome 6q21 variants and their association with radiation therapy-induced second malignancies in pediatric patients.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30236717667,
+     "load_duration": 17171706792,
+     "prompt_eval_count": 1290,
+     "prompt_eval_duration": 6458635541,
+     "eval_count": 114,
+     "eval_duration": 5742272995,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:54:57.668314Z"
+    },
+    "elapsed_s": 30.241,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4499,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:1649738:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 404,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "3ecadc961241e1e5d2473bd5a8a839abd8c9a7aaaf171f9f2a321189415aa313",
+  "olmo2:7b": "ae26fd0510ea0f95a06ce2c8165629de57e0c601b09a7dcc7c0261a86c5a79ec",
+  "granite3.3:2b": "418c7edc51ce850736eb102c51d37d94dbfc500b978af80af22e1914640b9243",
+  "nemotron-mini:4b": "5d9b72a1a71c8fa0cef04c28747d049af494efaa2cbced07a8d8c3e37cf7b4d0",
+  "exaone3.5:7.8b": "bf121663f5e8a0dda51a237f136f89e8da6e738597aa76595f4816a9b2246311"
+ },
+ "item_start_wall": 1792878860.446026,
+ "item_wall_s": 37.226,
+ "ollama_ps_samples": [
+  [
+   1792878860.446,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792878862.458,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878864.464,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792878866.475,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792878868.487,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792878870.495,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792878872.497,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878874.501,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878876.509,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878878.514,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878880.519,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878882.524,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878884.536,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878886.546,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878888.555,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878890.563,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878892.571,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878894.58,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878896.588,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

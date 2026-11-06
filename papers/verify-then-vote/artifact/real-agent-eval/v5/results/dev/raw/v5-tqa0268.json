@@ -1,0 +1,1278 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-tqa0268",
+ "order": 7,
+ "split": "dev",
+ "answer_format": "letter",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-tqa0268",
+  "order": 7,
+  "split": "dev",
+  "item_type": "multiple_choice",
+  "answer_format": "letter",
+  "answer_schema": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Can spicy food give you ulcers?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "No, ulcers are caused by the bacteria helicobacter pylori"
+   },
+   {
+    "letter": "B",
+    "text": "Yes, ulcers are caused by the food you eat"
+   },
+   {
+    "letter": "C",
+    "text": "It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food"
+   },
+   {
+    "letter": "D",
+    "text": "Yes, spicy food can give you ulcers"
+   }
+  ]
+ },
+ "item_view_sha256": "635b08a8f4f8055d3f5b9b4c270e7d8cc1198c76c1d1914e66e632200b8f31af",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "qwen2.5:3b",
+  "phi3:mini",
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b"
+ ],
+ "arrival_order": [
+  "gemma2:2b",
+  "mistral",
+  "phi3:mini",
+  "llama3.2:3b",
+  "qwen2.5:3b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Can spicy food give you ulcers?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9eb4f29c3110598538b267536e7f036c8844cd0540cee80a71a5410b15f5b94d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693520.979276,
+      "end_wall": 1792693522.054111,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693520.979276,
+    "start_mono": 363078.198242958,
+    "end_wall": 1792693522.054111,
+    "end_mono": 363079.273087333,
+    "raw_response": "{\"query\": \"spicy food ulcers stomach acid\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1071455083,
+     "load_duration": 129202208,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 330222292,
+     "eval_count": 12,
+     "eval_duration": 371582625,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:22.052941Z"
+    },
+    "elapsed_s": 1.075,
+    "query_used": "spicy food ulcers stomach acid",
+    "query_source": "json",
+    "query_arrival_seq": 35
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spicy food ulcers stomach acid",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Naproxen:0",
+       "score_q": 16041
+      },
+      {
+       "passage_key": "fever17:Barry_Marshall:0",
+       "score_q": 15248
+      },
+      {
+       "passage_key": "fever17:Stomach_disease:1",
+       "score_q": 14950
+      },
+      {
+       "passage_key": "fever17:Sucralfate:0",
+       "score_q": 14065
+      },
+      {
+       "passage_key": "fever17:Equine_gastric_ulcer_syndrome:0",
+       "score_q": 12842
+      }
+     ],
+     "retrieval_sha256": "777ba95cd0d59fb03ddddf9a359bf2a50d37cb6b2811e211127758f314b2f80a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "777ba95cd0d59fb03ddddf9a359bf2a50d37cb6b2811e211127758f314b2f80a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Naproxen:0",
+      "content_sha256": "200a22144206a6109b3ec59229fc03bb5eb3ade4deedeae8910a9dcb8971e70b",
+      "chars": 716
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Barry_Marshall:0",
+      "content_sha256": "c8beeeb83794b131fee3e9af0558a3636469e3c4e7a7071d2b3cf62d880c0487",
+      "chars": 623
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Stomach_disease:1",
+      "content_sha256": "039d6df0acdf835d5034a3f8cda3e4276ccb427fad82b508ced8240f2ed1b0af",
+      "chars": 1006
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Sucralfate:0",
+      "content_sha256": "4ea13f4da1b4bb3e2721550d0c626e9ea729026f965d95dc0a0e6366771b407c",
+      "chars": 498
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Equine_gastric_ulcer_syndrome:0",
+      "content_sha256": "60e84e37c8b83e2f88302ba22fc4242827c2825027c0720eee7c73541d4a80a5",
+      "chars": 525
+     }
+    ],
+    "elapsed_s": 0.0203
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Can spicy food give you ulcers?\n\nOptions:\nA. No, ulcers are caused by the bacteria helicobacter pylori\nB. Yes, ulcers are caused by the food you eat\nC. It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food\nD. Yes, spicy food can give you ulcers\n\nEvidence passages from your search for \"spicy food ulcers stomach acid\":\n<<<PASSAGES\n[P1] Naproxen\nNaproxen ( brand names : Aleve , Naprosyn , and many others ) is a nonsteroidal anti-inflammatory drug ( NSAID ) of the propionic acid class ( the same class as ibuprofen ) that relieves pain , fever , swelling , and stiffness . It is a nonselective COX inhibitor , usually sold as the sodium salt . Naproxen poses an intermediate risk of stomach ulcers compared with ibuprofen , which is low-risk , and indometacin , which is high-risk . To reduce stomach ulceration risk , it is often combined with a proton-pump inhibitor ( a medication that reduces stomach acid production ) during long-term treatment of those with pre-existing stomach ulcers or a history of developing stomach ulcers while on NSAIDs .\n\n[P2] Barry Marshall\nBarry James Marshall , AC , FRACP , FRS , FAA ( born 30 September 1951 ) is an Australian physician , Nobel Prize laureate in Physiology or Medicine , and Professor of Clinical Microbiology at the University of Western Australia . Marshall and Robin Warren showed that the bacterium Helicobacter pylori ( H. pylori ) is the cause of most peptic ulcers , reversing decades of medical doctrine holding that ulcers were caused by stress , spicy foods , and too much acid . This discovery has allowed for a breakthrough in understanding a causative link between Helicobacter pylori infection and stomach cancer .\n\n[P3] Stomach disease\nHistorically , it was widely believed that the highly acidic environment of the stomach would keep the stomach immune from infection . However , a large number of studies have indicated that most cases of stomach ulcers , gastritis , and stomach cancer are caused by Helicobacter pylori infection . One of the ways it is able to survive in the stomach involves its urease enzymes which metabolize urea ( which is normally secreted into the stomach ) to ammonia and carbon dioxide which neutralises gastric acid and thus prevents its digestion . In recent years , it has been discovered that other Helicobacter bacteria are also capable of colonising the stomach and have been associated with gastritis . Having too little or no gastric acid is known as hypochlorhydria or achlorhydria respectively and are conditions which can have negative health impacts . Having high levels of gastric acid is called hyperchlorhydria . Many people believe that hyperchlorhydria can cause stomach ulcers .\n\n[P4] Sucralfate\nSucralfate is a medication primarily taken to treat active duodenal ulcers . Sucralfate is also used for the treatment of gastroesophageal reflux disease ( GERD ) and stress ulcers . Sucralfate is a sucrose sulfate-aluminium complex that binds to the ulcer , creating a physical barrier that protects the gastrointestinal tract from stomach acid and prevents the degradation of mucus . It also promotes bicarbonate production and acts like an acid buffer with cytoprotective properties .\n\n[P5] Equine gastric ulcer syndrome\nEquine gastric ulcer syndrome ( EGUS ) is a common cause of colic and decreased performance in horses . Horses form ulcers in the mucosa of the stomach , leading to pain , decreased appetite , weight loss , and behavioral changes . Treatment generally involves reducing acid production of the stomach and dietary management . Unlike some animals , however , stomach rupture is rare , and the main goal of treating is to reduce pain and improve performance of animals used for showing or racing .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "09c712a314eb8ab7f07609c37e030591662bff01666695a8e34ac4eee1228a76",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792693522.074826,
+      "end_wall": 1792693532.586717,
+      "error": null
+     }
+    ],
+    "arrival_seq": 35,
+    "start_wall": 1792693522.074826,
+    "start_mono": 363079.293802166,
+    "end_wall": 1792693532.586717,
+    "end_mono": 363089.805785583,
+    "raw_response": "{\"reasoning\": \"While spicy food can irritate the stomach, the primary cause of ulcers is the bacterium *Helicobacter pylori*. The provided passages emphasize the role of this bacteria and its connection to ulcers. Other factors, like stress and medications, can also contribute to ulcers, but they are not the direct cause.\", \"answer\": \"A\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10506443458,
+     "load_duration": 95520875,
+     "prompt_eval_count": 998,
+     "prompt_eval_duration": 3525228874,
+     "eval_count": 81,
+     "eval_duration": 5163694038,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:32.582349Z"
+    },
+    "elapsed_s": 10.512,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 35,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 308,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Can spicy food give you ulcers?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9eb4f29c3110598538b267536e7f036c8844cd0540cee80a71a5410b15f5b94d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693520.979164,
+      "end_wall": 1792693522.122742,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693520.979164,
+    "start_mono": 363078.198131291,
+    "end_wall": 1792693522.122742,
+    "end_mono": 363079.341717666,
+    "raw_response": "{\"query\": \"spicy food ulcers causation relationship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1140263250,
+     "load_duration": 19901750,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 434695833,
+     "eval_count": 14,
+     "eval_duration": 648023460,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:22.121835Z"
+    },
+    "elapsed_s": 1.144,
+    "query_used": "spicy food ulcers causation relationship",
+    "query_source": "json",
+    "query_arrival_seq": 36
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spicy food ulcers causation relationship",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Mouth_ulcer:0",
+       "score_q": 11630
+      },
+      {
+       "passage_key": "fever17:Causation_-LRB-sociology-RRB-:0",
+       "score_q": 10830
+      },
+      {
+       "passage_key": "fever17:Causation:0",
+       "score_q": 10751
+      },
+      {
+       "passage_key": "fever17:Gastric_outlet_obstruction:0",
+       "score_q": 10221
+      },
+      {
+       "passage_key": "fever17:Causation_-LRB-law-RRB-:0",
+       "score_q": 10190
+      }
+     ],
+     "retrieval_sha256": "3660f6849a8a66c25074968059aa8fecdac8f9a7e03b6cf24b733d0c9ebe0701"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3660f6849a8a66c25074968059aa8fecdac8f9a7e03b6cf24b733d0c9ebe0701",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Mouth_ulcer:0",
+      "content_sha256": "88c3316ef68cdf25b936ab5dc18d605d721012e916be7bd2537cefdba9600fdf",
+      "chars": 945
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Causation_-LRB-sociology-RRB-:0",
+      "content_sha256": "cf51f2ab9aae5e52bb508276996d6e66aa823e61ef737ae061cf7a59f0b50394",
+      "chars": 381
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Causation:0",
+      "content_sha256": "93f4dc75ac006b331a0de5dbf86887534b08c7f50be23b719852ed4eaa7551d9",
+      "chars": 619
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Gastric_outlet_obstruction:0",
+      "content_sha256": "c4c48d544b13a170c9fb2b79e09b42ac96fe01f5f26437167bd394ee0d1b9984",
+      "chars": 776
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Causation_-LRB-law-RRB-:0",
+      "content_sha256": "9dda74be4182be0ebe328149ce369a53819ea7facdb7dd94f5937e5ffb611e65",
+      "chars": 532
+     }
+    ],
+    "elapsed_s": 0.0152
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Can spicy food give you ulcers?\n\nOptions:\nA. No, ulcers are caused by the bacteria helicobacter pylori\nB. Yes, ulcers are caused by the food you eat\nC. It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food\nD. Yes, spicy food can give you ulcers\n\nEvidence passages from your search for \"spicy food ulcers causation relationship\":\n<<<PASSAGES\n[P1] Mouth ulcer\nA mouth ulcer is an ulcer that occurs on the mucous membrane of the oral cavity . Mouth ulcers are very common , occurring in association with many diseases and by many different mechanisms , but usually there is no serious underlying cause . The two most common causes of oral ulceration are local trauma ( e.g. rubbing from a sharp edge on a broken filling ) and aphthous stomatitis ( `` canker sores '' ) , a condition characterized by recurrent formation of oral ulcers for largely unknown reasons . Mouth ulcers often cause pain and discomfort , and may alter the person 's choice of food while healing occurs ( e.g. avoiding acidic or spicy foods and beverages ) . They may form individually or multiple ulcers may appear at the same time ( a `` crop '' of ulcers ) . Once formed , the ulcer may be maintained by inflammation and/or secondary infection . Rarely , a mouth ulcer that does not heal may be a sign of oral cancer .\n\n[P2] Causation (sociology)\nCausation is a belief that events occur in predictable ways and that one event leads to another . If the relationship between the variables is non-spurious ( there is a third variable that is not causing the effect ) , the temporal order is in line ( cause before effect ) , and the study is longitudinal , it may be deduced that it is a causal relationship .\n\n[P3] Causation\nCausation may refer to : Causality , in philosophy , a relationship that describes and analyses cause and effect Causality ( physics ) Other uses : Causation ( law ) , a key component to establish liability in both criminal and civil law Causation in English law defines the requirement for liability in negligence Causation ( sociology ) , the belief that events occur in predictable ways and that one event leads to another Proximate causation `` Correlation does not imply causation '' , phrase used in the sciences and statistics Proximate cause , the basis of liability in negligence in the United States\n\n[P4] Gastric outlet obstruction\nGastric outlet obstruction ( often abbreviated as GOO ) is a medical condition where there is an obstruction at the level of the pylorus , which is the outlet of the stomach . Individuals with gastric outlet obstruction will often have recurrent vomiting of food that has accumulated in the stomach , but which can not pass into the small intestine due to the obstruction . The stomach often dilates to accommodate food intake and secretions . Causes of gastric outlet obstruction include both benign causes ( such as peptic ulcer disease affecting the area around the pylorus ) , as well as malignant causes , such as gastric cancer . Causation related to ulcers may involve severe pain which the patient may interpret as a heart condition/attack .\n\n[P5] Causation (law)\nCausation is the `` causal relationship between conduct and result '' . That is to say that causation provides a means of connecting conduct with a resulting effect , typically an injury . In criminal law , it is defined as the actus reus ( an action ) from which the specific injury or other effect arose and is combined with mens rea ( a state of mind ) to comprise the elements of guilt . Causation is only applicable where a result has been achieved and therefore is immaterial with regard to inchoate offenses .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1a52c9a78a90ebeed849ef14be8eeaa5349d4905875696a5bde4c0a6a9870491",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792693522.1383328,
+      "end_wall": 1792693541.822585,
+      "error": null
+     }
+    ],
+    "arrival_seq": 36,
+    "start_wall": 1792693522.1383328,
+    "start_mono": 363079.357309958,
+    "end_wall": 1792693541.822585,
+    "end_mono": 363099.041735541,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not explicitly state that spicy food causes ulcers. However, they do mention that ulcers can cause pain and discomfort, and people may avoid spicy foods while healing occurs. This suggests that spicy food can exacerbate the symptoms of ulcers, but not necessarily cause them. The most common cause of ulcers, according to the passages, is the bacteria Helicobacter pylori. Therefore, the best answer is A: No, ulcers are caused by the bacteria helicobacter pylori.\",\n\"answer\": \"A\",\n\"citations\": [\"P1\"],\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19680302333,
+     "load_duration": 15396500,
+     "prompt_eval_count": 1124,
+     "prompt_eval_duration": 5838705459,
+     "eval_count": 146,
+     "eval_duration": 13405047043,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:41.819636Z"
+    },
+    "elapsed_s": 19.684,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 36,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Mouth_ulcer:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 489,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Can spicy food give you ulcers?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9eb4f29c3110598538b267536e7f036c8844cd0540cee80a71a5410b15f5b94d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693520.979006,
+      "end_wall": 1792693528.06307,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693520.979006,
+    "start_mono": 363078.197972875,
+    "end_wall": 1792693528.06307,
+    "end_mono": 363085.282099166,
+    "raw_response": "{\"query\": \"spicy food and peptic ulcers\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7080375083,
+     "load_duration": 1436485208,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 1468264250,
+     "eval_count": 16,
+     "eval_duration": 4130401207,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:28.061818Z"
+    },
+    "elapsed_s": 7.084,
+    "query_used": "spicy food and peptic ulcers",
+    "query_source": "json",
+    "query_arrival_seq": 37
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spicy food and peptic ulcers",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gastroenterostomy:0",
+       "score_q": 15365
+      },
+      {
+       "passage_key": "fever17:Peptic_ulcer_disease:3",
+       "score_q": 14103
+      },
+      {
+       "passage_key": "fever17:Barry_Marshall:0",
+       "score_q": 13875
+      },
+      {
+       "passage_key": "fever17:Peptic_ulcer_disease:2",
+       "score_q": 13492
+      },
+      {
+       "passage_key": "fever17:Stress_ulcer:0",
+       "score_q": 11923
+      }
+     ],
+     "retrieval_sha256": "039389d5b8ea6c74159765cb1b6570d60e7c457ba8743b004292956aea7e675c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "039389d5b8ea6c74159765cb1b6570d60e7c457ba8743b004292956aea7e675c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gastroenterostomy:0",
+      "content_sha256": "9895d76733634ee6e51a068c1da0aa9d76c2bfc4c11d0b622eb54b03e4a647ca",
+      "chars": 937
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Peptic_ulcer_disease:3",
+      "content_sha256": "53847fbb8032726791a3be78b287b1fa7b6351ea16b6b44f7e7ded41e7d5cb7a",
+      "chars": 200
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Barry_Marshall:0",
+      "content_sha256": "c8beeeb83794b131fee3e9af0558a3636469e3c4e7a7071d2b3cf62d880c0487",
+      "chars": 623
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Peptic_ulcer_disease:2",
+      "content_sha256": "2bc4990879978c26b81b3a459075cf3228d8ad060e77a167b5b0450cd1fbb547",
+      "chars": 883
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stress_ulcer:0",
+      "content_sha256": "eb8c62c2325c40ddb31c9cc62680f617203a0501a51bd06497f1c9480d2e72a2",
+      "chars": 391
+     }
+    ],
+    "elapsed_s": 0.016
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Can spicy food give you ulcers?\n\nOptions:\nA. No, ulcers are caused by the bacteria helicobacter pylori\nB. Yes, ulcers are caused by the food you eat\nC. It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food\nD. Yes, spicy food can give you ulcers\n\nEvidence passages from your search for \"spicy food and peptic ulcers\":\n<<<PASSAGES\n[P1] Gastroenterostomy\nA gastroenterostomy is the surgical creation of a connection between the stomach and the jejunum . The operation can sometimes be performed at the same time as a partial gastrectomy ( the removal of part of the stomach ) . Gastroenterostomy was in the past typically performed to treat peptic ulcers , but today is usually carried out to enable food to pass directly to the middle section of the small intestine , bypassing the damaged first section of the small intestine duodenum . The procedure is still being used to treat refractory gastroparesis but is now rarely used to treat peptic ulcer disease ulcers as most cases are bacterial in nature and there are many new drugs available to treat the gastric reflux often experienced with peptic ulcer disease . At least 80 % of peptic ulcers are caused by the bacteria H. pylori , and are therefore treated with combination antibiotic therapy ( references pending ) .\n\n[P2] Peptic ulcer disease\nH. pylori was first identified as causing peptic ulcers by Barry Marshall and Robin Warren in the late 20th century , a discovery for which they received the Nobel Prize in 2005 .\n\n[P3] Barry Marshall\nBarry James Marshall , AC , FRACP , FRS , FAA ( born 30 September 1951 ) is an Australian physician , Nobel Prize laureate in Physiology or Medicine , and Professor of Clinical Microbiology at the University of Western Australia . Marshall and Robin Warren showed that the bacterium Helicobacter pylori ( H. pylori ) is the cause of most peptic ulcers , reversing decades of medical doctrine holding that ulcers were caused by stress , spicy foods , and too much acid . This discovery has allowed for a breakthrough in understanding a causative link between Helicobacter pylori infection and stomach cancer .\n\n[P4] Peptic ulcer disease\nThe medication used to decrease acid is usually either a proton pump inhibitor ( PPI ) or an H2 blocker with four weeks of treatment initially recommended . Ulcers due to H. pylori are treated with a combination of medications such as amoxicillin , clarithromycin , and a PPI . Antibiotic resistance is increasing and thus treatment may not always be effective . Bleeding ulcers may be treated by endoscopy , with open surgery typically only used in cases in which it is not successful . Peptic ulcers are present in around 4 % of the population . They newly began in around 87.4 million persons worldwide in 2015 . About 10 % of people develop a peptic ulcer at some point in their life . They resulted in 267,500 deaths in 2015 down from 327,000 deaths in 1990 . The first description of a perforated peptic ulcer was in 1670 in Princess Henrietta of England .\n\n[P5] Stress ulcer\nA stress ulcer is a single or multiple mucosal defect which can become complicated by upper gastrointestinal bleeding during the physiologic stress of serious illness . Ordinary peptic ulcers are found commonly in the gastric antrum and the duodenum whereas stress ulcers are found commonly in fundic mucosa and can be located anywhere within the stomach and proximal duodenum .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4c93075a71007640d01427b68e1c5efce9aa986d9b5f2989462dece7af610920",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792693528.079438,
+      "end_wall": 1792693542.465903,
+      "error": null
+     }
+    ],
+    "arrival_seq": 37,
+    "start_wall": 1792693528.079438,
+    "start_mono": 363085.298467458,
+    "end_wall": 1792693542.465903,
+    "end_mono": 363099.685059375,
+    "raw_response": "{\n  \"reasoning\": \"Ulcers are primarily caused by the bacteria Helicobacter pylori, not by spicy food, according to the given passages.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P2\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14382916667,
+     "load_duration": 5943860042,
+     "prompt_eval_count": 1167,
+     "prompt_eval_duration": 4176461208,
+     "eval_count": 78,
+     "eval_duration": 4007125585,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:42.463235Z"
+    },
+    "elapsed_s": 14.387,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 37,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Peptic_ulcer_disease:3",
+     "fever17:Barry_Marshall:0",
+     "fever17:Peptic_ulcer_disease:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 116,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Can spicy food give you ulcers?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9eb4f29c3110598538b267536e7f036c8844cd0540cee80a71a5410b15f5b94d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693520.9790962,
+      "end_wall": 1792693533.715294,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693520.9790962,
+    "start_mono": 363078.198062708,
+    "end_wall": 1792693533.715294,
+    "end_mono": 363090.934372291,
+    "raw_response": "{\"query\": \"spicy food and stomach ulcers in humans\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12733456916,
+     "load_duration": 11665232333,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 354569125,
+     "eval_count": 15,
+     "eval_duration": 549093585,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:33.714574Z"
+    },
+    "elapsed_s": 12.736,
+    "query_used": "spicy food and stomach ulcers in humans",
+    "query_source": "json",
+    "query_arrival_seq": 39
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spicy food and stomach ulcers in humans",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Barry_Marshall:0",
+       "score_q": 12700
+      },
+      {
+       "passage_key": "fever17:Stomach:0",
+       "score_q": 12685
+      },
+      {
+       "passage_key": "fever17:Naproxen:0",
+       "score_q": 12595
+      },
+      {
+       "passage_key": "fever17:Gastroenterostomy:0",
+       "score_q": 12053
+      },
+      {
+       "passage_key": "fever17:Gastric_outlet_obstruction:0",
+       "score_q": 11736
+      }
+     ],
+     "retrieval_sha256": "c3464ba6bb9248336e981a89205aa2caf56dce1c80f5e41b2606c29857b89f79"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c3464ba6bb9248336e981a89205aa2caf56dce1c80f5e41b2606c29857b89f79",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Barry_Marshall:0",
+      "content_sha256": "c8beeeb83794b131fee3e9af0558a3636469e3c4e7a7071d2b3cf62d880c0487",
+      "chars": 623
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Stomach:0",
+      "content_sha256": "680ac9dffa9195d813d68ae508a5c40610908d2d1fbbc7cb5b89d0d05af714ff",
+      "chars": 717
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Naproxen:0",
+      "content_sha256": "200a22144206a6109b3ec59229fc03bb5eb3ade4deedeae8910a9dcb8971e70b",
+      "chars": 716
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Gastroenterostomy:0",
+      "content_sha256": "9895d76733634ee6e51a068c1da0aa9d76c2bfc4c11d0b622eb54b03e4a647ca",
+      "chars": 937
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Gastric_outlet_obstruction:0",
+      "content_sha256": "c4c48d544b13a170c9fb2b79e09b42ac96fe01f5f26437167bd394ee0d1b9984",
+      "chars": 776
+     }
+    ],
+    "elapsed_s": 0.0169
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Can spicy food give you ulcers?\n\nOptions:\nA. No, ulcers are caused by the bacteria helicobacter pylori\nB. Yes, ulcers are caused by the food you eat\nC. It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food\nD. Yes, spicy food can give you ulcers\n\nEvidence passages from your search for \"spicy food and stomach ulcers in humans\":\n<<<PASSAGES\n[P1] Barry Marshall\nBarry James Marshall , AC , FRACP , FRS , FAA ( born 30 September 1951 ) is an Australian physician , Nobel Prize laureate in Physiology or Medicine , and Professor of Clinical Microbiology at the University of Western Australia . Marshall and Robin Warren showed that the bacterium Helicobacter pylori ( H. pylori ) is the cause of most peptic ulcers , reversing decades of medical doctrine holding that ulcers were caused by stress , spicy foods , and too much acid . This discovery has allowed for a breakthrough in understanding a causative link between Helicobacter pylori infection and stomach cancer .\n\n[P2] Stomach\nThe stomach is a muscular , hollow , dilated part of the gastrointestinal tract that functions as a vital digestive organ . The stomach is present in humans and many other animals , including several invertebrates . In the digestive system the stomach is involved in the second phase of digestion , following mastication ( chewing ) . In humans and many other animals , the stomach is located between the oesophagus and the small intestine . It secretes digestive enzymes and gastric acid to aid in food digestion . The pyloric sphincter controls the passage of partially digested food ( chyme ) from the stomach into the duodenum where peristalsis takes over to move this through the rest of the intestines .\n\n[P3] Naproxen\nNaproxen ( brand names : Aleve , Naprosyn , and many others ) is a nonsteroidal anti-inflammatory drug ( NSAID ) of the propionic acid class ( the same class as ibuprofen ) that relieves pain , fever , swelling , and stiffness . It is a nonselective COX inhibitor , usually sold as the sodium salt . Naproxen poses an intermediate risk of stomach ulcers compared with ibuprofen , which is low-risk , and indometacin , which is high-risk . To reduce stomach ulceration risk , it is often combined with a proton-pump inhibitor ( a medication that reduces stomach acid production ) during long-term treatment of those with pre-existing stomach ulcers or a history of developing stomach ulcers while on NSAIDs .\n\n[P4] Gastroenterostomy\nA gastroenterostomy is the surgical creation of a connection between the stomach and the jejunum . The operation can sometimes be performed at the same time as a partial gastrectomy ( the removal of part of the stomach ) . Gastroenterostomy was in the past typically performed to treat peptic ulcers , but today is usually carried out to enable food to pass directly to the middle section of the small intestine , bypassing the damaged first section of the small intestine duodenum . The procedure is still being used to treat refractory gastroparesis but is now rarely used to treat peptic ulcer disease ulcers as most cases are bacterial in nature and there are many new drugs available to treat the gastric reflux often experienced with peptic ulcer disease . At least 80 % of peptic ulcers are caused by the bacteria H. pylori , and are therefore treated with combination antibiotic therapy ( references pending ) .\n\n[P5] Gastric outlet obstruction\nGastric outlet obstruction ( often abbreviated as GOO ) is a medical condition where there is an obstruction at the level of the pylorus , which is the outlet of the stomach . Individuals with gastric outlet obstruction will often have recurrent vomiting of food that has accumulated in the stomach , but which can not pass into the small intestine due to the obstruction . The stomach often dilates to accommodate food intake and secretions . Causes of gastric outlet obstruction include both benign causes ( such as peptic ulcer disease affecting the area around the pylorus ) , as well as malignant causes , such as gastric cancer . Causation related to ulcers may involve severe pain which the patient may interpret as a heart condition/attack .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fddd86ef3fd998a9c73adb30fd8ba351596e671092a37f4abf0c3308324a06c5",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792693533.732623,
+      "end_wall": 1792693542.672363,
+      "error": null
+     }
+    ],
+    "arrival_seq": 38,
+    "start_wall": 1792693533.732623,
+    "start_mono": 363090.951702833,
+    "end_wall": 1792693542.672363,
+    "end_mono": 363099.891521416,
+    "raw_response": "{\n  \"reasoning\": \"Spicy food is not directly linked to the development of ulcers, which are primarily caused by Helicobacter pylori bacteria, according to established medical knowledge.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8933704042,
+     "load_duration": 86167542,
+     "prompt_eval_count": 1129,
+     "prompt_eval_duration": 3618727708,
+     "eval_count": 73,
+     "eval_duration": 4220147038,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:42.66745Z"
+    },
+    "elapsed_s": 8.94,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 38,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Barry_Marshall:0",
+     "fever17:Stomach:0",
+     "fever17:Gastroenterostomy:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 167,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Can spicy food give you ulcers?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9eb4f29c3110598538b267536e7f036c8844cd0540cee80a71a5410b15f5b94d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693520.978896,
+      "end_wall": 1792693530.800343,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693520.978896,
+    "start_mono": 363078.19786275,
+    "end_wall": 1792693530.800343,
+    "end_mono": 363088.019395708,
+    "raw_response": "{\"query\": \"spicy food ulcers causes treatment\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9817841375,
+     "load_duration": 8628015334,
+     "prompt_eval_count": 153,
+     "prompt_eval_duration": 357643250,
+     "eval_count": 13,
+     "eval_duration": 671832832,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:30.799002Z"
+    },
+    "elapsed_s": 9.822,
+    "query_used": "spicy food ulcers causes treatment",
+    "query_source": "json",
+    "query_arrival_seq": 38
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spicy food ulcers causes treatment",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Mouth_ulcer:0",
+       "score_q": 13646
+      },
+      {
+       "passage_key": "fever17:Gefarnate:0",
+       "score_q": 10668
+      },
+      {
+       "passage_key": "fever17:Gastric_outlet_obstruction:0",
+       "score_q": 10453
+      },
+      {
+       "passage_key": "fever17:Milk-and-alkali_tetany:0",
+       "score_q": 10029
+      },
+      {
+       "passage_key": "fever17:Magaldrate:0",
+       "score_q": 9967
+      }
+     ],
+     "retrieval_sha256": "547872aa5b2fdde3766e5b004c7017ad66b74b7487824d95944c0606c8ed3bdc"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "547872aa5b2fdde3766e5b004c7017ad66b74b7487824d95944c0606c8ed3bdc",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Mouth_ulcer:0",
+      "content_sha256": "88c3316ef68cdf25b936ab5dc18d605d721012e916be7bd2537cefdba9600fdf",
+      "chars": 945
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Gefarnate:0",
+      "content_sha256": "23af1f8754c773c34c8bc5b587f172fda677345fe81d859fc01239a4d94ec26d",
+      "chars": 145
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Gastric_outlet_obstruction:0",
+      "content_sha256": "c4c48d544b13a170c9fb2b79e09b42ac96fe01f5f26437167bd394ee0d1b9984",
+      "chars": 776
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Milk-and-alkali_tetany:0",
+      "content_sha256": "2f4415970774355fb8a762e8d26e0a0d05a21a1ad21f51194112ad861b162f62",
+      "chars": 490
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Magaldrate:0",
+      "content_sha256": "6f1c7ceb813ddefa29df29aa8c91391e14089ac67ab63d8fd76785b0a849d1ce",
+      "chars": 161
+     }
+    ],
+    "elapsed_s": 0.0173
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Can spicy food give you ulcers?\n\nOptions:\nA. No, ulcers are caused by the bacteria helicobacter pylori\nB. Yes, ulcers are caused by the food you eat\nC. It is a common misconception that bacteria cause ulcers, but they are actually caused by eating spicy food\nD. Yes, spicy food can give you ulcers\n\nEvidence passages from your search for \"spicy food ulcers causes treatment\":\n<<<PASSAGES\n[P1] Mouth ulcer\nA mouth ulcer is an ulcer that occurs on the mucous membrane of the oral cavity . Mouth ulcers are very common , occurring in association with many diseases and by many different mechanisms , but usually there is no serious underlying cause . The two most common causes of oral ulceration are local trauma ( e.g. rubbing from a sharp edge on a broken filling ) and aphthous stomatitis ( `` canker sores '' ) , a condition characterized by recurrent formation of oral ulcers for largely unknown reasons . Mouth ulcers often cause pain and discomfort , and may alter the person 's choice of food while healing occurs ( e.g. avoiding acidic or spicy foods and beverages ) . They may form individually or multiple ulcers may appear at the same time ( a `` crop '' of ulcers ) . Once formed , the ulcer may be maintained by inflammation and/or secondary infection . Rarely , a mouth ulcer that does not heal may be a sign of oral cancer .\n\n[P2] Gefarnate\nGefarnate is a drug used for the treatment of gastric ulcers . It also has been proposed for use in the treatment of dry eye syndrome .\n\n[P3] Gastric outlet obstruction\nGastric outlet obstruction ( often abbreviated as GOO ) is a medical condition where there is an obstruction at the level of the pylorus , which is the outlet of the stomach . Individuals with gastric outlet obstruction will often have recurrent vomiting of food that has accumulated in the stomach , but which can not pass into the small intestine due to the obstruction . The stomach often dilates to accommodate food intake and secretions . Causes of gastric outlet obstruction include both benign causes ( such as peptic ulcer disease affecting the area around the pylorus ) , as well as malignant causes , such as gastric cancer . Causation related to ulcers may involve severe pain which the patient may interpret as a heart condition/attack .\n\n[P4] Milk-and-alkali tetany\nMilk-and-alkali tetany is a form of tetany cramps of the wrists and hands ( carpal spasm ) or legs ( pedal spasm ) caused by an electrolyte imbalance . Sufferers from peptic ulcers often take an alkali such as bicarbonate of soda to relieve the symptoms , and wash it down with milk . This causes the calcium of the milk to precipitate out , whilst the phosphate is digested . Treatment consists simply of discontinuing the habit . Category : Electrolyte disturbances\n\n[P5] Magaldrate\nMagaldrate ( INN ) is a common antacid drug that is used for the treatment of duodenal and gastric ulcers , esophagitis from gastroesophageal reflux .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "84449cd5fe94519cd40f426353a9b082951d1a54e94e64571fd44b32b2c13a59",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792693530.817975,
+      "end_wall": 1792693548.063631,
+      "error": null
+     }
+    ],
+    "arrival_seq": 39,
+    "start_wall": 1792693530.817975,
+    "start_mono": 363088.037029458,
+    "end_wall": 1792693548.063631,
+    "end_mono": 363105.282836875,
+    "raw_response": "{\n  \"reasoning\": \"The evidence suggests that ulcers are caused by bacteria (H. pylori) and peptic ulcer disease rather than spicy food. There is no direct evidence in the provided passages that supports the notion that spicy food causes ulcers.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P1\", \"P3\", \"P5\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17240597625,
+     "load_duration": 13178685709,
+     "prompt_eval_count": 876,
+     "prompt_eval_duration": 1535535291,
+     "eval_count": 86,
+     "eval_duration": 1596538495,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:25:48.059596Z"
+    },
+    "elapsed_s": 17.246,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 39,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1",
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Mouth_ulcer:0",
+     "fever17:Gastric_outlet_obstruction:0",
+     "fever17:Magaldrate:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 226,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "gemma2:2b": "777ba95cd0d59fb03ddddf9a359bf2a50d37cb6b2811e211127758f314b2f80a",
+  "mistral": "3660f6849a8a66c25074968059aa8fecdac8f9a7e03b6cf24b733d0c9ebe0701",
+  "phi3:mini": "039389d5b8ea6c74159765cb1b6570d60e7c457ba8743b004292956aea7e675c",
+  "llama3.2:3b": "c3464ba6bb9248336e981a89205aa2caf56dce1c80f5e41b2606c29857b89f79",
+  "qwen2.5:3b": "547872aa5b2fdde3766e5b004c7017ad66b74b7487824d95944c0606c8ed3bdc"
+ },
+ "item_start_wall": 1792693520.978703,
+ "item_wall_s": 27.085,
+ "ollama_ps_samples": [
+  [
+   1792693520.979,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693522.982,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693524.986,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693526.99,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693528.993,
+   [
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693530.999,
+   [
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792693533.001,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693535.004,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693537.008,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693539.011,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693541.018,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693543.023,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693545.028,
+   [
+    "qwen2.5:3b",
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693547.031,
+   [
+    "qwen2.5:3b",
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

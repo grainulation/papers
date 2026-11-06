@@ -1,0 +1,1242 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1173",
+ "order": 618,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1173",
+  "order": 618,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The PDPN gene deactivates the C-type lectin receptor (CLEC-2)."
+ },
+ "item_view_sha256": "4f411a3be62b81834b9d69267e42c00f94a895ff16cdf7e4f711a1c1ae32244e",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "olmo2:7b",
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7b655e9e38c5d4ced9bca396560af093c80cf3e2a773b60b65f76e7d6f9a9e17",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870775.230145,
+      "end_wall": 1792870776.996327,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870775.230145,
+    "start_mono": 540331.937241291,
+    "end_wall": 1792870776.996327,
+    "end_mono": 540333.703416958,
+    "raw_response": "{\"query\": \"PDPN CLEC-2\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1763591583,
+     "load_duration": 63956000,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 658120125,
+     "eval_count": 13,
+     "eval_duration": 932206169,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:36.995271Z"
+    },
+    "elapsed_s": 1.766,
+    "query_used": "PDPN CLEC-2",
+    "query_source": "json",
+    "query_arrival_seq": 3090
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PDPN CLEC-2",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 12227
+      },
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 11610
+      }
+     ],
+     "retrieval_sha256": "6282c21449ecba7764800c4f7fdc0ba36e5cffe9d850dd240ddc982e563e2ef5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6282c21449ecba7764800c4f7fdc0ba36e5cffe9d850dd240ddc982e563e2ef5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     }
+    ],
+    "elapsed_s": 0.0008
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nEvidence passages from your search for \"PDPN CLEC-2\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "91f60f187619ef58e25c90b70eff3db04dbb95187ad2d11f6463dc26f57a71ef",
+    "format_sha256": "e136c9779b51eed1a68710bf376bc1ae9e93a268cf9214dc59121a43d077abb5",
+    "attempts": [
+     {
+      "start_wall": 1792870776.9975622,
+      "end_wall": 1792870794.198288,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3090,
+    "start_wall": 1792870776.9975622,
+    "start_mono": 540333.704653083,
+    "end_wall": 1792870794.198288,
+    "end_mono": 540350.905323833,
+    "raw_response": "{\"reasoning\": \"The evidence passages indicate that PDPN activates the C-type lectin receptor CLEC-2, which is crucial for dendritic cell migration. Passage [P1] and [P2] describe how PDPN engagement of CLEC-2 leads to cellular spreading and migration by altering actin cytoskeleton dynamics, indicating that PDPN does not deactive but rather activates CLEC-2 to facilitate movement along stromal surfaces. There is no indication in the passages that PDPN deactivates CLEC-2.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17198100375,
+     "load_duration": 52663583,
+     "prompt_eval_count": 590,
+     "prompt_eval_duration": 1962358916,
+     "eval_count": 134,
+     "eval_duration": 14013873664,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:54.196497Z"
+    },
+    "elapsed_s": 17.201,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 2,
+       "items": {
+        "enum": [
+         "P1",
+         "P2"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3090,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 459,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7b655e9e38c5d4ced9bca396560af093c80cf3e2a773b60b65f76e7d6f9a9e17",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870775.2298508,
+      "end_wall": 1792870781.897702,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870775.2298508,
+    "start_mono": 540331.936947583,
+    "end_wall": 1792870781.897702,
+    "end_mono": 540338.604776583,
+    "raw_response": "{\"query\": \"PDPN gene deactivates CLEC-2\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6665368000,
+     "load_duration": 5728771375,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 293832000,
+     "eval_count": 17,
+     "eval_duration": 450981874,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:41.897028Z"
+    },
+    "elapsed_s": 6.668,
+    "query_used": "PDPN gene deactivates CLEC-2",
+    "query_source": "json",
+    "query_arrival_seq": 3093
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PDPN gene deactivates CLEC-2",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 12227
+      },
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 11610
+      },
+      {
+       "passage_key": "scifact:23830488:1",
+       "score_q": 1834
+      },
+      {
+       "passage_key": "scifact:35467590:0",
+       "score_q": 1807
+      },
+      {
+       "passage_key": "scifact:41133176:0",
+       "score_q": 1781
+      }
+     ],
+     "retrieval_sha256": "5c8da0c07979df587f9705379f2bdc5884166688e1aadaf393de6423600d2cb3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5c8da0c07979df587f9705379f2bdc5884166688e1aadaf393de6423600d2cb3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23830488:1",
+      "content_sha256": "70e3ce8a6000688e8f5cf9e31d7e9fe51dc1766741793dcf78c324e55ff54cca",
+      "chars": 885
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:35467590:0",
+      "content_sha256": "681bd10c57915b17f20d46c95c4e4cab9386ce999f265d1d5361b875a019d9c8",
+      "chars": 942
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:41133176:0",
+      "content_sha256": "8bf34540ce7b5a367cdb53d6e5f3cde37820b9d3f801615c6d6c4d6313ede47c",
+      "chars": 1101
+     }
+    ],
+    "elapsed_s": 0.0022
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nEvidence passages from your search for \"PDPN gene deactivates CLEC-2\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P3] Expression of circadian genes correlates with liver metastasis and outcomes in colorectal cancer.\nExpression of the Per1 and Per3 genes in cancer tissue was significantly lower compared to that in adjacent normal mucosa. Analysis of the relations between clinicopathological features and expression of the eight circadian genes in cancer tissue showed that high expression of the Bmal1 gene and low expression of the Per1 gene correlated with liver metastasis. On analysis of the relations between outcomes and gene expression, high expression of the Per2 gene was associated with significantly better outcomes than low expression of the Per2 gene. Overexpression of the Bmal1 gene and reduced expression of the Per1 gene may thus be useful predictors of liver metastasis. Moreover, reduced expression of the Per2 gene may be a predictor of outcomes in patients with colorectal cancer.\n\n[P4] Structure and developmental regulation of Golli-mbp, a 105-kilobase gene that encompasses the myelin basic protein gene and is expressed in cells in the oligodendrocyte lineage in the brain.\nWe have identified a novel transcription unit of 105 kilobases (called the Golli-mbp gene) that encompasses the mouse myelin basic protein (MBP) gene. Three unique exons within this gene are alternatively spliced into MBP exons and introns to produce a family of MBP gene-related mRNAs that are under individual developmental regulation. These mRNAs are temporally expressed within cells of the oligodendrocyte lineage at progressive stages of differentiation. Thus, the MBP gene is a part of a more complex gene structure, the products of which may play a role in oligodendrocyte differentiation prior to myelination. One Golli-mbp mRNA that encodes a protein antigenically related to MBP is also expressed in the spleen and other non-neural tissues.\n\n[P5] Low antioxidant enzyme gene expression in pancreatic islets compared with various other mouse tissues.\nUsing a sensitive Northern blot hybridization technique, gene expression of superoxide dismutase (SOD), catalase, and glutathione peroxidase was studied in pancreatic islets and for comparison in various other mouse tissues (liver, kidney, brain, lung, skeletal muscle, heart muscle, adrenal gland, and pituitary gland). Gene expression of the antioxidant enzymes was usually in the range of +/- 50% of that in the liver. Only in pancreatic islets gene expression was substantially lower. The levels of the cytoplasmic Cu/Zn SOD and the mitochondrial Mn SOD gene expression were in the range of 30-40% of those in the liver. Glutathione peroxidase gene expression was 15%, and catalase gene expression was not at all detectable in pancreatic islets. These low levels of antioxidant enzyme gene expression may provide an explanation for the extraordinary sensitivity of pancreatic beta cells towards cytotoxic damage by diabetogenic compounds and during the development of human and animal diabetes.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3f728ea84a73178a66d8bde5b5fbb12b199c39c71cc9a5e50cc101874d508273",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870781.900342,
+      "end_wall": 1792870795.367937,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3091,
+    "start_wall": 1792870781.900342,
+    "start_mono": 540338.607417791,
+    "end_wall": 1792870795.367937,
+    "end_mono": 540352.074966041,
+    "raw_response": "{\"reasoning\": \"The claim that the PDPN gene deactivates the C-type lectin receptor (CLEC-2) is supported by evidence showing that PDPN activates CLEC-2 in dendritic cells, which are crucial for immune responses. This activation is vital for the motility and function of these cells. The evidence indicates that CLEC-2 deficiency impairs dendritic cell motility, suggesting that PDPN deactivates CLEC-2 in a manner that hinders immune cell function.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\", \"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13464203667,
+     "load_duration": 62425459,
+     "prompt_eval_count": 1196,
+     "prompt_eval_duration": 1976050999,
+     "eval_count": 141,
+     "eval_duration": 9790588290,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:55.365548Z"
+    },
+    "elapsed_s": 13.468,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3091,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:7370282:0",
+     "scifact:7370282:1",
+     "scifact:41133176:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 433,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7b655e9e38c5d4ced9bca396560af093c80cf3e2a773b60b65f76e7d6f9a9e17",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870775.229932,
+      "end_wall": 1792870778.4927192,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870775.229932,
+    "start_mono": 540331.93702825,
+    "end_wall": 1792870778.4927192,
+    "end_mono": 540335.199804208,
+    "raw_response": "{\"query\": \"PDPN gene CLEC-2 interaction mechanism\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3260135500,
+     "load_duration": 63569208,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 661651375,
+     "eval_count": 17,
+     "eval_duration": 2392409166,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:38.491795Z"
+    },
+    "elapsed_s": 3.263,
+    "query_used": "PDPN gene CLEC-2 interaction mechanism",
+    "query_source": "json",
+    "query_arrival_seq": 3091
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PDPN gene CLEC-2 interaction mechanism",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22938539:0",
+       "score_q": 741
+      },
+      {
+       "passage_key": "scifact:34439544:0",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:34439544:1",
+       "score_q": 725
+      },
+      {
+       "passage_key": "scifact:36399109:0",
+       "score_q": 724
+      },
+      {
+       "passage_key": "scifact:11048759:0",
+       "score_q": 722
+      }
+     ],
+     "retrieval_sha256": "6262bcef9727ded029541d811691e2b1829acd298329560c0362ce7090c7f3b8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6262bcef9727ded029541d811691e2b1829acd298329560c0362ce7090c7f3b8",
+    "query_embedding_sha256": "5dc486f519702708c4fc9b47979a5b2670f88fe2eec5ff35835819725408377c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22938539:0",
+      "content_sha256": "be49a2ba8ecf9dfc3925db3780d4490cbd9e17b0a49c47747873f07c9bc29e3b",
+      "chars": 1034
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:34439544:0",
+      "content_sha256": "6a5657aaeaa6681b3867d4a89f1a73656a2609e45a10b4dfc7f11255995e9c27",
+      "chars": 959
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34439544:1",
+      "content_sha256": "387e0c3c901a0cdac9fa976e79c9a6806d9812c6ccbdcde1daab9ff3f786b9d3",
+      "chars": 960
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:36399109:0",
+      "content_sha256": "fdeb75142e450e9e624026fe306cc75e8d9e9a6f495da23fe72b31dd4273500a",
+      "chars": 1050
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11048759:0",
+      "content_sha256": "8fcccc17710f9dc876190ff70a890078819493be9a4b3ab35c9eed83934b94bb",
+      "chars": 1010
+     }
+    ],
+    "elapsed_s": 6.964
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nEvidence passages from your search for \"PDPN gene CLEC-2 interaction mechanism\":\n<<<PASSAGES\n[P1] Epstein-Barr virus and virus human protein interaction maps.\nA comprehensive mapping of interactions among Epstein-Barr virus (EBV) proteins and interactions of EBV proteins with human proteins should provide specific hypotheses and a broad perspective on EBV strategies for replication and persistence. Interactions of EBV proteins with each other and with human proteins were assessed by using a stringent high-throughput yeast two-hybrid system. Overall, 43 interactions between EBV proteins and 173 interactions between EBV and human proteins were identified. EBV-EBV and EBV-human protein interaction, or \"interactome\" maps provided a framework for hypotheses of protein function. For example, LF2, an EBV protein of unknown function interacted with the EBV immediate early R transactivator (Rta) and was found to inhibit Rta transactivation. From a broader perspective, EBV genes can be divided into two evolutionary classes, \"core\" genes, which are conserved across all herpesviruses and subfamily specific, or \"noncore\" genes.\n\n[P2] Examining BCL-2 family function with large unilamellar vesicles.\nThe BCL-2 (B cell CLL/Lymphoma) family is comprised of approximately twenty proteins that collaborate to either maintain cell survival or initiate apoptosis(1). Following cellular stress (e.g., DNA damage), the pro-apoptotic BCL-2 family effectors BAK (BCL-2 antagonistic killer 1) and/or BAX (BCL-2 associated X protein) become activated and compromise the integrity of the outer mitochondrial membrane (OMM), though the process referred to as mitochondrial outer membrane permeabilization (MOMP)(1). After MOMP occurs, pro-apoptotic proteins (e.g., cytochrome c) gain access to the cytoplasm, promote caspase activation, and apoptosis rapidly ensues(2). In order for BAK/BAX to induce MOMP, they require transient interactions with members of another pro-apoptotic subset of the BCL-2 family, the BCL-2 homology domain 3 (BH3)-only proteins, such as BID (BH3-interacting domain agonist)(3-6).\n\n[P3] Examining BCL-2 family function with large unilamellar vesicles.\nAnti-apoptotic BCL-2 family proteins (e.g., BCL-2 related gene, long isoform, BCL-xL; myeloid cell leukemia 1, MCL-1) regulate cellular survival by tightly controlling the interactions between BAK/BAX and the BH3-only proteins capable of directly inducing BAK/BAX activation(7,8). In addition, anti-apoptotic BCL-2 protein availability is also dictated by sensitizer/de-repressor BH3-only proteins, such as BAD (BCL-2 antagonist of cell death) or PUMA (p53 upregulated modulator of apoptosis), which bind and inhibit anti-apoptotic members(7,9). As most of the anti-apoptotic BCL-2 repertoire is localized to the OMM, the cellular decision to maintain survival or induce MOMP is dictated by multiple BCL-2 family interactions at this membrane. Large unilamellar vesicles (LUVs) are a biochemical model to explore relationships between BCL-2 family interactions and membrane permeabilization(10).\n\n[P4] Genome-wide RNAi screen of Ca(2+) influx identifies genes that regulate Ca(2+) release-activated Ca(2+) channel activity.\nRecent studies by our group and others demonstrated a required and conserved role of Stim in store-operated Ca(2+) influx and Ca(2+) release-activated Ca(2+) (CRAC) channel activity. By using an unbiased genome-wide RNA interference screen in Drosophila S2 cells, we now identify 75 hits that strongly inhibited Ca(2+) influx upon store emptying by thapsigargin. Among these hits are 11 predicted transmembrane proteins, including Stim, and one, olf186-F, that upon RNA interference-mediated knockdown exhibited a profound reduction of thapsigargin-evoked Ca(2+) entry and CRAC current, and upon overexpression a 3-fold augmentation of CRAC current. CRAC currents were further increased to 8-fold higher than control and developed more rapidly when olf186-F was cotransfected with Stim. olf186-F is a member of a highly conserved family of four-transmembrane spanning proteins with homologs from Caenorhabditis elegans to human.\n\n[P5] Identification of Epstein-Barr virus nuclear antigen 1 protein domains that direct interactions at a distance between DNA-bound proteins.\nThe EBNA1 protein of Epstein-Barr virus (EBV) binds to and activates DNA replication from the EBV latent origin of replication, oriP, via a direct interaction with the two noncontiguous subelements of oriP. The EBNA1 molecules bound to the oriP subelements interact efficiently with each other by a DNA looping mechanism. We have previously mapped a region of EBNA1 (termed the looping region) that is required to mediate the interaction of the EBNA1 molecules bound to the oriP subelements. We now demonstrate that two fragments of this region of EBNA1, which consist largely of an eight amino acid repeat, can mediate homotypic interactions when transferred to another DNA-binding protein. Protein interactions mediated by the EBNA1 looping region appear to be dependent on DNA binding since these interactions were detected between DNA-bound forms of the proteins only.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "60f0bdd6e01a385b5e7f82ef4089692559de7e872586370dad019bf2084dee56",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870785.457216,
+      "end_wall": 1792870805.0721211,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3092,
+    "start_wall": 1792870785.457216,
+    "start_mono": 540342.164279458,
+    "end_wall": 1792870805.0721211,
+    "end_mono": 540361.77912,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages do not contain any information specifically addressing the interaction between the PDPN gene and the C-type lectin receptor (CLEC-2). None of the passages discuss PDPN or CLEC-2 interactions directly or indirectly. Therefore, there is insufficient evidence to either support or refute the claim based solely on the given information.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19609001166,
+     "load_duration": 2275492541,
+     "prompt_eval_count": 1458,
+     "prompt_eval_duration": 6446850709,
+     "eval_count": 107,
+     "eval_duration": 9973840997,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:40:05.067695Z"
+    },
+    "elapsed_s": 19.615,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3092,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 364,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7b655e9e38c5d4ced9bca396560af093c80cf3e2a773b60b65f76e7d6f9a9e17",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870775.230092,
+      "end_wall": 1792870779.469439,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870775.230092,
+    "start_mono": 540331.937189041,
+    "end_wall": 1792870779.469439,
+    "end_mono": 540336.176521041,
+    "raw_response": "{\"query\": \"PDPN gene CLEC-2 inhibition mechanism\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4236700375,
+     "load_duration": 1435582041,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 394639041,
+     "eval_count": 19,
+     "eval_duration": 2324618708,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:39.468357Z"
+    },
+    "elapsed_s": 4.239,
+    "query_used": "PDPN gene CLEC-2 inhibition mechanism",
+    "query_source": "json",
+    "query_arrival_seq": 3092
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PDPN gene CLEC-2 inhibition mechanism",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14241418:0",
+       "score_q": 750
+      },
+      {
+       "passage_key": "scifact:36399109:0",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:4323425:0",
+       "score_q": 746
+      },
+      {
+       "passage_key": "scifact:4323425:1",
+       "score_q": 742
+      },
+      {
+       "passage_key": "scifact:23440856:0",
+       "score_q": 739
+      }
+     ],
+     "retrieval_sha256": "bee9a6c544493c655636196befac8689f03d6ddf29b4697b07554b4be657bf52"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bee9a6c544493c655636196befac8689f03d6ddf29b4697b07554b4be657bf52",
+    "query_embedding_sha256": "3d482dba534cd6b715f049124ee588edd907e0b7f0a6e63469cf2c9464aeff6c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14241418:0",
+      "content_sha256": "fc4c64763b10572f2b9d807d5144d960dd3fac13f11f624329884bcce68d9399",
+      "chars": 1131
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:36399109:0",
+      "content_sha256": "fdeb75142e450e9e624026fe306cc75e8d9e9a6f495da23fe72b31dd4273500a",
+      "chars": 1050
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4323425:0",
+      "content_sha256": "7cada5331de8e236c62af41ad2476cfdc096281ffe09e6a1a2863f1cdbabf776",
+      "chars": 1011
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4323425:1",
+      "content_sha256": "cb3ccb032a1b0df3ad78135608a08fd96102371207f172c423b016e2aa8e9e7c",
+      "chars": 244
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23440856:0",
+      "content_sha256": "9ff6fa046c9ddc84e60b69330c27f57a2dd841931a56f643d58cec12d1aaf857",
+      "chars": 1032
+     }
+    ],
+    "elapsed_s": 6.0271
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nEvidence passages from your search for \"PDPN gene CLEC-2 inhibition mechanism\":\n<<<PASSAGES\n[P1] NVP-BEZ235, a dual PI3K/mTOR inhibitor, prevents PI3K signaling and inhibits the growth of cancer cells with activating PI3K mutations.\nPhosphatidylinositol-3-kinase (PI3K) pathway deregulation is a common event in human cancer, either through inactivation of the tumor suppressor phosphatase and tensin homologue deleted from chromosome 10 or activating mutations of p110-alpha. These hotspot mutations result in oncogenic activity of the enzyme and contribute to therapeutic resistance to the anti-HER2 antibody trastuzumab. The PI3K pathway is, therefore, an attractive target for cancer therapy. We have studied NVP-BEZ235, a dual inhibitor of the PI3K and the downstream mammalian target of rapamycin (mTOR). NVP-BEZ235 inhibited the activation of the downstream effectors Akt, S6 ribosomal protein, and 4EBP1 in breast cancer cells. The antiproliferative activity of NVP-BEZ235 was superior to the allosteric selective mTOR complex inhibitor everolimus in a panel of 21 cancer cell lines of different origin and mutation status. The described Akt activation due to mTOR inhibition was prevented by higher doses of NVP-BEZ235.\n\n[P2] Genome-wide RNAi screen of Ca(2+) influx identifies genes that regulate Ca(2+) release-activated Ca(2+) channel activity.\nRecent studies by our group and others demonstrated a required and conserved role of Stim in store-operated Ca(2+) influx and Ca(2+) release-activated Ca(2+) (CRAC) channel activity. By using an unbiased genome-wide RNA interference screen in Drosophila S2 cells, we now identify 75 hits that strongly inhibited Ca(2+) influx upon store emptying by thapsigargin. Among these hits are 11 predicted transmembrane proteins, including Stim, and one, olf186-F, that upon RNA interference-mediated knockdown exhibited a profound reduction of thapsigargin-evoked Ca(2+) entry and CRAC current, and upon overexpression a 3-fold augmentation of CRAC current. CRAC currents were further increased to 8-fold higher than control and developed more rapidly when olf186-F was cotransfected with Stim. olf186-F is a member of a highly conserved family of four-transmembrane spanning proteins with homologs from Caenorhabditis elegans to human.\n\n[P3] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nBCL-2 was isolated from the t(14;18) chromosomal breakpoint in follicular B-cell lymphoma1–3. Bcl-2 has the unique oncogenic role of extending cell survival by inhibiting a variety of apoptotic deaths4–13. An emerging family of Bcl-2 -related proteins share two highly conserved regions14–20 referred to here as Bcl-2 homology 1 and 2 (BH1 and BH2) domains (Fig. 1). This includes Bax which heterodimerizes with Bcl-2 and when overexpressed counteracts Bcl-214. We report here that site-specific mutagenesis of Bcl-2 establishes the two domains as novel dimerization motifs. Substitu-tion of Gly 145 in BHl domain or Trp 188 in BH2 domain completely abrogated Bcl-2's death-repressor activity in inter-leukin-3 deprivation, γ-irradiation and glucocorticoid-induced apoptosis. Mutations that affected Bcl-2's function also disrupted its heterodimerization with Bax, yet still permitted Bcl-2 homo-dimerization.\n\n[P4] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nThese results establish a functional role for the BH1 and BH2 domains and suggest Bcl-2 exerts its action through heterodimerization with Bax.\n\n[P5] Screening for inhibition of Vibrio cholerae VipA-VipB interaction identifies small-molecule compounds active against type VI secretion.\nThe type VI secretion system (T6SS) is the most prevalent bacterial secretion system and an important virulence mechanism utilized by Gram-negative bacteria, either to target eukaryotic cells or to combat other microbes. The components show much variability, but some appear essential for the function, and two homologues, denoted VipA and VipB in Vibrio cholerae, have been identified in all T6SSs described so far. Secretion is dependent on binding of an α-helical region of VipA to VipB, and in the absence of this binding, both components are degraded within minutes and secretion is ceased. The aim of the study was to investigate if this interaction could be blocked, and we hypothesized that such inhibition would lead to abrogation of T6S. A library of 9,600 small-molecule compounds was screened for their ability to block the binding of VipA-VipB in a bacterial two-hybrid system (B2H).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "37e775bf85d1bd987177881bbc11e27fb75869d39cd4ec4bdb17cb4b4f0c4920",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870785.497059,
+      "end_wall": 1792870807.818146,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3093,
+    "start_wall": 1792870785.497059,
+    "start_mono": 540342.2041225,
+    "end_wall": 1792870807.818146,
+    "end_mono": 540364.52513575,
+    "raw_response": "{\n  \"reasoning\": \"The provided claim specifies that the PDPN gene deactivates the C-type lectin receptor (CLEC-2). However, the evidence passages do not contain direct information about this interaction. Instead, they discuss various molecular functions such as PI3K/mTOR pathway, Ca(2+) influx regulation, Bcl-2 protein domains, and T6SS components. None of these passages support the direct inhibition of CLEC-2 by the PDPN gene. Thus, the claim is REFUTED based on the given evidence.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22316114375,
+     "load_duration": 11026537416,
+     "prompt_eval_count": 1614,
+     "prompt_eval_duration": 4002812541,
+     "eval_count": 164,
+     "eval_duration": 6605099664,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:40:07.814524Z"
+    },
+    "elapsed_s": 22.321,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3093,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:14241418:0",
+     "scifact:36399109:0",
+     "scifact:4323425:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 469,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7b655e9e38c5d4ced9bca396560af093c80cf3e2a773b60b65f76e7d6f9a9e17",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792870775.230023,
+      "end_wall": 1792870785.02591,
+      "error": null
+     }
+    ],
+    "start_wall": 1792870775.230023,
+    "start_mono": 540331.937119791,
+    "end_wall": 1792870785.02591,
+    "end_mono": 540341.732973875,
+    "raw_response": "{\"query\": \"C-type lectin receptor deactivates PDPN gene\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9792951041,
+     "load_duration": 7535922208,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 833907166,
+     "eval_count": 17,
+     "eval_duration": 1043638420,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:39:45.024558Z"
+    },
+    "elapsed_s": 9.796,
+    "query_used": "C-type lectin receptor deactivates PDPN gene",
+    "query_source": "json",
+    "query_arrival_seq": 3094
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "C-type lectin receptor deactivates PDPN gene",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:29288582:0",
+       "score_q": 747
+      },
+      {
+       "passage_key": "scifact:7221410:0",
+       "score_q": 742
+      },
+      {
+       "passage_key": "scifact:25606339:1",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:22674621:0",
+       "score_q": 732
+      },
+      {
+       "passage_key": "scifact:29288582:1",
+       "score_q": 730
+      }
+     ],
+     "retrieval_sha256": "6e9b15a6b4aeb6886ea7de691464519f65d8ff7d7b406fe6b1564044ba73484e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6e9b15a6b4aeb6886ea7de691464519f65d8ff7d7b406fe6b1564044ba73484e",
+    "query_embedding_sha256": "d9cc534255fa5218253552b07f5f22774236226242d12146e4ede438fc4229bf",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:29288582:0",
+      "content_sha256": "5c07359730a1ff46c365c58f14ff0bcc8919d7b768cda6fd351b48b3655b47ed",
+      "chars": 952
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7221410:0",
+      "content_sha256": "bd549f3b76b2cfb2e44bd504d31dc65482a87f2b2591c08ade97b849515ad176",
+      "chars": 1056
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25606339:1",
+      "content_sha256": "c2311fcb2b005990797b672bb56c497f00217346c69734959a881a896a92a4ed",
+      "chars": 862
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:22674621:0",
+      "content_sha256": "8c3ad52cde0bf2cf92ba4a47346c60e42d15337c89065fb50d88e5e83d40b16a",
+      "chars": 949
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29288582:1",
+      "content_sha256": "c4a418a18897c0cce33f8ec6f1d11245e188316c6d859ca4294ae1f7916ec17b",
+      "chars": 558
+     }
+    ],
+    "elapsed_s": 0.5096
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The PDPN gene deactivates the C-type lectin receptor (CLEC-2).\n\nEvidence passages from your search for \"C-type lectin receptor deactivates PDPN gene\":\n<<<PASSAGES\n[P1] GITR, a member of the TNF receptor superfamily, is costimulatory to mouse T lymphocyte subpopulations.\nGITR (glucocorticoid-induced TNFR family related gene) is a member of the TNFR superfamily (TNFRSF) that is expressed in different cell types, including T lymphocytes. Because of a high homology in its cytoplasmic region with other known costimulatory members of the TNFRSF, we investigated whether GITR played a costimulatory role in T lymphocyte subpopulations. Our results show that the proliferation response of CD8+ and CD4+ peripheral T cell subpopulations was potentiated when a GITR costimulus was added to an anti-CD3 stimulus. Furthermore, expression of the main activation-induced receptor (IL-2Ralpha) and production of IL-2 and IFN-gamma were increased more with a GITR costimulus than with anti-CD3 alone. GITR stimulation also enhanced anti-CD3-induced ERK phosphorylation, suggesting that GITR is involved in MAPK-pathway activation.\n\n[P2] Alzheimer’s Disease Risk Gene CD33 Inhibits Microglial Uptake of Amyloid Beta\nThe transmembrane protein CD33 is a sialic acid-binding immunoglobulin-like lectin that regulates innate immunity but has no known functions in the brain. We have previously shown that the CD33 gene is a risk factor for Alzheimer's disease (AD). Here, we observed increased expression of CD33 in microglial cells in AD brain. The minor allele of the CD33 SNP rs3865444, which confers protection against AD, was associated with reductions in both CD33 expression and insoluble amyloid beta 42 (Aβ42) levels in AD brain. Furthermore, the numbers of CD33-immunoreactive microglia were positively correlated with insoluble Aβ42 levels and plaque burden in AD brain. CD33 inhibited uptake and clearance of Aβ42 in microglial cell cultures. Finally, brain levels of insoluble Aβ42 as well as amyloid plaque burden were markedly reduced in APP(Swe)/PS1(ΔE9)/CD33(-/-) mice. Therefore, CD33 inactivation mitigates Aβ pathology and CD33 inhibition could represent a novel therapy for AD.\n\n[P3] Toll-like receptor-3 mediates HIV-1 transactivation via NFκB and JNK pathways and histone acetylation, but prolonged activation suppresses Tat and HIV-1 replication.\nThis was associated with epigenetic modifications, including decreased histone deacetylase activity, increased histone acetyl transferase (HAT) activity, and increased acetylation of histones H3 and H4 at lysine residues in the nucleosome-0 and nucleosome-1 of the HIV-1 promoter. However, prolonged TLR3 activation decreased HIV-1 transactivation, decreased HAT activity and Tat transcription, and suppressed viral replication. Overall, data suggests that TLR3 can act as viral sensor to mediate viral transactivation, cellular signaling, innate immune response, and inflammation in HIV-infected humans. Our study provides novel insights into the molecular basis for these TLR3-mediated effects.\n\n[P4] Effects of FXR in foam-cell formation and atherosclerosis development.\nFarnesoid X receptor (FXR), a bile-acid-activated member of the nuclear receptor superfamily, is essential in regulating bile-acid, cholesterol, and triglyceride homeostasis. Disruption of the FXR gene in mice results in a proatherosclerotic lipid profile with increased serum cholesterols and triglycerides. However, the role of FXR in foam-cell formation and atherosclerosis development remains unclear. The current study showed that the peritoneal macrophages isolated from FXR-null mice took up less oxidized LDL-cholesterol (oxLDL-C), which was accompanied by a marked reduction in CD36 expression in these cells. This result appears to be FXR-independent, as FXR was not detected in the peritoneal macrophages. To assess to what extent FXR modulates atherosclerosis development, FXR/ApoE double-null mice were generated. Female mice were used for atherosclerosis analysis.\n\n[P5] GITR, a member of the TNF receptor superfamily, is costimulatory to mouse T lymphocyte subpopulations.\nInterestingly, CD4+CD25+ regulatory T cell (Treg cell) proliferation was triggered by the GITR costimulus; Treg cell proliferation was paralleled by the loss of the anergic phenotype and suppressor activity. Nevertheless, unstimulated GITR(-/-) CD4+CD25+ and GITR(+/+) CD4+CD25+ cells were equally able to exert suppressor activity on CD4+CD25- responder cells. These results indicate a novel function for GITR as costimulatory molecule of T cell subsets.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "038027671ae77a4d204f13039a9972e80a3ae5371772a4100dc000e131ec5fb3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792870785.5360231,
+      "end_wall": 1792870810.705843,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3094,
+    "start_wall": 1792870785.5360231,
+    "start_mono": 540342.243087041,
+    "end_wall": 1792870810.705843,
+    "end_mono": 540367.412825833,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages do not directly support or refute the claim. P1 discusses the role of GITR as a costimulatory molecule for T cell subsets, but it does not mention anything about the C-type lectin receptor (CLEC-2). P2 discusses the role of CD33 in Alzheimer's disease, but it does not relate to the claim. P3 discusses the role of Toll-like receptor-3 in HIV-1 transactivation, but it does not support or refute the claim. P4 discusses the role of FXR in foam-cell formation and atherosclerosis development, but it does not relate to the claim. P5 discusses the role of GITR as a costimulatory-\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25165245041,
+     "load_duration": 12804608541,
+     "prompt_eval_count": 1276,
+     "prompt_eval_duration": 3131902875,
+     "eval_count": 173,
+     "eval_duration": 5646037877,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:40:10.702142Z"
+    },
+    "elapsed_s": 25.17,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3094,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "olmo2:7b": "6282c21449ecba7764800c4f7fdc0ba36e5cffe9d850dd240ddc982e563e2ef5",
+  "falcon3:3b": "5c8da0c07979df587f9705379f2bdc5884166688e1aadaf393de6423600d2cb3",
+  "exaone3.5:7.8b": "6262bcef9727ded029541d811691e2b1829acd298329560c0362ce7090c7f3b8",
+  "granite3.3:2b": "bee9a6c544493c655636196befac8689f03d6ddf29b4697b07554b4be657bf52",
+  "nemotron-mini:4b": "6e9b15a6b4aeb6886ea7de691464519f65d8ff7d7b406fe6b1564044ba73484e"
+ },
+ "item_start_wall": 1792870775.2296698,
+ "item_wall_s": 35.476,
+ "ollama_ps_samples": [
+  [
+   1792870775.23,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870777.241,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870779.245,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870781.253,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870783.264,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792870785.276,
+   [
+    "nomic-embed-text:latest",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870787.287,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870789.295,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870791.303,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870793.309,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792870795.321,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792870797.324,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870799.334,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870801.345,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870803.35,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870805.353,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792870807.362,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792870809.363,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

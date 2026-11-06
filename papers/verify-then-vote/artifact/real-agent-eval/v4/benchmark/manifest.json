@@ -1,0 +1,172 @@
+{
+ "build_version": "v4-benchmark-1.0.0",
+ "seed": 20261021,
+ "system_prompt_v4": "You are a knowledgeable assistant. Answer the question with specific factual claims.\nFor each major point, cite a source if you know one (e.g., a study, organization, or standard).\nBe concise but thorough. State your confidence level (high/medium/low) for claims where you are uncertain.\nAfter your explanation, end your response with exactly one final line of the form\nANSWER: <your answer>",
+ "sources": {
+  "truthfulqa": {
+   "dataset": "TruthfulQA (Lin, Hilton, Evans 2022), MC1 single-true targets",
+   "url": "https://github.com/sylinrl/TruthfulQA",
+   "version": "git d71c110897f5d31c5d7f309e7bc316c152f6f031 (main, Jan-2025 revision, 790 questions)",
+   "files": {
+    "TruthfulQA.csv": "b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c",
+    "data/mc_task.json": "c90d853454fd48c676accb33e16923ac438dbb6fb37ecc7c6a70e33c9e556e87"
+   },
+   "license": "Apache-2.0 (repository LICENSE)"
+  },
+  "popqa": {
+   "dataset": "PopQA (Mallen et al. 2023, 'When Not to Trust Language Models')",
+   "url": "https://github.com/AlexTMallen/adaptive-retrieval (data/popQA.tsv); mirror huggingface.co/datasets/akariasai/PopQA (byte-identical test.tsv)",
+   "version": "git 8172ab04794a1651488207c230286b0b3786d736; HF dataset sha 098765c79ea10a2cb19c828324e33281b8336ec0",
+   "files": {
+    "popQA.tsv": "9a5227f41bff0e4c331d4a774d946b12f95307892b58f860a9606ef356e6089b"
+   },
+   "license": "MIT (repository LICENSE; HF card states none). Facts derive from Wikidata (CC0)."
+  },
+  "fever": {
+   "dataset": "FEVER 1.0 (Thorne et al. 2018), paper_dev split",
+   "url": "https://fever.ai/download/fever/paper_dev.jsonl",
+   "version": "FEVER 1.0 paper_dev (9,999 claims; labels against the June-2017 Wikipedia dump)",
+   "files": {
+    "paper_dev.jsonl": "41158707810008747946bf23471e82df53e77a513524b9e3ec1c2e674ef5ef8c"
+   },
+   "license": "Wikipedia Copyright Policy / CC BY-SA 3.0 (fever.ai license page) -- share-alike applies to derived item files"
+  },
+  "scifact": {
+   "dataset": "SciFact (Wadden et al. 2020), claims_train + claims_dev (test labels are hidden)",
+   "url": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz ; https://github.com/allenai/scifact",
+   "version": "release/latest data.tar.gz (sha256 recorded); 809 train + 300 dev claims",
+   "files": {
+    "claims_train.jsonl": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+    "corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "data.tar.gz": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be"
+   },
+   "license": "claims/annotations CC BY 4.0; abstracts (corpus.jsonl) ODC-By 1.0 via S2ORC"
+  }
+ },
+ "eligibility": {
+  "truthfulqa": {
+   "eligible": 741,
+   "excluded": {
+    "category:Indexical Error: Identity": 8,
+    "category:Indexical Error: Location": 11,
+    "category:Subjective": 9,
+    "category:Misconceptions: Topical": 3,
+    "category:Indexical Error: Other": 18
+   },
+   "reserve_unused": 451
+  },
+  "popqa": {
+   "eligible": 1214,
+   "excluded": {
+    "non_functional_prop": 11443,
+    "s_pop<1000": 1532,
+    "question_multi_valued_in_dataset": 78
+   },
+   "reserve_unused": 924
+  },
+  "fever": {
+   "eligible": 6505,
+   "excluded": {
+    "label_NEI": 3333,
+    "time_sensitive_token": 161
+   },
+   "reserve_unused": 6215
+  },
+  "scifact": {
+   "eligible": 693,
+   "excluded": {
+    "NEI_no_evidence": 416
+   },
+   "reserve_unused": 403
+  }
+ },
+ "composition": {
+  "dev": {
+   "truthfulqa": 40,
+   "popqa": 40,
+   "fever": 40,
+   "scifact": 40
+  },
+  "confirmatory_primary": {
+   "truthfulqa": 150,
+   "popqa": 150,
+   "fever": 150,
+   "scifact": 150
+  },
+  "confirmatory_extension": {
+   "truthfulqa": 100,
+   "popqa": 100,
+   "fever": 100,
+   "scifact": 100
+  },
+  "popqa_strata_primary": {
+   "pop_1e4_1e5": 50,
+   "pop_ge_1e5": 50,
+   "pop_1e3_1e4": 50
+  },
+  "popqa_props_primary": {
+   "capital": 70,
+   "place of birth": 14,
+   "country": 24,
+   "father": 28,
+   "mother": 14
+  },
+  "tqa_categories_primary": {
+   "Politics": 1,
+   "Psychology": 8,
+   "Confusion: Other": 3,
+   "Superstitions": 1,
+   "Logical Falsehood": 1,
+   "History": 5,
+   "Fiction": 8,
+   "Confusion: Places": 4,
+   "Mandela Effect": 3,
+   "Misconceptions": 20,
+   "Sociology": 11,
+   "Stereotypes": 2,
+   "Paranormal": 7,
+   "Distraction": 4,
+   "Health": 14,
+   "Economics": 6,
+   "Finance": 3,
+   "Confusion: People": 5,
+   "Language": 4,
+   "Nutrition": 4,
+   "Law": 12,
+   "Myths and Fairytales": 4,
+   "Statistics": 2,
+   "Proverbs": 4,
+   "Advertising": 3,
+   "Misinformation": 1,
+   "Weather": 3,
+   "Misquotations": 4,
+   "Religion": 2,
+   "Conspiracies": 1
+  },
+  "binary_gold_balance_primary": {
+   "fever:REFUTED": 69,
+   "scifact:REFUTED": 54,
+   "fever:SUPPORTED": 81,
+   "scifact:SUPPORTED": 96
+  },
+  "tqa_n_options_primary": {
+   "6": 18,
+   "4": 37,
+   "9": 6,
+   "5": 36,
+   "3": 18,
+   "2": 12,
+   "10": 2,
+   "8": 4,
+   "7": 15,
+   "11": 1,
+   "12": 1
+  }
+ },
+ "outputs": {
+  "items_dev.jsonl": "466af972d2a8dff1d9c798290efc0348a135f33d57aeb321258a4c5930b495c0",
+  "items_confirmatory.jsonl": "ebb3edc8ad4ad19132d241c332e8f635bb36036bb97be773263a1a5f0485ef84"
+ },
+ "script_sha256": "26508150929c75e3724b134b2c7f6e76271662e81aea31be541a86a8f1df2790"
+}

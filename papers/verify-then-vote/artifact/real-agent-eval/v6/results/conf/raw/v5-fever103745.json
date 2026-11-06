@@ -1,0 +1,1232 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever103745",
+ "order": 655,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever103745",
+  "order": 655,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Michelin Guides are published by a German company."
+ },
+ "item_view_sha256": "2785bd41e5abdc4067ef015ef076525223cba7e49237c599259cc6cf7bd91e5f",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Michelin Guides are published by a German company.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c68cd0fb2152952379d9e359fa74ef850eeff4121825aed516e409aac5fce9ef",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871874.308877,
+      "end_wall": 1792871875.239393,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871874.308877,
+    "start_mono": 541431.019377333,
+    "end_wall": 1792871875.239393,
+    "end_mono": 541431.949986041,
+    "raw_response": "{\"query\": \"Michelin Guides German company false\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 928382459,
+     "load_duration": 32481000,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 362097708,
+     "eval_count": 14,
+     "eval_duration": 474998375,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:57:55.238346Z"
+    },
+    "elapsed_s": 0.931,
+    "query_used": "Michelin Guides German company false",
+    "query_source": "json",
+    "query_arrival_seq": 3275
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Michelin Guides German company false",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Michelin_Guide:0",
+       "score_q": 13116
+      },
+      {
+       "passage_key": "fever17:Michelin_Man:1",
+       "score_q": 10870
+      },
+      {
+       "passage_key": "fever17:Michelin:0",
+       "score_q": 10639
+      },
+      {
+       "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+       "score_q": 10521
+      },
+      {
+       "passage_key": "fever17:Édouard_Michelin:0",
+       "score_q": 9438
+      }
+     ],
+     "retrieval_sha256": "f70b64faf7bac02b6d70ef1c98d92aabbc351fa072e4d6f799e27d9e6c5056c6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f70b64faf7bac02b6d70ef1c98d92aabbc351fa072e4d6f799e27d9e6c5056c6",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Michelin_Guide:0",
+      "content_sha256": "69110329815b43eec390e322ad1dbb88b6d463e067a92d8011011d2e221ee135",
+      "chars": 511
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michelin_Man:1",
+      "content_sha256": "bd96d4e9b8c681accd63e02be97e18d7dd248b2ee4749967139393d654c0cb30",
+      "chars": 201
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Michelin:0",
+      "content_sha256": "ef4a185b86f454590353a1238aa9ab0d59bd259381ccf715cdf0cc1bc06389fb",
+      "chars": 897
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+      "content_sha256": "6fdc6f56f5eddd32f10630c1e02ede8f8ce27e7da70ab595bccf13feaeeabebb",
+      "chars": 244
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Édouard_Michelin:0",
+      "content_sha256": "1f1946652b853b62f67bab08c268030c68fa27090cd7aabacd31aa1675bad142",
+      "chars": 258
+     }
+    ],
+    "elapsed_s": 0.0437
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Michelin Guides are published by a German company.\n\nEvidence passages from your search for \"Michelin Guides German company false\":\n<<<PASSAGES\n[P1] Michelin Guide\nMichelin Guides ( [ ɡid miʃ.lɛ̃ ] ) are a series of guide books published by the French company Michelin for more than a century . The term normally refers to the annually published Michelin Red Guide , the oldest European hotel and restaurant reference guide , which awards Michelin stars for excellence to a select few establishments . The acquisition or loss of a star can have dramatic effects on the success of a restaurant . Michelin also publishes a series of general guides to countries .\n\n[P2] Michelin Man\nAs automobiles diffused to the middle classes , Michelin advertising likewise shifted downscale , and its restaurant and hotel guides likewise covered a broader range of price categories .\n\n[P3] Michelin\nMichelin ( [ ˈmɪʃəlɪn ] or [ ˈmɪtʃəlɪn ] [ miʃˈlɛ̃ ] ; full name : [ Société en commandite par actions , SCA Compagnie Générale des Établissements Michelin ] ) is a French tire manufacturer based in Clermont-Ferrand in the Auvergne région of France . It is one of the four largest tire manufacturers in the world along with Goodyear , Continental and Bridgestone . In addition to the Michelin brand , it also owns the BFGoodrich , Kleber , Tigar , Riken , Kormoran and Uniroyal ( in North America ) tire brands . Michelin is also notable for its Red and Green travel guides , its roadmaps , the Michelin stars that the Red Guide awards to restaurants for their cooking , and for its company mascot Bibendum , colloquially known as the Michelin Man . Michelin 's numerous inventions include the removable tire , the pneurail ( a tire for trains made to run on rails ) and the radial tire .\n\n[P4] I-Spy (Michelin)\nThe I-SPY books are spotters ' guides written for British children , and particularly successful in the 1950s and 1960s in their original form and again when relaunched by Michelin in 2009 after a seven-year gap in publishing .\n\n[P5] Édouard Michelin\nÉdouard Michelin may refer to : Édouard Michelin ( born 1859 ) , French industrialist , one of the founders of the Michelin company Édouard Michelin ( born 1963 ) , his great-grandson , a former CEO and managing partner of the Michelin Group\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "34d935001c9e8940183b533bb1b65f33c4d9711d10edba11a4ae8c8f799829c4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871875.284779,
+      "end_wall": 1792871888.804716,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3275,
+    "start_wall": 1792871875.284779,
+    "start_mono": 541431.995377541,
+    "end_wall": 1792871888.804716,
+    "end_mono": 541445.516187916,
+    "raw_response": "{\n  \"reasoning\": \"Michelin Guides are not published by a German company. They are published by the French company Michelin. The claim contradicts the given evidence passages which consistently identify Michelin as a French entity.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13514713125,
+     "load_duration": 26121500,
+     "prompt_eval_count": 923,
+     "prompt_eval_duration": 3863391542,
+     "eval_count": 85,
+     "eval_duration": 9225681997,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:08.8017Z"
+    },
+    "elapsed_s": 13.521,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3275,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Michelin_Guide:0",
+     "fever17:Michelin:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 212,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Michelin Guides are published by a German company.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c68cd0fb2152952379d9e359fa74ef850eeff4121825aed516e409aac5fce9ef",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871874.308584,
+      "end_wall": 1792871880.437634,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871874.308584,
+    "start_mono": 541431.019083458,
+    "end_wall": 1792871880.437634,
+    "end_mono": 541437.148658708,
+    "raw_response": "{\"query\": \"Michelin Guides publisher origin\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6126186667,
+     "load_duration": 1758084833,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 2113917458,
+     "eval_count": 12,
+     "eval_duration": 2149216331,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:00.435715Z"
+    },
+    "elapsed_s": 6.13,
+    "query_used": "Michelin Guides publisher origin",
+    "query_source": "json",
+    "query_arrival_seq": 3277
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Michelin Guides publisher origin",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Michelin_Guide:0",
+       "score_q": 11616
+      },
+      {
+       "passage_key": "fever17:Michelin_Man:1",
+       "score_q": 10870
+      },
+      {
+       "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+       "score_q": 10521
+      },
+      {
+       "passage_key": "fever17:Michelin:0",
+       "score_q": 9469
+      },
+      {
+       "passage_key": "fever17:Bradt_Travel_Guides:0",
+       "score_q": 9158
+      }
+     ],
+     "retrieval_sha256": "97b4b6f7f576605f4a051fd1bd7f7c2c8f7467e51f9e58e841f2845996bf595e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "97b4b6f7f576605f4a051fd1bd7f7c2c8f7467e51f9e58e841f2845996bf595e",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Michelin_Guide:0",
+      "content_sha256": "69110329815b43eec390e322ad1dbb88b6d463e067a92d8011011d2e221ee135",
+      "chars": 511
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michelin_Man:1",
+      "content_sha256": "bd96d4e9b8c681accd63e02be97e18d7dd248b2ee4749967139393d654c0cb30",
+      "chars": 201
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+      "content_sha256": "6fdc6f56f5eddd32f10630c1e02ede8f8ce27e7da70ab595bccf13feaeeabebb",
+      "chars": 244
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Michelin:0",
+      "content_sha256": "ef4a185b86f454590353a1238aa9ab0d59bd259381ccf715cdf0cc1bc06389fb",
+      "chars": 897
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bradt_Travel_Guides:0",
+      "content_sha256": "c306b027354d43e2845a8f87cfec8f993d61b274cc4a7d99bc17ab6954bb4402",
+      "chars": 929
+     }
+    ],
+    "elapsed_s": 0.015
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Michelin Guides are published by a German company.\n\nEvidence passages from your search for \"Michelin Guides publisher origin\":\n<<<PASSAGES\n[P1] Michelin Guide\nMichelin Guides ( [ ɡid miʃ.lɛ̃ ] ) are a series of guide books published by the French company Michelin for more than a century . The term normally refers to the annually published Michelin Red Guide , the oldest European hotel and restaurant reference guide , which awards Michelin stars for excellence to a select few establishments . The acquisition or loss of a star can have dramatic effects on the success of a restaurant . Michelin also publishes a series of general guides to countries .\n\n[P2] Michelin Man\nAs automobiles diffused to the middle classes , Michelin advertising likewise shifted downscale , and its restaurant and hotel guides likewise covered a broader range of price categories .\n\n[P3] I-Spy (Michelin)\nThe I-SPY books are spotters ' guides written for British children , and particularly successful in the 1950s and 1960s in their original form and again when relaunched by Michelin in 2009 after a seven-year gap in publishing .\n\n[P4] Michelin\nMichelin ( [ ˈmɪʃəlɪn ] or [ ˈmɪtʃəlɪn ] [ miʃˈlɛ̃ ] ; full name : [ Société en commandite par actions , SCA Compagnie Générale des Établissements Michelin ] ) is a French tire manufacturer based in Clermont-Ferrand in the Auvergne région of France . It is one of the four largest tire manufacturers in the world along with Goodyear , Continental and Bridgestone . In addition to the Michelin brand , it also owns the BFGoodrich , Kleber , Tigar , Riken , Kormoran and Uniroyal ( in North America ) tire brands . Michelin is also notable for its Red and Green travel guides , its roadmaps , the Michelin stars that the Red Guide awards to restaurants for their cooking , and for its company mascot Bibendum , colloquially known as the Michelin Man . Michelin 's numerous inventions include the removable tire , the pneurail ( a tire for trains made to run on rails ) and the radial tire .\n\n[P5] Bradt Travel Guides\nBradt Travel Guides is a publisher of travel guides founded by Hilary Bradt who was awarded an MBE in 2008 for services to the Tourist Industry and to Charity . The first Bradt Guide was written in 1974 by Hilary and her husband George on a river barge on a tributary of the Amazon , and has since grown into a leading boutique publisher , with growth particularly in the past decade . The publisher is based in Chalfont St. Peter in Buckinghamshire , England but also co-publishes with Globe Pequot in Guilford , Connecticut in the United States . The guides have been cited by The Independent as covering `` parts of the world other travel publishers do n't reach '' . The guides may cover countries of the world normally covered in guides but often have detailed guides to parts of Africa , Asia and Latin America which traditionally have not been widely covered or did not have a long history of tourism .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1df74ef4334bc9c7ee9840ac1f40dd32ba89f9cb6b07e6637275a418a2a39e2c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871880.453026,
+      "end_wall": 1792871891.2621021,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3276,
+    "start_wall": 1792871880.453026,
+    "start_mono": 541437.16405325,
+    "end_wall": 1792871891.2621021,
+    "end_mono": 541447.973665833,
+    "raw_response": "{\"reasoning\": \"The evidence clearly states that Michelin Guides are published by a French company, Michelin, based in Clermont-Ferrand, France. There is no mention or evidence suggesting a German origin for Michelin Guides.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10803722666,
+     "load_duration": 61263958,
+     "prompt_eval_count": 989,
+     "prompt_eval_duration": 3918469334,
+     "eval_count": 81,
+     "eval_duration": 6106123830,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:11.257241Z"
+    },
+    "elapsed_s": 10.81,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3276,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Michelin_Guide:0",
+     "fever17:Michelin:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 208,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Michelin Guides are published by a German company.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c68cd0fb2152952379d9e359fa74ef850eeff4121825aed516e409aac5fce9ef",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871874.3091462,
+      "end_wall": 1792871875.261782,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871874.3091462,
+    "start_mono": 541431.019646291,
+    "end_wall": 1792871875.261782,
+    "end_mono": 541431.972377208,
+    "raw_response": "{\"query\": \"Michelin publisher\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 942718083,
+     "load_duration": 86510958,
+     "prompt_eval_count": 161,
+     "prompt_eval_duration": 407620334,
+     "eval_count": 9,
+     "eval_duration": 380870500,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:57:55.252789Z"
+    },
+    "elapsed_s": 0.953,
+    "query_used": "Michelin publisher",
+    "query_source": "json",
+    "query_arrival_seq": 3276
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Michelin publisher",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Édouard_Michelin:0",
+       "score_q": 7556
+      },
+      {
+       "passage_key": "fever17:Michel_Rollier:0",
+       "score_q": 7233
+      },
+      {
+       "passage_key": "fever17:Édouard_Michelin_-LRB-born_1963-RRB-:0",
+       "score_q": 7128
+      },
+      {
+       "passage_key": "fever17:Francois_Rollier:1",
+       "score_q": 7113
+      },
+      {
+       "passage_key": "fever17:List_of_Michelin_starred_restaurants_in_Scotland:0",
+       "score_q": 7096
+      }
+     ],
+     "retrieval_sha256": "e9210d9a1bfd9c62941872c1ac79f6d8bba6f15b29b6488afb27cdaf39b2cee7"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e9210d9a1bfd9c62941872c1ac79f6d8bba6f15b29b6488afb27cdaf39b2cee7",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Édouard_Michelin:0",
+      "content_sha256": "1f1946652b853b62f67bab08c268030c68fa27090cd7aabacd31aa1675bad142",
+      "chars": 258
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michel_Rollier:0",
+      "content_sha256": "84cdaf1fd0f5bed74b4a9f544a0011a97b6d3d48dacc1a92952258a12a706876",
+      "chars": 612
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Édouard_Michelin_-LRB-born_1963-RRB-:0",
+      "content_sha256": "547e27ccd6828de231949829a162007a9339a3ccc4d6e6054def906e507c949d",
+      "chars": 244
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Francois_Rollier:1",
+      "content_sha256": "07b8e1b088547b4e996748adcadc5c12992d803dee08b32166df4f2dc7c0d895",
+      "chars": 183
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:List_of_Michelin_starred_restaurants_in_Scotland:0",
+      "content_sha256": "d820b88c6b2112e3166a1a992176352c3a8cefbae804bf29080ce24ae16be6d1",
+      "chars": 856
+     }
+    ],
+    "elapsed_s": 0.0366
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Michelin Guides are published by a German company.\n\nEvidence passages from your search for \"Michelin publisher\":\n<<<PASSAGES\n[P1] Édouard Michelin\nÉdouard Michelin may refer to : Édouard Michelin ( born 1859 ) , French industrialist , one of the founders of the Michelin company Édouard Michelin ( born 1963 ) , his great-grandson , a former CEO and managing partner of the Michelin Group\n\n[P2] Michel Rollier\nMichel Rollier ( born 19 September 1944 in Annecy , Haute-Savoie , France ) is a French industrialist in the automobile industry . On 26 May 2006 , he succeeded Édouard Michelin ( the second ) , as chief executive officer of the Michelin tire company . Rollier is a distant relative of Michelin founder Édouard Michelin . In May 2012 Rollier retired from Michelin , and was replaced by Jean-Dominique Senard . Although not a descendant of Édouard Michelin ( founder of the Michelin company ) , Michel Rollier is the second cousin of Édouard Michelin who drowned during a fishing trip in May 2006 .\n\n[P3] Édouard Michelin (born 1963)\nÉdouard Michelin ( 13 August 1963 -- 26 May 2006 ) , was managing partner and co-chief executive of the Michelin Group . He was the great-grandson of Édouard Michelin ( 1859 -- 1940 ) , a co-founder of the company .\n\n[P4] Francois Rollier\nRollier retired in 1991 , and was replaced at the helm of Michelin by Édouard Michelin . François Rollier was the father of current Michelin director Michel Rollier .\n\n[P5] List of Michelin starred restaurants in Scotland\nThere are currently 13 restaurants in Scotland with a Michelin star rating , a rating system used by the Michelin Guide to grade restaurants on their quality . 12 restaurants in Scotland currently hold one Michelin star , and 1 holds 2 stars . The list of restaurants is updated once every year . A restaurant with 1 Michelin Star has very good cooking in its category . A restaurant with 2 Michelin Stars has excellent cooking which is worth a detour . And a restaurant with 3 Michelin Stars has exceptional cuisine , worthy of a special journey . The acquisition or loss of a star can have dramatic effects on the success of an establishment . The Michelin guide also review hotels , guest houses , and pubs . The Michelin starred restaurants in Scotland is a part of the Great Britain and Ireland guide .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "96208d14daa0f5553c08a7df86a391e91f42cdcf4e8f233aa0d42be26119e88a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871875.298615,
+      "end_wall": 1792871894.455385,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3277,
+    "start_wall": 1792871875.298615,
+    "start_mono": 541432.009214666,
+    "end_wall": 1792871894.455385,
+    "end_mono": 541451.167046083,
+    "raw_response": "{\"reasoning\": \"The evidence shows that the Michelin company and its leadership positions have been primarily associated with French individuals since its founding in 1889 by Édouard and André Michelin. Édouard Michelin, the founder's grandson and CEO at the time of his death in 2006, was involved in the company's leadership until his passing. Michel Rollier, who succeeded Édouard Michelin as CEO, is also a French national. There is no mention of a German involvement in the founding or leadership of the Michelin company. Therefore, based on the provided evidence, the claim that Michelin Guides are published a\" ,\"answer\":\"REFUTED\",\"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19155318667,
+     "load_duration": 48175417,
+     "prompt_eval_count": 797,
+     "prompt_eval_duration": 4501517668,
+     "eval_count": 152,
+     "eval_duration": 13070937662,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:14.453682Z"
+    },
+    "elapsed_s": 19.158,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3277,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Michelin Guides are published by a German company.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c68cd0fb2152952379d9e359fa74ef850eeff4121825aed516e409aac5fce9ef",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871874.309532,
+      "end_wall": 1792871891.3962162,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871874.309532,
+    "start_mono": 541431.020031416,
+    "end_wall": 1792871891.3962162,
+    "end_mono": 541448.107784041,
+    "raw_response": "{\"query\": \"michelin guides publisher germany\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17086209625,
+     "load_duration": 15967124917,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 357517084,
+     "eval_count": 13,
+     "eval_duration": 565621290,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:11.395535Z"
+    },
+    "elapsed_s": 17.088,
+    "query_used": "michelin guides publisher germany",
+    "query_source": "json",
+    "query_arrival_seq": 3278
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "michelin guides publisher germany",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Michelin_Guide:0",
+       "score_q": 11616
+      },
+      {
+       "passage_key": "fever17:Michelin_Man:1",
+       "score_q": 10870
+      },
+      {
+       "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+       "score_q": 10521
+      },
+      {
+       "passage_key": "fever17:Michelin:0",
+       "score_q": 9469
+      },
+      {
+       "passage_key": "fever17:Bradt_Travel_Guides:0",
+       "score_q": 9158
+      }
+     ],
+     "retrieval_sha256": "b403aba056411e348c0366b4f11f35d46b4b45d55b0489dd2df6162beeff5a99"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b403aba056411e348c0366b4f11f35d46b4b45d55b0489dd2df6162beeff5a99",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Michelin_Guide:0",
+      "content_sha256": "69110329815b43eec390e322ad1dbb88b6d463e067a92d8011011d2e221ee135",
+      "chars": 511
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Michelin_Man:1",
+      "content_sha256": "bd96d4e9b8c681accd63e02be97e18d7dd248b2ee4749967139393d654c0cb30",
+      "chars": 201
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:I-Spy_-LRB-Michelin-RRB-:0",
+      "content_sha256": "6fdc6f56f5eddd32f10630c1e02ede8f8ce27e7da70ab595bccf13feaeeabebb",
+      "chars": 244
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Michelin:0",
+      "content_sha256": "ef4a185b86f454590353a1238aa9ab0d59bd259381ccf715cdf0cc1bc06389fb",
+      "chars": 897
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bradt_Travel_Guides:0",
+      "content_sha256": "c306b027354d43e2845a8f87cfec8f993d61b274cc4a7d99bc17ab6954bb4402",
+      "chars": 929
+     }
+    ],
+    "elapsed_s": 0.0201
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Michelin Guides are published by a German company.\n\nEvidence passages from your search for \"michelin guides publisher germany\":\n<<<PASSAGES\n[P1] Michelin Guide\nMichelin Guides ( [ ɡid miʃ.lɛ̃ ] ) are a series of guide books published by the French company Michelin for more than a century . The term normally refers to the annually published Michelin Red Guide , the oldest European hotel and restaurant reference guide , which awards Michelin stars for excellence to a select few establishments . The acquisition or loss of a star can have dramatic effects on the success of a restaurant . Michelin also publishes a series of general guides to countries .\n\n[P2] Michelin Man\nAs automobiles diffused to the middle classes , Michelin advertising likewise shifted downscale , and its restaurant and hotel guides likewise covered a broader range of price categories .\n\n[P3] I-Spy (Michelin)\nThe I-SPY books are spotters ' guides written for British children , and particularly successful in the 1950s and 1960s in their original form and again when relaunched by Michelin in 2009 after a seven-year gap in publishing .\n\n[P4] Michelin\nMichelin ( [ ˈmɪʃəlɪn ] or [ ˈmɪtʃəlɪn ] [ miʃˈlɛ̃ ] ; full name : [ Société en commandite par actions , SCA Compagnie Générale des Établissements Michelin ] ) is a French tire manufacturer based in Clermont-Ferrand in the Auvergne région of France . It is one of the four largest tire manufacturers in the world along with Goodyear , Continental and Bridgestone . In addition to the Michelin brand , it also owns the BFGoodrich , Kleber , Tigar , Riken , Kormoran and Uniroyal ( in North America ) tire brands . Michelin is also notable for its Red and Green travel guides , its roadmaps , the Michelin stars that the Red Guide awards to restaurants for their cooking , and for its company mascot Bibendum , colloquially known as the Michelin Man . Michelin 's numerous inventions include the removable tire , the pneurail ( a tire for trains made to run on rails ) and the radial tire .\n\n[P5] Bradt Travel Guides\nBradt Travel Guides is a publisher of travel guides founded by Hilary Bradt who was awarded an MBE in 2008 for services to the Tourist Industry and to Charity . The first Bradt Guide was written in 1974 by Hilary and her husband George on a river barge on a tributary of the Amazon , and has since grown into a leading boutique publisher , with growth particularly in the past decade . The publisher is based in Chalfont St. Peter in Buckinghamshire , England but also co-publishes with Globe Pequot in Guilford , Connecticut in the United States . The guides have been cited by The Independent as covering `` parts of the world other travel publishers do n't reach '' . The guides may cover countries of the world normally covered in guides but often have detailed guides to parts of Africa , Asia and Latin America which traditionally have not been widely covered or did not have a long history of tourism .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6995767e22e53b50679825c4f84ca5d7df7037e03b2490b8fc548be6af56b5c2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871891.416644,
+      "end_wall": 1792871898.551408,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3278,
+    "start_wall": 1792871891.416644,
+    "start_mono": 541448.128213708,
+    "end_wall": 1792871898.551408,
+    "end_mono": 541455.263165625,
+    "raw_response": "{\"reasoning\": \"The Michelin Red Guide is a well-known travel guide published by Michelin, which is a French company.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\", \"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7132338667,
+     "load_duration": 3040533000,
+     "prompt_eval_count": 988,
+     "prompt_eval_duration": 2100947625,
+     "eval_count": 60,
+     "eval_duration": 1425702748,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:18.549927Z"
+    },
+    "elapsed_s": 7.135,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3278,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Michelin:0",
+     "fever17:Bradt_Travel_Guides:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 101,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Michelin Guides are published by a German company.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c68cd0fb2152952379d9e359fa74ef850eeff4121825aed516e409aac5fce9ef",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871874.308338,
+      "end_wall": 1792871893.949022,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871874.308338,
+    "start_mono": 541431.01883825,
+    "end_wall": 1792871893.949022,
+    "end_mono": 541450.66066925,
+    "raw_response": "{\"query\": \"Michelin Guides publisher German company\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19638877250,
+     "load_duration": 18670750291,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 342183084,
+     "eval_count": 12,
+     "eval_duration": 375724417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:13.947769Z"
+    },
+    "elapsed_s": 19.642,
+    "query_used": "Michelin Guides publisher German company",
+    "query_source": "json",
+    "query_arrival_seq": 3279
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Michelin Guides publisher German company",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Michelin_Guide:0",
+       "score_q": 13116
+      },
+      {
+       "passage_key": "fever17:Bergverlag_Rother:0",
+       "score_q": 10979
+      },
+      {
+       "passage_key": "fever17:Michelin_Man:1",
+       "score_q": 10870
+      },
+      {
+       "passage_key": "fever17:Trailblazer_-LRB-travel-RRB-:0",
+       "score_q": 10693
+      },
+      {
+       "passage_key": "fever17:Michelin:0",
+       "score_q": 10639
+      }
+     ],
+     "retrieval_sha256": "3a402e4a556b477cf05d1cf2233fa9eba779ec4406455864824d2fa21a907257"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3a402e4a556b477cf05d1cf2233fa9eba779ec4406455864824d2fa21a907257",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Michelin_Guide:0",
+      "content_sha256": "69110329815b43eec390e322ad1dbb88b6d463e067a92d8011011d2e221ee135",
+      "chars": 511
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Bergverlag_Rother:0",
+      "content_sha256": "f2db20cf20dafe06d3b2d02918fd6bfe0bdbf857f9fe629716fa9215fd69c77a",
+      "chars": 497
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Michelin_Man:1",
+      "content_sha256": "bd96d4e9b8c681accd63e02be97e18d7dd248b2ee4749967139393d654c0cb30",
+      "chars": 201
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Trailblazer_-LRB-travel-RRB-:0",
+      "content_sha256": "36235652799bede73c7c13182e8521361a5bd6b4012e695b6db182613b763264",
+      "chars": 680
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Michelin:0",
+      "content_sha256": "ef4a185b86f454590353a1238aa9ab0d59bd259381ccf715cdf0cc1bc06389fb",
+      "chars": 897
+     }
+    ],
+    "elapsed_s": 0.0235
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Michelin Guides are published by a German company.\n\nEvidence passages from your search for \"Michelin Guides publisher German company\":\n<<<PASSAGES\n[P1] Michelin Guide\nMichelin Guides ( [ ɡid miʃ.lɛ̃ ] ) are a series of guide books published by the French company Michelin for more than a century . The term normally refers to the annually published Michelin Red Guide , the oldest European hotel and restaurant reference guide , which awards Michelin stars for excellence to a select few establishments . The acquisition or loss of a star can have dramatic effects on the success of a restaurant . Michelin also publishes a series of general guides to countries .\n\n[P2] Bergverlag Rother\nBergverlag Rother is a German publisher with its headquarters in Oberhaching , Upper Bavaria . Since 1950 the company , that formerly went under the name of Bergverlag Rudolf Rother , has published the Alpine Club Guides in cooperation with the German Alpine Club ( DAV ) , the Austrian Alpine Club ( ÖAV ) and the South Tyrol Alpine Club . Rother publish a `` famous series of English language guides '' covering most of the popular walking destinations in the Alps and Europe .\n\n[P3] Michelin Man\nAs automobiles diffused to the middle classes , Michelin advertising likewise shifted downscale , and its restaurant and hotel guides likewise covered a broader range of price categories .\n\n[P4] Trailblazer (travel)\nTrailblazer is an independent British publisher of travel , trekking and railway route-guides . Started by author Bryn Thomas it was originally synonymous with the Trans Siberian Handbook , which for years was the only guide to crossing Asia by rail and remains much respected . The company now publishes guides to long-distance footpaths in the United Kingdom , and hiking and adventure tourism guides to destinations elsewhere . The publisher should not be confused with Trailblazer Travel Books , a series of recreational guides for the Hawaiian Islands , Sierra Nevada , and San Francisco , which are published by California-based Diamond Valley Company .\n\n[P5] Michelin\nMichelin ( [ ˈmɪʃəlɪn ] or [ ˈmɪtʃəlɪn ] [ miʃˈlɛ̃ ] ; full name : [ Société en commandite par actions , SCA Compagnie Générale des Établissements Michelin ] ) is a French tire manufacturer based in Clermont-Ferrand in the Auvergne région of France . It is one of the four largest tire manufacturers in the world along with Goodyear , Continental and Bridgestone . In addition to the Michelin brand , it also owns the BFGoodrich , Kleber , Tigar , Riken , Kormoran and Uniroyal ( in North America ) tire brands . Michelin is also notable for its Red and Green travel guides , its roadmaps , the Michelin stars that the Red Guide awards to restaurants for their cooking , and for its company mascot Bibendum , colloquially known as the Michelin Man . Michelin 's numerous inventions include the removable tire , the pneurail ( a tire for trains made to run on rails ) and the radial tire .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "34c789aa496e64adde16d1fb8f4e36cb247c8cd66e406c30308d6024abd910da",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871893.972901,
+      "end_wall": 1792871898.8220549,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3279,
+    "start_wall": 1792871893.972901,
+    "start_mono": 541450.684549291,
+    "end_wall": 1792871898.8220549,
+    "end_mono": 541455.533818208,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not support the claim. The Michelin Guides are published by a French company, not a German company.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4844720958,
+     "load_duration": 89818833,
+     "prompt_eval_count": 887,
+     "prompt_eval_duration": 2483844416,
+     "eval_count": 48,
+     "eval_duration": 1382134547,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:58:18.818705Z"
+    },
+    "elapsed_s": 4.849,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3279,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 124,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "granite3.3:2b": "f70b64faf7bac02b6d70ef1c98d92aabbc351fa072e4d6f799e27d9e6c5056c6",
+  "exaone3.5:7.8b": "97b4b6f7f576605f4a051fd1bd7f7c2c8f7467e51f9e58e841f2845996bf595e",
+  "olmo2:7b": "e9210d9a1bfd9c62941872c1ac79f6d8bba6f15b29b6488afb27cdaf39b2cee7",
+  "falcon3:3b": "b403aba056411e348c0366b4f11f35d46b4b45d55b0489dd2df6162beeff5a99",
+  "nemotron-mini:4b": "3a402e4a556b477cf05d1cf2233fa9eba779ec4406455864824d2fa21a907257"
+ },
+ "item_start_wall": 1792871874.307829,
+ "item_wall_s": 24.516,
+ "ollama_ps_samples": [
+  [
+   1792871874.308,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871876.317,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871878.327,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871880.334,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871882.343,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871884.351,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871886.357,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871888.369,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871890.373,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871892.383,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871894.391,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871896.4,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871898.409,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ]
+ ]
+}

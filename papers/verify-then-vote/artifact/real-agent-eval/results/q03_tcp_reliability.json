@@ -1,0 +1,703 @@
+[
+  {
+    "agent": "llama3.2_3b",
+    "model": "llama3.2:3b",
+    "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through a combination of mechanisms:\n\n1. **Segmentation and reassembly**: TCP breaks data into smaller segments, adds a header with sequence numbers, and sends them independently. At the receiving end, TCP reassembles the segments in the correct order and verifies their integrity. (Source: RFC 793, \"Transmission Control Protocol\")\n2. **Sequence numbers**: Each segment includes a sequence number that indicates the order in which the segment was sent. The receiving end uses these sequence numbers to verify that the segments were received in the correct order. (Source: RFC 793, \"Transmission Control Protocol\")\n3. **Acknowledgments**: The receiving end sends an acknowledgment (ACK) to the sender for each segment that was received correctly. The sender uses these ACKs to confirm that the segments were received successfully. (Source: RFC 793, \"Transmission Control Protocol\")\n4. **Retransmission**: If the sender does not receive an ACK within a certain time (known as the \"timeout\"), it assumes the segment was lost and retransmits it. (Source: RFC 793, \"Transmission Control Protocol\")\n5. **Error-checking**: TCP uses checksums to detect errors in the segments. If the checksum fails, the segment is considered corrupted and is retransmitted. (Source: RFC 793, \"Transmission Control Protocol\")\n6. **Flow control**: TCP ensures that the sender does not overwhelm the receiver by regulating the amount of data sent at one time. (Source: RFC 793, \"Transmission Control Protocol\")\n\nBy using these mechanisms, TCP ensures that data is delivered reliably, with minimal loss or corruption.\n\nConfidence level: High\n\nNote: While TCP is designed to ensure reliable data delivery, it is not foolproof and can be affected by factors such as network congestion, packet loss, and corruption.",
+    "claims": [
+      {
+        "subject": "The receiving end uses these sequence numbers to verify that the segments",
+        "predicate": "is",
+        "object": "received in the correct order",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "The receiving end uses these sequence numbers to verify that the segments were received in the corre"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "The receiving end uses these sequence numbers to verify that the segments were received in the correct order."
+      },
+      {
+        "subject": "The sender uses these ACKs to confirm that the segments",
+        "predicate": "is",
+        "object": "received successfully",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "The sender uses these ACKs to confirm that the segments were received successfully."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "The sender uses these ACKs to confirm that the segments were received successfully."
+      },
+      {
+        "subject": "**Retransmission**: If the sender",
+        "predicate": "does not",
+        "object": "receive an ACK within a certain time (known as the \"timeout\"), it assumes the segment was lost and retransmits it",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Retransmission**: If the sender does not receive an ACK within a certain time (known as the \"timeo"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Retransmission**: If the sender does not receive an ACK within a certain time (known as the \"timeout\"), it assumes the segment was lost and retransmits it."
+      },
+      {
+        "subject": "**Error-checking**: TCP",
+        "predicate": "uses",
+        "object": "checksums to detect errors in the segments",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Error-checking**: TCP uses checksums to detect errors in the segments."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Error-checking**: TCP uses checksums to detect errors in the segments."
+      },
+      {
+        "subject": "If the checksum fails, the segment",
+        "predicate": "is",
+        "object": "considered corrupted and is retransmitted",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If the checksum fails, the segment is considered corrupted and is retransmitted."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If the checksum fails, the segment is considered corrupted and is retransmitted."
+      },
+      {
+        "subject": "**Flow control**: TCP ensures that the sender",
+        "predicate": "does not",
+        "object": "overwhelm the receiver by regulating the amount of data sent at one time",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Flow control**: TCP ensures that the sender does not overwhelm the receiver by regulating the amou"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Flow control**: TCP ensures that the sender does not overwhelm the receiver by regulating the amount of data sent at one time."
+      }
+    ],
+    "calibration": 0.7,
+    "response_time_s": 7.36
+  },
+  {
+    "agent": "mistral",
+    "model": "mistral",
+    "raw_response": " TCP, or Transmission Control Protocol, ensures reliable data delivery by using several mechanisms:\n\n1. **Sequence Numbers**: Each data packet sent is assigned a sequence number. The receiver acknowledges each packet by sending an acknowledgment (ACK) with the sequence number of the next expected packet. This allows the sender to verify that packets have been received in the correct order and without loss (Source: TCP/IP Illustrated, W. Richard Stevens).\n\n2. **Acknowledgment**: If the receiver does not receive a packet, it will not send an ACK. This triggers a retransmission request from the sender, ensuring that lost or corrupted packets are re-sent (Source: TCP/IP Illustrated, W. Richard Stevens).\n\n3. **Timeout**: The sender maintains a timer for each packet. If it does not receive an ACK before the timer expires, it assumes the packet was lost and re-sends it (Source: TCP/IP Illustrated, W. Richard Stevens).\n\n4. **Congestion Control**: TCP includes algorithms like Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery to manage network congestion, prevent packet loss, and maintain optimal network performance (Source: TCP/IP Illustrated, W. Richard Stevens).\n\n5. **Flow Control**: TCP uses a sliding window mechanism to control the rate at which sender sends data, based on the amount of buffer space available at the receiver. This helps prevent the sender from overwhelming the receiver with too much data at once (Source: TCP/IP Illustrated, W. Richard Stevens).\n\n6. **Error Control**: TCP includes checksums to detect errors in the received packets. If an error is detected, the packet is discarded and a retransmission request is sent (Source: TCP/IP Illustrated, W. Richard Stevens).\n\nConfidence Level: High",
+    "claims": [
+      {
+        "subject": "**Sequence Numbers**: Each data packet sent",
+        "predicate": "is",
+        "object": "assigned a sequence number",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Sequence Numbers**: Each data packet sent is assigned a sequence number."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Sequence Numbers**: Each data packet sent is assigned a sequence number."
+      },
+      {
+        "subject": "This allows the sender to verify that packets",
+        "predicate": "have",
+        "object": "been received in the correct order and without loss (Source: TCP/IP Illustrated, W",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "This allows the sender to verify that packets have been received in the correct order and without lo"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "This allows the sender to verify that packets have been received in the correct order and without loss (Source: TCP/IP Illustrated, W."
+      },
+      {
+        "subject": "**Acknowledgment**: If the receiver",
+        "predicate": "does not",
+        "object": "receive a packet, it will not send an ACK",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Acknowledgment**: If the receiver does not receive a packet, it will not send an ACK."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Acknowledgment**: If the receiver does not receive a packet, it will not send an ACK."
+      },
+      {
+        "subject": "If it does not receive an ACK before the timer expires, it assumes the packet",
+        "predicate": "is",
+        "object": "lost and re-sends it (Source: TCP/IP Illustrated, W",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If it does not receive an ACK before the timer expires, it assumes the packet was lost and re-sends "
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If it does not receive an ACK before the timer expires, it assumes the packet was lost and re-sends it (Source: TCP/IP Illustrated, W."
+      },
+      {
+        "subject": "**Flow Control**: TCP",
+        "predicate": "uses",
+        "object": "a sliding window mechanism to control the rate at which sender sends data, based on the amount of buffer space available at the receiver",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "**Flow Control**: TCP uses a sliding window mechanism to control the rate at which sender sends data"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "**Flow Control**: TCP uses a sliding window mechanism to control the rate at which sender sends data, based on the amount of buffer space available at the receiver."
+      },
+      {
+        "subject": "This helps",
+        "predicate": "prevent",
+        "object": "the sender from overwhelming the receiver with too much data at once (Source: TCP/IP Illustrated, W",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "This helps prevent the sender from overwhelming the receiver with too much data at once (Source: TCP"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "This helps prevent the sender from overwhelming the receiver with too much data at once (Source: TCP/IP Illustrated, W."
+      },
+      {
+        "subject": "If an error",
+        "predicate": "is",
+        "object": "detected, the packet is discarded and a retransmission request is sent (Source: TCP/IP Illustrated, W",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If an error is detected, the packet is discarded and a retransmission request is sent (Source: TCP/I"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If an error is detected, the packet is discarded and a retransmission request is sent (Source: TCP/IP Illustrated, W."
+      }
+    ],
+    "calibration": 0.7,
+    "response_time_s": 16.3
+  },
+  {
+    "agent": "gemma2_2b",
+    "model": "gemma2:2b",
+    "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through several mechanisms:\n\n**1. Connection Establishment and Management:**\n   * TCP establishes a reliable connection before data transmission begins. \n   * This connection acts as a dedicated communication channel with agreed-upon parameters, ensuring a consistent flow of information (**high confidence**)\n   * It also establishes error detection and correction mechanisms.\n\n**2. Data Segmentation:**\n   * TCP divides data into smaller chunks (**packets**) for easier transmission. \n   * This reduces the chance of packet loss due to network congestion (**medium confidence**).\n\n**3. Acknowledgment (ACK) Mechanism:**\n   * Upon receiving a packet, the receiver sends an ACK signal to the sender, acknowledging receipt. \n   * If a packet is lost, the receiver will re-send the missing packet after receiving the ACK. \n   * The ACK mechanism ensures data integrity and helps in recovering from packet loss.\n\n**4. Error Detection and Correction:**\n   * TCP incorporates checksums in each packet to detect errors during transmission. \n   * If a checksum mismatch is detected, TCP retransmits the packet to ensure data integrity (**high confidence**).\n\n**5. Retransmission and Buffering:**\n   * If a packet is lost, TCP will re-transmit the packet. \n   * TCP uses a buffer to store lost packets and retransmit them upon reception. \n   * This helps maintain a continuous data flow (**high confidence**)\n\n\n**Sources:**\n\n* **TCP/IP Illustrated, Volume 1:**  A comprehensive guide to TCP/IP. ([https://www.amazon.com/TCPIP-Illustrated-Volume-1-Network-Engineering/dp/0596007109](https://www.amazon.com/TCPIP-Illustrated-Volume-1-Network-Engineering/dp/0596007109))\n* **RFC 793: Transmission Control Protocol (TCP) - Internet Engineering Task Force** ([https://datatracker.ietf.org/doc/rfc793](https://datatracker.ietf.org/doc/rfc793))\n\n\n\n",
+    "claims": [
+      {
+        "subject": "* This",
+        "predicate": "reduces",
+        "object": "the chance of packet loss due to network congestion (**medium confidence**)",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "* This reduces the chance of packet loss due to network congestion (**medium confidence**)."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "* This reduces the chance of packet loss due to network congestion (**medium confidence**)."
+      },
+      {
+        "subject": "* If a packet",
+        "predicate": "is",
+        "object": "lost, the receiver will re-send the missing packet after receiving the ACK",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "* If a packet is lost, the receiver will re-send the missing packet after receiving the ACK."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "* If a packet is lost, the receiver will re-send the missing packet after receiving the ACK."
+      },
+      {
+        "subject": "* If a checksum mismatch",
+        "predicate": "is",
+        "object": "detected, TCP retransmits the packet to ensure data integrity (**high confidence**)",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "* If a checksum mismatch is detected, TCP retransmits the packet to ensure data integrity (**high co"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "* If a checksum mismatch is detected, TCP retransmits the packet to ensure data integrity (**high confidence**)."
+      },
+      {
+        "subject": "* TCP",
+        "predicate": "uses",
+        "object": "a buffer to store lost packets and retransmit them upon reception",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "* TCP uses a buffer to store lost packets and retransmit them upon reception."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "* TCP uses a buffer to store lost packets and retransmit them upon reception."
+      }
+    ],
+    "calibration": 0.7,
+    "response_time_s": 10.18
+  },
+  {
+    "agent": "phi3_mini",
+    "model": "phi3:mini",
+    "raw_response": "1. Error Detection and Recovery: TCP employs error detection through the use of checksums and acknowledgments to ensure reliable data delivery. The sender sends a checksum along with the data packets, and the receiver checks the integrity of the received data upon arrival. If the checksum doesn't match, an acknowledgment is not sent, and the packet is retransmitted. (Source: RFC 793, High confidence)\n2. Sequence Numbers: Each byte of data is numbered and sequenced, allowing the receiver to identify missing or out-of-order packets and request retransmission. (Source: RFC 793, High confidence)\n3. Flow Control: TCP uses a sliding window mechanism to manage the rate of data flow, avoiding network congestion and buffer overflows, thus ensuring reliable delivery. (Source: RFC 793, High confidence)\n4. Congestion Control: TCP uses algorithms like slow-start, congestion avoidance, and fast recovery to dynamically adjust the data flow based on the network'in current state. (Source: RFC 56, High confidence)\n5. Retransmission: TCP automatically retransmits lost or corrupted packets. (Source: RFC 793, High confidence)\n6. Cumulative Acknowledgment: TCP only acknowledges the packets received, not the ones that are missing, to guarantee the entire data transfer is eventually complete. (Source: RFC 793, High confidence)\n7. Nagle Algorithm: This algorithm is used to avoid unnecessary fragmentation and conserve bandwidth by combining small outgoing messages into a single packet. (Source: RFC 107, Medium confidence)\n8. Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer. (Source: RFC 2864, High confidence)\n9. Congestion Window Scaling: TCP adjusts the size of the congestion window, which controls the number of packets the sender can transmit without receiving an acknowledgment, improving throughput. (Source: RFC 56, Medium confidence)\n10. Fast Recovery: TCP quickly retransmits lost packets and resumes transmission to maintain efficiency and reliability. (Source: RFC 56, High confidence)\n11. Window Scaling: TCP adapts the window size based on the receiver's capacity and network conditions to match the data transmission rate with the network's capacity. (Source: RFC 56, Medium confidence)\n11. Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer. (Source: RFC 2864, High confidence)\n12. Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interpretation. (Source: RFC 56, Medium confidence)\n13. Retransmission Timeout: TCP sets a timer for retransmitting lost packets if no acknowledgment is received within a certain time frame, improving reliability and speed. (Source: RFC 793, High confidence)\n14. Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer. (Source: RFC 2864, High confidence)\n15. Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interpretation. (Source: RFC 56, Medium confidence)\n16. Fragmentation Avoidance: TCP avoids sending packets that are too large for the MTU to reduce the risk of fragmentation and potential errors. (Source: RFC 56, Medium confidence)\n17. Nagle Algorithm: This algorithm is used to reduce the number of small packets and avoid congestion. (Source: RFC 107, Medium confidence)\n18. Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer. (Source: RFC 2864, High confidence)\n19. Window Scaling: TCP adapts the window size based on the receiver's capacity and network conditions to match the data transmission rate with the network's capacity. (Source: RFC 56, Medium confidence)\n20. Window Scaling: TCP adapts the window size based on the receiver's capacity",
+    "claims": [
+      {
+        "subject": "Error Detection and Recovery: TCP employs error detection through the",
+        "predicate": "use",
+        "object": "of checksums and acknowledgments to ensure reliable data delivery",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Error Detection and Recovery: TCP employs error detection through the use of checksums and acknowled"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Error Detection and Recovery: TCP employs error detection through the use of checksums and acknowledgments to ensure reliable data delivery."
+      },
+      {
+        "subject": "If the checksum doesn't match, an acknowledgment",
+        "predicate": "is",
+        "object": "not sent, and the packet is retransmitted",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If the checksum doesn't match, an acknowledgment is not sent, and the packet is retransmitted."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If the checksum doesn't match, an acknowledgment is not sent, and the packet is retransmitted."
+      },
+      {
+        "subject": "Sequence Numbers: Each byte of data",
+        "predicate": "is",
+        "object": "numbered and sequenced, allowing the receiver to identify missing or out-of-order packets and request retransmission",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Sequence Numbers: Each byte of data is numbered and sequenced, allowing the receiver to identify mis"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Sequence Numbers: Each byte of data is numbered and sequenced, allowing the receiver to identify missing or out-of-order packets and request retransmission."
+      },
+      {
+        "subject": "Flow Control: TCP",
+        "predicate": "uses",
+        "object": "a sliding window mechanism to manage the rate of data flow, avoiding network congestion and buffer overflows, thus ensuring reliable delivery",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Flow Control: TCP uses a sliding window mechanism to manage the rate of data flow, avoiding network "
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Flow Control: TCP uses a sliding window mechanism to manage the rate of data flow, avoiding network congestion and buffer overflows, thus ensuring reliable delivery."
+      },
+      {
+        "subject": "Congestion Control: TCP",
+        "predicate": "uses",
+        "object": "algorithms like slow-start, congestion avoidance, and fast recovery to dynamically adjust the data flow based on the network'in current state",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Congestion Control: TCP uses algorithms like slow-start, congestion avoidance, and fast recovery to "
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Congestion Control: TCP uses algorithms like slow-start, congestion avoidance, and fast recovery to dynamically adjust the data flow based on the network'in current state."
+      },
+      {
+        "subject": "Nagle Algorithm: This algorithm",
+        "predicate": "is",
+        "object": "used to avoid unnecessary fragmentation and conserve bandwidth by combining small outgoing messages into a single packet",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Nagle Algorithm: This algorithm is used to avoid unnecessary fragmentation and conserve bandwidth by"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Nagle Algorithm: This algorithm is used to avoid unnecessary fragmentation and conserve bandwidth by combining small outgoing messages into a single packet."
+      },
+      {
+        "subject": "Selective Acknowledgment (SACK): TCP",
+        "predicate": "provides",
+        "object": "SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order pa"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer."
+      },
+      {
+        "subject": "Selective Acknowledgment (SACK): TCP",
+        "predicate": "provides",
+        "object": "SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order pa"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer."
+      },
+      {
+        "subject": "Timestamps: TCP",
+        "predicate": "uses",
+        "object": "timestamps to accurately reorder received packets, ensuring correct data interpretation",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interp"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interpretation."
+      },
+      {
+        "subject": "Selective Acknowledgment (SACK): TCP",
+        "predicate": "provides",
+        "object": "SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order pa"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer."
+      },
+      {
+        "subject": "Timestamps: TCP",
+        "predicate": "uses",
+        "object": "timestamps to accurately reorder received packets, ensuring correct data interpretation",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interp"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Timestamps: TCP uses timestamps to accurately reorder received packets, ensuring correct data interpretation."
+      },
+      {
+        "subject": "Fragmentation Avoidance: TCP avoids sending packets that",
+        "predicate": "is",
+        "object": "too large for the MTU to reduce the risk of fragmentation and potential errors",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Fragmentation Avoidance: TCP avoids sending packets that are too large for the MTU to reduce the ris"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Fragmentation Avoidance: TCP avoids sending packets that are too large for the MTU to reduce the risk of fragmentation and potential errors."
+      },
+      {
+        "subject": "Nagle Algorithm: This algorithm",
+        "predicate": "is",
+        "object": "used to reduce the number of small packets and avoid congestion",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Nagle Algorithm: This algorithm is used to reduce the number of small packets and avoid congestion."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Nagle Algorithm: This algorithm is used to reduce the number of small packets and avoid congestion."
+      },
+      {
+        "subject": "Selective Acknowledgment (SACK): TCP",
+        "predicate": "provides",
+        "object": "SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order pa"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Selective Acknowledgment (SACK): TCP provides SACK option to inform the sender about out-of-order packets, enabling more efficient data transfer."
+      }
+    ],
+    "calibration": 0.7,
+    "response_time_s": 25.06
+  },
+  {
+    "agent": "qwen2.5_3b",
+    "model": "qwen2.5:3b",
+    "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through several mechanisms. One key method is through the implementation of acknowledgments and error detection. When a segment is sent from one endpoint to another, it includes a sequence number that identifies the segment in the stream of data. The receiving endpoint acknowledges receipt of segments by sending acknowledgments. If an acknowledgment is not received within a certain period, the segment is retransmitted.\n\nAdditionally, TCP uses checksums to detect transmission errors. Each segment sent over the network is accompanied by a checksum, which is a numerical value calculated from the segment's contents. Upon receiving the segment, the receiving endpoint recalculates the checksum and compares it with the one in the segment. If they do not match, an error is assumed to have occurred, and the segment is discarded.\n\nA third method is flow control, which manages the rate of data transfer between the sender and receiver. TCP employs a sliding window protocol to manage this, where the sender only sends data if it has received an acknowledgment from the receiver for all previous data. This helps prevent the receiver from being overwhelmed by data.\n\nA low confidence level is applied here as the explanation is a general overview and not specific to the latest TCP standards or studies. However, these mechanisms are widely accepted and used in modern TCP implementations.",
+    "claims": [
+      {
+        "subject": "One key method",
+        "predicate": "is",
+        "object": "through the implementation of acknowledgments and error detection",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "One key method is through the implementation of acknowledgments and error detection."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "One key method is through the implementation of acknowledgments and error detection."
+      },
+      {
+        "subject": "When a segment",
+        "predicate": "is",
+        "object": "sent from one endpoint to another, it includes a sequence number that identifies the segment in the stream of data",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "When a segment is sent from one endpoint to another, it includes a sequence number that identifies t"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "When a segment is sent from one endpoint to another, it includes a sequence number that identifies the segment in the stream of data."
+      },
+      {
+        "subject": "If an acknowledgment",
+        "predicate": "is",
+        "object": "not received within a certain period, the segment is retransmitted",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If an acknowledgment is not received within a certain period, the segment is retransmitted."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If an acknowledgment is not received within a certain period, the segment is retransmitted."
+      },
+      {
+        "subject": "Additionally, TCP",
+        "predicate": "uses",
+        "object": "checksums to detect transmission errors",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Additionally, TCP uses checksums to detect transmission errors."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Additionally, TCP uses checksums to detect transmission errors."
+      },
+      {
+        "subject": "Each segment sent over the network",
+        "predicate": "is",
+        "object": "accompanied by a checksum, which is a numerical value calculated from the segment's contents",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "Each segment sent over the network is accompanied by a checksum, which is a numerical value calculat"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "Each segment sent over the network is accompanied by a checksum, which is a numerical value calculated from the segment's contents."
+      },
+      {
+        "subject": "If they do not match, an error",
+        "predicate": "is",
+        "object": "assumed to have occurred, and the segment is discarded",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "If they do not match, an error is assumed to have occurred, and the segment is discarded."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "If they do not match, an error is assumed to have occurred, and the segment is discarded."
+      },
+      {
+        "subject": "A third method",
+        "predicate": "is",
+        "object": "flow control, which manages the rate of data transfer between the sender and receiver",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "A third method is flow control, which manages the rate of data transfer between the sender and recei"
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "A third method is flow control, which manages the rate of data transfer between the sender and receiver."
+      },
+      {
+        "subject": "This helps",
+        "predicate": "prevent",
+        "object": "the receiver from being overwhelmed by data",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "This helps prevent the receiver from being overwhelmed by data."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "This helps prevent the receiver from being overwhelmed by data."
+      },
+      {
+        "subject": "A low confidence level",
+        "predicate": "is",
+        "object": "applied here as the explanation is a general overview and not specific to the latest TCP standards or studies",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "A low confidence level is applied here as the explanation is a general overview and not specific to "
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "A low confidence level is applied here as the explanation is a general overview and not specific to the latest TCP standards or studies."
+      },
+      {
+        "subject": "However, these mechanisms",
+        "predicate": "is",
+        "object": "widely accepted and used in modern TCP implementations",
+        "confidence": 0.85,
+        "lowering_confidence": "HIGH",
+        "evidence": [
+          {
+            "type": "REASONING",
+            "weight": 0.5,
+            "text": "However, these mechanisms are widely accepted and used in modern TCP implementations."
+          }
+        ],
+        "constraint_alignment": 1.0,
+        "raw_sentence": "However, these mechanisms are widely accepted and used in modern TCP implementations."
+      }
+    ],
+    "calibration": 0.7,
+    "response_time_s": 6.93
+  }
+]

@@ -1,0 +1,1318 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1104",
+ "order": 6,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1104",
+  "order": 6,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin."
+ },
+ "item_view_sha256": "104c850d82941d2b51d8f15b279838018da09b69dc742be30359f8e4709198c9",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aaff772548561501c869daf5f1cdd7a1322a48b5130e33b6d134c71d29962448",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792852964.832908,
+      "end_wall": 1792852966.6295931,
+      "error": null
+     }
+    ],
+    "start_wall": 1792852964.832908,
+    "start_mono": 522521.535425625,
+    "end_wall": 1792852966.6295931,
+    "end_mono": 522523.332102458,
+    "raw_response": "{\"query\": \"stroke patients prior direct oral anticoagulants lower in-hospital mortality than warfarin\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1794714333,
+     "load_duration": 134923375,
+     "prompt_eval_count": 193,
+     "prompt_eval_duration": 435202792,
+     "eval_count": 21,
+     "eval_duration": 978534752,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:42:46.628894Z"
+    },
+    "elapsed_s": 1.797,
+    "query_used": "stroke patients prior direct oral anticoagulants lower in-hospital mortality than warfarin",
+    "query_source": "json",
+    "query_arrival_seq": 31
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "stroke patients prior direct oral anticoagulants lower in-hospital mortality than warfarin",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 816
+      },
+      {
+       "passage_key": "scifact:3898784:0",
+       "score_q": 794
+      },
+      {
+       "passage_key": "scifact:3898784:3",
+       "score_q": 792
+      },
+      {
+       "passage_key": "scifact:3898784:2",
+       "score_q": 776
+      },
+      {
+       "passage_key": "scifact:16180601:0",
+       "score_q": 698
+      }
+     ],
+     "retrieval_sha256": "77b43eac6dd98023ff37ee4b20b37c306e964ed7be2f407032f0c1fa6513a400"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "77b43eac6dd98023ff37ee4b20b37c306e964ed7be2f407032f0c1fa6513a400",
+    "query_embedding_sha256": "4ccd369e97e49c0c8b2ec6806402b79719fd890fb7e8ca76666e42c870198015",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3898784:0",
+      "content_sha256": "b7e9f141e13651cfe468bf2e5552557f2c0d43b9310dc030f2bba8d76d1967f9",
+      "chars": 887
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3898784:3",
+      "content_sha256": "aecc819f604c501944e04f27a757bcbc269193656346dd43cb42ab22baae4c38",
+      "chars": 928
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3898784:2",
+      "content_sha256": "755d3753773d2090139d07dbceb9ab90adcdc85a14acddf0cff092e0b1f2f933",
+      "chars": 741
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:16180601:0",
+      "content_sha256": "fc120722b5718f85127127f281984ddfc0eb7639383ab94a60667239af9d8e02",
+      "chars": 1075
+     }
+    ],
+    "elapsed_s": 4.318
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nEvidence passages from your search for \"stroke patients prior direct oral anticoagulants lower in-hospital mortality than warfarin\":\n<<<PASSAGES\n[P1] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P2] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nImportance Although non–vitamin K antagonist oral anticoagulants (NOACs) are increasingly used to prevent thromboembolic disease, there are limited data on NOAC-related intracerebral hemorrhage (ICH). Objective To assess the association between preceding oral anticoagulant use (warfarin, NOACs, and no oral anticoagulants [OACs]) and in-hospital mortality among patients with ICH. Design, Setting, and Participants Retrospective cohort study of 141 311 patients with ICH admitted from October 2013 to December 2016 to 1662 Get With The Guidelines–Stroke hospitals. Exposures Anticoagulation therapy before ICH, defined as any use of OACs within 7 days prior to hospital arrival. Main Outcomes and Measures In-hospital mortality.\n\n[P3] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nThe difference in mortality between NOAC-treated patients and warfarin-treated patients was numerically greater among patients with prior use of dual antiplatelet agents (32.7% vs 47.1%; ARD, −15.0% [95.5% CI, −26.3% to −3.8%]; AOR, 0.50 [97.5% CI, 0.29 to 0.86]) than among those taking these agents without prior antiplatelet therapy (26.4% vs 31.7%; ARD, −5.0% [97.5% CI, −6.8% to −3.2%]; AOR, 0.77 [97.5% CI, 0.70 to 0.85]), although the interaction P value (.07) was not statistically significant. Conclusions and Relevance Among patients with ICH, prior use of NOACs or warfarin was associated with higher in-hospital mortality compared with no OACs. Prior use of NOACs, compared with prior use of warfarin, was associated with lower risk of in-hospital mortality.\n\n[P4] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nCompared with patients without prior use of OACs, the risk of in-hospital mortality was higher among patients with prior use of warfarin (adjusted risk difference [ARD], 9.0% [97.5% CI, 7.9% to 10.1%]; adjusted odds ratio [AOR], 1.62 [97.5% CI, 1.53 to 1.71]) and higher among patients with prior use of NOACs (ARD, 3.3% [97.5% CI, 1.7% to 4.8%]; AOR, 1.21 [97.5% CI, 1.11-1.32]). Compared with patients with prior use of warfarin, patients with prior use of NOACs had a lower risk of in-hospital mortality (ARD, −5.7% [97.5% CI, −7.3% to −4.2%]; AOR, 0.75 [97.5% CI, 0.69 to 0.81]).\n\n[P5] Serum Soluble Corin Deficiency Predicts Major Disability within 3 Months after Acute Stroke\nOBJECTIVE Serum soluble corin has been associated with stroke. However, whether it is associated with stroke prognosis has not yet been studied. Therefore, we aimed to study the association of serum soluble corin with risk of poor outcomes within 3 months after stroke. METHODS We followed 522 stroke patients for 3 months to identify major disability, death and vascular events. Serum soluble corin was measured at baseline for all participants. Logistic regression was used to examine the associations of baseline serum soluble corin with outcomes of stroke, adjusting for age, sex, baseline NIHSS score, hours from onset to hospitalization, smoking, drinking, hypertension, diabetes, coronary heart disease, atrial fibrillation, family history of stroke, and stroke subtype. RESULTS Patients with high corin had a significantly lower crude risk for the composite outcome of major disability or death (OR = 0.64, 95%CI: 0.43-0.96) than patients with low corin (the lowest tertile).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1f20a0e9caa89665d9bc22a778c99af75202712cb449bcd6f20eca301233aeb3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792852970.94825,
+      "end_wall": 1792852989.794213,
+      "error": null
+     }
+    ],
+    "arrival_seq": 30,
+    "start_wall": 1792852970.94825,
+    "start_mono": 522527.650744708,
+    "end_wall": 1792852989.794213,
+    "end_mono": 522546.496636791,
+    "raw_response": "{\"reasoning\": \"The evidence from multiple passages shows that patients with prior use of direct oral anticoagulants (NOACs) have a lower risk of in-hospital mortality compared to patients with prior use of warfarin.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18842722334,
+     "load_duration": 6946916417,
+     "prompt_eval_count": 1645,
+     "prompt_eval_duration": 5256014498,
+     "eval_count": 77,
+     "eval_duration": 5807321956,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:43:09.792408Z"
+    },
+    "elapsed_s": 18.846,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 30,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:3898784:3",
+     "scifact:3898784:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 200,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aaff772548561501c869daf5f1cdd7a1322a48b5130e33b6d134c71d29962448",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792852964.832615,
+      "end_wall": 1792852966.584142,
+      "error": null
+     }
+    ],
+    "start_wall": 1792852964.832615,
+    "start_mono": 522521.535132708,
+    "end_wall": 1792852966.584142,
+    "end_mono": 522523.286652375,
+    "raw_response": "{\"query\": \"stroke mortality DOAC vs warfarin\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1748988375,
+     "load_duration": 75457292,
+     "prompt_eval_count": 195,
+     "prompt_eval_duration": 632831500,
+     "eval_count": 13,
+     "eval_duration": 938831499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:42:46.583065Z"
+    },
+    "elapsed_s": 1.752,
+    "query_used": "stroke mortality DOAC vs warfarin",
+    "query_source": "json",
+    "query_arrival_seq": 30
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "stroke mortality DOAC vs warfarin",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 782
+      },
+      {
+       "passage_key": "scifact:3898784:3",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:3898784:2",
+       "score_q": 732
+      },
+      {
+       "passage_key": "scifact:21571708:1",
+       "score_q": 704
+      },
+      {
+       "passage_key": "scifact:3898784:0",
+       "score_q": 701
+      }
+     ],
+     "retrieval_sha256": "7f1ff6f706f031840ff826c6d299237b7ea51ead66a27476f6640d55c19d96eb"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7f1ff6f706f031840ff826c6d299237b7ea51ead66a27476f6640d55c19d96eb",
+    "query_embedding_sha256": "35c550ee77d94ce79ce4861d9b60f88b1bd28af8f8a0e4537c68cc57ba047054",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3898784:3",
+      "content_sha256": "aecc819f604c501944e04f27a757bcbc269193656346dd43cb42ab22baae4c38",
+      "chars": 928
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3898784:2",
+      "content_sha256": "755d3753773d2090139d07dbceb9ab90adcdc85a14acddf0cff092e0b1f2f933",
+      "chars": 741
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21571708:1",
+      "content_sha256": "bc3aa4325037bf4e8a46868181c72a760b69d3a349bcdadc7d0d845df8105bb6",
+      "chars": 879
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:3898784:0",
+      "content_sha256": "b7e9f141e13651cfe468bf2e5552557f2c0d43b9310dc030f2bba8d76d1967f9",
+      "chars": 887
+     }
+    ],
+    "elapsed_s": 4.1635
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nEvidence passages from your search for \"stroke mortality DOAC vs warfarin\":\n<<<PASSAGES\n[P1] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P2] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nThe difference in mortality between NOAC-treated patients and warfarin-treated patients was numerically greater among patients with prior use of dual antiplatelet agents (32.7% vs 47.1%; ARD, −15.0% [95.5% CI, −26.3% to −3.8%]; AOR, 0.50 [97.5% CI, 0.29 to 0.86]) than among those taking these agents without prior antiplatelet therapy (26.4% vs 31.7%; ARD, −5.0% [97.5% CI, −6.8% to −3.2%]; AOR, 0.77 [97.5% CI, 0.70 to 0.85]), although the interaction P value (.07) was not statistically significant. Conclusions and Relevance Among patients with ICH, prior use of NOACs or warfarin was associated with higher in-hospital mortality compared with no OACs. Prior use of NOACs, compared with prior use of warfarin, was associated with lower risk of in-hospital mortality.\n\n[P3] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nCompared with patients without prior use of OACs, the risk of in-hospital mortality was higher among patients with prior use of warfarin (adjusted risk difference [ARD], 9.0% [97.5% CI, 7.9% to 10.1%]; adjusted odds ratio [AOR], 1.62 [97.5% CI, 1.53 to 1.71]) and higher among patients with prior use of NOACs (ARD, 3.3% [97.5% CI, 1.7% to 4.8%]; AOR, 1.21 [97.5% CI, 1.11-1.32]). Compared with patients with prior use of warfarin, patients with prior use of NOACs had a lower risk of in-hospital mortality (ARD, −5.7% [97.5% CI, −7.3% to −4.2%]; AOR, 0.75 [97.5% CI, 0.69 to 0.81]).\n\n[P4] Lipoprotein(a) concentration and the risk of coronary heart disease, stroke, and nonvascular mortality.\nDuring 1.3 million person-years of follow-up, 22,076 first-ever fatal or nonfatal vascular disease outcomes or nonvascular deaths were recorded, including 9336 CHD outcomes, 1903 ischemic strokes, 338 hemorrhagic strokes, 751 unclassified strokes, 1091 other vascular deaths, 8114 nonvascular deaths, and 242 deaths of unknown cause. Within-study regression analyses were adjusted for within-person variation and combined using meta-analysis. Analyses excluded participants with known preexisting CHD or stroke at baseline. DATA SYNTHESIS Lipoprotein(a) concentration was weakly correlated with several conventional vascular risk factors and it was highly consistent within individuals over several years. Associations of Lp(a) with CHD risk were broadly continuous in shape.\n\n[P5] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nImportance Although non–vitamin K antagonist oral anticoagulants (NOACs) are increasingly used to prevent thromboembolic disease, there are limited data on NOAC-related intracerebral hemorrhage (ICH). Objective To assess the association between preceding oral anticoagulant use (warfarin, NOACs, and no oral anticoagulants [OACs]) and in-hospital mortality among patients with ICH. Design, Setting, and Participants Retrospective cohort study of 141 311 patients with ICH admitted from October 2013 to December 2016 to 1662 Get With The Guidelines–Stroke hospitals. Exposures Anticoagulation therapy before ICH, defined as any use of OACs within 7 days prior to hospital arrival. Main Outcomes and Measures In-hospital mortality.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a571106805f246887a558cdfb223c78175ee909a9fcae15346b9a716d70b22d2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792852970.748357,
+      "end_wall": 1792852998.199906,
+      "error": null
+     }
+    ],
+    "arrival_seq": 31,
+    "start_wall": 1792852970.748357,
+    "start_mono": 522527.450852416,
+    "end_wall": 1792852998.199906,
+    "end_mono": 522554.902298708,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from passages P2 and P3 specifically indicate that among stroke patients, those with prior use of direct oral anticoagulants (NOACs) have a lower risk of in-hospital mortality compared to those with prior use of warfarin, supporting the claim despite noting other complexities like the presence of dual antiplatelet agents.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27446710500,
+     "load_duration": 5691032792,
+     "prompt_eval_count": 1599,
+     "prompt_eval_duration": 9009326166,
+     "eval_count": 112,
+     "eval_duration": 11857926920,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:43:18.196742Z"
+    },
+    "elapsed_s": 27.451,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 31,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:3898784:3",
+     "scifact:3898784:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 336,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aaff772548561501c869daf5f1cdd7a1322a48b5130e33b6d134c71d29962448",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792852964.832492,
+      "end_wall": 1792852966.900734,
+      "error": null
+     }
+    ],
+    "start_wall": 1792852964.832492,
+    "start_mono": 522521.535009125,
+    "end_wall": 1792852966.900734,
+    "end_mono": 522523.603242125,
+    "raw_response": "{\"query\": \"direct oral anticoagulants stroke mortality rates\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2065265458,
+     "load_duration": 1206241416,
+     "prompt_eval_count": 198,
+     "prompt_eval_duration": 418981167,
+     "eval_count": 18,
+     "eval_duration": 353106998,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:42:46.89931Z"
+    },
+    "elapsed_s": 2.068,
+    "query_used": "direct oral anticoagulants stroke mortality rates",
+    "query_source": "json",
+    "query_arrival_seq": 32
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "direct oral anticoagulants stroke mortality rates",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 721
+      },
+      {
+       "passage_key": "scifact:3898784:0",
+       "score_q": 715
+      },
+      {
+       "passage_key": "scifact:16760369:1",
+       "score_q": 690
+      },
+      {
+       "passage_key": "scifact:21571708:1",
+       "score_q": 690
+      },
+      {
+       "passage_key": "scifact:3898784:3",
+       "score_q": 687
+      }
+     ],
+     "retrieval_sha256": "c2e0203e56828015863e16098a3e9a1bb4228176a120f1d6b0d569c3f9be7c89"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c2e0203e56828015863e16098a3e9a1bb4228176a120f1d6b0d569c3f9be7c89",
+    "query_embedding_sha256": "0a32a040cf5ff137309f9b9127d88f0aab63a023f58090cf0619a1a568985b47",
+    "query_embedding_f32_b64": "msNuPWNyQTsn0iC+RtyRvDuMcD2mXOo7yggkPRVCMryquN87fzEQPU5TrDwbzPY8gf2LPSeiPrxnsIA9L6akvBYAJjv7wyK9nc2gvcLwGD2a+5K9i5eZvcYxabzTdlm5AYh/Pc1/Hj1tJjy809AXvGAqh7xTA/k7lP97PWDwFLyfeCW9qjKzu1haPrwe8/i8DRQOPYE+oD3TP8W7OB0TPNIXDz2z+Gg8D1+4PeSFmTs5R0U9zPPvPL4IRLxjWhc9vwcCPa2Khr2D/yk9iiUnvVRKrbxlJGA8Ud8yvPN+SD01SiO9SJkQvcIChzqZnY29RmirPfINmLzylt+7wy8xvSul0j0+j7m8OAIBvXYMWT3KgLU8vBPKuyFiq7zImrM7lY19PXp4TTxBkJw8z6EEvQ1okL0BACq9JIG+PHWsgj3qPri8Beg6vMZMmz07WJc6uUAqPQL1RLx8H/48En+gvHCTErykwCs94UCePNqwMj3vQGg8B5rnPA9lGL2ZNTs8X7kOvezApTzqyaS8XuSVuyDPv7w6Ips6imNLvDyIerxdWqE9r2yrvKWwOj2RPM08HZP+ufB7/rujyNu8CgloPUO6K71pFrK8Ofs+PWabzzzuIRE9WiXDvLu2CLx2S5861dDAvJ4wVL1DEHA9uuaaPT5MRz0lrzM97HxsvZV2gTxS4Dg739sJPSx9pLw40UC7MmEdvW5aVLw9pro6iXhCPV8OwLuOWYE8jVsdvNYeurx09Ru7CN9QvSMVIj1W58u8oOepvBwf1bz7BWU9AYQvvIxE6zze+4+9FBloPfuLGD164T281VobPfMqBzwQTcu8cwx6vejo9LyR3RS9vXUYPdLkGT1bndy8t9wvvS3pYT0FGn285JSPvcrKnDy37h09j547O/I6bTyowd68weyevWpywTs89am9YDG8PeSv/bys8169qMuOuP3R77wwCxS9pctkPZyNOb2hoAo92WzgPBEAzTymrWa7z8QEveOFejykst48L+qCvA1FLrxTMJe7KONNvUoVCb2JjjC9LitiPJYF+j0/nIc7vkc/PXSEXb0Faxm9JYDmPNsTIL2CzZU8wbIZvQLz7TzoqrQ85EqtPBfEkLxGfgS8WUdZPd028ztFu4C9L+fYOmnnz7uQBMO8UxnOPBhJM7yBTjq9oavbPLmfFz1HowC9YAgJvQFMWbxx7+Q70Kf+vJaCCb1BA+a5+AyRvNT7EL2WU/O859IuvS86fj23A/u81xwgO8OSJrwcCKo7v3KLutfEm7oqakE9ky0VPQL9kjxVRY28aJwmveryejxiANA8+MiSOuMlujxQxTk8UVIQPSATDr06zpQ7Y7wSPdB9jjz8SFU6oGV4PO8EKr0e8qE8O1INPRctJj3vpxk9p0ABPHHqkD27oqO9/51Qve32xDxGf6O7SVIfOm6gAT3fkpm7W8+oO2RnGD06FTq9A4GFPRI6ujtDJb88amoOPKuc9rsbUYG9eWvMPFoYqL0F/1+5sDG+PMD5RjuR9JM8Jq6SPW3xsj3UpTA8q/A2vFUUsDywKsY8h1fFPD8IKLxrSl09V7woPbEWAz3dYw89gbK5PPxjWjxNK0e7gSeOO4+erbyV4Iw5KLIFPZ/tILyLBrQ8xolTu0BLBTw1ZWo9v2MYvTqurjyjrFC8ljNRPD7wfb2Xdzm9rzTwPFdGGbv5quQ8WhBDu4yDdD2c1l49TwqovNCRlL3rVSa947yJPMQN/Dws9pq8S3eUPHmqzbzHCZA7idSAPHZpMDwn8FM9g5ZivOiocLsR5g49A9gnvdaeuTyL/ES9wB6uPNJaOb3dXDu9WWxcPHZtjToZvei7E/HRvIJI+LyQT/Q80lzcOwO0vLxJEDS8Yhc3vHdqGLwErdG8r2aCPOXtNb2TJFI9I2xPPcwUiT1yQXq93WEsPZ+m6rsGwiK9AM2Mun3EW7wDnbc89Vd0PU5m6rsAbjA9mbRNvRoqMb1qTbS7jER3PDaYfjxqlMY8hpjuPCcdeb2SNve8veq5vOMNAj3g/su8a6v0vO+6Hryg4KC8tCQVPCXS07ynhga94Y4ovWSSsryMJ5m8nv6pu/Vl+7wvray8lI7DPNryFDw90wi9V76JOzZ/6DyMsqm7974wPN32aL3YYYa9jDPbPAlBAz1RwIw9Iw0nPYTBMb2aaWi8RN2vu7h0aD1xxPY8I+TvPO5XLzsQgys9pSBePTsTST15kcc8MrkGPcXXBrxNNUW9FMhUPSjnEj31CCO9Sq8PPBzwNrydlC09oRW3OQ4MkzvuJlq7Q00BvVzg8DxNyDI95ngDPIVpdTziS4i8EaJIvSEv/zvS0UI8+DG9PFxFcz0tD2k8FI8/PL6JG7z5JAW9Yq6ePSQ5pT2Rv5s9qjcuvV1sQLx2VpM8ekBCPbPkxjy2cDQ9F0NKOlbmUz3lYFu9T14DPVoHHT0kl3M8H9yQPVWYjburqsc6kT6bvHvRt7wAK6y8olGhuzzzzTvpsC29benbO8K8zzzKAha7UgTuvM3f4jt0M5a9PPaHvTytOr1kO6+8FAQxuwJ0mDuDdzg9NzOOPI+Oq7zX4QK9+MYQvQtn2Tqbfno8GIE4uqsLDb1w0Lk8+YLovNFRQjxIA1M9MFuovWKX2zyUGkM7oXJNPJg2N72oKMW8Vk1pPVcnrjyPQAi8DC++PIvBNztcs4+9ukKguqeEoLzKqH49UDSDvS321byZDZY8YEg4vDOAI73s8Jg83UOcPb01BL0csaS8sysgPVERgTyvlQc9EHcIPK7L7Dxu6QW9aOtXveZBMz14H229PfMtOiPHPTvHCam8Xl32u+y5qrzmdfo6N3zGvMdQMLyzZ6a7ZxgVvYZVA7z3sOa73tGDPPpuezxfa1A9eco+vW0+ljxVHwA94XFDPXeLbLywdf67JtT0vHETWL0EBSq9fIskvS34trwMDEq9u8ucPODo5rw8+w89r2GUu7PPqDw0o+O8tylRvDMOJrwNlve8jVCGuswTAj1MJv08C13UO17fNT1KwSs9rmJLvT7tITzz2z09DFFVPV0Rfb0U1bi86IvovAikAz38oCI9K/+9vLorvbwvs/m8uN7KOphoKr30eje9YvRIvEXwBz25jyq8wf56vRmDC73/JIe8oeUNPGqVtDzsPvG7b9/BO9ltkLhb9oe9C0E9vTvFRLs1x8+8oOJouxAJDzt5bye9R5cSvQa/j7zCORE8CQxpvYFCvrzmZg499Ndvu37oY7yPiTo7/R2OvFf42jyE1d+6JBGvPOELSTm8URA9qxgyvROeIz3Jfsy7EumKvUT6ZD03Fic869KVvI0xTjy5KH28PlEhPTDpDL20A6G8EjhlvWMCC7vTNPo84uG+u5hP3zz+48S9jQ7PvPjICbwL1mA9XAIlvf11JLtYwBc8NYKLvLTqwjwCFY27KjOnvA2Za7zShRG6cAgmvbBmGz1R3v88TEySvAiJ1brg/qI93ZwnPQMkxDwwQnC7GsFZPeaZK70u7Lw9+mowvbEbWr2d7VW6xvR/uy/j4Ltsq5s8sd04vfmBALwLibK912oavNccoDzGGYC9Py42u+skJT3esdI89bwLvSA/T7ySvyI9d8N6PbxFHD1u32O8SmMROwQ3JrzQ04c6+ff7vGqUKj36Sry8rrB6O5Y+IT18Dog8R+P/vEByDrxkfly8Zu0YvHQLn73H1Qq9F7TAPGpyVrxwcCs8GuFuPBMhHz18hoG9P3+FPfezrrzUMBA9fZvePOIm5jwQDPY6BheqO1C1+jw1kX69pbF0vCjo1rxbzCI9voHbu8C5BjyzNrS8t84pPZQjYbr2mZK88vubvaCxKTzZtd4854EUPffxFb1Go4q9eIRuvMbNKD3zLG+9O0SnPNlQRL32AG+8k2YhPE4zvLyM9YW9+aIRve3teD29otS8IvkEPEAdt7yJp6c8WyCJvdKGgDyC9pe8tjdVOx20/Lzdltc8VmkJvfvBKrpwmjU9UlctPbivDruJ1n+8wCcvPSKGCjy1bIG9B9woPF17QLxnAxu9z0zRPDGuu7pDx6Q9InAAuywNm7yuEJy9jnZxPeK+KD2cBYA8FOcUvYlebDvh8IO9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3898784:0",
+      "content_sha256": "b7e9f141e13651cfe468bf2e5552557f2c0d43b9310dc030f2bba8d76d1967f9",
+      "chars": 887
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16760369:1",
+      "content_sha256": "c7f22f4d971ce37c739b3252108ba5b11e744bcd105d598dd2e1b7e2e0c17d66",
+      "chars": 1062
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21571708:1",
+      "content_sha256": "bc3aa4325037bf4e8a46868181c72a760b69d3a349bcdadc7d0d845df8105bb6",
+      "chars": 879
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:3898784:3",
+      "content_sha256": "aecc819f604c501944e04f27a757bcbc269193656346dd43cb42ab22baae4c38",
+      "chars": 928
+     }
+    ],
+    "elapsed_s": 4.2229
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nEvidence passages from your search for \"direct oral anticoagulants stroke mortality rates\":\n<<<PASSAGES\n[P1] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P2] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nImportance Although non–vitamin K antagonist oral anticoagulants (NOACs) are increasingly used to prevent thromboembolic disease, there are limited data on NOAC-related intracerebral hemorrhage (ICH). Objective To assess the association between preceding oral anticoagulant use (warfarin, NOACs, and no oral anticoagulants [OACs]) and in-hospital mortality among patients with ICH. Design, Setting, and Participants Retrospective cohort study of 141 311 patients with ICH admitted from October 2013 to December 2016 to 1662 Get With The Guidelines–Stroke hospitals. Exposures Anticoagulation therapy before ICH, defined as any use of OACs within 7 days prior to hospital arrival. Main Outcomes and Measures In-hospital mortality.\n\n[P3] Comparative determinants of 4-year cardiovascular event rates in stable outpatients at risk of or with atherothrombosis.\nMAIN OUTCOME MEASURES Rates of cardiovascular death, myocardial infarction, and stroke. RESULTS A total of 45,227 patients with baseline data were included in this 4-year analysis. During the follow-up period, a total of 5481 patients experienced at least 1 event, including 2315 with cardiovascular death, 1228 with myocardial infarction, 1898 with stroke, and 40 with both a myocardial infarction and stroke on the same day. Among patients with atherothrombosis, those with a prior history of ischemic events at baseline (n = 21,890) had the highest rate of subsequent ischemic events (18.3%; 95% confidence interval [CI], 17.4%-19.1%); patients with stable coronary, cerebrovascular, or peripheral artery disease (n = 15,264) had a lower risk (12.2%; 95% CI, 11.4%-12.9%); and patients without established atherothrombosis but with risk factors only (n = 8073) had the lowest risk (9.1%; 95% CI, 8.3%-9.9%) (P < .001 for all comparisons).\n\n[P4] Lipoprotein(a) concentration and the risk of coronary heart disease, stroke, and nonvascular mortality.\nDuring 1.3 million person-years of follow-up, 22,076 first-ever fatal or nonfatal vascular disease outcomes or nonvascular deaths were recorded, including 9336 CHD outcomes, 1903 ischemic strokes, 338 hemorrhagic strokes, 751 unclassified strokes, 1091 other vascular deaths, 8114 nonvascular deaths, and 242 deaths of unknown cause. Within-study regression analyses were adjusted for within-person variation and combined using meta-analysis. Analyses excluded participants with known preexisting CHD or stroke at baseline. DATA SYNTHESIS Lipoprotein(a) concentration was weakly correlated with several conventional vascular risk factors and it was highly consistent within individuals over several years. Associations of Lp(a) with CHD risk were broadly continuous in shape.\n\n[P5] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nThe difference in mortality between NOAC-treated patients and warfarin-treated patients was numerically greater among patients with prior use of dual antiplatelet agents (32.7% vs 47.1%; ARD, −15.0% [95.5% CI, −26.3% to −3.8%]; AOR, 0.50 [97.5% CI, 0.29 to 0.86]) than among those taking these agents without prior antiplatelet therapy (26.4% vs 31.7%; ARD, −5.0% [97.5% CI, −6.8% to −3.2%]; AOR, 0.77 [97.5% CI, 0.70 to 0.85]), although the interaction P value (.07) was not statistically significant. Conclusions and Relevance Among patients with ICH, prior use of NOACs or warfarin was associated with higher in-hospital mortality compared with no OACs. Prior use of NOACs, compared with prior use of warfarin, was associated with lower risk of in-hospital mortality.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "89769f6ebd863c8a7868657f17033e08a3fb64989a39a3ed289919c002ea696e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792852971.124201,
+      "end_wall": 1792853000.5639281,
+      "error": null
+     }
+    ],
+    "arrival_seq": 32,
+    "start_wall": 1792852971.124201,
+    "start_mono": 522527.826694916,
+    "end_wall": 1792853000.5639281,
+    "end_mono": 522557.266311375,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages indicate that patients with prior use of direct oral anticoagulants (NOACs) have a lower in-hospital mortality rate (26.5%) compared to those with prior use of warfarin (32.6%), as stated in [P1]. This directly supports the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29435915250,
+     "load_duration": 19827569292,
+     "prompt_eval_count": 1860,
+     "prompt_eval_duration": 3848310625,
+     "eval_count": 103,
+     "eval_duration": 5321139712,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:43:20.561209Z"
+    },
+    "elapsed_s": 29.44,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 32,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:3898784:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 261,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aaff772548561501c869daf5f1cdd7a1322a48b5130e33b6d134c71d29962448",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792852964.8327732,
+      "end_wall": 1792852969.830382,
+      "error": null
+     }
+    ],
+    "start_wall": 1792852964.8327732,
+    "start_mono": 522521.535290958,
+    "end_wall": 1792852969.830382,
+    "end_mono": 522526.532879583,
+    "raw_response": "{\"query\": \"stroke patients DOAC warfarin mortality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4995166083,
+     "load_duration": 3743928542,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 666721875,
+     "eval_count": 14,
+     "eval_duration": 463955126,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:42:49.829296Z"
+    },
+    "elapsed_s": 4.998,
+    "query_used": "stroke patients DOAC warfarin mortality",
+    "query_source": "json",
+    "query_arrival_seq": 33
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "stroke patients DOAC warfarin mortality",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 11909
+      },
+      {
+       "passage_key": "scifact:3898784:3",
+       "score_q": 9097
+      },
+      {
+       "passage_key": "scifact:3898784:0",
+       "score_q": 8806
+      },
+      {
+       "passage_key": "scifact:3898784:2",
+       "score_q": 8627
+      },
+      {
+       "passage_key": "scifact:4910408:0",
+       "score_q": 7237
+      }
+     ],
+     "retrieval_sha256": "4d9cf016904d9ed6c5ed7d3787a1525f4f0623ef4b3175e8f0941a984ab14434"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4d9cf016904d9ed6c5ed7d3787a1525f4f0623ef4b3175e8f0941a984ab14434",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3898784:3",
+      "content_sha256": "aecc819f604c501944e04f27a757bcbc269193656346dd43cb42ab22baae4c38",
+      "chars": 928
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3898784:0",
+      "content_sha256": "b7e9f141e13651cfe468bf2e5552557f2c0d43b9310dc030f2bba8d76d1967f9",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3898784:2",
+      "content_sha256": "755d3753773d2090139d07dbceb9ab90adcdc85a14acddf0cff092e0b1f2f933",
+      "chars": 741
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4910408:0",
+      "content_sha256": "2139bb2f513b34c81d8a3abad6f08decc4bf5c425d403d62cb9f89089d0568d5",
+      "chars": 946
+     }
+    ],
+    "elapsed_s": 0.0015
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nEvidence passages from your search for \"stroke patients DOAC warfarin mortality\":\n<<<PASSAGES\n[P1] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P2] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nThe difference in mortality between NOAC-treated patients and warfarin-treated patients was numerically greater among patients with prior use of dual antiplatelet agents (32.7% vs 47.1%; ARD, −15.0% [95.5% CI, −26.3% to −3.8%]; AOR, 0.50 [97.5% CI, 0.29 to 0.86]) than among those taking these agents without prior antiplatelet therapy (26.4% vs 31.7%; ARD, −5.0% [97.5% CI, −6.8% to −3.2%]; AOR, 0.77 [97.5% CI, 0.70 to 0.85]), although the interaction P value (.07) was not statistically significant. Conclusions and Relevance Among patients with ICH, prior use of NOACs or warfarin was associated with higher in-hospital mortality compared with no OACs. Prior use of NOACs, compared with prior use of warfarin, was associated with lower risk of in-hospital mortality.\n\n[P3] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nImportance Although non–vitamin K antagonist oral anticoagulants (NOACs) are increasingly used to prevent thromboembolic disease, there are limited data on NOAC-related intracerebral hemorrhage (ICH). Objective To assess the association between preceding oral anticoagulant use (warfarin, NOACs, and no oral anticoagulants [OACs]) and in-hospital mortality among patients with ICH. Design, Setting, and Participants Retrospective cohort study of 141 311 patients with ICH admitted from October 2013 to December 2016 to 1662 Get With The Guidelines–Stroke hospitals. Exposures Anticoagulation therapy before ICH, defined as any use of OACs within 7 days prior to hospital arrival. Main Outcomes and Measures In-hospital mortality.\n\n[P4] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nCompared with patients without prior use of OACs, the risk of in-hospital mortality was higher among patients with prior use of warfarin (adjusted risk difference [ARD], 9.0% [97.5% CI, 7.9% to 10.1%]; adjusted odds ratio [AOR], 1.62 [97.5% CI, 1.53 to 1.71]) and higher among patients with prior use of NOACs (ARD, 3.3% [97.5% CI, 1.7% to 4.8%]; AOR, 1.21 [97.5% CI, 1.11-1.32]). Compared with patients with prior use of warfarin, patients with prior use of NOACs had a lower risk of in-hospital mortality (ARD, −5.7% [97.5% CI, −7.3% to −4.2%]; AOR, 0.75 [97.5% CI, 0.69 to 0.81]).\n\n[P5] Low drug levels and thrombotic complications in high‐risk atrial fibrillation patients treated with direct oral anticoagulants\nEssentials Direct oral anticoagulants (DOACs) do not require laboratory monitoring currently. DOAC specific measurements were performed at trough in patients with atrial fibrillation. Patients who developed thromboembolic events showed lower DOAC plasma levels. This study supports the concept of measuring DOAC levels at steady state. SUMMARY Background Direct oral anticoagulants (DOACs) are administered at fixed doses without the need for dose adjustment according to laboratory testing. High interindividual variability in drug blood levels has been shown with all DOACs. To evaluate a possible relationship between DOAC C-trough anticoagulant levels and thromboembolic events, 565 consecutive naive patients with atrial fibrillation (AF) were enrolled in this study performed within the START Laboratory Registry.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "92f0ae2a90b28e4eb2b122b7e62ca75abb4c337e02da1b8444449c58f156bc9e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792852969.83293,
+      "end_wall": 1792853000.633311,
+      "error": null
+     }
+    ],
+    "arrival_seq": 33,
+    "start_wall": 1792852969.83293,
+    "start_mono": 522526.535429208,
+    "end_wall": 1792853000.633311,
+    "end_mono": 522557.335694708,
+    "raw_response": "{\"reasoning\": \"The passages [P2] and [P4] provide evidence that prior use of NOACs is associated with a lower risk of in-hospital mortality compared to warfarin among stroke patients with intracerebral hemorrhage. Passage [P4] specifically states that patients with prior use of NOACs had a lower risk of in-hospital mortality (ARD, -5.7% [97.5% CI, -7.3% to -4.2%]; AOR, 0.75 [97.5% CI, 0.69 to 0.81]) compared to those with prior use of warfarin. These findings indicate that DOACs might have a safer profile in terms of in-hospital mortality for stroke patients.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30796533709,
+     "load_duration": 49133750,
+     "prompt_eval_count": 1537,
+     "prompt_eval_duration": 5801161750,
+     "eval_count": 184,
+     "eval_duration": 23262189335,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:43:20.630316Z"
+    },
+    "elapsed_s": 30.8,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 33,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:3898784:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 550,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aaff772548561501c869daf5f1cdd7a1322a48b5130e33b6d134c71d29962448",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792852964.8323321,
+      "end_wall": 1792852975.7291882,
+      "error": null
+     }
+    ],
+    "start_wall": 1792852964.8323321,
+    "start_mono": 522521.534849375,
+    "end_wall": 1792852975.7291882,
+    "end_mono": 522532.431663458,
+    "raw_response": "{\"query\": \"prior use of direct oral anticoagulants OR warfarin AND in-hospital mortality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10893865042,
+     "load_duration": 5297905834,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 933414125,
+     "eval_count": 19,
+     "eval_duration": 4259620915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:42:55.727921Z"
+    },
+    "elapsed_s": 10.897,
+    "query_used": "prior use of direct oral anticoagulants OR warfarin AND in-hospital mortality",
+    "query_source": "json",
+    "query_arrival_seq": 34
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "prior use of direct oral anticoagulants OR warfarin AND in-hospital mortality",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:3898784:2",
+       "score_q": 20609
+      },
+      {
+       "passage_key": "scifact:3898784:3",
+       "score_q": 20406
+      },
+      {
+       "passage_key": "scifact:3898784:0",
+       "score_q": 20140
+      },
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 18344
+      },
+      {
+       "passage_key": "scifact:4910408:0",
+       "score_q": 10061
+      }
+     ],
+     "retrieval_sha256": "16a4ec3b104c6ac7f1810a8e823e634c18765cbf1b44336bdad0d7eba8bc8341"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "16a4ec3b104c6ac7f1810a8e823e634c18765cbf1b44336bdad0d7eba8bc8341",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:3898784:2",
+      "content_sha256": "755d3753773d2090139d07dbceb9ab90adcdc85a14acddf0cff092e0b1f2f933",
+      "chars": 741
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3898784:3",
+      "content_sha256": "aecc819f604c501944e04f27a757bcbc269193656346dd43cb42ab22baae4c38",
+      "chars": 928
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3898784:0",
+      "content_sha256": "b7e9f141e13651cfe468bf2e5552557f2c0d43b9310dc030f2bba8d76d1967f9",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4910408:0",
+      "content_sha256": "2139bb2f513b34c81d8a3abad6f08decc4bf5c425d403d62cb9f89089d0568d5",
+      "chars": 946
+     }
+    ],
+    "elapsed_s": 0.0005
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\n\nEvidence passages from your search for \"prior use of direct oral anticoagulants OR warfarin AND in-hospital mortality\":\n<<<PASSAGES\n[P1] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nCompared with patients without prior use of OACs, the risk of in-hospital mortality was higher among patients with prior use of warfarin (adjusted risk difference [ARD], 9.0% [97.5% CI, 7.9% to 10.1%]; adjusted odds ratio [AOR], 1.62 [97.5% CI, 1.53 to 1.71]) and higher among patients with prior use of NOACs (ARD, 3.3% [97.5% CI, 1.7% to 4.8%]; AOR, 1.21 [97.5% CI, 1.11-1.32]). Compared with patients with prior use of warfarin, patients with prior use of NOACs had a lower risk of in-hospital mortality (ARD, −5.7% [97.5% CI, −7.3% to −4.2%]; AOR, 0.75 [97.5% CI, 0.69 to 0.81]).\n\n[P2] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nThe difference in mortality between NOAC-treated patients and warfarin-treated patients was numerically greater among patients with prior use of dual antiplatelet agents (32.7% vs 47.1%; ARD, −15.0% [95.5% CI, −26.3% to −3.8%]; AOR, 0.50 [97.5% CI, 0.29 to 0.86]) than among those taking these agents without prior antiplatelet therapy (26.4% vs 31.7%; ARD, −5.0% [97.5% CI, −6.8% to −3.2%]; AOR, 0.77 [97.5% CI, 0.70 to 0.85]), although the interaction P value (.07) was not statistically significant. Conclusions and Relevance Among patients with ICH, prior use of NOACs or warfarin was associated with higher in-hospital mortality compared with no OACs. Prior use of NOACs, compared with prior use of warfarin, was associated with lower risk of in-hospital mortality.\n\n[P3] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nImportance Although non–vitamin K antagonist oral anticoagulants (NOACs) are increasingly used to prevent thromboembolic disease, there are limited data on NOAC-related intracerebral hemorrhage (ICH). Objective To assess the association between preceding oral anticoagulant use (warfarin, NOACs, and no oral anticoagulants [OACs]) and in-hospital mortality among patients with ICH. Design, Setting, and Participants Retrospective cohort study of 141 311 patients with ICH admitted from October 2013 to December 2016 to 1662 Get With The Guidelines–Stroke hospitals. Exposures Anticoagulation therapy before ICH, defined as any use of OACs within 7 days prior to hospital arrival. Main Outcomes and Measures In-hospital mortality.\n\n[P4] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P5] Low drug levels and thrombotic complications in high‐risk atrial fibrillation patients treated with direct oral anticoagulants\nEssentials Direct oral anticoagulants (DOACs) do not require laboratory monitoring currently. DOAC specific measurements were performed at trough in patients with atrial fibrillation. Patients who developed thromboembolic events showed lower DOAC plasma levels. This study supports the concept of measuring DOAC levels at steady state. SUMMARY Background Direct oral anticoagulants (DOACs) are administered at fixed doses without the need for dose adjustment according to laboratory testing. High interindividual variability in drug blood levels has been shown with all DOACs. To evaluate a possible relationship between DOAC C-trough anticoagulant levels and thromboembolic events, 565 consecutive naive patients with atrial fibrillation (AF) were enrolled in this study performed within the START Laboratory Registry.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "180f235e6631e60c80f11c35922bb4467266b9ba2b7836b770a6293768074407",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792852975.730104,
+      "end_wall": 1792853008.82589,
+      "error": null
+     }
+    ],
+    "arrival_seq": 34,
+    "start_wall": 1792852975.730104,
+    "start_mono": 522532.432581083,
+    "end_wall": 1792853008.82589,
+    "end_mono": 522565.528243583,
+    "raw_response": "{\"reasoning\": \"The study shows that patients with prior use of NOACs have a lower risk of in-hospital mortality compared to those with prior use of warfarin. The same study also found that patients with dual antiplatelet agents had a higher risk of in-hospital mortality when taking NOACs compared to those without. Therefore, the claim is supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 33091094125,
+     "load_duration": 26664528959,
+     "prompt_eval_count": 1503,
+     "prompt_eval_duration": 2357343334,
+     "eval_count": 102,
+     "eval_duration": 2162219128,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:43:28.822414Z"
+    },
+    "elapsed_s": 33.096,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 34,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:3898784:2",
+     "scifact:3898784:3",
+     "scifact:3898784:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 335,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "77b43eac6dd98023ff37ee4b20b37c306e964ed7be2f407032f0c1fa6513a400",
+  "exaone3.5:7.8b": "7f1ff6f706f031840ff826c6d299237b7ea51ead66a27476f6640d55c19d96eb",
+  "granite3.3:2b": "c2e0203e56828015863e16098a3e9a1bb4228176a120f1d6b0d569c3f9be7c89",
+  "olmo2:7b": "4d9cf016904d9ed6c5ed7d3787a1525f4f0623ef4b3175e8f0941a984ab14434",
+  "nemotron-mini:4b": "16a4ec3b104c6ac7f1810a8e823e634c18765cbf1b44336bdad0d7eba8bc8341"
+ },
+ "item_start_wall": 1792852964.832067,
+ "item_wall_s": 43.994,
+ "ollama_ps_samples": [
+  [
+   1792852964.832,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792852966.837,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792852968.839,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792852970.845,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792852972.851,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792852974.855,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792852976.858,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792852978.859,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852980.864,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852982.867,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852984.872,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852986.878,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852988.885,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792852990.891,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792852992.897,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792852994.903,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792852996.909,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792852998.915,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853000.926,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853002.931,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853004.939,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853006.948,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,1249 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain772",
+ "order": 140,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain772",
+  "order": 140,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos."
+ },
+ "item_view_sha256": "f83fd696e6652373d66067242573b5563514cfe9d4711543a62ecb5340463af2",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "exaone3.5:2.4b",
+  "granite3.3:2b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "olmo2:7b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "falcon3:3b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bc5d299600216b98c1b09feea5ba3fc91074f753f0eab42c0a05ba70186bc464",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837504.80084,
+      "end_wall": 1792837505.7384179,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837504.80084,
+    "start_mono": 507061.634730916,
+    "end_wall": 1792837505.7384179,
+    "end_mono": 507062.572297458,
+    "raw_response": "{\"query\": \"mice Chikungunya antibodies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 934629458,
+     "load_duration": 65459125,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 345330167,
+     "eval_count": 13,
+     "eval_duration": 420796002,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:05.737587Z"
+    },
+    "elapsed_s": 0.938,
+    "query_used": "mice Chikungunya antibodies",
+    "query_source": "json",
+    "query_arrival_seq": 700
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mice Chikungunya antibodies",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:24922825:1",
+       "score_q": 6036
+      },
+      {
+       "passage_key": "scifact:24922825:0",
+       "score_q": 5670
+      },
+      {
+       "passage_key": "scifact:12670680:0",
+       "score_q": 3946
+      },
+      {
+       "passage_key": "scifact:33390472:0",
+       "score_q": 3672
+      },
+      {
+       "passage_key": "scifact:18488986:1",
+       "score_q": 3660
+      }
+     ],
+     "retrieval_sha256": "30edc1382696752265fce6942a25838453aa93abf2cd710007431f8c4344beb5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "30edc1382696752265fce6942a25838453aa93abf2cd710007431f8c4344beb5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:24922825:1",
+      "content_sha256": "5cbac0d5328744349c8aad7c351751d05e61626307dc5feca51750674b9481d7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:24922825:0",
+      "content_sha256": "acb4f69da7295d7765eba7137e54b62183cc0e9b28e34738cdcd4ced5386fda4",
+      "chars": 1002
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:12670680:0",
+      "content_sha256": "a1f03a57d33cf37332209a2c6a72c9fbf44287c03ff0cdec38b23e9829c0e135",
+      "chars": 961
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:33390472:0",
+      "content_sha256": "e133296734577e063afa5ac8ed41f5eff6b6933fb784a275dd73d412f4d2d8ee",
+      "chars": 870
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18488986:1",
+      "content_sha256": "04cb992f2b1b11ff51091137bdefad27386e28bb146050bad91bf9db9a2b2517",
+      "chars": 814
+     }
+    ],
+    "elapsed_s": 0.0011
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nEvidence passages from your search for \"mice Chikungunya antibodies\":\n<<<PASSAGES\n[P1] A chikungunya fever vaccine utilizing an insect-specific virus platform\nYet the recombinant virus remained completely defective for productive replication, providing a high degree of safety. A single dose of EILV/CHIKV produced in mosquito cells elicited rapid (within 4 d) and long-lasting (>290 d) neutralizing antibodies that provided complete protection in two different mouse models. In nonhuman primates, EILV/CHIKV elicited rapid and robust immunity that protected against viremia and telemetrically monitored fever. Our EILV platform represents the first structurally native application of an insect-specific virus in preclinical vaccine development and highlights the potential application of such viruses in vaccinology.\n\n[P2] A chikungunya fever vaccine utilizing an insect-specific virus platform\nTraditionally, vaccine development involves tradeoffs between immunogenicity and safety. Live-attenuated vaccines typically offer rapid and durable immunity but have reduced safety when compared to inactivated vaccines. In contrast, the inability of inactivated vaccines to replicate enhances safety at the expense of immunogenicity, often necessitating multiple doses and boosters. To overcome these tradeoffs, we developed the insect-specific alphavirus, Eilat virus (EILV), as a vaccine platform. To address the chikungunya fever (CHIKF) pandemic, we used an EILV cDNA clone to design a chimeric virus containing the chikungunya virus (CHIKV) structural proteins. The recombinant EILV/CHIKV was structurally identical at 10 Å to wild-type CHIKV, as determined by single-particle cryo-electron microscopy, and it mimicked the early stages of CHIKV replication in vertebrate cells from attachment and entry to viral RNA delivery.\n\n[P3] BASOPHILS AND THE T HELPER 2 ENVIRONMENT CAN PROMOTE THE DEVELOPMENT OF LUPUS NEPHRITIS\nIn systemic lupus erythematosus (SLE), self-reactive antibodies can target the kidney (lupus nephritis), leading to functional failure and possible mortality. We report that activation of basophils by autoreactive IgE causes their homing to lymph nodes, promoting T helper type 2 (T(H)2) cell differentiation and enhancing the production of self-reactive antibodies that cause lupus-like nephritis in mice lacking the Src family protein tyrosine kinase Lyn (Lyn(-/-) mice). Individuals with SLE also have elevated serum IgE, self-reactive IgEs and activated basophils that express CD62 ligand (CD62L) and the major histocompatibility complex (MHC) class II molecule human leukocyte antigen-DR (HLA-DR), parameters that are associated with increased disease activity and active lupus nephritis. Basophils were also present in the lymph nodes and spleen of subjects with SLE.\n\n[P4] Isolation of major pancreatic cell types and long-term culture-initiating cells using novel human surface markers.\nWe have developed a novel panel of cell-surface markers for the isolation and study of all major cell types of the human pancreas. Hybridomas were selected after subtractive immunization of Balb/C mice with intact or dissociated human islets and assessed for cell-type specificity and cell-surface reactivity by immunohistochemistry and flow cytometry. Antibodies were identified by specific binding of surface antigens on islet (panendocrine or alpha-specific) and nonislet pancreatic cell subsets (exocrine and duct). These antibodies were used individually or in combination to isolate populations of alpha, beta, exocrine, or duct cells from primary human pancreas by FACS and to characterize the detailed cell composition of human islet preparations.\n\n[P5] The Immune Response to Melanoma Is Limited by Thymic Selection of Self-Antigens\nSimilarly, the enlarged T cell repertoire in AIRE(-/-) mice enables them to mount anti-MAA and anti-melanoma responses as shown by increased anti-melanoma antibodies, and enhanced CD4(+) and MAA-specific CD8(+) T cell responses after melanoma challenge. We show that thymic expression of gp100 is under the control of AIRE, leading to increased gp100-specific CD8(+) T cell frequencies in AIRE(-/-) mice. TRP-2 (tyrosinase-related protein), on the other hand, is absent from TECs and consequently TRP-2 specific CD8(+) T cells were found in both AIRE(-/-) and AIRE(+/+) mice. This study emphasizes the importance of investigating thymic expression of self-antigens prior to their inclusion in vaccination and immunotherapy strategies.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dbae61f62933e0e770462ef4bebc19f08884929eb2329ace2ff9fd8a38faf096",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837505.73991,
+      "end_wall": 1792837521.3228931,
+      "error": null
+     }
+    ],
+    "arrival_seq": 700,
+    "start_wall": 1792837505.73991,
+    "start_mono": 507062.57379075,
+    "end_wall": 1792837521.3228931,
+    "end_mono": 507078.156589541,
+    "raw_response": "{\"reasoning\": \"Passage P1 and P2 indicate that mice developed neutralizing antibodies against the Chikungunya virus when exposed to the recombinant EILV/CHIKV produced in mosquito cells, providing complete protection in mouse models. This evidence directly supports the claim that mice are capable of producing neutralizing antibodies in response to CHIKV produced in mosquitos, contradicting any assertion that they cannot. Therefore, the claim is SUPPORTED. There is no need to cite additional passages as the evidence from P1 and P2 alone is sufficient to refute any potential refutation.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15579246542,
+     "load_duration": 52030250,
+     "prompt_eval_count": 1262,
+     "prompt_eval_duration": 4816772542,
+     "eval_count": 148,
+     "eval_duration": 9468951256,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:21.320095Z"
+    },
+    "elapsed_s": 15.583,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 700,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:24922825:1",
+     "scifact:24922825:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 576,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bc5d299600216b98c1b09feea5ba3fc91074f753f0eab42c0a05ba70186bc464",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837504.8007731,
+      "end_wall": 1792837510.7488089,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837504.8007731,
+    "start_mono": 507061.634664,
+    "end_wall": 1792837510.7488089,
+    "end_mono": 507067.582629875,
+    "raw_response": "{\"query\": \"mice neutralizing antibodies Chikungunya virus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5944705709,
+     "load_duration": 1177231959,
+     "prompt_eval_count": 198,
+     "prompt_eval_duration": 1236692292,
+     "eval_count": 19,
+     "eval_duration": 3453757499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:10.747897Z"
+    },
+    "elapsed_s": 5.948,
+    "query_used": "mice neutralizing antibodies Chikungunya virus",
+    "query_source": "json",
+    "query_arrival_seq": 701
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mice neutralizing antibodies Chikungunya virus",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:24922825:1",
+       "score_q": 11104
+      },
+      {
+       "passage_key": "scifact:23915841:0",
+       "score_q": 9281
+      },
+      {
+       "passage_key": "scifact:4373433:0",
+       "score_q": 9199
+      },
+      {
+       "passage_key": "scifact:7177329:0",
+       "score_q": 8411
+      },
+      {
+       "passage_key": "scifact:24922825:0",
+       "score_q": 8189
+      }
+     ],
+     "retrieval_sha256": "6c628f1aecbefb77b13d117ddb1e8c239a7c8fb5828a11fb2ca7e4cc8a947377"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6c628f1aecbefb77b13d117ddb1e8c239a7c8fb5828a11fb2ca7e4cc8a947377",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:24922825:1",
+      "content_sha256": "5cbac0d5328744349c8aad7c351751d05e61626307dc5feca51750674b9481d7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:23915841:0",
+      "content_sha256": "f9c478c3943f469ac68009bb9988f6288602d66a2042d256b41235ea361fc13a",
+      "chars": 1054
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4373433:0",
+      "content_sha256": "5d494df29e38b64254da1028b8cbc6e1dfd6f1a0cf71a63cab9cec5ce22ab959",
+      "chars": 962
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7177329:0",
+      "content_sha256": "c82b4b9a0a79c9df5eca4235e9ad09b961cd4d847f5473d3be6a5c62bd05164e",
+      "chars": 1047
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:24922825:0",
+      "content_sha256": "acb4f69da7295d7765eba7137e54b62183cc0e9b28e34738cdcd4ced5386fda4",
+      "chars": 1002
+     }
+    ],
+    "elapsed_s": 0.0013
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nEvidence passages from your search for \"mice neutralizing antibodies Chikungunya virus\":\n<<<PASSAGES\n[P1] A chikungunya fever vaccine utilizing an insect-specific virus platform\nYet the recombinant virus remained completely defective for productive replication, providing a high degree of safety. A single dose of EILV/CHIKV produced in mosquito cells elicited rapid (within 4 d) and long-lasting (>290 d) neutralizing antibodies that provided complete protection in two different mouse models. In nonhuman primates, EILV/CHIKV elicited rapid and robust immunity that protected against viremia and telemetrically monitored fever. Our EILV platform represents the first structurally native application of an insect-specific virus in preclinical vaccine development and highlights the potential application of such viruses in vaccinology.\n\n[P2] Neutralizing antibody responses in acute human immunodeficiency virus type 1 subtype C infection.\nThe study of the evolution and specificities of neutralizing antibodies during the course of human immunodeficiency virus type 1 (HIV-1) infection may be important in the discovery of possible targets for vaccine design. In this study, we assessed the autologous and heterologous neutralization responses of 14 HIV-1 subtype C-infected individuals, using envelope clones obtained within the first 2 months postinfection. Our data show that potent but relatively strain-specific neutralizing antibodies develop within 3 to 12 months of HIV-1 infection. The magnitude of this response was associated with shorter V1-to-V5 envelope lengths and fewer glycosylation sites, particularly in the V1-V2 region. Anti-MPER antibodies were detected in 4 of 14 individuals within a year of infection, while antibodies to CD4-induced (CD4i) epitopes developed to high titers in 12 participants, in most cases before the development of autologous neutralizing antibodies.\n\n[P3] Broad neutralization coverage of HIV by multiple highly potent antibodies\nBroadly neutralizing antibodies against highly variable viral pathogens are much sought after to treat or protect against global circulating viruses. Here we probed the neutralizing antibody repertoires of four human immunodeficiency virus (HIV)-infected donors with remarkably broad and potent neutralizing responses and rescued 17 new monoclonal antibodies that neutralize broadly across clades. Many of the new monoclonal antibodies are almost tenfold more potent than the recently described PG9, PG16 and VRC01 broadly neutralizing monoclonal antibodies and 100-fold more potent than the original prototype HIV broadly neutralizing monoclonal antibodies. The monoclonal antibodies largely recapitulate the neutralization breadth found in the corresponding donor serum and many recognize novel epitopes on envelope (Env) glycoprotein gp120, illuminating new targets for vaccine design.\n\n[P4] Evolution of an HIV glycan–dependent broadly neutralizing antibody epitope through immune escape\nNeutralizing antibodies are likely to play a crucial part in a preventative HIV-1 vaccine. Although efforts to elicit broadly cross-neutralizing (BCN) antibodies by vaccination have been unsuccessful, a minority of individuals naturally develop these antibodies after many years of infection. How such antibodies arise, and the role of viral evolution in shaping these responses, is unknown. Here we show, in two HIV-1–infected individuals who developed BCN antibodies targeting the glycan at Asn332 on the gp120 envelope, that this glycan was absent on the initial infecting virus. However, this BCN epitope evolved within 6 months, through immune escape from earlier strain-specific antibodies that resulted in a shift of a glycan to position 332. Both viruses that lacked the glycan at amino acid 332 were resistant to the Asn332-dependent BCN monoclonal antibody PGT128 (ref. 8), whereas escaped variants that acquired this glycan were sensitive.\n\n[P5] A chikungunya fever vaccine utilizing an insect-specific virus platform\nTraditionally, vaccine development involves tradeoffs between immunogenicity and safety. Live-attenuated vaccines typically offer rapid and durable immunity but have reduced safety when compared to inactivated vaccines. In contrast, the inability of inactivated vaccines to replicate enhances safety at the expense of immunogenicity, often necessitating multiple doses and boosters. To overcome these tradeoffs, we developed the insect-specific alphavirus, Eilat virus (EILV), as a vaccine platform. To address the chikungunya fever (CHIKF) pandemic, we used an EILV cDNA clone to design a chimeric virus containing the chikungunya virus (CHIKV) structural proteins. The recombinant EILV/CHIKV was structurally identical at 10 Å to wild-type CHIKV, as determined by single-particle cryo-electron microscopy, and it mimicked the early stages of CHIKV replication in vertebrate cells from attachment and entry to viral RNA delivery.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dc9756f771b1e79be1c1e822c233b73d5aea5e40cd4caa3531ae50216664faa3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837510.750623,
+      "end_wall": 1792837522.528457,
+      "error": null
+     }
+    ],
+    "arrival_seq": 701,
+    "start_wall": 1792837510.750623,
+    "start_mono": 507067.5844445,
+    "end_wall": 1792837522.528457,
+    "end_mono": 507079.362139791,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that mice are incapable of producing neutralizing antibodies in response to the Chikungunya virus (CHIKV) produced in mosquitos. However, the evidence passages describe successful elicitation of neutralizing antibodies in mice upon infection with EILV/CHIKV, an insect-specific virus platform.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11774326167,
+     "load_duration": 5471378334,
+     "prompt_eval_count": 1579,
+     "prompt_eval_duration": 2986169291,
+     "eval_count": 118,
+     "eval_duration": 2860778788,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:22.52586Z"
+    },
+    "elapsed_s": 11.778,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 701,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:24922825:1",
+     "scifact:7177329:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 310,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bc5d299600216b98c1b09feea5ba3fc91074f753f0eab42c0a05ba70186bc464",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837504.800694,
+      "end_wall": 1792837507.430115,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837507.430231,
+      "end_wall": 1792837515.0583549,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837515.058422,
+      "end_wall": 1792837517.899303,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792837504.800694,
+    "start_mono": null,
+    "end_wall": 1792837517.899303,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 704
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:12885341:0",
+       "score_q": 798
+      },
+      {
+       "passage_key": "scifact:9539248:1",
+       "score_q": 797
+      },
+      {
+       "passage_key": "scifact:9539248:0",
+       "score_q": 794
+      },
+      {
+       "passage_key": "scifact:24922825:1",
+       "score_q": 788
+      },
+      {
+       "passage_key": "scifact:38376189:0",
+       "score_q": 777
+      }
+     ],
+     "retrieval_sha256": "f99d88337f8c0c726534ac44206f07117953a1d706a8b181edb61f1ac143512a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f99d88337f8c0c726534ac44206f07117953a1d706a8b181edb61f1ac143512a",
+    "query_embedding_sha256": "9974542974fe02653c02d92af698b2e54dcadc3feee76195c7c0ba1ab3382893",
+    "query_embedding_f32_b64": "e4ZqPYMs3ztKj0i+nH5ItsuAtD1Zcu48ZoRIvaDLhruhIIA9N7iKvagOETz6MoI9i7SMPSGmoDyj/wu8EnODvODj/Dt12Om9SnEGPUCViT2V40+9ZLHSvH26UD1RWuC8F2WjPfa7Oz28U4i8VGglvIT59LyfaMw8+CdvPQX3hLx2ReI7BkuMvWM1pLwq0Zo8AC7hO1u6HTzrLBk9ICpVPAtwlDw/p/Y83wMGPZb3b70BpsS8iyojPcMOoz3/s289DLtKO11o170AO6M88JSZvJRvxTxw/3C9DBs3PZVjejyH3VK8IYcAvYAtjbslhuU8+3NTPZjasz1nRbG8wNEZPUHyNj2J3o+9AaklvTUXdT3yQzO8Z/z1O9jluDwWIp28+7hDvL70Ej1fWJG8XSkfPMXw1buLzSA9aJYHvX564Lv/y+U84MPrPGXcFT0ELkY8pRsGPuCNzbmzcR+9vKRBvafElryxAJM9KiaBPX8GpjyJ39I8zpsjPZEkVb1M+ps8kIOJPO1q7zxY5Za9vvoYvd69F70vfxA9NH4KPVgbczm8aAY9yBqaPIHxmT0+Io28cbAAPUWM9TuYl0G99V5HPQ+mVr2V/wM7ZQszPUM4Fr1ri/Y8f45ove8XXzvONnU8J8kUvYRI1byCnt67P1dsPfFJqzyhR9A8R2cHvR93rTzgjac84oVQvdv3j7orbgi8auwwuOhjAb3DgD09kHdUu4cKd7pZ0Xm7vr2ku/HS3DxC/W87yrHYO9ad2jx0gUG9rr04vDUz1LxwnuA6t8JKvZ2IAL3tvgk9PgzdPH3sjT3ohJc7+TnePBx/Hjxs/oi9n5sLvIfZzzxNLpK8giLGvHh6mD2OLi88mCZ5veJtDj06GvM7G4qIvcFBm7xOLIk9kr66O2FmKj0wb0m9hVLuO1yBsjvDOc48u5PYuykC9jtYqEm9OPHLvN1dhjgnfo29ZxcRPWzr+bzdlTY5FHMEPX/wj7wDgla9TSkgPY6HKLw8ZE29vkC2vMtFCr3gAfA8jDFTvW45mL3EEYu9DYgOvW3yljyBD5c71iyyPafOhbuzYOe8vsbUu84rcbwB5jG8tbsQN92WRzw2vwo8983/vJX7cLy2kT49nBPLPAi2DbvciaW8Q6ZeuxqdsboQW6u8NQ0TPOdhz7zV7km94yljO1VuTjlog++5yiitvNEi4zwWTRA9N/coPWKwnby+dgm9hNaavO+2m7yC/pU8aJ3Yvaaejz1DN8g7RPEJveKJajzjI1E88oddPZdxuTyojMu7/Gr8vCTemDxwGB27fQbMPGhTpbwJ6yE8iM7jPDy/Lb3HZ3C7IjRyPc/t2zxPnwW8dYpUPX+lATh+R7Y8mpGavHnpp7t+4ao8BGz+POm1zLseG1Y9SeIPvfcQGz0w0wC9qViGvQaAfryzDQ681zW3u5vBPLtlR2s8P5nDvJEbcD2qFZg7dqgTPa+CC7sQpg48F57HO8MMKL0akIe885mKPBayG7wt/LI7G83vvNeeVbxtdIc8P6W7PLdgpjyuzYq83IlFPKiWDj3+03O81ELlu00NE70qFz49WaXFvNzeaLwkW5w9/HbHvJSyybx4VWq9QWEQPfzWsD0f9N88Fy5AOS1Uo7u/RTY7jib+O8vHK72LIck7nbMovadwtDsVNvE6WSghvK0mYTzxYbe8qW3MPIaMfrxV/du7PdltPRB7tzx3Ppa8AqSavBCcGT02kUG9aZzvvHt2Wz0vvi49oUtRPNqlpry1lAS9OfgGPeksgz0idKc990GVvEnj1zuJmpQ8wjMBu6K7xjxTZ/S8n5l9PbXrMz2xQke924RVvPYQtbwQJGO7qFe6PM/oV70NOI48HhptPLpepbxwD+q8Rq6vPCEoB71UfDO8llj4PEDmxTxeHOM8acCvPPeufLxC90y8uYrsPPp5brtmB1A8ZdTUvHBIrjsYmJY8swMPPXRJcrzoXSA9lc1pvMGsEr1vMJS8eikovPa5Qz2SP9Y8ipUKvWqF2b3nqmu6RCGTvZcxwLwEqSI9hoYPveqoFL31kIC8tAP+PBDpTTu22gg8glfOvLaxFb2+Ick8ZmG3vHTrmDyTLy69rnMsva09Dj0Q6um7iBUCPWOLTbvc/As9rRyHPFmNubzLKZW8E0IdPev4pbzfmhg8JDW8Ok2xkbweSce8P0roPD8sprzVThM9ejsbPaBr/Dw6jpa9FQGrvKvsnD0EBig96ZeJPMp+gruSLUc8DCRoPUxf/DyTg188NKlRPN3q1TxfY6Y9wsNUOvB6vTvk/gs8gG2yvcPvizyDQQE9Kfc5PLgwBr27O7M7PterPAKzXLwZQJQ9qNqgPFnZjT1OW5o7spOKvIFgLb23INq8u3SmO4bR0D3IJ4o9GgJ3vPPaRb2r0Sk8c5eXu9qL1Tzpj+E8jCfRvClfTT1GCN+7h07CvE7SaT3FQro89vx/PD2LVrwRPZE8h2mnvUsjBD11css8Gj+tvOc8JzsZbI86NfOfPO86RLk4+I29S4hIPe2mK7xNkG89Y8aPvDqhxbtWzQW9AoGkO0Bgmztc/oM9swIvPfNJO71w41i9EQ8UvVGjSzzF7E08dniWPL62Szx8mGQ8A7gQvO9s/ToqigA9RVSiPAyn8rzwYaM8Q5MWulGNiztJupE89l93vKsDVTwLVDI8k4XNPLXfWb0HYf08eKUlPbJVJj1XC5g9g4u4vYntKr2Lz8W7oumcvY3OCL3L5DI9CT2SO0r4Kj2Pi+W8XWRPOyn4kztzNIm9dyqVuxPYKz3cjPO8X4dOvayK/rmB/zS9ewKVvIJUxLwB3QC9eHgRPXqDCTyu2GQ8nhMPOjJ1RL2080w8H4LvPMheQL1gTew7BDGUPL+fyLwbHuu7aNyUPOrLXTsyb3a8KhmsPNXyUjwzBGc8porRvE8BmTtkVwK9lHZZvEcULrsSIem7K+lSvK+uEbwoHsY6gduhPLbZ8jwV5yC8j4NNvTl+Xr3kyvw8tSN2PaZGND0Vqd08I96jPLbI4byABj+9fy3kvJtXEbyoWhk8My9CvLpVBr3cEKS8PE4evYRSN7utpTu8U2VYPfQyWTk/ZbG9mh80PNXVYj2EkmG9QJkcvZ7rTDy8vtW7FxggvbWyJ723rhm9gyeAPbu2Ib3mUVW8EDmIPCOpi7pP4ZS805u3OwPap7wyUSO90e8qvcb3Pb3YPi29GjiBPBiVEzt76TQ9g5E+vdhdCTyXsJo8Kd9AvcAzzzxnycE6okr4vKF5izwmspS8b6UGvCbTQb0jfe48a3PCvJ3oVDx2rJK8AbhYvUVOBzzxewq96B+GvdQTxjwOvSi9BNKMPSuMG70PriO9DGIyvfooNbrLX5M8alYpve1i8zu2+iO9IKRdvAmWjb3tEic80PKKvAilAj0Bpp+8fHXXuycUCb36bxs5n6gNu8fBFD3gOsc8OKVdvDQN5DtsCJE9Jp6mPGyE+ryFNjE9DjRiPJPTrDworPq79eFHPQLlC73rFbo83Rt4vXq0Tb3xh9+8jbanOluJWzyaRfc7TRkyPWOhxzylY/a87lgnvaHDhbyEPDS9xD9FvO1QRz2jV5a8BPvGPNuufr2gIce8SNwePXLVkT2poDo9EzpTPRXkUr3FQXW8yw32u7wexju0Jau7g6zPOwXVIL2P2009/pvxvC3b7buOyDe9vIsove9Qm7yaEnQ82Q4xOm+pozxmkRI8jK6pPBktqLyxuoG8WucjPYvFtjz1vL48ZWO9PCreXT0sqRG8pVYHuwWUnbwFiE28l5lsux7+3LwN6/E7ss7BO+YIA7wZkMM9AOkAPSjgS71xUzS9+HngvFar/byNuC89exKNPbckpzv8MBy9c3DlvHY5vTx2d5O8vXmaPXKRFr1rdm09hruavPAdg7qTtYA756Wpu0dH0bsZHYE8RKOcux8ZgL12MTe9Zp6qvT8WcjvYSwS9YCdCPe3CybsAyQ+8WxKBvNdyqrwJh0m8UTWUPZvbPD3m9sy8Ea+kPFtYx7x/U069wt0Au0UB9jy4Ecu8cEGOu0QBAj2VrYs9L+otPHpZrjxu6AG9mRE6PR9AfDylOja9ThEhvZ8IYb3sOVi8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:12885341:0",
+      "content_sha256": "b8878ade5180855e9b917a482b0d9863a6765f6a7abd465fbf650d374db45b6d",
+      "chars": 1012
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:9539248:1",
+      "content_sha256": "a20b19ee143b6bc7fe5e13bd6b4a63d6a0562117f36cb12f6a6a6b4957298eea",
+      "chars": 756
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9539248:0",
+      "content_sha256": "16aa1065c76693fe4d2e3d2a730d8b906ecd4bcd9f3d45b103219cc20f03209a",
+      "chars": 939
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24922825:1",
+      "content_sha256": "5cbac0d5328744349c8aad7c351751d05e61626307dc5feca51750674b9481d7",
+      "chars": 730
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:38376189:0",
+      "content_sha256": "172caac57aff27b0a6a672c98d6cd75e9728f334b4e73eeb4d4e44999194dba1",
+      "chars": 850
+     }
+    ],
+    "elapsed_s": 7.5009
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nEvidence passages from your search for \"Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\":\n<<<PASSAGES\n[P1] A C-Type Lectin Collaborates with a CD45 Phosphatase Homolog to Facilitate West Nile Virus Infection of Mosquitoes\nWest Nile virus (WNV) is the most common arthropod-borne flavivirus in the United States; however, the vector ligand(s) that participate in infection are not known. We now show that an Aedes aegypti C-type lectin, mosGCTL-1, is induced by WNV, interacts with WNV in a calcium-dependent manner, and facilitates infection in vivo and in vitro. A mosquito homolog of human CD45 in A. aegypti, designated mosPTP-1, recruits mosGCTL-1 to enable viral attachment to cells and to enhance viral entry. In vivo experiments show that mosGCTL-1 and mosPTP-1 function as part of the same pathway and are critical for WNV infection of mosquitoes. A similar phenomenon was also observed in Culex quinquefasciatus, a natural vector of WNV, further demonstrating that these genes participate in WNV infection. During the mosquito blood-feeding process, WNV infection was blocked in vivo with mosGCTL-1 antibodies.\n\n[P2] Alphavirus-derived small RNAs modulate pathogenesis in disease vector mosquitoes.\nWe identified virus-derived small interfering RNAs (viRNAs), 21 nt in length, in Aedes aegypti infected with the mosquito-borne virus, Sindbis (SINV). viRNAs had an asymmetric distribution that spanned the length of the SINV genome. To determine the role of viRNAs in controlling pathogenic potential, mosquitoes were infected with recombinant alphaviruses expressing suppressors of RNA silencing. Decreased survival was observed in mosquitoes in which the accumulation of viRNAs was suppressed. These results suggest that an exogenous siRNA pathway is essential to the survival of mosquitoes infected with alphaviruses and, thus, the maintenance of these viruses in nature.\n\n[P3] Alphavirus-derived small RNAs modulate pathogenesis in disease vector mosquitoes.\nMosquito-borne viruses cause significant levels of morbidity and mortality in humans and domesticated animals. Maintenance of mosquito-borne viruses in nature requires a biological transmission cycle that involves alternating virus replication in a susceptible vertebrate and mosquito host. Although the vertebrate infection is acute and often associated with disease, continual transmission of these viruses in nature depends on the establishment of a persistent, nonpathogenic infection in the mosquito vector. An antiviral RNAi response has been shown to limit the replication of RNA viruses in flies. However, the importance of the RNAi pathway as an antiviral defense in mammals is unclear. Differences in the immune responses of mammals and mosquitoes may explain why these viruses are not generally associated with pathology in the invertebrate host.\n\n[P4] A chikungunya fever vaccine utilizing an insect-specific virus platform\nYet the recombinant virus remained completely defective for productive replication, providing a high degree of safety. A single dose of EILV/CHIKV produced in mosquito cells elicited rapid (within 4 d) and long-lasting (>290 d) neutralizing antibodies that provided complete protection in two different mouse models. In nonhuman primates, EILV/CHIKV elicited rapid and robust immunity that protected against viremia and telemetrically monitored fever. Our EILV platform represents the first structurally native application of an insect-specific virus in preclinical vaccine development and highlights the potential application of such viruses in vaccinology.\n\n[P5] A Live Attenuated Chimeric West Nile Virus Vaccine, rWN/DEN4&Dgr;30, Is Well Tolerated and Immunogenic in Flavivirus-Naive Older Adult Volunteers\nWest Nile virus (WNV) is a major cause of mosquito-borne illness in the United States. Human disease ranges from mild febrile illness to severe fatal neurologic infection. Adults aged >60 years are more susceptible to neuroinvasive disease accompanied by a high mortality rate or long-lasting neurologic sequelae. A chimeric live attenuated West Nile virus vaccine, rWN/DEN4&Dgr;30, was shown to be safe and immunogenic in healthy adults aged 18–50 years. This study evaluated rWN/DEN4&Dgr;30 in flavivirus-naive adults aged 50–65 years and found it to be safe and immunogenic. Outbreaks of WNV infection tend to be unpredictable, and a safe and effective vaccine will be an important public health tool.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d3d2f27ae3fb67f699292fff26dc66d15fce43835a7b9c42d88ac04481a0b479",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837525.401214,
+      "end_wall": 1792837528.8745039,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837528.8745978,
+      "end_wall": 1792837531.367455,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837531.36757,
+      "end_wall": 1792837533.861044,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 702,
+    "start_wall": 1792837525.401214,
+    "start_mono": null,
+    "end_wall": 1792837533.861044,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 702,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bc5d299600216b98c1b09feea5ba3fc91074f753f0eab42c0a05ba70186bc464",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837504.800468,
+      "end_wall": 1792837515.0522041,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837504.800468,
+    "start_mono": 507061.634359083,
+    "end_wall": 1792837515.0522041,
+    "end_mono": 507071.885973875,
+    "raw_response": "{\"query\": \"mice chikungunya virus neutralizing antibodies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10248282041,
+     "load_duration": 8926221166,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 340852958,
+     "eval_count": 14,
+     "eval_duration": 696119832,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:15.050988Z"
+    },
+    "elapsed_s": 10.252,
+    "query_used": "mice chikungunya virus neutralizing antibodies",
+    "query_source": "json",
+    "query_arrival_seq": 703
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mice chikungunya virus neutralizing antibodies",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:24922825:1",
+       "score_q": 11104
+      },
+      {
+       "passage_key": "scifact:23915841:0",
+       "score_q": 9281
+      },
+      {
+       "passage_key": "scifact:4373433:0",
+       "score_q": 9199
+      },
+      {
+       "passage_key": "scifact:7177329:0",
+       "score_q": 8411
+      },
+      {
+       "passage_key": "scifact:24922825:0",
+       "score_q": 8189
+      }
+     ],
+     "retrieval_sha256": "e0c3b83812d54e6d9fd08ce47f3e01b7ce73612d7687cc96cb7e4b3503b6bcd5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e0c3b83812d54e6d9fd08ce47f3e01b7ce73612d7687cc96cb7e4b3503b6bcd5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:24922825:1",
+      "content_sha256": "5cbac0d5328744349c8aad7c351751d05e61626307dc5feca51750674b9481d7",
+      "chars": 730
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:23915841:0",
+      "content_sha256": "f9c478c3943f469ac68009bb9988f6288602d66a2042d256b41235ea361fc13a",
+      "chars": 1054
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4373433:0",
+      "content_sha256": "5d494df29e38b64254da1028b8cbc6e1dfd6f1a0cf71a63cab9cec5ce22ab959",
+      "chars": 962
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7177329:0",
+      "content_sha256": "c82b4b9a0a79c9df5eca4235e9ad09b961cd4d847f5473d3be6a5c62bd05164e",
+      "chars": 1047
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:24922825:0",
+      "content_sha256": "acb4f69da7295d7765eba7137e54b62183cc0e9b28e34738cdcd4ced5386fda4",
+      "chars": 1002
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nEvidence passages from your search for \"mice chikungunya virus neutralizing antibodies\":\n<<<PASSAGES\n[P1] A chikungunya fever vaccine utilizing an insect-specific virus platform\nYet the recombinant virus remained completely defective for productive replication, providing a high degree of safety. A single dose of EILV/CHIKV produced in mosquito cells elicited rapid (within 4 d) and long-lasting (>290 d) neutralizing antibodies that provided complete protection in two different mouse models. In nonhuman primates, EILV/CHIKV elicited rapid and robust immunity that protected against viremia and telemetrically monitored fever. Our EILV platform represents the first structurally native application of an insect-specific virus in preclinical vaccine development and highlights the potential application of such viruses in vaccinology.\n\n[P2] Neutralizing antibody responses in acute human immunodeficiency virus type 1 subtype C infection.\nThe study of the evolution and specificities of neutralizing antibodies during the course of human immunodeficiency virus type 1 (HIV-1) infection may be important in the discovery of possible targets for vaccine design. In this study, we assessed the autologous and heterologous neutralization responses of 14 HIV-1 subtype C-infected individuals, using envelope clones obtained within the first 2 months postinfection. Our data show that potent but relatively strain-specific neutralizing antibodies develop within 3 to 12 months of HIV-1 infection. The magnitude of this response was associated with shorter V1-to-V5 envelope lengths and fewer glycosylation sites, particularly in the V1-V2 region. Anti-MPER antibodies were detected in 4 of 14 individuals within a year of infection, while antibodies to CD4-induced (CD4i) epitopes developed to high titers in 12 participants, in most cases before the development of autologous neutralizing antibodies.\n\n[P3] Broad neutralization coverage of HIV by multiple highly potent antibodies\nBroadly neutralizing antibodies against highly variable viral pathogens are much sought after to treat or protect against global circulating viruses. Here we probed the neutralizing antibody repertoires of four human immunodeficiency virus (HIV)-infected donors with remarkably broad and potent neutralizing responses and rescued 17 new monoclonal antibodies that neutralize broadly across clades. Many of the new monoclonal antibodies are almost tenfold more potent than the recently described PG9, PG16 and VRC01 broadly neutralizing monoclonal antibodies and 100-fold more potent than the original prototype HIV broadly neutralizing monoclonal antibodies. The monoclonal antibodies largely recapitulate the neutralization breadth found in the corresponding donor serum and many recognize novel epitopes on envelope (Env) glycoprotein gp120, illuminating new targets for vaccine design.\n\n[P4] Evolution of an HIV glycan–dependent broadly neutralizing antibody epitope through immune escape\nNeutralizing antibodies are likely to play a crucial part in a preventative HIV-1 vaccine. Although efforts to elicit broadly cross-neutralizing (BCN) antibodies by vaccination have been unsuccessful, a minority of individuals naturally develop these antibodies after many years of infection. How such antibodies arise, and the role of viral evolution in shaping these responses, is unknown. Here we show, in two HIV-1–infected individuals who developed BCN antibodies targeting the glycan at Asn332 on the gp120 envelope, that this glycan was absent on the initial infecting virus. However, this BCN epitope evolved within 6 months, through immune escape from earlier strain-specific antibodies that resulted in a shift of a glycan to position 332. Both viruses that lacked the glycan at amino acid 332 were resistant to the Asn332-dependent BCN monoclonal antibody PGT128 (ref. 8), whereas escaped variants that acquired this glycan were sensitive.\n\n[P5] A chikungunya fever vaccine utilizing an insect-specific virus platform\nTraditionally, vaccine development involves tradeoffs between immunogenicity and safety. Live-attenuated vaccines typically offer rapid and durable immunity but have reduced safety when compared to inactivated vaccines. In contrast, the inability of inactivated vaccines to replicate enhances safety at the expense of immunogenicity, often necessitating multiple doses and boosters. To overcome these tradeoffs, we developed the insect-specific alphavirus, Eilat virus (EILV), as a vaccine platform. To address the chikungunya fever (CHIKF) pandemic, we used an EILV cDNA clone to design a chimeric virus containing the chikungunya virus (CHIKV) structural proteins. The recombinant EILV/CHIKV was structurally identical at 10 Å to wild-type CHIKV, as determined by single-particle cryo-electron microscopy, and it mimicked the early stages of CHIKV replication in vertebrate cells from attachment and entry to viral RNA delivery.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e935ddf7f38b4f405b724186fe70f9bac5b1017f84dbddb2351bac65b96f2b00",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837515.053049,
+      "end_wall": 1792837534.530688,
+      "error": null
+     }
+    ],
+    "arrival_seq": 703,
+    "start_wall": 1792837515.053049,
+    "start_mono": 507071.886819958,
+    "end_wall": 1792837534.530688,
+    "end_mono": 507091.364230333,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not support the claim. The passages show that mice are capable of producing neutralizing antibodies in response to Chikungunya virus (CHIKV) produced in mosquitos.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19471989583,
+     "load_duration": 8228572625,
+     "prompt_eval_count": 1263,
+     "prompt_eval_duration": 2682013083,
+     "eval_count": 60,
+     "eval_duration": 7355755915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:34.526199Z"
+    },
+    "elapsed_s": 19.477,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 703,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 188,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bc5d299600216b98c1b09feea5ba3fc91074f753f0eab42c0a05ba70186bc464",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837504.800592,
+      "end_wall": 1792837513.101378,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837504.800592,
+    "start_mono": 507061.634483791,
+    "end_wall": 1792837513.101378,
+    "end_mono": 507069.935170291,
+    "raw_response": "{\"query\": \"mice neutralizing antibodies Chikungunya virus mosquito\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8297443333,
+     "load_duration": 7411023916,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 290798708,
+     "eval_count": 16,
+     "eval_duration": 421234459,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:13.100623Z"
+    },
+    "elapsed_s": 8.301,
+    "query_used": "mice neutralizing antibodies Chikungunya virus mosquito",
+    "query_source": "json",
+    "query_arrival_seq": 702
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mice neutralizing antibodies Chikungunya virus mosquito",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:12885341:0",
+       "score_q": 766
+      },
+      {
+       "passage_key": "scifact:24922825:1",
+       "score_q": 750
+      },
+      {
+       "passage_key": "scifact:8883846:2",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:9539248:1",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:9142761:0",
+       "score_q": 731
+      }
+     ],
+     "retrieval_sha256": "bf8491c70da02bc457a9a9b2dc61d551d488da252be9615511f83af53c2f6650"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bf8491c70da02bc457a9a9b2dc61d551d488da252be9615511f83af53c2f6650",
+    "query_embedding_sha256": "172e500bb391d246166694d52948c49a701f8eaf7fa8398d2bff33b09f64cbbb",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:12885341:0",
+      "content_sha256": "b8878ade5180855e9b917a482b0d9863a6765f6a7abd465fbf650d374db45b6d",
+      "chars": 1012
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:24922825:1",
+      "content_sha256": "5cbac0d5328744349c8aad7c351751d05e61626307dc5feca51750674b9481d7",
+      "chars": 730
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8883846:2",
+      "content_sha256": "2dad44ebe8093f003ab4991f8923aa784094029c1190d7812732f45ada52534f",
+      "chars": 1072
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9539248:1",
+      "content_sha256": "a20b19ee143b6bc7fe5e13bd6b4a63d6a0562117f36cb12f6a6a6b4957298eea",
+      "chars": 756
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9142761:0",
+      "content_sha256": "79ca6937f876c9de1fe06ae4639861f4f1d3928411d3464ff67914fd68b8b53d",
+      "chars": 1023
+     }
+    ],
+    "elapsed_s": 3.6712
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mice are incapable of producing neutralizing antibodies in reponse to the Chikungunya virus (CHIKV) produced in mosquitos.\n\nEvidence passages from your search for \"mice neutralizing antibodies Chikungunya virus mosquito\":\n<<<PASSAGES\n[P1] A C-Type Lectin Collaborates with a CD45 Phosphatase Homolog to Facilitate West Nile Virus Infection of Mosquitoes\nWest Nile virus (WNV) is the most common arthropod-borne flavivirus in the United States; however, the vector ligand(s) that participate in infection are not known. We now show that an Aedes aegypti C-type lectin, mosGCTL-1, is induced by WNV, interacts with WNV in a calcium-dependent manner, and facilitates infection in vivo and in vitro. A mosquito homolog of human CD45 in A. aegypti, designated mosPTP-1, recruits mosGCTL-1 to enable viral attachment to cells and to enhance viral entry. In vivo experiments show that mosGCTL-1 and mosPTP-1 function as part of the same pathway and are critical for WNV infection of mosquitoes. A similar phenomenon was also observed in Culex quinquefasciatus, a natural vector of WNV, further demonstrating that these genes participate in WNV infection. During the mosquito blood-feeding process, WNV infection was blocked in vivo with mosGCTL-1 antibodies.\n\n[P2] A chikungunya fever vaccine utilizing an insect-specific virus platform\nYet the recombinant virus remained completely defective for productive replication, providing a high degree of safety. A single dose of EILV/CHIKV produced in mosquito cells elicited rapid (within 4 d) and long-lasting (>290 d) neutralizing antibodies that provided complete protection in two different mouse models. In nonhuman primates, EILV/CHIKV elicited rapid and robust immunity that protected against viremia and telemetrically monitored fever. Our EILV platform represents the first structurally native application of an insect-specific virus in preclinical vaccine development and highlights the potential application of such viruses in vaccinology.\n\n[P3] Antibody-Based HIV-1 Vaccines: Recent Developments and Future Directions\nAlso, though virus neutralization is considered a critical benchmark for a vaccine, this may not be the only benchmark for predicting success with antibody-based HIV-1 vaccine immunogens. The main targets for neutralizing antibodies to HIV-1 are the surface gp120 and trans-membrane gp41 envelope glycoproteins (Env) that mediate receptor and coreceptor binding and the subsequent membrane fusion events that allow the virus to gain entry into cells [3]. Antibodies neutralize the virus by binding these viral spikes and blocking virus entry into susceptible cells, such as CD4+ T cells [4,5]. In order to chronically replicate in the host, the virus exploits several mechanisms to shield itself against antibody recognition, including a dense outer coating of sugar molecules (N-linked glycans) and the strategic positioning of cysteine–cysteine loop structures on the gp120 molecule [6–8]. These shielding mechanisms, although highly effective, have vulnerabilities imposed by fitness constraints.\n\n[P4] Alphavirus-derived small RNAs modulate pathogenesis in disease vector mosquitoes.\nWe identified virus-derived small interfering RNAs (viRNAs), 21 nt in length, in Aedes aegypti infected with the mosquito-borne virus, Sindbis (SINV). viRNAs had an asymmetric distribution that spanned the length of the SINV genome. To determine the role of viRNAs in controlling pathogenic potential, mosquitoes were infected with recombinant alphaviruses expressing suppressors of RNA silencing. Decreased survival was observed in mosquitoes in which the accumulation of viRNAs was suppressed. These results suggest that an exogenous siRNA pathway is essential to the survival of mosquitoes infected with alphaviruses and, thus, the maintenance of these viruses in nature.\n\n[P5] The IC(50) of anti-Pfs25 antibody in membrane-feeding assay varies among species.\nPlasmodium falciparum surface protein 25 (Pfs25) is a candidate for transmission-blocking vaccines (TBVs). Anti-Pfs25 antibodies block the development of oocysts in membrane-feeding assays and we have shown the activity correlates with antibody titer. In this study, we purified Pfs25-specific IgGs to convert antibody titer to microg/mL and determined the amount of antibody required to inhibit 50% of oocyst development (IC(50)). The IC(50) were, 15.9, 4.2, 41.2, and 85.6microg/mL for mouse, rabbit, monkey and human, respectively, and the differences among species were significant. Anti-Pfs25 sera from rabbit, monkey and human showed different patterns of competition against 6 mouse monoclonal antibodies, and the avidity of antibodies among four species were also different. These data suggests that information obtained from animal studies which assess efficacy of TBV candidates may be difficult to translate to human immunization.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "59f5f84e7e988404f84a9e21c6f4c7516b61034becfb8a2a47ee66ee8e1ca698",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837516.7731369,
+      "end_wall": 1792837534.605108,
+      "error": null
+     }
+    ],
+    "arrival_seq": 704,
+    "start_wall": 1792837516.7731369,
+    "start_mono": 507073.606888625,
+    "end_wall": 1792837534.605108,
+    "end_mono": 507091.438648583,
+    "raw_response": "{\"reasoning\": \"The evidence passages discuss the induction, interaction, and function of proteins in mosquitoes involved in West Nile and Chikungunya virus infections, but do not provide information on the production of neutralizing antibodies by mice in response to Chikungunya virus produced in mosquitos.\", \"answer\": \"REFUTED\", \"citations\": [\"P3\"] , \"confidence\": \"low\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17829038250,
+     "load_duration": 8006427500,
+     "prompt_eval_count": 1336,
+     "prompt_eval_duration": 3088143708,
+     "eval_count": 86,
+     "eval_duration": 5821081333,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:25:34.603127Z"
+    },
+    "elapsed_s": 17.832,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 704,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:8883846:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 292,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "olmo2:7b": "30edc1382696752265fce6942a25838453aa93abf2cd710007431f8c4344beb5",
+  "granite3.3:2b": "6c628f1aecbefb77b13d117ddb1e8c239a7c8fb5828a11fb2ca7e4cc8a947377",
+  "exaone3.5:2.4b": "f99d88337f8c0c726534ac44206f07117953a1d706a8b181edb61f1ac143512a",
+  "nemotron-mini:4b": "e0c3b83812d54e6d9fd08ce47f3e01b7ce73612d7687cc96cb7e4b3503b6bcd5",
+  "falcon3:3b": "bf8491c70da02bc457a9a9b2dc61d551d488da252be9615511f83af53c2f6650"
+ },
+ "item_start_wall": 1792837504.800261,
+ "item_wall_s": 29.805,
+ "ollama_ps_samples": [
+  [
+   1792837504.8,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837506.813,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837508.816,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837510.827,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837512.83,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837514.835,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837516.847,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837518.858,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837520.87,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837522.874,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837524.88,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792837526.891,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792837528.897,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792837530.908,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792837532.919,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ]
+ ]
+}

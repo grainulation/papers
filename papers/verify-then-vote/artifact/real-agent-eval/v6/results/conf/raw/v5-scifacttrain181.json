@@ -1,0 +1,1310 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain181",
+ "order": 560,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain181",
+  "order": 560,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss."
+ },
+ "item_view_sha256": "0d2a607b813f7cf6bb4306dddf41e78a3ddb5b6c5b3ef4dd26f3cff9e2df757a",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "4fb19dc6a4ba07ba34c6e79b06dec91c8fed267213467539a67b093c900ad526",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792869079.476733,
+      "end_wall": 1792869081.2987049,
+      "error": null
+     }
+    ],
+    "start_wall": 1792869079.476733,
+    "start_mono": 538636.191837166,
+    "end_wall": 1792869081.2987049,
+    "end_mono": 538638.013803791,
+    "raw_response": "{\"query\": \"TDP-43 blocking ND3 ND6 interaction prevents neuronal loss\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1818894958,
+     "load_duration": 112003833,
+     "prompt_eval_count": 193,
+     "prompt_eval_duration": 426778125,
+     "eval_count": 21,
+     "eval_duration": 1018563957,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:21.298026Z"
+    },
+    "elapsed_s": 1.822,
+    "query_used": "TDP-43 blocking ND3 ND6 interaction prevents neuronal loss",
+    "query_source": "json",
+    "query_arrival_seq": 2800
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "TDP-43 blocking ND3 ND6 interaction prevents neuronal loss",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16966326:1",
+       "score_q": 765
+      },
+      {
+       "passage_key": "scifact:16966326:0",
+       "score_q": 746
+      },
+      {
+       "passage_key": "scifact:9217800:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:44408494:1",
+       "score_q": 706
+      },
+      {
+       "passage_key": "scifact:9217800:1",
+       "score_q": 706
+      }
+     ],
+     "retrieval_sha256": "3741b0e6da01a02c9e5a8011112c987525866a85c4178d87ce7dd4b1a6925178"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3741b0e6da01a02c9e5a8011112c987525866a85c4178d87ce7dd4b1a6925178",
+    "query_embedding_sha256": "92c23148b422f45df245ece4e1896454d5c9de6343bdb3223ac3c16ae864545b",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16966326:1",
+      "content_sha256": "e4a22bd4764b4436b594b8afb26f12b598b7e4999aa4f45cdb3e92079e3ccddd",
+      "chars": 476
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16966326:0",
+      "content_sha256": "cc3fd57080802073ee158f249b7f3fe1cee101e2847398a9b5cc445162217ef5",
+      "chars": 929
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9217800:0",
+      "content_sha256": "de3b3fce9cfec8c9ee1e3591516f36c75e0626fadbfd04982d7a9b4dbb0a95ae",
+      "chars": 1065
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:44408494:1",
+      "content_sha256": "17ec4457a39618c29b1476d9dc10367f0d7385043f2631892514b577485f2faa",
+      "chars": 354
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9217800:1",
+      "content_sha256": "6cbff70af926424e1049c5b2839355d1d9e16dad6056c985265c6b866ce54032",
+      "chars": 628
+     }
+    ],
+    "elapsed_s": 11.5534
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nEvidence passages from your search for \"TDP-43 blocking ND3 ND6 interaction prevents neuronal loss\":\n<<<PASSAGES\n[P1] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nThe suppression of TDP-43 mitochondrial localization abolishes WT and mutant TDP-43-induced mitochondrial dysfunction and neuronal loss, and improves phenotypes of transgenic mutant TDP-43 mice. Thus, our studies link TDP-43 toxicity directly to mitochondrial bioenergetics and propose the targeting of TDP-43 mitochondrial localization as a promising therapeutic approach for neurodegeneration.\n\n[P2] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nGenetic mutations in TAR DNA-binding protein 43 (TARDBP, also known as TDP-43) cause amyotrophic lateral sclerosis (ALS), and an increase in the presence of TDP-43 (encoded by TARDBP) in the cytoplasm is a prominent histopathological feature of degenerating neurons in various neurodegenerative diseases. However, the molecular mechanisms by which TDP-43 contributes to ALS pathophysiology remain elusive. Here we have found that TDP-43 accumulates in the mitochondria of neurons in subjects with ALS or frontotemporal dementia (FTD). Disease-associated mutations increase TDP-43 mitochondrial localization. In mitochondria, wild-type (WT) and mutant TDP-43 preferentially bind mitochondria-transcribed messenger RNAs (mRNAs) encoding respiratory complex I subunits ND3 and ND6, impair their expression and specifically cause complex I disassembly.\n\n[P3] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nThe fatal adult motor neuron disease amyotrophic lateral sclerosis (ALS) shares some clinical and pathological overlap with frontotemporal dementia (FTD), an early-onset neurodegenerative disorder. The RNA/DNA-binding proteins fused in sarcoma (FUS; also known as TLS) and TAR DNA binding protein-43 (TDP-43) have recently been shown to be genetically and pathologically associated with familial forms of ALS and FTD. It is currently unknown whether perturbation of these proteins results in disease through mechanisms that are independent of normal protein function or via the pathophysiological disruption of molecular processes in which they are both critical. Here, we report that Drosophila mutants in which the homolog of FUS is disrupted exhibit decreased adult viability, diminished locomotor speed, and reduced life span compared with controls. These phenotypes were fully rescued by wild-type human FUS, but not ALS-associated mutant FUS proteins.\n\n[P4] Nicotinic receptor-mediated neuroprotection in neurodegenerative disease models.\nUp-regulation of Bcl-2 and Bcl-x could prevent cells from neuronal death induced by beta-amyloid (Abeta), glutamate and rotenone. These findings suggest that protective therapy with nAChR stimulation could delay the progress of neurodegenerative diseases such as AD and PD.\n\n[P5] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nA mutant of the Drosophila homolog of TDP-43 had similar, but more severe, deficits. Through cross-rescue analysis, we demonstrated that FUS acted together with and downstream of TDP-43 in a common genetic pathway in neurons. Furthermore, we found that these proteins associated with each other in an RNA-dependent complex. Our results establish that FUS and TDP-43 function together in vivo and suggest that molecular pathways requiring the combined activities of both of these proteins may be disrupted in ALS and FTD.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d77f91d37980d11282a0587b8940f643eaa01b3129e18c02948724fe9878a330",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792869092.85259,
+      "end_wall": 1792869101.1140742,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2800,
+    "start_wall": 1792869092.85259,
+    "start_mono": 538649.567661291,
+    "end_wall": 1792869101.1140742,
+    "end_mono": 538657.829123666,
+    "raw_response": "{\"reasoning\": \"Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 is proposed as a therapeutic approach to prevent TDP-43-induced neuronal loss, as supported by multiple studies.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P5\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8258318875,
+     "load_duration": 1276319709,
+     "prompt_eval_count": 1047,
+     "prompt_eval_duration": 1835813333,
+     "eval_count": 80,
+     "eval_duration": 4270336290,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:41.112112Z"
+    },
+    "elapsed_s": 8.261,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2800,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:16966326:0",
+     "scifact:9217800:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 199,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "4fb19dc6a4ba07ba34c6e79b06dec91c8fed267213467539a67b093c900ad526",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792869079.477042,
+      "end_wall": 1792869081.740248,
+      "error": null
+     }
+    ],
+    "start_wall": 1792869079.477042,
+    "start_mono": 538636.192145791,
+    "end_wall": 1792869081.740248,
+    "end_mono": 538638.455346208,
+    "raw_response": "{\"query\": \"TDP-43 interaction ND3 ND6 neuronal loss experiments\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2260080167,
+     "load_duration": 57794208,
+     "prompt_eval_count": 197,
+     "prompt_eval_duration": 660113375,
+     "eval_count": 20,
+     "eval_duration": 1364124415,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:21.739168Z"
+    },
+    "elapsed_s": 2.263,
+    "query_used": "TDP-43 interaction ND3 ND6 neuronal loss experiments",
+    "query_source": "json",
+    "query_arrival_seq": 2801
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "TDP-43 interaction ND3 ND6 neuronal loss experiments",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16966326:0",
+       "score_q": 18858
+      },
+      {
+       "passage_key": "scifact:16966326:1",
+       "score_q": 14764
+      },
+      {
+       "passage_key": "scifact:9217800:1",
+       "score_q": 9280
+      },
+      {
+       "passage_key": "scifact:9217800:0",
+       "score_q": 7033
+      },
+      {
+       "passage_key": "scifact:13717103:1",
+       "score_q": 6476
+      }
+     ],
+     "retrieval_sha256": "949a86e6db6f8cd624668e0e8529bd4e34b6ddc19aa5b0c1eae40c26593f5fae"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "949a86e6db6f8cd624668e0e8529bd4e34b6ddc19aa5b0c1eae40c26593f5fae",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16966326:0",
+      "content_sha256": "cc3fd57080802073ee158f249b7f3fe1cee101e2847398a9b5cc445162217ef5",
+      "chars": 929
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16966326:1",
+      "content_sha256": "e4a22bd4764b4436b594b8afb26f12b598b7e4999aa4f45cdb3e92079e3ccddd",
+      "chars": 476
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9217800:1",
+      "content_sha256": "6cbff70af926424e1049c5b2839355d1d9e16dad6056c985265c6b866ce54032",
+      "chars": 628
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9217800:0",
+      "content_sha256": "de3b3fce9cfec8c9ee1e3591516f36c75e0626fadbfd04982d7a9b4dbb0a95ae",
+      "chars": 1065
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13717103:1",
+      "content_sha256": "5d4e13c08aee02c646c5e71d548fe2523174d76fdfbbe94ed9324e3df281fa09",
+      "chars": 959
+     }
+    ],
+    "elapsed_s": 0.0045
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nEvidence passages from your search for \"TDP-43 interaction ND3 ND6 neuronal loss experiments\":\n<<<PASSAGES\n[P1] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nGenetic mutations in TAR DNA-binding protein 43 (TARDBP, also known as TDP-43) cause amyotrophic lateral sclerosis (ALS), and an increase in the presence of TDP-43 (encoded by TARDBP) in the cytoplasm is a prominent histopathological feature of degenerating neurons in various neurodegenerative diseases. However, the molecular mechanisms by which TDP-43 contributes to ALS pathophysiology remain elusive. Here we have found that TDP-43 accumulates in the mitochondria of neurons in subjects with ALS or frontotemporal dementia (FTD). Disease-associated mutations increase TDP-43 mitochondrial localization. In mitochondria, wild-type (WT) and mutant TDP-43 preferentially bind mitochondria-transcribed messenger RNAs (mRNAs) encoding respiratory complex I subunits ND3 and ND6, impair their expression and specifically cause complex I disassembly.\n\n[P2] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nThe suppression of TDP-43 mitochondrial localization abolishes WT and mutant TDP-43-induced mitochondrial dysfunction and neuronal loss, and improves phenotypes of transgenic mutant TDP-43 mice. Thus, our studies link TDP-43 toxicity directly to mitochondrial bioenergetics and propose the targeting of TDP-43 mitochondrial localization as a promising therapeutic approach for neurodegeneration.\n\n[P3] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nA mutant of the Drosophila homolog of TDP-43 had similar, but more severe, deficits. Through cross-rescue analysis, we demonstrated that FUS acted together with and downstream of TDP-43 in a common genetic pathway in neurons. Furthermore, we found that these proteins associated with each other in an RNA-dependent complex. Our results establish that FUS and TDP-43 function together in vivo and suggest that molecular pathways requiring the combined activities of both of these proteins may be disrupted in ALS and FTD.\n\n[P4] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nThe fatal adult motor neuron disease amyotrophic lateral sclerosis (ALS) shares some clinical and pathological overlap with frontotemporal dementia (FTD), an early-onset neurodegenerative disorder. The RNA/DNA-binding proteins fused in sarcoma (FUS; also known as TLS) and TAR DNA binding protein-43 (TDP-43) have recently been shown to be genetically and pathologically associated with familial forms of ALS and FTD. It is currently unknown whether perturbation of these proteins results in disease through mechanisms that are independent of normal protein function or via the pathophysiological disruption of molecular processes in which they are both critical. Here, we report that Drosophila mutants in which the homolog of FUS is disrupted exhibit decreased adult viability, diminished locomotor speed, and reduced life span compared with controls. These phenotypes were fully rescued by wild-type human FUS, but not ALS-associated mutant FUS proteins.\n\n[P5] ALS-FUS pathology revisited: singleton FUS mutations and an unusual case with both a FUS and TARDBP mutation\nP525L mutation in the FUS gene and a truncating p. Y374X mutation in the TARDBP gene. RESULTS The neuropathology in all cases revealed basophilic and FUS inclusions in the cord. The density and type of inclusions varied markedly between cases, but did not allow a clear correlation with clinical progression. Only one case showed significant motor cortical pathology despite the upper motor neuron clinical features being evident in 4 patients. The case with both a FUS and TARDBP mutation revealed FUS positive inclusions but no TDP-43 pathology. Instead there were unusual p62 positive, FUS negative neuronal and glial inclusions as well as dot-like neurites. CONCLUSIONS The study confirms cases of ALS-FUS to be mainly a lower motor neuron disease and to have pathology that does not appear to neatly correlate with clinical features or genetics.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c606cab03292261ca8e033999f77388882805ec74d3e31db18394063113e58ed",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792869081.745111,
+      "end_wall": 1792869105.348902,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2801,
+    "start_wall": 1792869081.745111,
+    "start_mono": 538638.46020975,
+    "end_wall": 1792869105.348902,
+    "end_mono": 538662.063941458,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from passages P1 and P2 specifically indicate that TDP-43's interaction with mitochondrial complex I subunits ND3 and ND6 leads to neuronal toxicity through mitochondrial dysfunction and complex I disassembly. Blocking this interaction through inhibition of TDP-43 mitochondrial localization abolishes its neuronal toxic effects, suggesting that preventing this interaction can prevent TDP-43-induced neuronal loss.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23599876708,
+     "load_duration": 57611875,
+     "prompt_eval_count": 1193,
+     "prompt_eval_duration": 5538304458,
+     "eval_count": 127,
+     "eval_duration": 16950602035,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:45.345923Z"
+    },
+    "elapsed_s": 23.604,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2801,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:16966326:0",
+     "scifact:16966326:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 428,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "4fb19dc6a4ba07ba34c6e79b06dec91c8fed267213467539a67b093c900ad526",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792869079.4768882,
+      "end_wall": 1792869088.470159,
+      "error": null
+     }
+    ],
+    "start_wall": 1792869079.4768882,
+    "start_mono": 538636.191992375,
+    "end_wall": 1792869088.470159,
+    "end_mono": 538645.185241125,
+    "raw_response": "{\"query\": \"TDP-43 respiratory complex I ND3 ND6 neuronal loss\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8989973292,
+     "load_duration": 3988722958,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 1743646791,
+     "eval_count": 19,
+     "eval_duration": 3080711456,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:28.469115Z"
+    },
+    "elapsed_s": 8.993,
+    "query_used": "TDP-43 respiratory complex I ND3 ND6 neuronal loss",
+    "query_source": "json",
+    "query_arrival_seq": 2803
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "TDP-43 respiratory complex I ND3 ND6 neuronal loss",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16966326:0",
+       "score_q": 22393
+      },
+      {
+       "passage_key": "scifact:16966326:1",
+       "score_q": 14764
+      },
+      {
+       "passage_key": "scifact:9217800:1",
+       "score_q": 10630
+      },
+      {
+       "passage_key": "scifact:9217800:0",
+       "score_q": 7033
+      },
+      {
+       "passage_key": "scifact:13717103:1",
+       "score_q": 6476
+      }
+     ],
+     "retrieval_sha256": "d509422dd6f1fa2d7f40d8c602fd09b77486b64494988ad2c52bca4c58ddd516"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d509422dd6f1fa2d7f40d8c602fd09b77486b64494988ad2c52bca4c58ddd516",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16966326:0",
+      "content_sha256": "cc3fd57080802073ee158f249b7f3fe1cee101e2847398a9b5cc445162217ef5",
+      "chars": 929
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16966326:1",
+      "content_sha256": "e4a22bd4764b4436b594b8afb26f12b598b7e4999aa4f45cdb3e92079e3ccddd",
+      "chars": 476
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9217800:1",
+      "content_sha256": "6cbff70af926424e1049c5b2839355d1d9e16dad6056c985265c6b866ce54032",
+      "chars": 628
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9217800:0",
+      "content_sha256": "de3b3fce9cfec8c9ee1e3591516f36c75e0626fadbfd04982d7a9b4dbb0a95ae",
+      "chars": 1065
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13717103:1",
+      "content_sha256": "5d4e13c08aee02c646c5e71d548fe2523174d76fdfbbe94ed9324e3df281fa09",
+      "chars": 959
+     }
+    ],
+    "elapsed_s": 0.0021
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nEvidence passages from your search for \"TDP-43 respiratory complex I ND3 ND6 neuronal loss\":\n<<<PASSAGES\n[P1] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nGenetic mutations in TAR DNA-binding protein 43 (TARDBP, also known as TDP-43) cause amyotrophic lateral sclerosis (ALS), and an increase in the presence of TDP-43 (encoded by TARDBP) in the cytoplasm is a prominent histopathological feature of degenerating neurons in various neurodegenerative diseases. However, the molecular mechanisms by which TDP-43 contributes to ALS pathophysiology remain elusive. Here we have found that TDP-43 accumulates in the mitochondria of neurons in subjects with ALS or frontotemporal dementia (FTD). Disease-associated mutations increase TDP-43 mitochondrial localization. In mitochondria, wild-type (WT) and mutant TDP-43 preferentially bind mitochondria-transcribed messenger RNAs (mRNAs) encoding respiratory complex I subunits ND3 and ND6, impair their expression and specifically cause complex I disassembly.\n\n[P2] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nThe suppression of TDP-43 mitochondrial localization abolishes WT and mutant TDP-43-induced mitochondrial dysfunction and neuronal loss, and improves phenotypes of transgenic mutant TDP-43 mice. Thus, our studies link TDP-43 toxicity directly to mitochondrial bioenergetics and propose the targeting of TDP-43 mitochondrial localization as a promising therapeutic approach for neurodegeneration.\n\n[P3] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nA mutant of the Drosophila homolog of TDP-43 had similar, but more severe, deficits. Through cross-rescue analysis, we demonstrated that FUS acted together with and downstream of TDP-43 in a common genetic pathway in neurons. Furthermore, we found that these proteins associated with each other in an RNA-dependent complex. Our results establish that FUS and TDP-43 function together in vivo and suggest that molecular pathways requiring the combined activities of both of these proteins may be disrupted in ALS and FTD.\n\n[P4] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nThe fatal adult motor neuron disease amyotrophic lateral sclerosis (ALS) shares some clinical and pathological overlap with frontotemporal dementia (FTD), an early-onset neurodegenerative disorder. The RNA/DNA-binding proteins fused in sarcoma (FUS; also known as TLS) and TAR DNA binding protein-43 (TDP-43) have recently been shown to be genetically and pathologically associated with familial forms of ALS and FTD. It is currently unknown whether perturbation of these proteins results in disease through mechanisms that are independent of normal protein function or via the pathophysiological disruption of molecular processes in which they are both critical. Here, we report that Drosophila mutants in which the homolog of FUS is disrupted exhibit decreased adult viability, diminished locomotor speed, and reduced life span compared with controls. These phenotypes were fully rescued by wild-type human FUS, but not ALS-associated mutant FUS proteins.\n\n[P5] ALS-FUS pathology revisited: singleton FUS mutations and an unusual case with both a FUS and TARDBP mutation\nP525L mutation in the FUS gene and a truncating p. Y374X mutation in the TARDBP gene. RESULTS The neuropathology in all cases revealed basophilic and FUS inclusions in the cord. The density and type of inclusions varied markedly between cases, but did not allow a clear correlation with clinical progression. Only one case showed significant motor cortical pathology despite the upper motor neuron clinical features being evident in 4 patients. The case with both a FUS and TARDBP mutation revealed FUS positive inclusions but no TDP-43 pathology. Instead there were unusual p62 positive, FUS negative neuronal and glial inclusions as well as dot-like neurites. CONCLUSIONS The study confirms cases of ALS-FUS to be mainly a lower motor neuron disease and to have pathology that does not appear to neatly correlate with clinical features or genetics.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "aac812515650cca880d54c3285ec01fdff9a74af37fe7aa0b62ccff69f5d8856",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792869088.472832,
+      "end_wall": 1792869109.590097,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2802,
+    "start_wall": 1792869088.472832,
+    "start_mono": 538645.187913958,
+    "end_wall": 1792869109.590097,
+    "end_mono": 538666.305125375,
+    "raw_response": "{\"reasoning\": \"The passages provide evidence that TDP-43 interacts with respiratory complex I subunits ND3 and ND6 and that inhibiting this interaction blocks TDP-43-induced neuronal toxicity. P1, P2, and P4 all describe how blocking TDP-43 from localizing to mitochondria reduces its neurotoxic effects and improves symptoms in models, suggesting that preventing the interaction between TDP-43 and complex I subunits is effective in mitigating neuronal loss. P3 and P5 offer additional context, confirming the roles of TDP-43 and FUS proteins in neurodegenerative diseases. This evidence collectively supports the \",\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21113158750,
+     "load_duration": 46963875,
+     "prompt_eval_count": 1161,
+     "prompt_eval_duration": 4675843875,
+     "eval_count": 163,
+     "eval_duration": 14934967834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:49.587367Z"
+    },
+    "elapsed_s": 21.117,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2802,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:16966326:0",
+     "scifact:16966326:1",
+     "scifact:9217800:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "4fb19dc6a4ba07ba34c6e79b06dec91c8fed267213467539a67b093c900ad526",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792869079.476573,
+      "end_wall": 1792869081.789536,
+      "error": null
+     }
+    ],
+    "start_wall": 1792869079.476573,
+    "start_mono": 538636.191676791,
+    "end_wall": 1792869081.789536,
+    "end_mono": 538638.504633916,
+    "raw_response": "{\"query\": \"TDP-43 interaction inhibition neuronal loss\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2309502083,
+     "load_duration": 1183675500,
+     "prompt_eval_count": 199,
+     "prompt_eval_duration": 434958542,
+     "eval_count": 19,
+     "eval_duration": 602489003,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:21.788586Z"
+    },
+    "elapsed_s": 2.313,
+    "query_used": "TDP-43 interaction inhibition neuronal loss",
+    "query_source": "json",
+    "query_arrival_seq": 2802
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "TDP-43 interaction inhibition neuronal loss",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16966326:1",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:16966326:0",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:9217800:0",
+       "score_q": 720
+      },
+      {
+       "passage_key": "scifact:9217800:1",
+       "score_q": 691
+      },
+      {
+       "passage_key": "scifact:35520219:0",
+       "score_q": 676
+      }
+     ],
+     "retrieval_sha256": "f86572d044b700974f3139db3706507d4ef02b4b3e9712c6cdb53b9aa22671d2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f86572d044b700974f3139db3706507d4ef02b4b3e9712c6cdb53b9aa22671d2",
+    "query_embedding_sha256": "ddb70178d4ae5a23bbcd917769566915d1bae129d8b649ee960f0d501c3ee787",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16966326:1",
+      "content_sha256": "e4a22bd4764b4436b594b8afb26f12b598b7e4999aa4f45cdb3e92079e3ccddd",
+      "chars": 476
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16966326:0",
+      "content_sha256": "cc3fd57080802073ee158f249b7f3fe1cee101e2847398a9b5cc445162217ef5",
+      "chars": 929
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9217800:0",
+      "content_sha256": "de3b3fce9cfec8c9ee1e3591516f36c75e0626fadbfd04982d7a9b4dbb0a95ae",
+      "chars": 1065
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9217800:1",
+      "content_sha256": "6cbff70af926424e1049c5b2839355d1d9e16dad6056c985265c6b866ce54032",
+      "chars": 628
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:35520219:0",
+      "content_sha256": "dd3f1f1499d1b20a49e3235c81d90912ce40a29fa86c488bbafb82c6e141cb57",
+      "chars": 1101
+     }
+    ],
+    "elapsed_s": 11.1418
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nEvidence passages from your search for \"TDP-43 interaction inhibition neuronal loss\":\n<<<PASSAGES\n[P1] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nThe suppression of TDP-43 mitochondrial localization abolishes WT and mutant TDP-43-induced mitochondrial dysfunction and neuronal loss, and improves phenotypes of transgenic mutant TDP-43 mice. Thus, our studies link TDP-43 toxicity directly to mitochondrial bioenergetics and propose the targeting of TDP-43 mitochondrial localization as a promising therapeutic approach for neurodegeneration.\n\n[P2] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nGenetic mutations in TAR DNA-binding protein 43 (TARDBP, also known as TDP-43) cause amyotrophic lateral sclerosis (ALS), and an increase in the presence of TDP-43 (encoded by TARDBP) in the cytoplasm is a prominent histopathological feature of degenerating neurons in various neurodegenerative diseases. However, the molecular mechanisms by which TDP-43 contributes to ALS pathophysiology remain elusive. Here we have found that TDP-43 accumulates in the mitochondria of neurons in subjects with ALS or frontotemporal dementia (FTD). Disease-associated mutations increase TDP-43 mitochondrial localization. In mitochondria, wild-type (WT) and mutant TDP-43 preferentially bind mitochondria-transcribed messenger RNAs (mRNAs) encoding respiratory complex I subunits ND3 and ND6, impair their expression and specifically cause complex I disassembly.\n\n[P3] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nThe fatal adult motor neuron disease amyotrophic lateral sclerosis (ALS) shares some clinical and pathological overlap with frontotemporal dementia (FTD), an early-onset neurodegenerative disorder. The RNA/DNA-binding proteins fused in sarcoma (FUS; also known as TLS) and TAR DNA binding protein-43 (TDP-43) have recently been shown to be genetically and pathologically associated with familial forms of ALS and FTD. It is currently unknown whether perturbation of these proteins results in disease through mechanisms that are independent of normal protein function or via the pathophysiological disruption of molecular processes in which they are both critical. Here, we report that Drosophila mutants in which the homolog of FUS is disrupted exhibit decreased adult viability, diminished locomotor speed, and reduced life span compared with controls. These phenotypes were fully rescued by wild-type human FUS, but not ALS-associated mutant FUS proteins.\n\n[P4] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nA mutant of the Drosophila homolog of TDP-43 had similar, but more severe, deficits. Through cross-rescue analysis, we demonstrated that FUS acted together with and downstream of TDP-43 in a common genetic pathway in neurons. Furthermore, we found that these proteins associated with each other in an RNA-dependent complex. Our results establish that FUS and TDP-43 function together in vivo and suggest that molecular pathways requiring the combined activities of both of these proteins may be disrupted in ALS and FTD.\n\n[P5] Early loss of interneurons and delayed subunit-specific changes in GABA(A)-receptor expression in a mouse model of mesial temporal lobe epilepsy.\nUnilateral injection of kainic acid (KA) into the dorsal hippocampus of adult mice induces spontaneous recurrent partial seizures and replicates histopathological changes observed in human mesial temporal lobe epilepsy (MTLE) (Bouilleret V et al., Neuroscience 1999; 89:717-729). Alterations in pre- and postsynaptic components of GABAergic neurotransmission were investigated immunohistochemically at different time points (1-120 days) in this mouse model of MTLE. Markers of GABAergic interneurons (parvalbumin, calbindin-D28k, and calretinin), the type-1 GABA transporter (GAT1), and major GABA(A)-receptor subunits expressed in the hippocampal formation were analyzed. Acutely, KA injection produced a profound loss of hilar cells but only limited damage to CA1 and CA3 pyramidal cells. In addition, parvalbumin and calbindin-D28k staining of interneurons disappeared irreversibly in CA1 and dentate gyrus (DG), whereas calretinin staining was spared.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3ac0104f6c2af7fd063915a2455cf95b9b702115b40d6923930d25dc0f0d4f38",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792869092.9319098,
+      "end_wall": 1792869111.1255748,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2803,
+    "start_wall": 1792869092.9319098,
+    "start_mono": 538649.646981541,
+    "end_wall": 1792869111.1255748,
+    "end_mono": 538667.840598833,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that inhibiting the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss. The evidence passages support this claim by indicating that TDP-43 binds to ND3 and ND6 in mitochondria, and this interaction is crucial for its neurotoxicity. Specifically, P1, P2, and P4 establish that TDP-43 interaction with ND3 and ND6 is involved in mitochondrial dysfunction and neuronal loss.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18189519959,
+     "load_duration": 9838277292,
+     "prompt_eval_count": 1512,
+     "prompt_eval_duration": 3067897667,
+     "eval_count": 170,
+     "eval_duration": 4579916754,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:51.12271Z"
+    },
+    "elapsed_s": 18.194,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2803,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:16966326:1",
+     "scifact:16966326:0",
+     "scifact:9217800:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 451,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "4fb19dc6a4ba07ba34c6e79b06dec91c8fed267213467539a67b093c900ad526",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792869079.477185,
+      "end_wall": 1792869092.340213,
+      "error": null
+     }
+    ],
+    "start_wall": 1792869079.477185,
+    "start_mono": 538636.192289375,
+    "end_wall": 1792869092.340213,
+    "end_mono": 538649.055284666,
+    "raw_response": "{\"query\": \"does blocking tdp-43 interaction with nd3 and nd6 prevent tdp-43-induced neuronal loss\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12860009250,
+     "load_duration": 5552187250,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 1012634417,
+     "eval_count": 30,
+     "eval_duration": 5639749335,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:32.339128Z"
+    },
+    "elapsed_s": 12.863,
+    "query_used": "does blocking tdp-43 interaction with nd3 and nd6 prevent tdp-43-induced neuronal loss",
+    "query_source": "json",
+    "query_arrival_seq": 2804
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "does blocking tdp-43 interaction with nd3 and nd6 prevent tdp-43-induced neuronal loss",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16966326:1",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:16966326:0",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:9217800:0",
+       "score_q": 726
+      },
+      {
+       "passage_key": "scifact:14460402:0",
+       "score_q": 691
+      },
+      {
+       "passage_key": "scifact:41644178:0",
+       "score_q": 690
+      }
+     ],
+     "retrieval_sha256": "35fdd316994fb4fff81d213bf726dd1a7d7f7dc3bd3b089c57010810cafe344d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "35fdd316994fb4fff81d213bf726dd1a7d7f7dc3bd3b089c57010810cafe344d",
+    "query_embedding_sha256": "3fc20547a9be494e2b07b760bfff72fa89b17d196cdb609d808bb1857c03abff",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16966326:1",
+      "content_sha256": "e4a22bd4764b4436b594b8afb26f12b598b7e4999aa4f45cdb3e92079e3ccddd",
+      "chars": 476
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16966326:0",
+      "content_sha256": "cc3fd57080802073ee158f249b7f3fe1cee101e2847398a9b5cc445162217ef5",
+      "chars": 929
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9217800:0",
+      "content_sha256": "de3b3fce9cfec8c9ee1e3591516f36c75e0626fadbfd04982d7a9b4dbb0a95ae",
+      "chars": 1065
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14460402:0",
+      "content_sha256": "3f2affed9ddd75eb022b456e94957de38ed756e98cb400076af4dff4a72355e8",
+      "chars": 913
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:41644178:0",
+      "content_sha256": "227f4c6aa7987f54a646749870611f55581e2bbf15ea31e6618b9371358ac19c",
+      "chars": 972
+     }
+    ],
+    "elapsed_s": 9.3054
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 prevents TDP-43-induced neuronal loss.\n\nEvidence passages from your search for \"does blocking tdp-43 interaction with nd3 and nd6 prevent tdp-43-induced neuronal loss\":\n<<<PASSAGES\n[P1] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nThe suppression of TDP-43 mitochondrial localization abolishes WT and mutant TDP-43-induced mitochondrial dysfunction and neuronal loss, and improves phenotypes of transgenic mutant TDP-43 mice. Thus, our studies link TDP-43 toxicity directly to mitochondrial bioenergetics and propose the targeting of TDP-43 mitochondrial localization as a promising therapeutic approach for neurodegeneration.\n\n[P2] The Inhibition of TDP-43 Mitochondrial Localization Blocks Its Neuronal Toxicity\nGenetic mutations in TAR DNA-binding protein 43 (TARDBP, also known as TDP-43) cause amyotrophic lateral sclerosis (ALS), and an increase in the presence of TDP-43 (encoded by TARDBP) in the cytoplasm is a prominent histopathological feature of degenerating neurons in various neurodegenerative diseases. However, the molecular mechanisms by which TDP-43 contributes to ALS pathophysiology remain elusive. Here we have found that TDP-43 accumulates in the mitochondria of neurons in subjects with ALS or frontotemporal dementia (FTD). Disease-associated mutations increase TDP-43 mitochondrial localization. In mitochondria, wild-type (WT) and mutant TDP-43 preferentially bind mitochondria-transcribed messenger RNAs (mRNAs) encoding respiratory complex I subunits ND3 and ND6, impair their expression and specifically cause complex I disassembly.\n\n[P3] The ALS-associated proteins FUS and TDP-43 function together to affect Drosophila locomotion and life span.\nThe fatal adult motor neuron disease amyotrophic lateral sclerosis (ALS) shares some clinical and pathological overlap with frontotemporal dementia (FTD), an early-onset neurodegenerative disorder. The RNA/DNA-binding proteins fused in sarcoma (FUS; also known as TLS) and TAR DNA binding protein-43 (TDP-43) have recently been shown to be genetically and pathologically associated with familial forms of ALS and FTD. It is currently unknown whether perturbation of these proteins results in disease through mechanisms that are independent of normal protein function or via the pathophysiological disruption of molecular processes in which they are both critical. Here, we report that Drosophila mutants in which the homolog of FUS is disrupted exhibit decreased adult viability, diminished locomotor speed, and reduced life span compared with controls. These phenotypes were fully rescued by wild-type human FUS, but not ALS-associated mutant FUS proteins.\n\n[P4] p63 Regulates adult neural precursor and newly born neuron survival to control hippocampal-dependent Behavior.\nThe molecular mechanisms that regulate adult neural precursor cell (NPC) survival, and thus maintain adult neurogenesis, are not well defined. Here, we investigate the role of p63, a p53 family member, in adult NPC function in mice. Conditional ablation of p63 in adult NPCs or p63 haploinsufficiency led to reduced numbers of NPCs and newborn neurons in the neurogenic zones of the hippocampus and lateral ventricles and in the olfactory bulb. These reductions were attributable to enhanced apoptosis of NPCs and newborn neurons and were rescued by inhibition of caspase activity, p53, or the p53 apoptotic effector PUMA (p53-upregulated modulator of apoptosis). Moreover, these cellular deficits were functionally important because they led to perturbations in hippocampus-dependent memory formation.\n\n[P5] Increased dendritic complexity and axonal length in cultured mouse cortical neurons overexpressing methyl-CpG-binding protein MeCP2\nRett syndrome is caused by loss-of-function mutations in the gene encoding the methyl DNA-binding factor MeCP2. As brain mass and neuronal complexity tend to be diminished in Rett patients, we tested whether MeCP2 directly influences the morphological complexity of developing neurons. Our results show that cultured mouse neurons overexpressing MeCP2beta (MECP2A) develop more complex morphologies, having longer axonal and dendritic processes, and an increased number of axonal and dendritic terminal endings. We then tested whether overexpressing a mutant form of MeCP2beta lacking its carboxyl terminus would elicit the same effects. Interestingly, while neurons overexpressing this mutant failed to enhance axonal and dendritic process elongation, the complexity of their axonal and dendritic processes remained significantly elevated.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2e7b3f6139af6b5003a889ac8484858801dcf26f9e1039baa3cee714f76b79bc",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792869101.646158,
+      "end_wall": 1792869118.209117,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2804,
+    "start_wall": 1792869101.646158,
+    "start_mono": 538658.361207166,
+    "end_wall": 1792869118.209117,
+    "end_mono": 538674.924122958,
+    "raw_response": "{\"reasoning\": \"The passages show that TDP-43 preferentially binds to ND3 and ND6 mRNAs in mitochondria, causing complex I disassembly, which is toxic to neurons. Therefore, blocking this interaction could prevent TDP-43-induced neuronal loss.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16558322667,
+     "load_duration": 11507601792,
+     "prompt_eval_count": 1184,
+     "prompt_eval_duration": 1900678459,
+     "eval_count": 79,
+     "eval_duration": 1692255754,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:11:58.205249Z"
+    },
+    "elapsed_s": 16.563,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2804,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:16966326:0",
+     "scifact:9217800:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 227,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "3741b0e6da01a02c9e5a8011112c987525866a85c4178d87ce7dd4b1a6925178",
+  "exaone3.5:7.8b": "949a86e6db6f8cd624668e0e8529bd4e34b6ddc19aa5b0c1eae40c26593f5fae",
+  "olmo2:7b": "d509422dd6f1fa2d7f40d8c602fd09b77486b64494988ad2c52bca4c58ddd516",
+  "granite3.3:2b": "f86572d044b700974f3139db3706507d4ef02b4b3e9712c6cdb53b9aa22671d2",
+  "nemotron-mini:4b": "35fdd316994fb4fff81d213bf726dd1a7d7f7dc3bd3b089c57010810cafe344d"
+ },
+ "item_start_wall": 1792869079.4763,
+ "item_wall_s": 38.733,
+ "ollama_ps_samples": [
+  [
+   1792869079.476,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869081.482,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792869083.486,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869085.493,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792869087.499,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792869089.506,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792869091.51,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792869093.517,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869095.523,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792869097.53,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792869099.532,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792869101.539,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nomic-embed-text:latest"
+   ]
+  ],
+  [
+   1792869103.544,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792869105.548,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792869107.555,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792869109.557,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792869111.564,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869113.569,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869115.573,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792869117.579,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

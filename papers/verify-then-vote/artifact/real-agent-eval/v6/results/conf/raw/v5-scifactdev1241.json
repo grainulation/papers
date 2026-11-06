@@ -1,0 +1,1280 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1241",
+ "order": 367,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1241",
+  "order": 367,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The myocardial lineage develops from cardiac progenitors of mesodermal origin."
+ },
+ "item_view_sha256": "1f8c33094d60fb3612c0467245a6f91cf5e0267b54a6570e2e783e905be05195",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bfa804592c30720bd15484f31d035b95f3fab1d4ca828a8a509f34eabae453e8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863318.366861,
+      "end_wall": 1792863319.5520692,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863318.366861,
+    "start_mono": 532875.116018625,
+    "end_wall": 1792863319.5520692,
+    "end_mono": 532876.301226375,
+    "raw_response": "{\"query\": \"myocardial lineage develops from cardiac progenitors mesodermal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1182516625,
+     "load_duration": 106226209,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 357446042,
+     "eval_count": 18,
+     "eval_duration": 520454792,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:19.551417Z"
+    },
+    "elapsed_s": 1.185,
+    "query_used": "myocardial lineage develops from cardiac progenitors mesodermal",
+    "query_source": "json",
+    "query_arrival_seq": 1835
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "myocardial lineage develops from cardiac progenitors mesodermal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4427392:0",
+       "score_q": 860
+      },
+      {
+       "passage_key": "scifact:4427392:1",
+       "score_q": 818
+      },
+      {
+       "passage_key": "scifact:5085118:0",
+       "score_q": 811
+      },
+      {
+       "passage_key": "scifact:6148876:1",
+       "score_q": 798
+      },
+      {
+       "passage_key": "scifact:4427392:2",
+       "score_q": 792
+      }
+     ],
+     "retrieval_sha256": "add5b58e6dee0332d560101040e1fc5dadc6a3d951ff93c0825d64884e32f255"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "add5b58e6dee0332d560101040e1fc5dadc6a3d951ff93c0825d64884e32f255",
+    "query_embedding_sha256": "1066ff73ec3220eb80161a8c0c5d8416da2f70e3b79fc5986db6f462bdd7d148",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4427392:0",
+      "content_sha256": "df51b04182bce8c552334b0545dc5dd42f6774760c2a0b44b51eab8f1a934884",
+      "chars": 803
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4427392:1",
+      "content_sha256": "2590bafa509e33baa8a9d94d4f30c782692e2911178a1948eb3ea517373015f1",
+      "chars": 1092
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5085118:0",
+      "content_sha256": "75b4c7012189a75c865e533c86e0c07734a755f9567e8d911029c45e3de6bb6d",
+      "chars": 1015
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6148876:1",
+      "content_sha256": "d86ddce4977812bca11ca71e68ce02ad94d5df03d5c2ec75995bf85e5a31f191",
+      "chars": 543
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4427392:2",
+      "content_sha256": "dcb4bc35d0742dab04f2c12953806a9001a4a4d6ca1f0b3abf6aa271f3a20d9a",
+      "chars": 234
+     }
+    ],
+    "elapsed_s": 4.8271
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nEvidence passages from your search for \"myocardial lineage develops from cardiac progenitors mesodermal\":\n<<<PASSAGES\n[P1] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nThe functional heart is comprised of distinct mesoderm-derived lineages including cardiomyocytes, endothelial cells and vascular smooth muscle cells. Studies in the mouse embryo and the mouse embryonic stem cell differentiation model have provided evidence indicating that these three lineages develop from a common Flk-1+ (kinase insert domain protein receptor, also known as Kdr) cardiovascular progenitor that represents one of the earliest stages in mesoderm specification to the cardiovascular lineages. To determine whether a comparable progenitor is present during human cardiogenesis, we analysed the development of the cardiovascular lineages in human embryonic stem cell differentiation cultures.\n\n[P2] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nHere we show that after induction with combinations of activin A, bone morphogenetic protein 4 (BMP4), basic fibroblast growth factor (bFGF, also known as FGF2), vascular endothelial growth factor (VEGF, also known as VEGFA) and dickkopf homolog 1 (DKK1) in serum-free media, human embryonic-stem-cell-derived embryoid bodies generate a KDRlow/C-KIT(CD117)neg population that displays cardiac, endothelial and vascular smooth muscle potential in vitro and, after transplantation, in vivo. When plated in monolayer cultures, these KDRlow/C-KITneg cells differentiate to generate populations consisting of greater than 50% contracting cardiomyocytes. Populations derived from the KDRlow/C-KITneg fraction give rise to colonies that contain all three lineages when plated in methylcellulose cultures. Results from limiting dilution studies and cell-mixing experiments support the interpretation that these colonies are clones, indicating that they develop from a cardiovascular colony-forming cell.\n\n[P3] Neural crest-derived stem cells migrate and differentiate into cardiomyocytes after myocardial infarction.\nOBJECTIVE We recently demonstrated that primitive neural crest-derived (NC) cells migrate from the cardiac neural crest during embryonic development and remain in the heart as dormant stem cells, with the capacity to differentiate into various cell types, including cardiomyocytes. Here, we examined the migration and differentiation potential of these cells on myocardial infarction (MI). METHODS AND RESULTS We obtained double-transgenic mice by crossing protein-0 promoter-Cre mice with Floxed-enhanced green fluorescent protein mice, in which the NC cells express enhanced green fluorescent protein. In the neonatal heart, NC stem cells (NCSCs) were localized predominantly in the outflow tract, but they were also distributed in a gradient from base to apex throughout the ventricular myocardium. Time-lapse video analysis revealed that the NCSCs were migratory. Some NCSCs persisted in the adult heart.\n\n[P4] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nCONCLUSIONS Isl1 is not restricted to second heart field progenitors in the developing heart but also labels cardiac neural crest. The intersection of Isl1 and Wnt1 lineages within the heart provides a caveat to using Isl1 as an exclusive second heart field cardiac progenitor marker and suggests that some Isl1-expressing progenitor cells derived from embryos, embryonic stem cultures, or induced pluripotent stem cultures may be of neural crest lineage.\n\n[P5] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nTogether, these findings identify a human cardiovascular progenitor that defines one of the earliest stages of human cardiac development.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5d999bef6fef53e25c8990a88ed8a964c42a3f5df20e1ffb5ad6a0bcf41f424b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863324.37956,
+      "end_wall": 1792863337.1065311,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1835,
+    "start_wall": 1792863324.37956,
+    "start_mono": 532881.128722125,
+    "end_wall": 1792863337.1065311,
+    "end_mono": 532893.855701041,
+    "raw_response": "{\"reasoning\": \"The evidence passages indicate that human cardiovascular progenitors are derived from KDR+ embryonic-stem-cell-derived populations, supporting the claim that these progenitors develop from mesodermal origin.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12724001709,
+     "load_duration": 6250723125,
+     "prompt_eval_count": 1032,
+     "prompt_eval_duration": 2358850166,
+     "eval_count": 82,
+     "eval_duration": 3251673673,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:37.105007Z"
+    },
+    "elapsed_s": 12.727,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1835,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:4427392:0",
+     "scifact:4427392:1",
+     "scifact:4427392:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 207,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bfa804592c30720bd15484f31d035b95f3fab1d4ca828a8a509f34eabae453e8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863318.3667421,
+      "end_wall": 1792863320.2376451,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863318.3667421,
+    "start_mono": 532875.115899875,
+    "end_wall": 1792863320.2376451,
+    "end_mono": 532876.986801916,
+    "raw_response": "{\"query\": \"myocardial lineage mesodermal origin development\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1868354833,
+     "load_duration": 1172855500,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 323409791,
+     "eval_count": 17,
+     "eval_duration": 304151915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:20.236404Z"
+    },
+    "elapsed_s": 1.871,
+    "query_used": "myocardial lineage mesodermal origin development",
+    "query_source": "json",
+    "query_arrival_seq": 1837
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "myocardial lineage mesodermal origin development",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:32797183:0",
+       "score_q": 7479
+      },
+      {
+       "passage_key": "scifact:17991818:0",
+       "score_q": 6871
+      },
+      {
+       "passage_key": "scifact:14296612:1",
+       "score_q": 6251
+      },
+      {
+       "passage_key": "scifact:34982259:0",
+       "score_q": 5942
+      },
+      {
+       "passage_key": "scifact:5002665:1",
+       "score_q": 5827
+      }
+     ],
+     "retrieval_sha256": "6b8240e5da627059a7320c7f99de8119ba63d2832551052b404662ee257441c1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6b8240e5da627059a7320c7f99de8119ba63d2832551052b404662ee257441c1",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:32797183:0",
+      "content_sha256": "c2119120130599ea2c74cc830cb18514850206209b89e84a3c461af740d46fc8",
+      "chars": 1107
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17991818:0",
+      "content_sha256": "cfe357d5fcb725bdfb5776a7ec6ff9883f4b9bd46a4301dc7d0d7f8b37e7bda7",
+      "chars": 972
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14296612:1",
+      "content_sha256": "b2edae00f397bd5e8be0aab47c397ff3028a9f51462c6b71594362e656ada44a",
+      "chars": 1044
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34982259:0",
+      "content_sha256": "81012bd4e51be55c526f360113079d298617965e32fc3670bd60fbf781b44976",
+      "chars": 876
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5002665:1",
+      "content_sha256": "a715244a25578d820a6b82dbdafcbf0e7dd0180ceaad8f50e73e6553f4ed1758",
+      "chars": 389
+     }
+    ],
+    "elapsed_s": 0.0022
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nEvidence passages from your search for \"myocardial lineage mesodermal origin development\":\n<<<PASSAGES\n[P1] Smooth muscle lineage diversity in the chick embryo. Two types of aortic smooth muscle cell differ in growth and receptor-mediated transcriptional responses to transforming growth factor-beta.\nLineage analysis studies in the avian embryo have identified two types of smooth muscle cells (SMCs) in the tunica media of large elastic arteries; one that originates within the cardiac neural crest and is ectoderm in origin (Ect) and another that arises from local mesenchyme of mesodermal origin (Mes). To determine if differences in primary embryonic lineage can give rise to SMCs with stable differences in growth and differentiation properties, we isolated Ect and Mes SMCs from the Day 14 chick embryo aorta. We report that despite different primary embryonic origins, Ect and Mes SMCs express nearly identical levels of seven SMC differentiation markers in vitro, consistent with their common smooth muscle developmental fates in vivo. By contrast, Ect SMCs displayed a greater capacity for growth in serum-free medium than Mes SMCs, but only under conditions permitting short-range cell-cell interactions.\n\n[P2] THE ORIGIN AND DIFFERENTIATION OF MICROGLIAL CELLS DURING DEVELOPMENT\nSome authors claim that microglia originate from the neuroepithelium, although most now believe that microglial cells are of mesodermal origin, and probably belong to the monocyte/macrophage cell line. These cells must enter the developing central nervous system (CNS) from the blood stream, the ventricular space or the meninges. Afterward microglial cells are distributed more or less homogeneously through the entire nervous parenchyma. Stereotyped patterns of migration have been recognized during development, in which long-distance tangential migration precedes radial migration of individual cells. Microglial cells moving through the nervous parenchyma are ameboid microglia, which apparently differentiate into ramified microglia after reaching their definitive location. This is supported by the presence of cells showing intermediate features between those of ameboid and ramified microglia.\n\n[P3] Dorsomorphin, a Selective Small Molecule Inhibitor of BMP Signaling, Promotes Cardiomyogenesis in Embryonic Stem Cells\nDorsomorphin, unlike the endogenous BMP antagonist Noggin, robustly induces cardiomyogenesis when treatment is limited to the initial 24-hours of ES cell differentiation. Quantitative-PCR analyses of differentiating ES cells indicate that pharmacological inhibition of BMP signaling during the early critical stage promotes the development of the cardiomyocyte lineage, but reduces the differentiation of endothelial, smooth muscle, and hematopoietic cells. CONCLUSIONS/ SIGNIFICANCE Administration of a selective small molecule BMP inhibitor during the initial stages of ES cell differentiation substantially promotes the differentiation of primitive pluripotent cells toward the cardiomyocytic lineage, apparently at the expense of other mesodermal lineages. Small molecule modulators of developmental pathways like dorsomorphin could become versatile pharmacological tools for stem cell research and regenerative medicine.\n\n[P4] Of lineage and legacy: the development of mammalian hematopoietic stem cells\nThe hematopoietic system is one of the first complex tissues to develop in the mammalian conceptus. Of particular interest in the field of developmental hematopoiesis is the origin of adult bone marrow hematopoietic stem cells. Tracing their origin is complicated because blood is a mobile tissue and because hematopoietic cells emerge from many embryonic sites. The origin of the adult mammalian blood system remains a topic of lively discussion and intense research. Interest is also focused on developmental signals that induce the adult hematopoietic stem cell program, as these may prove useful for generating and expanding these clinically important cell populations ex vivo. This review presents a historical overview of and the most recent data on the developmental origins of hematopoiesis.\n\n[P5] The embryonic cell lineage of the nematode Caenorhabditis elegans.\nWe conclude that the cell lineage itself, complex as it is, plays an important role in determining cell fate. We discuss the origin of the repeat units (partial segments) in the body wall, the generation of the various orders of symmetry, the analysis of the lineage in terms of sublineages, and evolutionary implications.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "586d37fd4f495765c0e685d4c143238f8c009b18442d7b1d9e29b19b1681089d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863320.241997,
+      "end_wall": 1792863339.022918,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1836,
+    "start_wall": 1792863320.241997,
+    "start_mono": 532876.991156375,
+    "end_wall": 1792863339.022918,
+    "end_mono": 532895.772088166,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that the myocardial lineage develops from cardiac progenitors of mesodermal origin. Passage [P3] supports this claim by discussing dorsomorphin, a BMP inhibitor, that promotes cardiomyogenesis in embryonic stem cells, indicating a mesodermal origin of the myocardial lineage. No other passages contradict this claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18775086750,
+     "load_duration": 8933097042,
+     "prompt_eval_count": 1387,
+     "prompt_eval_duration": 3262224417,
+     "eval_count": 125,
+     "eval_duration": 6047066460,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:39.018608Z"
+    },
+    "elapsed_s": 18.781,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1836,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:14296612:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 335,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bfa804592c30720bd15484f31d035b95f3fab1d4ca828a8a509f34eabae453e8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863318.366955,
+      "end_wall": 1792863323.449962,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863318.366955,
+    "start_mono": 532875.116112583,
+    "end_wall": 1792863323.449962,
+    "end_mono": 532880.199122958,
+    "raw_response": "{\"query\": \"cardiac progenitors mesodermal origin\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5080209208,
+     "load_duration": 3809643041,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 671902000,
+     "eval_count": 14,
+     "eval_duration": 456484999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:23.449048Z"
+    },
+    "elapsed_s": 5.083,
+    "query_used": "cardiac progenitors mesodermal origin",
+    "query_source": "json",
+    "query_arrival_seq": 1838
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "cardiac progenitors mesodermal origin",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6148876:1",
+       "score_q": 7286
+      },
+      {
+       "passage_key": "scifact:6148876:0",
+       "score_q": 7272
+      },
+      {
+       "passage_key": "scifact:32797183:0",
+       "score_q": 6382
+      },
+      {
+       "passage_key": "scifact:17991818:0",
+       "score_q": 5484
+      },
+      {
+       "passage_key": "scifact:17933691:0",
+       "score_q": 5423
+      }
+     ],
+     "retrieval_sha256": "bb1d038b0ed8f866b9ecf7c918f3be490ada2376a8245514a1d199e1cba338b3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bb1d038b0ed8f866b9ecf7c918f3be490ada2376a8245514a1d199e1cba338b3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6148876:1",
+      "content_sha256": "d86ddce4977812bca11ca71e68ce02ad94d5df03d5c2ec75995bf85e5a31f191",
+      "chars": 543
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6148876:0",
+      "content_sha256": "a15157fd54b0489773853cd18e88c0b86cc4c928dcf1b1453e9c5f76a548b457",
+      "chars": 1008
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:32797183:0",
+      "content_sha256": "c2119120130599ea2c74cc830cb18514850206209b89e84a3c461af740d46fc8",
+      "chars": 1107
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:17991818:0",
+      "content_sha256": "cfe357d5fcb725bdfb5776a7ec6ff9883f4b9bd46a4301dc7d0d7f8b37e7bda7",
+      "chars": 972
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:17933691:0",
+      "content_sha256": "097583b7484387cb4ece2af23f708be8ed2f5a39871ff53d3a507f12f749069f",
+      "chars": 1089
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nEvidence passages from your search for \"cardiac progenitors mesodermal origin\":\n<<<PASSAGES\n[P1] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nCONCLUSIONS Isl1 is not restricted to second heart field progenitors in the developing heart but also labels cardiac neural crest. The intersection of Isl1 and Wnt1 lineages within the heart provides a caveat to using Isl1 as an exclusive second heart field cardiac progenitor marker and suggests that some Isl1-expressing progenitor cells derived from embryos, embryonic stem cultures, or induced pluripotent stem cultures may be of neural crest lineage.\n\n[P2] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nRATIONALE Islet1 (Isl1) has been proposed as a marker of cardiac progenitor cells derived from the second heart field and is utilized to identify and purify cardiac progenitors from murine and human specimens for ex vivo expansion. The use of Isl1 as a specific second heart field marker is dependent on its exclusion from other cardiac lineages such as neural crest. OBJECTIVE Determine whether Isl1 is expressed by cardiac neural crest. METHODS AND RESULTS We used an intersectional fate-mapping system using the RC::FrePe allele, which reports dual Flpe and Cre recombination. Combining Isl1(Cre/+), a SHF driver, and Wnt1::Flpe, a neural crest driver, with Rc::FrePe reveals that some Isl1 derivatives in the cardiac outflow tract derive from Wnt1-expressing neural crest progenitors. In contrast, no overlap was observed between Wnt1-derived neural crest and an alternative second heart field driver, Mef2c-AHF-Cre.\n\n[P3] Smooth muscle lineage diversity in the chick embryo. Two types of aortic smooth muscle cell differ in growth and receptor-mediated transcriptional responses to transforming growth factor-beta.\nLineage analysis studies in the avian embryo have identified two types of smooth muscle cells (SMCs) in the tunica media of large elastic arteries; one that originates within the cardiac neural crest and is ectoderm in origin (Ect) and another that arises from local mesenchyme of mesodermal origin (Mes). To determine if differences in primary embryonic lineage can give rise to SMCs with stable differences in growth and differentiation properties, we isolated Ect and Mes SMCs from the Day 14 chick embryo aorta. We report that despite different primary embryonic origins, Ect and Mes SMCs express nearly identical levels of seven SMC differentiation markers in vitro, consistent with their common smooth muscle developmental fates in vivo. By contrast, Ect SMCs displayed a greater capacity for growth in serum-free medium than Mes SMCs, but only under conditions permitting short-range cell-cell interactions.\n\n[P4] THE ORIGIN AND DIFFERENTIATION OF MICROGLIAL CELLS DURING DEVELOPMENT\nSome authors claim that microglia originate from the neuroepithelium, although most now believe that microglial cells are of mesodermal origin, and probably belong to the monocyte/macrophage cell line. These cells must enter the developing central nervous system (CNS) from the blood stream, the ventricular space or the meninges. Afterward microglial cells are distributed more or less homogeneously through the entire nervous parenchyma. Stereotyped patterns of migration have been recognized during development, in which long-distance tangential migration precedes radial migration of individual cells. Microglial cells moving through the nervous parenchyma are ameboid microglia, which apparently differentiate into ramified microglia after reaching their definitive location. This is supported by the presence of cells showing intermediate features between those of ameboid and ramified microglia.\n\n[P5] Characterization of adipocytes derived from fibro/adipogenic progenitors resident in human skeletal muscle\nA population of fibro/adipogenic but non-myogenic progenitors located between skeletal muscle fibers was recently discovered. The aim of this study was to determine the extent to which these progenitors differentiate into fully functional adipocytes. The characterization of muscle progenitor-derived adipocytes is a central issue in understanding muscle homeostasis. They are considered as being the cellular origin of intermuscular adipose tissue that develops in several pathophysiological situations. Here fibro/adipogenic progenitors were isolated from a panel of 15 human muscle biopsies on the basis of the specific cell-surface immunophenotype CD15+/PDGFRα+CD56-. This allowed investigations of their differentiation into adipocytes and the cellular functions of terminally differentiated adipocytes. Adipogenic differentiation was found to be regulated by the same effectors as those regulating differentiation of progenitors derived from white subcutaneous adipose tissue.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "406f3f00bd6f5707cd004742ec1e3dc5da72580aa03737171d65f8e68952a282",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863323.450656,
+      "end_wall": 1792863340.216782,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1837,
+    "start_wall": 1792863323.450656,
+    "start_mono": 532880.199817041,
+    "end_wall": 1792863340.216782,
+    "end_mono": 532896.965953583,
+    "raw_response": "{\"reasoning\": \"The claim that the myocardial lineage develops from cardiac progenitors of mesodermal origin is supported by multiple lines of evidence. P1 and P2 indicate that Islet1 derivatives in the heart include both neural crest and second heart field origin, suggesting that cardiac progenitors can be of both these lineages. P3 and P4 provide evidence for the mesodermal origin of certain cardiac cell types, with P3 indicating two types of smooth muscle cells with different origins and P4 discussing the mesodermal origin of microglia. While P5 focuses on adipocyte differentiation in the context of muscle\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16762032791,
+     "load_duration": 47267500,
+     "prompt_eval_count": 1242,
+     "prompt_eval_duration": 4600627334,
+     "eval_count": 146,
+     "eval_duration": 10810768588,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:40.213768Z"
+    },
+    "elapsed_s": 16.766,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1837,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bfa804592c30720bd15484f31d035b95f3fab1d4ca828a8a509f34eabae453e8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863318.366616,
+      "end_wall": 1792863328.0241401,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863318.366616,
+    "start_mono": 532875.115773708,
+    "end_wall": 1792863328.0241401,
+    "end_mono": 532884.773302458,
+    "raw_response": "{\"query\": \"myocardial lineage mesodermal origin cardiac progenitors\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9653702167,
+     "load_duration": 5382907959,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 975418791,
+     "eval_count": 14,
+     "eval_duration": 3021594958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:28.022624Z"
+    },
+    "elapsed_s": 9.658,
+    "query_used": "myocardial lineage mesodermal origin cardiac progenitors",
+    "query_source": "json",
+    "query_arrival_seq": 1839
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "myocardial lineage mesodermal origin cardiac progenitors",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6148876:1",
+       "score_q": 9368
+      },
+      {
+       "passage_key": "scifact:32797183:0",
+       "score_q": 8980
+      },
+      {
+       "passage_key": "scifact:6148876:0",
+       "score_q": 7272
+      },
+      {
+       "passage_key": "scifact:4020950:0",
+       "score_q": 6899
+      },
+      {
+       "passage_key": "scifact:4421787:1",
+       "score_q": 6039
+      }
+     ],
+     "retrieval_sha256": "1a6e109853ea5abd3463b468beb1ce74da2a036030c5226d95e280fc3def4506"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1a6e109853ea5abd3463b468beb1ce74da2a036030c5226d95e280fc3def4506",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6148876:1",
+      "content_sha256": "d86ddce4977812bca11ca71e68ce02ad94d5df03d5c2ec75995bf85e5a31f191",
+      "chars": 543
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:32797183:0",
+      "content_sha256": "c2119120130599ea2c74cc830cb18514850206209b89e84a3c461af740d46fc8",
+      "chars": 1107
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:6148876:0",
+      "content_sha256": "a15157fd54b0489773853cd18e88c0b86cc4c928dcf1b1453e9c5f76a548b457",
+      "chars": 1008
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4020950:0",
+      "content_sha256": "38a27595ee4681f7607fe1dd810b9f66ea4eddf862b421d0dea79101014ed6a2",
+      "chars": 937
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4421787:1",
+      "content_sha256": "892937ab0ba3a87291748a75f79dd3897bd45a82b5ed5fe331f489283cacece3",
+      "chars": 755
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nEvidence passages from your search for \"myocardial lineage mesodermal origin cardiac progenitors\":\n<<<PASSAGES\n[P1] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nCONCLUSIONS Isl1 is not restricted to second heart field progenitors in the developing heart but also labels cardiac neural crest. The intersection of Isl1 and Wnt1 lineages within the heart provides a caveat to using Isl1 as an exclusive second heart field cardiac progenitor marker and suggests that some Isl1-expressing progenitor cells derived from embryos, embryonic stem cultures, or induced pluripotent stem cultures may be of neural crest lineage.\n\n[P2] Smooth muscle lineage diversity in the chick embryo. Two types of aortic smooth muscle cell differ in growth and receptor-mediated transcriptional responses to transforming growth factor-beta.\nLineage analysis studies in the avian embryo have identified two types of smooth muscle cells (SMCs) in the tunica media of large elastic arteries; one that originates within the cardiac neural crest and is ectoderm in origin (Ect) and another that arises from local mesenchyme of mesodermal origin (Mes). To determine if differences in primary embryonic lineage can give rise to SMCs with stable differences in growth and differentiation properties, we isolated Ect and Mes SMCs from the Day 14 chick embryo aorta. We report that despite different primary embryonic origins, Ect and Mes SMCs express nearly identical levels of seven SMC differentiation markers in vitro, consistent with their common smooth muscle developmental fates in vivo. By contrast, Ect SMCs displayed a greater capacity for growth in serum-free medium than Mes SMCs, but only under conditions permitting short-range cell-cell interactions.\n\n[P3] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nRATIONALE Islet1 (Isl1) has been proposed as a marker of cardiac progenitor cells derived from the second heart field and is utilized to identify and purify cardiac progenitors from murine and human specimens for ex vivo expansion. The use of Isl1 as a specific second heart field marker is dependent on its exclusion from other cardiac lineages such as neural crest. OBJECTIVE Determine whether Isl1 is expressed by cardiac neural crest. METHODS AND RESULTS We used an intersectional fate-mapping system using the RC::FrePe allele, which reports dual Flpe and Cre recombination. Combining Isl1(Cre/+), a SHF driver, and Wnt1::Flpe, a neural crest driver, with Rc::FrePe reveals that some Isl1 derivatives in the cardiac outflow tract derive from Wnt1-expressing neural crest progenitors. In contrast, no overlap was observed between Wnt1-derived neural crest and an alternative second heart field driver, Mef2c-AHF-Cre.\n\n[P4] Roles of exosomes in cardioprotection.\nExosomes are extracellular vesicles of endosomal origin which have emerged as key mediators of intercellular communication. All major cardiac cell types-including cardiomyocytes, endothelial cells, and fibroblasts-release exosomes that modulate cellular functions. Exosomes released from human cardiac progenitor cells (CPCs) are cardioprotective and improve cardiac function after myocardial infarction to an extent comparable with that achieved by their parent cells. Cardiac progenitor cell-derived exosomes are enriched in cardioprotective microRNAs, particularly miR-146a-3p. Circulating exosomes mediate remote ischaemic preconditioning. Moreover, they currently are being investigated as diagnostic markers. The discovery that cell-derived extracellular signalling organelles mediate the paracrine effects of stem cells suggests that cell-free strategies could supplant cell transplantation.\n\n[P5] Diverse and heritable lineage imprinting of early haematopoietic progenitors\nConversely, although we observe a known lineage bias of some HSCs, most cellular output is derived from a small number of HSCs that each generates all cell types. Crucially, in vivo analysis of the output of sibling cells derived from single LMPPs shows that they often share a similar fate, suggesting that the fate of these progenitors was imprinted. Furthermore, as this imprinting is also observed for dendritic-cell-biased LMPPs, dendritic cells may be considered a distinct lineage on the basis of separate ancestry. These data suggest a ‘graded commitment’ model of haematopoiesis, in which heritable and diverse lineage imprinting occurs earlier than previously thought.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fceecbe572a9aad6eb44ec1937a8582805f16355891dbf2352389eb6f900ba7a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863328.028646,
+      "end_wall": 1792863351.893926,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1838,
+    "start_wall": 1792863328.028646,
+    "start_mono": 532884.777811416,
+    "end_wall": 1792863351.893926,
+    "end_mono": 532908.643106916,
+    "raw_response": "{\"reasoning\": \"The claim is supported by passages P1 and P2. P1 states that islet1 derivatives are of both neural crest and second heart field origin, and P2 discusses the diversity of smooth muscle lineage. These passages suggest that the myocardial lineage can originate from various origins, not just the second heart field.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23859462834,
+     "load_duration": 14996797500,
+     "prompt_eval_count": 1140,
+     "prompt_eval_duration": 3578435167,
+     "eval_count": 94,
+     "eval_duration": 3349576460,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:51.889473Z"
+    },
+    "elapsed_s": 23.865,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1838,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:6148876:1",
+     "scifact:32797183:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 312,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bfa804592c30720bd15484f31d035b95f3fab1d4ca828a8a509f34eabae453e8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792863318.3670468,
+      "end_wall": 1792863319.990987,
+      "error": null
+     }
+    ],
+    "start_wall": 1792863318.3670468,
+    "start_mono": 532875.116204708,
+    "end_wall": 1792863319.990987,
+    "end_mono": 532876.740145,
+    "raw_response": "{\"query\": \"cardiac progenitors mesodermal origin myocardial development\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1621116625,
+     "load_duration": 56703209,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 475279375,
+     "eval_count": 16,
+     "eval_duration": 968515958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:19.989962Z"
+    },
+    "elapsed_s": 1.624,
+    "query_used": "cardiac progenitors mesodermal origin myocardial development",
+    "query_source": "json",
+    "query_arrival_seq": 1836
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "cardiac progenitors mesodermal origin myocardial development",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4427392:0",
+       "score_q": 846
+      },
+      {
+       "passage_key": "scifact:4427392:1",
+       "score_q": 800
+      },
+      {
+       "passage_key": "scifact:4427392:2",
+       "score_q": 793
+      },
+      {
+       "passage_key": "scifact:5085118:0",
+       "score_q": 772
+      },
+      {
+       "passage_key": "scifact:6148876:1",
+       "score_q": 766
+      }
+     ],
+     "retrieval_sha256": "4489429df2fb0d717272a14bd0542af5a445f0a7d246753af89d3ea899e6dc29"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4489429df2fb0d717272a14bd0542af5a445f0a7d246753af89d3ea899e6dc29",
+    "query_embedding_sha256": "427872dd21c6432f582631cae12004c8b71f2e4a09cdc300d6bf94170c2cee0e",
+    "query_embedding_f32_b64": "Y8FaPQ4PrryOkDa+dX6uPE6zTjzgvOU89mgoPJAeDjynkOe8NRHNvRTeNLxT2m499eqQPez1yDwsKxw9qjxSuzmuC70+nOC8cFi/PEzanD3+MhS9HL68vJUTIr0oVVo9SSLiPdbLMT2OeJM8wpGtvJrJz7ySpRE9QkYvPQkQj7w+BPI8GiJ8uwHrOrxEWE+93vZLPcZ9xju5mSw94/UPvFHKOzs0OW+9lMQjPZaCpr35IHC7HDUIPPFLQDrp5wG7av0NPb89Gr2fX089mMiqPCcZG7z8VOK8N8EjPT6BU7v5meg6op1Fu0yZMD2OHby8i5pUPfs/ij0Eq4C9H2K4PNYIDD0TeNC8/FnfOm6ZrT2UI088p1eJPcu0Hz2DwsS8yPOrPM6WWj3pYqE8DGimvG2jmb0Qlzi91s4iPZyxwLt09dM8nO6EvDMdEz3R5zC9bjvyPDyMmjydrzW7fR8MvP7I5rzos6U9BPHNPK31lD0/D9W7XIOauwldOb3v8Ge7dm3pPIGx/DwHD9a88GcCvfDURrzrLUu9Hptcuwn2T7xaWMY8chYRPdyswjwnHJ+9Unjpux5o9rsfILK8kN5MPBD1nr25Q4Q8qf/XugThL7yZne48/ljvOXZcm7yjfgw9B5jdu7ABrbxuUDC80yNUPLSS/TxQpok9mMwQvXx837wpIk48s1povH/wFDxgEhQ9b8EauhIMhL2RZkG8qxhZPcMmML2zVA474f4nPcC9Rz1om8O7RFfeOw+mIjxELYO85Q6nvIco5rxBVEE9exoavVQYjb2JXLO4W+iovPYb/zolFBG9KH3pPD53Ej196xi99thcvZ+3HLxCb5c7/7BGPBnjZj0KYFm7Aux5vQ+p6jwrAXG89SpnvRp9ET3lSig9fosiPBmYbD1bVkY6vCenvXJ0F7xU6JU7a7t2PKCkN7xIPuy74JmLvTTUNj3ZbQO921+ROzWV2ryw+h89ZkqqO9ErDD30gXE7XCebO67whjpCjeO8dgQ0vOOZmrwjsAw9LPufveFyBL00X+a86PBFvezw0Lzro8G8Y+dfPTFv6rzykOa7sgGzO+Sbk7zl9h87tdC/vG9FTT3Oz4K83jhAPS5CNrsv7+k89iMYPfBAhbz/K5q9yPU5vGkxQDzqyoq9IdSFu+kf6rwfXkW8cl09vHaikjxE2Gg8FIaSPGSVTr196z08wRWavNH9PLyMdQK7rALivGX3NLxCBY69h/QAvSMqcz0kwYu8mV3GO7eWJrz2CRa9jGsxPByKPb2nkIs7rq8UPc82jjySIqQ8qLTuvFxcJb2kgFK8qhTiPCOzjTq/An08MgvpvHnAKT2BkU08IzTnO5UeCL3oYJ67WvdivRtmsbwr6pg8LfynvJj5Ar3a7Lk8fwO+vGAZlDrsmkC9rIpHve2sLbuwHXi8+HEovBSpljzZncm81Xc9PAzKLT0pMSs8B3KrPOrZeryrRJE8HemTPFNChLtcBmC9EIaYPJJpJ7xkrQu9rLOrvHqSF71qbP66Xb1EPLJjZT0xO8K8mTJWPX5wSLnk9+U8KJG+vAayHr1QXPo8iaGbPXskOT09aiM9ozlePBlIurww4We9I5IrPbD0F7pFpKc9JMgUu8SxljttdBi9JnwKPSfZgbzjqAc9VUqwPFYSlLogoE29+mTKO+arZz2ylp29rcssuxRnu7x0IG67xxOSPSuTrTy0ysO8EXUQvXwyQ7wMlPe8tkK2PC/9az3EHNW6X+PfPNrgILw+e068aae+PFLAgD1j03A8DddhPLNyPb2YsNC8ir+Gvdo1Qz3u5I+7+PHwPIdIFT0iUac8Y/IaPdivTL0M/XG7mdP8vM7W8LwcwPE8ORlXPHfLGD0hgTS9tSbTPNx3r7rniSs9rVkbPYkBTDyz4q47dVm5vGu2NzmNRNG8z4luO7cCXDuX9wK9JtSMPDQZeTzbf/I89qRZPVKrELz9yjU9Q8aqusmG9byhQQS9AITlvGi9mDylREE8N/77PCeytr09LQS8ed/CvEmkTzyXER69MMoVvamOfj0Gk6678/+tu+SvtzsqYlo82hYBvLlws7x2Wim8HTqCOilBZjzQQYm8O9s9vYaEszvGK0+9MFMOPVHHOTxsY349gx72PEGQEL3jH4K9E0a1PA1IRDwqtMK8V1c5PEZbQb1zBYq9wO4fPPbILzz6hTs9eq7/PNPQCz1lc1W815NBPbd02zx23sI9MgpYvAOsUzxcCDM9/TBuPVo1JjwSQOm7FAW1O4Vukz0+C4w9SfGgPEACKjxr1eu89kyCvWTeMLu5R5I8jvaPPSxzGTuCmPG743j5PC0dN730nVk8nAbvvBC2WT06vfU8lJ2QvZy5jbwsPu+7uOJqPVFCxT3hfio9gfMqvWI6Eb19vjQ9drYUPcb33DtrzCY993UYPaCogT1puqW8LPI1PQ+MFLu3FgA8gJ2SPFfA1jwLzS27nLBlvZ/gXjseIFe8iVovvcx397u9x3M8AKPSPFT30j2rEqK7ryYNvQj7BD1u6gC9P2m2PPtqDT3DGAU9hEuHvQewR7qHEhg9ZdY3PORDrTyN03G9Ye58vfAvFT1AsRk9wKJzPPeZBbytqCu9OchOPQS43jzs5gq8uySTPBCwkrwLEp48SrsDPen0+zx47Vy9DUlIPVvioryiz0i8nCLEPE/ce7w+cb47Vt4KPW3iXryvc3A82LijvD+5KL1scJY8lWIVvYLH5Dx586I9yWkzPQtW7rkr0SG9yDdlvJu3/zvls8m83H6DvBe21TyM8+e8uu8OvdCXqzy+5Li8XhbAPD4PI7y6ojG9VhnaPJQcvbkVbyg8O6w4PcFKjD169Sk8wXcAvQVEV7zMsAK9N+3rPGN3+Ty2u4e9cACXvHIZY7yoE8w8IoeMvGuWKr19vkM9j0xZvQ9XSD10Jo28ksabvbrsnzxtgLu921rdPLFIAL2rRzE9lDH2PPIkFD1LzaG8Nd8fvV03AL3FFYI7TPTtu2k9Hj0P09M83xf6PCWqIL2b8ao7Mf1cPLR3XTzdFx49Pao/PeCSir3JUpE7oQZyvGLmQ70qeWe8FybSOxsSOz2ElCm9dPiIu8mhHTvWrSm9CiUvO4InMD0bpLW8M7utuclOhTwqJki9SHWqPFROqjwGrJg82MfQPCmNzjt9b/O7Kjk1PFsdELxe7lC7uWgGvX9AUr1LFX29kqNJPB+F87tc3oE7GNORvOidrjrEnBi9EU2jPP/9lD0+gYg8Ja70O8baqDyIUTq9hfm0vKgWh70etUQ9aUAOvAFLoTwy8cA82HtlvfltLTzNBL47OlyNPLLtjDxqJU66p55UPVY8zjvjnqq8o2ZEvX8KjbyiBTw9cEUBOyjJBjysmIm9fg0VPA0iory2r0k9x3YJPQcAYzxsmrc6ZjW0Oxcwfj21hCk7uudrvQsPujy/yLw8kOG2PM8xFD0F5D48BG+euwv8CL0CsJg9KEERPRrj/Dz36dA7BFpJPUM87zoX0RM9MUquvRuRNL2YeL29IJQkvaJAvTxNLZA5n/PkvBjTSbyg2vm8gUBZvIeEnju1n6298Cl1PHhwnjxHTLQ8jYu8OdYCjrxq4vC8W/1WPZKhRz2M7iE8RO8LPVQPdTpGIvG7InEdvfIv/DtSZMi8pnk2vIDZibw4pjc9nAaLvSvAQrrxyB07+ihRvXHzPL1Zvky9apwqO+dp9Lwt5xi9ix8Zuhx/pT2JSjg6HcOnPebBKj34gjE7oTtbvGVLUz1TRn68Q9kLvJ/omTsfeyo7etFAvecWxjyblYQ8IpeLO/I4jzzrGjw9vKluuyCyGzx9xsy9njt8veexHr2bRIo9oNJyPOWiB73v0dm9jsSnvQ1UNLzp2Ke9nmaavEuW0rzrFQk8mfGKvH7jlLx4j7S815oCvOAwDLxe2WM7bGxUvXB6LL2gENa8I90hPJFrK72tIoC9x6cLvVoKY7z+MHg82NjNuRJugDxn0J68LontPMxUKz018+K7fl45PRdTZ7vAnxG9H6k9vN/yEz0yAxS8e/05Pfs9DT2FjZc9vKthvPFrmjwIc3W95FUKPR3oqLvqbbu8dqZ6vF1gXL0zV/w8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4427392:0",
+      "content_sha256": "df51b04182bce8c552334b0545dc5dd42f6774760c2a0b44b51eab8f1a934884",
+      "chars": 803
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4427392:1",
+      "content_sha256": "2590bafa509e33baa8a9d94d4f30c782692e2911178a1948eb3ea517373015f1",
+      "chars": 1092
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4427392:2",
+      "content_sha256": "dcb4bc35d0742dab04f2c12953806a9001a4a4d6ca1f0b3abf6aa271f3a20d9a",
+      "chars": 234
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5085118:0",
+      "content_sha256": "75b4c7012189a75c865e533c86e0c07734a755f9567e8d911029c45e3de6bb6d",
+      "chars": 1015
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:6148876:1",
+      "content_sha256": "d86ddce4977812bca11ca71e68ce02ad94d5df03d5c2ec75995bf85e5a31f191",
+      "chars": 543
+     }
+    ],
+    "elapsed_s": 4.6095
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The myocardial lineage develops from cardiac progenitors of mesodermal origin.\n\nEvidence passages from your search for \"cardiac progenitors mesodermal origin myocardial development\":\n<<<PASSAGES\n[P1] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nThe functional heart is comprised of distinct mesoderm-derived lineages including cardiomyocytes, endothelial cells and vascular smooth muscle cells. Studies in the mouse embryo and the mouse embryonic stem cell differentiation model have provided evidence indicating that these three lineages develop from a common Flk-1+ (kinase insert domain protein receptor, also known as Kdr) cardiovascular progenitor that represents one of the earliest stages in mesoderm specification to the cardiovascular lineages. To determine whether a comparable progenitor is present during human cardiogenesis, we analysed the development of the cardiovascular lineages in human embryonic stem cell differentiation cultures.\n\n[P2] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nHere we show that after induction with combinations of activin A, bone morphogenetic protein 4 (BMP4), basic fibroblast growth factor (bFGF, also known as FGF2), vascular endothelial growth factor (VEGF, also known as VEGFA) and dickkopf homolog 1 (DKK1) in serum-free media, human embryonic-stem-cell-derived embryoid bodies generate a KDRlow/C-KIT(CD117)neg population that displays cardiac, endothelial and vascular smooth muscle potential in vitro and, after transplantation, in vivo. When plated in monolayer cultures, these KDRlow/C-KITneg cells differentiate to generate populations consisting of greater than 50% contracting cardiomyocytes. Populations derived from the KDRlow/C-KITneg fraction give rise to colonies that contain all three lineages when plated in methylcellulose cultures. Results from limiting dilution studies and cell-mixing experiments support the interpretation that these colonies are clones, indicating that they develop from a cardiovascular colony-forming cell.\n\n[P3] Human cardiovascular progenitor cells develop from a KDR+ embryonic-stem-cell-derived population\nTogether, these findings identify a human cardiovascular progenitor that defines one of the earliest stages of human cardiac development.\n\n[P4] Neural crest-derived stem cells migrate and differentiate into cardiomyocytes after myocardial infarction.\nOBJECTIVE We recently demonstrated that primitive neural crest-derived (NC) cells migrate from the cardiac neural crest during embryonic development and remain in the heart as dormant stem cells, with the capacity to differentiate into various cell types, including cardiomyocytes. Here, we examined the migration and differentiation potential of these cells on myocardial infarction (MI). METHODS AND RESULTS We obtained double-transgenic mice by crossing protein-0 promoter-Cre mice with Floxed-enhanced green fluorescent protein mice, in which the NC cells express enhanced green fluorescent protein. In the neonatal heart, NC stem cells (NCSCs) were localized predominantly in the outflow tract, but they were also distributed in a gradient from base to apex throughout the ventricular myocardium. Time-lapse video analysis revealed that the NCSCs were migratory. Some NCSCs persisted in the adult heart.\n\n[P5] Islet1 derivatives in the heart are of both neural crest and second heart field origin.\nCONCLUSIONS Isl1 is not restricted to second heart field progenitors in the developing heart but also labels cardiac neural crest. The intersection of Isl1 and Wnt1 lineages within the heart provides a caveat to using Isl1 as an exclusive second heart field cardiac progenitor marker and suggests that some Isl1-expressing progenitor cells derived from embryos, embryonic stem cultures, or induced pluripotent stem cultures may be of neural crest lineage.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c158711aee49c944c0d59182a088da7f094ac4d011c3c6b3a0d35b46c2764cd3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792863324.600878,
+      "end_wall": 1792863353.723713,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1839,
+    "start_wall": 1792863324.600878,
+    "start_mono": 532881.350040041,
+    "end_wall": 1792863353.723713,
+    "end_mono": 532910.472894791,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages, particularly P1, P2, and P3, indicate that cardiovascular progenitors, including those leading to myocardial development, originate from the mesoderm in both mouse and human embryonic contexts. These passages highlight the presence of a common progenitor population marked by KDR expression that gives rise to various mesoderm-derived cardiac lineages, supporting the claim that the myocardial lineage develops from mesodermal origins.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29118685125,
+     "load_duration": 16372525667,
+     "prompt_eval_count": 1025,
+     "prompt_eval_duration": 4943527250,
+     "eval_count": 132,
+     "eval_duration": 6786536419,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:35:53.720523Z"
+    },
+    "elapsed_s": 29.123,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1839,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:4427392:0",
+     "scifact:4427392:1",
+     "scifact:4427392:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 458,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "add5b58e6dee0332d560101040e1fc5dadc6a3d951ff93c0825d64884e32f255",
+  "granite3.3:2b": "6b8240e5da627059a7320c7f99de8119ba63d2832551052b404662ee257441c1",
+  "olmo2:7b": "bb1d038b0ed8f866b9ecf7c918f3be490ada2376a8245514a1d199e1cba338b3",
+  "nemotron-mini:4b": "1a6e109853ea5abd3463b468beb1ce74da2a036030c5226d95e280fc3def4506",
+  "exaone3.5:7.8b": "4489429df2fb0d717272a14bd0542af5a445f0a7d246753af89d3ea899e6dc29"
+ },
+ "item_start_wall": 1792863318.36638,
+ "item_wall_s": 35.358,
+ "ollama_ps_samples": [
+  [
+   1792863318.366,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792863320.377,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863322.379,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792863324.381,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863326.392,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792863328.403,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863330.415,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863332.427,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792863334.438,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792863336.44,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792863338.452,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792863340.463,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792863342.475,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863344.488,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863346.5,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863348.512,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863350.524,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792863352.529,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

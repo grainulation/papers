@@ -1,0 +1,1226 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-popqa3073298",
+ "order": 87,
+ "split": "confirmatory",
+ "answer_format": "entity",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-popqa3073298",
+  "order": 87,
+  "split": "confirmatory",
+  "item_type": "entity",
+  "answer_format": "entity",
+  "answer_schema": {
+   "maxLength": 60,
+   "type": "string"
+  },
+  "corpus": "fever17",
+  "question": "Who is the father of John the Apostle?"
+ },
+ "item_view_sha256": "ff7c4d137c63945e8c0f910b791daabe1fd8ad9ff71eef97b91a63be66bab404",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the father of John the Apostle?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb36bda36c0cd97609b07b791df921cbeb574fde51e5f05429b97c4d6fa95602",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792855349.8674188,
+      "end_wall": 1792855350.787787,
+      "error": null
+     }
+    ],
+    "start_wall": 1792855349.8674188,
+    "start_mono": 524906.578598208,
+    "end_wall": 1792855350.787787,
+    "end_mono": 524907.498963708,
+    "raw_response": "{\"query\": \"John the Apostle father\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 918307583,
+     "load_duration": 117104625,
+     "prompt_eval_count": 169,
+     "prompt_eval_duration": 349446292,
+     "eval_count": 11,
+     "eval_duration": 342881877,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:30.786861Z"
+    },
+    "elapsed_s": 0.92,
+    "query_used": "John the Apostle father",
+    "query_source": "json",
+    "query_arrival_seq": 435
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "John the Apostle father",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:John_the_Presbyter:0",
+       "score_q": 9801
+      },
+      {
+       "passage_key": "fever17:John_P._Kelly:0",
+       "score_q": 8192
+      },
+      {
+       "passage_key": "fever17:Father_Damien:2",
+       "score_q": 8153
+      },
+      {
+       "passage_key": "fever17:Saint_John:0",
+       "score_q": 8118
+      },
+      {
+       "passage_key": "fever17:1_John_1:0",
+       "score_q": 8041
+      }
+     ],
+     "retrieval_sha256": "e056ac792dcac37eca45c2cc01aea62f8dc0ea98691921c6f06c1b6f1b4d5879"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e056ac792dcac37eca45c2cc01aea62f8dc0ea98691921c6f06c1b6f1b4d5879",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:John_the_Presbyter:0",
+      "content_sha256": "613e9894f307cf61aeda8c786a4ecf061b243bf488ba019cce0b4c7ac2a67c43",
+      "chars": 470
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:John_P._Kelly:0",
+      "content_sha256": "af9b9e2d0d64e4c69bff1c9bb49d56b05a6eeef20c85ce46aa7c753fe66f4d98",
+      "chars": 104
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Father_Damien:2",
+      "content_sha256": "51c4bf84831222cf4e9659cff003da265571e1381ee1f521020fc17649746a22",
+      "chars": 497
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saint_John:0",
+      "content_sha256": "f3b8ecdd0cddc4cc5a046e3e370a5b0583b1e98392e6f5adca6bb71b20a4e351",
+      "chars": 114
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:1_John_1:0",
+      "content_sha256": "1e00b28ff5dbf10f9e12459acffb310ef6513a8b05629501bb0a838e612c8a64",
+      "chars": 175
+     }
+    ],
+    "elapsed_s": 0.0345
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the father of John the Apostle?\n\nEvidence passages from your search for \"John the Apostle father\":\n<<<PASSAGES\n[P1] John the Presbyter\nJohn the Presbyter was an obscure figure of the early Church who is either distinguished from or identified with the Apostle John , by some also John the Divine . He appears in fragments from the church father Papias of Hierapolis as one of the author 's sources and is first unequivocally distinguished from the Apostle by Eusebius of Caesarea . He is frequently proposed as an alternative author of some of the Johannine books in the New Testament .\n\n[P2] John P. Kelly\nJohn P. Kelly is a convening apostle of the International Coalition of Apostolic Leaders .\n\n[P3] Father Damien\nFather Damien Day , April 15 , the day of his passing , is also a minor statewide holiday in Hawaii and to this day Father Damien is the patron saint of the Diocese of Honolulu and of Hawaii . Upon his beatification by Pope John Paul II in Rome on 4 June 1995 , Blessed Damien was granted a memorial feast day , which is celebrated on 10 May . Father Damien was canonized by Pope Benedict XVI on 11 October 2009 . The Catholic Encyclopedia calls him `` the Apostle of the Lepers . ''\n\n[P4] Saint John\nSaint John or St. John usually refers to John the Apostle of the Bible . Saint John may also refer to :\n\n[P5] 1 John 1\n1 John 1 is the first chapter of the First Epistle of John in the New Testament of the Christian Bible . The epistle is traditionally attributed to John the Apostle .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b28eea6b83b6c6f63b1d7b1be219f9c9f24dec4c3e9a9e1ed4143f3bf4b67baa",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792855350.8225868,
+      "end_wall": 1792855356.611867,
+      "error": null
+     }
+    ],
+    "arrival_seq": 435,
+    "start_wall": 1792855350.8225868,
+    "start_mono": 524907.533765291,
+    "end_wall": 1792855356.611867,
+    "end_mono": 524913.323039916,
+    "raw_response": "{\"reasoning\": \"The father of John the Apostle is traditionally believed to be Saint Peter, based on the New Testament.\", \"answer\": \"Saint Peter\", \"citations\": [\"P3\", \"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5786699334,
+     "load_duration": 68755459,
+     "prompt_eval_count": 630,
+     "prompt_eval_duration": 1021987708,
+     "eval_count": 60,
+     "eval_duration": 4127657252,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:36.610494Z"
+    },
+    "elapsed_s": 5.789,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 435,
+   "parsed": {
+    "status": "ok",
+    "answer": "Saint Peter",
+    "citations": [
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Father_Damien:2",
+     "fever17:1_John_1:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 103,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the father of John the Apostle?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb36bda36c0cd97609b07b791df921cbeb574fde51e5f05429b97c4d6fa95602",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792855349.8676312,
+      "end_wall": 1792855351.996375,
+      "error": null
+     }
+    ],
+    "start_wall": 1792855349.8676312,
+    "start_mono": 524906.578809833,
+    "end_wall": 1792855351.996375,
+    "end_mono": 524908.707551041,
+    "raw_response": "{\"query\": \"John Apostle father identity biblical references\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2126792208,
+     "load_duration": 65889208,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 482855625,
+     "eval_count": 13,
+     "eval_duration": 1480152498,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:31.995217Z"
+    },
+    "elapsed_s": 2.129,
+    "query_used": "John Apostle father identity biblical references",
+    "query_source": "json",
+    "query_arrival_seq": 436
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "John Apostle father identity biblical references",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sins_of_the_Father:0",
+       "score_q": 10463
+      },
+      {
+       "passage_key": "fever17:Ester_Sowernam:1",
+       "score_q": 10169
+      },
+      {
+       "passage_key": "fever17:John_the_Presbyter:0",
+       "score_q": 9801
+      },
+      {
+       "passage_key": "fever17:Alphaeus:0",
+       "score_q": 9730
+      },
+      {
+       "passage_key": "fever17:John_Sutherland_Black:0",
+       "score_q": 9610
+      }
+     ],
+     "retrieval_sha256": "daae0bb4f51b83429b7b508c89601725f6cb39404fc7cd5b4b3ead069983e4cf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "daae0bb4f51b83429b7b508c89601725f6cb39404fc7cd5b4b3ead069983e4cf",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sins_of_the_Father:0",
+      "content_sha256": "2aff042a7136357bfda1c918856b47eeb41743fa5ec7363ffab805c160601f53",
+      "chars": 308
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Ester_Sowernam:1",
+      "content_sha256": "abac3acfed8e563502c7d7c676e5cfa6c7452e30e3e83ab4a9f176a8a2fd678e",
+      "chars": 314
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:John_the_Presbyter:0",
+      "content_sha256": "613e9894f307cf61aeda8c786a4ecf061b243bf488ba019cce0b4c7ac2a67c43",
+      "chars": 470
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Alphaeus:0",
+      "content_sha256": "d2b680527850e12c14da8c98094caf5d51bee1f4352321ce77e0b660b68fb799",
+      "chars": 827
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:John_Sutherland_Black:0",
+      "content_sha256": "25963b3708c1589611f9e397ea45144e1821be90017ecd68bcbaa97504764c55",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0337
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the father of John the Apostle?\n\nEvidence passages from your search for \"John Apostle father identity biblical references\":\n<<<PASSAGES\n[P1] Sins of the Father\nSins of the Father or Sins of the Fathers derives from Biblical references ( primarily in the books Exodus , Deuteronomy , and Numbers ) to the sins ( or iniquities ) of one generation passing to another . The idea has been conveyed paraphrastically into popular culture and may refer to :\n\n[P2] Ester Sowernam\nThe only clue to Sowernam 's identity is the description on title page , `` neither Maide , Wife , nor Widdowe , yet really all , and therefore experienced to defend all . '' Her use of numerous classic allusions , Latin phrases , legal jargon , and biblical references shows she was well educated .\n\n[P3] John the Presbyter\nJohn the Presbyter was an obscure figure of the early Church who is either distinguished from or identified with the Apostle John , by some also John the Divine . He appears in fragments from the church father Papias of Hierapolis as one of the author 's sources and is first unequivocally distinguished from the Apostle by Eusebius of Caesarea . He is frequently proposed as an alternative author of some of the Johannine books in the New Testament .\n\n[P4] Alphaeus\nAlphaeus [ ælˈfiːəs ] is a man mentioned in the New Testament as the father of two of the Twelve Apostles , namely : Saint Matthew James , son of Alphaeus There were two men named Alphaeus . One of them was the father of the apostle James and other father of Matthew ( Levi ) Though both Matthew and James are described as being the `` son of Alphaeus '' there is no Biblical account of the two being called brothers , even in the same context where John and James or Peter and Andrew are described as being brothers . Alphaeus is traditionally identified with Clopas , based on the identification from parallel Gospel accounts of Mary , the mother of James the third woman with Mary Magdalene and Salome wife of Zebedee beside the cross in Matthew with Mary , the wife of Clopas , the third woman in John 's account .\n\n[P5] John Sutherland Black\nRev John Sutherland Black FRSE LLD ( 1846 -- 1923 ) was a Scottish biblical scholar and contributor to the Encyclopædia Britannica and Dictionary of National Biography . He was a noted literary editor and amateur astronomer . In encyclopedic references , Black is usually just shown as J.S.B.\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ce57300ef0f6070259ac9db1f193f9c577d9259f79afefc53fa42fb2b6a1a136",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792855352.030381,
+      "end_wall": 1792855364.871588,
+      "error": null
+     }
+    ],
+    "arrival_seq": 436,
+    "start_wall": 1792855352.030381,
+    "start_mono": 524908.741558583,
+    "end_wall": 1792855364.871588,
+    "end_mono": 524921.582755333,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages do not contain specific information regarding the father of John the Apostle. Biblical references and historical figures mentioned do not directly address John's paternal lineage, making it impossible to definitively identify his father based solely on the given information.\",\n  \"answer\": \"Not specified in given evidence\",\n  \"citations\": [],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12837605167,
+     "load_duration": 51041750,
+     "prompt_eval_count": 806,
+     "prompt_eval_duration": 3020766792,
+     "eval_count": 89,
+     "eval_duration": 9059631538,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:44.869068Z"
+    },
+    "elapsed_s": 12.841,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 436,
+   "parsed": {
+    "status": "ok",
+    "answer": "Not specified in given evidence",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 306,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the father of John the Apostle?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb36bda36c0cd97609b07b791df921cbeb574fde51e5f05429b97c4d6fa95602",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792855349.867527,
+      "end_wall": 1792855355.219448,
+      "error": null
+     }
+    ],
+    "start_wall": 1792855349.867527,
+    "start_mono": 524906.578705833,
+    "end_wall": 1792855355.219448,
+    "end_mono": 524911.930621833,
+    "raw_response": "{\"query\": \"Jesus Christ John the Apostle father\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5350083042,
+     "load_duration": 1435939625,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 638024125,
+     "eval_count": 16,
+     "eval_duration": 3209354125,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:35.218346Z"
+    },
+    "elapsed_s": 5.352,
+    "query_used": "Jesus Christ John the Apostle father",
+    "query_source": "json",
+    "query_arrival_seq": 437
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Jesus Christ John the Apostle father",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Lorin_Farr:1",
+       "score_q": 13626
+      },
+      {
+       "passage_key": "fever17:God_the_Father:0",
+       "score_q": 13525
+      },
+      {
+       "passage_key": "fever17:1_Peter_1:0",
+       "score_q": 13047
+      },
+      {
+       "passage_key": "fever17:1_Peter_2:0",
+       "score_q": 13047
+      },
+      {
+       "passage_key": "fever17:1_Peter_3:0",
+       "score_q": 13047
+      }
+     ],
+     "retrieval_sha256": "3f708d6b0d0d615113cf80564a4b9e9e24809b6b85f42636ce4d469511ea9050"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3f708d6b0d0d615113cf80564a4b9e9e24809b6b85f42636ce4d469511ea9050",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Lorin_Farr:1",
+      "content_sha256": "f1c4c6c2e6749d4198e2ce048fb2e580b89529e002fd830d46a3dbb83126a493",
+      "chars": 200
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:God_the_Father:0",
+      "content_sha256": "b402968690aef6ee50a1234c4d990425e523244d21a91b5b875f1fdfad8bd22c",
+      "chars": 934
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:1_Peter_1:0",
+      "content_sha256": "d671eb12c22729de958f0d1cc26ea8ed3d941a2e4f971a2ede51eafad807de9c",
+      "chars": 257
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:1_Peter_2:0",
+      "content_sha256": "510d8b1b9261d2ca8227a20cebaab57427483e160782e7e7edffd0e3809bed3b",
+      "chars": 258
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:1_Peter_3:0",
+      "content_sha256": "f9c9311e9e41d5fa7fc1f7988ca6e7dd4daadf3aa8609c86769669c534773e4e",
+      "chars": 257
+     }
+    ],
+    "elapsed_s": 0.0268
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the father of John the Apostle?\n\nEvidence passages from your search for \"Jesus Christ John the Apostle father\":\n<<<PASSAGES\n[P1] Lorin Farr\nAmong these was Sarah Farr , who was a wife of apostle John Henry Smith and the mother of George Albert Smith , who became the president of The Church of Jesus Christ of Latter-day Saints .\n\n[P2] God the Father\nGod the Father is a title given to God in various religions , most prominently in Christianity . In mainstream trinitarian Christianity , God the Father is regarded as the first person of the Trinity , followed by the second person God the Son ( Jesus Christ ) and the third person God the Holy Spirit . Since the second century , Christian creeds included affirmation of belief in `` God the Father ( Almighty ) '' , primarily as his capacity as `` Father and creator of the universe '' . Yet , in Christianity the concept of God as the father of Jesus Christ goes metaphysically further than the concept of God as the Creator and father of all people , as indicated in the Apostle 's Creed where the expression of belief in the `` Father almighty , creator of heaven and earth '' is immediately , but separately followed by in `` Jesus Christ , his only Son , our Lord '' , thus expressing both senses of fatherhood .\n\n[P3] 1 Peter 1\n1 Peter 1 is the first chapter of the First Epistle of Peter in the New Testament of the Christian Bible . The author identifies himself as `` Peter , an apostle of Jesus Christ '' and the epistle is traditionally attributed to Peter the Apostle .\n\n[P4] 1 Peter 2\n1 Peter 2 is the second chapter of the First Epistle of Peter in the New Testament of the Christian Bible . The author identifies himself as `` Peter , an apostle of Jesus Christ '' and the epistle is traditionally attributed to Peter the Apostle .\n\n[P5] 1 Peter 3\n1 Peter 3 is the third chapter of the First Epistle of Peter in the New Testament of the Christian Bible . The author identifies himself as `` Peter , an apostle of Jesus Christ '' and the epistle is traditionally attributed to Peter the Apostle .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "412ac879bc86b92410a446fc50dfaeb7eba25063ca6659642ba12d005a52c479",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792855355.24659,
+      "end_wall": 1792855370.397269,
+      "error": null
+     }
+    ],
+    "arrival_seq": 437,
+    "start_wall": 1792855355.24659,
+    "start_mono": 524911.957765375,
+    "end_wall": 1792855370.397269,
+    "end_mono": 524927.108431291,
+    "raw_response": "{\n  \"reasoning\": \"The question asks for the father of John the Apostle. According to Christian theology, particularly as stated in the New Testament of the Bible, John the Apostle is considered the beloved disciple of Jesus Christ. Thus, Jesus Christ is identified as John's spiritual father, not a biological one. The evidence passages do not explicitly mention John's biological father. However, the emphasis in Christian doctrine is more on the spiritual relationship rather than the blood relation. In this context, Jesus Christ is regarded as John's spiritual father.\",\n  \"answer\": \"Jesus Christ\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15147881375,
+     "load_duration": 7328172292,
+     "prompt_eval_count": 791,
+     "prompt_eval_duration": 1518291208,
+     "eval_count": 167,
+     "eval_duration": 5555378873,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:50.395375Z"
+    },
+    "elapsed_s": 15.151,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 437,
+   "parsed": {
+    "status": "ok",
+    "answer": "Jesus Christ",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Lorin_Farr:1",
+     "fever17:1_Peter_1:0",
+     "fever17:1_Peter_2:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 554,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the father of John the Apostle?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb36bda36c0cd97609b07b791df921cbeb574fde51e5f05429b97c4d6fa95602",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792855349.86758,
+      "end_wall": 1792855358.1153479,
+      "error": null
+     }
+    ],
+    "start_wall": 1792855349.86758,
+    "start_mono": 524906.578759458,
+    "end_wall": 1792855358.1153479,
+    "end_mono": 524914.826519541,
+    "raw_response": "{\"query\": \"John Apostle father\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8245633750,
+     "load_duration": 7045589209,
+     "prompt_eval_count": 155,
+     "prompt_eval_duration": 617587833,
+     "eval_count": 9,
+     "eval_duration": 507369956,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:38.114272Z"
+    },
+    "elapsed_s": 8.248,
+    "query_used": "John Apostle father",
+    "query_source": "json",
+    "query_arrival_seq": 438
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "John Apostle father",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:John_the_Presbyter:0",
+       "score_q": 9801
+      },
+      {
+       "passage_key": "fever17:John_P._Kelly:0",
+       "score_q": 8192
+      },
+      {
+       "passage_key": "fever17:Father_Damien:2",
+       "score_q": 8153
+      },
+      {
+       "passage_key": "fever17:Saint_John:0",
+       "score_q": 8118
+      },
+      {
+       "passage_key": "fever17:1_John_1:0",
+       "score_q": 8041
+      }
+     ],
+     "retrieval_sha256": "463657db14905f7aee5ffad18f69aa2338396664e6618f9786f05d29cf60b708"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "463657db14905f7aee5ffad18f69aa2338396664e6618f9786f05d29cf60b708",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:John_the_Presbyter:0",
+      "content_sha256": "613e9894f307cf61aeda8c786a4ecf061b243bf488ba019cce0b4c7ac2a67c43",
+      "chars": 470
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:John_P._Kelly:0",
+      "content_sha256": "af9b9e2d0d64e4c69bff1c9bb49d56b05a6eeef20c85ce46aa7c753fe66f4d98",
+      "chars": 104
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Father_Damien:2",
+      "content_sha256": "51c4bf84831222cf4e9659cff003da265571e1381ee1f521020fc17649746a22",
+      "chars": 497
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saint_John:0",
+      "content_sha256": "f3b8ecdd0cddc4cc5a046e3e370a5b0583b1e98392e6f5adca6bb71b20a4e351",
+      "chars": 114
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:1_John_1:0",
+      "content_sha256": "1e00b28ff5dbf10f9e12459acffb310ef6513a8b05629501bb0a838e612c8a64",
+      "chars": 175
+     }
+    ],
+    "elapsed_s": 0.0196
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the father of John the Apostle?\n\nEvidence passages from your search for \"John Apostle father\":\n<<<PASSAGES\n[P1] John the Presbyter\nJohn the Presbyter was an obscure figure of the early Church who is either distinguished from or identified with the Apostle John , by some also John the Divine . He appears in fragments from the church father Papias of Hierapolis as one of the author 's sources and is first unequivocally distinguished from the Apostle by Eusebius of Caesarea . He is frequently proposed as an alternative author of some of the Johannine books in the New Testament .\n\n[P2] John P. Kelly\nJohn P. Kelly is a convening apostle of the International Coalition of Apostolic Leaders .\n\n[P3] Father Damien\nFather Damien Day , April 15 , the day of his passing , is also a minor statewide holiday in Hawaii and to this day Father Damien is the patron saint of the Diocese of Honolulu and of Hawaii . Upon his beatification by Pope John Paul II in Rome on 4 June 1995 , Blessed Damien was granted a memorial feast day , which is celebrated on 10 May . Father Damien was canonized by Pope Benedict XVI on 11 October 2009 . The Catholic Encyclopedia calls him `` the Apostle of the Lepers . ''\n\n[P4] Saint John\nSaint John or St. John usually refers to John the Apostle of the Bible . Saint John may also refer to :\n\n[P5] 1 John 1\n1 John 1 is the first chapter of the First Epistle of John in the New Testament of the Christian Bible . The epistle is traditionally attributed to John the Apostle .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "29f07630e10740cb109ec397f3a6bf22c9838338f9f2c1992bb17ed2ec6d58aa",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792855358.135176,
+      "end_wall": 1792855371.1813061,
+      "error": null
+     }
+    ],
+    "arrival_seq": 438,
+    "start_wall": 1792855358.135176,
+    "start_mono": 524914.846348458,
+    "end_wall": 1792855371.1813061,
+    "end_mono": 524927.892468125,
+    "raw_response": "{\"reasoning\": \"From the evidence passages, P1 mentions John the Presbyter, who is proposed as an alternative author of some of the Johannine books. P3 refers to Father Damien, a patron saint of Hawaii, which does not provide information about the apostle John's father. P2 mentions John P. Kelly, a convening apostle, which is unrelated to the question. P4 and P5 are about Saint John the Apostle and 1 John 1, respectively. Since none of the passages provide explicit information about John the Apostle's father, we turn to historical and biblical knowledge. Historical records and biblical scholarship generally, \"\n\n,\"answer\": \"John the Apostle's father is unknown\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13043760333,
+     "load_duration": 48375500,
+     "prompt_eval_count": 570,
+     "prompt_eval_duration": 2218423209,
+     "eval_count": 156,
+     "eval_duration": 9338800920,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:51.17971Z"
+    },
+    "elapsed_s": 13.046,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 438,
+   "parsed": {
+    "status": "ok",
+    "answer": "John the Apostle's father is unknown",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the father of John the Apostle?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb36bda36c0cd97609b07b791df921cbeb574fde51e5f05429b97c4d6fa95602",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792855349.8673348,
+      "end_wall": 1792855361.1543522,
+      "error": null
+     }
+    ],
+    "start_wall": 1792855349.8673348,
+    "start_mono": 524906.578513833,
+    "end_wall": 1792855361.1543522,
+    "end_mono": 524917.865521666,
+    "raw_response": "{\"query\": \"who is john the apostle father\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11284612833,
+     "load_duration": 8602272417,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 892990125,
+     "eval_count": 12,
+     "eval_duration": 1550004834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:41.153261Z"
+    },
+    "elapsed_s": 11.287,
+    "query_used": "who is john the apostle father",
+    "query_source": "json",
+    "query_arrival_seq": 439
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "who is john the apostle father",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:John_the_Presbyter:0",
+       "score_q": 10778
+      },
+      {
+       "passage_key": "fever17:John_P._Kelly:0",
+       "score_q": 8192
+      },
+      {
+       "passage_key": "fever17:Lorin_Farr:1",
+       "score_q": 8164
+      },
+      {
+       "passage_key": "fever17:Father_Damien:2",
+       "score_q": 8153
+      },
+      {
+       "passage_key": "fever17:Saint_John:0",
+       "score_q": 8118
+      }
+     ],
+     "retrieval_sha256": "6698b18584d783a2ec578e628d0fa5db90c16e2920aa1c98d3a1f2c282683eb7"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6698b18584d783a2ec578e628d0fa5db90c16e2920aa1c98d3a1f2c282683eb7",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:John_the_Presbyter:0",
+      "content_sha256": "613e9894f307cf61aeda8c786a4ecf061b243bf488ba019cce0b4c7ac2a67c43",
+      "chars": 470
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:John_P._Kelly:0",
+      "content_sha256": "af9b9e2d0d64e4c69bff1c9bb49d56b05a6eeef20c85ce46aa7c753fe66f4d98",
+      "chars": 104
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Lorin_Farr:1",
+      "content_sha256": "f1c4c6c2e6749d4198e2ce048fb2e580b89529e002fd830d46a3dbb83126a493",
+      "chars": 200
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Father_Damien:2",
+      "content_sha256": "51c4bf84831222cf4e9659cff003da265571e1381ee1f521020fc17649746a22",
+      "chars": 497
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Saint_John:0",
+      "content_sha256": "f3b8ecdd0cddc4cc5a046e3e370a5b0583b1e98392e6f5adca6bb71b20a4e351",
+      "chars": 114
+     }
+    ],
+    "elapsed_s": 0.0254
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the father of John the Apostle?\n\nEvidence passages from your search for \"who is john the apostle father\":\n<<<PASSAGES\n[P1] John the Presbyter\nJohn the Presbyter was an obscure figure of the early Church who is either distinguished from or identified with the Apostle John , by some also John the Divine . He appears in fragments from the church father Papias of Hierapolis as one of the author 's sources and is first unequivocally distinguished from the Apostle by Eusebius of Caesarea . He is frequently proposed as an alternative author of some of the Johannine books in the New Testament .\n\n[P2] John P. Kelly\nJohn P. Kelly is a convening apostle of the International Coalition of Apostolic Leaders .\n\n[P3] Lorin Farr\nAmong these was Sarah Farr , who was a wife of apostle John Henry Smith and the mother of George Albert Smith , who became the president of The Church of Jesus Christ of Latter-day Saints .\n\n[P4] Father Damien\nFather Damien Day , April 15 , the day of his passing , is also a minor statewide holiday in Hawaii and to this day Father Damien is the patron saint of the Diocese of Honolulu and of Hawaii . Upon his beatification by Pope John Paul II in Rome on 4 June 1995 , Blessed Damien was granted a memorial feast day , which is celebrated on 10 May . Father Damien was canonized by Pope Benedict XVI on 11 October 2009 . The Catholic Encyclopedia calls him `` the Apostle of the Lepers . ''\n\n[P5] Saint John\nSaint John or St. John usually refers to John the Apostle of the Bible . Saint John may also refer to :\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a6b46b0fbde6b1e2ec9655551ddb7e08fa7f4a83f924cf3ff4b22780b897436b",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792855361.1800141,
+      "end_wall": 1792855375.3077419,
+      "error": null
+     }
+    ],
+    "arrival_seq": 439,
+    "start_wall": 1792855361.1800141,
+    "start_mono": 524917.891184333,
+    "end_wall": 1792855375.3077419,
+    "end_mono": 524932.01890025,
+    "raw_response": "{\n  \"reasoning\": \"John the Apostle is mentioned in P1 and P2, and P4 mentions being an apostle, so John the Apostle is the correct answer.\",\n  \"answer\": \"John the Apostle\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14124061375,
+     "load_duration": 10533950208,
+     "prompt_eval_count": 599,
+     "prompt_eval_duration": 911340959,
+     "eval_count": 71,
+     "eval_duration": 1411245125,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:22:55.305148Z"
+    },
+    "elapsed_s": 14.128,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 439,
+   "parsed": {
+    "status": "ok",
+    "answer": "John the Apostle",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:John_the_Presbyter:0",
+     "fever17:John_P._Kelly:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 120,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "e056ac792dcac37eca45c2cc01aea62f8dc0ea98691921c6f06c1b6f1b4d5879",
+  "exaone3.5:7.8b": "daae0bb4f51b83429b7b508c89601725f6cb39404fc7cd5b4b3ead069983e4cf",
+  "granite3.3:2b": "3f708d6b0d0d615113cf80564a4b9e9e24809b6b85f42636ce4d469511ea9050",
+  "olmo2:7b": "463657db14905f7aee5ffad18f69aa2338396664e6618f9786f05d29cf60b708",
+  "nemotron-mini:4b": "6698b18584d783a2ec578e628d0fa5db90c16e2920aa1c98d3a1f2c282683eb7"
+ },
+ "item_start_wall": 1792855349.867152,
+ "item_wall_s": 25.441,
+ "ollama_ps_samples": [
+  [
+   1792855349.867,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792855351.873,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855353.882,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855355.894,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792855357.905,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792855359.917,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792855361.928,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792855363.94,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855365.945,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855367.956,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855369.967,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792855371.979,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792855373.986,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

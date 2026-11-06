@@ -1,0 +1,1289 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1274",
+ "order": 239,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1274",
+  "order": 239,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins."
+ },
+ "item_view_sha256": "5181c36d7720eb1cb243c573ddb1f31609d8b5937fd94d165ac89c3aa23b81bf",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9cb902e3c92c9de058a9efa06067ae57f30a6f8f2e9d07ee966b2eefde929005",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792859671.393943,
+      "end_wall": 1792859673.195931,
+      "error": null
+     }
+    ],
+    "start_wall": 1792859671.393943,
+    "start_mono": 529228.151275208,
+    "end_wall": 1792859673.195931,
+    "end_mono": 529229.953269791,
+    "raw_response": "{\"query\": \"tip of inner tube toxic type VI secretion system E. coli toxic effector proteins\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1799610750,
+     "load_duration": 107028500,
+     "prompt_eval_count": 200,
+     "prompt_eval_duration": 451949833,
+     "eval_count": 22,
+     "eval_duration": 979210541,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:33.195087Z"
+    },
+    "elapsed_s": 1.802,
+    "query_used": "tip of inner tube toxic type VI secretion system E. coli toxic",
+    "query_source": "json_cut12",
+    "query_arrival_seq": 1195
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "tip of inner tube toxic type VI secretion system E. coli toxic",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27731651:0",
+       "score_q": 753
+      },
+      {
+       "passage_key": "scifact:7145763:0",
+       "score_q": 721
+      },
+      {
+       "passage_key": "scifact:7481159:0",
+       "score_q": 712
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 708
+      },
+      {
+       "passage_key": "scifact:23423230:1",
+       "score_q": 706
+      }
+     ],
+     "retrieval_sha256": "7e3cc33669cf4bbc9c70e5bb00977d0804b9fd3c08aadc3d0050c24d41e733fa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7e3cc33669cf4bbc9c70e5bb00977d0804b9fd3c08aadc3d0050c24d41e733fa",
+    "query_embedding_sha256": "bd30bd12ab859423594ce6f8a595bf71e632e191d905eb32aaed91373eb7bd66",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27731651:0",
+      "content_sha256": "8b3378b87291bd2deb309c569413480235b9064e519597d1b8b91601b0b99daf",
+      "chars": 967
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7145763:0",
+      "content_sha256": "0e13459b2e442e57dc29365023aaed01fed431f43811790fb5e5885bc7446598",
+      "chars": 870
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7481159:0",
+      "content_sha256": "a59394743c01ae2cc7eb2313ec3fb272cc52796719e3263c4b5ac6914d95f999",
+      "chars": 990
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23423230:1",
+      "content_sha256": "c1bad330e9f530e3ab7af16559b2bf48e9de5cd1b86ba4007a469f8af8734a80",
+      "chars": 1098
+     }
+    ],
+    "elapsed_s": 7.2816
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nEvidence passages from your search for \"tip of inner tube toxic type VI secretion system E. coli toxic\":\n<<<PASSAGES\n[P1] A view to a kill: the bacterial type VI secretion system.\nThe bacterial type VI secretion system (T6SS) is an organelle that is structurally and mechanistically analogous to an intracellular membrane-attached contractile phage tail. Recent studies determined that a rapid conformational change in the structure of a sheath protein complex propels T6SS spike and tube components along with antibacterial and antieukaryotic effectors out of predatory T6SS(+) cells and into prey cells. The contracted organelle is then recycled in an ATP-dependent process. T6SS is regulated at transcriptional and posttranslational levels, the latter involving detection of membrane perturbation in some species. In addition to directly targeting eukaryotic cells, the T6SS can also target other bacteria coinfecting a mammalian host, highlighting the importance of the T6SS not only for bacterial survival in environmental ecosystems, but also in the context of infection and disease.\n\n[P2] Tit-for-Tat: Type VI Secretion System Counterattack during Bacterial Cell-Cell Interactions\nThe bacterial type VI secretion system (T6SS) is a dynamic organelle that bacteria use to target prey cells for inhibition via translocation of effector proteins. Time-lapse fluorescence microscopy has documented striking dynamics of opposed T6SS organelles in adjacent sister cells of Pseudomonas aeruginosa. Such cell-cell interactions have been termed \"T6SS dueling\" and likely reflect a biological process that is driven by T6SS antibacterial attack. Here, we show that T6SS dueling behavior strongly influences the ability of P. aeruginosa to prey upon heterologous bacterial species. We show that, in the case of P. aeruginosa, T6SS-dependent killing of either Vibrio cholerae or Acinetobacter baylyi is greatly stimulated by T6SS activity occurring in those prey species.\n\n[P3] Biochemical analysis of TssK, a core component of the bacterial Type VI secretion system, reveals distinct oligomeric states of TssK and identifies a TssK–TssFG subcomplex\nGram-negative bacteria use the Type VI secretion system (T6SS) to inject toxic proteins into rival bacteria or eukaryotic cells. However, the mechanism of the T6SS is incompletely understood. In the present study, we investigated a conserved component of the T6SS, TssK, using the antibacterial T6SS of Serratia marcescens as a model system. TssK was confirmed to be essential for effector secretion by the T6SS. The native protein, although not an integral membrane protein, appeared to localize to the inner membrane, consistent with its presence within a membrane-anchored assembly. Recombinant TssK purified from S. marcescens was found to exist in several stable oligomeric forms, namely trimer, hexamer and higher-order species. Native-level purification of TssK identified TssF and TssG as interacting proteins.\n\n[P4] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P5] The VirB type IV secretion system of Bartonella henselae mediates invasion, proinflammatory activation and antiapoptotic protection of endothelial cells.\nHere, we demonstrate that the VirB T4SS also mediates most of the virulence attributes associated with the interaction of B. henselae during the interaction with human endothelial cells. These include: (i) massive rearrangements of the actin cytoskeleton, resulting in the formation of bacterial aggregates and their internalization by the invasome structure; (ii) nuclear factor kappaB-dependent proinflammatory activation, leading to cell adhesion molecule expression and chemokine secretion, and (iii) inhibition of apoptotic cell death, resulting in enhanced endothelial cell survival. Moreover, we show that the VirB system mediates cytostatic and cytotoxic effects at high bacterial titres, which interfere with a potent VirB-independent mitogenic activity. We conclude that the VirB T4SS is a major virulence determinant of B. henselae, required for targeting multiple endothelial cell functions exploited by this vasculotropic pathogen.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "298aefceda1b4a471ebfaae5cb45ad17e47b78b0edb042544878daa4a7f36c5f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859680.4779992,
+      "end_wall": 1792859689.0279748,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1195,
+    "start_wall": 1792859680.4779992,
+    "start_mono": 529237.235370166,
+    "end_wall": 1792859689.0279748,
+    "end_mono": 529245.785381458,
+    "raw_response": "{\"reasoning\": \"The text from P3 and P4 clearly indicates that the tip of the inner tube of the T6SS carries toxic effector proteins, thus supporting the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8546769542,
+     "load_duration": 1987031292,
+     "prompt_eval_count": 1347,
+     "prompt_eval_duration": 2925881916,
+     "eval_count": 69,
+     "eval_duration": 2946670874,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:49.025822Z"
+    },
+    "elapsed_s": 8.55,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1195,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:7481159:0",
+     "scifact:4406819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 144,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9cb902e3c92c9de058a9efa06067ae57f30a6f8f2e9d07ee966b2eefde929005",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792859671.394294,
+      "end_wall": 1792859680.061677,
+      "error": null
+     }
+    ],
+    "start_wall": 1792859671.394294,
+    "start_mono": 529228.151626125,
+    "end_wall": 1792859680.061677,
+    "end_mono": 529236.819045625,
+    "raw_response": "{\"query\": \"T6SS effector in E. coli\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8664499167,
+     "load_duration": 6791735542,
+     "prompt_eval_count": 195,
+     "prompt_eval_duration": 734391750,
+     "eval_count": 14,
+     "eval_duration": 813370584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:40.060519Z"
+    },
+    "elapsed_s": 8.667,
+    "query_used": "T6SS effector in E. coli",
+    "query_source": "json",
+    "query_arrival_seq": 1199
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "T6SS effector in E. coli",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22632303:0",
+       "score_q": 8129
+      },
+      {
+       "passage_key": "scifact:22632303:1",
+       "score_q": 7854
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 7829
+      },
+      {
+       "passage_key": "scifact:7145763:0",
+       "score_q": 7402
+      },
+      {
+       "passage_key": "scifact:7481159:0",
+       "score_q": 6953
+      }
+     ],
+     "retrieval_sha256": "dedb4a86b46eddabd02ba808894ac90168d33ddc435e9a2911ee5c91556792a3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "dedb4a86b46eddabd02ba808894ac90168d33ddc435e9a2911ee5c91556792a3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22632303:0",
+      "content_sha256": "865483c243e3c1df5264cca6e843bddef3ee867d580c9daef72fb2270315b793",
+      "chars": 932
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22632303:1",
+      "content_sha256": "e25c5aa3815b6b766fe4864993c08844ae74cc8302a8179e9a1ea2260a93c9bf",
+      "chars": 710
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7145763:0",
+      "content_sha256": "0e13459b2e442e57dc29365023aaed01fed431f43811790fb5e5885bc7446598",
+      "chars": 870
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7481159:0",
+      "content_sha256": "a59394743c01ae2cc7eb2313ec3fb272cc52796719e3263c4b5ac6914d95f999",
+      "chars": 990
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nEvidence passages from your search for \"T6SS effector in E. coli\":\n<<<PASSAGES\n[P1] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nType VI protein secretion system (T6SS) is important for bacterial competition through contact-dependent killing of competitors. T6SS delivers effectors to neighboring cells and corresponding antagonistic proteins confer immunity against effectors that are delivered by sister cells. Although T6SS has been found in more than 100 gram-negative bacteria including many important human pathogens, few T6SS-dependent effector and immunity proteins have been experimentally determined. Here we report a high-throughput approach using transposon mutagenesis and deep sequencing (Tn-seq) to identify T6SS immunity proteins in Vibrio cholerae. Saturating transposon mutagenesis was performed in wild type and a T6SS null mutant. Genes encoding immunity proteins were predicted to be essential in the wild type but dispensable in the T6SS mutant.\n\n[P2] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nBy comparing the relative abundance of each transposon mutant in the mutant library using deep sequencing, we identified three immunity proteins that render protection against killing by T6SS predatory cells. We also identified their three cognate T6SS-secreted effectors and show these are important for not only antibacterial and antieukaryotic activities but also assembly of T6SS apparatus. The lipase and muramidase T6SS effectors identified in this study underscore the diversity of T6SS-secreted substrates and the distinctly different mechanisms that target these for secretion by the dynamic T6SS organelle.\n\n[P3] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P4] Tit-for-Tat: Type VI Secretion System Counterattack during Bacterial Cell-Cell Interactions\nThe bacterial type VI secretion system (T6SS) is a dynamic organelle that bacteria use to target prey cells for inhibition via translocation of effector proteins. Time-lapse fluorescence microscopy has documented striking dynamics of opposed T6SS organelles in adjacent sister cells of Pseudomonas aeruginosa. Such cell-cell interactions have been termed \"T6SS dueling\" and likely reflect a biological process that is driven by T6SS antibacterial attack. Here, we show that T6SS dueling behavior strongly influences the ability of P. aeruginosa to prey upon heterologous bacterial species. We show that, in the case of P. aeruginosa, T6SS-dependent killing of either Vibrio cholerae or Acinetobacter baylyi is greatly stimulated by T6SS activity occurring in those prey species.\n\n[P5] Biochemical analysis of TssK, a core component of the bacterial Type VI secretion system, reveals distinct oligomeric states of TssK and identifies a TssK–TssFG subcomplex\nGram-negative bacteria use the Type VI secretion system (T6SS) to inject toxic proteins into rival bacteria or eukaryotic cells. However, the mechanism of the T6SS is incompletely understood. In the present study, we investigated a conserved component of the T6SS, TssK, using the antibacterial T6SS of Serratia marcescens as a model system. TssK was confirmed to be essential for effector secretion by the T6SS. The native protein, although not an integral membrane protein, appeared to localize to the inner membrane, consistent with its presence within a membrane-anchored assembly. Recombinant TssK purified from S. marcescens was found to exist in several stable oligomeric forms, namely trimer, hexamer and higher-order species. Native-level purification of TssK identified TssF and TssG as interacting proteins.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0b125cb5ec88b824050924a8486e1b33f7fb943477120a9064f570a295cbe1ac",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859680.062464,
+      "end_wall": 1792859689.410264,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1196,
+    "start_wall": 1792859680.062464,
+    "start_mono": 529236.819833833,
+    "end_wall": 1792859689.410264,
+    "end_mono": 529246.167672041,
+    "raw_response": "{\"reasoning\": \"The evidence passages support the claim as they describe the toxic nature of the T6SS effector and its role in E. coli.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9342630333,
+     "load_duration": 1207698833,
+     "prompt_eval_count": 1237,
+     "prompt_eval_duration": 3161653584,
+     "eval_count": 58,
+     "eval_duration": 3893640999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:49.405801Z"
+    },
+    "elapsed_s": 9.348,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1196,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:22632303:1",
+     "scifact:4406819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 119,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9cb902e3c92c9de058a9efa06067ae57f30a6f8f2e9d07ee966b2eefde929005",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792859671.39444,
+      "end_wall": 1792859673.425473,
+      "error": null
+     }
+    ],
+    "start_wall": 1792859671.39444,
+    "start_mono": 529228.151772,
+    "end_wall": 1792859673.425473,
+    "end_mono": 529230.182813541,
+    "raw_response": "{\"query\": \"T6SS effector proteins toxicity location in E. coli\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2028334583,
+     "load_duration": 56437583,
+     "prompt_eval_count": 199,
+     "prompt_eval_duration": 629082125,
+     "eval_count": 18,
+     "eval_duration": 1172466835,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:33.424368Z"
+    },
+    "elapsed_s": 2.031,
+    "query_used": "T6SS effector proteins toxicity location in E. coli",
+    "query_source": "json",
+    "query_arrival_seq": 1196
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "T6SS effector proteins toxicity location in E. coli",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22632303:0",
+       "score_q": 10176
+      },
+      {
+       "passage_key": "scifact:22632303:1",
+       "score_q": 9581
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 9379
+      },
+      {
+       "passage_key": "scifact:7145763:0",
+       "score_q": 8532
+      },
+      {
+       "passage_key": "scifact:7481159:0",
+       "score_q": 8498
+      }
+     ],
+     "retrieval_sha256": "414f16db6910762f7931765145337a870586bef11c5fe4661ef32ed7c3b873ed"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "414f16db6910762f7931765145337a870586bef11c5fe4661ef32ed7c3b873ed",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22632303:0",
+      "content_sha256": "865483c243e3c1df5264cca6e843bddef3ee867d580c9daef72fb2270315b793",
+      "chars": 932
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22632303:1",
+      "content_sha256": "e25c5aa3815b6b766fe4864993c08844ae74cc8302a8179e9a1ea2260a93c9bf",
+      "chars": 710
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7145763:0",
+      "content_sha256": "0e13459b2e442e57dc29365023aaed01fed431f43811790fb5e5885bc7446598",
+      "chars": 870
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7481159:0",
+      "content_sha256": "a59394743c01ae2cc7eb2313ec3fb272cc52796719e3263c4b5ac6914d95f999",
+      "chars": 990
+     }
+    ],
+    "elapsed_s": 0.0033
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nEvidence passages from your search for \"T6SS effector proteins toxicity location in E. coli\":\n<<<PASSAGES\n[P1] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nType VI protein secretion system (T6SS) is important for bacterial competition through contact-dependent killing of competitors. T6SS delivers effectors to neighboring cells and corresponding antagonistic proteins confer immunity against effectors that are delivered by sister cells. Although T6SS has been found in more than 100 gram-negative bacteria including many important human pathogens, few T6SS-dependent effector and immunity proteins have been experimentally determined. Here we report a high-throughput approach using transposon mutagenesis and deep sequencing (Tn-seq) to identify T6SS immunity proteins in Vibrio cholerae. Saturating transposon mutagenesis was performed in wild type and a T6SS null mutant. Genes encoding immunity proteins were predicted to be essential in the wild type but dispensable in the T6SS mutant.\n\n[P2] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nBy comparing the relative abundance of each transposon mutant in the mutant library using deep sequencing, we identified three immunity proteins that render protection against killing by T6SS predatory cells. We also identified their three cognate T6SS-secreted effectors and show these are important for not only antibacterial and antieukaryotic activities but also assembly of T6SS apparatus. The lipase and muramidase T6SS effectors identified in this study underscore the diversity of T6SS-secreted substrates and the distinctly different mechanisms that target these for secretion by the dynamic T6SS organelle.\n\n[P3] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P4] Tit-for-Tat: Type VI Secretion System Counterattack during Bacterial Cell-Cell Interactions\nThe bacterial type VI secretion system (T6SS) is a dynamic organelle that bacteria use to target prey cells for inhibition via translocation of effector proteins. Time-lapse fluorescence microscopy has documented striking dynamics of opposed T6SS organelles in adjacent sister cells of Pseudomonas aeruginosa. Such cell-cell interactions have been termed \"T6SS dueling\" and likely reflect a biological process that is driven by T6SS antibacterial attack. Here, we show that T6SS dueling behavior strongly influences the ability of P. aeruginosa to prey upon heterologous bacterial species. We show that, in the case of P. aeruginosa, T6SS-dependent killing of either Vibrio cholerae or Acinetobacter baylyi is greatly stimulated by T6SS activity occurring in those prey species.\n\n[P5] Biochemical analysis of TssK, a core component of the bacterial Type VI secretion system, reveals distinct oligomeric states of TssK and identifies a TssK–TssFG subcomplex\nGram-negative bacteria use the Type VI secretion system (T6SS) to inject toxic proteins into rival bacteria or eukaryotic cells. However, the mechanism of the T6SS is incompletely understood. In the present study, we investigated a conserved component of the T6SS, TssK, using the antibacterial T6SS of Serratia marcescens as a model system. TssK was confirmed to be essential for effector secretion by the T6SS. The native protein, although not an integral membrane protein, appeared to localize to the inner membrane, consistent with its presence within a membrane-anchored assembly. Recombinant TssK purified from S. marcescens was found to exist in several stable oligomeric forms, namely trimer, hexamer and higher-order species. Native-level purification of TssK identified TssF and TssG as interacting proteins.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4ab8d60f97b8a13692933c7e6cf61ab430e0afb8df80b1dda70f79728e676a00",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859673.4294112,
+      "end_wall": 1792859698.340322,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1197,
+    "start_wall": 1792859673.4294112,
+    "start_mono": 529230.186752,
+    "end_wall": 1792859698.340322,
+    "end_mono": 529255.097768916,
+    "raw_response": "{\"reasoning\": \"The provided evidence passages primarily discuss the general function and components of the Type VI secretion system (T6SS) in various bacteria, including Escherichia coli (E. coli). While they highlight that T6SS delivers toxic effector proteins to neighboring cells, there is no specific mention of the precise localization of toxicity within the effector proteins relative to the tip of the inner tube of the T6SS. However, given that T6SS effectors are known to carry toxic domains necessary for antibacterial activity, it can be inferred that these toxic domains likely reside at locations where\"\n  ,\"answer\": \"SUPPORTED\",\n  \"citations\": [\"P3\"],\n  \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24905992625,
+     "load_duration": 49057375,
+     "prompt_eval_count": 1267,
+     "prompt_eval_duration": 5364567084,
+     "eval_count": 150,
+     "eval_duration": 18287766958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:58.336527Z"
+    },
+    "elapsed_s": 24.911,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1197,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:4406819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9cb902e3c92c9de058a9efa06067ae57f30a6f8f2e9d07ee966b2eefde929005",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792859671.394567,
+      "end_wall": 1792859675.2158852,
+      "error": null
+     }
+    ],
+    "start_wall": 1792859671.394567,
+    "start_mono": 529228.151899625,
+    "end_wall": 1792859675.2158852,
+    "end_mono": 529231.973233,
+    "raw_response": "{\"query\": \"toxic type VI secretion system E. coli effector proteins\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3818975583,
+     "load_duration": 1179935291,
+     "prompt_eval_count": 211,
+     "prompt_eval_duration": 420767583,
+     "eval_count": 20,
+     "eval_duration": 2113497625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:35.215009Z"
+    },
+    "elapsed_s": 3.821,
+    "query_used": "toxic type VI secretion system E. coli effector proteins",
+    "query_source": "json",
+    "query_arrival_seq": 1197
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "toxic type VI secretion system E. coli effector proteins",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22632303:0",
+       "score_q": 808
+      },
+      {
+       "passage_key": "scifact:27731651:0",
+       "score_q": 798
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 790
+      },
+      {
+       "passage_key": "scifact:7145763:0",
+       "score_q": 781
+      },
+      {
+       "passage_key": "scifact:7481159:0",
+       "score_q": 779
+      }
+     ],
+     "retrieval_sha256": "76fb8b989fdb7b768da60a88c9a26047fbfe5e52332721d90b58bc6ef691a0f6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "76fb8b989fdb7b768da60a88c9a26047fbfe5e52332721d90b58bc6ef691a0f6",
+    "query_embedding_sha256": "7b41168e9b10126dfdb6d92aa6f66003ed6e0da711ff8d5861baf8f87bbd9e29",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22632303:0",
+      "content_sha256": "865483c243e3c1df5264cca6e843bddef3ee867d580c9daef72fb2270315b793",
+      "chars": 932
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:27731651:0",
+      "content_sha256": "8b3378b87291bd2deb309c569413480235b9064e519597d1b8b91601b0b99daf",
+      "chars": 967
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7145763:0",
+      "content_sha256": "0e13459b2e442e57dc29365023aaed01fed431f43811790fb5e5885bc7446598",
+      "chars": 870
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7481159:0",
+      "content_sha256": "a59394743c01ae2cc7eb2313ec3fb272cc52796719e3263c4b5ac6914d95f999",
+      "chars": 990
+     }
+    ],
+    "elapsed_s": 5.3118
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nEvidence passages from your search for \"toxic type VI secretion system E. coli effector proteins\":\n<<<PASSAGES\n[P1] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nType VI protein secretion system (T6SS) is important for bacterial competition through contact-dependent killing of competitors. T6SS delivers effectors to neighboring cells and corresponding antagonistic proteins confer immunity against effectors that are delivered by sister cells. Although T6SS has been found in more than 100 gram-negative bacteria including many important human pathogens, few T6SS-dependent effector and immunity proteins have been experimentally determined. Here we report a high-throughput approach using transposon mutagenesis and deep sequencing (Tn-seq) to identify T6SS immunity proteins in Vibrio cholerae. Saturating transposon mutagenesis was performed in wild type and a T6SS null mutant. Genes encoding immunity proteins were predicted to be essential in the wild type but dispensable in the T6SS mutant.\n\n[P2] A view to a kill: the bacterial type VI secretion system.\nThe bacterial type VI secretion system (T6SS) is an organelle that is structurally and mechanistically analogous to an intracellular membrane-attached contractile phage tail. Recent studies determined that a rapid conformational change in the structure of a sheath protein complex propels T6SS spike and tube components along with antibacterial and antieukaryotic effectors out of predatory T6SS(+) cells and into prey cells. The contracted organelle is then recycled in an ATP-dependent process. T6SS is regulated at transcriptional and posttranslational levels, the latter involving detection of membrane perturbation in some species. In addition to directly targeting eukaryotic cells, the T6SS can also target other bacteria coinfecting a mammalian host, highlighting the importance of the T6SS not only for bacterial survival in environmental ecosystems, but also in the context of infection and disease.\n\n[P3] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P4] Tit-for-Tat: Type VI Secretion System Counterattack during Bacterial Cell-Cell Interactions\nThe bacterial type VI secretion system (T6SS) is a dynamic organelle that bacteria use to target prey cells for inhibition via translocation of effector proteins. Time-lapse fluorescence microscopy has documented striking dynamics of opposed T6SS organelles in adjacent sister cells of Pseudomonas aeruginosa. Such cell-cell interactions have been termed \"T6SS dueling\" and likely reflect a biological process that is driven by T6SS antibacterial attack. Here, we show that T6SS dueling behavior strongly influences the ability of P. aeruginosa to prey upon heterologous bacterial species. We show that, in the case of P. aeruginosa, T6SS-dependent killing of either Vibrio cholerae or Acinetobacter baylyi is greatly stimulated by T6SS activity occurring in those prey species.\n\n[P5] Biochemical analysis of TssK, a core component of the bacterial Type VI secretion system, reveals distinct oligomeric states of TssK and identifies a TssK–TssFG subcomplex\nGram-negative bacteria use the Type VI secretion system (T6SS) to inject toxic proteins into rival bacteria or eukaryotic cells. However, the mechanism of the T6SS is incompletely understood. In the present study, we investigated a conserved component of the T6SS, TssK, using the antibacterial T6SS of Serratia marcescens as a model system. TssK was confirmed to be essential for effector secretion by the T6SS. The native protein, although not an integral membrane protein, appeared to localize to the inner membrane, consistent with its presence within a membrane-anchored assembly. Recombinant TssK purified from S. marcescens was found to exist in several stable oligomeric forms, namely trimer, hexamer and higher-order species. Native-level purification of TssK identified TssF and TssG as interacting proteins.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f7a134f121e66068f2fb18bc8ae1cd1bfc70e09c84f0da9d5ecbfbd5bcf366ca",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859680.528845,
+      "end_wall": 1792859702.998374,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1198,
+    "start_wall": 1792859680.528845,
+    "start_mono": 529237.28621675,
+    "end_wall": 1792859702.998374,
+    "end_mono": 529259.755839791,
+    "raw_response": "{\n  \"reasoning\": \"The claim specifies that the tip of the inner tube of the type VI secretion system (T6SS) in E. coli carries toxic effector proteins. The provided evidence passages support this claim. They describe how T6SS delivers effectors to neighboring cells, with the tip being the point of interaction. Effector proteins are toxic and facilitate antibacterial activity, targeting both bacterial and eukaryotic prey.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22465470292,
+     "load_duration": 10035790583,
+     "prompt_eval_count": 1559,
+     "prompt_eval_duration": 4482373876,
+     "eval_count": 140,
+     "eval_duration": 7227353292,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:35:02.99523Z"
+    },
+    "elapsed_s": 22.47,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1198,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:22632303:0",
+     "scifact:4406819:0",
+     "scifact:7145763:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 406,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9cb902e3c92c9de058a9efa06067ae57f30a6f8f2e9d07ee966b2eefde929005",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792859671.394119,
+      "end_wall": 1792859679.980782,
+      "error": null
+     }
+    ],
+    "start_wall": 1792859671.394119,
+    "start_mono": 529228.151451833,
+    "end_wall": 1792859679.980782,
+    "end_mono": 529236.738148708,
+    "raw_response": "{\"query\": \"T6SS E. coli effector proteins\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8583698708,
+     "load_duration": 5249618583,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 1523608958,
+     "eval_count": 15,
+     "eval_duration": 1662478834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:34:39.979455Z"
+    },
+    "elapsed_s": 8.587,
+    "query_used": "T6SS E. coli effector proteins",
+    "query_source": "json",
+    "query_arrival_seq": 1198
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "T6SS E. coli effector proteins",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22632303:0",
+       "score_q": 761
+      },
+      {
+       "passage_key": "scifact:22632303:1",
+       "score_q": 732
+      },
+      {
+       "passage_key": "scifact:3893473:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:19099739:0",
+       "score_q": 727
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 715
+      }
+     ],
+     "retrieval_sha256": "22aa8f1b1ef5b8d64d276a8f7852d3d765fc646d3a0ccdd60cbd8800e7b9247a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "22aa8f1b1ef5b8d64d276a8f7852d3d765fc646d3a0ccdd60cbd8800e7b9247a",
+    "query_embedding_sha256": "b9ce47a78e301cd98a97e146642b1594a4e24761a330dbb817ff65f3e5ede5b9",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22632303:0",
+      "content_sha256": "865483c243e3c1df5264cca6e843bddef3ee867d580c9daef72fb2270315b793",
+      "chars": 932
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22632303:1",
+      "content_sha256": "e25c5aa3815b6b766fe4864993c08844ae74cc8302a8179e9a1ea2260a93c9bf",
+      "chars": 710
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3893473:0",
+      "content_sha256": "8c76636c5a8f4c52e2498668412491c2ef6816ba1cf43257b925040ad482487d",
+      "chars": 910
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:19099739:0",
+      "content_sha256": "b93baabd33b2748126bd758c475a210fe6796b6862a6340b71fadc3979390759",
+      "chars": 988
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     }
+    ],
+    "elapsed_s": 0.7479
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\n\nEvidence passages from your search for \"T6SS E. coli effector proteins\":\n<<<PASSAGES\n[P1] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nType VI protein secretion system (T6SS) is important for bacterial competition through contact-dependent killing of competitors. T6SS delivers effectors to neighboring cells and corresponding antagonistic proteins confer immunity against effectors that are delivered by sister cells. Although T6SS has been found in more than 100 gram-negative bacteria including many important human pathogens, few T6SS-dependent effector and immunity proteins have been experimentally determined. Here we report a high-throughput approach using transposon mutagenesis and deep sequencing (Tn-seq) to identify T6SS immunity proteins in Vibrio cholerae. Saturating transposon mutagenesis was performed in wild type and a T6SS null mutant. Genes encoding immunity proteins were predicted to be essential in the wild type but dispensable in the T6SS mutant.\n\n[P2] Identification of T6SS-dependent effector and immunity proteins by Tn-seq in Vibrio cholerae.\nBy comparing the relative abundance of each transposon mutant in the mutant library using deep sequencing, we identified three immunity proteins that render protection against killing by T6SS predatory cells. We also identified their three cognate T6SS-secreted effectors and show these are important for not only antibacterial and antieukaryotic activities but also assembly of T6SS apparatus. The lipase and muramidase T6SS effectors identified in this study underscore the diversity of T6SS-secreted substrates and the distinctly different mechanisms that target these for secretion by the dynamic T6SS organelle.\n\n[P3] TAL effectors are remote controls for gene activation.\nTAL (transcription activator-like) effectors constitute a novel class of DNA-binding proteins with predictable specificity. They are employed by Gram-negative plant-pathogenic bacteria of the genus Xanthomonas which translocate a cocktail of different effector proteins via a type III secretion system (T3SS) into plant cells where they serve as virulence determinants. Inside the plant cell, TALs localize to the nucleus, bind to target promoters, and induce expression of plant genes. DNA-binding specificity of TALs is determined by a central domain of tandem repeats. Each repeat confers recognition of one base pair (bp) in the DNA. Rearrangement of repeat modules allows design of proteins with desired DNA-binding specificities. Here, we summarize how TAL specificity is encoded, first structural data and first data on site-specific TAL nucleases.\n\n[P4] Breaking the code of DNA binding specificity of TAL-type III effectors.\nThe pathogenicity of many bacteria depends on the injection of effector proteins via type III secretion into eukaryotic cells in order to manipulate cellular processes. TAL (transcription activator-like) effectors from plant pathogenic Xanthomonas are important virulence factors that act as transcriptional activators in the plant cell nucleus, where they directly bind to DNA via a central domain of tandem repeats. Here, we show how target DNA specificity of TAL effectors is encoded. Two hypervariable amino acid residues in each repeat recognize one base pair in the target DNA. Recognition sequences of TAL effectors were predicted and experimentally confirmed. The modular protein architecture enabled the construction of artificial effectors with new specificities. Our study describes the functionality of a distinct type of DNA binding domain and allows the design of DNA binding domains for biotechnology.\n\n[P5] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "490128f3ce402a91d9ced9fa0cb4e1f0ecb3952e71b342f44541282ff50e5508",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859680.730326,
+      "end_wall": 1792859707.2547488,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1199,
+    "start_wall": 1792859680.730326,
+    "start_mono": 529237.487698875,
+    "end_wall": 1792859707.2547488,
+    "end_mono": 529264.012232875,
+    "raw_response": "{\"reasoning\": \"The claim states that the tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins. The passages P1, P2, and P5 discuss T6SS in different bacteria but do not specifically mention E. coli. However, P1, P2, and P5 collectively suggest that T6SS does deliver effector proteins to target cells, indicating that the system is designed to transport such proteins. While P3 and P4 discuss TAL effectors in a different context, the general principle of a secretion system's purpose is to deliver proteins. Since T\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P5\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26519448916,
+     "load_duration": 11271078666,
+     "prompt_eval_count": 1228,
+     "prompt_eval_duration": 5953934082,
+     "eval_count": 175,
+     "eval_duration": 7653727001,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:35:07.250692Z"
+    },
+    "elapsed_s": 26.525,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1199,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:22632303:0",
+     "scifact:22632303:1",
+     "scifact:4406819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "7e3cc33669cf4bbc9c70e5bb00977d0804b9fd3c08aadc3d0050c24d41e733fa",
+  "nemotron-mini:4b": "dedb4a86b46eddabd02ba808894ac90168d33ddc435e9a2911ee5c91556792a3",
+  "exaone3.5:7.8b": "414f16db6910762f7931765145337a870586bef11c5fe4661ef32ed7c3b873ed",
+  "granite3.3:2b": "76fb8b989fdb7b768da60a88c9a26047fbfe5e52332721d90b58bc6ef691a0f6",
+  "olmo2:7b": "22aa8f1b1ef5b8d64d276a8f7852d3d765fc646d3a0ccdd60cbd8800e7b9247a"
+ },
+ "item_start_wall": 1792859671.393656,
+ "item_wall_s": 35.862,
+ "ollama_ps_samples": [
+  [
+   1792859671.394,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859673.399,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792859675.411,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792859677.422,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859679.434,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792859681.436,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859683.44,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792859685.452,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792859687.459,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792859689.464,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859691.475,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859693.486,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859695.488,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859697.496,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859699.508,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859701.514,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859703.518,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859705.53,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

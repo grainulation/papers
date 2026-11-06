@@ -1,0 +1,1232 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever150925",
+ "order": 316,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever150925",
+  "order": 316,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "The dress was online."
+ },
+ "item_view_sha256": "48157d19c48cfd2db939b7a4fa0fdc6efb2fdb3132d381a6e51f3ef4ce1adf6c",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The dress was online.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d57c7aa7d8635b4a6663c15187270db90303a4f0f99dc4d3869b1e87abc60956",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861867.9608011,
+      "end_wall": 1792861868.752086,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861867.9608011,
+    "start_mono": 531424.716404,
+    "end_wall": 1792861868.752086,
+    "end_mono": 531425.507689625,
+    "raw_response": "{\"query\": \"dress online\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 789439209,
+     "load_duration": 108611542,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 337055625,
+     "eval_count": 9,
+     "eval_duration": 259452041,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:08.751324Z"
+    },
+    "elapsed_s": 0.791,
+    "query_used": "dress online",
+    "query_source": "json",
+    "query_arrival_seq": 1580
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "dress online",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Union_Jack_dress:1",
+       "score_q": 9028
+      },
+      {
+       "passage_key": "fever17:Jokers'_Masquerade:0",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "fever17:Peaches_Boutique:0",
+       "score_q": 8013
+      },
+      {
+       "passage_key": "fever17:Dress_Circle_-LRB-Theatre_Shop-RRB-:0",
+       "score_q": 7644
+      },
+      {
+       "passage_key": "fever17:Court_uniform_and_dress_in_the_United_Kingdom:1",
+       "score_q": 7634
+      }
+     ],
+     "retrieval_sha256": "a578ebbd5b2d7b01ab3d938e4491b35b263cf8aa8b650f4d0c6f0857d007822c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a578ebbd5b2d7b01ab3d938e4491b35b263cf8aa8b650f4d0c6f0857d007822c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Union_Jack_dress:1",
+      "content_sha256": "c8cd272a2d422f9b91bb25afdfe4877007cbde881f32745bf5403fd08d2ca167",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Jokers'_Masquerade:0",
+      "content_sha256": "c8b5fa79dd76eb2b14b743c1e34b660cefc9b7ce4f4a8e68a4a1434635346d75",
+      "chars": 116
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Peaches_Boutique:0",
+      "content_sha256": "2cc6cf6ea07e6cd2e20e07b3ef3c9f0ad20ba432be3bc85e1d9122bb38b42f03",
+      "chars": 526
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Dress_Circle_-LRB-Theatre_Shop-RRB-:0",
+      "content_sha256": "cd115dfd0c395f37c5f794fad02db8e2ad313e7eacab9ffd84a5f374946affa9",
+      "chars": 309
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Court_uniform_and_dress_in_the_United_Kingdom:1",
+      "content_sha256": "4f7180f6042990c359ef497120abd4cbbc9989f92eea4afae948ae5b9c362f4c",
+      "chars": 793
+     }
+    ],
+    "elapsed_s": 0.0285
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The dress was online.\n\nEvidence passages from your search for \"dress online\":\n<<<PASSAGES\n[P1] Union Jack dress\nIn 2016 , the dress was voted the `` Most Inspiring British Fashion Moment '' in an online poll conducted by British online retailer Very . In 2010 , the performance in the Union Jack dress won Most Memorable Performance of 30 Years at the Brit Awards . The dress held the Guinness World Record for the most expensive piece of popstar clothing dealt at auction when it was sold for # 41,320 in 1998 .\n\n[P2] Jokers' Masquerade\nJokers ' Masquerade is a prominent online retailer selling fancy dress costumes and accessories .\n\n[P3] Peaches Boutique\nPeaches Boutique is a prom dress retailer located in Chicago , IL . Peaches was founded in 1984 in Chicago , IL as a small mom and pop store selling women 's designer clothing . By the mid 1990s , they focused exclusively on selling women 's designer dresses . Today , the retail location stocks over 20,000 dresses at their 20,000 square foot space and is one of the country 's largest prom dress retail stores , and online prom retailers . Peaches Boutique 's online store offers over 100,000 dress styles .\n\n[P4] Dress Circle (Theatre Shop)\nDress Circle is a British specialist store that sells products related to the musical theatre , including cast albums , books , merchandise , and memorabilia . From 1978 until 2013 , it operated a store near Covent Garden , London ; since 2013 it has been an online-only retailer .\n\n[P5] Court uniform and dress in the United Kingdom\nMale court dress is still worn today as part of the formal dress of judges and Queen 's Counsel , and is also worn by certain Lord Mayors , parliamentary officials , and high sheriffs of counties . Female court dress was at one time required wear for debutantes being presented at Court , but it ceased regularly to be worn after the Second World War ( when afternoon presentations replaced evening Courts ) . Precise descriptions , both of court uniform and of court dress , were laid down in an official publication called Dress Worn at Court ( viewable online ) which was published by the Lord Chamberlain 's Office . The 1937 edition remains authoritative for those rare circumstances in which court uniform or court dress are still required .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ba1175a4fc8c2f94caa4d32e4fd3bc49cda721cb20a15356aa8498c6e412f0b9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861868.780854,
+      "end_wall": 1792861874.271338,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1580,
+    "start_wall": 1792861868.780854,
+    "start_mono": 531425.536458791,
+    "end_wall": 1792861874.271338,
+    "end_mono": 531431.026955083,
+    "raw_response": "{\"reasoning\": \"The dress was voted the 'Most Inspiring British Fashion Moment' in an online poll, indicating it was indeed online at the time of the poll.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5488445750,
+     "load_duration": 63065084,
+     "prompt_eval_count": 834,
+     "prompt_eval_duration": 1472277375,
+     "eval_count": 62,
+     "eval_duration": 3350700124,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:14.270102Z"
+    },
+    "elapsed_s": 5.49,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1580,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Union_Jack_dress:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 139,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The dress was online.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d57c7aa7d8635b4a6663c15187270db90303a4f0f99dc4d3869b1e87abc60956",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861867.9601972,
+      "end_wall": 1792861869.9965959,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861867.9601972,
+    "start_mono": 531424.715800375,
+    "end_wall": 1792861869.9965959,
+    "end_mono": 531426.752202958,
+    "raw_response": "{\"query\": \"dress online 2015\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2034332958,
+     "load_duration": 57312375,
+     "prompt_eval_count": 156,
+     "prompt_eval_duration": 449641917,
+     "eval_count": 11,
+     "eval_duration": 1443541834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:09.995834Z"
+    },
+    "elapsed_s": 2.036,
+    "query_used": "dress online 2015",
+    "query_source": "json",
+    "query_arrival_seq": 1581
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "dress online 2015",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Union_Jack_dress:1",
+       "score_q": 9028
+      },
+      {
+       "passage_key": "fever17:The_Dress:0",
+       "score_q": 8439
+      },
+      {
+       "passage_key": "fever17:Jokers'_Masquerade:0",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "fever17:Peaches_Boutique:0",
+       "score_q": 8013
+      },
+      {
+       "passage_key": "fever17:Green_Versace_dress_of_Jennifer_Lopez:1",
+       "score_q": 7820
+      }
+     ],
+     "retrieval_sha256": "6998c8bc96baa30be811dd1899cf7ce2959f4cdd7caccb28b771f113dc450552"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6998c8bc96baa30be811dd1899cf7ce2959f4cdd7caccb28b771f113dc450552",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Union_Jack_dress:1",
+      "content_sha256": "c8cd272a2d422f9b91bb25afdfe4877007cbde881f32745bf5403fd08d2ca167",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:The_Dress:0",
+      "content_sha256": "9043d0b0600035bf4e9ecbd789b24d5f1805426e6d5e491efe7bfd479a60e05c",
+      "chars": 286
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Jokers'_Masquerade:0",
+      "content_sha256": "c8b5fa79dd76eb2b14b743c1e34b660cefc9b7ce4f4a8e68a4a1434635346d75",
+      "chars": 116
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Peaches_Boutique:0",
+      "content_sha256": "2cc6cf6ea07e6cd2e20e07b3ef3c9f0ad20ba432be3bc85e1d9122bb38b42f03",
+      "chars": 526
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Green_Versace_dress_of_Jennifer_Lopez:1",
+      "content_sha256": "dbdb987300ef77c4e390d02cdcd9b55a1e908d5d168809eb5a4b7b22ae715cf1",
+      "chars": 263
+     }
+    ],
+    "elapsed_s": 0.0305
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The dress was online.\n\nEvidence passages from your search for \"dress online 2015\":\n<<<PASSAGES\n[P1] Union Jack dress\nIn 2016 , the dress was voted the `` Most Inspiring British Fashion Moment '' in an online poll conducted by British online retailer Very . In 2010 , the performance in the Union Jack dress won Most Memorable Performance of 30 Years at the Brit Awards . The dress held the Guinness World Record for the most expensive piece of popstar clothing dealt at auction when it was sold for # 41,320 in 1998 .\n\n[P2] The Dress\nThe Dress may refer to : The Dress ( 1961 film ) , a 1961 East German film The Dress ( 1984 film ) , winner of the 1984 BAFTA Award for Best Short Film The Dress ( 1996 film ) , a 1996 Dutch film The dress , a 2015 Internet phenomenon regarding the perceived colour of a dress\n\n[P3] Jokers' Masquerade\nJokers ' Masquerade is a prominent online retailer selling fancy dress costumes and accessories .\n\n[P4] Peaches Boutique\nPeaches Boutique is a prom dress retailer located in Chicago , IL . Peaches was founded in 1984 in Chicago , IL as a small mom and pop store selling women 's designer clothing . By the mid 1990s , they focused exclusively on selling women 's designer dresses . Today , the retail location stocks over 20,000 dresses at their 20,000 square foot space and is one of the country 's largest prom dress retail stores , and online prom retailers . Peaches Boutique 's online store offers over 100,000 dress styles .\n\n[P5] Green Versace dress of Jennifer Lopez\nAnother duplicate is displayed at The Grammy Museum while as of 2015 , Lopez still owns the original gown . In 2015 , fifteen years since Lopez first wore it , the dress is still inextricably associated with her and Versace .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8c4f25a0e8af294d5d58f80cc16813d30a97e2e444da29ab7403e53ea279c457",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861870.027551,
+      "end_wall": 1792861881.562915,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1581,
+    "start_wall": 1792861870.027551,
+    "start_mono": 531426.783159208,
+    "end_wall": 1792861881.562915,
+    "end_mono": 531438.318550916,
+    "raw_response": "{\"reasoning\": \"The claim that the dress was online is supported by evidence passage P4 which mentions Peaches Boutique, an online retailer that sells prom dresses, indicating that dresses can indeed be purchased online. Additionally, evidence passage P5 verifies that Jennifer Lopez's Versace dress, another prominent dress, is still associated with her in 2015, which implies that dresses and their information are available online.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\", \"P5\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11532778875,
+     "load_duration": 46030333,
+     "prompt_eval_count": 645,
+     "prompt_eval_duration": 2325654250,
+     "eval_count": 108,
+     "eval_duration": 8250411008,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:21.561171Z"
+    },
+    "elapsed_s": 11.535,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1581,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Peaches_Boutique:0",
+     "fever17:Green_Versace_dress_of_Jennifer_Lopez:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 418,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The dress was online.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d57c7aa7d8635b4a6663c15187270db90303a4f0f99dc4d3869b1e87abc60956",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861867.960363,
+      "end_wall": 1792861877.199096,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861867.960363,
+    "start_mono": 531424.715965958,
+    "end_wall": 1792861877.199096,
+    "end_mono": 531433.954720333,
+    "raw_response": "{\"query\": \"dress online shop\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9236258333,
+     "load_duration": 8445661166,
+     "prompt_eval_count": 167,
+     "prompt_eval_duration": 338891709,
+     "eval_count": 9,
+     "eval_duration": 268718668,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:17.197718Z"
+    },
+    "elapsed_s": 9.239,
+    "query_used": "dress online shop",
+    "query_source": "json",
+    "query_arrival_seq": 1584
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "dress online shop",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Dress_Circle_-LRB-Theatre_Shop-RRB-:0",
+       "score_q": 10813
+      },
+      {
+       "passage_key": "fever17:I_Found_The_Gown:0",
+       "score_q": 9173
+      },
+      {
+       "passage_key": "fever17:Union_Jack_dress:1",
+       "score_q": 9028
+      },
+      {
+       "passage_key": "fever17:The_GLD_Shop:0",
+       "score_q": 8692
+      },
+      {
+       "passage_key": "fever17:Shop:0",
+       "score_q": 8661
+      }
+     ],
+     "retrieval_sha256": "0cc5a59f06b6e9248ef35adf89ed50ffce153fbbd60b0cf75427bf9598540c1c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0cc5a59f06b6e9248ef35adf89ed50ffce153fbbd60b0cf75427bf9598540c1c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Dress_Circle_-LRB-Theatre_Shop-RRB-:0",
+      "content_sha256": "cd115dfd0c395f37c5f794fad02db8e2ad313e7eacab9ffd84a5f374946affa9",
+      "chars": 309
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:I_Found_The_Gown:0",
+      "content_sha256": "a3854ba00889538875720275bcc42c893ebd8e9f9d5538549d13fc9d51586748",
+      "chars": 331
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Union_Jack_dress:1",
+      "content_sha256": "c8cd272a2d422f9b91bb25afdfe4877007cbde881f32745bf5403fd08d2ca167",
+      "chars": 417
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_GLD_Shop:0",
+      "content_sha256": "64b56ec791f49b41f2aba947c98349c177093e37edf0313630ad3a972ae7df8e",
+      "chars": 113
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Shop:0",
+      "content_sha256": "f971207eee5ffebb3f14373a50b56d1474afc25f94dc0c66695f7cd21b78241c",
+      "chars": 198
+     }
+    ],
+    "elapsed_s": 0.022
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The dress was online.\n\nEvidence passages from your search for \"dress online shop\":\n<<<PASSAGES\n[P1] Dress Circle (Theatre Shop)\nDress Circle is a British specialist store that sells products related to the musical theatre , including cast albums , books , merchandise , and memorabilia . From 1978 until 2013 , it operated a store near Covent Garden , London ; since 2013 it has been an online-only retailer .\n\n[P2] I Found The Gown\nI Found The Gown is an American wedding dress shop reality series airing on TLC as part of that network 's Friday evening `` wedding block '' of programming . The series films at `` VOWS Bridal Outlet '' , a discount wedding dress shop in Watertown , Massachusetts in suburban Boston which has existed since 1992 .\n\n[P3] Union Jack dress\nIn 2016 , the dress was voted the `` Most Inspiring British Fashion Moment '' in an online poll conducted by British online retailer Very . In 2010 , the performance in the Union Jack dress won Most Memorable Performance of 30 Years at the Brit Awards . The dress held the Guinness World Record for the most expensive piece of popstar clothing dealt at auction when it was sold for # 41,320 in 1998 .\n\n[P4] The GLD Shop\nThe GLD Shop is a Pittsburgh based fashion and lifestyle brand and an online shop of the same name .\n\n[P5] Shop\nShop may refer to : Shopping , or a shopping place such as a retail shop , online shop , or market A machine shop A business , in slang `` Shop class '' , an industrial arts educational program\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6c3b335a13e3bea9d98cd8a1b9b56ef6a61e7aa776573e810789335739ed1790",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861877.221301,
+      "end_wall": 1792861882.073689,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1582,
+    "start_wall": 1792861877.221301,
+    "start_mono": 531433.976927291,
+    "end_wall": 1792861882.073689,
+    "end_mono": 531438.829326541,
+    "raw_response": "{\"reasoning\": \"The evidence shows that the dress was sold by an online-only retailer.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4849408208,
+     "load_duration": 87875500,
+     "prompt_eval_count": 613,
+     "prompt_eval_duration": 1610343417,
+     "eval_count": 47,
+     "eval_duration": 2326354207,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:22.071699Z"
+    },
+    "elapsed_s": 4.852,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1582,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:I_Found_The_Gown:0",
+     "fever17:Union_Jack_dress:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 70,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The dress was online.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d57c7aa7d8635b4a6663c15187270db90303a4f0f99dc4d3869b1e87abc60956",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861867.96058,
+      "end_wall": 1792861872.400403,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861867.96058,
+    "start_mono": 531424.716182958,
+    "end_wall": 1792861872.400403,
+    "end_mono": 531429.156016083,
+    "raw_response": "{\"query\": \"dress online purchase\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4437841375,
+     "load_duration": 1177654542,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 797212292,
+     "eval_count": 10,
+     "eval_duration": 2425779042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:12.399588Z"
+    },
+    "elapsed_s": 4.44,
+    "query_used": "dress online purchase",
+    "query_source": "json",
+    "query_arrival_seq": 1582
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "dress online purchase",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Union_Jack_dress:1",
+       "score_q": 9028
+      },
+      {
+       "passage_key": "fever17:Kindred_Group:3",
+       "score_q": 8489
+      },
+      {
+       "passage_key": "fever17:Jokers'_Masquerade:0",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "fever17:List_of_online_grocers:0",
+       "score_q": 8203
+      },
+      {
+       "passage_key": "fever17:Kwedit:0",
+       "score_q": 8060
+      }
+     ],
+     "retrieval_sha256": "4c19a280483c3733fa113ae9d1eedcd7d584975246c03b92f87ae08833731439"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4c19a280483c3733fa113ae9d1eedcd7d584975246c03b92f87ae08833731439",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Union_Jack_dress:1",
+      "content_sha256": "c8cd272a2d422f9b91bb25afdfe4877007cbde881f32745bf5403fd08d2ca167",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Kindred_Group:3",
+      "content_sha256": "f089deb087ae2936ee65c2ab5e8a251a769b96f8a805106bb9a6ef734bc0128f",
+      "chars": 289
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Jokers'_Masquerade:0",
+      "content_sha256": "c8b5fa79dd76eb2b14b743c1e34b660cefc9b7ce4f4a8e68a4a1434635346d75",
+      "chars": 116
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:List_of_online_grocers:0",
+      "content_sha256": "a825ac41e647530aac8fa17b74aa00aee2c9cc724bdd724171f6d980e8b27a3f",
+      "chars": 242
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Kwedit:0",
+      "content_sha256": "4db9c74e4391ffdd5605d3548431e21f7327e964434f68f7b47fd0f59da8bfa3",
+      "chars": 435
+     }
+    ],
+    "elapsed_s": 0.0158
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The dress was online.\n\nEvidence passages from your search for \"dress online purchase\":\n<<<PASSAGES\n[P1] Union Jack dress\nIn 2016 , the dress was voted the `` Most Inspiring British Fashion Moment '' in an online poll conducted by British online retailer Very . In 2010 , the performance in the Union Jack dress won Most Memorable Performance of 30 Years at the Brit Awards . The dress held the Guinness World Record for the most expensive piece of popstar clothing dealt at auction when it was sold for # 41,320 in 1998 .\n\n[P2] Kindred Group\nThe deal , worth # 175.6 m , included the online casinos 32Red . com , Roxy Palace and some smaller Microgaming-powered casinos . Following the previous purchase of Stan James online , this latest purchase confirmed Kindred 's keen interest in the UK online gambling market .\n\n[P3] Jokers' Masquerade\nJokers ' Masquerade is a prominent online retailer selling fancy dress costumes and accessories .\n\n[P4] List of online grocers\nThis is a list of online grocers . Online grocers are grocery stores that allow private individuals and businesses to purchase groceries and grocery products online . The companies then deliver the orders to consumers .\n\n[P5] Kwedit\nKwedit was a website that helped people without credit or debit cards purchase virtual goods online . People could purchase items online and promise to pay for the items later , through mail-in payments , payments at a 7-Eleven store , or through online credit card transactions . After Kwedit ceased operations , its Kwedit-Direct offering became PayNearMe , a service by paying for items purchased online at a 7-Eleven store .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3e6cfdd816a5f19a5ba4d9c13285326e31069d9549905ff20537efdfe61e8656",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861872.416491,
+      "end_wall": 1792861887.8432791,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1583,
+    "start_wall": 1792861872.416491,
+    "start_mono": 531429.172104875,
+    "end_wall": 1792861887.8432791,
+    "end_mono": 531444.59893125,
+    "raw_response": "{\n  \"reasoning\": \"The claim refers to a 'dress' being 'online'. The evidence passages do not provide specific information about a particular dress, but they do mention various online platforms for clothing and costumes (Jokers' Masquerade, Kindred Group, and the anonymous online grocers). There's no explicit mention of a 'Union Jack dress' or any other specific dress that was solely sold online. However, the widespread understanding of online shopping implies that most, if not all, dresses sold today are available online. Given the lack of contradictory evidence and the prevalent nature of online shopping, the \"\n\n\t,\"answer\": \"REFUTED\",\n\t\"citations\": [\"P3\", \"P4\"],\n\t\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15424190750,
+     "load_duration": 5147986375,
+     "prompt_eval_count": 678,
+     "prompt_eval_duration": 1717339167,
+     "eval_count": 176,
+     "eval_duration": 7847742705,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:27.841484Z"
+    },
+    "elapsed_s": 15.427,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1583,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Jokers'_Masquerade:0",
+     "fever17:List_of_online_grocers:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The dress was online.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "d57c7aa7d8635b4a6663c15187270db90303a4f0f99dc4d3869b1e87abc60956",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861867.960973,
+      "end_wall": 1792861876.345979,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861867.960973,
+    "start_mono": 531424.716576125,
+    "end_wall": 1792861876.345979,
+    "end_mono": 531433.101602208,
+    "raw_response": "{\"query\": \"online dress availability reviews\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8383314667,
+     "load_duration": 6895706875,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 775387792,
+     "eval_count": 11,
+     "eval_duration": 626869960,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:16.344921Z"
+    },
+    "elapsed_s": 8.385,
+    "query_used": "online dress availability reviews",
+    "query_source": "json",
+    "query_arrival_seq": 1583
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "online dress availability reviews",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Union_Jack_dress:1",
+       "score_q": 9028
+      },
+      {
+       "passage_key": "fever17:Jokers'_Masquerade:0",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "fever17:Berg_Encyclopedia_of_World_Dress_and_Fashion:0",
+       "score_q": 8264
+      },
+      {
+       "passage_key": "fever17:ChannelGain:0",
+       "score_q": 8017
+      },
+      {
+       "passage_key": "fever17:Peaches_Boutique:0",
+       "score_q": 8013
+      }
+     ],
+     "retrieval_sha256": "4fdb41800df80f9cffaed0d5a929ff32fd2b3efadc9ca50df766c1e839a3f851"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4fdb41800df80f9cffaed0d5a929ff32fd2b3efadc9ca50df766c1e839a3f851",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Union_Jack_dress:1",
+      "content_sha256": "c8cd272a2d422f9b91bb25afdfe4877007cbde881f32745bf5403fd08d2ca167",
+      "chars": 417
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Jokers'_Masquerade:0",
+      "content_sha256": "c8b5fa79dd76eb2b14b743c1e34b660cefc9b7ce4f4a8e68a4a1434635346d75",
+      "chars": 116
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Berg_Encyclopedia_of_World_Dress_and_Fashion:0",
+      "content_sha256": "484042f863eeb9917de32e0eb1002e0a037f68fc2d65752ff801e857dcac57c2",
+      "chars": 597
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:ChannelGain:0",
+      "content_sha256": "c67b3f2f221a6c1e8a34181a69f37134d47b71d198ab0da87f37b88dd43e129b",
+      "chars": 276
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Peaches_Boutique:0",
+      "content_sha256": "2cc6cf6ea07e6cd2e20e07b3ef3c9f0ad20ba432be3bc85e1d9122bb38b42f03",
+      "chars": 526
+     }
+    ],
+    "elapsed_s": 0.0157
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The dress was online.\n\nEvidence passages from your search for \"online dress availability reviews\":\n<<<PASSAGES\n[P1] Union Jack dress\nIn 2016 , the dress was voted the `` Most Inspiring British Fashion Moment '' in an online poll conducted by British online retailer Very . In 2010 , the performance in the Union Jack dress won Most Memorable Performance of 30 Years at the Brit Awards . The dress held the Guinness World Record for the most expensive piece of popstar clothing dealt at auction when it was sold for # 41,320 in 1998 .\n\n[P2] Jokers' Masquerade\nJokers ' Masquerade is a prominent online retailer selling fancy dress costumes and accessories .\n\n[P3] Berg Encyclopedia of World Dress and Fashion\nThe Berg Encyclopedia of World Dress and Fashion is an encyclopedia about dress and ornamentation of the body in different cultures throughout history . It explores themes of personal and social identity related to the universal activity of dressing one 's self . Its ten volumes are dedicated to describing and interpreting dress and fashion in different places throughout the world , and are organized geographically . The last volume reviews the global perspectives through research and study of the present-day and the future of dress and fashion .\n\n[P4] ChannelGain\nChannelGain is a product by a company called RateGain . Its main purpose is to facilitate online distribution of room rates , availability , allocation and inventory of rooms for hotels to all their Online travel agencies ( OTAs ) for each of their selling dates .\n\n[P5] Peaches Boutique\nPeaches Boutique is a prom dress retailer located in Chicago , IL . Peaches was founded in 1984 in Chicago , IL as a small mom and pop store selling women 's designer clothing . By the mid 1990s , they focused exclusively on selling women 's designer dresses . Today , the retail location stocks over 20,000 dresses at their 20,000 square foot space and is one of the country 's largest prom dress retail stores , and online prom retailers . Peaches Boutique 's online store offers over 100,000 dress styles .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e9d04dbe548854bdf5fa067f201785525779a9573ead3568655ff9d5dd94039e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861876.3619268,
+      "end_wall": 1792861890.595365,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1584,
+    "start_wall": 1792861876.3619268,
+    "start_mono": 531433.117551,
+    "end_wall": 1792861890.595365,
+    "end_mono": 531447.351023333,
+    "raw_response": "{\"reasoning\": \"While none of the provided passages explicitly mention a specific 'dress' being online, passage P5 discusses Peaches Boutique as an online retailer that sells dresses extensively online, implying that dresses are commonly available online through various retailers. This indirectly supports the claim that dresses can be found online.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P5\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14230150667,
+     "load_duration": 6912907833,
+     "prompt_eval_count": 747,
+     "prompt_eval_duration": 2910403458,
+     "eval_count": 91,
+     "eval_duration": 3749067162,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:11:30.593095Z"
+    },
+    "elapsed_s": 14.233,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1584,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Peaches_Boutique:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 334,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "a578ebbd5b2d7b01ab3d938e4491b35b263cf8aa8b650f4d0c6f0857d007822c",
+  "olmo2:7b": "6998c8bc96baa30be811dd1899cf7ce2959f4cdd7caccb28b771f113dc450552",
+  "nemotron-mini:4b": "0cc5a59f06b6e9248ef35adf89ed50ffce153fbbd60b0cf75427bf9598540c1c",
+  "granite3.3:2b": "4c19a280483c3733fa113ae9d1eedcd7d584975246c03b92f87ae08833731439",
+  "exaone3.5:7.8b": "4fdb41800df80f9cffaed0d5a929ff32fd2b3efadc9ca50df766c1e839a3f851"
+ },
+ "item_start_wall": 1792861867.959834,
+ "item_wall_s": 22.636,
+ "ollama_ps_samples": [
+  [
+   1792861867.96,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861869.965,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861871.968,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861873.971,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792861875.976,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861877.98,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861879.982,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861881.985,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792861883.989,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861885.99,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861887.992,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861890.001,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

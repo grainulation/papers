@@ -1,0 +1,1266 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1334",
+ "order": 160,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1334",
+  "order": 160,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Type 1 Diabetes is associated with subtle perturbations in T reg development."
+ },
+ "item_view_sha256": "c7d8f1cb8ec96387f892d9ac2e850b2186785fc14327c3634bac9bfe417699d4",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "bm25",
+  "gemma2:2b": "dense",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "dense"
+ },
+ "dispatch_order": [
+  "llama3.2:3b",
+  "mistral",
+  "qwen2.5:3b",
+  "gemma2:2b",
+  "phi3:mini"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "phi3:mini",
+  "mistral",
+  "qwen2.5:3b",
+  "gemma2:2b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2b9ed540886f245e551fce1ad7d5651b5f59832f29a29051a59bdf05f1e3a700",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792708700.550132,
+      "end_wall": 1792708702.2919722,
+      "error": null
+     }
+    ],
+    "start_wall": 1792708700.550132,
+    "start_mono": 378257.625185958,
+    "end_wall": 1792708702.2919722,
+    "end_mono": 378259.367008583,
+    "raw_response": "{\"query\": \"Type 1 Diabetes T reg cell development subtle perturbations\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1739784208,
+     "load_duration": 92846125,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 410138917,
+     "eval_count": 18,
+     "eval_duration": 1044362125,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:22.29126Z"
+    },
+    "elapsed_s": 1.742,
+    "query_used": "Type 1 Diabetes T reg cell development subtle perturbations",
+    "query_source": "json",
+    "query_arrival_seq": 800
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Type 1 Diabetes T reg cell development subtle perturbations",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:266641:0",
+       "score_q": 774
+      },
+      {
+       "passage_key": "scifact:41877386:0",
+       "score_q": 756
+      },
+      {
+       "passage_key": "scifact:23460562:1",
+       "score_q": 749
+      },
+      {
+       "passage_key": "scifact:266641:1",
+       "score_q": 749
+      },
+      {
+       "passage_key": "scifact:41877386:1",
+       "score_q": 736
+      }
+     ],
+     "retrieval_sha256": "11afb8be214211dfa269107f48626652dce36541b35bd0daf141e0c88b60872a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "11afb8be214211dfa269107f48626652dce36541b35bd0daf141e0c88b60872a",
+    "query_embedding_sha256": "4f3fada35f27c5565fda5b848630983e4486f2198336cc4f5aeb7366286940d4",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:266641:0",
+      "content_sha256": "755526209bed56ff14b796f7fa58080f8e2f9b67b7d82b493bb667cf2c7be47d",
+      "chars": 868
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:41877386:0",
+      "content_sha256": "4553b8f88307df5742edbbf363291335d80dcb56c0a313852b4cd7eda1667122",
+      "chars": 1080
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23460562:1",
+      "content_sha256": "4baa31d9121770f90fad54dc8570fca325d22448e8d200c0ffd4112fb967a87b",
+      "chars": 550
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:266641:1",
+      "content_sha256": "21a1142ec4961e7669bdcecf91ccccfccf1769183de005178ee384b331f8f9f8",
+      "chars": 545
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:41877386:1",
+      "content_sha256": "7acad2a01be0fa09f14cfa9c7afc3fc313e8cc0fca644ee3fe0a14cd572b76ef",
+      "chars": 997
+     }
+    ],
+    "elapsed_s": 6.5747
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nEvidence passages from your search for \"Type 1 Diabetes T reg cell development subtle perturbations\":\n<<<PASSAGES\n[P1] CD127 expression inversely correlates with FoxP3 and suppressive function of human CD4+ T reg cells\nRegulatory T (T reg) cells are critical regulators of immune tolerance. Most T reg cells are defined based on expression of CD4, CD25, and the transcription factor, FoxP3. However, these markers have proven problematic for uniquely defining this specialized T cell subset in humans. We found that the IL-7 receptor (CD127) is down-regulated on a subset of CD4+ T cells in peripheral blood. We demonstrate that the majority of these cells are FoxP3+, including those that express low levels or no CD25. A combination of CD4, CD25, and CD127 resulted in a highly purified population of T reg cells accounting for significantly more cells that previously identified based on other cell surface markers. These cells were highly suppressive in functional suppressor assays.\n\n[P2] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nCD4(+)CD25(+) regulatory T cells (T regs) play a major role in the maintenance of self-tolerance and immune suppression, although the mechanisms controlling T reg development and suppressor function remain incompletely understood. Herein, we provide evidence that Kruppel-like factor 10 (KLF10/TIEG1) constitutes an important regulator of T regulatory cell suppressor function and CD4(+)CD25(-) T cell activation through distinct mechanisms involving transforming growth factor (TGF)-beta1 and Foxp3. KLF10 overexpressing CD4(+)CD25(-) T cells induced both TGF-beta1 and Foxp3 expression, an effect associated with reduced T-Bet (Th1 marker) and Gata3 (Th2 marker) mRNA expression. Consistently, KLF10(-/-) CD4(+)CD25(-) T cells have enhanced differentiation along both Th1 and Th2 pathways and elaborate higher levels of Th1 and Th2 cytokines. Furthermore, KLF10(-/-) CD4(+)CD25(-) T cell effectors cannot be appropriately suppressed by wild-type T regs.\n\n[P3] Early life compartmentalization of human T cell differentiation and regulatory function in mucosal and lymphoid tissues\nAdditionally, regulatory T (T(reg)) cells comprise a high proportion (30-40%) of CD4(+) T cells in pediatric tissues but are present at much lower frequencies (1-10%) in adult tissues. Pediatric tissue T(reg) cells suppress endogenous T cell activation, and early T cell functionality is confined to the mucosal sites that have the lowest T(reg):T(EM) cell ratios, which suggests control in situ of immune responses in early life.\n\n[P4] CD127 expression inversely correlates with FoxP3 and suppressive function of human CD4+ T reg cells\nIn fact, cells separated based solely on CD4 and CD127 expression were anergic and, although representing at least three times the number of cells (including both CD25+CD4+ and CD25−CD4+ T cell subsets), were as suppressive as the “classic” CD4+CD25hi T reg cell subset. Finally, we show that CD127 can be used to quantitate T reg cell subsets in individuals with type 1 diabetes supporting the use of CD127 as a biomarker for human T reg cells.\n\n[P5] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nSurprisingly, KLF10(-/-) T reg cells have reduced suppressor function, independent of Foxp3 expression, with decreased expression and elaboration of TGF-beta1, an effect completely rescued by exogenous treatment with TGF-beta1. Mechanistic studies demonstrate that in response to TGF-beta1, KLF10 can transactivate both TGF-beta1 and Foxp3 promoters, implicating KLF10 in a positive feedback loop that may promote cell-intrinsic control of T cell activation. Finally, KLF10(-/-) CD4(+)CD25(-) T cells promoted atherosclerosis by approximately 2-fold in ApoE(-/-)/scid/scid mice with increased leukocyte accumulation and peripheral pro-inflammatory cytokines. Thus, KLF10 is a critical regulator in the transcriptional network controlling TGF-beta1 in both CD4(+)CD25(-) T cells and T regs and plays an important role in regulating atherosclerotic lesion formation in mice.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a617d8c3ac24466fbb7d4338380968b8de3e31c3b64291c44de262bde498a25b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792708708.867224,
+      "end_wall": 1792708720.216285,
+      "error": null
+     }
+    ],
+    "arrival_seq": 800,
+    "start_wall": 1792708708.867224,
+    "start_mono": 378265.942205875,
+    "end_wall": 1792708720.216285,
+    "end_mono": 378277.291177083,
+    "raw_response": "{\"reasoning\": \"The evidence passages suggest that Type 1 Diabetes is associated with subtle perturbations in T reg development, as indicated by inverse correlation between CD127 expression and FoxP3 in T reg cells.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11346728667,
+     "load_duration": 3119519167,
+     "prompt_eval_count": 1233,
+     "prompt_eval_duration": 3409291917,
+     "eval_count": 70,
+     "eval_duration": 3956547835,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:40.214873Z"
+    },
+    "elapsed_s": 11.349,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 800,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:266641:0",
+     "scifact:266641:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 199,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2b9ed540886f245e551fce1ad7d5651b5f59832f29a29051a59bdf05f1e3a700",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792708700.550622,
+      "end_wall": 1792708704.828419,
+      "error": null
+     }
+    ],
+    "start_wall": 1792708700.550622,
+    "start_mono": 378257.625676208,
+    "end_wall": 1792708704.828419,
+    "end_mono": 378261.90343525,
+    "raw_response": "{\"query\": \"Type 1 Diabetes and T reg development perturbations research\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4275688375,
+     "load_duration": 908221042,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 463604083,
+     "eval_count": 21,
+     "eval_duration": 2851109668,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:24.827614Z"
+    },
+    "elapsed_s": 4.278,
+    "query_used": "Type 1 Diabetes and T reg development perturbations research",
+    "query_source": "json",
+    "query_arrival_seq": 802
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Type 1 Diabetes and T reg development perturbations research",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:266641:1",
+       "score_q": 8613
+      },
+      {
+       "passage_key": "scifact:24704139:2",
+       "score_q": 7464
+      },
+      {
+       "passage_key": "scifact:11899391:0",
+       "score_q": 7379
+      },
+      {
+       "passage_key": "scifact:27428509:4",
+       "score_q": 7161
+      },
+      {
+       "passage_key": "scifact:29387024:4",
+       "score_q": 6255
+      }
+     ],
+     "retrieval_sha256": "bd7a09b386c5cca6450b31650bf677289645382223c568f5da48e256c700a7bf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bd7a09b386c5cca6450b31650bf677289645382223c568f5da48e256c700a7bf",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:266641:1",
+      "content_sha256": "21a1142ec4961e7669bdcecf91ccccfccf1769183de005178ee384b331f8f9f8",
+      "chars": 545
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:24704139:2",
+      "content_sha256": "97078c84ad9a2e011a8d525683afb01c6a294717b1e0eb1448c2defe1d030629",
+      "chars": 423
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11899391:0",
+      "content_sha256": "c72658161ed60c05bafd049bfea6ee9bfdb4519464e24c5404612b859e539379",
+      "chars": 1068
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:27428509:4",
+      "content_sha256": "6e0ec84776b046b68144691a07b60727dbe3ab390a2d92d806a70c620b41f48d",
+      "chars": 990
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29387024:4",
+      "content_sha256": "6bd72dcbd796e782c990e2f23b8818960a23cc2eac872283b2a54c442b71a51b",
+      "chars": 371
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nEvidence passages from your search for \"Type 1 Diabetes and T reg development perturbations research\":\n<<<PASSAGES\n[P1] CD127 expression inversely correlates with FoxP3 and suppressive function of human CD4+ T reg cells\nIn fact, cells separated based solely on CD4 and CD127 expression were anergic and, although representing at least three times the number of cells (including both CD25+CD4+ and CD25−CD4+ T cell subsets), were as suppressive as the “classic” CD4+CD25hi T reg cell subset. Finally, we show that CD127 can be used to quantitate T reg cell subsets in individuals with type 1 diabetes supporting the use of CD127 as a biomarker for human T reg cells.\n\n[P2] The Diabetes Prevention Program: baseline characteristics of the randomized cohort. The Diabetes Prevention Program Research Group.\nCONCLUSIONS The DPP has successfully randomized a large cohort of participants with a wide distribution of age, obesity, and ethnic and racial backgrounds who are at high risk for developing type 2 diabetes. The study will examine the effects of interventions on the development of diabetes.\n\n[P3] Type 1 diabetes-associated IL2RA variation lowers IL-2 signaling and contributes to diminished CD4+CD25+ regulatory T cell function.\nNumerous reports have demonstrated that CD4(+)CD25(+) regulatory T cells (Tregs) from individuals with a range of human autoimmune diseases, including type 1 diabetes, are deficient in their ability to control autologous proinflammatory responses when compared with nondiseased, control individuals. Treg dysfunction could be a primary, causal event or may result from perturbations in the immune system during disease development. Polymorphisms in genes associated with Treg function, such as IL2RA, confer a higher risk of autoimmune disease. Although this suggests a primary role for defective Tregs in autoimmunity, a link between IL2RA gene polymorphisms and Treg function has not been examined. We addressed this by examining the impact of an IL2RA haplotype associated with type 1 diabetes on Treg fitness and suppressive function. Studies were conducted using healthy human subjects to avoid any confounding effects of disease.\n\n[P4] Prevention of Type 2 Diabetes Mellitus Through Inhibition of the Renin-Angiotensin System\nThese encouraging observations led to the initiation of two large, prospective, placebo-controlled randomised clinical trials whose primary outcome is the prevention of type 2 diabetes: the DREAM (Diabetes REduction Approaches with ramipril and rosiglitazone Medications) trial with the ACE inhibitor ramipril and the NAVIGATOR (Nateglinide And Valsartan in Impaired Glucose Tolerance Outcomes Research) trial with the ARA valsartan. Finally, ONTARGET (ONgoing Telmisartan Alone and in combination with Ramipril Global Endpoint Trial) will also investigate as a secondary endpoint whether it is possible to prevent the development of type 2 diabetes by blocking the RAS with either an ACE inhibitor or an ARA or a combination of both. Thus, the recent consistent observations of a 14–34% reduction of the development of diabetes in hypertensive patients receiving ACE inhibitors or ARAs are exciting.\n\n[P5] Continuous glucose monitoring in pregnant women with type 1 diabetes (CONCEPTT): a multicentre international randomised controlled trial\nThis study is the first to indicate potential for improvements in non-glycaemic health outcomes from CGM use. FUNDING Juvenile Diabetes Research Foundation, Canadian Clinical Trials Network, and National Institute for Health Research.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dce545e8ef484e35988a0870d0840e954d2b5b912639acea2463aec9307f2c5d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792708704.830416,
+      "end_wall": 1792708721.000256,
+      "error": null
+     }
+    ],
+    "arrival_seq": 801,
+    "start_wall": 1792708704.830416,
+    "start_mono": 378261.905432708,
+    "end_wall": 1792708721.000256,
+    "end_mono": 378278.075142416,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests a connection between Type 1 Diabetes and T reg development perturbations. Passages P1 and P3 discuss findings related to T reg cells and their function, or lack thereof, in the context of autoimmune conditions, which can include Type 1 Diabetes.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16165655083,
+     "load_duration": 5641885958,
+     "prompt_eval_count": 1203,
+     "prompt_eval_duration": 3890018125,
+     "eval_count": 107,
+     "eval_duration": 6332534963,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:40.997249Z"
+    },
+    "elapsed_s": 16.17,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 801,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:266641:1",
+     "scifact:11899391:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 264,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2b9ed540886f245e551fce1ad7d5651b5f59832f29a29051a59bdf05f1e3a700",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792708700.550282,
+      "end_wall": 1792708702.3562791,
+      "error": null
+     }
+    ],
+    "start_wall": 1792708700.550282,
+    "start_mono": 378257.625335791,
+    "end_wall": 1792708702.3562791,
+    "end_mono": 378259.43131575,
+    "raw_response": "{\"query\": \"Type 1 Diabetes T reg development association\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1803525375,
+     "load_duration": 36815500,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 480703916,
+     "eval_count": 16,
+     "eval_duration": 1244679419,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:22.355364Z"
+    },
+    "elapsed_s": 1.806,
+    "query_used": "Type 1 Diabetes T reg development association",
+    "query_source": "json",
+    "query_arrival_seq": 801
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Type 1 Diabetes T reg development association",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:266641:1",
+       "score_q": 8613
+      },
+      {
+       "passage_key": "scifact:4886637:0",
+       "score_q": 6632
+      },
+      {
+       "passage_key": "scifact:32534305:1",
+       "score_q": 6161
+      },
+      {
+       "passage_key": "scifact:1538080:0",
+       "score_q": 6125
+      },
+      {
+       "passage_key": "scifact:2138843:2",
+       "score_q": 6117
+      }
+     ],
+     "retrieval_sha256": "a698c1681b1ab6e0388cfb1cab1ec09de23707d068795424f72ee1dc5cfdc426"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a698c1681b1ab6e0388cfb1cab1ec09de23707d068795424f72ee1dc5cfdc426",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:266641:1",
+      "content_sha256": "21a1142ec4961e7669bdcecf91ccccfccf1769183de005178ee384b331f8f9f8",
+      "chars": 545
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4886637:0",
+      "content_sha256": "5a48b2f666febdd2db5e58410d95b0d2a786cf0679daf90d6e4e305748c43e10",
+      "chars": 839
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:32534305:1",
+      "content_sha256": "9e7cbebd7d7e456d0789e8c3ec1d7f23cb9b2eb27c7e9656039a438d93e41ead",
+      "chars": 732
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:1538080:0",
+      "content_sha256": "60368b1f282f42f2cee372aaddbd1a4e6eb4263a74f3b68578535a5db941d3d1",
+      "chars": 1174
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2138843:2",
+      "content_sha256": "9a47d0de098e7d9656153620944b8e6a7ad3d843253372bd30ced65c41dfa39c",
+      "chars": 566
+     }
+    ],
+    "elapsed_s": 0.0066
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nEvidence passages from your search for \"Type 1 Diabetes T reg development association\":\n<<<PASSAGES\n[P1] CD127 expression inversely correlates with FoxP3 and suppressive function of human CD4+ T reg cells\nIn fact, cells separated based solely on CD4 and CD127 expression were anergic and, although representing at least three times the number of cells (including both CD25+CD4+ and CD25−CD4+ T cell subsets), were as suppressive as the “classic” CD4+CD25hi T reg cell subset. Finally, we show that CD127 can be used to quantitate T reg cell subsets in individuals with type 1 diabetes supporting the use of CD127 as a biomarker for human T reg cells.\n\n[P2] Diabetes, metabolic syndrome, and breast cancer: a review of the current evidence.\nIncidences of breast cancer, type 2 diabetes, and metabolic syndrome have increased over the past decades with the obesity epidemic, especially in industrialized countries. Insulin resistance, hyperinsulinemia, and changes in the signaling of growth hormones and steroid hormones associated with diabetes may affect the risk of breast cancer. We reviewed epidemiologic studies of the association between type 2 diabetes and risk of breast cancer and the available evidence on the role of hormonal mediators of an association between diabetes and breast cancer. The combined evidence supports a modest association between type 2 diabetes and the risk of breast cancer, which appears to be more consistent among postmenopausal than among premenopausal women.\n\n[P3] Type 2 diabetes and subsequent incidence of breast cancer in the Nurses' Health Study.\nWomen with type 2 diabetes had a modestly elevated incidence of breast cancer (hazard ratio [HR] = 1.17; 95% CI 1.01-1.35) compared with women without diabetes, independent of age, obesity, family history of breast cancer, history of benign breast disease, reproductive factors, physical activity, and alcohol consumption. This association was apparent among postmenopausal women (1.16; 0.98-1.62) but not premenopausal women (0.83; 0.48-1.42). The association was predominant among women with estrogen receptor-positive breast cancer (1.22; 1.01-1.47). CONCLUSIONS Women with type 2 diabetes may have a slightly increased risk of breast cancer.\n\n[P4] Fructosamine Is a Useful Indicator of Hyperglycaemia and Glucose Control in Clinical and Epidemiological Studies – Cross-Sectional and Longitudinal Experience from the AMORIS Cohort\nCONTEXT Fructosamine is a glycemic biomarker which may be useful for indication and control of diabetes respectively. OBJECTIVE The objective of the study was to evaluate fructosamine as an indicator of hyperglycaemia and glucose control in subjects with diabetes. DESIGN, SETTING & PATIENTS From the AMORIS cohort, subjects with serum glucose, fructosamine and HbA1c from the same examination were studied cross-sectionally and longitudinally (n = 10,987; 5,590 overnight-fasting). The guidelines of the American Diabetes Association were followed for classification of prediabetes and diabetes. Separate analyses were performed in patients with a newly detected or a known diagnosis of type 1 or type 2 diabetes respectively. RESULTS All three biomarkers were strongly correlated. With regard to the association between fructosamine and HbA1c Pearson linear correlation coefficients in the range of 0.67-0.75 were observed in fasting and non-fasting subjects with type 1 or type 2 diabetes.\n\n[P5] Microvascular and Macrovascular Complications of Diabetes\nDevelopment of diabetic retinopathy in patients with type 2 diabetes was found to be related to both severity of hyperglycemia and presence of hypertension in the U.K. Prospective Diabetes Study (UKPDS), and most patients with type 1 diabetes develop evidence of retinopathy within 20 years of diagnosis.2,3 Retinopathy may begin to develop as early as 7 years before the diagnosis of diabetes in patients with type 2 diabetes.1 There are several proposed pathological mechanisms by which diabetes may lead …\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "86d50269131521b336d25b92842f5485c0732265736e5652b383cd07c617497a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792708702.3632882,
+      "end_wall": 1792708721.33967,
+      "error": null
+     }
+    ],
+    "arrival_seq": 802,
+    "start_wall": 1792708702.3632882,
+    "start_mono": 378259.438325291,
+    "end_wall": 1792708721.33967,
+    "end_mono": 378278.414553208,
+    "raw_response": "{\n  \"reasoning\": \"The claim that Type 1 Diabetes is associated with subtle perturbations in T reg development is supported by passage P1, which discusses the correlation between CD127 expression and FoxP3, a key gene in T reg cell development, in individuals with Type 1 Diabetes. Passage P4 mentions fructosamine as a glycemic biomarker in subjects with diabetes, which indirectly implies the presence of diabetes and its association with T reg development, but it doesn't provide direct evidence for the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18972263417,
+     "load_duration": 13243834,
+     "prompt_eval_count": 1309,
+     "prompt_eval_duration": 5076651041,
+     "eval_count": 153,
+     "eval_duration": 13451732089,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:41.336706Z"
+    },
+    "elapsed_s": 18.976,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 802,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:266641:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 494,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2b9ed540886f245e551fce1ad7d5651b5f59832f29a29051a59bdf05f1e3a700",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792708700.550394,
+      "end_wall": 1792708708.4462678,
+      "error": null
+     }
+    ],
+    "start_wall": 1792708700.550394,
+    "start_mono": 378257.625448208,
+    "end_wall": 1792708708.4462678,
+    "end_mono": 378265.521253041,
+    "raw_response": "{\"query\": \"Type 1 Diabetes T reg development perturbations\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7892762750,
+     "load_duration": 5520451667,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 994493375,
+     "eval_count": 16,
+     "eval_duration": 1163924582,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:28.444949Z"
+    },
+    "elapsed_s": 7.896,
+    "query_used": "Type 1 Diabetes T reg development perturbations",
+    "query_source": "json",
+    "query_arrival_seq": 803
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Type 1 Diabetes T reg development perturbations",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14581009:0",
+       "score_q": 689
+      },
+      {
+       "passage_key": "scifact:2356950:0",
+       "score_q": 667
+      },
+      {
+       "passage_key": "scifact:41877386:0",
+       "score_q": 667
+      },
+      {
+       "passage_key": "scifact:14191255:0",
+       "score_q": 662
+      },
+      {
+       "passage_key": "scifact:20402596:1",
+       "score_q": 649
+      }
+     ],
+     "retrieval_sha256": "60d83d7bcf32de95c4d3ef538e758d975941c9049e8849356c7453cc74aa8ca5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "60d83d7bcf32de95c4d3ef538e758d975941c9049e8849356c7453cc74aa8ca5",
+    "query_embedding_sha256": "b43f5d0cb15d83a31f2ded6193b0b4c1cdf906bc6a83fcb4061b56bf6ae3abf6",
+    "query_embedding_f32_b64": "LYxzPdpUED23H0y+cbiGveSSTD0YYjc73SqnPc+MA7ydLyU8ZJ+Jveuznjsbnzw9QnDCPAbfozurwwO86GupvL3hnjt6H347WV9OvT43kDzTcqG87tUUvDH/vLtcKlU7ARHHPfYAYz2d6+E8N8chvYkRsrrnbWk8s4LJPOSYI7wIzKe8q8A2PMY8Lr1E2f+8aBGfPc4pvTxBqU09kRcAvTfYqjwjR728MuitPGNYvryVa6Y8hPaIulXmaT3FU5a8s0xgPc/6rrz8qyA9QxvWvJuchzxetTi9g3AnPfWagz1wnmU8RF49vCzoBDs5tZS8jgg4PcgamzuDrXW9TOdIPWMD4DtS9Ei9ublJvCg1sjz/hMU6gKTYOs/FTz3p0kC7u8+6uylyNLzBdBK85GTGvKVulbygsoi9QuTEvAKD+DyTwZu8OfzwO9jxRz3xM9E7x8ZsPbj8LT1kugk9xiZEPY9N/bwvvjE9iuU1PV+ZS7xLUxQ725H7Ozqrfb3RyQK93oGgPHVX1rwxWRO81hmBvGAxXThWYuk8ZIWWvIQ0R71ubCG8REFUPeE16jzCGxK8e1zbvHJ/67zbN7e8uAfdPHZXRTpLBPK896UoPXNiXL1v0Jw9uYBgvKcqFL2ZGVQ9IJkzvYKnAb1iUfk8kMeGPVwXdTz/Ayg99hhGvV0kGj2JxpI8c9BNvbD5ArwEuhO8ndrtvNBeGr0B/aE5RTDJvAY+MrzhoUy8GdpDO7z3Aj3kYYw9aPgVu13UBb1MDhy8EE88vJtBJL3OG6s9jFoRvZ4oEb2Mj9M8yvh2PHDPML07+uC7Mfh9vClzKT1zS9W8O9VhvPY31TwEqiC84bA9PcZLebzXPYo8h8c8vc8leT2Z4aM6QeuOvRIN/bv51qA9+h1EuANw2DyhAsm8tcNGvfKnDr0Y69a8wvMtPcnYtbxChZw8yLJ3vSVcKjxVwym9Fw++PFGDjr3iKN08EX+vPMb1pLxzQVu8neCzvKJCTL3haWe9ubeVOqw+IzwYzLg8kHdevXyigr2mnAq92dCKvX5NUT2jq1S9yQ4rPTGlYLz2Odu8n/66vGOs0TwrGgW9qtLqu6TxALuKMQM7mgKXPTG1jrwGjHU8a6a+PEhCE727Bxw9KwzKPNzpVDq5Tbq9cBxAvK6MiLwwRFu9iFvLO0S1mzywqBM7d29TvNSO4zxt3lk93rGSvBiHiLzTl/q8qOitvIT04TxqhuC8RPWUvVeIDT3weZc83Cp5Ow1+LT0XpyA8kMq8u47sE7zEMx48COBBO2ADHj1s5Dc8SQUePFDKrbxvqqG7Ge8wO/EK6Ttc2dm8BcYIPBqxkj2zgdk8mGuXPFmcnzyR62A9aTp6vdL/Pr2CcSc8rWQyPfyKMbtrmK88HnsNPYqMAD3gTSq9eKCwO4Cg3bxA1568jzSAvPoW0DpIUNC7u0r8PPx0PT0S3VY7UL0VPSr1YLyifLK8NZ3jvKPVMr2dgne9g2kvPAIGmLzNHnK9b7grvV7tJr0uM5w83XgUvTXl0zxZI8m8rWwvPJpicjxPUwW9lcAnvIKBUL2zi409K2x6PMyf9DtW4am7gQ3TvBCdIjyFhCk8BPtxPfZ/Tz1MZj087BxDPTUkF7zbwRi9JGDGPOX2sDzQzII9wPbOPE8Czb0ASse8+Vr0vAM+5zz+2YG9JkvXPJ8cAT39WMQ8Q7GbPUd7iDydmq68W1c9vT9KQDzAyFc5DMe2vJCrBT3vRPm845VLu+8VVrx5tCG9vFcLPblyoLsB9409Ksd8va6ZLrzham89uIvMPLExpTxODiK9dHZcPWsj+jxC7Ea8PgeCPUlHC73Q24g8Sh6WurQebL2x3m08S+n/OzxjOT3lNyS8NIhNvC1VdLtIuRK8Stc9PPDxRT2cWhg9gPIAPV6qHDuNuAG8ieWHPIT4XbyTxl69PvrwO3djEzxFpKY9hluwuyvZmbxPnRs77IuxPEqXDL31VuS63q3FvFtvJjy2fnM7rBoTPd5plb2mMxe8xNRJuy/RXD0fnPc8K6jyvIeQrrv7gEg936kYvfNCibypflM9GiEKvNWFkjzyud07apqOu/skU700aRK8PS4pPcIoyzxOJ0G9LNH2uqkqvzuxlfM8XfYzPUHjyLwegJO97/rJPNNUVzx+DxC89tFdPIBLCr3Elx29EVG9PAFLurwctVQ9muSIPSx0pDybqme9xMdoPA1kiTw7BPw8+hrAPFucMLrWT5w8PuSyPNzm2jwzAQO95ygPPf8n2Dzsbue7b2qAPEMv5zw4fnw8mBWqvYxMrjvPuYk8AHKCPRS6B72oWh273IyCvGZYo7oejmk9JLe9vDFq2DtfkwA9i4gmvTNj6rxVlDS8zJMxPUgXnD3fiAE9kCzvvENgfTznnWI9WjrqPHg0BjywRQM9X3QZPJ1XmD0GoDW8UfSGPI8RqjzBkAW7gmyJOqbrPDxgtio8DCftveC3Frq2Dga9qbQfvSUZVT0nHdu76HMuPFBHtj3uw+u6t9GsvEOtWTw9AEW9i6GUPHEAkjxIvw+7K6gIvX95DjsxvR49OOZ9POLLD71rjim9DQKbvbZ34TyXDN267+6RPbOij7xwB+U6BH6Gu0NZj7u9D9M8LxDqvPFItzsrQeg7ci9WvEIsPb3kx4c88GKlO8wI8rxeDNc8MzKgPNULyzz2UII88LQQPbkBcbxzBlM9M7dlvSl+JL0JdZy8qmQIvQGWpz0iRt49cpysvKleTDtqwj+9zzSGPBuHyzxtcI+9+ClBvb80RjovZ2S9MHQBvU0kHr1+AbG7uLAVPQmcCD3JFU29vdc8PcQZPz2jd6C86odUPD7JC73PWtS89rEXPPt/sjnYh4C7+ZiEO3NCBD30beG8vrshPewsBDwjKRM8NzuXvSGBDrwtsr67bzOEvTsKbD1mvq68LvGAvbkSqz0ckIO9ZecaPNaWJ73WEQG8CbyqvITILj2iBuu8HgAdvYBHnTtMsoa8v8j5PPIakz23Tow8RvWxPCMSjrwj8sy8cuG2PLOiQTtj/6M9/q4rPB6sNLyV2xi63hP8vBKMLL3M1v+84EuAvOyXC7owo169FzMCvYIwIbv17/K8Nuo4vbYxST0+kOK8L03ivJrG+jxW5T699kADPQ9MWTz3b0u9FGkSPUc1lzx61/+8yI32PFuC7jsR9N65Ji0kvFbrursJLJK9iPv0PMJFfrvg8Dc9fafFu7stRDyXVPc7lffvvLzrgbuU8A+84tNaPQzEgj305zE7q4vxO/t0TLwHKd47pDp2O4EgQT0nPRA9jax2vBHQIL3SGlm7U2qYvPXoiz2XCV29BExXPbRQdLvun4e8IpqAvVDSujsUP6c8gVwIvY65ezw/sT29KfBOvQLodr3BD009ZY70vPY+dD3yBlm8QjfoOttjrzz8d+87WI+BvAfZrzzEKDY8VAwfvDtKOT2uZEM9Bc53PRxmy7rl5I49KuQ0PTfhUj3UKIq89YSBPf5iybvIoh499excvbI//rzap2e9VFGQvDC7Oj0O70A8qFdAPEwyJ7oceoG84JaZPKuAiDwYu368FZcUvKGmcT2axuI77ZadPFr9yruo6Ns85ComPWmPJbyGXGw9BB4+PcEYm7yVjpm7GsI/vd9jhTzJYPW8VRcRuyNmXb14flQ9xjtmvQffyzpzmba8xK2Uvd2Z/bu4RSe9d5cCux19zrxa+x49JOHEu4QuGzyq1Hi9J8q4PP1k6TxoWEg82hEzuxTKFzx6sQq90w0kvY4BcD17/PG8wHcmvWgx3LtffPi8wJutu+a3Dr3bpwI9HDMeO5x4Nj2Y5Uc8ncLmuzxBJ7yllAo9eTAqPfJDsbxmmYO9JpKOvaF+E70suzu90QOCPUqS/Ly32gs9cseSvAKdlDuSjx29h2NSvTm+HD0a3cY7MCloPcFwar3aqri8SZ6HvRvjWr1/zmK9nSA+vEGEojyhiZ881fiQvGDyIrwMEJu8bGE4PU71z7v9+Wi9Acv+O+lzRL1XpJ28jlMlPYMKHz3dZmU9mDUEPB4yyDwVx1w9nmoqu32hDjxXqZK8ooxaPIMNX7x+h2E8cIM1vR4/YL37Y/i8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14581009:0",
+      "content_sha256": "ef61b109e555379e2c308d2312d8acb7eff289047e180900cd1051e6f3cd4b88",
+      "chars": 1081
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2356950:0",
+      "content_sha256": "a5a8f04920a7ece561903734c6edcdf7d30334f38c18a799b21580be00ab81b5",
+      "chars": 1020
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:41877386:0",
+      "content_sha256": "4553b8f88307df5742edbbf363291335d80dcb56c0a313852b4cd7eda1667122",
+      "chars": 1080
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14191255:0",
+      "content_sha256": "9b805b109f0a2cf2f4b4fc700ca7db913a6039800feaa938e39463c3d1daebfb",
+      "chars": 1024
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:20402596:1",
+      "content_sha256": "d02d0141ae1ee32c656fe98f2ab6fa22300f1fa28910d9c7e2d56f606b006ae1",
+      "chars": 434
+     }
+    ],
+    "elapsed_s": 0.4662
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nEvidence passages from your search for \"Type 1 Diabetes T reg development perturbations\":\n<<<PASSAGES\n[P1] MicroRNA Regulation of Cbx7 Mediates a Switch of Polycomb Orthologs during ESC Differentiation\nThe Polycomb Group (PcG) of chromatin modifiers regulates pluripotency and differentiation. Mammalian genomes encode multiple homologs of the Polycomb repressive complex 1 (PRC1) components, including five orthologs of the Drosophila Polycomb protein (Cbx2, Cbx4, Cbx6, Cbx7, and Cbx8). We have identified Cbx7 as the primary Polycomb ortholog of PRC1 complexes in embryonic stem cells (ESCs). The expression of Cbx7 is downregulated during ESC differentiation, preceding the upregulation of Cbx2, Cbx4, and Cbx8, which are directly repressed by Cbx7. Ectopic expression of Cbx7 inhibits differentiation and X chromosome inactivation and enhances ESC self-renewal. Conversely, Cbx7 knockdown induces differentiation and derepresses lineage-specific markers. In a functional screen, we identified the miR-125 and miR-181 families as regulators of Cbx7 that are induced during ESC differentiation. Ectopic expression of these miRNAs accelerates ESC differentiation via regulation of Cbx7.\n\n[P2] Epigenetic regulation of miR-184 by MBD1 governs neural stem cell proliferation and differentiation.\nMethyl-CpG binding protein 1 (MBD1) regulates gene expression via a DNA methylation-mediated epigenetic mechanism. We have previously demonstrated that MBD1 deficiency impairs adult neural stem/progenitor cell (aNSC) differentiation and neurogenesis, but the underlying mechanism was unclear. Here, we show that MBD1 regulates the expression of several microRNAs in aNSCs and, specifically, that miR-184 is directly repressed by MBD1. High levels of miR-184 promoted proliferation but inhibited differentiation of aNSCs, whereas inhibition of miR-184 rescued the phenotypes associated with MBD1 deficiency. We further found that miR-184 regulates the expression of Numblike (Numbl), a known regulator of brain development, by binding to the 3'-UTR of Numbl mRNA and affecting its translation. Expression of exogenous Numbl could rescue the aNSC defects that result from either miR-184 overexpression or MBD1 deficiency.\n\n[P3] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nCD4(+)CD25(+) regulatory T cells (T regs) play a major role in the maintenance of self-tolerance and immune suppression, although the mechanisms controlling T reg development and suppressor function remain incompletely understood. Herein, we provide evidence that Kruppel-like factor 10 (KLF10/TIEG1) constitutes an important regulator of T regulatory cell suppressor function and CD4(+)CD25(-) T cell activation through distinct mechanisms involving transforming growth factor (TGF)-beta1 and Foxp3. KLF10 overexpressing CD4(+)CD25(-) T cells induced both TGF-beta1 and Foxp3 expression, an effect associated with reduced T-Bet (Th1 marker) and Gata3 (Th2 marker) mRNA expression. Consistently, KLF10(-/-) CD4(+)CD25(-) T cells have enhanced differentiation along both Th1 and Th2 pathways and elaborate higher levels of Th1 and Th2 cytokines. Furthermore, KLF10(-/-) CD4(+)CD25(-) T cell effectors cannot be appropriately suppressed by wild-type T regs.\n\n[P4] Wdr5 Mediates Self-Renewal and Reprogramming via the Embryonic Stem Cell Core Transcriptional Network\nThe embryonic stem (ES) cell transcriptional and chromatin-modifying networks are critical for self-renewal maintenance. However, it remains unclear whether these networks functionally interact and, if so, what factors mediate such interactions. Here, we show that WD repeat domain 5 (Wdr5), a core member of the mammalian Trithorax (trxG) complex, positively correlates with the undifferentiated state and is a regulator of ES cell self-renewal. We demonstrate that Wdr5, an \"effector\" of H3K4 methylation, interacts with the pluripotency transcription factor Oct4. Genome-wide protein localization and transcriptome analyses demonstrate overlapping gene regulatory functions between Oct4 and Wdr5. The Oct4-Sox2-Nanog circuitry and trxG cooperate in activating transcription of key self-renewal regulators, and furthermore, Wdr5 expression is required for the efficient formation of induced pluripotent stem (iPS) cells.\n\n[P5] The WUSCHEL-related homeobox gene WOX11 is required to activate shoot-borne crown root development in rice.\nFurther analysis showed that WOX11 directly repressed RR2, a type-A cytokinin-responsive regulator gene that was found to be expressed in crown root primordia. The results suggest that WOX11 may be an integrator of auxin and cytokinin signaling that feeds into RR2 to regulate cell proliferation during crown root development.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c580fc66439fee10b4987388fbebea2377ab2da0e42801064fe77660513cdf76",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792708708.913026,
+      "end_wall": 1792708730.936019,
+      "error": null
+     }
+    ],
+    "arrival_seq": 803,
+    "start_wall": 1792708708.913026,
+    "start_mono": 378265.988007916,
+    "end_wall": 1792708730.936019,
+    "end_mono": 378288.010831,
+    "raw_response": "{\n  \"reasoning\": \"The passages provided discuss various epigenetic and transcriptional mechanisms in embryonic stem cells and neural stem cells, as well as regulatory factors in T cells. While none directly mention Type 1 Diabetes or T regulatory cell development, they do discuss miRNAs, Polycomb proteins, and other factors involved in cell development and differentiation. The complexity of these mechanisms suggests that subtle perturbations could indeed be associated with Type 1 Diabetes and its T regulatory cell development, supporting the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [ \"P1\", \"P2\", \"P3\" ],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22017761708,
+     "load_duration": 13330555166,
+     "prompt_eval_count": 1405,
+     "prompt_eval_duration": 2813265250,
+     "eval_count": 140,
+     "eval_duration": 4254173003,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:50.93182Z"
+    },
+    "elapsed_s": 22.023,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 803,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:14581009:0",
+     "scifact:2356950:0",
+     "scifact:41877386:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 536,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "2b9ed540886f245e551fce1ad7d5651b5f59832f29a29051a59bdf05f1e3a700",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792708700.550487,
+      "end_wall": 1792708708.8281212,
+      "error": null
+     }
+    ],
+    "start_wall": 1792708700.550487,
+    "start_mono": 378257.625540625,
+    "end_wall": 1792708708.8281212,
+    "end_mono": 378265.903103,
+    "raw_response": "{\"query\": \"Type 1 diabetes Treg development perturbations\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8274761583,
+     "load_duration": 7101765291,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 294086417,
+     "eval_count": 15,
+     "eval_duration": 578226252,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:28.826988Z"
+    },
+    "elapsed_s": 8.278,
+    "query_used": "Type 1 diabetes Treg development perturbations",
+    "query_source": "json",
+    "query_arrival_seq": 804
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Type 1 diabetes Treg development perturbations",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:76463821:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:16572581:0",
+       "score_q": 723
+      },
+      {
+       "passage_key": "scifact:11899391:0",
+       "score_q": 709
+      },
+      {
+       "passage_key": "scifact:16058322:1",
+       "score_q": 706
+      },
+      {
+       "passage_key": "scifact:56893404:0",
+       "score_q": 699
+      }
+     ],
+     "retrieval_sha256": "7e64c803c9fc783ee87f9e06fd37bed8eb6f49cb35608aae9ddd90594e44ff6f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7e64c803c9fc783ee87f9e06fd37bed8eb6f49cb35608aae9ddd90594e44ff6f",
+    "query_embedding_sha256": "2cac057a008fbf0d0a4c746b1c63674cafc8aea98c2df0fee7cb38c607128739",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:76463821:0",
+      "content_sha256": "e2f4e3773f406b93932ce71a6ffe0f78ddc5602da496e6a51250a584905109ac",
+      "chars": 1093
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16572581:0",
+      "content_sha256": "6e77392524356d429dcbd5d33ac14542b0cb0b30174620f37bed8fc4da57e0cc",
+      "chars": 1029
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11899391:0",
+      "content_sha256": "c72658161ed60c05bafd049bfea6ee9bfdb4519464e24c5404612b859e539379",
+      "chars": 1068
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16058322:1",
+      "content_sha256": "d0e3ee08ec4e8887dd8b0850d2e33d6c609483909f2e44362db01e0b4a6040af",
+      "chars": 1029
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:56893404:0",
+      "content_sha256": "b6a2bbc7aa443b60616345a46d5c578edd7af54f7bb74072bf9d29b2b9bd5bc4",
+      "chars": 832
+     }
+    ],
+    "elapsed_s": 0.117
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Type 1 Diabetes is associated with subtle perturbations in T reg development.\n\nEvidence passages from your search for \"Type 1 diabetes Treg development perturbations\":\n<<<PASSAGES\n[P1] Preconception Care and the Risk of Congenital Anomalies in the Offspring of Women With Diabetes Mellitus: A Meta-Analysis\nPreconception care (PCC) and strict periconceptional glycemic control are both used to minimize the risk of congenital birth defects in offspring of women with type 1 or type 2 diabetes mellitus (DM). These malformations are ascribed in large measure to poor periconceptional control. This study evaluated PCC by a meta-analysis of published studies of PCC in women with DM, published from 1970 to 2000. Two reviewers independently abstracted the data, and the rate and relative risk (RR) of major and minor malformations were pooled from eligible studies using a random effects model. Early first-trimester values of glycosylated hemoglobin were recorded. Eight retrospective and eight prospective cohort studies were included; they were carried out in Europe, the United Kingdom, the United States, and Israel. Most participants had type 1 DM, but three studies included women with type 2 DM. Women given PCC tended to be about 2 years older on average than the others.\n\n[P2] Viral Infection of Engrafted Human Islets Leads to Diabetes\nType 1 diabetes (T1D) is characterized by the destruction of the insulin-producing β-cells of pancreatic islets. Genetic and environmental factors both contribute to T1D development. Viral infection with enteroviruses is a suspected trigger for T1D, but a causal role remains unproven and controversial. Studies in animals are problematic because of species-specific differences in host cell susceptibility and immune responses to candidate viral pathogens such as coxsackievirus B (CVB). In order to resolve the controversial role of viruses in human T1D, we developed a viral infection model in immunodeficient mice bearing human islet grafts. Hyperglycemia was induced in mice by specific ablation of native β-cells. Human islets, which are naturally susceptible to CVB infection, were transplanted to restore normoglycemia. Transplanted mice were infected with CVB4 and monitored for hyperglycemia. Forty-seven percent of CVB4-infected mice developed hyperglycemia.\n\n[P3] Type 1 diabetes-associated IL2RA variation lowers IL-2 signaling and contributes to diminished CD4+CD25+ regulatory T cell function.\nNumerous reports have demonstrated that CD4(+)CD25(+) regulatory T cells (Tregs) from individuals with a range of human autoimmune diseases, including type 1 diabetes, are deficient in their ability to control autologous proinflammatory responses when compared with nondiseased, control individuals. Treg dysfunction could be a primary, causal event or may result from perturbations in the immune system during disease development. Polymorphisms in genes associated with Treg function, such as IL2RA, confer a higher risk of autoimmune disease. Although this suggests a primary role for defective Tregs in autoimmunity, a link between IL2RA gene polymorphisms and Treg function has not been examined. We addressed this by examining the impact of an IL2RA haplotype associated with type 1 diabetes on Treg fitness and suppressive function. Studies were conducted using healthy human subjects to avoid any confounding effects of disease.\n\n[P4] MDA5 and PTPN2, two candidate genes for type 1 diabetes, modify pancreatic β-cell responses to the viral by-product double-stranded RNA\nPIC increased MDA5 and PTPN2 mRNA expression, which was inhibited by the specific siRNAs. PIC triggered apoptosis in INS-1E and primary beta-cells and this was augmented by PTPN2 knockdown (KD), although inhibition of MDA5 did not modify PIC-induced apoptosis. In contrast, MDA5 silencing decreased PIC-induced cytokine and chemokine expression, although inhibition of PTPN2 induced minor or no changes in these inflammatory mediators. These findings indicate that changes in MDA5 and PTPN2 expression modify beta-cell responses to dsRNA. MDA5 regulates inflammatory signals, whereas PTPN2 may function as a defence mechanism against pro-apoptotic signals generated by dsRNA. These two candidate genes for T1D may thus modulate beta-cell apoptosis and/or local release of inflammatory mediators in the course of a viral infection by acting, at least in part, at the pancreatic beta-cell level.\n\n[P5] Macrosomia and Hyperinsulinaemic Hypoglycaemia in Patients with Heterozygous Mutations in the HNF4A Gene\nBackground Macrosomia is associated with considerable neonatal and maternal morbidity. Factors that predict macrosomia are poorly understood. The increased rate of macrosomia in the offspring of pregnant women with diabetes and in congenital hyperinsulinaemia is mediated by increased foetal insulin secretion. We assessed the in utero and neonatal role of two key regulators of pancreatic insulin secretion by studying birthweight and the incidence of neonatal hypoglycaemia in patients with heterozygous mutations in the maturity-onset diabetes of the young (MODY) genes HNF4A (encoding HNF-4α) and HNF1A/TCF1 (encoding HNF-1α), and the effect of pancreatic deletion of Hnf4a on foetal and neonatal insulin secretion in mice.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6340047848d5d59c1fcc05cdf6fd0d4175a867241f1403014bcf9cf9bd7b54a3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792708708.945667,
+      "end_wall": 1792708731.3179069,
+      "error": null
+     }
+    ],
+    "arrival_seq": 804,
+    "start_wall": 1792708708.945667,
+    "start_mono": 378266.020648666,
+    "end_wall": 1792708731.3179069,
+    "end_mono": 378288.392716,
+    "raw_response": "{\"reasoning\": \"This claim suggests subtle perturbations in Treg development are associated with Type 1 Diabetes. Several of the provided sources mention Treg dysfunction and its connection to autoimmune disease.  Specifically, P3 cites research showing that IL2RA variation contributes to Treg dysfunction, and P4 suggests MDA5 and PTPN2 may influence beta-cell responses to viral byproducts, potentially impacting inflammatory signaling and apoptosis. However, this is not a definitive demonstration of the claim's validity. \", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22366880625,
+     "load_duration": 14880228958,
+     "prompt_eval_count": 1341,
+     "prompt_eval_duration": 2277424042,
+     "eval_count": 119,
+     "eval_duration": 2863116331,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T22:38:51.31365Z"
+    },
+    "elapsed_s": 22.372,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 804,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 511,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "11afb8be214211dfa269107f48626652dce36541b35bd0daf141e0c88b60872a",
+  "phi3:mini": "bd7a09b386c5cca6450b31650bf677289645382223c568f5da48e256c700a7bf",
+  "mistral": "a698c1681b1ab6e0388cfb1cab1ec09de23707d068795424f72ee1dc5cfdc426",
+  "qwen2.5:3b": "60d83d7bcf32de95c4d3ef538e758d975941c9049e8849356c7453cc74aa8ca5",
+  "gemma2:2b": "7e64c803c9fc783ee87f9e06fd37bed8eb6f49cb35608aae9ddd90594e44ff6f"
+ },
+ "item_start_wall": 1792708700.549891,
+ "item_wall_s": 30.768,
+ "ollama_ps_samples": [
+  [
+   1792708700.55,
+   [
+    "qwen2.5:3b",
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708702.557,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708704.56,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708706.562,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708708.569,
+   [
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708710.571,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708712.573,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708714.575,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708716.582,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708718.586,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708720.589,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792708722.595,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708724.602,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708726.604,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708728.61,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792708730.612,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

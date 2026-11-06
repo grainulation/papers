@@ -1,0 +1,21 @@
+\section{Introduction}
+\label{sec:intro}
+
+When several LLM agents disagree, majority vote is a natural way to combine their answers \citep{wang2023selfconsistency}. It fails when the agents share a mistake. The passages they cite may supply corrective evidence, but citations alone do not establish support, and overturning a majority can introduce a new error. We study how to use that evidence while keeping each overturn auditable.
+
+We study a common process for combining these answers. Each agent submits an answer and cites passages it used. A checker labels each (answer, passage) pair once as supports, refutes, or not-enough-information. We record the answers, passages, and labels, then apply a fixed selection rule to those records. The rule starts from a plurality default and permits an alternative to replace it only when an accepted checker label verifies that alternative. We call this process \emph{verify, then vote}.
+
+The rule variants differ in how they select among verified answers. \emph{Verified vote} takes the most common verified answer; the \emph{scored rule} instead uses recorded evidence and confidence. \emph{Verified default first} keeps the default whenever it is verified and otherwise uses verified vote. We distinguish these rules from the reported majority baseline, whose tie-breaking can differ from their defaults. The formal harm property compares each rule with its own default; the empirical evaluation also compares it with the reported majority baseline.
+
+A model judge is the stronger choice in our experiments if first-decision accuracy and cost are the only objectives. The case for verify-then-vote is an inspectable selection policy over reusable evidence. For example, an auditor investigating one agent can remove its answers and recompute decisions from the recorded passages and labels, without another model call. A judge can provide citations and explanations too, but obtaining its judgment on changed inputs generally requires a new call. Reuse here is restricted to existing sealed inputs and accepted checker labels; new evidence may need new checking.
+
+The rule can lose a correct default only by selecting a verified wrong answer. This identifies a place to inspect the failure, rather than certifying checker or source reliability. Practical harm must be measured separately.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+  \item \textbf{Auditable selection.} We specify the verification gate, prove its necessary condition for harm, and record the passage labels licensing each overturn (\cref{sec:gate}).
+  \item \textbf{Controlled evaluation.} We distinguish overall and conflict accuracy, isolate the gate through matched ablations, and test passage dependence and transfer across agent pools. The original scored rule misses its harm criterion; the second pool reuses questions and some labels (\cref{sec:overturn-results,sec:harm-results,sec:ingredient,sec:replication}).
+  \item \textbf{Reusable evidence.} We measure replay, tamper detection, and the cost of re-decisions over sealed inputs, including leave-one-agent-out counterfactuals (\cref{sec:audit-results,sec:replay}).
+\end{enumerate}
+
+The accompanying artifact contains the analysis scripts, sealed inputs, Lean proofs, and replay tests. \suppref{S7} maps results to reproduction commands.

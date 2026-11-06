@@ -1,0 +1,22 @@
+# Replay-only image for cross-architecture checks of `overturn --replay-from`.
+# Self-contained: it needs only the staged context below.
+#
+# The build is offline from a vendored context, because the host's TLS
+# interception (self-signed CA in chain) breaks crates.io inside the
+# container. Stage the context, then build per platform:
+#   v2/evidence/replay-v4/stage_context.sh <ctx-dir>
+#   docker buildx build --platform linux/arm64 --load -t overturn-replay-v4:arm64 \
+#       -f v2/evidence/replay-v4/Dockerfile.replay <ctx-dir>
+#   docker buildx build --platform linux/amd64 --load -t overturn-replay-v4:amd64 \
+#       -f v2/evidence/replay-v4/Dockerfile.replay <ctx-dir>
+# Run (mount the evidence dir):
+#   docker run --rm --platform linux/amd64 -v "$PWD/v2/evidence/replay-v4:/ev" \
+#       overturn-replay-v4:amd64 /ev/run_platform.sh replay linux-amd64 overturn
+FROM rust:1.93-slim
+WORKDIR /app
+COPY overturn/ overturn/
+RUN cd overturn && cargo build --release --locked --offline \
+ && cp target/release/overturn /usr/local/bin/overturn \
+ && rustc -vV > /rustc-version.txt \
+ && sha256sum /usr/local/bin/overturn > /overturn-sha256.txt
+CMD ["overturn", "--help"]

@@ -1,0 +1,800 @@
+{
+ "acceptance": {
+  "all_spec_point_estimates": false,
+  "framing_binding": false,
+  "framing_binding_excluding_macro_f1": true,
+  "injection": true,
+  "macro_f1": false,
+  "macro_f1_ci_lower": false,
+  "macro_f1_scifact300": false,
+  "refutes_precision": false,
+  "refutes_precision_ci_lower": false,
+  "stability": true,
+  "supports_precision_fever": true,
+  "supports_precision_fever_ci_lower": false,
+  "supports_precision_scifact300": true
+ },
+ "backend_note": "local Ollama backend bespoke-minicheck:7b (tools/evidence/support/minicheck_check.py); claim string, bm25/1 spans, neutralizer, span join, caching and sealing identical to the 0.2.0 Claude checker f2a14bd8988371bd231ca6ff137be13e; prompt = MiniCheck's own 'Document: ...\\nClaim: ...' format (minicheck_template.txt), output Yes/No mapped Yes->supports, No->not_enough_info",
+ "binary_output": {
+  "binding_quantity_for_gate": "supports precision (only supports opens the verified gate)",
+  "fever_fresh_binary": {
+   "f1_not_supports": 0.9485,
+   "f1_supports": 0.9057,
+   "macro_f1_binary": 0.9271,
+   "macro_f1_binary_bootstrap95": [
+    0.8955,
+    0.9569
+   ],
+   "n": 300,
+   "note": "descriptive, NOT the binding criterion"
+  },
+  "label_map": {
+   "No": "not_enough_info",
+   "Yes": "supports"
+  },
+  "macro_f1_ceiling": "refutes is never predicted, so refutes F1 = 0 and macro-F1 <= 2/3 = 0.6667 < 0.70 for any binary checker under any binary-to-three-way mapping; the criterion is structurally unattainable, not merely missed",
+  "macro_f1_definition": "validate.metrics: mean F1 over supports, refutes, not_enough_info (three-way), as for Claude 0.2.0 and mistral; unchanged",
+  "scifact_300_binary": {
+   "f1_not_supports": 0.9301,
+   "f1_supports": 0.8432,
+   "macro_f1_binary": 0.8867,
+   "macro_f1_binary_bootstrap95": [
+    0.8451,
+    0.9239
+   ],
+   "n": 300,
+   "note": "descriptive, NOT the binding criterion"
+  }
+ },
+ "byte_identity_rerun": {
+  "by_kind": {
+   "clean": {
+    "byte_identical": 10,
+    "label_identical": 10,
+    "n": 10
+   },
+   "fever": {
+    "byte_identical": 300,
+    "label_identical": 300,
+    "n": 300
+   },
+   "injection": {
+    "byte_identical": 50,
+    "label_identical": 50,
+    "n": 50
+   },
+   "scifact": {
+    "byte_identical": 150,
+    "label_identical": 150,
+    "n": 150
+   }
+  },
+  "byte_identical": 510,
+  "label_identical": 510,
+  "n": 510,
+  "non_identical_ids": [],
+  "order": "reverse of first pass, cache bypassed"
+ },
+ "checker": {
+  "backend": "ollama",
+  "checker_id": "98751cc07911d57a1586848dfb8c4e7b",
+  "checker_tool_version": "0.2.0-minicheck0.1.0+e07fdfc3b8ce.8946ec3b8842.1c45833e636e.f5e77f1579da4.ollama0.17.7.srvf70a1305",
+  "decoding": {
+   "num_ctx": 8192,
+   "num_predict": 8,
+   "seed": 42,
+   "temperature_x1000": 0,
+   "top_k": 40,
+   "top_p_x1000": 900
+  },
+  "endpoint": "http://localhost:11434",
+  "flags": {
+   "answer_regex": "\\A(Yes|No)\\.?\\Z",
+   "backend": "ollama",
+   "endpoint_path": "/api/generate",
+   "format": null,
+   "keep_alive": "30m",
+   "label_map": {
+    "No": "not_enough_info",
+    "Yes": "supports"
+   },
+   "logprobs": true,
+   "options": {
+    "num_ctx": 8192,
+    "num_predict": 8,
+    "seed": 42,
+    "temperature_x1000": 0,
+    "top_k": 40,
+    "top_p_x1000": 900
+   },
+   "stream": false,
+   "system": null
+  },
+  "flags_sha256": "5e77f1579da4bdda458bf3a50e9a30a56c7de23c09e91070549f7e02c07aea79",
+  "label_map": {
+   "No": "not_enough_info",
+   "Yes": "supports"
+  },
+  "model": "bespoke-minicheck:7b",
+  "model_details": {
+   "families": [
+    "internlm2"
+   ],
+   "family": "internlm2",
+   "format": "gguf",
+   "parameter_size": "7.7B",
+   "parent_model": "",
+   "quantization_level": "Q4_K_M"
+  },
+  "model_digest": "sha256:66607904c165445540331c2f005bb5120edd939008ba1fe1e75151ed827a7a00",
+  "ollama_version": "0.17.7",
+  "prompt_template_sha256": "4d502518458c12af49dee8f3f00fbf0e4585a7d4e54740e682e9c29b4099c8e3",
+  "server_config": {
+   "OLLAMA_CONTEXT_LENGTH": "0",
+   "OLLAMA_FLASH_ATTENTION": "true",
+   "OLLAMA_KV_CACHE_TYPE": "q8_0",
+   "OLLAMA_LLM_LIBRARY": "",
+   "OLLAMA_NEW_ENGINE": "false",
+   "OLLAMA_NUM_PARALLEL": "1"
+  },
+  "server_sha256": "f70a13054773b21968f2abe3753dbb78ad7ce07f13edee0416a5c184b274531b"
+ },
+ "comparison_claude_020": {
+  "fever_macro_f1": 0.8985,
+  "fever_refutes_precision": 0.8857,
+  "fever_supports_precision": 0.8981,
+  "injection_success": 0.0,
+  "scifact_nei": {
+   "not_enough_info": 131,
+   "refutes": 10,
+   "supports": 7,
+   "unchecked": 2
+  },
+  "stability": 0.96
+ },
+ "comparison_mistral": {
+  "acceptance": {
+   "all_spec_point_estimates": false,
+   "framing_binding": false,
+   "injection": false,
+   "macro_f1": false,
+   "macro_f1_ci_lower": false,
+   "macro_f1_scifact300": false,
+   "refutes_precision": false,
+   "refutes_precision_ci_lower": false,
+   "stability": true,
+   "supports_precision_fever": false,
+   "supports_precision_fever_ci_lower": false,
+   "supports_precision_scifact300": false
+  },
+  "checker_id": "41b9f3ecf79bc1917a2b661fb6f521ba",
+  "fever_macro_f1": 0.548,
+  "injection_success": 0.42,
+  "latency": {
+   "all_live_first_pass": {
+    "max_ms": 5849,
+    "mean_ms": 2288,
+    "n": 798,
+    "p50_ms": 2125,
+    "p90_ms": 3401
+   },
+   "fever": {
+    "max_ms": 5849,
+    "mean_ms": 1725,
+    "n": 288,
+    "p50_ms": 1737,
+    "p90_ms": 2080
+   },
+   "note": "sequential calls, wall ms per call on the local machine (model kept loaded)",
+   "scifact_fresh": {
+    "max_ms": 4284,
+    "mean_ms": 2498,
+    "n": 150,
+    "p50_ms": 2368,
+    "p90_ms": 3351
+   }
+  },
+  "stability": 1.0,
+  "supports_precision": {
+   "claude_020_fever_fresh": 0.8981,
+   "fever_fresh": {
+    "bootstrap95": [
+     0.6991,
+     0.8496
+    ],
+    "fp": 26,
+    "precision": 0.7739,
+    "tp": 89,
+    "wilson95": [
+     0.6893,
+     0.8408
+    ]
+   },
+   "scifact_300": {
+    "fp": 63,
+    "precision": 0.5685,
+    "precision_bootstrap95": [
+     0.4885,
+     0.6522
+    ],
+    "precision_wilson95": [
+     0.4874,
+     0.6461
+    ],
+    "tp": 83
+   },
+   "scifact_fresh_nei_only_false_supports": {
+    "k": 22,
+    "n": 150,
+    "rate_wilson95": [
+     0.0989,
+     0.2121
+    ]
+   }
+  }
+ },
+ "development": {
+  "note": "no prompt or option was tuned; MiniCheck's documented input format is used as-is. Exploratory, after collection (PREREGISTRATION \u00a72.3 'MiniCheck' bullet)."
+ },
+ "fever_fresh": {
+  "accuracy": 0.6033,
+  "accuracy_wilson95": [
+   0.547,
+   0.657
+  ],
+  "bootstrap": {
+   "resamples": 2000,
+   "seed": 20261021
+  },
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 85,
+    "refutes": 0,
+    "supports": 15,
+    "unchecked": 0
+   },
+   "refutes": {
+    "not_enough_info": 99,
+    "refutes": 0,
+    "supports": 1,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 4,
+    "refutes": 0,
+    "supports": 96,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.4986,
+  "macro_f1_bootstrap95": [
+   0.468,
+   0.5256
+  ],
+  "n": 300,
+  "non_ok_status": {},
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.5903,
+    "fn": 15,
+    "fp": 103,
+    "precision": 0.4521,
+    "precision_bootstrap95": [
+     0.3812,
+     0.522
+    ],
+    "precision_wilson95": [
+     0.3827,
+     0.5235
+    ],
+    "recall": 0.85,
+    "recall_bootstrap95": [
+     0.7732,
+     0.9175
+    ],
+    "recall_wilson95": [
+     0.7672,
+     0.9069
+    ],
+    "tp": 85
+   },
+   "refutes": {
+    "f1": 0.0,
+    "fn": 100,
+    "fp": 0,
+    "precision": 0.0,
+    "precision_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "precision_wilson95": [
+     null,
+     null
+    ],
+    "recall": 0.0,
+    "recall_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "recall_wilson95": [
+     0.0,
+     0.037
+    ],
+    "tp": 0
+   },
+   "supports": {
+    "f1": 0.9057,
+    "fn": 4,
+    "fp": 16,
+    "precision": 0.8571,
+    "precision_bootstrap95": [
+     0.792,
+     0.9189
+    ],
+    "precision_wilson95": [
+     0.7805,
+     0.9101
+    ],
+    "recall": 0.96,
+    "recall_bootstrap95": [
+     0.9174,
+     0.9909
+    ],
+    "recall_wilson95": [
+     0.9016,
+     0.9843
+    ],
+    "tp": 96
+   }
+  }
+ },
+ "format": "bran-support-validation/2",
+ "injection": {
+  "by_attack_success": {},
+  "clean_base_labels": {
+   "not_enough_info": 7,
+   "supports": 3
+  },
+  "flipped_vs_clean": 0,
+  "label_changed_vs_clean": 0,
+  "n": 50,
+  "reached_prompt": 50,
+  "statuses": {
+   "ok": 50
+  },
+  "success_rate": 0.0,
+  "success_rate_wilson95": [
+   0.0,
+   0.0713
+  ],
+  "success_target_label": 0,
+  "suite": "validation/injection.jsonl (reused, 50 items, 10 attacks x 5 bases)",
+  "target_refutes_note": "the 20 refutes-target items cannot succeed: the checker never emits refutes",
+  "target_supports": {
+   "flipped_vs_clean": 0,
+   "n": 30,
+   "rate_wilson95": [
+    0.0,
+    0.1135
+   ],
+   "success": 0
+  }
+ },
+ "latency": {
+  "all_live_first_pass": {
+   "max_ms": 4290,
+   "mean_ms": 1588,
+   "n": 798,
+   "p50_ms": 1496,
+   "p90_ms": 2478
+  },
+  "fever": {
+   "max_ms": 1872,
+   "mean_ms": 1161,
+   "n": 288,
+   "p50_ms": 1229,
+   "p90_ms": 1464
+  },
+  "note": "sequential calls, wall ms per call on the local machine (model kept loaded)",
+  "scifact_300": {
+   "max_ms": 4290,
+   "mean_ms": 1874,
+   "n": 300,
+   "p50_ms": 1724,
+   "p90_ms": 2832
+  },
+  "scifact_fresh": {
+   "max_ms": 3347,
+   "mean_ms": 1690,
+   "n": 150,
+   "p50_ms": 1640,
+   "p90_ms": 2413
+  }
+ },
+ "pooled_fever_plus_scifact": {
+  "accuracy": 0.7311,
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 233,
+    "refutes": 0,
+    "supports": 17,
+    "unchecked": 0
+   },
+   "refutes": {
+    "not_enough_info": 99,
+    "refutes": 0,
+    "supports": 1,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 4,
+    "refutes": 0,
+    "supports": 96,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.5641,
+  "macro_f1_bootstrap95": [
+   0.5421,
+   0.5837
+  ],
+  "n": 450,
+  "non_ok_status": {},
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.7952,
+    "fn": 17,
+    "fp": 103,
+    "precision": 0.6935,
+    "precision_bootstrap95": [
+     0.6456,
+     0.7433
+    ],
+    "precision_wilson95": [
+     0.6422,
+     0.7403
+    ],
+    "recall": 0.932,
+    "recall_bootstrap95": [
+     0.8992,
+     0.9611
+    ],
+    "recall_wilson95": [
+     0.8938,
+     0.9571
+    ],
+    "tp": 233
+   },
+   "refutes": {
+    "f1": 0.0,
+    "fn": 100,
+    "fp": 0,
+    "precision": 0.0,
+    "precision_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "precision_wilson95": [
+     null,
+     null
+    ],
+    "recall": 0.0,
+    "recall_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "recall_wilson95": [
+     0.0,
+     0.037
+    ],
+    "tp": 0
+   },
+   "supports": {
+    "f1": 0.8972,
+    "fn": 4,
+    "fp": 18,
+    "precision": 0.8421,
+    "precision_bootstrap95": [
+     0.7719,
+     0.9044
+    ],
+    "precision_wilson95": [
+     0.7642,
+     0.8977
+    ],
+    "recall": 0.96,
+    "recall_bootstrap95": [
+     0.9175,
+     0.9907
+    ],
+    "recall_wilson95": [
+     0.9016,
+     0.9843
+    ],
+    "tp": 96
+   }
+  }
+ },
+ "scifact_300_supplementary": {
+  "accuracy": 0.59,
+  "accuracy_wilson95": [
+   0.5335,
+   0.6442
+  ],
+  "bootstrap": {
+   "resamples": 2000,
+   "seed": 20261021
+  },
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 99,
+    "refutes": 0,
+    "supports": 1,
+    "unchecked": 0
+   },
+   "refutes": {
+    "not_enough_info": 94,
+    "refutes": 0,
+    "supports": 6,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 22,
+    "refutes": 0,
+    "supports": 78,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.4906,
+  "macro_f1_bootstrap95": [
+   0.4569,
+   0.5204
+  ],
+  "n": 300,
+  "non_ok_status": {},
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.6286,
+    "fn": 1,
+    "fp": 116,
+    "precision": 0.4605,
+    "precision_bootstrap95": [
+     0.3925,
+     0.5297
+    ],
+    "precision_wilson95": [
+     0.3951,
+     0.5272
+    ],
+    "recall": 0.99,
+    "recall_bootstrap95": [
+     0.9681,
+     1.0
+    ],
+    "recall_wilson95": [
+     0.9455,
+     0.9982
+    ],
+    "tp": 99
+   },
+   "refutes": {
+    "f1": 0.0,
+    "fn": 100,
+    "fp": 0,
+    "precision": 0.0,
+    "precision_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "precision_wilson95": [
+     null,
+     null
+    ],
+    "recall": 0.0,
+    "recall_bootstrap95": [
+     0.0,
+     0.0
+    ],
+    "recall_wilson95": [
+     0.0,
+     0.037
+    ],
+    "tp": 0
+   },
+   "supports": {
+    "f1": 0.8432,
+    "fn": 22,
+    "fp": 7,
+    "precision": 0.9176,
+    "precision_bootstrap95": [
+     0.8515,
+     0.9726
+    ],
+    "precision_wilson95": [
+     0.8396,
+     0.9595
+    ],
+    "recall": 0.78,
+    "recall_bootstrap95": [
+     0.6952,
+     0.8571
+    ],
+    "recall_wilson95": [
+     0.6893,
+     0.85
+    ],
+    "tp": 78
+   }
+  }
+ },
+ "scifact_fresh_nei_only": {
+  "false_refute_rate_wilson95": [
+   0.0,
+   0.025
+  ],
+  "false_refutes": 0,
+  "false_supports": 2,
+  "labels": {
+   "not_enough_info": 148,
+   "supports": 2
+  },
+  "n": 150,
+  "nei_recall": 0.9867,
+  "nei_recall_wilson95": [
+   0.9527,
+   0.9963
+  ]
+ },
+ "slices": {
+  "fever": {
+   "excluded_breakdown": {
+    "first_fever_slice": 300,
+    "v4_and_v5_items": 591,
+    "v5_items": 347,
+    "v5_reserve_and_items": 6201
+   },
+   "excluded_ids": 6454,
+   "n": 300,
+   "path": "fever_slice_fresh2.jsonl",
+   "per_class": {
+    "not_enough_info": 100,
+    "refutes": 100,
+    "supports": 100
+   },
+   "pool_after_exclusion": 3545,
+   "rule": "paper_dev outside v5 items + v5 reserve + v4 items + first FEVER slice; Random(seed) shuffle; SUP/REF need the first evidence set inside one fever17 passage; NEI BM25 top-1",
+   "sha256": "4f83adc04e8778aaf39f6d035b7bd5fec15fc923e5b2534a03c93b4b044b72a9"
+  },
+  "scifact": {
+   "available_after_exclusion": {
+    "not_enough_info": 303,
+    "refutes": 0,
+    "supports": 0
+   },
+   "excluded": {
+    "earlier_slice_pilot_injection": 340,
+    "union": 806,
+    "v4_benchmark": 290,
+    "v5_items_and_reserve": 315
+   },
+   "n": 150,
+   "path": "scifact_slice_fresh2.jsonl",
+   "per_class": {
+    "not_enough_info": 150
+   },
+   "rule": "validate.candidates() outside v4 benchmark + v5 SciFact items/reserve + earlier slice/pilot/injection bases; only NEI remains; Random(seed) shuffle, first 150",
+   "sha256": "958e764747b6c11b7a7ae1da948cb131cf243289f75a4684b7c31e04a76d8d05"
+  },
+  "seed": 20261023,
+  "stability_ids": [
+   "fever109768",
+   "fever116319",
+   "fever129419",
+   "fever129533",
+   "fever136462",
+   "fever136862",
+   "fever141131",
+   "fever159706",
+   "fever161569",
+   "fever165266",
+   "fever166485",
+   "fever168975",
+   "fever168987",
+   "fever173126",
+   "fever194022",
+   "fever195085",
+   "fever200290",
+   "fever204008",
+   "fever204361",
+   "fever21236",
+   "fever214253",
+   "fever218238",
+   "fever223343",
+   "fever29353",
+   "fever42770",
+   "fever50299",
+   "fever67011",
+   "fever71011",
+   "fever76335",
+   "fever80205",
+   "fever83559",
+   "fever88351",
+   "fever99252",
+   "v4-scifactdev1014",
+   "v4-scifactdev1362",
+   "v4-scifactdev587",
+   "v4-scifactdev684",
+   "v4-scifactdev72",
+   "v4-scifacttrain15",
+   "v4-scifacttrain255",
+   "v4-scifacttrain337",
+   "v4-scifacttrain376",
+   "v4-scifacttrain679",
+   "v4-scifacttrain686",
+   "v4-scifacttrain733",
+   "v4-scifacttrain799",
+   "v4-scifacttrain80",
+   "v4-scifacttrain894",
+   "v4-scifacttrain899",
+   "v4-scifacttrain989"
+  ]
+ },
+ "stability": {
+  "byte_identical": 50,
+  "label_agree": 50,
+  "n": 50,
+  "rate": 1.0,
+  "sample": "fresh2_manifest.json stability_ids (same 50 as 0.2.0)",
+  "score_q_identical": 50,
+  "wilson95": [
+   0.9287,
+   1.0
+  ]
+ },
+ "supports_precision": {
+  "claude_020_fever_fresh": 0.8981,
+  "fever_fresh": {
+   "bootstrap95": [
+    0.792,
+    0.9189
+   ],
+   "fp": 16,
+   "precision": 0.8571,
+   "tp": 96,
+   "wilson95": [
+    0.7805,
+    0.9101
+   ]
+  },
+  "mistral_fever_fresh": 0.7739,
+  "mistral_scifact_300": 0.5685,
+  "scifact_300": {
+   "fp": 7,
+   "precision": 0.9176,
+   "precision_bootstrap95": [
+    0.8515,
+    0.9726
+   ],
+   "precision_wilson95": [
+    0.8396,
+    0.9595
+   ],
+   "tp": 78
+  },
+  "scifact_fresh_nei_only_false_supports": {
+   "k": 2,
+   "n": 150,
+   "rate_wilson95": [
+    0.0037,
+    0.0473
+   ]
+  }
+ },
+ "thresholds": {
+  "injection_success_max": 0.05,
+  "macro_f1": 0.7,
+  "refutes_precision": 0.8,
+  "stability_min": 0.95,
+  "supports_precision_min": 0.85
+ }
+}

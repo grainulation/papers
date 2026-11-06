@@ -1,0 +1,1311 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain222",
+ "order": 552,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain222",
+  "order": 552,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Ca2+ cycling is a UCP1-independent thermogenic mechanism."
+ },
+ "item_view_sha256": "67af0a734270dc6a4d86c38265c20adf7bb78cc2bcd1c8b87293c5fe2499e775",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "554147ca0eefa457ba8b5edb95a1fd884f5ac3cf9eb7782d17b8d7ff5b7cb3d3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868842.1831748,
+      "end_wall": 1792868843.615766,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868842.1831748,
+    "start_mono": 538398.891617166,
+    "end_wall": 1792868843.615766,
+    "end_mono": 538400.32420125,
+    "raw_response": "{\"query\": \"Ca2+ cycling UCP1-independent thermogenic mechanism\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1429210833,
+     "load_duration": 110077667,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 360388792,
+     "eval_count": 19,
+     "eval_duration": 736700875,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:23.614686Z"
+    },
+    "elapsed_s": 1.433,
+    "query_used": "Ca2+ cycling UCP1-independent thermogenic mechanism",
+    "query_source": "json",
+    "query_arrival_seq": 2760
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ca2+ cycling UCP1-independent thermogenic mechanism",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19205437:0",
+       "score_q": 734
+      },
+      {
+       "passage_key": "scifact:19205437:1",
+       "score_q": 698
+      },
+      {
+       "passage_key": "scifact:29691654:0",
+       "score_q": 677
+      },
+      {
+       "passage_key": "scifact:27247460:0",
+       "score_q": 673
+      },
+      {
+       "passage_key": "scifact:18678095:1",
+       "score_q": 670
+      }
+     ],
+     "retrieval_sha256": "40d092fb7355ac6b1b5c4fc29120c737f2ff34bae7871875f84f72f6b53196c4"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "40d092fb7355ac6b1b5c4fc29120c737f2ff34bae7871875f84f72f6b53196c4",
+    "query_embedding_sha256": "632ccaa0f3d89b22b02114694aa427fe65152b3fe98ce4c624abe6f33411d134",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19205437:0",
+      "content_sha256": "d4a43ea1fb3a0b40c078c2e19b3391d174cf8157d5c59cb14d7ec8545d50f83a",
+      "chars": 827
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19205437:1",
+      "content_sha256": "581527b473fc80b3b12db777dc141adf0b36af2574911927c96d30ce45d3d2da",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:29691654:0",
+      "content_sha256": "6f43e35bb87906abb5d59afc7dcaff189034c4744a6e9955893784639977f594",
+      "chars": 1019
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:27247460:0",
+      "content_sha256": "eddcb75bd6af9aee2b23a2a8f4b6c3c2348786d08198a693be0286bf7c907593",
+      "chars": 1006
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18678095:1",
+      "content_sha256": "c6c3c2ed67f5cb3cfa998c9d8a3137f9b88a8e0db34052d3a347aa003a0f4c49",
+      "chars": 247
+     }
+    ],
+    "elapsed_s": 4.3595
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nEvidence passages from your search for \"Ca2+ cycling UCP1-independent thermogenic mechanism\":\n<<<PASSAGES\n[P1] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nUncoupling protein 1 (UCP1) plays a central role in nonshivering thermogenesis in brown fat; however, its role in beige fat remains unclear. Here we report a robust UCP1-independent thermogenic mechanism in beige fat that involves enhanced ATP-dependent Ca2+ cycling by sarco/endoplasmic reticulum Ca2+-ATPase 2b (SERCA2b) and ryanodine receptor 2 (RyR2). Inhibition of SERCA2b impairs UCP1-independent beige fat thermogenesis in humans and mice as well as in pigs, a species that lacks a functional UCP1 protein. Conversely, enhanced Ca2+ cycling by activation of α1- and/or β3-adrenergic receptors or the SERCA2b-RyR2 pathway stimulates UCP1-independent thermogenesis in beige adipocytes.\n\n[P2] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nIn the absence of UCP1, beige fat dynamically expends glucose through enhanced glycolysis, tricarboxylic acid metabolism and pyruvate dehydrogenase activity for ATP-dependent thermogenesis through the SERCA2b pathway; beige fat thereby functions as a 'glucose sink' and improves glucose tolerance independently of body weight loss. Our study uncovers a noncanonical thermogenic mechanism through which beige fat controls whole-body energy homeostasis via Ca2+ cycling.\n\n[P3] Uncoupling Mitochondrial Respiration for Diabesity.\nUntil recently, the mechanism of adaptive thermogenesis was ascribed to the expression of uncoupling protein 1 (UCP1) in brown and beige adipocytes. UCP1 is known to catalyze a proton leak of the inner mitochondrial membrane, resulting in uncoupled oxidative metabolism with no production of adenosine triphosphate and increased energy expenditure. Thus increasing brown and beige adipose tissue with augmented UCP1 expression is a viable target for obesity-related disorders. Recent work demonstrates an UCP1-independent pathway to uncouple mitochondrial respiration. A secreted enzyme, PM20D1, enriched in UCP1+ adipocytes, exhibits catalytic and hydrolytic activity to reversibly form N-acyl amino acids. N-acyl amino acids act as endogenous uncouplers of mitochondrial respiration at physiological concentrations. Administration of PM20D1 or its products, N-acyl amino acids, to diet-induced obese mice improves glucose tolerance by increasing energy expenditure.\n\n[P4] OVEREXPRESSION OF BOTH CLOCK AND BMAL1 INHIBITS ENTRY TO S PHASE IN HUMAN COLON CANCER CELLS.\nMany physiological, biochemical and behavioral processes operate under the circadian rhythm, which is generated by an internal time-keeping mechanism commonly referred to as the biological clock, in almost all organisms from bacteria to mammals. The core circadian oscillator is composed of an autoregulatory transcription-translation feedback loop, in which CLOCK and BMAL1 are positive regulators. A cell has two mechanisms, \"cell cycle\" and \"cell rhythm\", the relationship between which remains controversial. Therefore, the aim of this study was to explore the effect of Clock and Bmal1 on cell cycle, especially on the G1 phase, using vectors with the tetracycline operator-repressor system. The present study revealed that simultaneous induction of Bmal1 and Clock had an influential effect on the cell cycle in SW480/T-REx/Clock/Bmal1 cells, in which both Clock and Bmal1 could be induced by tetracycline.\n\n[P5] Vesicular Glycolysis Provides On-Board Energy for Fast Axonal Transport\nThis specifically localized glycolytic machinery may supply constant energy, independent of mitochondria, for the processive movement of vesicles over long distances in axons.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "eb14b90bec3687cf49fcfc2e6241df45c0f58afcb24ba12f9b097281d65884b2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868847.975921,
+      "end_wall": 1792868862.555264,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2760,
+    "start_wall": 1792868847.975921,
+    "start_mono": 538404.684339791,
+    "end_wall": 1792868862.555264,
+    "end_mono": 538419.263623083,
+    "raw_response": "{\"reasoning\": \"The evidence supports the claim that Ca2+ cycling is a UCP1-independent thermogenic mechanism, as multiple passages discuss enhanced ATP-dependent Ca2+ cycling by SERCA2b and RyR2, and the inhibition of SERCA2b impairs UCP1-independent thermogenesis.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14576128375,
+     "load_duration": 6243610791,
+     "prompt_eval_count": 1120,
+     "prompt_eval_duration": 2872043041,
+     "eval_count": 104,
+     "eval_duration": 4281493124,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:42.553233Z"
+    },
+    "elapsed_s": 14.579,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2760,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:19205437:0",
+     "scifact:19205437:1",
+     "scifact:29691654:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 250,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "554147ca0eefa457ba8b5edb95a1fd884f5ac3cf9eb7782d17b8d7ff5b7cb3d3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868842.1830149,
+      "end_wall": 1792868844.198064,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868842.1830149,
+    "start_mono": 538398.891457083,
+    "end_wall": 1792868844.198064,
+    "end_mono": 538400.906498,
+    "raw_response": "{\"query\": \"Ca2+ cycling thermogenesis UCP1\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2012133875,
+     "load_duration": 1175341167,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 380976375,
+     "eval_count": 18,
+     "eval_duration": 380982666,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:24.197251Z"
+    },
+    "elapsed_s": 2.015,
+    "query_used": "Ca2+ cycling thermogenesis UCP1",
+    "query_source": "json",
+    "query_arrival_seq": 2762
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ca2+ cycling thermogenesis UCP1",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19205437:0",
+       "score_q": 18167
+      },
+      {
+       "passage_key": "scifact:19205437:1",
+       "score_q": 15214
+      },
+      {
+       "passage_key": "scifact:36838958:0",
+       "score_q": 9328
+      },
+      {
+       "passage_key": "scifact:29691654:0",
+       "score_q": 7965
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 7613
+      }
+     ],
+     "retrieval_sha256": "88f6f44f544738bba16d6a680956029a6cf83535497a00211b329ccc0015ea42"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "88f6f44f544738bba16d6a680956029a6cf83535497a00211b329ccc0015ea42",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19205437:0",
+      "content_sha256": "d4a43ea1fb3a0b40c078c2e19b3391d174cf8157d5c59cb14d7ec8545d50f83a",
+      "chars": 827
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19205437:1",
+      "content_sha256": "581527b473fc80b3b12db777dc141adf0b36af2574911927c96d30ce45d3d2da",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:36838958:0",
+      "content_sha256": "441eddc2611e663695de67cbd285ce7e98732079c42e4b1fb36f404010156ed2",
+      "chars": 988
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29691654:0",
+      "content_sha256": "6f43e35bb87906abb5d59afc7dcaff189034c4744a6e9955893784639977f594",
+      "chars": 1019
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     }
+    ],
+    "elapsed_s": 0.0032
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nEvidence passages from your search for \"Ca2+ cycling thermogenesis UCP1\":\n<<<PASSAGES\n[P1] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nUncoupling protein 1 (UCP1) plays a central role in nonshivering thermogenesis in brown fat; however, its role in beige fat remains unclear. Here we report a robust UCP1-independent thermogenic mechanism in beige fat that involves enhanced ATP-dependent Ca2+ cycling by sarco/endoplasmic reticulum Ca2+-ATPase 2b (SERCA2b) and ryanodine receptor 2 (RyR2). Inhibition of SERCA2b impairs UCP1-independent beige fat thermogenesis in humans and mice as well as in pigs, a species that lacks a functional UCP1 protein. Conversely, enhanced Ca2+ cycling by activation of α1- and/or β3-adrenergic receptors or the SERCA2b-RyR2 pathway stimulates UCP1-independent thermogenesis in beige adipocytes.\n\n[P2] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nIn the absence of UCP1, beige fat dynamically expends glucose through enhanced glycolysis, tricarboxylic acid metabolism and pyruvate dehydrogenase activity for ATP-dependent thermogenesis through the SERCA2b pathway; beige fat thereby functions as a 'glucose sink' and improves glucose tolerance independently of body weight loss. Our study uncovers a noncanonical thermogenic mechanism through which beige fat controls whole-body energy homeostasis via Ca2+ cycling.\n\n[P3] Sestrin2 inhibits uncoupling protein 1 expression through suppressing reactive oxygen species.\nUncoupling protein 1 (Ucp1), which is localized in the mitochondrial inner membrane of mammalian brown adipose tissue (BAT), generates heat by uncoupling oxidative phosphorylation. Upon cold exposure or nutritional abundance, sympathetic neurons stimulate BAT to express Ucp1 to induce energy dissipation and thermogenesis. Accordingly, increased Ucp1 expression reduces obesity in mice and is correlated with leanness in humans. Despite this significance, there is currently a limited understanding of how Ucp1 expression is physiologically regulated at the molecular level. Here, we describe the involvement of Sestrin2 and reactive oxygen species (ROS) in regulation of Ucp1 expression. Transgenic overexpression of Sestrin2 in adipose tissues inhibited both basal and cold-induced Ucp1 expression in interscapular BAT, culminating in decreased thermogenesis and increased fat accumulation.\n\n[P4] Uncoupling Mitochondrial Respiration for Diabesity.\nUntil recently, the mechanism of adaptive thermogenesis was ascribed to the expression of uncoupling protein 1 (UCP1) in brown and beige adipocytes. UCP1 is known to catalyze a proton leak of the inner mitochondrial membrane, resulting in uncoupled oxidative metabolism with no production of adenosine triphosphate and increased energy expenditure. Thus increasing brown and beige adipose tissue with augmented UCP1 expression is a viable target for obesity-related disorders. Recent work demonstrates an UCP1-independent pathway to uncouple mitochondrial respiration. A secreted enzyme, PM20D1, enriched in UCP1+ adipocytes, exhibits catalytic and hydrolytic activity to reversibly form N-acyl amino acids. N-acyl amino acids act as endogenous uncouplers of mitochondrial respiration at physiological concentrations. Administration of PM20D1 or its products, N-acyl amino acids, to diet-induced obese mice improves glucose tolerance by increasing energy expenditure.\n\n[P5] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "951244a0f0cdba9d15c286bd24e0f9beac0d1383cd0484a596f0a08a37f8e2aa",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868844.20176,
+      "end_wall": 1792868864.762491,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2761,
+    "start_wall": 1792868844.20176,
+    "start_mono": 538400.910193625,
+    "end_wall": 1792868864.762491,
+    "end_mono": 538421.470842041,
+    "raw_response": "{\n  \"reasoning\": \"The claim asserts that Ca2+ cycling is a UCP1-independent thermogenic mechanism. The evidence passages support this claim as they describe various UCP1-independent mechanisms involving Ca2+ cycling, such as SERCA2b-mediated Ca2+ cycling in beige fat and the regulation of glucose homeostasis. These passages explicitly state that thermogenesis can occur independently of UCP1 through Ca2+ cycling.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20556784792,
+     "load_duration": 8553867000,
+     "prompt_eval_count": 1567,
+     "prompt_eval_duration": 4343175917,
+     "eval_count": 147,
+     "eval_duration": 6945593746,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:44.759199Z"
+    },
+    "elapsed_s": 20.561,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2761,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:19205437:0",
+     "scifact:19205437:1",
+     "scifact:29691654:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 397,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "554147ca0eefa457ba8b5edb95a1fd884f5ac3cf9eb7782d17b8d7ff5b7cb3d3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868842.1833012,
+      "end_wall": 1792868847.251915,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868842.1833012,
+    "start_mono": 538398.8917425,
+    "end_wall": 1792868847.251915,
+    "end_mono": 538403.960336,
+    "raw_response": "{\"query\": \"Ca2+ cycling and UCP1 thermogenic\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5065301542,
+     "load_duration": 3693470958,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 674687750,
+     "eval_count": 16,
+     "eval_duration": 559556999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:27.250265Z"
+    },
+    "elapsed_s": 5.069,
+    "query_used": "Ca2+ cycling and UCP1 thermogenic",
+    "query_source": "json",
+    "query_arrival_seq": 2763
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ca2+ cycling and UCP1 thermogenic",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19205437:0",
+       "score_q": 16195
+      },
+      {
+       "passage_key": "scifact:19205437:1",
+       "score_q": 14238
+      },
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 7597
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 5611
+      },
+      {
+       "passage_key": "scifact:36838958:1",
+       "score_q": 5554
+      }
+     ],
+     "retrieval_sha256": "2a94e711f05616ce1bebe3e5ef6c7528c9a844d8de6eafa5fdc9adc28e480d06"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2a94e711f05616ce1bebe3e5ef6c7528c9a844d8de6eafa5fdc9adc28e480d06",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19205437:0",
+      "content_sha256": "d4a43ea1fb3a0b40c078c2e19b3391d174cf8157d5c59cb14d7ec8545d50f83a",
+      "chars": 827
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19205437:1",
+      "content_sha256": "581527b473fc80b3b12db777dc141adf0b36af2574911927c96d30ce45d3d2da",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:36838958:1",
+      "content_sha256": "6805a50411f3286d433752218f86af2203e9fc71645ce2d42a852c63b7df57a4",
+      "chars": 951
+     }
+    ],
+    "elapsed_s": 0.0002
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nEvidence passages from your search for \"Ca2+ cycling and UCP1 thermogenic\":\n<<<PASSAGES\n[P1] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nUncoupling protein 1 (UCP1) plays a central role in nonshivering thermogenesis in brown fat; however, its role in beige fat remains unclear. Here we report a robust UCP1-independent thermogenic mechanism in beige fat that involves enhanced ATP-dependent Ca2+ cycling by sarco/endoplasmic reticulum Ca2+-ATPase 2b (SERCA2b) and ryanodine receptor 2 (RyR2). Inhibition of SERCA2b impairs UCP1-independent beige fat thermogenesis in humans and mice as well as in pigs, a species that lacks a functional UCP1 protein. Conversely, enhanced Ca2+ cycling by activation of α1- and/or β3-adrenergic receptors or the SERCA2b-RyR2 pathway stimulates UCP1-independent thermogenesis in beige adipocytes.\n\n[P2] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nIn the absence of UCP1, beige fat dynamically expends glucose through enhanced glycolysis, tricarboxylic acid metabolism and pyruvate dehydrogenase activity for ATP-dependent thermogenesis through the SERCA2b pathway; beige fat thereby functions as a 'glucose sink' and improves glucose tolerance independently of body weight loss. Our study uncovers a noncanonical thermogenic mechanism through which beige fat controls whole-body energy homeostasis via Ca2+ cycling.\n\n[P3] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P4] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\n\n[P5] Sestrin2 inhibits uncoupling protein 1 expression through suppressing reactive oxygen species.\nEndogenous Sestrin2 is also important for suppressing Ucp1 expression because BAT from Sestrin2(-/-) mice exhibited a highly elevated level of Ucp1 expression. The redox-inactive mutant of Sestrin2 was incapable of regulating Ucp1 expression, suggesting that Sestrin2 inhibits Ucp1 expression primarily through reducing ROS accumulation. Consistently, ROS-suppressing antioxidant chemicals, such as butylated hydroxyanisole and N-acetylcysteine, inhibited cold- or cAMP-induced Ucp1 expression as well. p38 MAPK, a signaling mediator required for cAMP-induced Ucp1 expression, was inhibited by either Sestrin2 overexpression or antioxidant treatments. Taken together, these results suggest that Sestrin2 and antioxidants inhibit Ucp1 expression through suppressing ROS-mediated p38 MAPK activation, implying a critical role of ROS in proper BAT metabolism.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bfef371f1a3306295722d8c5067f60e10cae95783d8affba2e1f6945596b9d14",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868847.252526,
+      "end_wall": 1792868874.2776,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2762,
+    "start_wall": 1792868847.252526,
+    "start_mono": 538403.960948,
+    "end_wall": 1792868874.2776,
+    "end_mono": 538430.985912833,
+    "raw_response": "{\"reasoning\": \"The passages collectively show that Ca2+ cycling can occur independently of UCP1 in thermogenesis, with specific examples given in P1, P2, and P4. P2 and P4 provide evidence for UCP1-independent thermogenesis through SERCA2b and beta-adrenergic receptors, respectively. P1 indicates that beige fat thermogenesis involves SERCA2b and RyR2, which does not rely on UCP1. P5 provides evidence that Sestrin2 can regulate UCP1 expression through ROS, but this does not negate the existence of UCP1-independent mechanisms. Therefore, the claim is SUPPORTED with the following citations: P1, P2, and P4. [P1,\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27021154417,
+     "load_duration": 45146375,
+     "prompt_eval_count": 1169,
+     "prompt_eval_duration": 4464887291,
+     "eval_count": 185,
+     "eval_duration": 20741741747,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:54.274867Z"
+    },
+    "elapsed_s": 27.025,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2762,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:19205437:0",
+     "scifact:19205437:1",
+     "scifact:4319174:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "554147ca0eefa457ba8b5edb95a1fd884f5ac3cf9eb7782d17b8d7ff5b7cb3d3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868842.183433,
+      "end_wall": 1792868843.988767,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868842.183433,
+    "start_mono": 538398.89187475,
+    "end_wall": 1792868843.988767,
+    "end_mono": 538400.697200791,
+    "raw_response": "{\"query\": \"Ca2+ cycling thermogenesis UCP1 independent\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1802780000,
+     "load_duration": 59256167,
+     "prompt_eval_count": 182,
+     "prompt_eval_duration": 497137583,
+     "eval_count": 17,
+     "eval_duration": 1107972582,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:23.987788Z"
+    },
+    "elapsed_s": 1.805,
+    "query_used": "Ca2+ cycling thermogenesis UCP1 independent",
+    "query_source": "json",
+    "query_arrival_seq": 2761
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ca2+ cycling thermogenesis UCP1 independent",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19205437:0",
+       "score_q": 717
+      },
+      {
+       "passage_key": "scifact:19205437:1",
+       "score_q": 688
+      },
+      {
+       "passage_key": "scifact:4319174:0",
+       "score_q": 673
+      },
+      {
+       "passage_key": "scifact:29691654:0",
+       "score_q": 672
+      },
+      {
+       "passage_key": "scifact:9696379:0",
+       "score_q": 664
+      }
+     ],
+     "retrieval_sha256": "7191fc0703a69999ba961cd120319fb6a68a2e2bab9439dbacddb57a3690b40e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7191fc0703a69999ba961cd120319fb6a68a2e2bab9439dbacddb57a3690b40e",
+    "query_embedding_sha256": "50f20e29b6e648106c9d8a32f32b596001f8ab66d66674d62b525d8789d77da4",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19205437:0",
+      "content_sha256": "d4a43ea1fb3a0b40c078c2e19b3391d174cf8157d5c59cb14d7ec8545d50f83a",
+      "chars": 827
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19205437:1",
+      "content_sha256": "581527b473fc80b3b12db777dc141adf0b36af2574911927c96d30ce45d3d2da",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4319174:0",
+      "content_sha256": "aac3f9bb1cee79e5cf2e79d21824cdac05a334d3ad4e938882d12452f1e233c9",
+      "chars": 1051
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29691654:0",
+      "content_sha256": "6f43e35bb87906abb5d59afc7dcaff189034c4744a6e9955893784639977f594",
+      "chars": 1019
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9696379:0",
+      "content_sha256": "23ef58a5ac69375581f44f37c1429a7a1d358fadb8a0470ea7ebe51ff61aa693",
+      "chars": 1005
+     }
+    ],
+    "elapsed_s": 4.1777
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nEvidence passages from your search for \"Ca2+ cycling thermogenesis UCP1 independent\":\n<<<PASSAGES\n[P1] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nUncoupling protein 1 (UCP1) plays a central role in nonshivering thermogenesis in brown fat; however, its role in beige fat remains unclear. Here we report a robust UCP1-independent thermogenic mechanism in beige fat that involves enhanced ATP-dependent Ca2+ cycling by sarco/endoplasmic reticulum Ca2+-ATPase 2b (SERCA2b) and ryanodine receptor 2 (RyR2). Inhibition of SERCA2b impairs UCP1-independent beige fat thermogenesis in humans and mice as well as in pigs, a species that lacks a functional UCP1 protein. Conversely, enhanced Ca2+ cycling by activation of α1- and/or β3-adrenergic receptors or the SERCA2b-RyR2 pathway stimulates UCP1-independent thermogenesis in beige adipocytes.\n\n[P2] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nIn the absence of UCP1, beige fat dynamically expends glucose through enhanced glycolysis, tricarboxylic acid metabolism and pyruvate dehydrogenase activity for ATP-dependent thermogenesis through the SERCA2b pathway; beige fat thereby functions as a 'glucose sink' and improves glucose tolerance independently of body weight loss. Our study uncovers a noncanonical thermogenic mechanism through which beige fat controls whole-body energy homeostasis via Ca2+ cycling.\n\n[P3] Alternatively activated macrophages produce catecholamines to sustain adaptive thermogenesis\nAll homeotherms use thermogenesis to maintain their core body temperature, ensuring that cellular functions and physiological processes can continue in cold environments. In the prevailing model of thermogenesis, when the hypothalamus senses cold temperatures it triggers sympathetic discharge, resulting in the release of noradrenaline in brown adipose tissue and white adipose tissue. Acting via the β(3)-adrenergic receptors, noradrenaline induces lipolysis in white adipocytes, whereas it stimulates the expression of thermogenic genes, such as PPAR-γ coactivator 1a (Ppargc1a), uncoupling protein 1 (Ucp1) and acyl-CoA synthetase long-chain family member 1 (Acsl1), in brown adipocytes. However, the precise nature of all the cell types involved in this efferent loop is not well established. Here we report in mice an unexpected requirement for the interleukin-4 (IL-4)-stimulated program of alternative macrophage activation in adaptive thermogenesis.\n\n[P4] Uncoupling Mitochondrial Respiration for Diabesity.\nUntil recently, the mechanism of adaptive thermogenesis was ascribed to the expression of uncoupling protein 1 (UCP1) in brown and beige adipocytes. UCP1 is known to catalyze a proton leak of the inner mitochondrial membrane, resulting in uncoupled oxidative metabolism with no production of adenosine triphosphate and increased energy expenditure. Thus increasing brown and beige adipose tissue with augmented UCP1 expression is a viable target for obesity-related disorders. Recent work demonstrates an UCP1-independent pathway to uncouple mitochondrial respiration. A secreted enzyme, PM20D1, enriched in UCP1+ adipocytes, exhibits catalytic and hydrolytic activity to reversibly form N-acyl amino acids. N-acyl amino acids act as endogenous uncouplers of mitochondrial respiration at physiological concentrations. Administration of PM20D1 or its products, N-acyl amino acids, to diet-induced obese mice improves glucose tolerance by increasing energy expenditure.\n\n[P5] Metabolic cycling in single yeast cells from unsynchronized steady-state populations limited on glucose or phosphate.\nOscillations in patterns of expression of a large fraction of yeast genes are associated with the \"metabolic cycle,\" usually seen only in prestarved, continuous cultures of yeast. We used FISH of mRNA in individual cells to test the hypothesis that these oscillations happen in single cells drawn from unsynchronized cultures growing exponentially in chemostats. Gene-expression data from synchronized cultures were used to predict coincident appearance of mRNAs from pairs of genes in the unsynchronized cells. Quantitative analysis of the FISH results shows that individual unsynchronized cells growing slowly because of glucose limitation or phosphate limitation show the predicted oscillations. We conclude that the yeast metabolic cycle is an intrinsic property of yeast metabolism and does not depend on either synchronization or external limitation of growth by the carbon source.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8b2e29087d8e128a420b07e130cfe5b3eea11cd5c88a984b3c78f00e3971ed3b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868848.166975,
+      "end_wall": 1792868879.957682,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2763,
+    "start_wall": 1792868848.166975,
+    "start_mono": 538404.875392916,
+    "end_wall": 1792868879.957682,
+    "end_mono": 538436.665971541,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages, particularly [P1] and [P2], clearly demonstrate that Ca2+ cycling mediated by SERCA2b can independently regulate thermogenesis in beige fat without the necessity of UCP1, supporting the claim that Ca2+ cycling serves as a UCP1-independent thermogenic mechanism.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 31786174458,
+     "load_duration": 17548319542,
+     "prompt_eval_count": 1236,
+     "prompt_eval_duration": 6975335500,
+     "eval_count": 110,
+     "eval_duration": 6418771001,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:59.9544Z"
+    },
+    "elapsed_s": 31.791,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2763,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:19205437:0",
+     "scifact:19205437:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 284,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "554147ca0eefa457ba8b5edb95a1fd884f5ac3cf9eb7782d17b8d7ff5b7cb3d3",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792868842.18359,
+      "end_wall": 1792868851.835115,
+      "error": null
+     }
+    ],
+    "start_wall": 1792868842.18359,
+    "start_mono": 538398.892032333,
+    "end_wall": 1792868851.835115,
+    "end_mono": 538408.543517208,
+    "raw_response": "{\"query\": \"ucp1 thermogenic mechanism Ca2+ cycling\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9648590542,
+     "load_duration": 5255489208,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 1020021250,
+     "eval_count": 16,
+     "eval_duration": 3048589624,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:07:31.834092Z"
+    },
+    "elapsed_s": 9.651,
+    "query_used": "ucp1 thermogenic mechanism Ca2+ cycling",
+    "query_source": "json",
+    "query_arrival_seq": 2764
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "ucp1 thermogenic mechanism Ca2+ cycling",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19205437:0",
+       "score_q": 17389
+      },
+      {
+       "passage_key": "scifact:19205437:1",
+       "score_q": 15588
+      },
+      {
+       "passage_key": "scifact:14865329:1",
+       "score_q": 7597
+      },
+      {
+       "passage_key": "scifact:29691654:0",
+       "score_q": 6366
+      },
+      {
+       "passage_key": "scifact:67787658:1",
+       "score_q": 5632
+      }
+     ],
+     "retrieval_sha256": "78aff37ef57f6fecf0311295479074dcc4527ef1edc3bc3289403002f6a4d9f9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "78aff37ef57f6fecf0311295479074dcc4527ef1edc3bc3289403002f6a4d9f9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19205437:0",
+      "content_sha256": "d4a43ea1fb3a0b40c078c2e19b3391d174cf8157d5c59cb14d7ec8545d50f83a",
+      "chars": 827
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19205437:1",
+      "content_sha256": "581527b473fc80b3b12db777dc141adf0b36af2574911927c96d30ce45d3d2da",
+      "chars": 605
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14865329:1",
+      "content_sha256": "19b14b088c2242eae88e05237dd22f97b8b16dcb1318b4c6cde42d314f0d5052",
+      "chars": 651
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29691654:0",
+      "content_sha256": "6f43e35bb87906abb5d59afc7dcaff189034c4744a6e9955893784639977f594",
+      "chars": 1019
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:67787658:1",
+      "content_sha256": "7724326cb82a5af5776b39f844df9182e726ed67dc7c6bbeeb8043eec4190656",
+      "chars": 484
+     }
+    ],
+    "elapsed_s": 0.0018
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ca2+ cycling is a UCP1-independent thermogenic mechanism.\n\nEvidence passages from your search for \"ucp1 thermogenic mechanism Ca2+ cycling\":\n<<<PASSAGES\n[P1] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nUncoupling protein 1 (UCP1) plays a central role in nonshivering thermogenesis in brown fat; however, its role in beige fat remains unclear. Here we report a robust UCP1-independent thermogenic mechanism in beige fat that involves enhanced ATP-dependent Ca2+ cycling by sarco/endoplasmic reticulum Ca2+-ATPase 2b (SERCA2b) and ryanodine receptor 2 (RyR2). Inhibition of SERCA2b impairs UCP1-independent beige fat thermogenesis in humans and mice as well as in pigs, a species that lacks a functional UCP1 protein. Conversely, enhanced Ca2+ cycling by activation of α1- and/or β3-adrenergic receptors or the SERCA2b-RyR2 pathway stimulates UCP1-independent thermogenesis in beige adipocytes.\n\n[P2] UCP1-independent signaling involving SERCA2b-mediated calcium cycling regulates beige fat thermogenesis and systemic glucose homeostasis\nIn the absence of UCP1, beige fat dynamically expends glucose through enhanced glycolysis, tricarboxylic acid metabolism and pyruvate dehydrogenase activity for ATP-dependent thermogenesis through the SERCA2b pathway; beige fat thereby functions as a 'glucose sink' and improves glucose tolerance independently of body weight loss. Our study uncovers a noncanonical thermogenic mechanism through which beige fat controls whole-body energy homeostasis via Ca2+ cycling.\n\n[P3] Brown Fat and Browning for the Treatment of Obesity and Related Metabolic Disorders\nThe inducible brown adipocyte, beige adipocyte evolving by thermogenic activation of white adipose tissue have different origin and molecular signature from classical brown adipocytes but share the characteristics of high mitochondria content, UCP1 expression and thermogenic capacity when activated. Increasing browning may also be an efficient way to increase whole brown fat activity. Recent human studies have shown possibilities that findings in mice can be reproduced in human, making brown fat a good candidate organ to treat obesity and its related disorders.\n\n[P4] Uncoupling Mitochondrial Respiration for Diabesity.\nUntil recently, the mechanism of adaptive thermogenesis was ascribed to the expression of uncoupling protein 1 (UCP1) in brown and beige adipocytes. UCP1 is known to catalyze a proton leak of the inner mitochondrial membrane, resulting in uncoupled oxidative metabolism with no production of adenosine triphosphate and increased energy expenditure. Thus increasing brown and beige adipose tissue with augmented UCP1 expression is a viable target for obesity-related disorders. Recent work demonstrates an UCP1-independent pathway to uncouple mitochondrial respiration. A secreted enzyme, PM20D1, enriched in UCP1+ adipocytes, exhibits catalytic and hydrolytic activity to reversibly form N-acyl amino acids. N-acyl amino acids act as endogenous uncouplers of mitochondrial respiration at physiological concentrations. Administration of PM20D1 or its products, N-acyl amino acids, to diet-induced obese mice improves glucose tolerance by increasing energy expenditure.\n\n[P5] Cycling Quiescence in Temozolomide Resistant Glioblastoma Cells Is Partly Explained by microRNA-93 and -193-Mediated Decrease of Cyclin D\nThese two miRs also decreased cell cycling quiescence and induced resistance to TMZ. Taken together, our data provide a mechanism by which GBM cells can exhibit TMZ-induced resistance through miRNA targeting of Cyclin D1. The data provide a number of therapeutic approaches to reverse chemoresistance at the miRNA, exosomal and cell cycle points.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7b167c7547a2946853f90413e76851faf6059136a56dd6cc6a73600622c0605b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792868851.8372638,
+      "end_wall": 1792868880.942192,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2764,
+    "start_wall": 1792868851.8372638,
+    "start_mono": 538408.545668125,
+    "end_wall": 1792868880.942192,
+    "end_mono": 538437.650477916,
+    "raw_response": "{\"reasoning\": \"The passages suggest that UCP1 is not necessary for thermogenic mechanism in beige fat. P1 and P2 describe UCP1-independent thermogenic mechanism and its regulation by SERCA2b and RyR2, while P3 discusses the different origins and characteristics of brown and beige adipocytes. P4 introduces an alternative UCP1-independent pathway to uncouple mitochondrial respiration. P5 discusses the role of miR-93 and miR-193 in TMZ resistance, which is partly explained by downregulation of Cyclin D.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29100839375,
+     "load_duration": 15938009292,
+     "prompt_eval_count": 1017,
+     "prompt_eval_duration": 4020664041,
+     "eval_count": 142,
+     "eval_duration": 6180067953,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:08:00.938922Z"
+    },
+    "elapsed_s": 29.105,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2764,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:19205437:0",
+     "scifact:19205437:1",
+     "scifact:14865329:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 490,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "40d092fb7355ac6b1b5c4fc29120c737f2ff34bae7871875f84f72f6b53196c4",
+  "granite3.3:2b": "88f6f44f544738bba16d6a680956029a6cf83535497a00211b329ccc0015ea42",
+  "olmo2:7b": "2a94e711f05616ce1bebe3e5ef6c7528c9a844d8de6eafa5fdc9adc28e480d06",
+  "exaone3.5:7.8b": "7191fc0703a69999ba961cd120319fb6a68a2e2bab9439dbacddb57a3690b40e",
+  "nemotron-mini:4b": "78aff37ef57f6fecf0311295479074dcc4527ef1edc3bc3289403002f6a4d9f9"
+ },
+ "item_start_wall": 1792868842.1827688,
+ "item_wall_s": 38.759,
+ "ollama_ps_samples": [
+  [
+   1792868842.183,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792868844.192,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868846.203,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792868848.213,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792868850.22,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792868852.228,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868854.23,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868856.238,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868858.25,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868860.257,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868862.26,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868864.265,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792868866.277,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868868.279,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868870.291,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868872.302,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868874.307,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792868876.318,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868878.323,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792868880.332,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

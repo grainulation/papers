@@ -1,0 +1,78 @@
+== judges
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_disagreement.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store --workers 6
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method RS --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_disagreement.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store --workers 6
++ python3 -I <artifact>/tools/judge/closed_book.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --ids <artifact>/real-agent-eval/v6/results/conf/disagreement_ids.txt --out <artifact>/real-agent-eval/v6/results/conf/judge-store-cbs --workers 6
+== regen
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_jregen.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-jregen --workers 6
+== loao
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_loao_exaone3.5_7.8b.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-exaone3.5_7.8b --workers 6
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_loao_falcon3_3b.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-falcon3_3b --workers 6
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_loao_granite3.3_2b.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-granite3.3_2b --workers 6
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_loao_nemotron-mini_4b.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-nemotron-mini_4b --workers 6
++ python3 -I <artifact>/tools/judge/judge.py --claude-bin <build-home>/.local/share/claude/versions/2.1.307 run --method J --items <artifact>/real-agent-eval/v5/benchmark/items_confirmatory.jsonl --inputs <artifact>/real-agent-eval/v6/results/conf/judge_inputs_loao_olmo2_7b.jsonl --out <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-olmo2_7b --workers 6
+== rows
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 1426,
+ "by_method_status": {
+  "J/ok": 713,
+  "RS/ok": 713
+ },
+ "usd": 20.7165
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/judge/closed_book.py rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-cbs --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{"rows": 848}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-jregen --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 200,
+ "by_method_status": {
+  "J/ok": 200
+ },
+ "usd": 0.6029
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-exaone3.5_7.8b --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 50,
+ "by_method_status": {
+  "J/ok": 47,
+  "J/forced": 3
+ },
+ "usd": 0.5258
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-falcon3_3b --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 50,
+ "by_method_status": {
+  "J/ok": 49,
+  "J/forced": 1
+ },
+ "usd": 0.5273
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-granite3.3_2b --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 50,
+ "by_method_status": {
+  "J/ok": 48,
+  "J/forced": 2
+ },
+ "usd": 0.5056
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-nemotron-mini_4b --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 50,
+ "by_method_status": {
+  "J/ok": 42,
+  "J/forced": 8
+ },
+ "usd": 0.4838
+}
++ <artifact>/tools/corpus/.venv/bin/python <artifact>/tools/evidence/support/run_checks_v5.py judge-rows --store <artifact>/real-agent-eval/v6/results/conf/judge-store-loao-olmo2_7b --out-file <artifact>/real-agent-eval/v6/results/conf/judge_rows_tmp.jsonl
+{
+ "rows": 50,
+ "by_method_status": {
+  "J/ok": 48,
+  "J/forced": 2
+ },
+ "usd": 0.5189
+}
+{"judge_rows": 2724}

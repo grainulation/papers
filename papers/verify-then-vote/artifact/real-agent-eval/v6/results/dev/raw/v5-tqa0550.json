@@ -1,0 +1,1275 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-tqa0550",
+ "order": 2,
+ "split": "dev",
+ "answer_format": "letter",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-tqa0550",
+  "order": 2,
+  "split": "dev",
+  "item_type": "multiple_choice",
+  "answer_format": "letter",
+  "answer_schema": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Elvis Presley"
+   },
+   {
+    "letter": "B",
+    "text": "He's called Elvis Presley"
+   },
+   {
+    "letter": "C",
+    "text": "Crespo"
+   },
+   {
+    "letter": "D",
+    "text": "Presley"
+   }
+  ]
+ },
+ "item_view_sha256": "2637d200faf478ef693d5c48587e586bf23382d9ab1905d355fb36fda44324ca",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6ec7a958c849b03fc48cf38a963d9b45746b9c676daf42bd611c5e3983e08c80",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840063.26365,
+      "end_wall": 1792840065.0964491,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840063.26365,
+    "start_mono": 509620.074591125,
+    "end_wall": 1792840065.0964491,
+    "end_mono": 509621.907370958,
+    "raw_response": "{\"query\": \"elvis presley tragedy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1830297125,
+     "load_duration": 75272125,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 766381625,
+     "eval_count": 11,
+     "eval_duration": 893301165,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:07:45.09548Z"
+    },
+    "elapsed_s": 1.833,
+    "query_used": "elvis presley tragedy",
+    "query_source": "json",
+    "query_arrival_seq": 10
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "elvis presley tragedy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+       "score_q": 13594
+      },
+      {
+       "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+       "score_q": 13023
+      },
+      {
+       "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12722
+      },
+      {
+       "passage_key": "fever17:Just_Pretend_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12594
+      },
+      {
+       "passage_key": "fever17:Starting_Today_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12594
+      }
+     ],
+     "retrieval_sha256": "460b75464dfe0b3273d843a283b876b1614135e6db4c061652a3fb6f9bd3d284"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "460b75464dfe0b3273d843a283b876b1614135e6db4c061652a3fb6f9bd3d284",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "f40442072bf756d26361d3b970ab4c2779989434673329caf9dae088c99700fd",
+      "chars": 254
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+      "content_sha256": "42e154f5cf480b898fdfbb5d0f93e180c3a95cd4789dc21b491904acd0e9c68b",
+      "chars": 132
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "adbdfcfb197499feef4861954680bed7ca6e86ece789ac0ba67a902dc518448e",
+      "chars": 302
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Just_Pretend_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "d6d87b3b8ad2fa676a262b14a1f7df13efea2559ed150fcc2ebcf1e0ab1e65d2",
+      "chars": 86
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Starting_Today_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "f187bed4d968e464b6bce2271161c28298e3b4094334c8ecd2fab4a208656dfc",
+      "chars": 90
+     }
+    ],
+    "elapsed_s": 0.0157
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nOptions:\nA. Elvis Presley\nB. He's called Elvis Presley\nC. Crespo\nD. Presley\n\nEvidence passages from your search for \"elvis presley tragedy\":\n<<<PASSAGES\n[P1] Elvis Presley (disambiguation)\nElvis Presley ( 1935-1977 ) was an American singer . Elvis Presley may also refer to : Elvis Presley ( album ) Elvis Presley ( The Hitchhiker 's Guide to the Galaxy ) , a character from The Hitchhiker 's Guide to the Galaxy\n\n[P2] Alec Empire vs. Elvis Presley\nAlec Empire vs. Elvis Presley is a recording by Alec Empire which incorporates Elvis Presley samples .\n\n[P3] Poor Boy (Elvis Presley song)\nPoor Boy is a song by Elvis Presley . The song is credited to Elvis Presley and Vera Matson , the wife of Ken Darby , the principal writer , published by Elvis Presley Music . The song was featured in the movie Love Me Tender and was released as an RCA Victor EP in 1956 .\n\n[P4] Just Pretend (Elvis Presley song)\n`` Just Pretend '' is a 1970 song by Elvis Presley .\n\n[P5] Starting Today (Elvis Presley song)\n`` Starting Today '' is a 1961 song by Elvis Presley .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b73ea5e44285a93590a582d42061d6812e2b9a973d2a67bd007f46e9e9e3bad2",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840065.112294,
+      "end_wall": 1792840080.261732,
+      "error": null
+     }
+    ],
+    "arrival_seq": 10,
+    "start_wall": 1792840065.112294,
+    "start_mono": 509621.923216083,
+    "end_wall": 1792840080.261732,
+    "end_mono": 509637.072494,
+    "raw_response": "{\"reasoning\": \"Elvis Presley is the most famous singer with roots in New York who achieved fame as a solo artist and suffered a tragedy in his family. He is widely recognized as 'Elvis' and is often referred to without any additional title. According to the evidence, he is referred to as 'Elvis Presley' in various contexts, including song titles and references in popular culture. Therefore, the correct answer is B. He's called Elvis Presley.\", \"answer\": \"B\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15146061667,
+     "load_duration": 49593375,
+     "prompt_eval_count": 539,
+     "prompt_eval_duration": 2396780541,
+     "eval_count": 118,
+     "eval_duration": 11662104383,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:08:00.259553Z"
+    },
+    "elapsed_s": 15.149,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 10,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 430,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6ec7a958c849b03fc48cf38a963d9b45746b9c676daf42bd611c5e3983e08c80",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840063.264558,
+      "end_wall": 1792840066.267709,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840063.264558,
+    "start_mono": 509620.075499458,
+    "end_wall": 1792840066.267709,
+    "end_mono": 509623.078617958,
+    "raw_response": "{\"query\": \"Elvis Presley New York roots tragedy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3001603875,
+     "load_duration": 76068625,
+     "prompt_eval_count": 195,
+     "prompt_eval_duration": 770356042,
+     "eval_count": 15,
+     "eval_duration": 2032683915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:07:46.266845Z"
+    },
+    "elapsed_s": 3.003,
+    "query_used": "Elvis Presley New York roots tragedy",
+    "query_source": "json",
+    "query_arrival_seq": 11
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Elvis Presley New York roots tragedy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+       "score_q": 13594
+      },
+      {
+       "passage_key": "fever17:Elvis_56:0",
+       "score_q": 13317
+      },
+      {
+       "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+       "score_q": 13023
+      },
+      {
+       "passage_key": "fever17:Elvis_-LRB-1956_album-RRB-:0",
+       "score_q": 13016
+      },
+      {
+       "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12722
+      }
+     ],
+     "retrieval_sha256": "c1fdd785d723358c2097498c94e330bcc343e5065d527d60c1f17a5027714f2f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c1fdd785d723358c2097498c94e330bcc343e5065d527d60c1f17a5027714f2f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "f40442072bf756d26361d3b970ab4c2779989434673329caf9dae088c99700fd",
+      "chars": 254
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Elvis_56:0",
+      "content_sha256": "3932f00b8c6315a7cf474f70cd20a720fbc0dd3b7f7ad99236a7742b4ddfb051",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+      "content_sha256": "42e154f5cf480b898fdfbb5d0f93e180c3a95cd4789dc21b491904acd0e9c68b",
+      "chars": 132
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Elvis_-LRB-1956_album-RRB-:0",
+      "content_sha256": "485e75c831122d14aed623d5465575a97872b2cb9219ce043c30659ddb805618",
+      "chars": 909
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "adbdfcfb197499feef4861954680bed7ca6e86ece789ac0ba67a902dc518448e",
+      "chars": 302
+     }
+    ],
+    "elapsed_s": 0.0286
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nOptions:\nA. Elvis Presley\nB. He's called Elvis Presley\nC. Crespo\nD. Presley\n\nEvidence passages from your search for \"Elvis Presley New York roots tragedy\":\n<<<PASSAGES\n[P1] Elvis Presley (disambiguation)\nElvis Presley ( 1935-1977 ) was an American singer . Elvis Presley may also refer to : Elvis Presley ( album ) Elvis Presley ( The Hitchhiker 's Guide to the Galaxy ) , a character from The Hitchhiker 's Guide to the Galaxy\n\n[P2] Elvis 56\nElvis 56 is a compilation album of studio master recordings by American singer and musician Elvis Presley made during 1956 , released by RCA Records in 1996 . The original sessions took place at RCA Studios in Nashville and New York , and at Radio Recorders in Hollywood .\n\n[P3] Alec Empire vs. Elvis Presley\nAlec Empire vs. Elvis Presley is a recording by Alec Empire which incorporates Elvis Presley samples .\n\n[P4] Elvis (1956 album)\nElvis / Elvis Presley No. 2 is the second studio album by American singer and musician Elvis Presley , released by RCA Victor in October 1956 in mono . Recording sessions took place on September 1 , September 2 , and September 3 at Radio Recorders in Hollywood , with one track left over from the sessions for Presley 's debut album at the RCA Victor recording studios on January 30 in New York . It spent four weeks at # 1 on the Billboard Top Pop Albums chart that year , making Presley the first recording artist to have both albums go straight to number one in the same year . It was certified Gold on February 17 , 1960 , and Platinum on August 10 , 2011 , by the Recording Industry Association of America . It was originally released in UK in 1957 as Elvis Presley No. 2 with a different front cover ( on His Master 's Voice CLP1105 ) . It was also catalogued as Rock 'n' Roll No. 2 .\n\n[P5] Poor Boy (Elvis Presley song)\nPoor Boy is a song by Elvis Presley . The song is credited to Elvis Presley and Vera Matson , the wife of Ken Darby , the principal writer , published by Elvis Presley Music . The song was featured in the movie Love Me Tender and was released as an RCA Victor EP in 1956 .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "234950e1e21fa1e48fe0f6267b4999c800d1cb0d16f4a0e6ab49d56a0cd9d3b7",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840066.296614,
+      "end_wall": 1792840081.1049721,
+      "error": null
+     }
+    ],
+    "arrival_seq": 11,
+    "start_wall": 1792840066.296614,
+    "start_mono": 509623.1075235,
+    "end_wall": 1792840081.1049721,
+    "end_mono": 509637.915726,
+    "raw_response": "{\n  \"reasoning\": \"The question refers to a singer with roots in New York who achieved fame as Elvis Presley and experienced a family tragedy, most notably referring to Elvis Presley's life story where he tragically lost loved ones including his mother and father figures, aligning perfectly with the historical figure Elvis Presley who originated from Mississippi but gained fame broadly under this moniker after early performances influenced by New York's music scene influence.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P1\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14805050167,
+     "load_duration": 45529208,
+     "prompt_eval_count": 855,
+     "prompt_eval_duration": 3707586125,
+     "eval_count": 126,
+     "eval_duration": 10063204419,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:08:01.10274Z"
+    },
+    "elapsed_s": 14.808,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 11,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+     "fever17:Elvis_-LRB-1956_album-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 461,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6ec7a958c849b03fc48cf38a963d9b45746b9c676daf42bd611c5e3983e08c80",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840063.264343,
+      "end_wall": 1792840069.911934,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840063.264343,
+    "start_mono": 509620.075285041,
+    "end_wall": 1792840069.911934,
+    "end_mono": 509626.722804791,
+    "raw_response": "{\"query\": \"New York born Elvis Presley tragedy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6645772333,
+     "load_duration": 1190427541,
+     "prompt_eval_count": 196,
+     "prompt_eval_duration": 433353000,
+     "eval_count": 16,
+     "eval_duration": 4956307584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:07:49.91107Z"
+    },
+    "elapsed_s": 6.648,
+    "query_used": "New York born Elvis Presley tragedy",
+    "query_source": "json",
+    "query_arrival_seq": 12
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "New York born Elvis Presley tragedy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+       "score_q": 13594
+      },
+      {
+       "passage_key": "fever17:Elvis_56:0",
+       "score_q": 13317
+      },
+      {
+       "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+       "score_q": 13023
+      },
+      {
+       "passage_key": "fever17:Elvis_-LRB-1956_album-RRB-:0",
+       "score_q": 13016
+      },
+      {
+       "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12722
+      }
+     ],
+     "retrieval_sha256": "f2f3a2d7f4a85de1d88b7c9a3582ab08f61c8d8ff2d22768ca5c7f83d78852f3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f2f3a2d7f4a85de1d88b7c9a3582ab08f61c8d8ff2d22768ca5c7f83d78852f3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "f40442072bf756d26361d3b970ab4c2779989434673329caf9dae088c99700fd",
+      "chars": 254
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Elvis_56:0",
+      "content_sha256": "3932f00b8c6315a7cf474f70cd20a720fbc0dd3b7f7ad99236a7742b4ddfb051",
+      "chars": 281
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+      "content_sha256": "42e154f5cf480b898fdfbb5d0f93e180c3a95cd4789dc21b491904acd0e9c68b",
+      "chars": 132
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Elvis_-LRB-1956_album-RRB-:0",
+      "content_sha256": "485e75c831122d14aed623d5465575a97872b2cb9219ce043c30659ddb805618",
+      "chars": 909
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "adbdfcfb197499feef4861954680bed7ca6e86ece789ac0ba67a902dc518448e",
+      "chars": 302
+     }
+    ],
+    "elapsed_s": 0.0268
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nOptions:\nA. Elvis Presley\nB. He's called Elvis Presley\nC. Crespo\nD. Presley\n\nEvidence passages from your search for \"New York born Elvis Presley tragedy\":\n<<<PASSAGES\n[P1] Elvis Presley (disambiguation)\nElvis Presley ( 1935-1977 ) was an American singer . Elvis Presley may also refer to : Elvis Presley ( album ) Elvis Presley ( The Hitchhiker 's Guide to the Galaxy ) , a character from The Hitchhiker 's Guide to the Galaxy\n\n[P2] Elvis 56\nElvis 56 is a compilation album of studio master recordings by American singer and musician Elvis Presley made during 1956 , released by RCA Records in 1996 . The original sessions took place at RCA Studios in Nashville and New York , and at Radio Recorders in Hollywood .\n\n[P3] Alec Empire vs. Elvis Presley\nAlec Empire vs. Elvis Presley is a recording by Alec Empire which incorporates Elvis Presley samples .\n\n[P4] Elvis (1956 album)\nElvis / Elvis Presley No. 2 is the second studio album by American singer and musician Elvis Presley , released by RCA Victor in October 1956 in mono . Recording sessions took place on September 1 , September 2 , and September 3 at Radio Recorders in Hollywood , with one track left over from the sessions for Presley 's debut album at the RCA Victor recording studios on January 30 in New York . It spent four weeks at # 1 on the Billboard Top Pop Albums chart that year , making Presley the first recording artist to have both albums go straight to number one in the same year . It was certified Gold on February 17 , 1960 , and Platinum on August 10 , 2011 , by the Recording Industry Association of America . It was originally released in UK in 1957 as Elvis Presley No. 2 with a different front cover ( on His Master 's Voice CLP1105 ) . It was also catalogued as Rock 'n' Roll No. 2 .\n\n[P5] Poor Boy (Elvis Presley song)\nPoor Boy is a song by Elvis Presley . The song is credited to Elvis Presley and Vera Matson , the wife of Ken Darby , the principal writer , published by Elvis Presley Music . The song was featured in the movie Love Me Tender and was released as an RCA Victor EP in 1956 .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c0ce578f0da01b5ab2adf0616ec8321aa51e0920420c048d2b7a516d020e0b6b",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840069.939005,
+      "end_wall": 1792840082.7998238,
+      "error": null
+     }
+    ],
+    "arrival_seq": 12,
+    "start_wall": 1792840069.939005,
+    "start_mono": 509626.749876958,
+    "end_wall": 1792840082.7998238,
+    "end_mono": 509639.61056,
+    "raw_response": "{\n  \"reasoning\": \"The query specifies a New York-born singer, famous as a solo artist, who suffered a tragedy and is recognized as 'Elvis'. The evidence passages confirm that this artist is Elvis Presley. The details about his studio recordings in both New York and Nashville, along with his famous songs like 'Poor Boy', solidify this conclusion.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12858274791,
+     "load_duration": 7633967916,
+     "prompt_eval_count": 908,
+     "prompt_eval_duration": 1729909166,
+     "eval_count": 123,
+     "eval_duration": 3020649417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:08:02.798137Z"
+    },
+    "elapsed_s": 12.861,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 12,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+     "fever17:Elvis_56:0",
+     "fever17:Elvis_-LRB-1956_album-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 329,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6ec7a958c849b03fc48cf38a963d9b45746b9c676daf42bd611c5e3983e08c80",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840063.264041,
+      "end_wall": 1792840073.2571049,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840063.264041,
+    "start_mono": 509620.074982791,
+    "end_wall": 1792840073.2571049,
+    "end_mono": 509630.06794075,
+    "raw_response": "{\"query\": \"New York roots hugely successful singer solo artist tragedy family called Elvis what\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9991043417,
+     "load_duration": 8377591375,
+     "prompt_eval_count": 194,
+     "prompt_eval_duration": 415765584,
+     "eval_count": 20,
+     "eval_duration": 944294209,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:07:53.256448Z"
+    },
+    "elapsed_s": 9.993,
+    "query_used": "New York roots hugely successful singer solo artist tragedy family called Elvis",
+    "query_source": "json_cut12",
+    "query_arrival_seq": 13
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "New York roots hugely successful singer solo artist tragedy family called Elvis",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Che_Fu:0",
+       "score_q": 13029
+      },
+      {
+       "passage_key": "fever17:List_of_artists_by_number_of_UK_Albums_Chart_number_ones:1",
+       "score_q": 12370
+      },
+      {
+       "passage_key": "fever17:Triple_Elvis:0",
+       "score_q": 12064
+      },
+      {
+       "passage_key": "fever17:Milly_y_los_Vecinos:0",
+       "score_q": 11757
+      },
+      {
+       "passage_key": "fever17:Kendel_Carson:0",
+       "score_q": 11620
+      }
+     ],
+     "retrieval_sha256": "b9ed0a0534649d8efc04c618fa69808bb22db5af1960f445af4c328cd18e9bd6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b9ed0a0534649d8efc04c618fa69808bb22db5af1960f445af4c328cd18e9bd6",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Che_Fu:0",
+      "content_sha256": "be633e6b158a59cfd68dd9467d5a3154103f145c7674aa4f25a5348e12e04073",
+      "chars": 385
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:List_of_artists_by_number_of_UK_Albums_Chart_number_ones:1",
+      "content_sha256": "e81dd95e36129a1cf83b5d88a0d6320559ff9df5bae4f44841ae0e9e620f4513",
+      "chars": 297
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Triple_Elvis:0",
+      "content_sha256": "8e7d29ad2ef0de9dba5d18fa85da5396bcd1fede334e329dfc3b76e8c891c427",
+      "chars": 157
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Milly_y_los_Vecinos:0",
+      "content_sha256": "2770e1cd2409cca8c96767bf9dd408f81c5db189ca271fdf805b29799f5138a1",
+      "chars": 342
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Kendel_Carson:0",
+      "content_sha256": "aea760e9b377c199f40dba66ae024340db466d888ed7eb37c66ac69a27e7e314",
+      "chars": 200
+     }
+    ],
+    "elapsed_s": 0.0375
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nOptions:\nA. Elvis Presley\nB. He's called Elvis Presley\nC. Crespo\nD. Presley\n\nEvidence passages from your search for \"New York roots hugely successful singer solo artist tragedy family called Elvis\":\n<<<PASSAGES\n[P1] Che Fu\nChe Ness ( MNZM ) , better known by his stage name Che Fu , is a New Zealand hip hop , R&B and reggae artist , songwriter and producer . A founding member of the hugely successful band Supergroove , as a solo artist he has gone on to sell thousands of albums both in New Zealand and internationally . Che Fu is considered a pioneer of Hip hop and Pasifika music in New Zealand .\n\n[P2] List of artists by number of UK Albums Chart number ones\nThe most successful act is The Beatles , who have reached number one with fifteen records and spent 174 weeks at the top , longer than any other artist . Elvis Presley is the most successful solo artist with 13 number-one albums in the UK .\n\n[P3] Triple Elvis\nTriple Elvis is a 1963 painting by the American artist Andy Warhol . In November 2014 it sold for $ 81.9 m ( # 51.9 m ) at auction in New York .\n\n[P4] Milly y los Vecinos\nMilly , Jocelyn y Los Vecinos was a highly successful New York-based Dominican Republic Merengue music group , unusual for being fronted by two sisters . In later albums the group became Milly Y Los Vecinos , and when the family group disbanded lead singer Milly Quezada went on to have an equally successful solo career .\n\n[P5] Kendel Carson\nKendel Carson ( born c. 1985 ) is a Canadian singer and fiddler . She performs with the folk music band The Paperboys , but is best known internationally as a roots/country solo artist .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "df0deec10507ff8875a98752a190c9a0aa0810e851aadaf8101aedbb0e2ccdbc",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840073.2948182,
+      "end_wall": 1792840087.950944,
+      "error": null
+     }
+    ],
+    "arrival_seq": 13,
+    "start_wall": 1792840073.2948182,
+    "start_mono": 509630.105654625,
+    "end_wall": 1792840087.950944,
+    "end_mono": 509644.766116791,
+    "raw_response": "{\"reasoning\": \"The most successful solo artist with 13 number-one albums in the UK is Elvis Presley, as stated in passage P2.\", \"answer\": \"B\", \"citations\": [\"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14658051333,
+     "load_duration": 11201735541,
+     "prompt_eval_count": 723,
+     "prompt_eval_duration": 1002469374,
+     "eval_count": 61,
+     "eval_duration": 1862061755,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:08:07.949339Z"
+    },
+    "elapsed_s": 14.66,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 13,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:List_of_artists_by_number_of_UK_Albums_Chart_number_ones:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 110,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6ec7a958c849b03fc48cf38a963d9b45746b9c676daf42bd611c5e3983e08c80",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840063.263839,
+      "end_wall": 1792840076.367132,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840063.263839,
+    "start_mono": 509620.074780208,
+    "end_wall": 1792840076.367132,
+    "end_mono": 509633.177934125,
+    "raw_response": "{\"query\": \"Elvis Presley family tragedy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13100566541,
+     "load_duration": 11809277916,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 422087125,
+     "eval_count": 11,
+     "eval_duration": 615883332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:07:56.365905Z"
+    },
+    "elapsed_s": 13.103,
+    "query_used": "Elvis Presley family tragedy",
+    "query_source": "json",
+    "query_arrival_seq": 14
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Elvis Presley family tragedy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+       "score_q": 13594
+      },
+      {
+       "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+       "score_q": 13023
+      },
+      {
+       "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12722
+      },
+      {
+       "passage_key": "fever17:Just_Pretend_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12594
+      },
+      {
+       "passage_key": "fever17:Starting_Today_-LRB-Elvis_Presley_song-RRB-:0",
+       "score_q": 12594
+      }
+     ],
+     "retrieval_sha256": "5457fe33bfa56a95456a96e134e3720182caeaf7443e0476487bb8f327837319"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5457fe33bfa56a95456a96e134e3720182caeaf7443e0476487bb8f327837319",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Elvis_Presley_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "f40442072bf756d26361d3b970ab4c2779989434673329caf9dae088c99700fd",
+      "chars": 254
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Alec_Empire_vs._Elvis_Presley:0",
+      "content_sha256": "42e154f5cf480b898fdfbb5d0f93e180c3a95cd4789dc21b491904acd0e9c68b",
+      "chars": 132
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "adbdfcfb197499feef4861954680bed7ca6e86ece789ac0ba67a902dc518448e",
+      "chars": 302
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Just_Pretend_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "d6d87b3b8ad2fa676a262b14a1f7df13efea2559ed150fcc2ebcf1e0ab1e65d2",
+      "chars": 86
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Starting_Today_-LRB-Elvis_Presley_song-RRB-:0",
+      "content_sha256": "f187bed4d968e464b6bce2271161c28298e3b4094334c8ecd2fab4a208656dfc",
+      "chars": 90
+     }
+    ],
+    "elapsed_s": 0.0302
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: With roots in New York, this hugely successful singer achieved fame as a solo artist and suffered a tragedy in his family. He's called \"Elvis\" what?\n\nOptions:\nA. Elvis Presley\nB. He's called Elvis Presley\nC. Crespo\nD. Presley\n\nEvidence passages from your search for \"Elvis Presley family tragedy\":\n<<<PASSAGES\n[P1] Elvis Presley (disambiguation)\nElvis Presley ( 1935-1977 ) was an American singer . Elvis Presley may also refer to : Elvis Presley ( album ) Elvis Presley ( The Hitchhiker 's Guide to the Galaxy ) , a character from The Hitchhiker 's Guide to the Galaxy\n\n[P2] Alec Empire vs. Elvis Presley\nAlec Empire vs. Elvis Presley is a recording by Alec Empire which incorporates Elvis Presley samples .\n\n[P3] Poor Boy (Elvis Presley song)\nPoor Boy is a song by Elvis Presley . The song is credited to Elvis Presley and Vera Matson , the wife of Ken Darby , the principal writer , published by Elvis Presley Music . The song was featured in the movie Love Me Tender and was released as an RCA Victor EP in 1956 .\n\n[P4] Just Pretend (Elvis Presley song)\n`` Just Pretend '' is a 1970 song by Elvis Presley .\n\n[P5] Starting Today (Elvis Presley song)\n`` Starting Today '' is a 1961 song by Elvis Presley .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b55e189c56452976e0deb49e31f0c1dd5e1957754c3befd17dca42523d2aeeb5",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840076.397536,
+      "end_wall": 1792840091.091913,
+      "error": null
+     }
+    ],
+    "arrival_seq": 14,
+    "start_wall": 1792840076.397536,
+    "start_mono": 509633.208339791,
+    "end_wall": 1792840091.091913,
+    "end_mono": 509647.91040025,
+    "raw_response": "{\n  \"reasoning\": \"The evidence shows that Elvis Presley was an American singer who achieved fame as a solo artist and had a tragedy in his family. Among the passages, only P3 mentions a song of Elvis Presley, which is also a detail from his biography, making it the most relevant passage to answer the question.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14699015125,
+     "load_duration": 9927610625,
+     "prompt_eval_count": 560,
+     "prompt_eval_duration": 953619750,
+     "eval_count": 95,
+     "eval_duration": 2041646456,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:08:11.09015Z"
+    },
+    "elapsed_s": 14.702,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 14,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Poor_Boy_-LRB-Elvis_Presley_song-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 293,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "olmo2:7b": "460b75464dfe0b3273d843a283b876b1614135e6db4c061652a3fb6f9bd3d284",
+  "exaone3.5:7.8b": "c1fdd785d723358c2097498c94e330bcc343e5065d527d60c1f17a5027714f2f",
+  "granite3.3:2b": "f2f3a2d7f4a85de1d88b7c9a3582ab08f61c8d8ff2d22768ca5c7f83d78852f3",
+  "falcon3:3b": "b9ed0a0534649d8efc04c618fa69808bb22db5af1960f445af4c328cd18e9bd6",
+  "nemotron-mini:4b": "5457fe33bfa56a95456a96e134e3720182caeaf7443e0476487bb8f327837319"
+ },
+ "item_start_wall": 1792840063.263291,
+ "item_wall_s": 27.836,
+ "ollama_ps_samples": [
+  [
+   1792840063.263,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840065.275,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840067.282,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840069.293,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840071.303,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792840073.305,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792840075.312,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792840077.32,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792840079.332,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840081.334,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840083.341,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792840085.346,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840087.348,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840089.357,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

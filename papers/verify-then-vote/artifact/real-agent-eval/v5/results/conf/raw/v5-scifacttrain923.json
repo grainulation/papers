@@ -1,0 +1,1263 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain923",
+ "order": 1014,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain923",
+  "order": 1014,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Patients in stable partnerships have a slower progression from HIV to AIDS."
+ },
+ "item_view_sha256": "a8ee3965068e659732bb3868812f3e8bbf10a953d3a9520d8c7d04f986c7a3c4",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "dense",
+  "phi3:mini": "dense",
+  "qwen2.5:3b": "dense"
+ },
+ "dispatch_order": [
+  "gemma2:2b",
+  "qwen2.5:3b",
+  "llama3.2:3b",
+  "mistral",
+  "phi3:mini"
+ ],
+ "arrival_order": [
+  "gemma2:2b",
+  "llama3.2:3b",
+  "mistral",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bd7cb4a79418e735bd353c06afb35d6c2bc7f0e767368230bfd38c10afcc8216",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792730890.767358,
+      "end_wall": 1792730891.646218,
+      "error": null
+     }
+    ],
+    "start_wall": 1792730890.767358,
+    "start_mono": 400447.759356625,
+    "end_wall": 1792730891.646218,
+    "end_mono": 400448.638208708,
+    "raw_response": "{\"query\": \"HIV progression to AIDS stable relationships\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 875705458,
+     "load_duration": 105715416,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 200340917,
+     "eval_count": 13,
+     "eval_duration": 331781499,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:11.645086Z"
+    },
+    "elapsed_s": 0.879,
+    "query_used": "HIV progression to AIDS stable relationships",
+    "query_source": "json",
+    "query_arrival_seq": 5070
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HIV progression to AIDS stable relationships",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17077004:1",
+       "score_q": 676
+      },
+      {
+       "passage_key": "scifact:17077004:0",
+       "score_q": 670
+      },
+      {
+       "passage_key": "scifact:9687772:0",
+       "score_q": 654
+      },
+      {
+       "passage_key": "scifact:154050141:0",
+       "score_q": 648
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 640
+      }
+     ],
+     "retrieval_sha256": "ca589d5aeead1a3413304354376f7f54faaac629521b543700e1dee527e07cd9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ca589d5aeead1a3413304354376f7f54faaac629521b543700e1dee527e07cd9",
+    "query_embedding_sha256": "f75692e677dc47f616d6a7875e0beafeac7087531fca97d37e6b863e708fea72",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17077004:1",
+      "content_sha256": "ffeedd81d8ed92213e4dd3fe71a283f4da74bbd1d388431c1da03f9493fd939d",
+      "chars": 862
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17077004:0",
+      "content_sha256": "f928ace4ba0e8658fbad8d7c06acca5c43ee30101a9d7d4db2255bf68d39c208",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9687772:0",
+      "content_sha256": "05195746cfe333d9d5455f99775c217dbff21b84ae6bb95ff7fe240380f80522",
+      "chars": 1050
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:154050141:0",
+      "content_sha256": "315a821641d7dbb7532af11b8ae82fe6e1b75439cc86f1052975e3a267ef1c97",
+      "chars": 774
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     }
+    ],
+    "elapsed_s": 7.3283
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nEvidence passages from your search for \"HIV progression to AIDS stable relationships\":\n<<<PASSAGES\n[P1] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nIn an analysis stratified by previous antiretroviral therapy and clinical stage when starting HAART (US Centers for Disease Control and Prevention group A, B, or C), the adjusted hazard ratio for progression to AIDS or death was 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared with those without. Adjusted hazards ratios for other endpoints were 0.59 (0.44 to 0.79) for progression to death, 1.15 (1.06 to 1.24) for an increase in CD4 cells of 100 counts/microl or more, and 1.06 (0.98 to 1.14) for optimal viral suppression. CONCLUSIONS A stable partnership is associated with a slower rate of progression to AIDS or death in HIV infected patients receiving HAART.\n\n[P2] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nOBJECTIVES To explore the association between a stable partnership and clinical outcome in HIV infected patients receiving highly active antiretroviral therapy (HAART). DESIGN Prospective cohort study of adults with HIV (Swiss HIV cohort study). SETTING Seven outpatient clinics throughout Switzerland. PARTICIPANTS The 3736 patients in the cohort who started HAART before 2002 (median age 36 years, 29% female, median follow up 3.6 years). MAIN OUTCOME MEASURES Time to AIDS or death (primary endpoint), death alone, increases in CD4 cell count of at least 50 and 100 above baseline, optimal viral suppression (a viral load below 400 copies/ml), and viral rebound. RESULTS During follow up 2985 (80%) participants reported a stable partnership on at least one occasion. When starting HAART, 52% (545/1042) of participants reported a stable partnership; after five years of follow up 46% (190/412) of participants reported a stable partnership.\n\n[P3] XPG stabilizes TFIIH, allowing transactivation of nuclear receptors: implications for Cockayne syndrome in XP-G/CS patients.\nMutations in the human XPG gene give rise to an inherited photosensitive disorder, xeroderma pigmentosum (XP) associated with Cockayne syndrome (XP-G/CS). The clinical features of CS in XP-G/CS patients are difficult to explain on the basis of a defect in nucleotide excision repair (NER). We found that XPG forms a stable complex with TFIIH, which is active in transcription and NER. Mutations in XPG found in XP-G/CS patient cells that prevent the association with TFIIH also resulted in the dissociation of CAK and XPD from the core TFIIH. As a consequence, the phosphorylation and transactivation of nuclear receptors were disturbed in XP-G/CS as well as xpg(-/-) MEF cells and could be restored by expression of wild-type XPG. These results provide an insight into the role of XPG in the stabilization of TFIIH and the regulation of gene expression and provide an explanation of some of the clinical features of XP-G/CS.\n\n[P4] Best response dynamics and socially stable strategies\nAbstract An evolutionarily stable strategy (Maynard Smith and Price, Nature (London) 246 (1973), 15–18) is a strategy which is robust against a tiny invasion of mutants. Best response dynamics is a dynamic process in which the frequency of a strategy increases only if it is a best response to the present strategy distribution. Gilboa and Matsui ( Econometrica 59 (1991), 859–867) proposed a stability concept directly derived from this dynamic process. Modifying the above two stability concepts, this paper shows the equivalence between the static concept and the dynamic one. Their set-valued versions always exist. Examples are given to see their usefulness in analyzing forward induction and preplay communication.\n\n[P5] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6838f84770a7e9c54b2d7f31b5e9c18e09965ce1089ef35729d8a960da658453",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792730898.975124,
+      "end_wall": 1792730907.115426,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5070,
+    "start_wall": 1792730898.975124,
+    "start_mono": 400455.967059125,
+    "end_wall": 1792730907.115426,
+    "end_mono": 400464.107296375,
+    "raw_response": "{\"reasoning\": \"The provided passages show a correlation between stable partnerships and slower progression to AIDS. The research suggests stable relationships may slow the progression of HIV/AIDS, supporting the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8134758167,
+     "load_duration": 1479458625,
+     "prompt_eval_count": 1234,
+     "prompt_eval_duration": 2630768083,
+     "eval_count": 56,
+     "eval_duration": 2950928875,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:27.111436Z"
+    },
+    "elapsed_s": 8.14,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5070,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 203,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bd7cb4a79418e735bd353c06afb35d6c2bc7f0e767368230bfd38c10afcc8216",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792730890.767821,
+      "end_wall": 1792730899.269291,
+      "error": null
+     }
+    ],
+    "start_wall": 1792730890.767821,
+    "start_mono": 400447.759819458,
+    "end_wall": 1792730899.269291,
+    "end_mono": 400456.261222458,
+    "raw_response": "{\"query\": \"HIV progression rate in stable partnerships vs unmarried individuals\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8499113667,
+     "load_duration": 4492851625,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 836901792,
+     "eval_count": 16,
+     "eval_duration": 2995322750,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:19.268662Z"
+    },
+    "elapsed_s": 8.501,
+    "query_used": "HIV progression rate in stable partnerships vs unmarried individuals",
+    "query_source": "json",
+    "query_arrival_seq": 5074
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HIV progression rate in stable partnerships vs unmarried individuals",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17077004:1",
+       "score_q": 9500
+      },
+      {
+       "passage_key": "scifact:17077004:0",
+       "score_q": 7125
+      },
+      {
+       "passage_key": "scifact:23531592:0",
+       "score_q": 6688
+      },
+      {
+       "passage_key": "scifact:5752492:0",
+       "score_q": 6594
+      },
+      {
+       "passage_key": "scifact:263364:0",
+       "score_q": 6329
+      }
+     ],
+     "retrieval_sha256": "4b8576025ad85bde146b6c41c72ad84b37b9ab9d54dbcf61eceec0b6aa766546"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4b8576025ad85bde146b6c41c72ad84b37b9ab9d54dbcf61eceec0b6aa766546",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17077004:1",
+      "content_sha256": "ffeedd81d8ed92213e4dd3fe71a283f4da74bbd1d388431c1da03f9493fd939d",
+      "chars": 862
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17077004:0",
+      "content_sha256": "f928ace4ba0e8658fbad8d7c06acca5c43ee30101a9d7d4db2255bf68d39c208",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23531592:0",
+      "content_sha256": "f41596d53a45729b74d05544c911c9350737f33a10148d377e730fa9b80b5cbb",
+      "chars": 556
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5752492:0",
+      "content_sha256": "65b0201fc5fca2de20b88036779adb22367e3a88cdf583b4c7d27a4875a806e3",
+      "chars": 1106
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:263364:0",
+      "content_sha256": "8bae5b85f89588bf573aa9155af6b003f4d54ac8ff49d4062c40ba065857acbf",
+      "chars": 1079
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nEvidence passages from your search for \"HIV progression rate in stable partnerships vs unmarried individuals\":\n<<<PASSAGES\n[P1] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nIn an analysis stratified by previous antiretroviral therapy and clinical stage when starting HAART (US Centers for Disease Control and Prevention group A, B, or C), the adjusted hazard ratio for progression to AIDS or death was 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared with those without. Adjusted hazards ratios for other endpoints were 0.59 (0.44 to 0.79) for progression to death, 1.15 (1.06 to 1.24) for an increase in CD4 cells of 100 counts/microl or more, and 1.06 (0.98 to 1.14) for optimal viral suppression. CONCLUSIONS A stable partnership is associated with a slower rate of progression to AIDS or death in HIV infected patients receiving HAART.\n\n[P2] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nOBJECTIVES To explore the association between a stable partnership and clinical outcome in HIV infected patients receiving highly active antiretroviral therapy (HAART). DESIGN Prospective cohort study of adults with HIV (Swiss HIV cohort study). SETTING Seven outpatient clinics throughout Switzerland. PARTICIPANTS The 3736 patients in the cohort who started HAART before 2002 (median age 36 years, 29% female, median follow up 3.6 years). MAIN OUTCOME MEASURES Time to AIDS or death (primary endpoint), death alone, increases in CD4 cell count of at least 50 and 100 above baseline, optimal viral suppression (a viral load below 400 copies/ml), and viral rebound. RESULTS During follow up 2985 (80%) participants reported a stable partnership on at least one occasion. When starting HAART, 52% (545/1042) of participants reported a stable partnership; after five years of follow up 46% (190/412) of participants reported a stable partnership.\n\n[P3] Paediatric HIV infection.\nBy the year 2000 there will be six million pregnant women and five to ten million children infected with HIV-1. Intervention strategies have been planned and in some instances already started. A timely and cost-effective strategy needs to take into account that most HIV-1 infected individuals reside in developing countries. Further studies are needed on immunological and virological factors affecting HIV-1 transmission from mother to child, on differential disease progression in affected children, and on transient infection.\n\n[P4] Characterization of Programmed Death-1 Homologue-1 (PD-1H) Expression and Function in Normal and HIV Infected Individuals\nChronic immune activation that persists despite anti-retroviral therapy (ART) is the strongest predictor of disease progression in HIV infection. Monocyte/macrophages in HIV-infected individuals are known to spontaneously secrete cytokines, although neither the mechanism nor the molecules involved are known. Here we show that overexpression of the newly described co-stimulatory molecule, PD1 homologue (PD-1H) in human monocyte/macrophages is sufficient to induce spontaneous secretion of multiple cytokines. The process requires signaling via PD-1H as cytokine secretion could be abrogated by deletion of the cytoplasmic domain. Such overexpression of PD-1H, associated with spontaneous cytokine expression is seen in monocytes from chronically HIV-infected individuals and this correlates with immune activation and CD4 depletion, but not viral load. Moreover, antigen presentation by PD-1H-overexpressing monocytes results in enhanced cytokine secretion by HIV-specific T cells.\n\n[P5] Genetic Variation in the Interleukin-28B Gene Is Associated with Spontaneous Clearance and Progression of Hepatitis C Virus in Moroccan Patients\nBACKGROUND Genetic variation in the IL28B gene has been strongly associated with treatment outcomes, spontaneous clearance and progression of the hepatitis C virus infection (HCV). The aim of the present study was to investigate the role of polymorphisms at this locus with progression and outcome of HCV infection in a Moroccan population. METHODS We analyzed a cohort of 438 individuals among them 232 patients with persistent HCV infection, of whom 115 patients had mild chronic hepatitis and 117 had advanced liver disease (cirrhosis and hepatocellular carcinoma), 68 individuals who had naturally cleared HCV and 138 healthy subjects. The IL28B SNPs rs12979860 and rs8099917 were genotyped using a TaqMan 5' allelic discrimination assay. RESULTS The protective rs12979860-C and rs8099917-T alleles were more common in subjects with spontaneous clearance (77.9% vs 55.2%; p = 0.00001 and 95.6% vs 83.2%; p = 0.0025, respectively).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "53a26bc4bfb82a7c217bc70067f82c6d8ea9b59599e58395fde588f0d58b62e5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792730899.2713962,
+      "end_wall": 1792730911.918337,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5071,
+    "start_wall": 1792730899.2713962,
+    "start_mono": 400456.263328708,
+    "end_wall": 1792730911.918337,
+    "end_mono": 400468.910170208,
+    "raw_response": "{\"reasoning\": \"The claim is supported by a study that found a stable partnership to be associated with a slower progression to AIDS or death in HIV-infected patients receiving HAART. The study adjusted for various factors, including previous antiretroviral therapy and clinical stage when starting HAART, and found a hazard ratio of 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared to those without.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12644661292,
+     "load_duration": 104811708,
+     "prompt_eval_count": 1313,
+     "prompt_eval_duration": 2943593501,
+     "eval_count": 118,
+     "eval_duration": 8283343915,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:31.916909Z"
+    },
+    "elapsed_s": 12.647,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5071,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17077004:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 431,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bd7cb4a79418e735bd353c06afb35d6c2bc7f0e767368230bfd38c10afcc8216",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792730890.768119,
+      "end_wall": 1792730893.9113758,
+      "error": null
+     }
+    ],
+    "start_wall": 1792730890.768119,
+    "start_mono": 400447.760117,
+    "end_wall": 1792730893.9113758,
+    "end_mono": 400450.903348666,
+    "raw_response": "{\"query\": \"HIV progression to AIDS rate in stable partnerships vs singles\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3140793875,
+     "load_duration": 1407407666,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 708662250,
+     "eval_count": 20,
+     "eval_duration": 966334337,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:13.91041Z"
+    },
+    "elapsed_s": 3.143,
+    "query_used": "HIV progression to AIDS rate in stable partnerships vs singles",
+    "query_source": "json",
+    "query_arrival_seq": 5072
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HIV progression to AIDS rate in stable partnerships vs singles",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17077004:1",
+       "score_q": 13239
+      },
+      {
+       "passage_key": "scifact:17077004:0",
+       "score_q": 9993
+      },
+      {
+       "passage_key": "scifact:22227889:1",
+       "score_q": 6882
+      },
+      {
+       "passage_key": "scifact:24596228:1",
+       "score_q": 6845
+      },
+      {
+       "passage_key": "scifact:11230569:0",
+       "score_q": 6770
+      }
+     ],
+     "retrieval_sha256": "578b059ad883d465cd1a9cbd6dfe1fe7547ca4a70044f45e59447a854ea68a80"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "578b059ad883d465cd1a9cbd6dfe1fe7547ca4a70044f45e59447a854ea68a80",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17077004:1",
+      "content_sha256": "ffeedd81d8ed92213e4dd3fe71a283f4da74bbd1d388431c1da03f9493fd939d",
+      "chars": 862
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17077004:0",
+      "content_sha256": "f928ace4ba0e8658fbad8d7c06acca5c43ee30101a9d7d4db2255bf68d39c208",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:22227889:1",
+      "content_sha256": "455545a4a323e456f21c324655292a94f12b0adaac3d663ecc7d676c8d587c0c",
+      "chars": 189
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24596228:1",
+      "content_sha256": "78708ac8400eda305a58126dd77da45cabdd57c61990aeb2a860e3748ec83eae",
+      "chars": 716
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11230569:0",
+      "content_sha256": "fa9b56526990743ab7add43ee54625e58a450b023e2e2d4493f9b3be76c59a88",
+      "chars": 827
+     }
+    ],
+    "elapsed_s": 0.0043
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nEvidence passages from your search for \"HIV progression to AIDS rate in stable partnerships vs singles\":\n<<<PASSAGES\n[P1] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nIn an analysis stratified by previous antiretroviral therapy and clinical stage when starting HAART (US Centers for Disease Control and Prevention group A, B, or C), the adjusted hazard ratio for progression to AIDS or death was 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared with those without. Adjusted hazards ratios for other endpoints were 0.59 (0.44 to 0.79) for progression to death, 1.15 (1.06 to 1.24) for an increase in CD4 cells of 100 counts/microl or more, and 1.06 (0.98 to 1.14) for optimal viral suppression. CONCLUSIONS A stable partnership is associated with a slower rate of progression to AIDS or death in HIV infected patients receiving HAART.\n\n[P2] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nOBJECTIVES To explore the association between a stable partnership and clinical outcome in HIV infected patients receiving highly active antiretroviral therapy (HAART). DESIGN Prospective cohort study of adults with HIV (Swiss HIV cohort study). SETTING Seven outpatient clinics throughout Switzerland. PARTICIPANTS The 3736 patients in the cohort who started HAART before 2002 (median age 36 years, 29% female, median follow up 3.6 years). MAIN OUTCOME MEASURES Time to AIDS or death (primary endpoint), death alone, increases in CD4 cell count of at least 50 and 100 above baseline, optimal viral suppression (a viral load below 400 copies/ml), and viral rebound. RESULTS During follow up 2985 (80%) participants reported a stable partnership on at least one occasion. When starting HAART, 52% (545/1042) of participants reported a stable partnership; after five years of follow up 46% (190/412) of participants reported a stable partnership.\n\n[P3] Caregiver burden in HIV-positive and HIV-negative partners of men with AIDS.\nThe model explained 62% of the variance in burden in HIV+ caregivers and 36% of the variance in HIV- caregivers.\n\n[P4] Hepatitis B and C in HIV-infected patients. Prevalence and prognostic value.\nIn contrast to the control group without HBV or HCV infection, patients infected with HIV and either HBV or HCV showed a direct correlation between a reduction in CD4 counts and decreased cholinesterase activity. In patients with AIDS, coinfection with HBV or HCV was associated with a reduced survival compared to controls (HBV: 212 days, 95%CI, 106-317; HCV: 267, 95%CI, 112-396; controls: 439 days, 95%CI, 364-513). CONCLUSIONS Coinfection of HIV and HBV or HCV is frequently observed. Our results suggest that with prolonged survival of HIV-infected patients, coinfection with either HBV or HCV correlates with a reduced survival rate.\n\n[P5] Towards an improved investment approach for an effective response to HIV/AIDS.\nSubstantial changes are needed to achieve a more targeted and strategic approach to investment in the response to the HIV/AIDS epidemic that will yield long-term dividends. Until now, advocacy for resources has been done on the basis of a commodity approach that encouraged scaling up of numerous strategies in parallel, irrespective of their relative effects. We propose a strategic investment framework that is intended to support better management of national and international HIV/AIDS responses than exists with the present system. Our framework incorporates major efficiency gains through community mobilisation, synergies between programme elements, and benefits of the extension of antiretroviral therapy for prevention of HIV transmission.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1e9785ebc69108f67e57aabe1863adcc9010ea52880301bd3cdcd507ff0f7500",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792730893.916081,
+      "end_wall": 1792730914.197812,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5072,
+    "start_wall": 1792730893.916081,
+    "start_mono": 400450.908055,
+    "end_wall": 1792730914.197812,
+    "end_mono": 400471.189627916,
+    "raw_response": "{\"reasoning\": \"The claim that patients in stable partnerships have a slower progression from HIV to AIDS is supported by the evidence provided. Passage P1 directly states that participants with a stable partnership had a slower rate of progression to AIDS or death when receiving highly active antiretroviral therapy. Passage P2 also supports this by showing that a larger proportion of participants reported a stable partnership, and those who did had a slower progression to AIDS or death over time. No contradictory evidence was found in the provided passages.\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P1\", \"P2\"],\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20277568666,
+     "load_duration": 13599833,
+     "prompt_eval_count": 1299,
+     "prompt_eval_duration": 5200400542,
+     "eval_count": 147,
+     "eval_duration": 14696230465,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:34.194809Z"
+    },
+    "elapsed_s": 20.282,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5072,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:17077004:1",
+     "scifact:17077004:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 548,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bd7cb4a79418e735bd353c06afb35d6c2bc7f0e767368230bfd38c10afcc8216",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792730890.768356,
+      "end_wall": 1792730891.648469,
+      "error": null
+     }
+    ],
+    "start_wall": 1792730890.768356,
+    "start_mono": 400447.760354166,
+    "end_wall": 1792730891.648469,
+    "end_mono": 400448.640459833,
+    "raw_response": "{\"query\": \"impact of stable relationships on HIV to AIDS progression\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 878002042,
+     "load_duration": 15425042,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 243346750,
+     "eval_count": 22,
+     "eval_duration": 563720542,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:11.647754Z"
+    },
+    "elapsed_s": 0.88,
+    "query_used": "impact of stable relationships on HIV to AIDS progression",
+    "query_source": "json",
+    "query_arrival_seq": 5071
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "impact of stable relationships on HIV to AIDS progression",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17077004:1",
+       "score_q": 665
+      },
+      {
+       "passage_key": "scifact:17077004:0",
+       "score_q": 657
+      },
+      {
+       "passage_key": "scifact:15600979:1",
+       "score_q": 643
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 638
+      },
+      {
+       "passage_key": "scifact:33417012:1",
+       "score_q": 636
+      }
+     ],
+     "retrieval_sha256": "f02de8d1cb34c118e01cc300675e5ebf73eab2b961da4e3c1c22d379be0d2209"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f02de8d1cb34c118e01cc300675e5ebf73eab2b961da4e3c1c22d379be0d2209",
+    "query_embedding_sha256": "af7a54524c677fda736965018459ecdf228462031b2b3d9ea40b022dd35ad60a",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17077004:1",
+      "content_sha256": "ffeedd81d8ed92213e4dd3fe71a283f4da74bbd1d388431c1da03f9493fd939d",
+      "chars": 862
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17077004:0",
+      "content_sha256": "f928ace4ba0e8658fbad8d7c06acca5c43ee30101a9d7d4db2255bf68d39c208",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:15600979:1",
+      "content_sha256": "6ed7ce29ba80433dd40d7927270bc3ef762caef017a0323ac8b3f2db147ed394",
+      "chars": 1149
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:33417012:1",
+      "content_sha256": "faebe7c865cf6ac70ff65ac50adabcecd5a1f8e1194c93055991d4535c1b17ba",
+      "chars": 573
+     }
+    ],
+    "elapsed_s": 7.4055
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nEvidence passages from your search for \"impact of stable relationships on HIV to AIDS progression\":\n<<<PASSAGES\n[P1] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nIn an analysis stratified by previous antiretroviral therapy and clinical stage when starting HAART (US Centers for Disease Control and Prevention group A, B, or C), the adjusted hazard ratio for progression to AIDS or death was 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared with those without. Adjusted hazards ratios for other endpoints were 0.59 (0.44 to 0.79) for progression to death, 1.15 (1.06 to 1.24) for an increase in CD4 cells of 100 counts/microl or more, and 1.06 (0.98 to 1.14) for optimal viral suppression. CONCLUSIONS A stable partnership is associated with a slower rate of progression to AIDS or death in HIV infected patients receiving HAART.\n\n[P2] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nOBJECTIVES To explore the association between a stable partnership and clinical outcome in HIV infected patients receiving highly active antiretroviral therapy (HAART). DESIGN Prospective cohort study of adults with HIV (Swiss HIV cohort study). SETTING Seven outpatient clinics throughout Switzerland. PARTICIPANTS The 3736 patients in the cohort who started HAART before 2002 (median age 36 years, 29% female, median follow up 3.6 years). MAIN OUTCOME MEASURES Time to AIDS or death (primary endpoint), death alone, increases in CD4 cell count of at least 50 and 100 above baseline, optimal viral suppression (a viral load below 400 copies/ml), and viral rebound. RESULTS During follow up 2985 (80%) participants reported a stable partnership on at least one occasion. When starting HAART, 52% (545/1042) of participants reported a stable partnership; after five years of follow up 46% (190/412) of participants reported a stable partnership.\n\n[P3] EMSY overexpression disrupts the BRCA2/RAD51 pathway in the DNA-damage response: implications for chromosomal instability/recombination syndromes as checkpoint diseases\nHere, using a well-characterized recombination/repair assay system, we demonstrate that a slight increase in EMSY level can indeed repress these two processes independently of transcriptional interference/repression. Since EMSY, RPA and PALB2 all bind to the same BRCA2 region, these findings further support a scenario wherein: (a) EMSY amplification may mimic BRCA2 deficiency, at least by overriding RPA and PALB2, crippling the BRCA2/RAD51 complex at DNA-damage and replication/transcription sites; and (b) BRCA2/RAD51 may coordinate these processes by employing at least EMSY, PALB2 and RPA. We extensively discuss the molecular details of how this can happen to ascertain its implications for a novel recombination mechanism apparently conceived as checkpoint rather than a DNA repair system for cell division, survival, death, and human diseases, including the tissue specificity of cancer predisposition, which may renew our thinking about targeted therapy and prevention.\n\n[P4] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\n\n[P5] Treated individuals who progress to action or maintenance for one behavior are more likely to make similar progress on another behavior: coaction results of a pooled data analysis of three trials.\nCONCLUSIONS The results of this study with addictive, energy balance and appearance-related behaviors were consistent with results found in three studies applying TTM tailoring to energy balance behaviors. Across studies, there was more coaction within the treatment group. Future research should identify predictors of coaction in more multiple behavior change interventions.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6b5d51600d0222d11f93a03b14e102ba4ffe17aade197537368e851420e622cf",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792730899.054446,
+      "end_wall": 1792730916.372271,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5073,
+    "start_wall": 1792730899.054446,
+    "start_mono": 400456.046380375,
+    "end_wall": 1792730916.372271,
+    "end_mono": 400473.364070375,
+    "raw_response": "{\n  \"reasoning\": \"The claim that patients in stable partnerships have a slower progression from HIV to AIDS is supported by the evidence from the first passage (P1). The passage indicates that a stable partnership is associated with a slower rate of progression to AIDS or death in patients receiving HAART, with the hazard ratio being lower for those with a stable partnership. This suggests that stable relationships can have a positive impact on the progression of HIV to AIDS.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17313679750,
+     "load_duration": 9694837250,
+     "prompt_eval_count": 1421,
+     "prompt_eval_duration": 3437952333,
+     "eval_count": 143,
+     "eval_duration": 3842093742,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:36.369161Z"
+    },
+    "elapsed_s": 17.318,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5073,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17077004:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 462,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "dense"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bd7cb4a79418e735bd353c06afb35d6c2bc7f0e767368230bfd38c10afcc8216",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792730890.767585,
+      "end_wall": 1792730898.4930391,
+      "error": null
+     }
+    ],
+    "start_wall": 1792730890.767585,
+    "start_mono": 400447.759583458,
+    "end_wall": 1792730898.4930391,
+    "end_mono": 400455.484976833,
+    "raw_response": "{\"query\": \"HIV progression rate stable vs. non-stable partnerships\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7722572625,
+     "load_duration": 2686181000,
+     "prompt_eval_count": 163,
+     "prompt_eval_duration": 345528291,
+     "eval_count": 17,
+     "eval_duration": 4478763622,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:18.49201Z"
+    },
+    "elapsed_s": 7.725,
+    "query_used": "HIV progression rate stable vs. non-stable partnerships",
+    "query_source": "json",
+    "query_arrival_seq": 5073
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HIV progression rate stable vs. non-stable partnerships",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17077004:1",
+       "score_q": 702
+      },
+      {
+       "passage_key": "scifact:17077004:0",
+       "score_q": 690
+      },
+      {
+       "passage_key": "scifact:154050141:0",
+       "score_q": 637
+      },
+      {
+       "passage_key": "scifact:515489:2",
+       "score_q": 634
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 624
+      }
+     ],
+     "retrieval_sha256": "b338c16006bb19566b59d5c6e51b3978a1540dbd22a729501c1737e827cafcc6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b338c16006bb19566b59d5c6e51b3978a1540dbd22a729501c1737e827cafcc6",
+    "query_embedding_sha256": "b316f663b2cc548c01e87fbf99101b69ba0e99aae7192b79d436450e7bbcc184",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17077004:1",
+      "content_sha256": "ffeedd81d8ed92213e4dd3fe71a283f4da74bbd1d388431c1da03f9493fd939d",
+      "chars": 862
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:17077004:0",
+      "content_sha256": "f928ace4ba0e8658fbad8d7c06acca5c43ee30101a9d7d4db2255bf68d39c208",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:154050141:0",
+      "content_sha256": "315a821641d7dbb7532af11b8ae82fe6e1b75439cc86f1052975e3a267ef1c97",
+      "chars": 774
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:515489:2",
+      "content_sha256": "9f1b236a141b5f405664f99e93a46fbc95166ff31ac08acc29f7c53f621d42a8",
+      "chars": 236
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     }
+    ],
+    "elapsed_s": 0.6495
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients in stable partnerships have a slower progression from HIV to AIDS.\n\nEvidence passages from your search for \"HIV progression rate stable vs. non-stable partnerships\":\n<<<PASSAGES\n[P1] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nIn an analysis stratified by previous antiretroviral therapy and clinical stage when starting HAART (US Centers for Disease Control and Prevention group A, B, or C), the adjusted hazard ratio for progression to AIDS or death was 0.79 (95% confidence interval 0.63 to 0.98) for participants with a stable partnership compared with those without. Adjusted hazards ratios for other endpoints were 0.59 (0.44 to 0.79) for progression to death, 1.15 (1.06 to 1.24) for an increase in CD4 cells of 100 counts/microl or more, and 1.06 (0.98 to 1.14) for optimal viral suppression. CONCLUSIONS A stable partnership is associated with a slower rate of progression to AIDS or death in HIV infected patients receiving HAART.\n\n[P2] Stable partnership and progression to AIDS or death in HIV infected patients receiving highly active antiretroviral therapy: Swiss HIV cohort study.\nOBJECTIVES To explore the association between a stable partnership and clinical outcome in HIV infected patients receiving highly active antiretroviral therapy (HAART). DESIGN Prospective cohort study of adults with HIV (Swiss HIV cohort study). SETTING Seven outpatient clinics throughout Switzerland. PARTICIPANTS The 3736 patients in the cohort who started HAART before 2002 (median age 36 years, 29% female, median follow up 3.6 years). MAIN OUTCOME MEASURES Time to AIDS or death (primary endpoint), death alone, increases in CD4 cell count of at least 50 and 100 above baseline, optimal viral suppression (a viral load below 400 copies/ml), and viral rebound. RESULTS During follow up 2985 (80%) participants reported a stable partnership on at least one occasion. When starting HAART, 52% (545/1042) of participants reported a stable partnership; after five years of follow up 46% (190/412) of participants reported a stable partnership.\n\n[P3] Best response dynamics and socially stable strategies\nAbstract An evolutionarily stable strategy (Maynard Smith and Price, Nature (London) 246 (1973), 15–18) is a strategy which is robust against a tiny invasion of mutants. Best response dynamics is a dynamic process in which the frequency of a strategy increases only if it is a best response to the present strategy distribution. Gilboa and Matsui ( Econometrica 59 (1991), 859–867) proposed a stability concept directly derived from this dynamic process. Modifying the above two stability concepts, this paper shows the equivalence between the static concept and the dynamic one. Their set-valued versions always exist. Examples are given to see their usefulness in analyzing forward induction and preplay communication.\n\n[P4] Oncofetal long noncoding RNA PVT1 promotes proliferation and stem cell-like property of hepatocellular carcinoma cells by stabilizing NOP2.\nRegulation of the lncRNA-hPVT1/NOP2 pathway may have beneficial effects on the treatment of HCC.\n\n[P5] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5fbb85cb2f3c36dd46378c33a01dbb73be92ad4c2fb5f1ef5aa0c676f5d7e574",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792730899.142998,
+      "end_wall": 1792730921.7505732,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5074,
+    "start_wall": 1792730899.142998,
+    "start_mono": 400456.134931708,
+    "end_wall": 1792730921.7505732,
+    "end_mono": 400478.742331208,
+    "raw_response": "{\n    \"reasoning\": \"The evidence passages suggest that stable partnerships are associated with a slower progression to AIDS or death in HIV infected patients receiving HAART, indicating that patients in stable partnerships have a slower progression from HIV to AIDS.\",\n    \"answer\": \"SUPPORTED\",\n    \"citations\": [\"P1\", \"P2\"]\n    , \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22603447542,
+     "load_duration": 18719585250,
+     "prompt_eval_count": 1060,
+     "prompt_eval_duration": 1681875124,
+     "eval_count": 78,
+     "eval_duration": 1408605127,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:48:41.747555Z"
+    },
+    "elapsed_s": 22.607,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5074,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:17077004:1",
+     "scifact:17077004:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 246,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "gemma2:2b": "ca589d5aeead1a3413304354376f7f54faaac629521b543700e1dee527e07cd9",
+  "llama3.2:3b": "4b8576025ad85bde146b6c41c72ad84b37b9ab9d54dbcf61eceec0b6aa766546",
+  "mistral": "578b059ad883d465cd1a9cbd6dfe1fe7547ca4a70044f45e59447a854ea68a80",
+  "phi3:mini": "f02de8d1cb34c118e01cc300675e5ebf73eab2b961da4e3c1c22d379be0d2209",
+  "qwen2.5:3b": "b338c16006bb19566b59d5c6e51b3978a1540dbd22a729501c1737e827cafcc6"
+ },
+ "item_start_wall": 1792730890.766977,
+ "item_wall_s": 30.983,
+ "ollama_ps_samples": [
+  [
+   1792730890.767,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792730892.771,
+   [
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792730894.773,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792730896.778,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792730898.786,
+   [
+    "nomic-embed-text:latest",
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792730900.789,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792730902.797,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792730904.8,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792730906.807,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792730908.814,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792730910.817,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792730912.819,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792730914.827,
+   [
+    "mistral:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792730916.831,
+   [
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792730918.836,
+   [
+    "qwen2.5:3b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792730920.842,
+   [
+    "qwen2.5:3b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ]
+ ]
+}

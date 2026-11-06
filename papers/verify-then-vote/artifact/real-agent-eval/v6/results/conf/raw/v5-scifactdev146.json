@@ -1,0 +1,1313 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev146",
+ "order": 816,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev146",
+  "order": 816,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies."
+ },
+ "item_view_sha256": "d8881ac8e9ab15e766696201c10c651673fdff978bfbbcb0e52eb32d8c941d86",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "036ff4faa51587c04998b4ea0f84efc15a1870ed645f3fdf43d85a1bebe15f1a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876465.23407,
+      "end_wall": 1792876467.183773,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876465.23407,
+    "start_mono": 546021.883335,
+    "end_wall": 1792876467.183773,
+    "end_mono": 546023.833021208,
+    "raw_response": "{\"query\": \"autologous transplantation mesenchymal stem cells rejection vs anti-interleukin-2 receptor antibodies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1946548458,
+     "load_duration": 104591750,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 418353959,
+     "eval_count": 24,
+     "eval_duration": 1115681789,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:27.183119Z"
+    },
+    "elapsed_s": 1.95,
+    "query_used": "autologous transplantation mesenchymal stem cells rejection vs anti-interleukin-2 receptor antibodies",
+    "query_source": "json",
+    "query_arrival_seq": 4080
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "autologous transplantation mesenchymal stem cells rejection vs anti-interleukin-2 receptor antibodies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10582939:1",
+       "score_q": 779
+      },
+      {
+       "passage_key": "scifact:10582939:2",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:10582939:0",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:40164383:1",
+       "score_q": 680
+      },
+      {
+       "passage_key": "scifact:40164383:2",
+       "score_q": 679
+      }
+     ],
+     "retrieval_sha256": "f577ddb5cf7ea2b6f584d5dca1c24e0d82ea98a29c1702947e3444ef31daa94e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f577ddb5cf7ea2b6f584d5dca1c24e0d82ea98a29c1702947e3444ef31daa94e",
+    "query_embedding_sha256": "0396daa582700b3d5c1f8615f1a20bda75879a5d5f1c15cbd7268160f433f969",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10582939:1",
+      "content_sha256": "6c835b2d8251398c66cf45f3b20ea543fc58e90ed6fc292c3e248378cd418c25",
+      "chars": 1118
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:10582939:2",
+      "content_sha256": "a4419c1c96b431954a17c550a12ec02ba57824b85968162b23db9f557455e0d4",
+      "chars": 1024
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10582939:0",
+      "content_sha256": "c2d6f9a4748cd9fff6e75be04ad9c5f10f093533041bd5d3762bf90f28a1ccc0",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:40164383:1",
+      "content_sha256": "5a396ddd55d2ec44062223f1ea11f4687eec6e8e5235451eeae5c1111562b136",
+      "chars": 1102
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40164383:2",
+      "content_sha256": "07d4d1ce6d1c3793185de604cb623305cf920660c7c92c9fd17989e133ccda0d",
+      "chars": 1007
+     }
+    ],
+    "elapsed_s": 8.5611
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nEvidence passages from your search for \"autologous transplantation mesenchymal stem cells rejection vs anti-interleukin-2 receptor antibodies\":\n<<<PASSAGES\n[P1] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nFifty-three patients received standard-dose and 52 patients received low-dose CNIs (80% of standard); 51 patients in the control group received anti-IL-2 receptor antibody plus standard-dose CNIs. MAIN OUTCOME MEASURES The primary measure was 1-year incidence of acute rejection and renal function (estimated glomerular filtration rate [eGFR]); the secondary measure was patient and graft survival and incidence of adverse events. RESULTS Patient and graft survival at 13 to 30 months was similar in all groups. After 6 months, 4 of 53 patients (7.5%) in the autologous MSC plus standard-dose CNI group (95% CI, 0.4%-14.7%; P = .04) and 4 of 52 patients (7.7%) in the low-dose group (95% CI, 0.5%-14.9%; P = .046) compared with 11 of 51 controls (21.6%; 95% CI, 10.5%-32.6%) had biopsy-confirmed acute rejection. None of the patients in either autologous MSC group had glucorticoid-resistant rejection, whereas 4 patients (7.8%) in the control group did (95% CI, 0.6%-15.1%; overall P = .02).\n\n[P2] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nRenal function recovered faster among both MSC groups showing increased eGFR levels during the first month after surgery than the control group. Patients receiving standard-dose CNI had a mean difference of 6.2 mL/min per 1.73 m(2) (95% CI, 0.4-11.9; P=.04) and those in the low-dose CNI of 10.0 mL/min per 1.73 m(2) (95% CI, 3.8-16.2; P=.002). Also, during the 1-year follow-up, combined analysis of MSC-treated groups revealed significantly decreased risk of opportunistic infections than the control group (hazard ratio, 0.42; 95% CI, 0.20-0.85, P=.02) CONCLUSION Among patients undergoing renal transplant, the use of autologous MSCs compared with anti-IL-2 receptor antibody induction therapy resulted in lower incidence of acute rejection, decreased risk of opportunistic infection, and better estimated renal function at 1 year. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT00658073.\n\n[P3] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nCONTEXT Antibody-based induction therapy plus calcineurin inhibitors (CNIs) reduce acute rejection rates in kidney recipients; however, opportunistic infections and toxic CNI effects remain challenging. Reportedly, mesenchymal stem cells (MSCs) have successfully treated graft-vs-host disease. OBJECTIVE To assess autologous MSCs as replacement of antibody induction for patients with end-stage renal disease who undergo ABO-compatible, cross-match-negative kidney transplants from a living-related donor. DESIGN, SETTING, AND PATIENTS One hundred fifty-nine patients were enrolled in this single-site, prospective, open-label, randomized study from February 2008-May 2009, when recruitment was completed. INTERVENTION Patients were inoculated with marrow-derived autologous MSC (1-2 x 10(6)/kg) at kidney reperfusion and two weeks later.\n\n[P4] Comparison of allogeneic vs autologous bone marrow–derived mesenchymal stem cells delivered by transendocardial injection in patients with ischemic cardiomyopathy: the POSEIDON randomized trial.\nEfficacy assessments included 6-minute walk test, exercise peak VO2, Minnesota Living with Heart Failure Questionnaire (MLHFQ), New York Heart Association class, LV volumes, ejection fraction (EF), early enhancement defect (EED; infarct size), and sphericity index. RESULTS Within 30 days, 1 patient in each group (treatment-emergent SAE rate, 6.7%) was hospitalized for heart failure, less than the prespecified stopping event rate of 25%. The 1-year incidence of SAEs was 33.3% (n = 5) in the allogeneic group and 53.3% (n = 8) in the autologous group (P = .46). At 1 year, there were no ventricular arrhythmia SAEs observed among allogeneic recipients compared with 4 patients (26.7%) in the autologous group (P = .10). Relative to baseline, autologous but not allogeneic MSC therapy was associated with an improvement in the 6-minute walk test and the MLHFQ score, but neither improved exercise VO2 max.\n\n[P5] Comparison of allogeneic vs autologous bone marrow–derived mesenchymal stem cells delivered by transendocardial injection in patients with ischemic cardiomyopathy: the POSEIDON randomized trial.\nAllogeneic and autologous MSCs reduced mean EED by −33.21% (95% CI, −43.61% to −22.81%; P < .001) and sphericity index but did not increase EF. Allogeneic MSCs reduced LV end-diastolic volumes. Low-dose concentration MSCs (20 million cells) produced greatest reductions in LV volumes and increased EF. Allogeneic MSCs did not stimulate significant donor-specific alloimmune reactions. CONCLUSIONS In this early-stage study of patients with ICM, transendocardial injection of allogeneic and autologous MSCs without a placebo control were both associated with low rates of treatment-emergent SAEs, including immunologic reactions. In aggregate, MSC injection favorably affected patient functional capacity, quality of life, and ventricular remodeling. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT01087996.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0d90a29cf48860560befb398bad7d22ba093c9a94503b9d6b3b85cd4275015b2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876475.745434,
+      "end_wall": 1792876486.198924,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4080,
+    "start_wall": 1792876475.745434,
+    "start_mono": 546032.394613416,
+    "end_wall": 1792876486.198924,
+    "end_mono": 546042.848019,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that autologous transplantation of mesenchymal stem cells results in lower rates of rejection compared to induction therapy with anti-interleukin-2 receptor antibodies, as supported by multiple studies showing reduced incidence of acute rejection and improved renal function.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\", \"P4\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10450622791,
+     "load_duration": 1755206333,
+     "prompt_eval_count": 1672,
+     "prompt_eval_duration": 3942773831,
+     "eval_count": 89,
+     "eval_duration": 3839239543,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:46.197043Z"
+    },
+    "elapsed_s": 10.453,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4080,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:10582939:2",
+     "scifact:10582939:0",
+     "scifact:40164383:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 297,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "036ff4faa51587c04998b4ea0f84efc15a1870ed645f3fdf43d85a1bebe15f1a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876465.233994,
+      "end_wall": 1792876467.5872362,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876465.233994,
+    "start_mono": 546021.883258375,
+    "end_wall": 1792876467.5872362,
+    "end_mono": 546024.236480625,
+    "raw_response": "{\"query\": \"mesenchymal stem cell transplant rejection rates vs anti-IL2R antibody therapy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2349445542,
+     "load_duration": 55833292,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 633890583,
+     "eval_count": 23,
+     "eval_duration": 1456303543,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:27.586033Z"
+    },
+    "elapsed_s": 2.353,
+    "query_used": "mesenchymal stem cell transplant rejection rates vs anti-IL2R antibody therapy",
+    "query_source": "json",
+    "query_arrival_seq": 4081
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mesenchymal stem cell transplant rejection rates vs anti-IL2R antibody therapy",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10582939:0",
+       "score_q": 13392
+      },
+      {
+       "passage_key": "scifact:10582939:2",
+       "score_q": 11763
+      },
+      {
+       "passage_key": "scifact:10582939:1",
+       "score_q": 10465
+      },
+      {
+       "passage_key": "scifact:14647747:0",
+       "score_q": 9868
+      },
+      {
+       "passage_key": "scifact:11771811:0",
+       "score_q": 8648
+      }
+     ],
+     "retrieval_sha256": "22819a49d6c16441a4001c9ac6cf7d25cff73edbeb598dcc460f42db11a4dc17"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "22819a49d6c16441a4001c9ac6cf7d25cff73edbeb598dcc460f42db11a4dc17",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10582939:0",
+      "content_sha256": "c2d6f9a4748cd9fff6e75be04ad9c5f10f093533041bd5d3762bf90f28a1ccc0",
+      "chars": 964
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:10582939:2",
+      "content_sha256": "a4419c1c96b431954a17c550a12ec02ba57824b85968162b23db9f557455e0d4",
+      "chars": 1024
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10582939:1",
+      "content_sha256": "6c835b2d8251398c66cf45f3b20ea543fc58e90ed6fc292c3e248378cd418c25",
+      "chars": 1118
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14647747:0",
+      "content_sha256": "641765d524638f6a2401bc7c278546c192f2fd0e61d352b1910364abe996f444",
+      "chars": 969
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11771811:0",
+      "content_sha256": "c449bfcf8c2b810b6a46f434d39ce6ae9721dfdc5a32a877c78cdf47ec2e10bc",
+      "chars": 999
+     }
+    ],
+    "elapsed_s": 0.0023
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nEvidence passages from your search for \"mesenchymal stem cell transplant rejection rates vs anti-IL2R antibody therapy\":\n<<<PASSAGES\n[P1] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nCONTEXT Antibody-based induction therapy plus calcineurin inhibitors (CNIs) reduce acute rejection rates in kidney recipients; however, opportunistic infections and toxic CNI effects remain challenging. Reportedly, mesenchymal stem cells (MSCs) have successfully treated graft-vs-host disease. OBJECTIVE To assess autologous MSCs as replacement of antibody induction for patients with end-stage renal disease who undergo ABO-compatible, cross-match-negative kidney transplants from a living-related donor. DESIGN, SETTING, AND PATIENTS One hundred fifty-nine patients were enrolled in this single-site, prospective, open-label, randomized study from February 2008-May 2009, when recruitment was completed. INTERVENTION Patients were inoculated with marrow-derived autologous MSC (1-2 x 10(6)/kg) at kidney reperfusion and two weeks later.\n\n[P2] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nRenal function recovered faster among both MSC groups showing increased eGFR levels during the first month after surgery than the control group. Patients receiving standard-dose CNI had a mean difference of 6.2 mL/min per 1.73 m(2) (95% CI, 0.4-11.9; P=.04) and those in the low-dose CNI of 10.0 mL/min per 1.73 m(2) (95% CI, 3.8-16.2; P=.002). Also, during the 1-year follow-up, combined analysis of MSC-treated groups revealed significantly decreased risk of opportunistic infections than the control group (hazard ratio, 0.42; 95% CI, 0.20-0.85, P=.02) CONCLUSION Among patients undergoing renal transplant, the use of autologous MSCs compared with anti-IL-2 receptor antibody induction therapy resulted in lower incidence of acute rejection, decreased risk of opportunistic infection, and better estimated renal function at 1 year. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT00658073.\n\n[P3] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nFifty-three patients received standard-dose and 52 patients received low-dose CNIs (80% of standard); 51 patients in the control group received anti-IL-2 receptor antibody plus standard-dose CNIs. MAIN OUTCOME MEASURES The primary measure was 1-year incidence of acute rejection and renal function (estimated glomerular filtration rate [eGFR]); the secondary measure was patient and graft survival and incidence of adverse events. RESULTS Patient and graft survival at 13 to 30 months was similar in all groups. After 6 months, 4 of 53 patients (7.5%) in the autologous MSC plus standard-dose CNI group (95% CI, 0.4%-14.7%; P = .04) and 4 of 52 patients (7.7%) in the low-dose group (95% CI, 0.5%-14.9%; P = .046) compared with 11 of 51 controls (21.6%; 95% CI, 10.5%-32.6%) had biopsy-confirmed acute rejection. None of the patients in either autologous MSC group had glucorticoid-resistant rejection, whereas 4 patients (7.8%) in the control group did (95% CI, 0.6%-15.1%; overall P = .02).\n\n[P4] Successful expansion of functional and stable regulatory T cells for immunotherapy in liver transplantation\nStrategies to prevent organ transplant rejection whilst minimizing long-term immunosuppression are currently under intense investigation with regulatory T cells (Tregs) nearing clinical application. The clinical trial, ThRIL, recently commenced at King's College London, proposes to use Treg cell therapy to induce tolerance in liver transplant recipients, the success of which has the potential to revolutionize the management of these patients and enable a future of drug-free transplants. This is the first report of the manufacture of clinical grade Tregs from prospective liver transplant recipients via a CliniMACS-based GMP isolation technique and expanded using anti-CD3/CD28 beads, IL-2 and rapamycin. We report the enrichment of a pure, stable population of Tregs (>95% CD4(+)CD25(+)FOXP3(+)), reaching adequate numbers for their clinical application.\n\n[P5] FGF regulates TGF-β signaling and endothelial-to-mesenchymal transition via control of let-7 miRNA expression.\nMaintenance of normal endothelial function is critical to various aspects of blood vessel function, but its regulation is poorly understood. In this study, we show that disruption of baseline fibroblast growth factor (FGF) signaling to the endothelium leads to a dramatic reduction in let-7 miRNA levels that, in turn, increases expression of transforming growth factor (TGF)-β ligands and receptors and activation of TGF-β signaling, leading to endothelial-to-mesenchymal transition (Endo-MT). We also find that Endo-MT is an important driver of neointima formation in a murine transplant arteriopathy model and in rejection of human transplant lesions. The decline in endothelial FGF signaling input is due to the appearance of an FGF resistance state that is characterized by inflammation-dependent reduction in expression and activation of key components of the FGF signaling cascade.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "af8cf8c60f53e14f57a564927b4379f2f6b37570baf70ce261e746a495e51085",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876467.590752,
+      "end_wall": 1792876487.671087,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4081,
+    "start_wall": 1792876467.590752,
+    "start_mono": 546024.239997375,
+    "end_wall": 1792876487.671087,
+    "end_mono": 546044.320169625,
+    "raw_response": "{\"reasoning\": \"The evidence from Passage P2 and P3 indicates that autologous transplantation of mesenchymal stem cells resulted in lower incidences of acute rejection compared to the standard induction therapy using anti-IL-2 receptor antibodies (anti-IL2R). Specifically, Passage P3 reports significantly lower rates of acute rejection in patients treated with autologous MSCs compared to the control group receiving anti-IL2R antibody therapy (7.5% vs 21.6% rejection rates at 6 months).\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20075399209,
+     "load_duration": 114692625,
+     "prompt_eval_count": 1555,
+     "prompt_eval_duration": 6897363292,
+     "eval_count": 131,
+     "eval_duration": 12018135958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:47.667403Z"
+    },
+    "elapsed_s": 20.08,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4081,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:10582939:2",
+     "scifact:10582939:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 474,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "036ff4faa51587c04998b4ea0f84efc15a1870ed645f3fdf43d85a1bebe15f1a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876465.234182,
+      "end_wall": 1792876475.3249779,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876465.234182,
+    "start_mono": 546021.883447208,
+    "end_wall": 1792876475.3249779,
+    "end_mono": 546031.974160125,
+    "raw_response": "{\"query\": \"mesenchymal stem cells rejection rates anti-interleukin-2 receptor antibodies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10087300916,
+     "load_duration": 5341246958,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 975028042,
+     "eval_count": 20,
+     "eval_duration": 3335675001,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:35.323597Z"
+    },
+    "elapsed_s": 10.091,
+    "query_used": "mesenchymal stem cells rejection rates anti-interleukin-2 receptor antibodies",
+    "query_source": "json",
+    "query_arrival_seq": 4084
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mesenchymal stem cells rejection rates anti-interleukin-2 receptor antibodies",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10582939:1",
+       "score_q": 9254
+      },
+      {
+       "passage_key": "scifact:8790729:2",
+       "score_q": 8883
+      },
+      {
+       "passage_key": "scifact:10582939:0",
+       "score_q": 8641
+      },
+      {
+       "passage_key": "scifact:24766509:0",
+       "score_q": 8354
+      },
+      {
+       "passage_key": "scifact:10582939:2",
+       "score_q": 7832
+      }
+     ],
+     "retrieval_sha256": "a358f07d6c635f084edb4916834160457df39c4288b09616015744aa198ff846"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a358f07d6c635f084edb4916834160457df39c4288b09616015744aa198ff846",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10582939:1",
+      "content_sha256": "6c835b2d8251398c66cf45f3b20ea543fc58e90ed6fc292c3e248378cd418c25",
+      "chars": 1118
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:8790729:2",
+      "content_sha256": "9ec4d93c1f86d513356dc21d2248623a56f50597a6dbbb7fcc20b852dc3a579d",
+      "chars": 418
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10582939:0",
+      "content_sha256": "c2d6f9a4748cd9fff6e75be04ad9c5f10f093533041bd5d3762bf90f28a1ccc0",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24766509:0",
+      "content_sha256": "6278e6972a646b5c6b06a4ee758a339184499facebc0610d7d33920e6d4041e5",
+      "chars": 1097
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10582939:2",
+      "content_sha256": "a4419c1c96b431954a17c550a12ec02ba57824b85968162b23db9f557455e0d4",
+      "chars": 1024
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nEvidence passages from your search for \"mesenchymal stem cells rejection rates anti-interleukin-2 receptor antibodies\":\n<<<PASSAGES\n[P1] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nFifty-three patients received standard-dose and 52 patients received low-dose CNIs (80% of standard); 51 patients in the control group received anti-IL-2 receptor antibody plus standard-dose CNIs. MAIN OUTCOME MEASURES The primary measure was 1-year incidence of acute rejection and renal function (estimated glomerular filtration rate [eGFR]); the secondary measure was patient and graft survival and incidence of adverse events. RESULTS Patient and graft survival at 13 to 30 months was similar in all groups. After 6 months, 4 of 53 patients (7.5%) in the autologous MSC plus standard-dose CNI group (95% CI, 0.4%-14.7%; P = .04) and 4 of 52 patients (7.7%) in the low-dose group (95% CI, 0.5%-14.9%; P = .046) compared with 11 of 51 controls (21.6%; 95% CI, 10.5%-32.6%) had biopsy-confirmed acute rejection. None of the patients in either autologous MSC group had glucorticoid-resistant rejection, whereas 4 patients (7.8%) in the control group did (95% CI, 0.6%-15.1%; overall P = .02).\n\n[P2] Islet-Like Clusters Derived from Mesenchymal Stem Cells in Wharton's Jelly of the Human Umbilical Cord for Transplantation to Control Type 1 Diabetes\nHUMSCs in Wharton's Jelly of the umbilical cord seem to be the preferential source of stem cells to convert into insulin-producing cells, because of the large potential donor pool, its rapid availability, no risk of discomfort for the donor, and low risk of rejection.\n\n[P3] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nCONTEXT Antibody-based induction therapy plus calcineurin inhibitors (CNIs) reduce acute rejection rates in kidney recipients; however, opportunistic infections and toxic CNI effects remain challenging. Reportedly, mesenchymal stem cells (MSCs) have successfully treated graft-vs-host disease. OBJECTIVE To assess autologous MSCs as replacement of antibody induction for patients with end-stage renal disease who undergo ABO-compatible, cross-match-negative kidney transplants from a living-related donor. DESIGN, SETTING, AND PATIENTS One hundred fifty-nine patients were enrolled in this single-site, prospective, open-label, randomized study from February 2008-May 2009, when recruitment was completed. INTERVENTION Patients were inoculated with marrow-derived autologous MSC (1-2 x 10(6)/kg) at kidney reperfusion and two weeks later.\n\n[P4] Differentiation of mesenchymal stem cells and embryonic stem cells into steroidogenic cells using steroidogenic factor-1 and liver receptor homolog-1.\nPreviously, we have demonstrated that mesenchymal stem cells could be differentiated into steroidogenic cells through steroidogenic factor-1 and 8bromo-cAMP treatment. Use of liver receptor homolog-1, another of the nuclear receptor 5A family nuclear receptors, with 8bromo-cAMP also resulted in the differentiation of human mesenchymal stem cells into steroid hormone-producing cells. The same approaches could not be applied to other undifferentiated cells such as embryonic stem cells or embryonal carcinoma cells, because the over-expression of the nuclear receptor 5A family is cytotoxic to these cells. We established embryonic stem cells carrying tetracycline-regulated steroidogenic factor-1 gene at the ROSA26 locus. The embryonic stem cells were first differentiated into a mesenchymal cell lineage by culturing on collagen IV-coated dishes and treating with pulse exposures of retinoic acid before expression of steroidogenic factor-1.\n\n[P5] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nRenal function recovered faster among both MSC groups showing increased eGFR levels during the first month after surgery than the control group. Patients receiving standard-dose CNI had a mean difference of 6.2 mL/min per 1.73 m(2) (95% CI, 0.4-11.9; P=.04) and those in the low-dose CNI of 10.0 mL/min per 1.73 m(2) (95% CI, 3.8-16.2; P=.002). Also, during the 1-year follow-up, combined analysis of MSC-treated groups revealed significantly decreased risk of opportunistic infections than the control group (hazard ratio, 0.42; 95% CI, 0.20-0.85, P=.02) CONCLUSION Among patients undergoing renal transplant, the use of autologous MSCs compared with anti-IL-2 receptor antibody induction therapy resulted in lower incidence of acute rejection, decreased risk of opportunistic infection, and better estimated renal function at 1 year. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT00658073.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b796f3624388d17e6a525a7b4e098f4bd6a91dc812ffc833c30922472d6d794f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876475.328008,
+      "end_wall": 1792876489.3994849,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4082,
+    "start_wall": 1792876475.328008,
+    "start_mono": 546031.977191916,
+    "end_wall": 1792876489.3994849,
+    "end_mono": 546046.048553541,
+    "raw_response": "{\"reasoning\": \"The passage (P1) shows that autologous transplantation of mesenchymal stem cells has lower rates of rejection compared to induction therapy with anti-interleukin-2 receptor antibodies. Specifically, it states that after 6 months, the incidence of acute rejection was lower in the MSC group (7.5% and 7.7%) compared to the control group (21.6%). In addition, no patients in the MSC groups had glucorticoid-resistant rejection, while 4 patients in the control group did.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14066650708,
+     "load_duration": 1225687000,
+     "prompt_eval_count": 1406,
+     "prompt_eval_duration": 4010166750,
+     "eval_count": 133,
+     "eval_duration": 6093648087,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:49.395653Z"
+    },
+    "elapsed_s": 14.071,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4082,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:10582939:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 468,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "036ff4faa51587c04998b4ea0f84efc15a1870ed645f3fdf43d85a1bebe15f1a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876465.233742,
+      "end_wall": 1792876467.59237,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876465.233742,
+    "start_mono": 546021.883007208,
+    "end_wall": 1792876467.59237,
+    "end_mono": 546024.241615208,
+    "raw_response": "{\"query\": \"autologous mesenchymal stem cell transplant rejection rates\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2355168500,
+     "load_duration": 1167519500,
+     "prompt_eval_count": 200,
+     "prompt_eval_duration": 414670625,
+     "eval_count": 19,
+     "eval_duration": 680030915,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:27.591233Z"
+    },
+    "elapsed_s": 2.359,
+    "query_used": "autologous mesenchymal stem cell transplant rejection rates",
+    "query_source": "json",
+    "query_arrival_seq": 4082
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "autologous mesenchymal stem cell transplant rejection rates",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10582939:1",
+       "score_q": 798
+      },
+      {
+       "passage_key": "scifact:10582939:2",
+       "score_q": 769
+      },
+      {
+       "passage_key": "scifact:10582939:0",
+       "score_q": 743
+      },
+      {
+       "passage_key": "scifact:40164383:1",
+       "score_q": 715
+      },
+      {
+       "passage_key": "scifact:40164383:2",
+       "score_q": 714
+      }
+     ],
+     "retrieval_sha256": "fefb917c6a5eced81d7843fc27c027653832818f38b639ecfa1b655feb71a50f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "fefb917c6a5eced81d7843fc27c027653832818f38b639ecfa1b655feb71a50f",
+    "query_embedding_sha256": "340a5c8cd03b545591510ff1888bf76bd5424041765cf916f0cd5e74b7198b71",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10582939:1",
+      "content_sha256": "6c835b2d8251398c66cf45f3b20ea543fc58e90ed6fc292c3e248378cd418c25",
+      "chars": 1118
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:10582939:2",
+      "content_sha256": "a4419c1c96b431954a17c550a12ec02ba57824b85968162b23db9f557455e0d4",
+      "chars": 1024
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10582939:0",
+      "content_sha256": "c2d6f9a4748cd9fff6e75be04ad9c5f10f093533041bd5d3762bf90f28a1ccc0",
+      "chars": 964
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:40164383:1",
+      "content_sha256": "5a396ddd55d2ec44062223f1ea11f4687eec6e8e5235451eeae5c1111562b136",
+      "chars": 1102
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40164383:2",
+      "content_sha256": "07d4d1ce6d1c3793185de604cb623305cf920660c7c92c9fd17989e133ccda0d",
+      "chars": 1007
+     }
+    ],
+    "elapsed_s": 8.2632
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nEvidence passages from your search for \"autologous mesenchymal stem cell transplant rejection rates\":\n<<<PASSAGES\n[P1] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nFifty-three patients received standard-dose and 52 patients received low-dose CNIs (80% of standard); 51 patients in the control group received anti-IL-2 receptor antibody plus standard-dose CNIs. MAIN OUTCOME MEASURES The primary measure was 1-year incidence of acute rejection and renal function (estimated glomerular filtration rate [eGFR]); the secondary measure was patient and graft survival and incidence of adverse events. RESULTS Patient and graft survival at 13 to 30 months was similar in all groups. After 6 months, 4 of 53 patients (7.5%) in the autologous MSC plus standard-dose CNI group (95% CI, 0.4%-14.7%; P = .04) and 4 of 52 patients (7.7%) in the low-dose group (95% CI, 0.5%-14.9%; P = .046) compared with 11 of 51 controls (21.6%; 95% CI, 10.5%-32.6%) had biopsy-confirmed acute rejection. None of the patients in either autologous MSC group had glucorticoid-resistant rejection, whereas 4 patients (7.8%) in the control group did (95% CI, 0.6%-15.1%; overall P = .02).\n\n[P2] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nRenal function recovered faster among both MSC groups showing increased eGFR levels during the first month after surgery than the control group. Patients receiving standard-dose CNI had a mean difference of 6.2 mL/min per 1.73 m(2) (95% CI, 0.4-11.9; P=.04) and those in the low-dose CNI of 10.0 mL/min per 1.73 m(2) (95% CI, 3.8-16.2; P=.002). Also, during the 1-year follow-up, combined analysis of MSC-treated groups revealed significantly decreased risk of opportunistic infections than the control group (hazard ratio, 0.42; 95% CI, 0.20-0.85, P=.02) CONCLUSION Among patients undergoing renal transplant, the use of autologous MSCs compared with anti-IL-2 receptor antibody induction therapy resulted in lower incidence of acute rejection, decreased risk of opportunistic infection, and better estimated renal function at 1 year. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT00658073.\n\n[P3] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nCONTEXT Antibody-based induction therapy plus calcineurin inhibitors (CNIs) reduce acute rejection rates in kidney recipients; however, opportunistic infections and toxic CNI effects remain challenging. Reportedly, mesenchymal stem cells (MSCs) have successfully treated graft-vs-host disease. OBJECTIVE To assess autologous MSCs as replacement of antibody induction for patients with end-stage renal disease who undergo ABO-compatible, cross-match-negative kidney transplants from a living-related donor. DESIGN, SETTING, AND PATIENTS One hundred fifty-nine patients were enrolled in this single-site, prospective, open-label, randomized study from February 2008-May 2009, when recruitment was completed. INTERVENTION Patients were inoculated with marrow-derived autologous MSC (1-2 x 10(6)/kg) at kidney reperfusion and two weeks later.\n\n[P4] Comparison of allogeneic vs autologous bone marrow–derived mesenchymal stem cells delivered by transendocardial injection in patients with ischemic cardiomyopathy: the POSEIDON randomized trial.\nEfficacy assessments included 6-minute walk test, exercise peak VO2, Minnesota Living with Heart Failure Questionnaire (MLHFQ), New York Heart Association class, LV volumes, ejection fraction (EF), early enhancement defect (EED; infarct size), and sphericity index. RESULTS Within 30 days, 1 patient in each group (treatment-emergent SAE rate, 6.7%) was hospitalized for heart failure, less than the prespecified stopping event rate of 25%. The 1-year incidence of SAEs was 33.3% (n = 5) in the allogeneic group and 53.3% (n = 8) in the autologous group (P = .46). At 1 year, there were no ventricular arrhythmia SAEs observed among allogeneic recipients compared with 4 patients (26.7%) in the autologous group (P = .10). Relative to baseline, autologous but not allogeneic MSC therapy was associated with an improvement in the 6-minute walk test and the MLHFQ score, but neither improved exercise VO2 max.\n\n[P5] Comparison of allogeneic vs autologous bone marrow–derived mesenchymal stem cells delivered by transendocardial injection in patients with ischemic cardiomyopathy: the POSEIDON randomized trial.\nAllogeneic and autologous MSCs reduced mean EED by −33.21% (95% CI, −43.61% to −22.81%; P < .001) and sphericity index but did not increase EF. Allogeneic MSCs reduced LV end-diastolic volumes. Low-dose concentration MSCs (20 million cells) produced greatest reductions in LV volumes and increased EF. Allogeneic MSCs did not stimulate significant donor-specific alloimmune reactions. CONCLUSIONS In this early-stage study of patients with ICM, transendocardial injection of allogeneic and autologous MSCs without a placebo control were both associated with low rates of treatment-emergent SAEs, including immunologic reactions. In aggregate, MSC injection favorably affected patient functional capacity, quality of life, and ventricular remodeling. TRIAL REGISTRATION clinicaltrials.gov Identifier: NCT01087996.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3384432847ed16714dd930c13774aeaffd7f4d3d7a4051ff8f7aa64fc080d62a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876475.856155,
+      "end_wall": 1792876503.992613,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4083,
+    "start_wall": 1792876475.856155,
+    "start_mono": 546032.505333708,
+    "end_wall": 1792876503.992613,
+    "end_mono": 546060.641563583,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages suggest that autologous transplantation of mesenchymal stem cells (MSCs) in renal transplants has lower rates of acute rejection compared to induction therapy with anti-IL-2 receptor antibodies. Although the passages do not directly compare rejection rates between autologous MSC transplantation and anti-IL-2 therapy in general transplant settings, the studies specifically focusing on renal transplants indicate lower rejection rates with autologous MSCs.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28132244167,
+     "load_duration": 14680957417,
+     "prompt_eval_count": 1910,
+     "prompt_eval_duration": 5351866501,
+     "eval_count": 148,
+     "eval_duration": 7489441583,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:15:03.989602Z"
+    },
+    "elapsed_s": 28.136,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4083,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:10582939:1",
+     "scifact:10582939:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 488,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "036ff4faa51587c04998b4ea0f84efc15a1870ed645f3fdf43d85a1bebe15f1a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792876465.233891,
+      "end_wall": 1792876474.907817,
+      "error": null
+     }
+    ],
+    "start_wall": 1792876465.233891,
+    "start_mono": 546021.883156125,
+    "end_wall": 1792876474.907817,
+    "end_mono": 546031.557003083,
+    "raw_response": "{\"query\": \"mesenchymal stem cells transplantation rejection\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9670764667,
+     "load_duration": 3802517583,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 1716916167,
+     "eval_count": 14,
+     "eval_duration": 4028862208,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:14:34.906774Z"
+    },
+    "elapsed_s": 9.674,
+    "query_used": "mesenchymal stem cells transplantation rejection",
+    "query_source": "json",
+    "query_arrival_seq": 4083
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mesenchymal stem cells transplantation rejection",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10582939:0",
+       "score_q": 743
+      },
+      {
+       "passage_key": "scifact:10582939:1",
+       "score_q": 734
+      },
+      {
+       "passage_key": "scifact:24101431:0",
+       "score_q": 714
+      },
+      {
+       "passage_key": "scifact:16853734:0",
+       "score_q": 709
+      },
+      {
+       "passage_key": "scifact:24101431:1",
+       "score_q": 707
+      }
+     ],
+     "retrieval_sha256": "d38881d152809d2cca305979f4f63d753379f3187716388d61eb1040701d8f3d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d38881d152809d2cca305979f4f63d753379f3187716388d61eb1040701d8f3d",
+    "query_embedding_sha256": "5a286fc260f86bc42a1e4cf6404d9ac66d68ceb179317ba081dbb437b1871ed5",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10582939:0",
+      "content_sha256": "c2d6f9a4748cd9fff6e75be04ad9c5f10f093533041bd5d3762bf90f28a1ccc0",
+      "chars": 964
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:10582939:1",
+      "content_sha256": "6c835b2d8251398c66cf45f3b20ea543fc58e90ed6fc292c3e248378cd418c25",
+      "chars": 1118
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:24101431:0",
+      "content_sha256": "cd26818ee99ca68c3a2277fd67c8650a7af6d09352f11327ab1241f5a8198254",
+      "chars": 1068
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16853734:0",
+      "content_sha256": "db89e7e75fdfb925f3ca129d526ffa4c81ae0089e36bc2d034d42bb7fabf0c06",
+      "chars": 1089
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:24101431:1",
+      "content_sha256": "130e8f9ffd63c012fcd6a55e65eec8c7c4b0298ed02f5cf573b597f369020db6",
+      "chars": 1185
+     }
+    ],
+    "elapsed_s": 1.0979
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\n\nEvidence passages from your search for \"mesenchymal stem cells transplantation rejection\":\n<<<PASSAGES\n[P1] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nCONTEXT Antibody-based induction therapy plus calcineurin inhibitors (CNIs) reduce acute rejection rates in kidney recipients; however, opportunistic infections and toxic CNI effects remain challenging. Reportedly, mesenchymal stem cells (MSCs) have successfully treated graft-vs-host disease. OBJECTIVE To assess autologous MSCs as replacement of antibody induction for patients with end-stage renal disease who undergo ABO-compatible, cross-match-negative kidney transplants from a living-related donor. DESIGN, SETTING, AND PATIENTS One hundred fifty-nine patients were enrolled in this single-site, prospective, open-label, randomized study from February 2008-May 2009, when recruitment was completed. INTERVENTION Patients were inoculated with marrow-derived autologous MSC (1-2 x 10(6)/kg) at kidney reperfusion and two weeks later.\n\n[P2] Induction therapy with autologous mesenchymal stem cells in living-related kidney transplants: a randomized controlled trial.\nFifty-three patients received standard-dose and 52 patients received low-dose CNIs (80% of standard); 51 patients in the control group received anti-IL-2 receptor antibody plus standard-dose CNIs. MAIN OUTCOME MEASURES The primary measure was 1-year incidence of acute rejection and renal function (estimated glomerular filtration rate [eGFR]); the secondary measure was patient and graft survival and incidence of adverse events. RESULTS Patient and graft survival at 13 to 30 months was similar in all groups. After 6 months, 4 of 53 patients (7.5%) in the autologous MSC plus standard-dose CNI group (95% CI, 0.4%-14.7%; P = .04) and 4 of 52 patients (7.7%) in the low-dose group (95% CI, 0.5%-14.9%; P = .046) compared with 11 of 51 controls (21.6%; 95% CI, 10.5%-32.6%) had biopsy-confirmed acute rejection. None of the patients in either autologous MSC group had glucorticoid-resistant rejection, whereas 4 patients (7.8%) in the control group did (95% CI, 0.6%-15.1%; overall P = .02).\n\n[P3] The antidiabetic effect of mesenchymal stem cells is unrelated to their transdifferentiation potential but to their capability to restore Th1/Th2 balance and to modify the pancreatic microenvironment.\nType 1 diabetes mellitus (T1DM) is a chronic metabolic disease that results from cell-mediated autoimmune destruction of insulin-producing cells. In T1DM animal models, it has been shown that the systemic administration of multipotent mesenchymal stromal cells, also referred as to mesenchymal stem cells (MSCs), results in the regeneration of pancreatic islets. Mechanisms underlying this effect are still poorly understood. Our aims were to assess whether donor MSCs (a) differentiate into pancreatic β-cells and (b) modify systemic and pancreatic pathophysiologic markers of T1DM. After the intravenous administration of 5 × 10(5) syngeneic MSCs, we observed that mice with T1DM reverted their hyperglycemia and presented no donor-derived insulin-producing cells. In contrast, 7 and 65 days post-transplantation, MSCs were engrafted into secondary lymphoid organs.\n\n[P4] Matrix Metalloproteinase 1 Is Necessary for the Migration of Human Bone Marrow-Derived Mesenchymal Stem Cells Toward Human Glioma\nHuman mesenchymal stem cells (MSCs) have increasingly been used as cellular vectors for the delivery of therapeutic genes to tumors. However, the precise mechanism of mobilization remains poorly defined. In this study, MSCs that expressed similar cell surface markers and exhibited multilineage differentiation potentials were isolated from various donors. Interestingly, different MSC isolates displayed differential migration ability toward human glioma cells. We hypothesized that distinct molecular signals may be involved in the varied tumor tropisms exhibited by different MSC isolates. To test this hypothesis, gene expression profiles of tumor-trophic MSCs were compared with those of non-tumor-trophic MSCs. Among the various differentially regulated genes, matrix metalloproteinase one (MMP1) gene expression and its protein activities were enhanced by 27-fold and 21-fold, respectively, in highly migrating MSCs compared with poorly migrating MSCs.\n\n[P5] The antidiabetic effect of mesenchymal stem cells is unrelated to their transdifferentiation potential but to their capability to restore Th1/Th2 balance and to modify the pancreatic microenvironment.\nThis correlated with a systemic and local reduction in the abundance of autoaggressive T cells together with an increase in regulatory T cells. Additionally, in the pancreas of mice with T1DM treated with MSCs, we observed a cytokine profile shift from proinflammatory to antinflammatory. MSC transplantation did not reduce pancreatic cell apoptosis but recovered local expression and increased the circulating levels of epidermal growth factor, a pancreatic trophic factor. Therefore, the antidiabetic effect of MSCs intravenously administered is unrelated to their transdifferentiation potential but to their capability to restore the balance between Th1 and Th2 immunological responses along with the modification of the pancreatic microenvironment. Our data should be taken into account when designing clinical trials aimed to evaluate MSC transplantation in patients with T1DM since the presence of endogenous precursors seems to be critical in order to restore glycemic control.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d2cfd56be1a1fe15becac840013e52606132412f6ba01b426c3df01f33af221d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792876476.006237,
+      "end_wall": 1792876506.8952498,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4084,
+    "start_wall": 1792876476.006237,
+    "start_mono": 546032.655414958,
+    "end_wall": 1792876506.8952498,
+    "end_mono": 546063.544177958,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that mesenchymal stem cells have a lower rate of rejection compared to anti-interleukin-2 receptor antibodies. The studies P2 and P3 indicate that MSC transplantation had lower rates of acute rejection, and P2 also showed a decrease in glucorticoid-resistant rejection in the MSC group. P4 and P5 provide information on the mechanisms behind the antidiabetic effect of MSCs, emphasizing their role in immune modulation and improving the pancreatic microenvironment, rather than direct transdifferentiation into pancreatic beta-cells. This supports the claim that MSCs have lower\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30884255500,
+     "load_duration": 15999859542,
+     "prompt_eval_count": 1473,
+     "prompt_eval_duration": 6810766333,
+     "eval_count": 150,
+     "eval_duration": 6816504417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:15:06.891305Z"
+    },
+    "elapsed_s": 30.889,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4084,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:10582939:1",
+     "scifact:24101431:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "f577ddb5cf7ea2b6f584d5dca1c24e0d82ea98a29c1702947e3444ef31daa94e",
+  "exaone3.5:7.8b": "22819a49d6c16441a4001c9ac6cf7d25cff73edbeb598dcc460f42db11a4dc17",
+  "nemotron-mini:4b": "a358f07d6c635f084edb4916834160457df39c4288b09616015744aa198ff846",
+  "granite3.3:2b": "fefb917c6a5eced81d7843fc27c027653832818f38b639ecfa1b655feb71a50f",
+  "olmo2:7b": "d38881d152809d2cca305979f4f63d753379f3187716388d61eb1040701d8f3d"
+ },
+ "item_start_wall": 1792876465.2334652,
+ "item_wall_s": 41.662,
+ "ollama_ps_samples": [
+  [
+   1792876465.234,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876467.239,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792876469.247,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876471.257,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876473.268,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876475.28,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876477.282,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876479.29,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876481.298,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876483.307,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876485.318,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876487.33,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876489.335,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792876491.347,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876493.357,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876495.365,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876497.374,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876499.382,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876501.39,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876503.392,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792876505.394,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

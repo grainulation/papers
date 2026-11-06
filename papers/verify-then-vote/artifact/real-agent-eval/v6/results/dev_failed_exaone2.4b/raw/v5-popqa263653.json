@@ -1,0 +1,1202 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-popqa263653",
+ "order": 54,
+ "split": "dev",
+ "answer_format": "entity",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-popqa263653",
+  "order": 54,
+  "split": "dev",
+  "item_type": "entity",
+  "answer_format": "entity",
+  "answer_schema": {
+   "maxLength": 60,
+   "type": "string"
+  },
+  "corpus": "fever17",
+  "question": "Who is the mother of Thomas Jefferson?"
+ },
+ "item_view_sha256": "2eb7e98482214a327d004efcc660ce987d6d7cfb35e845692a4f9b10ee276fbb",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:2.4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Thomas Jefferson?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "68edeaf0ab773d3f0ca3f724633c7ebad4849182050919870af8833f6b54e858",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792835416.276573,
+      "end_wall": 1792835420.804412,
+      "error": null
+     }
+    ],
+    "start_wall": 1792835416.276573,
+    "start_mono": 504973.156885916,
+    "end_wall": 1792835420.804412,
+    "end_mono": 504977.684688125,
+    "raw_response": "{\"query\": \"mother Thomas Jefferson\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4525087041,
+     "load_duration": 2533302083,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 753498417,
+     "eval_count": 10,
+     "eval_duration": 1122069249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:20.803586Z"
+    },
+    "elapsed_s": 4.528,
+    "query_used": "mother Thomas Jefferson",
+    "query_source": "json",
+    "query_arrival_seq": 272
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mother Thomas Jefferson",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+       "score_q": 10401
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+       "score_q": 9695
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+       "score_q": 9491
+      },
+      {
+       "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+       "score_q": 9454
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Medal:1",
+       "score_q": 9351
+      }
+     ],
+     "retrieval_sha256": "4f10ea5e1ed2d9c7518cd1dba8dc7205328282e9f876979ea532d85f2df39606"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4f10ea5e1ed2d9c7518cd1dba8dc7205328282e9f876979ea532d85f2df39606",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+      "content_sha256": "48b61aec043c593b63c825309c9d618d500c7cbe35f32993bc06af36a98d9687",
+      "chars": 295
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+      "content_sha256": "6e2711343546edd41eb9475d7fc4c5034be570c74f8f74f6b03bf29ea084f5bc",
+      "chars": 1014
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+      "content_sha256": "bedc0454dba9fa2a04567ef510b1ba4928cf3d5803e867a64e7c8023922c279b",
+      "chars": 145
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+      "content_sha256": "28b0ff0eca48b882fc1bae6e3ee550305495dba0d6e58cc18678f30420dd9455",
+      "chars": 173
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Thomas_Jefferson_Medal:1",
+      "content_sha256": "24ba48c638d7878e2d8aa70892bc02c668f41a05741c570b1189af7fab8bc1f7",
+      "chars": 449
+     }
+    ],
+    "elapsed_s": 0.0219
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Thomas Jefferson?\n\nEvidence passages from your search for \"mother Thomas Jefferson\":\n<<<PASSAGES\n[P1] Jane Randolph Jefferson\nJane Randolph Jefferson , née Jane Randolph ( February 9 , 1720 -- March 31 , 1776 ) was the wife of Peter Jefferson and the mother of president Thomas Jefferson . Born in the parish of Shadwell , near London , she was the daughter of Isham Randolph , a ship 's captain .\n\n[P2] Thomas Jefferson High School\nThomas Jefferson High School may refer to these high schools in the United States : Thomas Jefferson High School for Science and Technology ( Alexandria , Virginia ) Thomas Jefferson High School ( Auburn , Washington ) Thomas Jefferson High School ( Bloomington , Minnesota ) Thomas Jefferson High School ( Brooklyn ) Thomas Jefferson High School ( Council Bluffs , Iowa ) Thomas Jefferson High School ( Dallas ) Thomas Jefferson High School ( Denver ) Thomas Jefferson High School ( Gretna , Louisiana ) , in Jefferson Parish Public Schools school district Thomas Jefferson High School ( Jefferson Hills , Pennsylvania ) Thomas Jefferson High School ( Los Angeles , California ) Thomas Jefferson High School ( Richmond , Virginia ) Thomas Jefferson High School ( Rochester , New York ) Thomas Jefferson High School ( Rockford , Illinois ) Thomas Jefferson High School ( San Antonio ) Thomas Jefferson High School ( Tampa , Florida ) Thomas Jefferson School ( Sunset Hills , Missouri )\n\n[P3] Thomas Jefferson Academy\nThomas Jefferson Academy may refer to : Thomas Jefferson Academy ( Georgia ) Thomas Jefferson Academy ( North Carolina )\n\n[P4] Inauguration of Thomas Jefferson\nInauguration of Thomas Jefferson may refer to : First inauguration of Thomas Jefferson , 1801 Second inauguration of Thomas Jefferson , 1805\n\n[P5] Thomas Jefferson Medal\nThomas Jefferson Foundation Medal in Law is given jointly by the Thomas Jefferson Foundation and the University of Virginia School of Law Thomas Jefferson Foundation Medal in Citizen Leadership is given jointly by the Thomas Jefferson Foundation and the University of Virginia Thomas Jefferson Foundation Medal in Global Innovation The Jefferson Awards for Public Service are given by the American Institute for Public Service\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ca34dc227f0f1d8e8863f4bfbfcce9d12936ec07dbc0e829c7048845c422558c",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792835420.8266492,
+      "end_wall": 1792835424.085008,
+      "error": null
+     }
+    ],
+    "arrival_seq": 270,
+    "start_wall": 1792835420.8266492,
+    "start_mono": 504977.706926375,
+    "end_wall": 1792835424.085008,
+    "end_mono": 504980.965257625,
+    "raw_response": "{\"reasoning\": \"Jane Randolph Jefferson is the mother of Thomas Jefferson as stated in P1.\", \"answer\": \"Jane Randolph Jefferson\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3255929125,
+     "load_duration": 62419583,
+     "prompt_eval_count": 752,
+     "prompt_eval_duration": 1065500167,
+     "eval_count": 51,
+     "eval_duration": 1642538419,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:24.083718Z"
+    },
+    "elapsed_s": 3.258,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 270,
+   "parsed": {
+    "status": "ok",
+    "answer": "Jane Randolph Jefferson",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Jane_Randolph_Jefferson:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 74,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Thomas Jefferson?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "68edeaf0ab773d3f0ca3f724633c7ebad4849182050919870af8833f6b54e858",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792835416.276692,
+      "end_wall": 1792835422.28371,
+      "error": null
+     }
+    ],
+    "start_wall": 1792835416.276692,
+    "start_mono": 504973.1570045,
+    "end_wall": 1792835422.28371,
+    "end_mono": 504979.163973708,
+    "raw_response": "{\"query\": \"mother of thomas jefferson\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6004008667,
+     "load_duration": 3803930834,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 526241917,
+     "eval_count": 13,
+     "eval_duration": 1382021085,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:22.282582Z"
+    },
+    "elapsed_s": 6.007,
+    "query_used": "mother of thomas jefferson",
+    "query_source": "json",
+    "query_arrival_seq": 273
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mother of thomas jefferson",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+       "score_q": 10401
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+       "score_q": 9695
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+       "score_q": 9491
+      },
+      {
+       "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+       "score_q": 9454
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Medal:1",
+       "score_q": 9351
+      }
+     ],
+     "retrieval_sha256": "a473e30c74b2681eec79e286a85876d66792453a16f638220e78b3b6e22e71f5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a473e30c74b2681eec79e286a85876d66792453a16f638220e78b3b6e22e71f5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+      "content_sha256": "48b61aec043c593b63c825309c9d618d500c7cbe35f32993bc06af36a98d9687",
+      "chars": 295
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+      "content_sha256": "6e2711343546edd41eb9475d7fc4c5034be570c74f8f74f6b03bf29ea084f5bc",
+      "chars": 1014
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+      "content_sha256": "bedc0454dba9fa2a04567ef510b1ba4928cf3d5803e867a64e7c8023922c279b",
+      "chars": 145
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+      "content_sha256": "28b0ff0eca48b882fc1bae6e3ee550305495dba0d6e58cc18678f30420dd9455",
+      "chars": 173
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Thomas_Jefferson_Medal:1",
+      "content_sha256": "24ba48c638d7878e2d8aa70892bc02c668f41a05741c570b1189af7fab8bc1f7",
+      "chars": 449
+     }
+    ],
+    "elapsed_s": 0.0165
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Thomas Jefferson?\n\nEvidence passages from your search for \"mother of thomas jefferson\":\n<<<PASSAGES\n[P1] Jane Randolph Jefferson\nJane Randolph Jefferson , née Jane Randolph ( February 9 , 1720 -- March 31 , 1776 ) was the wife of Peter Jefferson and the mother of president Thomas Jefferson . Born in the parish of Shadwell , near London , she was the daughter of Isham Randolph , a ship 's captain .\n\n[P2] Thomas Jefferson High School\nThomas Jefferson High School may refer to these high schools in the United States : Thomas Jefferson High School for Science and Technology ( Alexandria , Virginia ) Thomas Jefferson High School ( Auburn , Washington ) Thomas Jefferson High School ( Bloomington , Minnesota ) Thomas Jefferson High School ( Brooklyn ) Thomas Jefferson High School ( Council Bluffs , Iowa ) Thomas Jefferson High School ( Dallas ) Thomas Jefferson High School ( Denver ) Thomas Jefferson High School ( Gretna , Louisiana ) , in Jefferson Parish Public Schools school district Thomas Jefferson High School ( Jefferson Hills , Pennsylvania ) Thomas Jefferson High School ( Los Angeles , California ) Thomas Jefferson High School ( Richmond , Virginia ) Thomas Jefferson High School ( Rochester , New York ) Thomas Jefferson High School ( Rockford , Illinois ) Thomas Jefferson High School ( San Antonio ) Thomas Jefferson High School ( Tampa , Florida ) Thomas Jefferson School ( Sunset Hills , Missouri )\n\n[P3] Thomas Jefferson Academy\nThomas Jefferson Academy may refer to : Thomas Jefferson Academy ( Georgia ) Thomas Jefferson Academy ( North Carolina )\n\n[P4] Inauguration of Thomas Jefferson\nInauguration of Thomas Jefferson may refer to : First inauguration of Thomas Jefferson , 1801 Second inauguration of Thomas Jefferson , 1805\n\n[P5] Thomas Jefferson Medal\nThomas Jefferson Foundation Medal in Law is given jointly by the Thomas Jefferson Foundation and the University of Virginia School of Law Thomas Jefferson Foundation Medal in Citizen Leadership is given jointly by the Thomas Jefferson Foundation and the University of Virginia Thomas Jefferson Foundation Medal in Global Innovation The Jefferson Awards for Public Service are given by the American Institute for Public Service\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "32adad5a139bda2c2b2840b6d8d98c06af16916b0d7e4163af94b8b39e5a6eb9",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792835422.300534,
+      "end_wall": 1792835431.74835,
+      "error": null
+     }
+    ],
+    "arrival_seq": 271,
+    "start_wall": 1792835422.300534,
+    "start_mono": 504979.180799166,
+    "end_wall": 1792835431.74835,
+    "end_mono": 504988.628540916,
+    "raw_response": "{\n  \"reasoning\": \"The evidence shows that Jane Randolph Jefferson was the wife of Peter Jefferson and the mother of president Thomas Jefferson.\",\n  \"answer\": \"Jane Randolph Jefferson\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9444266917,
+     "load_duration": 4201500333,
+     "prompt_eval_count": 676,
+     "prompt_eval_duration": 1343727541,
+     "eval_count": 56,
+     "eval_duration": 2820423381,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:31.745781Z"
+    },
+    "elapsed_s": 9.448,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 271,
+   "parsed": {
+    "status": "ok",
+    "answer": "Jane Randolph Jefferson",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 125,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Thomas Jefferson?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "68edeaf0ab773d3f0ca3f724633c7ebad4849182050919870af8833f6b54e858",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792835416.2768068,
+      "end_wall": 1792835417.3374112,
+      "error": null
+     }
+    ],
+    "start_wall": 1792835416.2768068,
+    "start_mono": 504973.157119333,
+    "end_wall": 1792835417.3374112,
+    "end_mono": 504974.217713958,
+    "raw_response": "{\"query\": \"Jefferson mother name\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1057424667,
+     "load_duration": 29204417,
+     "prompt_eval_count": 167,
+     "prompt_eval_duration": 422088833,
+     "eval_count": 11,
+     "eval_duration": 555967461,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:17.336005Z"
+    },
+    "elapsed_s": 1.061,
+    "query_used": "Jefferson mother name",
+    "query_source": "json",
+    "query_arrival_seq": 270
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Jefferson mother name",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+       "score_q": 8039
+      },
+      {
+       "passage_key": "fever17:Jefferson_-LRB-Brazilian_footballer-RRB-:0",
+       "score_q": 7893
+      },
+      {
+       "passage_key": "fever17:Jefferson_Elementary_School:0",
+       "score_q": 7497
+      },
+      {
+       "passage_key": "fever17:Jefferson_-LRB-given_name-RRB-:0",
+       "score_q": 7480
+      },
+      {
+       "passage_key": "fever17:Robert_M._Murphy:0",
+       "score_q": 7451
+      }
+     ],
+     "retrieval_sha256": "0c4aad535e53652922600aac7df768dbcc523ed5132934e25779ed08c8bd6f92"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0c4aad535e53652922600aac7df768dbcc523ed5132934e25779ed08c8bd6f92",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+      "content_sha256": "48b61aec043c593b63c825309c9d618d500c7cbe35f32993bc06af36a98d9687",
+      "chars": 295
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Jefferson_-LRB-Brazilian_footballer-RRB-:0",
+      "content_sha256": "f8b90ff9d304aeb2f2e0754614e7fd9e3a2592f26b700192c1f7c4bc443ca8c1",
+      "chars": 626
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Jefferson_Elementary_School:0",
+      "content_sha256": "5328d32412e4542094707e5b15576fe1e23664ada56bf57c779472be0015f3ab",
+      "chars": 178
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Jefferson_-LRB-given_name-RRB-:0",
+      "content_sha256": "4767326768da26e5c622f20b196b24b80d16247f0edb97734a7b9d35320b6294",
+      "chars": 452
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Robert_M._Murphy:0",
+      "content_sha256": "f7cb2cdf9aa7eb4947826b9ddeb8b98e0028371d9cbff5b676d7b39572175c3e",
+      "chars": 271
+     }
+    ],
+    "elapsed_s": 0.0263
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Thomas Jefferson?\n\nEvidence passages from your search for \"Jefferson mother name\":\n<<<PASSAGES\n[P1] Jane Randolph Jefferson\nJane Randolph Jefferson , née Jane Randolph ( February 9 , 1720 -- March 31 , 1776 ) was the wife of Peter Jefferson and the mother of president Thomas Jefferson . Born in the parish of Shadwell , near London , she was the daughter of Isham Randolph , a ship 's captain .\n\n[P2] Jefferson (Brazilian footballer)\nJefferson is the name of a number of Brazilian footballers , including ; Jefferson Feijão , born 1978 , full name Jefferson Marques da Conceição , played most notably for Internacional Jefferson ( footballer , born 1983 ) , full name Jefferson de Oliveira Galvão , player for Botafogo and Brazil Jefferson ( footballer , born January 1988 ) , full name Jefferson Andrade Siqueira , player for Casertana F.C. Jefferson Nascimento , born July 1988 , player for Sporting Clube de Portugal Jefferson ( footballer , born August 1988 ) , full name Jefferson Lopes Faustino , player for The Strongest\n\n[P3] Jefferson Elementary School\nJefferson Elementary School is an often-used name in the United States to honor Thomas Jefferson , a popular founding father . The name may refer to ;\n\n[P4] Jefferson (given name)\nJefferson or Jéferson as a given name , may refer to : Jefferson Davis , President of the Confederate States of America Jefferson D. Hughes , III , American judge Jefferson Wood , American illustrator Jefferson Vargas , Colombian cyclist Jeferson Luis Goncalo , Brazilian boxer Jefferson D'Arcy , a character in the television show Married ... with Children Jefferson Beauregard Sessions III , 84th United States Attorney General\n\n[P5] Robert M. Murphy\nRobert Martin `` Mother '' Murphy was an administrator at Washington & Jefferson College ; his efforts to improve the Washington & Jefferson Presidents football team directly led to its development as a national powerhouse during the early 20th century .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "00ebf413318e51b5e4fccebf05e9272b8cceeb197dab106a66b0ae6e951d8374",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792835417.3640268,
+      "end_wall": 1792835431.7903612,
+      "error": null
+     }
+    ],
+    "arrival_seq": 272,
+    "start_wall": 1792835417.3640268,
+    "start_mono": 504974.24433125,
+    "end_wall": 1792835431.7903612,
+    "end_mono": 504988.670552083,
+    "raw_response": "{\n  \"reasoning\": \"The query asks for the mother of Thomas Jefferson. Passage P1 explicitly states that Thomas Jefferson's mother was Jane Randolph Jefferson.\",\n  \"answer\": \"Jane Randolph Jefferson\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14422840209,
+     "load_duration": 7864782500,
+     "prompt_eval_count": 844,
+     "prompt_eval_duration": 1520549708,
+     "eval_count": 75,
+     "eval_duration": 4737481252,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:31.787784Z"
+    },
+    "elapsed_s": 14.426,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 272,
+   "parsed": {
+    "status": "ok",
+    "answer": "Jane Randolph Jefferson",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Jane_Randolph_Jefferson:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 139,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Thomas Jefferson?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "68edeaf0ab773d3f0ca3f724633c7ebad4849182050919870af8833f6b54e858",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792835416.277056,
+      "end_wall": 1792835417.429491,
+      "error": null
+     }
+    ],
+    "start_wall": 1792835416.277056,
+    "start_mono": 504973.157368833,
+    "end_wall": 1792835417.429491,
+    "end_mono": 504974.309793958,
+    "raw_response": "{\"query\": \"sally hemings\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1150297417,
+     "load_duration": 51631834,
+     "prompt_eval_count": 154,
+     "prompt_eval_duration": 419089625,
+     "eval_count": 10,
+     "eval_duration": 593577585,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:17.428669Z"
+    },
+    "elapsed_s": 1.152,
+    "query_used": "sally hemings",
+    "query_source": "json",
+    "query_arrival_seq": 271
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "sally hemings",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Hemings:0",
+       "score_q": 14799
+      },
+      {
+       "passage_key": "fever17:Sally_Hemings:0",
+       "score_q": 13571
+      },
+      {
+       "passage_key": "fever17:Cultural_depictions_of_Sally_Hemings:0",
+       "score_q": 13563
+      },
+      {
+       "passage_key": "fever17:From_the_Diary_of_Sally_Hemings:0",
+       "score_q": 13222
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Randolph:1",
+       "score_q": 12726
+      }
+     ],
+     "retrieval_sha256": "ebc0bd1632430dd5f525a22fe8ee71a8498a4af707129db677df295687866926"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ebc0bd1632430dd5f525a22fe8ee71a8498a4af707129db677df295687866926",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Hemings:0",
+      "content_sha256": "fe38c88f2d9145d7b2a2ea6648544ed329b3d9695b5ffad595230fabb1cb5a0c",
+      "chars": 220
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Sally_Hemings:0",
+      "content_sha256": "804fca97f8dd112f9af3c57591f00aa5c9c6b6a75a4abd0199c1691d153a96bc",
+      "chars": 892
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Cultural_depictions_of_Sally_Hemings:0",
+      "content_sha256": "9f32ee28e3f9cf96ad6cb6df85957e31891d92b391aa28fe28e23ac0432eeec5",
+      "chars": 250
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:From_the_Diary_of_Sally_Hemings:0",
+      "content_sha256": "49211f056b95687d5768014439bbc1170643a449a755a5736b78dd2e694615c3",
+      "chars": 507
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Thomas_Jefferson_Randolph:1",
+      "content_sha256": "78804365757a6ab0162b460cd920f8a82b3628b8a325810ee57fdb1c835d7a93",
+      "chars": 618
+     }
+    ],
+    "elapsed_s": 0.0124
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Thomas Jefferson?\n\nEvidence passages from your search for \"sally hemings\":\n<<<PASSAGES\n[P1] Hemings\nHemings is a surname , and may refer to : Elizabeth Hemings Sally Hemings , a slave of US president Thomas Jefferson who bore him 6 children Mary Hemings John Hemings Madison Hemings Harriet Hemings Eston Hemings\n\n[P2] Sally Hemings\nSarah `` Sally '' Hemings ( February 1773 -- 1835 ) was an enslaved woman of mixed race owned by President Thomas Jefferson . Most historians believe she was the mother of six children fathered by him , of whom four survived to adulthood ; and were given freedom by Jefferson . Hemings was the youngest of six siblings by the widowed planter John Wayles and his mixed-race slave Betty Hemings ; Sally and her siblings were three-quarters European and half-siblings of Jefferson 's wife , Martha Wayles Skelton . As an infant Sally came to Monticello as part of Martha 's inheritance of her father 's slave holdings . In 1787 , Hemings , aged 14 , accompanied Jefferson 's youngest daughter Mary ( `` Polly '' ) to London and then to Paris , where the widowed Jefferson , aged 44 at the time , was serving as the United States Minister to France . Hemings spent two years there .\n\n[P3] Cultural depictions of Sally Hemings\nSally Hemings has been represented in the media in popular culture due to her association with Thomas Jefferson . She has been portrayed in films , referred to and has been an inspiration to novels and many more .\n\n[P4] From the Diary of Sally Hemings\nFrom the Diary of Sally Hemings is a song cycle for voice and piano . The work , commissioned by mezzo-soprano Florence Quivar and Music Accord , is a collaboration between Pulitzer Prize winning composer William Bolcom and playwright Sandra Seaton . After being contacted by Quivar , Bolcom asked Seaton to write entries for a fictional diary kept by Sally Hemings throughout her life . Seaton 's text for 18 entries of the imaginary diary were then set to music by Bolcom .\n\n[P5] Thomas Jefferson Randolph\nThe Carr story was the basis for historians ' denials of Jefferson 's relationship from 1868 to 1998 . Since the late 20th century and a DNA study disproving any Carr genetic connection to Eston Hemings , the youngest son of Sally Hemings , most historians accept that Jefferson had a long relationship with Sally Hemings and fathered her six children . Most scholars continue to hold that view , although a minority , including the 2001 Report of the Scholars Commission and Andrew Holowchak 's 2013 book Framing a Legend , espouse a contrarian view of the Jefferson -- Hemings controversy .\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "92c3954867b02a349f1ae67324f7d2542d2fa0d0e19c08b5c89a27ec9061dfaf",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792835417.442216,
+      "end_wall": 1792835431.836307,
+      "error": null
+     }
+    ],
+    "arrival_seq": 273,
+    "start_wall": 1792835417.442216,
+    "start_mono": 504974.322519583,
+    "end_wall": 1792835431.836307,
+    "end_mono": 504988.716498333,
+    "raw_response": "{\"reasoning\": \"From the evidence passages, P2 clearly states that Sally Hemings was enslaved by Thomas Jefferson and was the mother of six of his children whom he freed. The passage confirms her role as his partner and the biological mother of his offspring. P1 and P3 confirm her identity and context, while P4 provides a creative but fictional account of her life which does not negate the factual historical record. No evidence suggests any other mother for Thomas Jefferson's children. Therefore, the answer is 'Sally Hemings'.\", \"answer\": \"Sally Hemings\", \"citations\": [\"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14390711541,
+     "load_duration": 49822375,
+     "prompt_eval_count": 808,
+     "prompt_eval_duration": 2920546792,
+     "eval_count": 132,
+     "eval_duration": 10241858168,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T09:50:31.834018Z"
+    },
+    "elapsed_s": 14.394,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 273,
+   "parsed": {
+    "status": "ok",
+    "answer": "Sally Hemings",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Sally_Hemings:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 516,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: Who is the mother of Thomas Jefferson?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "68edeaf0ab773d3f0ca3f724633c7ebad4849182050919870af8833f6b54e858",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792835416.276926,
+      "end_wall": 1792835417.091286,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792835417.09142,
+      "end_wall": 1792835423.365567,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792835423.3656929,
+      "end_wall": 1792835432.7212002,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792835416.276926,
+    "start_mono": null,
+    "end_wall": 1792835432.7212002,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Who is the mother of Thomas Jefferson?",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 274
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Who is the mother of Thomas Jefferson?",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+       "score_q": 10401
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Campbell:0",
+       "score_q": 9767
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+       "score_q": 9695
+      },
+      {
+       "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+       "score_q": 9491
+      },
+      {
+       "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+       "score_q": 9454
+      }
+     ],
+     "retrieval_sha256": "f7482420033a6fa09d7b96657101681e4df3ee0d47b1fcb50ef60b6fecf45935"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f7482420033a6fa09d7b96657101681e4df3ee0d47b1fcb50ef60b6fecf45935",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Jane_Randolph_Jefferson:0",
+      "content_sha256": "48b61aec043c593b63c825309c9d618d500c7cbe35f32993bc06af36a98d9687",
+      "chars": 295
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Thomas_Jefferson_Campbell:0",
+      "content_sha256": "7afdff9a8f4cc499a7367108d5f60ed8c8eff71f9f63de9f891b585326ea52dc",
+      "chars": 159
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Thomas_Jefferson_High_School:0",
+      "content_sha256": "6e2711343546edd41eb9475d7fc4c5034be570c74f8f74f6b03bf29ea084f5bc",
+      "chars": 1014
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Thomas_Jefferson_Academy:0",
+      "content_sha256": "bedc0454dba9fa2a04567ef510b1ba4928cf3d5803e867a64e7c8023922c279b",
+      "chars": 145
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Inauguration_of_Thomas_Jefferson:0",
+      "content_sha256": "28b0ff0eca48b882fc1bae6e3ee550305495dba0d6e58cc18678f30420dd9455",
+      "chars": 173
+     }
+    ],
+    "elapsed_s": 0.019
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: Who is the mother of Thomas Jefferson?\n\nEvidence passages from your search for \"Who is the mother of Thomas Jefferson?\":\n<<<PASSAGES\n[P1] Jane Randolph Jefferson\nJane Randolph Jefferson , née Jane Randolph ( February 9 , 1720 -- March 31 , 1776 ) was the wife of Peter Jefferson and the mother of president Thomas Jefferson . Born in the parish of Shadwell , near London , she was the daughter of Isham Randolph , a ship 's captain .\n\n[P2] Thomas Jefferson Campbell\nThomas Jefferson Campbell ( 1786 -- 1850 ) was an American politician who represented in the United States House of Representatives .\n\n[P3] Thomas Jefferson High School\nThomas Jefferson High School may refer to these high schools in the United States : Thomas Jefferson High School for Science and Technology ( Alexandria , Virginia ) Thomas Jefferson High School ( Auburn , Washington ) Thomas Jefferson High School ( Bloomington , Minnesota ) Thomas Jefferson High School ( Brooklyn ) Thomas Jefferson High School ( Council Bluffs , Iowa ) Thomas Jefferson High School ( Dallas ) Thomas Jefferson High School ( Denver ) Thomas Jefferson High School ( Gretna , Louisiana ) , in Jefferson Parish Public Schools school district Thomas Jefferson High School ( Jefferson Hills , Pennsylvania ) Thomas Jefferson High School ( Los Angeles , California ) Thomas Jefferson High School ( Richmond , Virginia ) Thomas Jefferson High School ( Rochester , New York ) Thomas Jefferson High School ( Rockford , Illinois ) Thomas Jefferson High School ( San Antonio ) Thomas Jefferson High School ( Tampa , Florida ) Thomas Jefferson School ( Sunset Hills , Missouri )\n\n[P4] Thomas Jefferson Academy\nThomas Jefferson Academy may refer to : Thomas Jefferson Academy ( Georgia ) Thomas Jefferson Academy ( North Carolina )\n\n[P5] Inauguration of Thomas Jefferson\nInauguration of Thomas Jefferson may refer to : First inauguration of Thomas Jefferson , 1801 Second inauguration of Thomas Jefferson , 1805\nPASSAGES>>>\n\nInstructions:\n- \"answer\" is a short name or phrase (at most 60 characters) with no explanation.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6c22d14696039fe257679f26662d33b9c54e05d69e71d9dbd712ff55ed9e80fc",
+    "format_sha256": "a419dd2e914332c71d388ffb2f23bf5050e6b2f3bd2a3c14f9e65a2c10235f74",
+    "attempts": [
+     {
+      "start_wall": 1792835432.740463,
+      "end_wall": 1792835434.0609658,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792835434.0610292,
+      "end_wall": 1792835435.381561,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792835435.381692,
+      "end_wall": 1792835436.701517,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 274,
+    "start_wall": 1792835432.740463,
+    "start_mono": null,
+    "end_wall": 1792835436.701517,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "maxLength": 60,
+       "type": "string",
+       "minLength": 1
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 274,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "4f10ea5e1ed2d9c7518cd1dba8dc7205328282e9f876979ea532d85f2df39606",
+  "nemotron-mini:4b": "a473e30c74b2681eec79e286a85876d66792453a16f638220e78b3b6e22e71f5",
+  "granite3.3:2b": "0c4aad535e53652922600aac7df768dbcc523ed5132934e25779ed08c8bd6f92",
+  "olmo2:7b": "ebc0bd1632430dd5f525a22fe8ee71a8498a4af707129db677df295687866926",
+  "exaone3.5:2.4b": "f7482420033a6fa09d7b96657101681e4df3ee0d47b1fcb50ef60b6fecf45935"
+ },
+ "item_start_wall": 1792835416.2763772,
+ "item_wall_s": 20.425,
+ "ollama_ps_samples": [
+  [
+   1792835416.276,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792835418.288,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792835420.299,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792835422.309,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792835424.32,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792835426.324,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792835428.336,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792835430.348,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792835432.358,
+   [
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792835434.363,
+   [
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792835436.37,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

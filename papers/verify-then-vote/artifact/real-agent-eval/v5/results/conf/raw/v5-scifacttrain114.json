@@ -1,0 +1,1259 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain114",
+ "order": 446,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain114",
+  "order": 446,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Anthrax spores are very difficult to dispose once they are dispersed."
+ },
+ "item_view_sha256": "724b3cceb427c8eef06e2c937d6c88389c242d91fbfdc3bcf958ac31e9bf81e4",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "dense",
+  "gemma2:2b": "dense",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "gemma2:2b",
+  "llama3.2:3b",
+  "qwen2.5:3b",
+  "phi3:mini",
+  "mistral"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "phi3:mini",
+  "gemma2:2b",
+  "qwen2.5:3b",
+  "mistral"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "af54e020133f3b9ad5ec3bb6caeb8805a83375039bce83cdd7bb9746fa893e93",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716244.759159,
+      "end_wall": 1792716250.879241,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716244.759159,
+    "start_mono": 385801.834586916,
+    "end_wall": 1792716250.879241,
+    "end_mono": 385807.954673958,
+    "raw_response": "{\"query\": \"disposal of anthrax spores after dispersal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6118054750,
+     "load_duration": 4550996958,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 660908625,
+     "eval_count": 16,
+     "eval_duration": 693462376,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:10.878553Z"
+    },
+    "elapsed_s": 6.12,
+    "query_used": "disposal of anthrax spores after dispersal",
+    "query_source": "json",
+    "query_arrival_seq": 2234
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "disposal of anthrax spores after dispersal",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:33872649:0",
+       "score_q": 765
+      },
+      {
+       "passage_key": "scifact:33872649:1",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:16787954:0",
+       "score_q": 620
+      },
+      {
+       "passage_key": "scifact:34760396:1",
+       "score_q": 614
+      },
+      {
+       "passage_key": "scifact:15237660:0",
+       "score_q": 611
+      }
+     ],
+     "retrieval_sha256": "41c5a371871af5866bfbf7fc49c33075b36df59a0cdf48992bdb6d84817055a1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "41c5a371871af5866bfbf7fc49c33075b36df59a0cdf48992bdb6d84817055a1",
+    "query_embedding_sha256": "1babf149159ef77d5822a012a2a1ecf92bd7084151e47642facc9dc3af3ed21e",
+    "query_embedding_f32_b64": "SuuUPdYlDDuayDi+ESOBvYY83TxMC/U7dQlCvQZ6jT2isrw74j50PHeMfLp0oRg9Xf2rPXmwhrzsbhu9TqwfvahyIj26Qoa94u0lvRhBOj0Pzgm8mS+EvaSuhzxXoLe8dFFWPRh7KDsmwSQ9usRiPWR+Vbz7J1g8VehlPZgxtTxwjIa9YC5nvKO2gbutx0q9390WPVqXZL3ZmDQ9G69VvXZM5zwx+QS9z77iPBBPbb25mx47vVO0PfEvbj2flbq86NgHPWV0jr0bmTQ9s57EvMDyor2AwUg8kSKtNUbOBD0twh09oyoYve1jyDwYysq7S+U8PUoRnD2ajy29DyljPa4XczzdPUW9cFs5vWELMj1+CDE8QLQ7vW/STD3ghJK8yxBbPUGogbeSY9C8C+uIPbKIWb038lC9w0VBvBJu+zsZ2sW8ytKJO2AvdT0LK508F0d7PHLhDj1rbYw8UYR9vOHQOr0weEc8nnhjPYveI71fiKY8T3FbPcUE4ry7GRo9ybNTvY2hEz3oc2+9b2mmvUwq2bmg22e8JIzSPBuf47qFI0a84GyZPAYZ6Dse1Kw8cWUqPSfZXz2pjgQ9sRQFPMV+i72C3NQ8dqu5PdLVZrz7jac8P9jwvLOwCjxrOvm8aJTGPAMjlDtthwM8EtwGvcdY1jxfuR49sfD7vFYk+7tXOr485DauvEXZ8bsU9Li8ACvkuPu6GbqGtHm7zlCAO92Ih717PwC98rpJvOnneLuGOK08ZzEpO2T6Oz11GOc8Exyqu3WEybzaJIM9wr9BvWSadb1Bu/Q7Yy2rvSDmID1AC5I8zABsO8/xMj33sg+9nxcovZkWj7xep6289sczPNjlTz1WRms7LiHTvLLdXz1XdTI8KTM9vTaajzzeA2Y7H6ZAPc6/mjzJe9a6TLtqvQFkkTxh89g5NoHGO7uqPb3hE+o8yzttvF6BZLuOR4m9sJxUPTMK4rwHy7o8SLVePXrBvT3uvSa9w1X3PC+/kjszeEG9uj16utwUrDw63jU9oRrMvTEJBL1n7j+9pMuhvLO78zxa7pm8aNnBPA8NujxID708Ug5BvJb6rTuOnqk83FqAvOABcrzHY0i8MIc3PZ0nG73Kyu471C1/PWljn7y9P6a8xTTJPPIFFr1XxzO9SXiKu9gp+zkjoSi9SwutPHf0w7z2gbg8Z09muxxLd7vSyUM9tkLnPDiyJr0hqiW9cBCyvJU4J723CoQ8gP1AvcxeE7urIs66levVvBkeXLyZLUM5ZP5wPZIo+byJLey8pPXnvH9Nizw2YRi9z5+6vDr9Pzzq2II9JeblO5NEoLwPloa7UyYUPNIDjzvQ7SY8h8nzPHRuPTxtsoU6gh89vZz2Xr1Kpdu8T2WpOlg5z7y3phm94T6mvG9QhzyUaz29qcYBvWT8hLyCmr087ndVPHAtMT2yYdW88fkDPGzYP7sa2hA9hPxoPey6b7ymDUW8pG/0PMAo4bwnHG+9wbu3O7HcPDy0l5U73dxIvSSHRL1KVxQ80ghTPXWkhD1Wj8U7vp/SvOvLJD1wTXw9VRT9O9inZbtUlF09YfGLvGpnOT2bSlc9plo7vQu3/LrcinK9qNGcPfbYS7x1v2E9YJpzPKtUrTzgA8E8VfZUvR0bjzxin6s8R0zuvDghHL2XrQo9f88GvFzsljxgcHW9moUNOxytXD1FFqe8fxB3PfCuRDw/MgW8utUFPcajODzchxQ8DtrVO0Vm2Dzq92q8EXfiPBrfJjwIJo07wsGGvGw1jT0lWBw9YwCuvVO0er3eBno68PaPuqXl8zsxW++8wxUIPbGWlj2lgB29aRskPWepfDmhnIU6TAuwu+ZCFDxKL4i7vvqvPND36zyXcmi9LJkbPcNZYDwYNgi7/SVAOz1MPTxSGFw8VLZwO/rqXT2beVY8UVavO+4csbzCpVY68WpSvGeFYzyMGnq7bPr4PMoRRbzXJTM9qItWPPemSr03DVi9kRxUvSA1jj1h8EO915BIPIhjGbx7QTU8Cb3bvKEXPDyAMfC8RPpIvbaRM7xFBXS8KEyJvfRTEz2EMbu8uuxXPKlESL0YtCc9BPsxvVD07rzeEBm9mWIdO4Rj/7szimq8xWoTO4YjJ73FArw6j+fjPLnAALzmdV69sUNQPDW6Ar1yKJk8k9cCPJ0NnbxZpHq99JIxPU/BzbwmbIY8SqyWPYBIijuCE2e8zzD+u3nqGr35luM8DINcPaR9cb1QCTQ9hxwaPZdKvTyHejs9WmqhO1bmjTz/mFQ9VTTUOziYnLqPuge9Ylt4vQK49rsczI+7Tn+UPIUUDLse1Tm95BE3u5w+g724rwa9iLqSPNg5gD0aDoI91FmrvIkE/7x0FfG7JestPIfucT1JM8k9tGmRvb1osjtoThe7d+41PD07qjufXJ48yXOJOQwakD2juh08R84/vHEogrxjyQM7XTkoO8GMBz25Rt09YAcqvZUQkjtSvw+6LQzbOjIuvjs3cGo88QB1PXmHdD1R9oa9etyqvPpQHj3QLVm9VdaAvJqnDj3ZHiW8EuLru5JRrjw2yOo8goMEu3NE1bzzLqq8exn6vK4g1ruIemw8SqBCvApiN7zAH6Y94wf0vLFcpDuOPFI9nVpDvMyvUDwbugs9KN2zvR7GBT1enIc79yGRPDNzRjzMK+Q9dvW2vA0hg7waqXc9CGd1OldPEbzli5Y8uoUNvTLxRb2Y7lI859LtugGuTrzAwi083Do2PCHryTw5ZkO9XimLvIfs7TzaNXq9lhrtu+yAbLwXRku8xdoBvHZaWTst43O9FP80PTUCbr0XazC8XXDTu1RtxzxU7Wa8JDOjvL58Eb1feEI94Wu6vK8OTL3qi1y9Xv3ZPP2rozvgDKe89w+GO5Mhrruh2Y68+AWRvHliNrulf0c8UI4AveUEPbxqFFu8lU1ivKEZOz2NzB69shkKvTkYgr1srs083iRVvZQsED30ON28KE2IvINWJrsdzyq9a+XGPETvRD18ZtY8aTqJPJNAH701ZV68Mdcsu8u4ujxI6z090Q3XOmh/ar1iaSK9SfcdvC4SRDy0QQ28ziiYPMd847uaESO9OngePAXc5jyeCLS8wTJUPaN/jD23fHg8VsPwPHprm7zBPIm9a1bpPQdp6LwwJHE8khlgvHPtqjwXGRs7TrMAuw2n4DzHtNe8EeMkvcBUprpck2G9lZ06vSGBHD1GUQk9BZhyvWz0wjzvPG495kp8PO/YlTtN+pg89NXrvKsfzDwexHq8pOePuziBDb355yE9hVE6vbsf1DwsYqu84pB9ucolz7yVfyy9GAvfvISlTLxr59m81Yc2PRpQ6rogZO28eySAvUcP9zyQ7J49B4h/uqkfDz1QOJy83a2XvXywUbwHEdw6WY3YvCEljT1Peji7mRH3PN/q6TxvmtE7cYEDvbNyyDzrYYQ8XobTPCsYyD0UIq099gygPNQPHDy2xBo9qMc0Pa4mOj3ZTZe85KT7PHuOz7wdN+08alHnvM2Fv71Pyha7s3tDvDH9wLwWym68DdYjPP7wMTyhdGW8H1iuPOi8sDwxUiO9JBJHvWlfujwSqA094F+AvWhehb1SBxW63gYlu3ydsD1h4608HnxLO1rfpLuxt2w7++S6vIKrdT22BoK8FBBNvHE9PL3Rlma83vSevEVuFj3qf5684TXwu7+4jbxAaHI9cONTvCG/eru1C468Fd0KPakR1LzsMIU7eUE8Pfb5oLyFAA89fhSQPNArajxgKVo8PB3lu+hLvbuNVCw8VKFdPOZXRrxXDBy8KXadPC63VTvrsyE9KsZzvLPLqTwzYoK8Obk0vQlzELvHPRM9ttqgPIqvoLyzn6u9/3YQvRKuYboDfVy8SvH4PKWynzy+Npw88FB5OiFRibzdH9K8Z7WmvdQIqDuQR208lVDsO5+n2LtbKVO8VQE/vYDT3LwtTSi7ktkjPZmjvLjYPyU8rDQ6vTwgFbxhiZq8ghhIPch1GzvpY/U7wlZ/PRpLprzyAta8WwgMPfKGhrpQFzW9KdURPcvBxjxDNqI9cEMevE/VaDtUFIG9EE2SPPnN4TzrgiC743pavSc3ULsv2hq9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:33872649:0",
+      "content_sha256": "9d4057230efca78c6e4c8ac3af1401fa7841fe8c73100aadd169305ff3017a1a",
+      "chars": 1000
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33872649:1",
+      "content_sha256": "4bb10c878edc54cf8ccb7d39984d04dec8135a736d0bb7308ebbc0a8a16cbdc5",
+      "chars": 670
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16787954:0",
+      "content_sha256": "7e91d41afa8230c47404de51e0e119672da20638fe54e2c90cd53d1cb64ada27",
+      "chars": 959
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34760396:1",
+      "content_sha256": "ec183c9a52546e625eee2574b68c8e26f9422b8f13f5414a694c2d6a2ab5d7e4",
+      "chars": 794
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:15237660:0",
+      "content_sha256": "38b6f11be6a75c2b4bee800ddcdcebf2e6db52c30aa621880476d0462460d3c1",
+      "chars": 1092
+     }
+    ],
+    "elapsed_s": 0.0329
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nEvidence passages from your search for \"disposal of anthrax spores after dispersal\":\n<<<PASSAGES\n[P1] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nCONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then simulated active office conditions to estimate secondary aerosolization of B anthracis spores. Nominal size characteristics, airborne concentrations, and surface contamination of B anthracis particles (colony-forming units) were evaluated. RESULTS Viable B anthracis spores reaerosolized under semiquiescent conditions, with a marked increase in reaerosolization during simulated active office conditions.\n\n[P2] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nIncreases were observed for B anthracis collected on open sheep blood agar plates (P<.001) and personal air monitors (P =.01) during active office conditions. More than 80% of the B anthracis particles collected on stationary monitors were within an alveolar respirable size range of 0.95 to 3.5 micro m. CONCLUSIONS Bacillus anthracis spores used in a recent terrorist incident reaerosolized under common office activities. These findings have important implications for appropriate respiratory protection, remediation, and reoccupancy of contaminated office environments.\n\n[P3] The association between sterilizing activity and drug distribution into tuberculosis lesions\nFinding new treatment-shortening antibiotics to improve cure rates and curb the alarming emergence of drug resistance is the major objective of tuberculosis (TB) drug development. Using a matrix-assisted laser desorption/ionization (MALDI) mass spectrometry imaging suite in a biosafety containment facility, we show that the key sterilizing drugs rifampicin and pyrazinamide efficiently penetrate the sites of TB infection in lung lesions. Rifampicin even accumulates in necrotic caseum, a critical lesion site where persisting tubercle bacilli reside. In contrast, moxifloxacin, which is active in vitro against a subpopulation of Mycobacterium tuberculosis that persists in specific niches under drug pressure and has achieved treatment shortening in mice, does not diffuse well in caseum, concordant with its failure to shorten therapy in recent clinical trials.\n\n[P4] Human and other faeces as breeding media of the trachoma vector Musca sorbens.\nMale and female flies emerging from human faeces were significantly larger than those from other media, suggesting that they would be more fecund and live longer than smaller flies from other sources. Female flies caught from children's eyes were of a similar size to those from human faeces, but significantly larger than those from other media. We consider that human faeces are the best larval medium for M. sorbens, although some breeding also occurs in animal faeces. Removal of human faeces from the environment, through the provision of basic sanitation, is likely to greatly reduce fly density, eye contact and hence trachoma transmission, but if faeces of other animals are present M. sorbens will persist.\n\n[P5] Challenges for malaria elimination in Zanzibar: pyrethroid resistance in malaria vectors and poor performance of long-lasting insecticide nets\nBACKGROUND Long-lasting insecticide treated nets (LLINs) and indoor residual house spraying (IRS) are the main interventions for the control of malaria vectors in Zanzibar. The aim of the present study was to assess the susceptibility status of malaria vectors against the insecticides used for LLINs and IRS and to determine the durability and efficacy of LLINs on the island. METHODS Mosquitoes were sampled from Pemba and Unguja islands in 2010-2011 for use in WHO susceptibility tests. One hundred and fifty LLINs were collected from households on Unguja, their physical state was recorded and then tested for efficacy as well as total insecticide content. RESULTS Species identification revealed that over 90% of the Anopheles gambiae complex was An. arabiensis with a small number of An. gambiae s.s. and An. merus being present. Susceptibility tests showed that An. arabiensis on Pemba was resistant to the pyrethroids used for LLINs and IRS.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "930730f7b0fd8d5fd02e1a91674450f0a22af6133b393afdd5e810db1bd550ac",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716250.912555,
+      "end_wall": 1792716257.239404,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2230,
+    "start_wall": 1792716250.912555,
+    "start_mono": 385807.987989291,
+    "end_wall": 1792716257.239404,
+    "end_mono": 385814.314842541,
+    "raw_response": "{\n  \"reasoning\": \"The claim is supported because the passages show that Bacillus anthracis spores can be dispersed and then re-aerosolized in indoor environments, making disposal difficult.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\" }",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6324019375,
+     "load_duration": 94058166,
+     "prompt_eval_count": 1236,
+     "prompt_eval_duration": 2239777708,
+     "eval_count": 72,
+     "eval_duration": 2928500091,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:17.237436Z"
+    },
+    "elapsed_s": 6.327,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2230,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:33872649:0",
+     "scifact:33872649:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 171,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "af54e020133f3b9ad5ec3bb6caeb8805a83375039bce83cdd7bb9746fa893e93",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716244.759327,
+      "end_wall": 1792716247.062547,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716244.759327,
+    "start_mono": 385801.834755208,
+    "end_wall": 1792716247.062547,
+    "end_mono": 385804.137976458,
+    "raw_response": "{\"query\": \"disposal methods for anthrax spores\" }\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2301296833,
+     "load_duration": 1415376958,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 429908000,
+     "eval_count": 19,
+     "eval_duration": 406141876,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:07.061679Z"
+    },
+    "elapsed_s": 2.303,
+    "query_used": "disposal methods for anthrax spores",
+    "query_source": "json",
+    "query_arrival_seq": 2232
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "disposal methods for anthrax spores",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:33872649:0",
+       "score_q": 9516
+      },
+      {
+       "passage_key": "scifact:33872649:1",
+       "score_q": 5083
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 4597
+      },
+      {
+       "passage_key": "scifact:2140513:0",
+       "score_q": 4492
+      },
+      {
+       "passage_key": "scifact:109946221:2",
+       "score_q": 4286
+      }
+     ],
+     "retrieval_sha256": "b7bfbf4346f0241b8abe8d7228d5e6d36b059a7c480a203262b5b25b01d77a3c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b7bfbf4346f0241b8abe8d7228d5e6d36b059a7c480a203262b5b25b01d77a3c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:33872649:0",
+      "content_sha256": "9d4057230efca78c6e4c8ac3af1401fa7841fe8c73100aadd169305ff3017a1a",
+      "chars": 1000
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33872649:1",
+      "content_sha256": "4bb10c878edc54cf8ccb7d39984d04dec8135a736d0bb7308ebbc0a8a16cbdc5",
+      "chars": 670
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2140513:0",
+      "content_sha256": "69ba260932700d02c708f2443272f3152b9e15565fd2a9a4987ba5199f061272",
+      "chars": 993
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:109946221:2",
+      "content_sha256": "d4ab54842604ab27d9c2a98dac78d278cb61f5e7dd3a4329669a3902b3b1ed36",
+      "chars": 324
+     }
+    ],
+    "elapsed_s": 0.0032
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nEvidence passages from your search for \"disposal methods for anthrax spores\":\n<<<PASSAGES\n[P1] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nCONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then simulated active office conditions to estimate secondary aerosolization of B anthracis spores. Nominal size characteristics, airborne concentrations, and surface contamination of B anthracis particles (colony-forming units) were evaluated. RESULTS Viable B anthracis spores reaerosolized under semiquiescent conditions, with a marked increase in reaerosolization during simulated active office conditions.\n\n[P2] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nIncreases were observed for B anthracis collected on open sheep blood agar plates (P<.001) and personal air monitors (P =.01) during active office conditions. More than 80% of the B anthracis particles collected on stationary monitors were within an alveolar respirable size range of 0.95 to 3.5 micro m. CONCLUSIONS Bacillus anthracis spores used in a recent terrorist incident reaerosolized under common office activities. These findings have important implications for appropriate respiratory protection, remediation, and reoccupancy of contaminated office environments.\n\n[P3] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\n\n[P4] Pleiotropy as a mechanism to stabilize cooperation\nMost genes affect many traits. This phenomenon, known as pleiotropy, is a major constraint on evolution because adaptive change in one trait may be prevented because it would compromise other traits affected by the same genes. Here we show that pleiotropy can have an unexpected effect and benefit one of the most enigmatic of adaptations—cooperation. A spectacular act of cooperation occurs in the social amoeba Dictyostelium discoideum, in which some cells die to form a stalk that holds the other cells aloft as reproductive spores. We have identified a gene, dimA, in D. discoideum that has two contrasting effects. It is required to receive the signalling molecule DIF-1 that causes differentiation into prestalk cells. Ignoring DIF-1 and not becoming prestalk should allow cells to cheat by avoiding the stalk. However, we find that in aggregations containing the wild-type cells, lack of the dimA gene results in exclusion from spores.\n\n[P5] Innovative beneficial reuse of reverse osmosis concentrate using bipolar membrane electrodialysis and electrochlorination processes\nThis comparison indicates that a reuse approach might be economically viable for inland wastewater reuse facilities that utilize RO membranes and have limited options for concentrate disposal.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1ffdce154aac4fd745bfadc064c927154d030c68847caea2ee741bfd07a98559",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716247.066122,
+      "end_wall": 1792716257.249164,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2231,
+    "start_wall": 1792716247.066122,
+    "start_mono": 385804.141552208,
+    "end_wall": 1792716257.249164,
+    "end_mono": 385814.32460275,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that anthrax spores are difficult to dispose of once dispersed. While no passage explicitly states the difficulty of disposal, passage P2 suggests that spores reaerosolize during common office activities, implying they can easily become airborne again, which indirectly indicates challenges in disposal. Passages P1 and P2 provide evidence of spore resilience and potential contamination in environments, which indirectly supports the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10178478083,
+     "load_duration": 12915416,
+     "prompt_eval_count": 1140,
+     "prompt_eval_duration": 2962647707,
+     "eval_count": 142,
+     "eval_duration": 6709104919,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:17.245497Z"
+    },
+    "elapsed_s": 10.183,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2231,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:33872649:0",
+     "scifact:33872649:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 460,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "af54e020133f3b9ad5ec3bb6caeb8805a83375039bce83cdd7bb9746fa893e93",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716244.75907,
+      "end_wall": 1792716245.8827379,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716244.75907,
+    "start_mono": 385801.834498291,
+    "end_wall": 1792716245.8827379,
+    "end_mono": 385802.958166875,
+    "raw_response": "{\"query\": \"anthrax spore disposal difficulty\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1121029917,
+     "load_duration": 113037709,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 342260375,
+     "eval_count": 12,
+     "eval_duration": 432837960,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:05.88158Z"
+    },
+    "elapsed_s": 1.124,
+    "query_used": "anthrax spore disposal difficulty",
+    "query_source": "json",
+    "query_arrival_seq": 2230
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "anthrax spore disposal difficulty",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:33872649:0",
+       "score_q": 710
+      },
+      {
+       "passage_key": "scifact:33872649:1",
+       "score_q": 692
+      },
+      {
+       "passage_key": "scifact:46602807:0",
+       "score_q": 593
+      },
+      {
+       "passage_key": "scifact:4942718:0",
+       "score_q": 585
+      },
+      {
+       "passage_key": "scifact:371289:0",
+       "score_q": 583
+      }
+     ],
+     "retrieval_sha256": "ce698ead9427e82c1b99aba5807eef810404a110e3dbe1b4c79351b49b48f5fb"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ce698ead9427e82c1b99aba5807eef810404a110e3dbe1b4c79351b49b48f5fb",
+    "query_embedding_sha256": "06dc09186b323c6bb2fbdb2d2ef815c68031fd7e45cf9b94ed97295be4aa5d82",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:33872649:0",
+      "content_sha256": "9d4057230efca78c6e4c8ac3af1401fa7841fe8c73100aadd169305ff3017a1a",
+      "chars": 1000
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33872649:1",
+      "content_sha256": "4bb10c878edc54cf8ccb7d39984d04dec8135a736d0bb7308ebbc0a8a16cbdc5",
+      "chars": 670
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:46602807:0",
+      "content_sha256": "37895b7e25a8761f71a32994ceba33e1728d64c0b9006f5a3c5bda9976425092",
+      "chars": 997
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4942718:0",
+      "content_sha256": "4f1605c7c3b4cc977cdd9cdebc18e5db4b1ef5d986b64a45b04230e7f3685155",
+      "chars": 1038
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:371289:0",
+      "content_sha256": "90a36ee713224f5e1e95e0f83638745c2274d8f5669b90a509956c9a0df33ba7",
+      "chars": 1141
+     }
+    ],
+    "elapsed_s": 4.9174
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nEvidence passages from your search for \"anthrax spore disposal difficulty\":\n<<<PASSAGES\n[P1] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nCONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then simulated active office conditions to estimate secondary aerosolization of B anthracis spores. Nominal size characteristics, airborne concentrations, and surface contamination of B anthracis particles (colony-forming units) were evaluated. RESULTS Viable B anthracis spores reaerosolized under semiquiescent conditions, with a marked increase in reaerosolization during simulated active office conditions.\n\n[P2] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nIncreases were observed for B anthracis collected on open sheep blood agar plates (P<.001) and personal air monitors (P =.01) during active office conditions. More than 80% of the B anthracis particles collected on stationary monitors were within an alveolar respirable size range of 0.95 to 3.5 micro m. CONCLUSIONS Bacillus anthracis spores used in a recent terrorist incident reaerosolized under common office activities. These findings have important implications for appropriate respiratory protection, remediation, and reoccupancy of contaminated office environments.\n\n[P3] Comparison of agar dilution, microdilution, and disk elution methods for measuring the synergy of cefotaxime and its metabolite against anaerobes.\nThe activities of cefotaxime (CTX) and desacetyl cefotaxime (des-CTX) were tested both singly and in combination against 173 anaerobic clinical isolates. The MIC of CTX for 50% of 60 Bacteroides fragilis isolates was 22.4 micrograms/ml in broth, compared with 47.4 micrograms/ml in agar. This reduced efficacy in agar was seen with all species tested and is in apparent conflict with reported clinical efficacy of the drug. Synergy between CTX and des-CTX was observed with 70 to 100% of the isolates, including 60% of all Bacteroides spp. tested. The susceptibility results in a synergy system correlated well with those noted in a broth-disk elution method incorporating 32 micrograms of CTX and 8 micrograms of des-CTX per ml. The correlation was poorer when the broth-disk method contained 16 micrograms of CTX and 8 micrograms of des-CTX per ml.\n\n[P4] High-Throughput Genetic Screens Identify a Large and Diverse Collection of New Sporulation Genes in Bacillus subtilis\nThe differentiation of the bacterium Bacillus subtilis into a dormant spore is among the most well-characterized developmental pathways in biology. Classical genetic screens performed over the past half century identified scores of factors involved in every step of this morphological process. More recently, transcriptional profiling uncovered additional sporulation-induced genes required for successful spore development. Here, we used transposon-sequencing (Tn-seq) to assess whether there were any sporulation genes left to be discovered. Our screen identified 133 out of the 148 genes with known sporulation defects. Surprisingly, we discovered 24 additional genes that had not been previously implicated in spore formation. To investigate their functions, we used fluorescence microscopy to survey early, middle, and late stages of differentiation of null mutants from the B. subtilis ordered knockout collection.\n\n[P5] A Triple-Stain Flow Cytometric Method to Assess Plasma- and Acrosome-Membrane Integrity of Cryopreserved Bovine Sperm Immediately after Thawing in Presence of Egg-Yolk Particles1\nAbstract Simultaneously evaluating postthaw viability and acrosome integrity of spermatozoa by flow cytometry would provide a valuable testing tool in both research and routine work. In the present study, a new triple-stain combination was developed for the simultaneous evaluation of viability and acrosome integrity of bovine sperm processed in egg yolk-based extender by flow cytometer. SYBR-14 and propidium iodide (PI) enabled the discrimination of sperm cells from egg yolk and debris particles, which was instrumental for the flow cytometric analyses of frozen-thawed bovine sperm, because it implied that washing steps to remove egg yolk were no longer required. In addition, phycoerythrin-conjugated peanut agglutinin (PE-PNA) was used to discriminate acrosome-damaged/reacted sperm cells from acrosome-intact cells. Repeatability was calculated using two processed ejaculates of 10 bulls. Three straws per batch were analyzed in duplicate measurements.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bfab51bd13779ec23f3db78fd7a0be4c30c59988bd6191566dce289e47e560bc",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716250.8007271,
+      "end_wall": 1792716270.858377,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2232,
+    "start_wall": 1792716250.8007271,
+    "start_mono": 385807.876160958,
+    "end_wall": 1792716270.858377,
+    "end_mono": 385827.933829,
+    "raw_response": "{\"reasoning\": \"The passages highlight the difficulty of disposing of anthrax spores due to their airborne nature and resistance to disinfection.  The difficulty in removing spores highlights the challenge of their proper disposal.\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20051624833,
+     "load_duration": 9925746542,
+     "prompt_eval_count": 1288,
+     "prompt_eval_duration": 4780058917,
+     "eval_count": 57,
+     "eval_duration": 4157317040,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:30.853352Z"
+    },
+    "elapsed_s": 20.058,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2232,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 215,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "af54e020133f3b9ad5ec3bb6caeb8805a83375039bce83cdd7bb9746fa893e93",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716244.75924,
+      "end_wall": 1792716250.33203,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716244.75924,
+    "start_mono": 385801.834668,
+    "end_wall": 1792716250.33203,
+    "end_mono": 385807.407462166,
+    "raw_response": "{\"query\": \"anthrax spore disposal difficulty\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5570241042,
+     "load_duration": 2706156250,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 870873416,
+     "eval_count": 12,
+     "eval_duration": 1844725958,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:10.330599Z"
+    },
+    "elapsed_s": 5.573,
+    "query_used": "anthrax spore disposal difficulty",
+    "query_source": "json",
+    "query_arrival_seq": 2233
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "anthrax spore disposal difficulty",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:33872649:0",
+       "score_q": 6812
+      },
+      {
+       "passage_key": "scifact:4942718:0",
+       "score_q": 4839
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 4293
+      },
+      {
+       "passage_key": "scifact:109946221:2",
+       "score_q": 4286
+      },
+      {
+       "passage_key": "scifact:18855191:0",
+       "score_q": 4286
+      }
+     ],
+     "retrieval_sha256": "f92db9698bea45f125827ac690eaaf5cdf997198fa29da9915443823e9e655f3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f92db9698bea45f125827ac690eaaf5cdf997198fa29da9915443823e9e655f3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:33872649:0",
+      "content_sha256": "9d4057230efca78c6e4c8ac3af1401fa7841fe8c73100aadd169305ff3017a1a",
+      "chars": 1000
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4942718:0",
+      "content_sha256": "4f1605c7c3b4cc977cdd9cdebc18e5db4b1ef5d986b64a45b04230e7f3685155",
+      "chars": 1038
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:109946221:2",
+      "content_sha256": "d4ab54842604ab27d9c2a98dac78d278cb61f5e7dd3a4329669a3902b3b1ed36",
+      "chars": 324
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18855191:0",
+      "content_sha256": "f08f5b2c3a557b23d087f98626274be70a28ce77f43b3bd6dbce244fc93f2d6a",
+      "chars": 996
+     }
+    ],
+    "elapsed_s": 0.0017
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nEvidence passages from your search for \"anthrax spore disposal difficulty\":\n<<<PASSAGES\n[P1] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nCONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then simulated active office conditions to estimate secondary aerosolization of B anthracis spores. Nominal size characteristics, airborne concentrations, and surface contamination of B anthracis particles (colony-forming units) were evaluated. RESULTS Viable B anthracis spores reaerosolized under semiquiescent conditions, with a marked increase in reaerosolization during simulated active office conditions.\n\n[P2] High-Throughput Genetic Screens Identify a Large and Diverse Collection of New Sporulation Genes in Bacillus subtilis\nThe differentiation of the bacterium Bacillus subtilis into a dormant spore is among the most well-characterized developmental pathways in biology. Classical genetic screens performed over the past half century identified scores of factors involved in every step of this morphological process. More recently, transcriptional profiling uncovered additional sporulation-induced genes required for successful spore development. Here, we used transposon-sequencing (Tn-seq) to assess whether there were any sporulation genes left to be discovered. Our screen identified 133 out of the 148 genes with known sporulation defects. Surprisingly, we discovered 24 additional genes that had not been previously implicated in spore formation. To investigate their functions, we used fluorescence microscopy to survey early, middle, and late stages of differentiation of null mutants from the B. subtilis ordered knockout collection.\n\n[P3] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\n\n[P4] Innovative beneficial reuse of reverse osmosis concentrate using bipolar membrane electrodialysis and electrochlorination processes\nThis comparison indicates that a reuse approach might be economically viable for inland wastewater reuse facilities that utilize RO membranes and have limited options for concentrate disposal.\n\n[P5] Exploitative and Hierarchical Antagonism in a Cooperative Bacterium\nSocial organisms that cooperate with some members of their own species, such as close relatives, may fail to cooperate with other genotypes of the same species. Such noncooperation may take the form of outright antagonism or social exploitation. Myxococcus xanthus is a highly social prokaryote that cooperatively develops into spore-bearing, multicellular fruiting bodies in response to starvation. Here we have characterized the nature of social interactions among nine developmentally proficient strains of M. xanthus isolated from spatially distant locations. Strains were competed against one another in all possible pairwise combinations during starvation-induced development. In most pairings, at least one competitor exhibited strong antagonism toward its partner and a majority of mixes showed bidirectional antagonism that decreased total spore production, even to the point of driving whole populations to extinction.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "34382e98dd406bf4b5e0dc0367fd37b03a19ebccd89f02000073a2866a4a74a0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716250.334165,
+      "end_wall": 1792716271.3554041,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2233,
+    "start_wall": 1792716250.334165,
+    "start_mono": 385807.409598291,
+    "end_wall": 1792716271.3554041,
+    "end_mono": 385828.43085625,
+    "raw_response": "{\n  \"reasoning\": \"The passages do not directly discuss the difficulty of disposing of anthrax spores, but they provide context about the spread and detection of anthrax spores, which supports the claim that they are difficult to manage once dispersed.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [ \"P1\", \"P2\" ],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21016637625,
+     "load_duration": 7411729750,
+     "prompt_eval_count": 990,
+     "prompt_eval_duration": 2044761042,
+     "eval_count": 83,
+     "eval_duration": 10570164167,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:31.351608Z"
+    },
+    "elapsed_s": 21.021,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2233,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:33872649:0",
+     "scifact:4942718:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 233,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "af54e020133f3b9ad5ec3bb6caeb8805a83375039bce83cdd7bb9746fa893e93",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716244.7594,
+      "end_wall": 1792716246.371407,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716244.7594,
+    "start_mono": 385801.8348285,
+    "end_wall": 1792716246.371407,
+    "end_mono": 385803.4468355,
+    "raw_response": "{\"query\": \"Anthrax spores disposal difficulty effects and measures\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1609635958,
+     "load_duration": 49841416,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 475711833,
+     "eval_count": 18,
+     "eval_duration": 1035853458,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:06.370179Z"
+    },
+    "elapsed_s": 1.612,
+    "query_used": "Anthrax spores disposal difficulty effects and measures",
+    "query_source": "json",
+    "query_arrival_seq": 2231
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Anthrax spores disposal difficulty effects and measures",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:33872649:0",
+       "score_q": 656
+      },
+      {
+       "passage_key": "scifact:33872649:1",
+       "score_q": 640
+      },
+      {
+       "passage_key": "scifact:2140513:1",
+       "score_q": 604
+      },
+      {
+       "passage_key": "scifact:3552753:0",
+       "score_q": 601
+      },
+      {
+       "passage_key": "scifact:1805641:2",
+       "score_q": 599
+      }
+     ],
+     "retrieval_sha256": "efe190f4859d2eb2b4f732dcff26e3a12cfd336bc47fb58050633f411c58b666"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "efe190f4859d2eb2b4f732dcff26e3a12cfd336bc47fb58050633f411c58b666",
+    "query_embedding_sha256": "35c29f206c49047a4cc24ccc667cfe0865131f2f1ec69ff723d8d721a58ac8dd",
+    "query_embedding_f32_b64": "ACFaPEL6mz1mvky+io8jvb6rUj1S7Kk8tLOBPfvxmD2dl7M80h8MPGQzrzpb9fE6WfcQO1b4kTyLoAO9zb7Ku3ynfz0D8169aX3AvFWSDD07gas8ctsfvQVbhb3UIru8YwbPPKGVTz2GTTM9a1pqu5YnIzxIQf08+VHDPGi2Trw+rGa9tgutvImTab2kd9m87wxxPYP3iDu0iHQ9akjMPGzDpTyLMIK8zagWPYZ2HL0myCa7A06OPR3AnD1czAu8y/Gguy+DPL3slCQ9g7SEveR4GryC9EE8kKDGPN3TNj2hWzg8oMc1u+Iv3Tyi+Em61vunPBtNgj0MDkG9ZoxuPfSDCj2jkWu9IBZovKjZZj0T2Cg8KL4yvEQdaz1RPzm8YfwBOg8LCjzlplW9yeaGParahb29ycu8g8z0PExuNz0f1+28ADv+usBjpD1pnoY7XIajPY8tNDvquhI8TR2wvPRnhrw6DjQ9VBz5vOvSB70QGHA8HJ6CPYIfuL3BVgk8aEUZu4/P2Tx/MdW8GInevEk8n7w+G9I8IiQKPACLEzz2Jim9WdAfPfy3Ez0wIGk9OqCsPAzZND0Qxdi7S74hPfz9OL2X/ds71zOqPZo/QL3FaIs8Fh0TvXNQejx/VQS93J/FPBQdyzx9KqA8rjbqPOqqFjpP24o845KrvHrHBz2+xoE9UywMvZ6B1jqWFEG9L/5Du3U697xpYEK7l8ISvIZ/o73GBMw8K1ofvSGYAL31M+c8YTIZPAqmPT2c8gU9SV0/vQkjMr2j4/E8iHjZvJzImr2FSxu9Xn1evBA5HLzOTSo8jM1hPM+5fT2kdz68gr0UvSxbGT38JNS8io5zPdkoLzzRfSQ92VgNvWmtuD12UGA7d12YvRWdwjxiHeg7LS0NPd4FuLzmlga9uOaKvWKwAr2zWpI8hegdvTfkGbzaSQc9AB2tvIwELDz10o+7mqSYPUbRIr2Ac4E8UMd5PAy6l7oylC+93SSbPRLQFb1xcSe9qnD5vKzcgDuVueY8ynIyvX8hKL2SZcG882E1ve08Dj2r3CQ7VmtdPJrRfLx2zsq8xkHePFwBjTpxJVM6IEoevSO6FT1zUPO76YFXPXt7nLuzLRg9HrQ/Pf42IL00jQQ8IFoqO/Ujyrs4EHu8kAwyveOjaLwdGte86OCzvEx/DbuTVAC9liukPFwS8DmcyXQ9swr9PGmUGb3wvyO8rIgSvXNPgbtEWEG5It+avbgnYz0WdA28YYgSvaS0XruD+qS8SlvMu9/gDbx+Wum80TTTvNp2RTsa0uG89yKou1Ninrwo9LM8LWp3vGN+SLx7ITy8Run3PGRnOLzF+zk84RgAPTHvWry9Szc95sxCvJEgdr0S8hS7uZUwvJ0KYLsysIu88DDBvPvqmjxkFMS7dQ0MvYEWwryFzk270u3oPOoFiTzZSjy8ppAXO5AZDD2yFxc9/CsGPQX94rvPaEE8E4ACPV3L4Lzub2C9oduBPJd1Cr0bdA09vAK8vWyYNr0mLCU8mT3bOoMOhz1jRpm8XSCtvITd+Tya1I08KYHMPDmzEL0vm4A9NckDO8H03TyrWg89xOKLvdn02zzfcou904B+PU8nGT29AeM80DyjPNPTjbz8OYY8Sl1AO45HkrzsyLY83S7IvFAZ672XXq88Z7ARvSOzcjwpGiS9DudNupCwfz2XQCE7i6AVPYmbXzzeiAs8T2eCu+9F3DwFhpm8AwtAvHnXJzycjto7e0NePcz8jTxi1/08Vb+LPLQIKT2NV+o74HSFvSHtWL04ZT49waODPLQvhDwPhVC8gRuCPMsVFD3j41u9qt6GvIH9OLyxgDS9PcMju+04T71LpCK78B/tPOBbAT3sVo67L5JkOxB5NrzKgF27xrIxPTJpPTtkDl49UVkPPeTOEz0L6hY9ySDHPIcyjDxnyYa8GR87vWglXTw9o5U8MsKNPWxQijoeCbi8WlNwPL9RBr000Dy8ppwTvX6dCj26xgG9tT+KPaMmrLx7FNO8d0FYvHOUxzyb0ya9YkWDvVFeojyfK/a8nTrPvE/6ZTzBrqM86H+OvH68j7zYRgI8P56SvSPtOb17fni9nR8CPZMIKjy+7Qy910f8PPHhjLl1Rk+8az1NPRBfh7tm6p29QioOPDYHqDsF7hC9ALXYvIQf/rulBTS9AypePJW+qbwc65g8u6sRPVhRpTxtktG8ZejYuQmX6LxXy4s8y0siPdHMeLxZezc9RPECPYShJz0UM6Q8v0oEvZnx5bttENE8bX/APAcTET3EjaO8MVJyveAwXrtc25s8iesGPf9febwZG009aOiou0QKXb1yD6W8EzgIPZfGTj0jNZE8hkWBu/+o/7z+kOS7fFCEugXGjD3IAuw8aq2gvUCzo7sRU8g8x22kO6NI4DxXGjU8N4cSvcDImT0m3S08V/iXOhe227zP2Lm8MYZePKhvAT2rR609ET/FvPwd9bpUfSC8FsQ1vWrarLz+r4G7QUnXvMbHYz0xgxu9WdQ3vRO6Oz3s+ii9PUPdukShtzwgvwC9d5kDu/Fo0TuItcU53F+gu796HrwrtdG8FhCCuhFgT71f3Ro8j9YkvNHa17iiQrg9Eb4NvU29pbxK0YA9UvHSvN3mVDutmA49e7ocvW0wMT110sM8R4uAPPp6Er3GAIw96oFEPOluwrvCacs86mhtPNqNzbzAPpQ9BqkjvYGPEL2PTMC7gdehvA1WljzQEjE9BqE7vJbGXDwsudm8l7KRPCvQDj1bIVm9Xpc4PMba2Dwwz1o62G1AvZgKU73Tcaq83N7pO+Gfgr1VJEm85iEyPBLhnTtbyJc88LNovfnOPr03Ias8yO41vA6bV71VYyg8l/wgPZxEBT1JlVA8wUX7PFUvq7qE1Le8BGmnu57Q6zvmmta7tNdFPJj3DrzbGLi8VaCKvITuiTy+AZe9ogE6PI8buLxBjHC7S6r3vIBHajzyef289zJxvR3hkTxpy9a7l07FO7knjT0BOLO6mt5rPd1LbL1eezi9tz7QO4ZpQjx7SIA9w+mTvFsY5rwCMZc8BK1PvZEdIDxVIfK8TwS1PMbz1ry+65e87TqsO78ohjtBWN28cAMfPYGkcz2Eotg7DQqZPHcyHL2NbV69D8CmPToqdb2y4/m76R4OPP1DbD1JhJu8LcNyPN/cbj2JOfQ76b+dvRw08LzpITC9Lq/zvJWKJT2Pry490nycvKqTtjyswLM9AUvcvKL/OLyjeve6uiGAvGY7LD2FWxA9uLPsPCSL07nq6A499d+AvbWKHD0H3RS9GqiuPCfIOrxhAEm9v60OvT0PND1aSRa90qU3PTcDGL0GoQS95uNcvZfh/7wSc2093Xj0u2FwL7w8dVO8KKFrvbYmMr34Gvg84eRBvYdZjD0ayge8Z8i5PH0RVj0Jg2S8bS50vZzJBrwAcPw8K4NEvBpTiz1rDGE9tA0iPDAaY7vtVhI9S1aIPdv9hD05Vgm9jRxjPSL89DrzmoI8ObiCvWf2kb2YGlO8cOoDvdeEMb0Rxcu7VsjqO3+ZULwMsJC8xJtjvJR1Vzyg1nK9e9YRvctQCT10G/y7/fyBvdMrhr0GwpI8ZKSNPO5Kej2lA8O7+H0AvW6z5ry2wx48IMF1vAMaaz3er9a5dAUxvRbfb72J6i29B40NPIxNAD1y0BS8vhQHvPgurLwCKSk9lYDvOwSOHj2x13U8dvuXPa7LnrsWdT45Q8OmPGL2vryYeio97QsvPYCxkjx0eRY8UeY2POh2Eb0TtpI7qdbSPAVI7DppWae8Zd4jPXBXjrwpFes7vDtwuuTfAT00OfW8RKzqvPfDh7yjpUs90gSjPC/rCr2cq6m9L8q6vFtwIj2JOs68Sb9aPZbKSLy62SM9xcwJPBoP5jv+qSS9mLdWvSXDfj0mLtI7zBO0PEk6JLt4on87rVGYvQvSO72I4aG8s8wqPNoeCTkIegY9aSEbvdBUqjyA3jW9yOaBPf8ohLwRzQe9hz4WPVgfSjwLKpy7EILKPPSk9rwBUfy8+C6avBrg2Dw5t9A95ZdOPJnInDwyP6K9n/IpOzQp5zz+POw7PXT0vNgjzrsXniG9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:33872649:0",
+      "content_sha256": "9d4057230efca78c6e4c8ac3af1401fa7841fe8c73100aadd169305ff3017a1a",
+      "chars": 1000
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33872649:1",
+      "content_sha256": "4bb10c878edc54cf8ccb7d39984d04dec8135a736d0bb7308ebbc0a8a16cbdc5",
+      "chars": 670
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:2140513:1",
+      "content_sha256": "d6190ed7792ee475969fb512daa0b77f583aaceb0c099511945e02bb5a7ee85d",
+      "chars": 375
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3552753:0",
+      "content_sha256": "ed3671631148f6556efa321d2f59be76956fbb6cf0e154b52c87b6d2a883547b",
+      "chars": 994
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:1805641:2",
+      "content_sha256": "c18a58c4b7d57ac150f32ec495571d85bf668b3ab5fc4122e3f13048b88ac25d",
+      "chars": 1036
+     }
+    ],
+    "elapsed_s": 4.4661
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Anthrax spores are very difficult to dispose once they are dispersed.\n\nEvidence passages from your search for \"Anthrax spores disposal difficulty effects and measures\":\n<<<PASSAGES\n[P1] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nCONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then simulated active office conditions to estimate secondary aerosolization of B anthracis spores. Nominal size characteristics, airborne concentrations, and surface contamination of B anthracis particles (colony-forming units) were evaluated. RESULTS Viable B anthracis spores reaerosolized under semiquiescent conditions, with a marked increase in reaerosolization during simulated active office conditions.\n\n[P2] Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.\nIncreases were observed for B anthracis collected on open sheep blood agar plates (P<.001) and personal air monitors (P =.01) during active office conditions. More than 80% of the B anthracis particles collected on stationary monitors were within an alveolar respirable size range of 0.95 to 3.5 micro m. CONCLUSIONS Bacillus anthracis spores used in a recent terrorist incident reaerosolized under common office activities. These findings have important implications for appropriate respiratory protection, remediation, and reoccupancy of contaminated office environments.\n\n[P3] Pleiotropy as a mechanism to stabilize cooperation\nThis pleiotropic linkage of stalk and spore formation limits the potential for cheating in D. discoideum because defecting on prestalk cell production results in an even greater reduction in spores. We propose that the evolution of pleiotropic links between cheating and personal costs can stabilize cooperative adaptations.\n\n[P4] Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study.\nBACKGROUND In the assessment of severity in community acquired pneumonia (CAP), the modified British Thoracic Society (mBTS) rule identifies patients with severe pneumonia but not patients who might be suitable for home management. A multicentre study was conducted to derive and validate a practical severity assessment model for stratifying adults hospitalised with CAP into different management groups. METHODS Data from three prospective studies of CAP conducted in the UK, New Zealand, and the Netherlands were combined. A derivation cohort comprising 80% of the data was used to develop the model. Prognostic variables were identified using multiple logistic regression with 30 day mortality as the outcome measure. The final model was tested against the validation cohort. RESULTS 1068 patients were studied (mean age 64 years, 51.5% male, 30 day mortality 9%).\n\n[P5] Modelling the Impact of Artemisinin Combination Therapy and Long-Acting Treatments on Malaria Transmission Intensity\nThe absolute size of the public health impact, however, was greater in the highest-transmission area, with 54 clinical episodes per 100 persons per year averted compared to five per 100 persons per year in the lowest-transmission area. High coverage was important. Reducing presumptive treatment through improved diagnosis substantially reduced the number of treatment courses required per clinical episode averted in the lower-transmission settings although there was some loss of overall impact on transmission. An efficacious antimalarial regimen with no specific gametocytocidal properties but a long prophylactic time was estimated to be more effective at reducing transmission than a short-acting ACT in the highest-transmission setting. CONCLUSIONS Our results suggest that ACTs have the potential for transmission reductions approaching those achieved by insecticide-treated nets in lower-transmission settings.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "14b868c585936f8762709bfab712a9e124df6bf12f44f81847a42dc1c669f949",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716250.83792,
+      "end_wall": 1792716273.2746298,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2234,
+    "start_wall": 1792716250.83792,
+    "start_mono": 385807.913355,
+    "end_wall": 1792716273.2746298,
+    "end_mono": 385830.350084166,
+    "raw_response": "{\n  \"reasoning\": \"The provided passages discuss the reaerosolization of Bacillus anthracis spores under common office activities, which implies that once dispersed, the spores can remain airborne and potentially continue to spread. This suggests that anthrax spores are indeed very difficult to dispose once dispersed.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22432574625,
+     "load_duration": 8266414125,
+     "prompt_eval_count": 1249,
+     "prompt_eval_duration": 7193145415,
+     "eval_count": 108,
+     "eval_duration": 6695114494,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:44:33.271566Z"
+    },
+    "elapsed_s": 22.437,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2234,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:33872649:0",
+     "scifact:33872649:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 300,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "41c5a371871af5866bfbf7fc49c33075b36df59a0cdf48992bdb6d84817055a1",
+  "phi3:mini": "b7bfbf4346f0241b8abe8d7228d5e6d36b059a7c480a203262b5b25b01d77a3c",
+  "gemma2:2b": "ce698ead9427e82c1b99aba5807eef810404a110e3dbe1b4c79351b49b48f5fb",
+  "qwen2.5:3b": "f92db9698bea45f125827ac690eaaf5cdf997198fa29da9915443823e9e655f3",
+  "mistral": "efe190f4859d2eb2b4f732dcff26e3a12cfd336bc47fb58050633f411c58b666"
+ },
+ "item_start_wall": 1792716244.758872,
+ "item_wall_s": 28.516,
+ "ollama_ps_samples": [
+  [
+   1792716244.759,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716246.767,
+   [
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716248.777,
+   [
+    "qwen2.5:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716250.781,
+   [
+    "llama3.2:3b",
+    "nomic-embed-text:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716252.783,
+   [
+    "nomic-embed-text:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716254.792,
+   [
+    "nomic-embed-text:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716256.804,
+   [
+    "nomic-embed-text:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716258.813,
+   [
+    "qwen2.5:3b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792716260.821,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716262.833,
+   [
+    "qwen2.5:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792716264.843,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716266.852,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716268.861,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716270.872,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716272.883,
+   [
+    "mistral:latest",
+    "qwen2.5:3b",
+    "gemma2:2b"
+   ]
+  ]
+ ]
+}

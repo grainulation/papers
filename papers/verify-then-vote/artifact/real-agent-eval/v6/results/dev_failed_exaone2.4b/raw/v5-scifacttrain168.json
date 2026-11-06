@@ -1,0 +1,1254 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain168",
+ "order": 123,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain168",
+  "order": 123,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Bariatric surgery reduces colorectal cancer."
+ },
+ "item_view_sha256": "e39eace1186b985dcb9b4dfc43d523056c7f129e0e7476a80d1eebcd108954ef",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "granite3.3:2b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bariatric surgery reduces colorectal cancer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "06a6e7e627846cd12854dd498cf52b81803f27cb159e291f3aa93806dd0a69eb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836963.90137,
+      "end_wall": 1792836964.607896,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836963.90137,
+    "start_mono": 506520.749875375,
+    "end_wall": 1792836964.607896,
+    "end_mono": 506521.456392958,
+    "raw_response": "{\"query\": \"bariatric surgery colorectal cancer\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 702698792,
+     "load_duration": 87990208,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 138971583,
+     "eval_count": 12,
+     "eval_duration": 359953250,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:04.607166Z"
+    },
+    "elapsed_s": 0.707,
+    "query_used": "bariatric surgery colorectal cancer",
+    "query_source": "json",
+    "query_arrival_seq": 615
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "bariatric surgery colorectal cancer",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:5824985:2",
+       "score_q": 9120
+      },
+      {
+       "passage_key": "scifact:5824985:0",
+       "score_q": 8351
+      },
+      {
+       "passage_key": "scifact:18872233:0",
+       "score_q": 8322
+      },
+      {
+       "passage_key": "scifact:29022271:1",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "scifact:18872233:2",
+       "score_q": 8291
+      }
+     ],
+     "retrieval_sha256": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:5824985:2",
+      "content_sha256": "c7011000362d502f95e646df3d81c8c2a5367b546ab9b159cd392fd1ef28caaa",
+      "chars": 1017
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:5824985:0",
+      "content_sha256": "8a464300a855d9aae1631d41b7b52470f09c561890a4df3f77f9443c88b7eb44",
+      "chars": 863
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18872233:0",
+      "content_sha256": "bd495c2fcc99731ec5ca7053ad2df955f849cf0664878a42edea1525f2de4014",
+      "chars": 1094
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29022271:1",
+      "content_sha256": "06b54a2b3468b1ab0b22de082d7a172eb43c3d9bddd9f15ce0701a96a094e7f1",
+      "chars": 453
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18872233:2",
+      "content_sha256": "873299f532b58e85fa0f084f86c4fb7c481bb28174486793d442675843d772c4",
+      "chars": 503
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bariatric surgery reduces colorectal cancer.\n\nEvidence passages from your search for \"bariatric surgery colorectal cancer\":\n<<<PASSAGES\n[P1] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nProtective hazard ratios (HRs) were detected for bariatric surgery for incident T2DM, 0.68 (95% CI 0.55-0.83); hypertension, 0.35 (95% CI 0.27-0.45); angina, 0.59 (95% CI 0.40-0.87);MI, 0.28 (95% CI 0.10-0.74); and obstructive sleep apnoea, 0.55 (95% CI 0.40-0.87). Strong associations were found between bariatric surgery and the resolution of T2DM, with a HR of 9.29 (95% CI 6.84-12.62), and between bariatric surgery and the resolution of hypertension, with a HR of 5.64 (95% CI 2.65-11.99). No association was detected between bariatric surgery and fractures, cancer, or stroke. Effect estimates for mortality found no protective association with bariatric surgery overall, with a HR of 0.97 (95% CI 0.66-1.43). The data used were recorded for the management of patients in primary care and may be subject to inaccuracy, which would tend to lead to underestimates of true relative effect sizes.\n\n[P2] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nBACKGROUND Bariatric surgery is becoming a more widespread treatment for obesity. Comprehensive evidence of the long-term effects of contemporary surgery on a broad range of clinical outcomes in large populations treated in routine clinical practice is lacking. The objective of this study was to measure the association between bariatric surgery, weight, body mass index, and obesity-related co-morbidities. METHODS AND FINDINGS This was an observational retrospective cohort study using data from the United Kingdom Clinical Practice Research Datalink. All 3,882 patients registered in the database and with bariatric surgery on or before 31 December 2014 were included and matched by propensity score to 3,882 obese patients without surgery.\n\n[P3] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nIMPORTANCE Bariatric surgery is associated with sustained weight loss and improved physical health status for severely obese individuals. Mental health conditions may be common among patients seeking bariatric surgery; however, the prevalence of these conditions and whether they are associated with postoperative outcomes remains unknown. OBJECTIVE To determine the prevalence of mental health conditions among bariatric surgery candidates and recipients, to evaluate the association between preoperative mental health conditions and health outcomes following bariatric surgery, and to evaluate the association between surgery and the clinical course of mental health conditions. DATA SOURCES We searched PubMed, MEDLINE on OVID, and PsycINFO for studies published between January 1988 and November 2015. Study quality was assessed using an adapted tool for risk of bias; quality of evidence was rated based on GRADE (Grading of Recommendations Assessment, Development and Evaluation) criteria.\n\n[P4] Recommendations for the presurgical psychosocial evaluation of bariatric surgery patients.\nThis document outlines recommendations for the psychosocial evaluation of bariatric surgery patients, appropriate qualifications of those conducting these evaluations, communication of evaluation results and suggested treatment plan, and the extension of behavioral healthcare of the bariatric patient to the entire span of the surgical and postsurgical process.\n\n[P5] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nCONCLUSIONS AND RELEVANCE Mental health conditions are common among bariatric surgery patients-in particular, depression and binge eating disorder. There is inconsistent evidence regarding the association between preoperative mental health conditions and postoperative weight loss. Moderate-quality evidence supports an association between bariatric surgery and lower rates of depression postoperatively.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "18a839b4ea6623d9f679816da5a2521528eee8da1ed095dccee0ca833c39b24f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836964.609683,
+      "end_wall": 1792836972.365737,
+      "error": null
+     }
+    ],
+    "arrival_seq": 615,
+    "start_wall": 1792836964.609683,
+    "start_mono": 506521.4581805,
+    "end_wall": 1792836972.365737,
+    "end_mono": 506529.214154208,
+    "raw_response": "{\"reasoning\": \"Bariatric surgery has been associated with reduced risk of Type 2 Diabetes Mellitus and hypertension, but not with reduced colorectal cancer risk.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7753674625,
+     "load_duration": 58742125,
+     "prompt_eval_count": 1149,
+     "prompt_eval_duration": 1728805584,
+     "eval_count": 74,
+     "eval_duration": 5270985792,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:12.3644Z"
+    },
+    "elapsed_s": 7.756,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 615,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:5824985:2",
+     "scifact:5824985:0",
+     "scifact:18872233:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 146,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bariatric surgery reduces colorectal cancer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "06a6e7e627846cd12854dd498cf52b81803f27cb159e291f3aa93806dd0a69eb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836963.903252,
+      "end_wall": 1792836972.745924,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836963.903252,
+    "start_mono": 506520.751757708,
+    "end_wall": 1792836972.745924,
+    "end_mono": 506529.594336333,
+    "raw_response": "{\"query\": \"bariatric surgery colorectal cancer\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8840265875,
+     "load_duration": 4884309208,
+     "prompt_eval_count": 169,
+     "prompt_eval_duration": 866666250,
+     "eval_count": 11,
+     "eval_duration": 2886508584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:12.744907Z"
+    },
+    "elapsed_s": 8.843,
+    "query_used": "bariatric surgery colorectal cancer",
+    "query_source": "json",
+    "query_arrival_seq": 618
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "bariatric surgery colorectal cancer",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:5824985:2",
+       "score_q": 9120
+      },
+      {
+       "passage_key": "scifact:5824985:0",
+       "score_q": 8351
+      },
+      {
+       "passage_key": "scifact:18872233:0",
+       "score_q": 8322
+      },
+      {
+       "passage_key": "scifact:29022271:1",
+       "score_q": 8319
+      },
+      {
+       "passage_key": "scifact:18872233:2",
+       "score_q": 8291
+      }
+     ],
+     "retrieval_sha256": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:5824985:2",
+      "content_sha256": "c7011000362d502f95e646df3d81c8c2a5367b546ab9b159cd392fd1ef28caaa",
+      "chars": 1017
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:5824985:0",
+      "content_sha256": "8a464300a855d9aae1631d41b7b52470f09c561890a4df3f77f9443c88b7eb44",
+      "chars": 863
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18872233:0",
+      "content_sha256": "bd495c2fcc99731ec5ca7053ad2df955f849cf0664878a42edea1525f2de4014",
+      "chars": 1094
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:29022271:1",
+      "content_sha256": "06b54a2b3468b1ab0b22de082d7a172eb43c3d9bddd9f15ce0701a96a094e7f1",
+      "chars": 453
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18872233:2",
+      "content_sha256": "873299f532b58e85fa0f084f86c4fb7c481bb28174486793d442675843d772c4",
+      "chars": 503
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bariatric surgery reduces colorectal cancer.\n\nEvidence passages from your search for \"bariatric surgery colorectal cancer\":\n<<<PASSAGES\n[P1] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nProtective hazard ratios (HRs) were detected for bariatric surgery for incident T2DM, 0.68 (95% CI 0.55-0.83); hypertension, 0.35 (95% CI 0.27-0.45); angina, 0.59 (95% CI 0.40-0.87);MI, 0.28 (95% CI 0.10-0.74); and obstructive sleep apnoea, 0.55 (95% CI 0.40-0.87). Strong associations were found between bariatric surgery and the resolution of T2DM, with a HR of 9.29 (95% CI 6.84-12.62), and between bariatric surgery and the resolution of hypertension, with a HR of 5.64 (95% CI 2.65-11.99). No association was detected between bariatric surgery and fractures, cancer, or stroke. Effect estimates for mortality found no protective association with bariatric surgery overall, with a HR of 0.97 (95% CI 0.66-1.43). The data used were recorded for the management of patients in primary care and may be subject to inaccuracy, which would tend to lead to underestimates of true relative effect sizes.\n\n[P2] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nBACKGROUND Bariatric surgery is becoming a more widespread treatment for obesity. Comprehensive evidence of the long-term effects of contemporary surgery on a broad range of clinical outcomes in large populations treated in routine clinical practice is lacking. The objective of this study was to measure the association between bariatric surgery, weight, body mass index, and obesity-related co-morbidities. METHODS AND FINDINGS This was an observational retrospective cohort study using data from the United Kingdom Clinical Practice Research Datalink. All 3,882 patients registered in the database and with bariatric surgery on or before 31 December 2014 were included and matched by propensity score to 3,882 obese patients without surgery.\n\n[P3] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nIMPORTANCE Bariatric surgery is associated with sustained weight loss and improved physical health status for severely obese individuals. Mental health conditions may be common among patients seeking bariatric surgery; however, the prevalence of these conditions and whether they are associated with postoperative outcomes remains unknown. OBJECTIVE To determine the prevalence of mental health conditions among bariatric surgery candidates and recipients, to evaluate the association between preoperative mental health conditions and health outcomes following bariatric surgery, and to evaluate the association between surgery and the clinical course of mental health conditions. DATA SOURCES We searched PubMed, MEDLINE on OVID, and PsycINFO for studies published between January 1988 and November 2015. Study quality was assessed using an adapted tool for risk of bias; quality of evidence was rated based on GRADE (Grading of Recommendations Assessment, Development and Evaluation) criteria.\n\n[P4] Recommendations for the presurgical psychosocial evaluation of bariatric surgery patients.\nThis document outlines recommendations for the psychosocial evaluation of bariatric surgery patients, appropriate qualifications of those conducting these evaluations, communication of evaluation results and suggested treatment plan, and the extension of behavioral healthcare of the bariatric patient to the entire span of the surgical and postsurgical process.\n\n[P5] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nCONCLUSIONS AND RELEVANCE Mental health conditions are common among bariatric surgery patients-in particular, depression and binge eating disorder. There is inconsistent evidence regarding the association between preoperative mental health conditions and postoperative weight loss. Moderate-quality evidence supports an association between bariatric surgery and lower rates of depression postoperatively.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "18a839b4ea6623d9f679816da5a2521528eee8da1ed095dccee0ca833c39b24f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836972.746591,
+      "end_wall": 1792836981.358668,
+      "error": null
+     }
+    ],
+    "arrival_seq": 616,
+    "start_wall": 1792836972.746591,
+    "start_mono": 506529.595005208,
+    "end_wall": 1792836981.358668,
+    "end_mono": 506538.206991833,
+    "raw_response": "{\"reasoning\": \"The study (P1) found strong associations between bariatric surgery and the resolution of T2DM, hypertension, angina, MI, and obstructive sleep apnoea, but it did not find any association between bariatric surgery and colorectal cancer.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8607317584,
+     "load_duration": 2330727167,
+     "prompt_eval_count": 1122,
+     "prompt_eval_duration": 2200556959,
+     "eval_count": 75,
+     "eval_duration": 2563514789,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:21.355027Z"
+    },
+    "elapsed_s": 8.612,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 616,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:5824985:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 235,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bariatric surgery reduces colorectal cancer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "06a6e7e627846cd12854dd498cf52b81803f27cb159e291f3aa93806dd0a69eb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836963.902786,
+      "end_wall": 1792836968.6415849,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836963.902786,
+    "start_mono": 506520.751291583,
+    "end_wall": 1792836968.6415849,
+    "end_mono": 506525.490039041,
+    "raw_response": "{\"query\": \"bariatric surgery colorectal cancer risk\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4735734792,
+     "load_duration": 3364425917,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 596173958,
+     "eval_count": 13,
+     "eval_duration": 664679042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:08.640322Z"
+    },
+    "elapsed_s": 4.739,
+    "query_used": "bariatric surgery colorectal cancer risk",
+    "query_source": "json",
+    "query_arrival_seq": 617
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "bariatric surgery colorectal cancer risk",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:5824985:3",
+       "score_q": 9376
+      },
+      {
+       "passage_key": "scifact:18872233:0",
+       "score_q": 9223
+      },
+      {
+       "passage_key": "scifact:5824985:2",
+       "score_q": 9120
+      },
+      {
+       "passage_key": "scifact:5824985:0",
+       "score_q": 8351
+      },
+      {
+       "passage_key": "scifact:29022271:1",
+       "score_q": 8319
+      }
+     ],
+     "retrieval_sha256": "349f596b73156bb912a5438f6c6c501f4cd6e8ab927b74350dd8cabb9e418a92"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "349f596b73156bb912a5438f6c6c501f4cd6e8ab927b74350dd8cabb9e418a92",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:5824985:3",
+      "content_sha256": "8e8fa974e64bf8b09148fc4601f854c444171cefafa3e3d5277fd700c3982481",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18872233:0",
+      "content_sha256": "bd495c2fcc99731ec5ca7053ad2df955f849cf0664878a42edea1525f2de4014",
+      "chars": 1094
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5824985:2",
+      "content_sha256": "c7011000362d502f95e646df3d81c8c2a5367b546ab9b159cd392fd1ef28caaa",
+      "chars": 1017
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5824985:0",
+      "content_sha256": "8a464300a855d9aae1631d41b7b52470f09c561890a4df3f77f9443c88b7eb44",
+      "chars": 863
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29022271:1",
+      "content_sha256": "06b54a2b3468b1ab0b22de082d7a172eb43c3d9bddd9f15ce0701a96a094e7f1",
+      "chars": 453
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bariatric surgery reduces colorectal cancer.\n\nEvidence passages from your search for \"bariatric surgery colorectal cancer risk\":\n<<<PASSAGES\n[P1] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nCONCLUSIONS Bariatric surgery as delivered in the UK healthcare system is associated with dramatic weight loss, sustained at least 4 y after surgery. This weight loss is accompanied by substantial improvements in pre-existing T2DM and hypertension, as well as a reduced risk of incident T2DM, hypertension, angina, MI, and obstructive sleep apnoea. Widening the availability of bariatric surgery could lead to substantial health benefits for many people who are morbidly obese.\n\n[P2] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nIMPORTANCE Bariatric surgery is associated with sustained weight loss and improved physical health status for severely obese individuals. Mental health conditions may be common among patients seeking bariatric surgery; however, the prevalence of these conditions and whether they are associated with postoperative outcomes remains unknown. OBJECTIVE To determine the prevalence of mental health conditions among bariatric surgery candidates and recipients, to evaluate the association between preoperative mental health conditions and health outcomes following bariatric surgery, and to evaluate the association between surgery and the clinical course of mental health conditions. DATA SOURCES We searched PubMed, MEDLINE on OVID, and PsycINFO for studies published between January 1988 and November 2015. Study quality was assessed using an adapted tool for risk of bias; quality of evidence was rated based on GRADE (Grading of Recommendations Assessment, Development and Evaluation) criteria.\n\n[P3] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nProtective hazard ratios (HRs) were detected for bariatric surgery for incident T2DM, 0.68 (95% CI 0.55-0.83); hypertension, 0.35 (95% CI 0.27-0.45); angina, 0.59 (95% CI 0.40-0.87);MI, 0.28 (95% CI 0.10-0.74); and obstructive sleep apnoea, 0.55 (95% CI 0.40-0.87). Strong associations were found between bariatric surgery and the resolution of T2DM, with a HR of 9.29 (95% CI 6.84-12.62), and between bariatric surgery and the resolution of hypertension, with a HR of 5.64 (95% CI 2.65-11.99). No association was detected between bariatric surgery and fractures, cancer, or stroke. Effect estimates for mortality found no protective association with bariatric surgery overall, with a HR of 0.97 (95% CI 0.66-1.43). The data used were recorded for the management of patients in primary care and may be subject to inaccuracy, which would tend to lead to underestimates of true relative effect sizes.\n\n[P4] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nBACKGROUND Bariatric surgery is becoming a more widespread treatment for obesity. Comprehensive evidence of the long-term effects of contemporary surgery on a broad range of clinical outcomes in large populations treated in routine clinical practice is lacking. The objective of this study was to measure the association between bariatric surgery, weight, body mass index, and obesity-related co-morbidities. METHODS AND FINDINGS This was an observational retrospective cohort study using data from the United Kingdom Clinical Practice Research Datalink. All 3,882 patients registered in the database and with bariatric surgery on or before 31 December 2014 were included and matched by propensity score to 3,882 obese patients without surgery.\n\n[P5] Recommendations for the presurgical psychosocial evaluation of bariatric surgery patients.\nThis document outlines recommendations for the psychosocial evaluation of bariatric surgery patients, appropriate qualifications of those conducting these evaluations, communication of evaluation results and suggested treatment plan, and the extension of behavioral healthcare of the bariatric patient to the entire span of the surgical and postsurgical process.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e691ed14da7d55f13c7db660f8a84a3ea02ee2b62b2e5c8e85a954166b62d86a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836968.645788,
+      "end_wall": 1792836982.984282,
+      "error": null
+     }
+    ],
+    "arrival_seq": 617,
+    "start_wall": 1792836968.645788,
+    "start_mono": 506525.4942445,
+    "end_wall": 1792836982.984282,
+    "end_mono": 506539.832589625,
+    "raw_response": "{\"reasoning\": \"The passages discuss various health benefits of bariatric surgery, including reductions in diabetes, hypertension, and obstructive sleep apnoea. Passage P3 mentions a protective hazard ratio for bariatric surgery against incident type 2 diabetes (T2DM), which suggests a reduction in risk. Additionally, P4 indicates an association between bariatric surgery and improvements in weight and obesity-related comorbidities. While the evidence focuses on a range of health outcomes, the absence of citation for colorectal cancer risk may suggest a lack of direct evidence within these passages. However, b\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14334493958,
+     "load_duration": 46795208,
+     "prompt_eval_count": 1137,
+     "prompt_eval_duration": 4345858166,
+     "eval_count": 148,
+     "eval_duration": 8690559542,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:22.981867Z"
+    },
+    "elapsed_s": 14.338,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 617,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:5824985:2",
+     "scifact:5824985:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bariatric surgery reduces colorectal cancer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "06a6e7e627846cd12854dd498cf52b81803f27cb159e291f3aa93806dd0a69eb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836963.902148,
+      "end_wall": 1792836965.416169,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836965.41628,
+      "end_wall": 1792836974.007762,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836974.007838,
+      "end_wall": 1792836976.43377,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792836963.902148,
+    "start_mono": null,
+    "end_wall": 1792836976.43377,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Bariatric surgery reduces colorectal cancer.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 619
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bariatric surgery reduces colorectal cancer.",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:57783564:0",
+       "score_q": 772
+      },
+      {
+       "passage_key": "scifact:9558539:0",
+       "score_q": 766
+      },
+      {
+       "passage_key": "scifact:9558539:1",
+       "score_q": 766
+      },
+      {
+       "passage_key": "scifact:42731834:1",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:7165938:1",
+       "score_q": 747
+      }
+     ],
+     "retrieval_sha256": "57c963c1f4283b65944d408bf522618de7cd5ceb576c997bddd1adb0f207c463"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "57c963c1f4283b65944d408bf522618de7cd5ceb576c997bddd1adb0f207c463",
+    "query_embedding_sha256": "c320a6b417c7dc7f99bf8e0eb457e05910d7058c77b2e416e5a77306ccf1a882",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:57783564:0",
+      "content_sha256": "b9e1595ee1aec96eddb5b379f6bf18a511f6ba8d86fc1ed61ecdba59bb99ef26",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:9558539:0",
+      "content_sha256": "3580addfe3a848521fdae5d29b0cb025c7a7c07a32a0f0866b99594b4ce8ba26",
+      "chars": 1082
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:9558539:1",
+      "content_sha256": "fb6024fd58c389642f916e988fd3525046a8d89edcf0bd70f92ca7eb72741470",
+      "chars": 268
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:42731834:1",
+      "content_sha256": "6f2b57e096ee06f41eb73aedac6882e2abde7c371fe0fb612a3e06ce4deb175a",
+      "chars": 843
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7165938:1",
+      "content_sha256": "dda8d04126f4c75ff8d30d020eb6bd77615dea2a10858a6961a5648f758718d5",
+      "chars": 963
+     }
+    ],
+    "elapsed_s": 6.6049
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bariatric surgery reduces colorectal cancer.\n\nEvidence passages from your search for \"Bariatric surgery reduces colorectal cancer.\":\n<<<PASSAGES\n[P1] CDX2 inhibits the proliferation and tumor formation of colon cancer cells by suppressing Wnt/β-catenin signaling via transactivation of GSK-3β and Axin2 expression\nCaudal-related homeobox transcription factor 2 (CDX2), an intestine-specific nuclear transcription factor, has been strongly implicated in the tumourigenesis of various human cancers. However, the functional role of CDX2 in the development and progression of colorectal cancer (CRC) is not well known. In this study, CDX2 knockdown in colon cancer cells promoted cell proliferation in vitro, accelerated tumor formation in vivo, and induced a cell cycle transition from G0/G1 to S phase, whereas CDX2 overexpression inhibited cell proliferation. TOP/FOP-Flash reporter assay showed that CDX2 knockdown or CDX2 overexpression significantly increased or decreased Wnt signaling activity. Western blot assay showed that downstream targets of Wnt signaling, including β-catenin, cyclin D1 and c-myc, were up-regulated or down-regulated in CDX2-knockdown or CDX2-overexpressing colon cancer cells.\n\n[P2] CD44v6 is a marker of constitutive and reprogrammed cancer stem cells driving colon cancer metastasis.\nCancer stem cells drive tumor formation and metastasis, but how they acquire metastatic traits is not well understood. Here, we show that all colorectal cancer stem cells (CR-CSCs) express CD44v6, which is required for their migration and generation of metastatic tumors. CD44v6 expression is low in primary tumors but demarcated clonogenic CR-CSC populations. Cytokines hepatocyte growth factor (HGF), osteopontin (OPN), and stromal-derived factor 1α (SDF-1), secreted from tumor associated cells, increase CD44v6 expression in CR-CSCs by activating the Wnt/β-catenin pathway, which promotes migration and metastasis. CD44v6(-) progenitor cells do not give rise to metastatic lesions but, when treated with cytokines, acquire CD44v6 expression and metastatic capacity. Importantly, phosphatidylinositol 3-kinase (PI3K) inhibition selectively killed CD44v6 CR-CSCs and reduced metastatic growth. In patient cohorts, low levels of CD44v6 predict increased probability of survival.\n\n[P3] CD44v6 is a marker of constitutive and reprogrammed cancer stem cells driving colon cancer metastasis.\nThus, the metastatic process in colorectal cancer is initiated by CSCs through the expression of CD44v6, which is both a functional biomarker and therapeutic target.\n\n[P4] Lack of Absent in Melanoma 2 (AIM2) expression in tumor cells is closely associated with poor survival in colorectal cancer patients.\nAfter adjustment for sex, age, cancer stage, tumor site, tumor grade and chemotherapy, complete lack of AIM2 expression was associated with an up to 3-fold increase in overall mortality (HR=2.40; 95% CI=1.44-3.99) and disease specific mortality (HR=3.14; 95% CI=1.75-5.65) in comparison to AIM2-positive tumor samples. Our results demonstrate that lack of AIM2 expression is closely associated with poor outcome in colorectal cancer. The data thus strongly substantiate a protective role of AIM2 against progression of colorectal tumors. Further studies are required to assess whether lack of AIM2 expression may be used as a biomarker for the identification of colorectal cancer patients with poor prognosis.\n\n[P5] Overexpression of the circadian clock gene Bmal1 increases sensitivity to oxaliplatin in colorectal cancer.\nRESULTS Bmal1 overexpression inhibited colorectal cancer cell proliferation and increased colorectal cancer sensitivity to oxaliplatin in three colorectal cancer cell lines and HCT116 cells model in vivo. Furthermore, the overall survival of patients with colorectal cancer with high Bmal1 levels in their primary tumors was significantly longer than that of patients with low Bmal1 levels (27 vs. 19 months; P = 0.043). The progression-free survival of patients with high Bmal1 expression was also significantly longer than that of patients with low Bmal1 expression (11 vs. 5 months; P = 0.015). Mechanistically, the effect of Bmal1 was associated with its ability to regulate G2-M arrest by activating the ATM pathway. CONCLUSION Bmal1 shows the potential as a novel prognostic biomarker and may represent a new therapeutic target in colorectal cancer.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "88c358e07b725c09b1a11d5fd0dac5ae7ea2c5491f342f84296ab4063747ec7e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836983.039389,
+      "end_wall": 1792836986.3043299,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836986.30442,
+      "end_wall": 1792836988.516274,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836988.516363,
+      "end_wall": 1792836990.724475,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 618,
+    "start_wall": 1792836983.039389,
+    "start_mono": null,
+    "end_wall": 1792836990.724475,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 618,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bariatric surgery reduces colorectal cancer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "06a6e7e627846cd12854dd498cf52b81803f27cb159e291f3aa93806dd0a69eb",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836963.901715,
+      "end_wall": 1792836966.5694468,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836963.901715,
+    "start_mono": 506520.750220875,
+    "end_wall": 1792836966.5694468,
+    "end_mono": 506523.417923666,
+    "raw_response": "{\"query\": \"bariatric surgery colorectal cancer risk\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2664161500,
+     "load_duration": 400576584,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 301764208,
+     "eval_count": 18,
+     "eval_duration": 1875940039,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:06.56807Z"
+    },
+    "elapsed_s": 2.668,
+    "query_used": "bariatric surgery colorectal cancer risk",
+    "query_source": "json",
+    "query_arrival_seq": 616
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "bariatric surgery colorectal cancer risk",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:5824985:2",
+       "score_q": 728
+      },
+      {
+       "passage_key": "scifact:18872233:0",
+       "score_q": 712
+      },
+      {
+       "passage_key": "scifact:18872233:2",
+       "score_q": 710
+      },
+      {
+       "passage_key": "scifact:5824985:3",
+       "score_q": 704
+      },
+      {
+       "passage_key": "scifact:40949706:1",
+       "score_q": 699
+      }
+     ],
+     "retrieval_sha256": "a58108b0b92985697aa59080ede69ad4b6e935366a205f5def9137029891a306"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a58108b0b92985697aa59080ede69ad4b6e935366a205f5def9137029891a306",
+    "query_embedding_sha256": "0f2c9a5209e9309540510d680775a0d862642ddd3dd652d380efd327a813fc24",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:5824985:2",
+      "content_sha256": "c7011000362d502f95e646df3d81c8c2a5367b546ab9b159cd392fd1ef28caaa",
+      "chars": 1017
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18872233:0",
+      "content_sha256": "bd495c2fcc99731ec5ca7053ad2df955f849cf0664878a42edea1525f2de4014",
+      "chars": 1094
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18872233:2",
+      "content_sha256": "873299f532b58e85fa0f084f86c4fb7c481bb28174486793d442675843d772c4",
+      "chars": 503
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5824985:3",
+      "content_sha256": "8e8fa974e64bf8b09148fc4601f854c444171cefafa3e3d5277fd700c3982481",
+      "chars": 596
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40949706:1",
+      "content_sha256": "4796afacc9e61a7e30469a299b9f14fe688a3510247232e3c2512ca9f4d7cdbf",
+      "chars": 916
+     }
+    ],
+    "elapsed_s": 7.5157
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bariatric surgery reduces colorectal cancer.\n\nEvidence passages from your search for \"bariatric surgery colorectal cancer risk\":\n<<<PASSAGES\n[P1] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nProtective hazard ratios (HRs) were detected for bariatric surgery for incident T2DM, 0.68 (95% CI 0.55-0.83); hypertension, 0.35 (95% CI 0.27-0.45); angina, 0.59 (95% CI 0.40-0.87);MI, 0.28 (95% CI 0.10-0.74); and obstructive sleep apnoea, 0.55 (95% CI 0.40-0.87). Strong associations were found between bariatric surgery and the resolution of T2DM, with a HR of 9.29 (95% CI 6.84-12.62), and between bariatric surgery and the resolution of hypertension, with a HR of 5.64 (95% CI 2.65-11.99). No association was detected between bariatric surgery and fractures, cancer, or stroke. Effect estimates for mortality found no protective association with bariatric surgery overall, with a HR of 0.97 (95% CI 0.66-1.43). The data used were recorded for the management of patients in primary care and may be subject to inaccuracy, which would tend to lead to underestimates of true relative effect sizes.\n\n[P2] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nIMPORTANCE Bariatric surgery is associated with sustained weight loss and improved physical health status for severely obese individuals. Mental health conditions may be common among patients seeking bariatric surgery; however, the prevalence of these conditions and whether they are associated with postoperative outcomes remains unknown. OBJECTIVE To determine the prevalence of mental health conditions among bariatric surgery candidates and recipients, to evaluate the association between preoperative mental health conditions and health outcomes following bariatric surgery, and to evaluate the association between surgery and the clinical course of mental health conditions. DATA SOURCES We searched PubMed, MEDLINE on OVID, and PsycINFO for studies published between January 1988 and November 2015. Study quality was assessed using an adapted tool for risk of bias; quality of evidence was rated based on GRADE (Grading of Recommendations Assessment, Development and Evaluation) criteria.\n\n[P3] Mental Health Conditions Among Patients Seeking and Undergoing Bariatric Surgery: A Meta-analysis.\nCONCLUSIONS AND RELEVANCE Mental health conditions are common among bariatric surgery patients-in particular, depression and binge eating disorder. There is inconsistent evidence regarding the association between preoperative mental health conditions and postoperative weight loss. Moderate-quality evidence supports an association between bariatric surgery and lower rates of depression postoperatively.\n\n[P4] Bariatric Surgery in the United Kingdom: A Cohort Study of Weight Loss and Clinical Outcomes in Routine Clinical Care.\nCONCLUSIONS Bariatric surgery as delivered in the UK healthcare system is associated with dramatic weight loss, sustained at least 4 y after surgery. This weight loss is accompanied by substantial improvements in pre-existing T2DM and hypertension, as well as a reduced risk of incident T2DM, hypertension, angina, MI, and obstructive sleep apnoea. Widening the availability of bariatric surgery could lead to substantial health benefits for many people who are morbidly obese.\n\n[P5] Preoperative Predictors of Weight Loss Following Bariatric Surgery: Systematic Review\nFactors that may be negatively associated with weight loss include preoperative BMI (37 out of 62 studies with negative association), super-obesity (24 out of 33 studies), and personality disorders (7 out of 14 studies). Meta-analysis revealed a decrease of 10.1% excess weight loss (EWL) for super-obese patients (95% confidence interval (CI) [3.7–16.5%]), though there was significant heterogeneity in the meta-analysis, and an increase of 5.9% EWL for patients with binge eating at 12 months after surgery (95% CI [1.9–9.8%]). Further studies are necessary to investigate whether preoperative factors can predict a clinically meaningful difference in weight loss after bariatric surgery. The identification of predictive factors may improve patient selection and help develop interventions targeting specific needs of patients.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "49ec92ff394c763a44c982e0de9a7df7bc93afedc3734402a56c2c9971951e03",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836974.08564,
+      "end_wall": 1792836991.9404411,
+      "error": null
+     }
+    ],
+    "arrival_seq": 619,
+    "start_wall": 1792836974.08564,
+    "start_mono": 506530.9340405,
+    "end_wall": 1792836991.9404411,
+    "end_mono": 506548.788655541,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that bariatric surgery reduces the risk of colorectal cancer. The provided evidence passages do not explicitly address this risk. While some studies highlight the benefits of bariatric surgery in preventing or treating conditions like T2DM, hypertension, and heart disease, there is no direct mention of its impact on colorectal cancer risk. Thus, the claim is not directly supported by the given evidence.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17851190042,
+     "load_duration": 8449352959,
+     "prompt_eval_count": 1446,
+     "prompt_eval_duration": 3451472083,
+     "eval_count": 139,
+     "eval_duration": 5402125376,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:16:31.937907Z"
+    },
+    "elapsed_s": 17.855,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 619,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:5824985:2",
+     "scifact:18872233:2",
+     "scifact:5824985:3"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 425,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67",
+  "nemotron-mini:4b": "ed8078510017a82e74135a980aaaf26293bb7a0145362d1a1980b2539ef60e67",
+  "olmo2:7b": "349f596b73156bb912a5438f6c6c501f4cd6e8ab927b74350dd8cabb9e418a92",
+  "exaone3.5:2.4b": "57c963c1f4283b65944d408bf522618de7cd5ceb576c997bddd1adb0f207c463",
+  "granite3.3:2b": "a58108b0b92985697aa59080ede69ad4b6e935366a205f5def9137029891a306"
+ },
+ "item_start_wall": 1792836963.900764,
+ "item_wall_s": 28.04,
+ "ollama_ps_samples": [
+  [
+   1792836963.901,
+   [
+    "falcon3:3b",
+    "exaone3.5:2.4b",
+    "nomic-embed-text:latest"
+   ]
+  ],
+  [
+   1792836965.905,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836967.917,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792836969.928,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836971.94,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836973.946,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836975.956,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836977.957,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836979.959,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836981.969,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836983.98,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836985.991,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836987.998,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836990.007,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

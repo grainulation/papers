@@ -1,0 +1,1309 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain34",
+ "order": 428,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain34",
+  "order": 428,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "A deficiency of folate increases blood levels of homocysteine."
+ },
+ "item_view_sha256": "4a36cdd9783748128e1f548f69a418b1c09f99e8305094ca3f92da477afa3595",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: A deficiency of folate increases blood levels of homocysteine.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c10de24034b224e93dbab5ae08762da7cf769a9c9d96daa9b8515b7b37d837bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792865112.954528,
+      "end_wall": 1792865114.272724,
+      "error": null
+     }
+    ],
+    "start_wall": 1792865112.954528,
+    "start_mono": 534669.681163833,
+    "end_wall": 1792865114.272724,
+    "end_mono": 534670.999355,
+    "raw_response": "{\"query\": \"deficiency of folate increases blood levels of homocysteine\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1315492709,
+     "load_duration": 108679917,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 352286667,
+     "eval_count": 18,
+     "eval_duration": 618892417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:14.271904Z"
+    },
+    "elapsed_s": 1.318,
+    "query_used": "deficiency of folate increases blood levels of homocysteine",
+    "query_source": "json",
+    "query_arrival_seq": 2140
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deficiency of folate increases blood levels of homocysteine",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18557974:0",
+       "score_q": 848
+      },
+      {
+       "passage_key": "scifact:18557974:1",
+       "score_q": 843
+      },
+      {
+       "passage_key": "scifact:11705328:1",
+       "score_q": 819
+      },
+      {
+       "passage_key": "scifact:21636085:0",
+       "score_q": 813
+      },
+      {
+       "passage_key": "scifact:11705328:0",
+       "score_q": 809
+      }
+     ],
+     "retrieval_sha256": "c1fcc5c32a777ee6993a2aab0c4994997d17d4a698a2f474e6dce54c7b2806fd"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c1fcc5c32a777ee6993a2aab0c4994997d17d4a698a2f474e6dce54c7b2806fd",
+    "query_embedding_sha256": "80f8a2392fa9bc4cc180d61ca651e85621f8b96239253fbe23d88a9d864256d1",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18557974:0",
+      "content_sha256": "7bcb90509e24732a2fbf54c5bf6950c18f53219ddb0e94b6a460677be449b053",
+      "chars": 960
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18557974:1",
+      "content_sha256": "afd51dc3a623ccaf68734feef8338ba1ad45474a9407d98db5d64813b3bcf288",
+      "chars": 803
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11705328:1",
+      "content_sha256": "e275d46c7672b2e0f07e72180d7c131380e4c7251e611c8c6622e330c32603da",
+      "chars": 886
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21636085:0",
+      "content_sha256": "bb9396deb9f7cf1f594351f3ce7ca316552999cfff5fcfbe736be4858905838f",
+      "chars": 992
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11705328:0",
+      "content_sha256": "9ace080945ef50e4c7c00cfa3ac6f8ec4c5468b83eb239eaaa747c63e64ee0d9",
+      "chars": 956
+     }
+    ],
+    "elapsed_s": 8.2544
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: A deficiency of folate increases blood levels of homocysteine.\n\nEvidence passages from your search for \"deficiency of folate increases blood levels of homocysteine\":\n<<<PASSAGES\n[P1] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nHigh plasma total homocysteine (tHcy) concentration is reported to be a risk factor for vascular diseases. We investigated the extent to which serum folate and plasma tHcy respond to a high intake of natural folate from food. Thirty-seven healthy females volunteered t o participate in a crossover dietary intervention. The study included a baseline period and two 5-week diet periods (low- and high-folate diets) with a 3-week washout in between. The low-folate diet contained one serving of both vegetables and fruit/d, while during the high-folate diet the subjects ate at least seven servings of vegetables, berries, and citrus fruit/d. Serum and erythrocyte (RBC) folate, serum vitamin B (12), and plasma tHcy concentrations were measured at the base-line and at the end of each diet period.\n\n[P2] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nThe mean concentrations of serum and RBC folate were 11.0 (SD 3.0) nmol/l and 412 (SD 120) nmol/l at the end of the low-folate diet and 78 (95 % CI 62, 94) % and 14 (95 % CI 8, 20) % higher in response to the high-folate diet (P< 0.001). The serum concentration of vitamin B12 remained unchanged during the intervention. The mean plasma tHcy concentration was 8.0 pmol/ at the end of the low-folate diet and decreased by 13 (95% CI 9, 18) % in response to the high-folate diet (P<0.001). In conclusion, a diet high in fresh berries, citrus fruit, and vegetables effectively increases serum and RBC folate and decreases plasma homocysteine.\n\n[P3] Randomized trial of folic acid supplementation and serum homocysteine levels.\nThe higher a person's initial serum homocysteine level, the greater was the response to folic acid, but there were statistically significant reductions regardless of the initial level. Serum folate level increased approximately linearly (5.5 nmol/L for every 0.1 mg of folic acid). Within-person fluctuations over time in serum homocysteine levels, measured in the placebo group, were large compared with the effect of folic acid, indicating that monitoring of the reduction in an individual is impractical. CONCLUSIONS A dosage of folic acid of 0.8 mg/d appears necessary to achieve the maximum reduction in serum homocysteine level across the range of homocysteine levels in the population. Current US food fortification levels will achieve only a small proportion of the achievable homocysteine reduction.\n\n[P4] The effect of folic acid supplementation on plasma homocysteine in an elderly population.\nBACKGROUND Increased plasma homocysteine is associated with coronary artery disease, peripheral vascular disease and venous thrombosis. Folic acid is the most effective therapy for reducing homocysteine levels. The lowest effective supplement of folic acid is not known, particularly for the elderly who have the highest prevalence of these conditions. AIM To explore the effects of daily supplements of 0, 50, 100, 200, 400 and 600 microg folic acid on plasma homocysteine in an elderly population. DESIGN Randomized double-blind placebo-controlled trial. METHODS Participants (n=368) aged 65-75 years were randomly allocated to receive one of the treatments for 6 weeks. Plasma homocysteine was recorded after 3 weeks and 6 weeks of supplementation. RESULTS Only the 400 microg and 600 microg groups had significantly lower homocysteine levels compared to placebo (p=0.038 and p<0.001, respectively).\n\n[P5] Randomized trial of folic acid supplementation and serum homocysteine levels.\nBACKGROUND Lowering serum homocysteine levels with folic acid is expected to reduce mortality from ischemic heart disease. Homocysteine reduction is known to be maximal at a folic acid dosage of 1 mg/d, but the effect of lower doses (relevant to food fortification) is unclear. METHODS We randomized 151 patients with ischemic heart disease to 1 of 5 dosages of folic acid (0.2, 0.4, 0.6, 0.8, and 1.0 mg/d) or placebo. Fasting blood samples for serum homocysteine and serum folate analysis were taken initially, after 3 months of supplementation, and 3 months after folic acid use was discontinued. RESULTS Median serum homocysteine level decreased with increasing folic acid dosage, to a maximum at 0.8 mg of folic acid per day, when the homocysteine reduction (placebo adjusted) was 2.7 micromol/L (23%), similar to the known effect of folic acid dosages of 1 mg/d and above.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e6a550476bc8713c39e8c85e9612e558671334b9f8c80c2d913d0126da4eb0ca",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792865122.527702,
+      "end_wall": 1792865132.9675462,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2140,
+    "start_wall": 1792865122.527702,
+    "start_mono": 534679.254313458,
+    "end_wall": 1792865132.9675462,
+    "end_mono": 534689.694127666,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that a high intake of fresh berries, citrus fruit, and vegetables effectively increases serum and RBC folate and decreases plasma homocysteine, indicating that a deficiency of folate would increase blood levels of homocysteine.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10436906083,
+     "load_duration": 2340276750,
+     "prompt_eval_count": 1494,
+     "prompt_eval_duration": 3673250291,
+     "eval_count": 84,
+     "eval_duration": 3521101254,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:32.965827Z"
+    },
+    "elapsed_s": 10.44,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2140,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:18557974:1",
+     "scifact:21636085:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 254,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: A deficiency of folate increases blood levels of homocysteine.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c10de24034b224e93dbab5ae08762da7cf769a9c9d96daa9b8515b7b37d837bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792865112.954689,
+      "end_wall": 1792865114.451274,
+      "error": null
+     }
+    ],
+    "start_wall": 1792865112.954689,
+    "start_mono": 534669.681324166,
+    "end_wall": 1792865114.451274,
+    "end_mono": 534671.177905166,
+    "raw_response": "{\"query\": \"folate deficiency homocysteine levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1493298458,
+     "load_duration": 57450083,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 486587333,
+     "eval_count": 13,
+     "eval_duration": 849546791,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:14.450389Z"
+    },
+    "elapsed_s": 1.497,
+    "query_used": "folate deficiency homocysteine levels",
+    "query_source": "json",
+    "query_arrival_seq": 2141
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "folate deficiency homocysteine levels",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:42441846:0",
+       "score_q": 10168
+      },
+      {
+       "passage_key": "scifact:42441846:1",
+       "score_q": 9779
+      },
+      {
+       "passage_key": "scifact:8595678:2",
+       "score_q": 9777
+      },
+      {
+       "passage_key": "scifact:11705328:1",
+       "score_q": 8812
+      },
+      {
+       "passage_key": "scifact:37424881:0",
+       "score_q": 8723
+      }
+     ],
+     "retrieval_sha256": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:42441846:0",
+      "content_sha256": "00d1965289016533b7d0fd784eb0b8e922bb661f4101764f8856abaabe82cebb",
+      "chars": 1015
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:42441846:1",
+      "content_sha256": "cccf3b2c5503318411d64d652867fa0a4e334fef1b5df46db31d44762af33432",
+      "chars": 1103
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8595678:2",
+      "content_sha256": "5141aaccbb622b893d0206096f49a9af37a9a4aea3df232e3bd0bc8abeaa8c36",
+      "chars": 1019
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11705328:1",
+      "content_sha256": "e275d46c7672b2e0f07e72180d7c131380e4c7251e611c8c6622e330c32603da",
+      "chars": 886
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:37424881:0",
+      "content_sha256": "188702f8a93ce9e12caa4163b0548ab4ffec55af03a3bbac4e5695d5c8b19358",
+      "chars": 1122
+     }
+    ],
+    "elapsed_s": 0.002
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: A deficiency of folate increases blood levels of homocysteine.\n\nEvidence passages from your search for \"folate deficiency homocysteine levels\":\n<<<PASSAGES\n[P1] Gene--nutrition interactions in coronary artery disease: correlation between the MTHFR C677T polymorphism and folate and homocysteine status in a Korean population.\nINTRODUCTION Elevated plasma total homocysteine is a major risk for coronary artery disease (CAD). Methyltetrahydrofolate reductase (MTHFR) is a main regulatory enzyme in homocysteine metabolism; a common C677T mutation in the MTHFR gene results in decreased enzyme activity, and contributes to increased homocysteine levels and decreased folate levels. We investigated the frequency of MTHFR C677T alleles in a Korean population, determined the genotype-specific threshold levels of folate or vitamin B12, and investigated the relationship between the TT genotype and the risk of CAD. MATERIALS AND METHODS We enrolled a study population of 163 CAD patients and 50 control subjects, and screened the MTHFR C677T polymorphism using real-time PCR with melting point analysis. Levels of plasma homocysteine, folate and vitamin B12 were also determined.\n\n[P2] Gene--nutrition interactions in coronary artery disease: correlation between the MTHFR C677T polymorphism and folate and homocysteine status in a Korean population.\nWe then defined the genotype-specific threshold values of folate and vitamin B12 required to keep homocysteine levels in a normal range for individuals of each MTHFR C677T genotype. RESULTS The frequency of the TT genotype was 18% in control subjects and 26% in patients group (P>0.05). Individuals homozygous for the TT genotype had significantly elevated homocysteine levels (P<0.05). The genotype-specific folate threshold level was significantly higher in TT individuals than in the CC or CT genotypes. The OR of individuals with low folate status and the TT genotype to estimate the relative risk of CAD was 2.2 and the OR of those with high folate status and the TT genotype was 1.5 (95% CI, 0.5-9.6 and 0.7-3.2, respectively). CONCLUSION We were able to define a gene-nutrient interaction that shows a higher risk for CAD based on specific threshold folate levels required by different MTHFR C677T genotypes in a Korean population.\n\n[P3] Effect modification by population dietary folate on the association between MTHFR genotype, homocysteine, and stroke risk: a meta-analysis of genetic studies and randomised trials\nThe summary relative risk (RR) of stroke in trials of homocysteine-lowering interventions (0·94, 95% CI 0·85 to 1·04) was similar to that predicted for the same extent of homocysteine reduction in large genetic studies in populations with similar folate status (predicted RR 1·00, 95% CI 0·90 to 1·11). Although the predicted effect of homocysteine reduction from large genetic studies in low folate regions (Asia) was larger (RR 0·78, 95% CI 0·68 to 0·90), no trial has evaluated the effect of lowering of homocysteine on stroke risk exclusively in a low folate region. INTERPRETATION In regions with increasing levels or established policies of population folate supplementation, evidence from genetic studies and randomised trials is concordant in suggesting an absence of benefit from lowering of homocysteine for prevention of stroke.\n\n[P4] Randomized trial of folic acid supplementation and serum homocysteine levels.\nThe higher a person's initial serum homocysteine level, the greater was the response to folic acid, but there were statistically significant reductions regardless of the initial level. Serum folate level increased approximately linearly (5.5 nmol/L for every 0.1 mg of folic acid). Within-person fluctuations over time in serum homocysteine levels, measured in the placebo group, were large compared with the effect of folic acid, indicating that monitoring of the reduction in an individual is impractical. CONCLUSIONS A dosage of folic acid of 0.8 mg/d appears necessary to achieve the maximum reduction in serum homocysteine level across the range of homocysteine levels in the population. Current US food fortification levels will achieve only a small proportion of the achievable homocysteine reduction.\n\n[P5] The effect of folate fortification on folic acid-based homocysteine-lowering intervention and stroke risk: a meta-analysis.\nOBJECTIVE Folate and vitamin B12 are two vital regulators in the metabolic process of homocysteine, which is a risk factor of atherothrombotic events. Low folate intake or low plasma folate concentration is associated with increased stroke risk. Previous randomized controlled trials presented discordant findings in the effect of folic acid supplementation-based homocysteine lowering on stroke risk. The aim of the present review was to perform a meta-analysis of relevant randomized controlled trials to check the how different folate fortification status might affect the effects of folic acid supplementation in lowering homocysteine and reducing stroke risk. DESIGN Relevant randomized controlled trials were identified through formal literature search. Homocysteine reduction was compared in subgroups stratified by folate fortification status. Relative risks with 95 % confidence intervals were used as a measure to assess the association between folic acid supplementation and stroke risk.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "03a7d7ef8a145e0c7e8e4fc548a47a883dcc88f1338ba6080f4fc6059157ea11",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792865114.45407,
+      "end_wall": 1792865133.859838,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2141,
+    "start_wall": 1792865114.45407,
+    "start_mono": 534671.1807015,
+    "end_wall": 1792865133.859838,
+    "end_mono": 534690.586416875,
+    "raw_response": "{\n  \"reasoning\": \"Several passages indicate a direct relationship between folate levels and homocysteine levels. Specifically, Passage P4 demonstrates that folic acid supplementation significantly reduces serum homocysteine levels, indicating that folate deficiency correlates with elevated homocysteine levels. Additionally, Passage P1 discusses how decreased folate levels are associated with increased homocysteine levels, particularly in individuals with certain genotypes like MTHFR C677T. These findings collectively support the claim that folate deficiency increases blood levels of homocysteine.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19400321292,
+     "load_duration": 45638958,
+     "prompt_eval_count": 1383,
+     "prompt_eval_duration": 5142460041,
+     "eval_count": 138,
+     "eval_duration": 13080890296,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:33.855644Z"
+    },
+    "elapsed_s": 19.406,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2141,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:42441846:0",
+     "scifact:11705328:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 585,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: A deficiency of folate increases blood levels of homocysteine.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c10de24034b224e93dbab5ae08762da7cf769a9c9d96daa9b8515b7b37d837bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792865112.954862,
+      "end_wall": 1792865118.193463,
+      "error": null
+     }
+    ],
+    "start_wall": 1792865112.954862,
+    "start_mono": 534669.681497958,
+    "end_wall": 1792865118.193463,
+    "end_mono": 534674.920085,
+    "raw_response": "{\"query\": \"folate deficiency homocysteine levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5235501500,
+     "load_duration": 1179221708,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 352596750,
+     "eval_count": 16,
+     "eval_duration": 3635839541,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:18.192616Z"
+    },
+    "elapsed_s": 5.239,
+    "query_used": "folate deficiency homocysteine levels",
+    "query_source": "json",
+    "query_arrival_seq": 2142
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "folate deficiency homocysteine levels",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:42441846:0",
+       "score_q": 10168
+      },
+      {
+       "passage_key": "scifact:42441846:1",
+       "score_q": 9779
+      },
+      {
+       "passage_key": "scifact:8595678:2",
+       "score_q": 9777
+      },
+      {
+       "passage_key": "scifact:11705328:1",
+       "score_q": 8812
+      },
+      {
+       "passage_key": "scifact:37424881:0",
+       "score_q": 8723
+      }
+     ],
+     "retrieval_sha256": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:42441846:0",
+      "content_sha256": "00d1965289016533b7d0fd784eb0b8e922bb661f4101764f8856abaabe82cebb",
+      "chars": 1015
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:42441846:1",
+      "content_sha256": "cccf3b2c5503318411d64d652867fa0a4e334fef1b5df46db31d44762af33432",
+      "chars": 1103
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8595678:2",
+      "content_sha256": "5141aaccbb622b893d0206096f49a9af37a9a4aea3df232e3bd0bc8abeaa8c36",
+      "chars": 1019
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11705328:1",
+      "content_sha256": "e275d46c7672b2e0f07e72180d7c131380e4c7251e611c8c6622e330c32603da",
+      "chars": 886
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:37424881:0",
+      "content_sha256": "188702f8a93ce9e12caa4163b0548ab4ffec55af03a3bbac4e5695d5c8b19358",
+      "chars": 1122
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: A deficiency of folate increases blood levels of homocysteine.\n\nEvidence passages from your search for \"folate deficiency homocysteine levels\":\n<<<PASSAGES\n[P1] Gene--nutrition interactions in coronary artery disease: correlation between the MTHFR C677T polymorphism and folate and homocysteine status in a Korean population.\nINTRODUCTION Elevated plasma total homocysteine is a major risk for coronary artery disease (CAD). Methyltetrahydrofolate reductase (MTHFR) is a main regulatory enzyme in homocysteine metabolism; a common C677T mutation in the MTHFR gene results in decreased enzyme activity, and contributes to increased homocysteine levels and decreased folate levels. We investigated the frequency of MTHFR C677T alleles in a Korean population, determined the genotype-specific threshold levels of folate or vitamin B12, and investigated the relationship between the TT genotype and the risk of CAD. MATERIALS AND METHODS We enrolled a study population of 163 CAD patients and 50 control subjects, and screened the MTHFR C677T polymorphism using real-time PCR with melting point analysis. Levels of plasma homocysteine, folate and vitamin B12 were also determined.\n\n[P2] Gene--nutrition interactions in coronary artery disease: correlation between the MTHFR C677T polymorphism and folate and homocysteine status in a Korean population.\nWe then defined the genotype-specific threshold values of folate and vitamin B12 required to keep homocysteine levels in a normal range for individuals of each MTHFR C677T genotype. RESULTS The frequency of the TT genotype was 18% in control subjects and 26% in patients group (P>0.05). Individuals homozygous for the TT genotype had significantly elevated homocysteine levels (P<0.05). The genotype-specific folate threshold level was significantly higher in TT individuals than in the CC or CT genotypes. The OR of individuals with low folate status and the TT genotype to estimate the relative risk of CAD was 2.2 and the OR of those with high folate status and the TT genotype was 1.5 (95% CI, 0.5-9.6 and 0.7-3.2, respectively). CONCLUSION We were able to define a gene-nutrient interaction that shows a higher risk for CAD based on specific threshold folate levels required by different MTHFR C677T genotypes in a Korean population.\n\n[P3] Effect modification by population dietary folate on the association between MTHFR genotype, homocysteine, and stroke risk: a meta-analysis of genetic studies and randomised trials\nThe summary relative risk (RR) of stroke in trials of homocysteine-lowering interventions (0·94, 95% CI 0·85 to 1·04) was similar to that predicted for the same extent of homocysteine reduction in large genetic studies in populations with similar folate status (predicted RR 1·00, 95% CI 0·90 to 1·11). Although the predicted effect of homocysteine reduction from large genetic studies in low folate regions (Asia) was larger (RR 0·78, 95% CI 0·68 to 0·90), no trial has evaluated the effect of lowering of homocysteine on stroke risk exclusively in a low folate region. INTERPRETATION In regions with increasing levels or established policies of population folate supplementation, evidence from genetic studies and randomised trials is concordant in suggesting an absence of benefit from lowering of homocysteine for prevention of stroke.\n\n[P4] Randomized trial of folic acid supplementation and serum homocysteine levels.\nThe higher a person's initial serum homocysteine level, the greater was the response to folic acid, but there were statistically significant reductions regardless of the initial level. Serum folate level increased approximately linearly (5.5 nmol/L for every 0.1 mg of folic acid). Within-person fluctuations over time in serum homocysteine levels, measured in the placebo group, were large compared with the effect of folic acid, indicating that monitoring of the reduction in an individual is impractical. CONCLUSIONS A dosage of folic acid of 0.8 mg/d appears necessary to achieve the maximum reduction in serum homocysteine level across the range of homocysteine levels in the population. Current US food fortification levels will achieve only a small proportion of the achievable homocysteine reduction.\n\n[P5] The effect of folate fortification on folic acid-based homocysteine-lowering intervention and stroke risk: a meta-analysis.\nOBJECTIVE Folate and vitamin B12 are two vital regulators in the metabolic process of homocysteine, which is a risk factor of atherothrombotic events. Low folate intake or low plasma folate concentration is associated with increased stroke risk. Previous randomized controlled trials presented discordant findings in the effect of folic acid supplementation-based homocysteine lowering on stroke risk. The aim of the present review was to perform a meta-analysis of relevant randomized controlled trials to check the how different folate fortification status might affect the effects of folic acid supplementation in lowering homocysteine and reducing stroke risk. DESIGN Relevant randomized controlled trials were identified through formal literature search. Homocysteine reduction was compared in subgroups stratified by folate fortification status. Relative risks with 95 % confidence intervals were used as a measure to assess the association between folic acid supplementation and stroke risk.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "03a7d7ef8a145e0c7e8e4fc548a47a883dcc88f1338ba6080f4fc6059157ea11",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792865118.194193,
+      "end_wall": 1792865135.32613,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2142,
+    "start_wall": 1792865118.194193,
+    "start_mono": 534674.920814833,
+    "end_wall": 1792865135.32613,
+    "end_mono": 534692.052704416,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages suggest a direct relationship between folate deficiency and increased homocysteine levels. Specifically, a study examines the correlation between the MTHFR C677T polymorphism, folate, and homocysteine status in a Korean population, which indicates that a deficiency in folate can lead to elevated homocysteine due to decreased enzyme activity of MTHFR. Additional meta-analyses confirm that lower folate intake is associated with higher homocysteine levels and increased stroke risk. Thus, the claim is supported.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17127912542,
+     "load_duration": 5471933459,
+     "prompt_eval_count": 1634,
+     "prompt_eval_duration": 4869151542,
+     "eval_count": 168,
+     "eval_duration": 6081365249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:35.323215Z"
+    },
+    "elapsed_s": 17.132,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2142,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:42441846:0",
+     "scifact:42441846:1",
+     "scifact:11705328:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 544,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: A deficiency of folate increases blood levels of homocysteine.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c10de24034b224e93dbab5ae08762da7cf769a9c9d96daa9b8515b7b37d837bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792865112.95501,
+      "end_wall": 1792865122.087126,
+      "error": null
+     }
+    ],
+    "start_wall": 1792865112.95501,
+    "start_mono": 534669.681645333,
+    "end_wall": 1792865122.087126,
+    "end_mono": 534678.813736208,
+    "raw_response": "{\"query\": \"deficiency of folate homocysteine levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9129122416,
+     "load_duration": 7972975958,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 397886625,
+     "eval_count": 12,
+     "eval_duration": 507318458,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:22.086012Z"
+    },
+    "elapsed_s": 9.132,
+    "query_used": "deficiency of folate homocysteine levels",
+    "query_source": "json",
+    "query_arrival_seq": 2144
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deficiency of folate homocysteine levels",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18557974:1",
+       "score_q": 799
+      },
+      {
+       "passage_key": "scifact:18557974:0",
+       "score_q": 793
+      },
+      {
+       "passage_key": "scifact:11705328:1",
+       "score_q": 777
+      },
+      {
+       "passage_key": "scifact:11705328:0",
+       "score_q": 764
+      },
+      {
+       "passage_key": "scifact:21636085:0",
+       "score_q": 755
+      }
+     ],
+     "retrieval_sha256": "f9acdb0c8a01d03df57af9e77c15fc39fb3586831358cf3715379b7684a835b2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f9acdb0c8a01d03df57af9e77c15fc39fb3586831358cf3715379b7684a835b2",
+    "query_embedding_sha256": "6544603c949775f963ee335e8448e46ed7981e3587e899020e0fdd2619b4798f",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18557974:1",
+      "content_sha256": "afd51dc3a623ccaf68734feef8338ba1ad45474a9407d98db5d64813b3bcf288",
+      "chars": 803
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18557974:0",
+      "content_sha256": "7bcb90509e24732a2fbf54c5bf6950c18f53219ddb0e94b6a460677be449b053",
+      "chars": 960
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11705328:1",
+      "content_sha256": "e275d46c7672b2e0f07e72180d7c131380e4c7251e611c8c6622e330c32603da",
+      "chars": 886
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11705328:0",
+      "content_sha256": "9ace080945ef50e4c7c00cfa3ac6f8ec4c5468b83eb239eaaa747c63e64ee0d9",
+      "chars": 956
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:21636085:0",
+      "content_sha256": "bb9396deb9f7cf1f594351f3ce7ca316552999cfff5fcfbe736be4858905838f",
+      "chars": 992
+     }
+    ],
+    "elapsed_s": 0.5348
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: A deficiency of folate increases blood levels of homocysteine.\n\nEvidence passages from your search for \"deficiency of folate homocysteine levels\":\n<<<PASSAGES\n[P1] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nThe mean concentrations of serum and RBC folate were 11.0 (SD 3.0) nmol/l and 412 (SD 120) nmol/l at the end of the low-folate diet and 78 (95 % CI 62, 94) % and 14 (95 % CI 8, 20) % higher in response to the high-folate diet (P< 0.001). The serum concentration of vitamin B12 remained unchanged during the intervention. The mean plasma tHcy concentration was 8.0 pmol/ at the end of the low-folate diet and decreased by 13 (95% CI 9, 18) % in response to the high-folate diet (P<0.001). In conclusion, a diet high in fresh berries, citrus fruit, and vegetables effectively increases serum and RBC folate and decreases plasma homocysteine.\n\n[P2] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nHigh plasma total homocysteine (tHcy) concentration is reported to be a risk factor for vascular diseases. We investigated the extent to which serum folate and plasma tHcy respond to a high intake of natural folate from food. Thirty-seven healthy females volunteered t o participate in a crossover dietary intervention. The study included a baseline period and two 5-week diet periods (low- and high-folate diets) with a 3-week washout in between. The low-folate diet contained one serving of both vegetables and fruit/d, while during the high-folate diet the subjects ate at least seven servings of vegetables, berries, and citrus fruit/d. Serum and erythrocyte (RBC) folate, serum vitamin B (12), and plasma tHcy concentrations were measured at the base-line and at the end of each diet period.\n\n[P3] Randomized trial of folic acid supplementation and serum homocysteine levels.\nThe higher a person's initial serum homocysteine level, the greater was the response to folic acid, but there were statistically significant reductions regardless of the initial level. Serum folate level increased approximately linearly (5.5 nmol/L for every 0.1 mg of folic acid). Within-person fluctuations over time in serum homocysteine levels, measured in the placebo group, were large compared with the effect of folic acid, indicating that monitoring of the reduction in an individual is impractical. CONCLUSIONS A dosage of folic acid of 0.8 mg/d appears necessary to achieve the maximum reduction in serum homocysteine level across the range of homocysteine levels in the population. Current US food fortification levels will achieve only a small proportion of the achievable homocysteine reduction.\n\n[P4] Randomized trial of folic acid supplementation and serum homocysteine levels.\nBACKGROUND Lowering serum homocysteine levels with folic acid is expected to reduce mortality from ischemic heart disease. Homocysteine reduction is known to be maximal at a folic acid dosage of 1 mg/d, but the effect of lower doses (relevant to food fortification) is unclear. METHODS We randomized 151 patients with ischemic heart disease to 1 of 5 dosages of folic acid (0.2, 0.4, 0.6, 0.8, and 1.0 mg/d) or placebo. Fasting blood samples for serum homocysteine and serum folate analysis were taken initially, after 3 months of supplementation, and 3 months after folic acid use was discontinued. RESULTS Median serum homocysteine level decreased with increasing folic acid dosage, to a maximum at 0.8 mg of folic acid per day, when the homocysteine reduction (placebo adjusted) was 2.7 micromol/L (23%), similar to the known effect of folic acid dosages of 1 mg/d and above.\n\n[P5] The effect of folic acid supplementation on plasma homocysteine in an elderly population.\nBACKGROUND Increased plasma homocysteine is associated with coronary artery disease, peripheral vascular disease and venous thrombosis. Folic acid is the most effective therapy for reducing homocysteine levels. The lowest effective supplement of folic acid is not known, particularly for the elderly who have the highest prevalence of these conditions. AIM To explore the effects of daily supplements of 0, 50, 100, 200, 400 and 600 microg folic acid on plasma homocysteine in an elderly population. DESIGN Randomized double-blind placebo-controlled trial. METHODS Participants (n=368) aged 65-75 years were randomly allocated to receive one of the treatments for 6 weeks. Plasma homocysteine was recorded after 3 weeks and 6 weeks of supplementation. RESULTS Only the 400 microg and 600 microg groups had significantly lower homocysteine levels compared to placebo (p=0.038 and p<0.001, respectively).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2f82042e32dfb1e070f20e048903b9ba567db41c19689b1e50d2e137fcc1da0f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792865122.622388,
+      "end_wall": 1792865150.144174,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2143,
+    "start_wall": 1792865122.622388,
+    "start_mono": 534679.348998916,
+    "end_wall": 1792865150.144174,
+    "end_mono": 534706.870705291,
+    "raw_response": "{\"reasoning\": \"The claim is supported by two evidence passages. The first passage (P1) shows that deficiency of folate decreases homocysteine levels. The second passage (P2) also shows that high intake of natural folate from food decreases plasma homocysteine concentration. Moreover, the passage (P3) states that high plasma total homocysteine concentration is a risk factor for vascular diseases, and folic acid supplementation is effective in reducing homocysteine levels.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27516850625,
+     "load_duration": 15154283375,
+     "prompt_eval_count": 1400,
+     "prompt_eval_duration": 5727650833,
+     "eval_count": 114,
+     "eval_duration": 4205184087,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:50.140091Z"
+    },
+    "elapsed_s": 27.522,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2143,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:18557974:1",
+     "scifact:18557974:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 460,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: A deficiency of folate increases blood levels of homocysteine.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c10de24034b224e93dbab5ae08762da7cf769a9c9d96daa9b8515b7b37d837bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792865112.955138,
+      "end_wall": 1792865121.7185102,
+      "error": null
+     }
+    ],
+    "start_wall": 1792865112.955138,
+    "start_mono": 534669.68177375,
+    "end_wall": 1792865121.7185102,
+    "end_mono": 534678.445121958,
+    "raw_response": "{\"query\": \"folate homocysteine levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8760420542,
+     "load_duration": 6671583250,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 783871916,
+     "eval_count": 14,
+     "eval_duration": 1175233958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:21.717563Z"
+    },
+    "elapsed_s": 8.763,
+    "query_used": "folate homocysteine levels",
+    "query_source": "json",
+    "query_arrival_seq": 2143
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "folate homocysteine levels",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18557974:0",
+       "score_q": 841
+      },
+      {
+       "passage_key": "scifact:18557974:1",
+       "score_q": 837
+      },
+      {
+       "passage_key": "scifact:11705328:1",
+       "score_q": 834
+      },
+      {
+       "passage_key": "scifact:11705328:0",
+       "score_q": 816
+      },
+      {
+       "passage_key": "scifact:10557471:0",
+       "score_q": 793
+      }
+     ],
+     "retrieval_sha256": "bab343d63a42ef6bb70e32e0d89a8e1b9174a3ce1884d479d2fffbc13ab87fb2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bab343d63a42ef6bb70e32e0d89a8e1b9174a3ce1884d479d2fffbc13ab87fb2",
+    "query_embedding_sha256": "a8fd6f1329e7482ed99cea862c4a48a2b42db14d989de348ec4ebb9ff990a48d",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18557974:0",
+      "content_sha256": "7bcb90509e24732a2fbf54c5bf6950c18f53219ddb0e94b6a460677be449b053",
+      "chars": 960
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18557974:1",
+      "content_sha256": "afd51dc3a623ccaf68734feef8338ba1ad45474a9407d98db5d64813b3bcf288",
+      "chars": 803
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11705328:1",
+      "content_sha256": "e275d46c7672b2e0f07e72180d7c131380e4c7251e611c8c6622e330c32603da",
+      "chars": 886
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11705328:0",
+      "content_sha256": "9ace080945ef50e4c7c00cfa3ac6f8ec4c5468b83eb239eaaa747c63e64ee0d9",
+      "chars": 956
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10557471:0",
+      "content_sha256": "625dde178545b5779263199c5e6d0fbfe8b3af4cb65fa38fae80e803e58259f2",
+      "chars": 1031
+     }
+    ],
+    "elapsed_s": 0.8423
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: A deficiency of folate increases blood levels of homocysteine.\n\nEvidence passages from your search for \"folate homocysteine levels\":\n<<<PASSAGES\n[P1] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nHigh plasma total homocysteine (tHcy) concentration is reported to be a risk factor for vascular diseases. We investigated the extent to which serum folate and plasma tHcy respond to a high intake of natural folate from food. Thirty-seven healthy females volunteered t o participate in a crossover dietary intervention. The study included a baseline period and two 5-week diet periods (low- and high-folate diets) with a 3-week washout in between. The low-folate diet contained one serving of both vegetables and fruit/d, while during the high-folate diet the subjects ate at least seven servings of vegetables, berries, and citrus fruit/d. Serum and erythrocyte (RBC) folate, serum vitamin B (12), and plasma tHcy concentrations were measured at the base-line and at the end of each diet period.\n\n[P2] British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*\nThe mean concentrations of serum and RBC folate were 11.0 (SD 3.0) nmol/l and 412 (SD 120) nmol/l at the end of the low-folate diet and 78 (95 % CI 62, 94) % and 14 (95 % CI 8, 20) % higher in response to the high-folate diet (P< 0.001). The serum concentration of vitamin B12 remained unchanged during the intervention. The mean plasma tHcy concentration was 8.0 pmol/ at the end of the low-folate diet and decreased by 13 (95% CI 9, 18) % in response to the high-folate diet (P<0.001). In conclusion, a diet high in fresh berries, citrus fruit, and vegetables effectively increases serum and RBC folate and decreases plasma homocysteine.\n\n[P3] Randomized trial of folic acid supplementation and serum homocysteine levels.\nThe higher a person's initial serum homocysteine level, the greater was the response to folic acid, but there were statistically significant reductions regardless of the initial level. Serum folate level increased approximately linearly (5.5 nmol/L for every 0.1 mg of folic acid). Within-person fluctuations over time in serum homocysteine levels, measured in the placebo group, were large compared with the effect of folic acid, indicating that monitoring of the reduction in an individual is impractical. CONCLUSIONS A dosage of folic acid of 0.8 mg/d appears necessary to achieve the maximum reduction in serum homocysteine level across the range of homocysteine levels in the population. Current US food fortification levels will achieve only a small proportion of the achievable homocysteine reduction.\n\n[P4] Randomized trial of folic acid supplementation and serum homocysteine levels.\nBACKGROUND Lowering serum homocysteine levels with folic acid is expected to reduce mortality from ischemic heart disease. Homocysteine reduction is known to be maximal at a folic acid dosage of 1 mg/d, but the effect of lower doses (relevant to food fortification) is unclear. METHODS We randomized 151 patients with ischemic heart disease to 1 of 5 dosages of folic acid (0.2, 0.4, 0.6, 0.8, and 1.0 mg/d) or placebo. Fasting blood samples for serum homocysteine and serum folate analysis were taken initially, after 3 months of supplementation, and 3 months after folic acid use was discontinued. RESULTS Median serum homocysteine level decreased with increasing folic acid dosage, to a maximum at 0.8 mg of folic acid per day, when the homocysteine reduction (placebo adjusted) was 2.7 micromol/L (23%), similar to the known effect of folic acid dosages of 1 mg/d and above.\n\n[P5] Association between folate intake from different food sources in Norway and homocysteine status in a dietary intervention among young male adults.\nThe aim of the present investigation was to study the effect of a dietary intervention which combined nutrition information with increased availability of vegetables, fruits and wholegrain bread. The effect of the intervention was determined by changes in the intake of vegetables, fruits, wholegrain bread and estimated nutrients. Furthermore, the study investigated whether changes in relative contribution from different food sources of folate were related to changes in the concentration of plasma total homocysteine (p-tHcy). The 5-month intervention study included 376 male recruits from the Norwegian National Guard, Vaernes (intervention group) and 105 male recruits from the Norwegian National Guard, Heggelia (control group). The study resulted in an increase in the total consumption of vegetables, fruits, berries and juice (P < 0.001) and of wholegrain bread (P < 0.001).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ca05435d949b7218f81192b0d28c177ebd89c6f707b58d2ddf5d1a34dc598199",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792865122.561261,
+      "end_wall": 1792865152.362539,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2144,
+    "start_wall": 1792865122.561261,
+    "start_mono": 534679.287871791,
+    "end_wall": 1792865152.362539,
+    "end_mono": 534709.089064541,
+    "raw_response": "{\"reasoning\": \"Multiple studies indicate that folate intake can decrease blood levels of homocysteine. The first two passages show significant decreases in plasma homocysteine with increased dietary folate intake. Passage P3 confirms that folic acid supplementation decreases homocysteine levels, and passage P4 indicates that lower doses of folic acid still reduce homocysteine levels, albeit less effectively. Passage P5 shows an increase in folate intake from different food sources leading to a decrease in plasma total homocysteine concentration, supporting the claim. This evidence collectively supports the '\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29797467584,
+     "load_duration": 13929225334,
+     "prompt_eval_count": 1389,
+     "prompt_eval_duration": 7121727084,
+     "eval_count": 156,
+     "eval_duration": 7415861789,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T18:05:52.359671Z"
+    },
+    "elapsed_s": 29.801,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2144,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:18557974:0",
+     "scifact:18557974:1",
+     "scifact:11705328:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "c1fcc5c32a777ee6993a2aab0c4994997d17d4a698a2f474e6dce54c7b2806fd",
+  "exaone3.5:7.8b": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6",
+  "granite3.3:2b": "6870d3b01e125eb8d804237bde913f781c3ef5b36f9dbb5624e5d0a05fb60fb6",
+  "nemotron-mini:4b": "f9acdb0c8a01d03df57af9e77c15fc39fb3586831358cf3715379b7684a835b2",
+  "olmo2:7b": "bab343d63a42ef6bb70e32e0d89a8e1b9174a3ce1884d479d2fffbc13ab87fb2"
+ },
+ "item_start_wall": 1792865112.9541912,
+ "item_wall_s": 39.408,
+ "ollama_ps_samples": [
+  [
+   1792865112.954,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865114.958,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865116.964,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865118.967,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792865120.974,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792865122.978,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865124.985,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865126.992,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865128.999,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865131.006,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865133.009,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865135.016,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792865137.018,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865139.024,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865141.032,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865143.038,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865145.043,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865147.05,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865149.057,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792865151.059,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

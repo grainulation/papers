@@ -1,0 +1,210 @@
+cd bran && cargo build --release
+warning: unused variable: `subject`
+   --> src/agents.rs:370:5
+    |
+370 |     subject: &str,
+    |     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_subject`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `predicate`
+   --> src/agents.rs:371:5
+    |
+371 |     predicate: &str,
+    |     ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_predicate`
+
+warning: unused variable: `object`
+   --> src/agents.rs:372:5
+    |
+372 |     object: &str,
+    |     ^^^^^^ help: if this is intentional, prefix it with an underscore: `_object`
+
+warning: unused variable: `raw_text`
+   --> src/agents.rs:373:5
+    |
+373 |     raw_text: &str,
+    |     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_raw_text`
+
+warning: unused variable: `name`
+   --> src/agents.rs:382:5
+    |
+382 |     name: &str,
+    |     ^^^^ help: if this is intentional, prefix it with an underscore: `_name`
+
+warning: unused variable: `variance_str`
+    --> src/main.rs:2731:17
+     |
+2731 |             let variance_str = if certs.len() == 1 {
+     |                 ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_variance_str`
+
+warning: variable `total_ok` is assigned to, but never used
+    --> src/main.rs:2766:9
+     |
+2766 |     let mut total_ok = 0usize;
+     |         ^^^^^^^^^^^^
+     |
+     = note: consider using `_total_ok` instead
+
+warning: value assigned to `total_ok` is never read
+    --> src/main.rs:2801:13
+     |
+2801 |             total_ok += 1;
+     |             ^^^^^^^^^^^^^
+     |
+     = help: maybe it is overwritten before being read?
+     = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: trait `EvidenceOracle` is never used
+  --> src/ir.rs:85:11
+   |
+85 | pub trait EvidenceOracle {
+   |           ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `DefaultOracle` is never constructed
+  --> src/ir.rs:90:12
+   |
+90 | pub struct DefaultOracle;
+   |            ^^^^^^^^^^^^^
+
+warning: struct `AgentHistory` is never constructed
+   --> src/ir.rs:103:12
+    |
+103 | pub struct AgentHistory {
+    |            ^^^^^^^^^^^^
+
+warning: associated items `new`, `update`, and `calibration_factor` are never used
+   --> src/ir.rs:114:12
+    |
+113 | impl AgentHistory {
+    | ----------------- associated items in this implementation
+114 |     pub fn new(agent_id: &str) -> Self {
+    |            ^^^
+...
+124 |     pub fn update(&mut self, confidence: f64, is_correct: bool) {
+    |            ^^^^^^
+...
+132 |     pub fn calibration_factor(&self) -> f64 {
+    |            ^^^^^^^^^^^^^^^^^^
+
+warning: method `verify` is never used
+   --> src/ir.rs:384:12
+    |
+346 | impl SealedArtifactSet {
+    | ---------------------- method in this implementation
+...
+384 |     pub fn verify(&self) -> bool {
+    |            ^^^^^^
+
+warning: associated function `with_verification` is never used
+   --> src/ir.rs:474:12
+    |
+462 | impl EvidenceItem {
+    | ----------------- associated function in this implementation
+...
+474 |     pub fn with_verification(
+    |            ^^^^^^^^^^^^^^^^^
+
+warning: field `trust` is never read
+  --> src/agents.rs:37:9
+   |
+32 | pub struct AgentPersonality {
+   |            ---------------- field in this struct
+...
+37 |     pub trust: f64,
+   |         ^^^^^
+   |
+   = note: `AgentPersonality` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: function `make_sybil` is never used
+   --> src/agents.rs:368:8
+    |
+368 | pub fn make_sybil(
+    |        ^^^^^^^^^^
+
+warning: methods `score_evidence` and `behavioral_ees` are never used
+   --> src/compiler.rs:582:8
+    |
+148 | impl BranCompiler {
+    | ----------------- methods in this implementation
+...
+582 |     fn score_evidence(&self, c: &Contribution) -> f64 {
+    |        ^^^^^^^^^^^^^^
+...
+756 |     pub fn behavioral_ees(
+    |            ^^^^^^^^^^^^^^
+
+warning: function `analytical_ees` is never used
+    --> src/compiler.rs:1073:8
+     |
+1073 | pub fn analytical_ees(n: usize, base_roster: &[AgentPersonality]) -> f64 {
+     |        ^^^^^^^^^^^^^^
+
+warning: variant `Speculative` is never constructed
+  --> src/lowering.rs:60:5
+   |
+54 | pub enum ConfidenceBand {
+   |          -------------- variant in this enum
+...
+60 |     Speculative, // 0.00-0.20: pure speculation
+   |     ^^^^^^^^^^^
+   |
+   = note: `ConfidenceBand` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: function `normalize_predicate` is never used
+   --> src/lowering.rs:205:4
+    |
+205 | fn normalize_predicate(words: &[String]) -> String {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `extract_noun_phrase` is never used
+   --> src/lowering.rs:214:4
+    |
+214 | fn extract_noun_phrase(tokens: &[String], start: usize, end: usize) -> String {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `find_token` is never used
+   --> src/lowering.rs:242:4
+    |
+242 | fn find_token(tokens: &[String], word: &str) -> Option<usize> {
+    |    ^^^^^^^^^^
+
+warning: function `find_any_token` is never used
+   --> src/lowering.rs:247:4
+    |
+247 | fn find_any_token(tokens: &[String], words: &[&str]) -> Option<usize> {
+    |    ^^^^^^^^^^^^^^
+
+warning: field `kind` is never read
+   --> src/lowering.rs:943:9
+    |
+940 | pub struct LoweringResult {
+    |            -------------- field in this struct
+...
+943 |     pub kind: ContributionKind,
+    |         ^^^^
+    |
+    = note: `LoweringResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `total` is never used
+   --> src/properties.rs:566:12
+    |
+559 | impl PropertyReport {
+    | ------------------- method in this implementation
+...
+566 |     pub fn total(&self) -> usize {
+    |            ^^^^^
+
+warning: `bran` (bin "bran") generated 25 warnings (run `cargo fix --bin "bran" -p bran` to apply 6 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.02s
+  dumped australia N=100 seed=42: 158 contributions, 4 slots resolved, root=532f3bd404394d35a20427bf56f2b55b cert=f5fa07d24fde0a76 -> bench-output/replay/australia.json
+  PASS australia N=100 seed=42: hash verified (532f3bd404394d35a20427bf56f2b55b), 4 selections + 4 admitted identical, cert=f5fa07d24fde0a76
+  dumped pluto N=100 seed=42: 158 contributions, 4 slots resolved, root=ab104a2a5aff10ad87ed2991ecd57fdc cert=f5fdeb9218728c8a -> bench-output/replay/pluto.json
+  PASS pluto N=100 seed=42: hash verified (ab104a2a5aff10ad87ed2991ecd57fdc), 4 selections + 4 admitted identical, cert=f5fdeb9218728c8a
+  dumped tides N=100 seed=42: 158 contributions, 4 slots resolved, root=a0c30a5b0a2a2f9a88188de3ce194bff cert=9813d0139cd4ec13 -> bench-output/replay/tides.json
+  PASS tides N=100 seed=42: hash verified (a0c30a5b0a2a2f9a88188de3ce194bff), 4 selections + 4 admitted identical, cert=9813d0139cd4ec13
+  dumped tcp N=100 seed=42: 150 contributions, 14 slots resolved, root=a0a3b9e2f383676a565bd129bbe78adf cert=75e25d86c0c3ba61 -> bench-output/replay/tcp.json
+  PASS tcp N=100 seed=42: hash verified (a0a3b9e2f383676a565bd129bbe78adf), 14 selections + 14 admitted identical, cert=75e25d86c0c3ba61
+  dumped nutrition N=100 seed=42: 157 contributions, 15 slots resolved, root=12b06f9eb6e1a3d05d2ec279b97ef388 cert=83f8504b8a4669ac -> bench-output/replay/nutrition.json
+  PASS nutrition N=100 seed=42: hash verified (12b06f9eb6e1a3d05d2ec279b97ef388), 15 selections + 15 admitted identical, cert=83f8504b8a4669ac

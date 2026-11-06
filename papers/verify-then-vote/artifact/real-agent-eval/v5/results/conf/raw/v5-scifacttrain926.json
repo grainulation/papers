@@ -1,0 +1,1284 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain926",
+ "order": 604,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain926",
+  "order": 604,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas."
+ },
+ "item_view_sha256": "bb434283eecfeccfce8ac8a99422475b6de23a25baa26d88f2f4764d39c2b9c4",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "dense",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "llama3.2:3b",
+  "qwen2.5:3b"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "qwen2.5:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "31e19029e4bfa0f9c25276c498f01947c882cf5587fb3e88e5396219e88049ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792720478.995168,
+      "end_wall": 1792720481.016185,
+      "error": null
+     }
+    ],
+    "start_wall": 1792720478.995168,
+    "start_mono": 390036.029802708,
+    "end_wall": 1792720481.016185,
+    "end_mono": 390038.050810208,
+    "raw_response": "{\"query\": \"epithelial cancer emergency hospital admission resource deprived areas\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2019404166,
+     "load_duration": 120874916,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 312845000,
+     "eval_count": 16,
+     "eval_duration": 1408526415,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:54:41.015613Z"
+    },
+    "elapsed_s": 2.021,
+    "query_used": "epithelial cancer emergency hospital admission resource deprived areas",
+    "query_source": "json",
+    "query_arrival_seq": 3020
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "epithelial cancer emergency hospital admission resource deprived areas",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16390264:1",
+       "score_q": 670
+      },
+      {
+       "passage_key": "scifact:16390264:2",
+       "score_q": 657
+      },
+      {
+       "passage_key": "scifact:16390264:0",
+       "score_q": 656
+      },
+      {
+       "passage_key": "scifact:5641851:1",
+       "score_q": 656
+      },
+      {
+       "passage_key": "scifact:5641851:0",
+       "score_q": 654
+      }
+     ],
+     "retrieval_sha256": "575e029821bc01c748de7b0d2478b219a741fd57b77a86999b12aa7a4ba3a3bc"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "575e029821bc01c748de7b0d2478b219a741fd57b77a86999b12aa7a4ba3a3bc",
+    "query_embedding_sha256": "70872edebcab9890de05e59faaea8e4096ed06e24eb91c68ae4205a2090a6457",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16390264:1",
+      "content_sha256": "1918ced14d6cdc091c9490c552e929cc502a4ca90cfef709e5885f6f5cd3d993",
+      "chars": 976
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16390264:2",
+      "content_sha256": "ba0faa6d4e99f1ed539e293bb2dea58bbcd1f89d23bcfa05b2930adee321d9b5",
+      "chars": 845
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16390264:0",
+      "content_sha256": "e23dd812b355acdf54b2906fa3228a9aab43d41b4564dbcf7ce268dfd28cb226",
+      "chars": 929
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5641851:1",
+      "content_sha256": "714086b4a6b667a7620a83b6d4db0cb0bca6796b9a06be764300a51bfe42fe5c",
+      "chars": 1035
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5641851:0",
+      "content_sha256": "77695273c83106fd310d4c32c232d5ad45cd4661f0d92d28422f3c40344e5f95",
+      "chars": 981
+     }
+    ],
+    "elapsed_s": 7.1904
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nEvidence passages from your search for \"epithelial cancer emergency hospital admission resource deprived areas\":\n<<<PASSAGES\n[P1] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nFor example, the adjusted odds ratio for patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and the adjusted odds ratio for patients with lung cancer aged 80-89 compared with those aged 50-59 was 3.13 (2.93 to 3.34). There were some improvements in disparities between age groups but not for patients living in deprived areas over time. Patients from deprived areas were less likely to receive preferred procedures for rectal, breast, and lung cancer. These findings did not improve with time. For example, 67.4% (3529/5237) of patients in the most deprived fifth of deprivation had anterior resection for rectal cancer compared with 75.5% (4497/5959) of patients in the least deprived fifth (1.34, 1.22 to 1.47).\n\n[P2] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOver half (54.0%, 11 256/20 849) of patients in the most deprived fifth of deprivation had breast conserving surgery compared with 63.7% (18 445/28 960) of patients in the least deprived fifth (1.21, 1.16 to 1.26). Men were less likely than women to undergo anterior resection and lung cancer resection and older people were less likely to receive breast conserving surgery and lung cancer resection. For example, the adjusted odds ratio for lung cancer patients aged 80-89 compared with those aged 50-59 was 0.52 (0.46 to 0.59). Conclusions Despite the implementation of the NHS Cancer Plan, social factors still strongly influence access to and the provision of care.\n\n[P3] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOBJECTIVES To determine the extent to which type of hospital admission (emergency compared with elective) and surgical procedure varied by socioeconomic circumstances, age, sex, and year of admission for colorectal, breast, and lung cancer. DESIGN Repeated cross sectional study with data from individual patients, 1 April 1999 to 31 March 2006. SETTING Hospital episode statistics (HES) dataset. PARTICIPANTS 564 821 patients aged 50 and over admitted with a diagnosis of colorectal, breast, or lung cancer. MAIN OUTCOME MEASURES Proportion of patients admitted as emergencies, and the proportion receiving the recommended surgical treatment. RESULTS Patients from deprived areas, older people, and women were more likely to be admitted as emergencies.\n\n[P4] Social and geographical factors affecting access to treatment of colorectal cancer: a cancer registry study\nRESULTS Patients in the most deprived quartile were significantly more likely to be diagnosed at stage 4 for rectal cancer (OR 1.516, p<0.05) but less so for colonic cancer. There was a trend for both sites for patients in the most deprived quartile to be less likely to receive chemotherapy for stage 4 disease. Patients with colonic cancer were very significantly less likely to receive any treatment if they came from any but the most affluent area (ORs 0.639, 0.603 and 0.544 in increasingly deprived quartiles), this may have been exacerbated if the hospital was distant from their residence (OR for forth quartile for both travel and deprivation 0.731, not significant). The effect was less for rectal cancer and no effect of distance was seen. CONCLUSIONS Residing in a deprived area is associated with tendencies to higher stage at diagnosis and especially in the case of colonic cancer to reduced receipt of treatment.\n\n[P5] Social and geographical factors affecting access to treatment of colorectal cancer: a cancer registry study\nOBJECTIVE Cancer outcomes vary between and within countries with patients from deprived backgrounds known to have inferior survival. The authors set out to explore the effect of deprivation in relation to the accessibility of hospitals offering diagnostic and therapeutic services on stage at presentation and receipt of treatment. DESIGN Analysis of a Cancer Registry Database. Data included stage and treatment details from the first 6 months. The socioeconomic status of the immediate area of residence and the travel time from home to hospital was derived from the postcode. SETTING Population-based study of patients resident in a large area in the north of England. PARTICIPANTS 39 619 patients with colorectal cancer diagnosed between 1994 and 2002. OUTCOMES MEASURED Stage of diagnosis and receipt of treatment in relation to deprivation and distance from hospital.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "02db41aaef4fc99f25959771ebdc85b368a0695d7aa1a7f30d33712cf16e86ae",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792720488.2071621,
+      "end_wall": 1792720500.424597,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3020,
+    "start_wall": 1792720488.2071621,
+    "start_mono": 390045.241759125,
+    "end_wall": 1792720500.424597,
+    "end_mono": 390057.459144,
+    "raw_response": "{\"reasoning\": \"The claim is supported by passages that show patients from resource-deprived areas are more likely to be diagnosed at a higher stage and receive less treatment for colorectal cancer, as well as being more likely to be admitted as emergencies.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\", \"P5\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12214230458,
+     "load_duration": 2174785667,
+     "prompt_eval_count": 1318,
+     "prompt_eval_duration": 4211702292,
+     "eval_count": 81,
+     "eval_duration": 4787876047,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:55:00.422957Z"
+    },
+    "elapsed_s": 12.217,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3020,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:16390264:0",
+     "scifact:5641851:1",
+     "scifact:5641851:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 242,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "31e19029e4bfa0f9c25276c498f01947c882cf5587fb3e88e5396219e88049ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792720478.995352,
+      "end_wall": 1792720487.6702201,
+      "error": null
+     }
+    ],
+    "start_wall": 1792720478.995352,
+    "start_mono": 390036.029986291,
+    "end_wall": 1792720487.6702201,
+    "end_mono": 390044.704818583,
+    "raw_response": "{\"query\": \"epithelial cancer patients emergency first admission resource deprived areas\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8672590625,
+     "load_duration": 3140814167,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 384988708,
+     "eval_count": 17,
+     "eval_duration": 4924625376,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:54:47.668948Z"
+    },
+    "elapsed_s": 8.675,
+    "query_used": "epithelial cancer patients emergency first admission resource deprived areas",
+    "query_source": "json",
+    "query_arrival_seq": 3023
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "epithelial cancer patients emergency first admission resource deprived areas",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16390264:0",
+       "score_q": 13072
+      },
+      {
+       "passage_key": "scifact:16390264:1",
+       "score_q": 10677
+      },
+      {
+       "passage_key": "scifact:5641851:1",
+       "score_q": 7879
+      },
+      {
+       "passage_key": "scifact:14021596:0",
+       "score_q": 7629
+      },
+      {
+       "passage_key": "scifact:14021596:1",
+       "score_q": 7317
+      }
+     ],
+     "retrieval_sha256": "26f84f183b3fe79186ebcf82b50c7230b828db4b15edc8e7f6dae0b71438a791"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "26f84f183b3fe79186ebcf82b50c7230b828db4b15edc8e7f6dae0b71438a791",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16390264:0",
+      "content_sha256": "e23dd812b355acdf54b2906fa3228a9aab43d41b4564dbcf7ce268dfd28cb226",
+      "chars": 929
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16390264:1",
+      "content_sha256": "1918ced14d6cdc091c9490c552e929cc502a4ca90cfef709e5885f6f5cd3d993",
+      "chars": 976
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5641851:1",
+      "content_sha256": "714086b4a6b667a7620a83b6d4db0cb0bca6796b9a06be764300a51bfe42fe5c",
+      "chars": 1035
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14021596:0",
+      "content_sha256": "d5c946258c4e599833e356d80bae31b5ee9fb3f6093ca616027e4dd72a4d0f94",
+      "chars": 1015
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14021596:1",
+      "content_sha256": "ebfe31851355af07963f10e1a4efb6285b2686fcebd39d0c98806661dc2459c3",
+      "chars": 853
+     }
+    ],
+    "elapsed_s": 0.0011
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nEvidence passages from your search for \"epithelial cancer patients emergency first admission resource deprived areas\":\n<<<PASSAGES\n[P1] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOBJECTIVES To determine the extent to which type of hospital admission (emergency compared with elective) and surgical procedure varied by socioeconomic circumstances, age, sex, and year of admission for colorectal, breast, and lung cancer. DESIGN Repeated cross sectional study with data from individual patients, 1 April 1999 to 31 March 2006. SETTING Hospital episode statistics (HES) dataset. PARTICIPANTS 564 821 patients aged 50 and over admitted with a diagnosis of colorectal, breast, or lung cancer. MAIN OUTCOME MEASURES Proportion of patients admitted as emergencies, and the proportion receiving the recommended surgical treatment. RESULTS Patients from deprived areas, older people, and women were more likely to be admitted as emergencies.\n\n[P2] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nFor example, the adjusted odds ratio for patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and the adjusted odds ratio for patients with lung cancer aged 80-89 compared with those aged 50-59 was 3.13 (2.93 to 3.34). There were some improvements in disparities between age groups but not for patients living in deprived areas over time. Patients from deprived areas were less likely to receive preferred procedures for rectal, breast, and lung cancer. These findings did not improve with time. For example, 67.4% (3529/5237) of patients in the most deprived fifth of deprivation had anterior resection for rectal cancer compared with 75.5% (4497/5959) of patients in the least deprived fifth (1.34, 1.22 to 1.47).\n\n[P3] Social and geographical factors affecting access to treatment of colorectal cancer: a cancer registry study\nRESULTS Patients in the most deprived quartile were significantly more likely to be diagnosed at stage 4 for rectal cancer (OR 1.516, p<0.05) but less so for colonic cancer. There was a trend for both sites for patients in the most deprived quartile to be less likely to receive chemotherapy for stage 4 disease. Patients with colonic cancer were very significantly less likely to receive any treatment if they came from any but the most affluent area (ORs 0.639, 0.603 and 0.544 in increasingly deprived quartiles), this may have been exacerbated if the hospital was distant from their residence (OR for forth quartile for both travel and deprivation 0.731, not significant). The effect was less for rectal cancer and no effect of distance was seen. CONCLUSIONS Residing in a deprived area is associated with tendencies to higher stage at diagnosis and especially in the case of colonic cancer to reduced receipt of treatment.\n\n[P4] The association of Red cell distribution width and in-hospital mortality in older adults admitted to the emergency department\nBACKGROUND The objective of the study was to test the hypothesis that elevated red cell distribution width (RDW) at admission increases the risk of mortality in older patients admitted to the emergency department (ED). METHODS We performed a retrospective analysis of patients admitted to the ED between May 2013 and October 2013. We included patients who were older than 65 years who visited the ED with any medical problems. Baseline RDW values were measured at the time of admission to the ED. The primary outcome was all-cause in-hospital mortality. Multivariate logistic analysis was performed. RESULTS A total of 1,990 patients were finally included in this study. The mean age was 75 years (SD 7), and 936 (47 %) subjects were male. The in-hospital mortality rate was 3.76 % (74 patients). RDW values higher in non-survivors than in survivors (15.9 ± 2.5 vs. 13.8 ± 1.7, p < 0.001).\n\n[P5] The association of Red cell distribution width and in-hospital mortality in older adults admitted to the emergency department\nMultivariate logistic analysis showed that RDW was associated with all-cause in-hospital mortality after adjusting for other confounding factors. DISCUSSION RDW value at admission is an independent predictor of all-cause in-hospital mortality among patients older than 65 years. After adjustment for multiple confounders, the all-cause in-hospital mortality rate increased by 21.8% for each 1% increase in RDW. CONCLUSION These results show that RDW at admission is associated with in-hospital mortality among patients older than 65. Thus, RDW at admission may represent a surrogate marker of disease severity. We caution against using these findings to aid clinical decision-making process until they are externally validated.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5aceee67dde149ed8a1fb3034a994de6ea6c2ab13d44d5ac8a4c4de0010fbf2c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792720487.671822,
+      "end_wall": 1792720502.722951,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3021,
+    "start_wall": 1792720487.671822,
+    "start_mono": 390044.706421458,
+    "end_wall": 1792720502.722951,
+    "end_mono": 390059.757489125,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages indicate that patients from deprived areas are less likely to receive preferred procedures for rectal and breast cancers, and less likely to receive any treatment for colonic cancer. These findings suggest that patients living in resource-deprived areas might be more likely to have an emergency event as their first hospital admission due to reduced access to care.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15045505292,
+     "load_duration": 1638276625,
+     "prompt_eval_count": 1406,
+     "prompt_eval_duration": 4795576292,
+     "eval_count": 109,
+     "eval_duration": 7105840252,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:55:02.718462Z"
+    },
+    "elapsed_s": 15.051,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3021,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:16390264:0",
+     "scifact:16390264:1",
+     "scifact:5641851:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 388,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "31e19029e4bfa0f9c25276c498f01947c882cf5587fb3e88e5396219e88049ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792720478.994755,
+      "end_wall": 1792720482.549948,
+      "error": null
+     }
+    ],
+    "start_wall": 1792720478.994755,
+    "start_mono": 390036.029389333,
+    "end_wall": 1792720482.549948,
+    "end_mono": 390039.584567625,
+    "raw_response": "{\"query\": \"common epithelial cancers hospital admission resource-deprived areas emergency events first admission rate\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3552827583,
+     "load_duration": 936281375,
+     "prompt_eval_count": 195,
+     "prompt_eval_duration": 1037410125,
+     "eval_count": 26,
+     "eval_duration": 1503053166,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:54:42.548866Z"
+    },
+    "elapsed_s": 3.555,
+    "query_used": "common epithelial cancers hospital admission resource-deprived areas emergency events first admission rate",
+    "query_source": "json",
+    "query_arrival_seq": 3022
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "common epithelial cancers hospital admission resource-deprived areas emergency events first admission rate",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16390264:0",
+       "score_q": 16368
+      },
+      {
+       "passage_key": "scifact:14021596:1",
+       "score_q": 14504
+      },
+      {
+       "passage_key": "scifact:14021596:0",
+       "score_q": 13195
+      },
+      {
+       "passage_key": "scifact:24408040:0",
+       "score_q": 11528
+      },
+      {
+       "passage_key": "scifact:19464037:1",
+       "score_q": 10510
+      }
+     ],
+     "retrieval_sha256": "a43eb597c142c8bb46ec860a1315e481d2329e131580bd14c040eb669ba1d74c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a43eb597c142c8bb46ec860a1315e481d2329e131580bd14c040eb669ba1d74c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16390264:0",
+      "content_sha256": "e23dd812b355acdf54b2906fa3228a9aab43d41b4564dbcf7ce268dfd28cb226",
+      "chars": 929
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:14021596:1",
+      "content_sha256": "ebfe31851355af07963f10e1a4efb6285b2686fcebd39d0c98806661dc2459c3",
+      "chars": 853
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14021596:0",
+      "content_sha256": "d5c946258c4e599833e356d80bae31b5ee9fb3f6093ca616027e4dd72a4d0f94",
+      "chars": 1015
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24408040:0",
+      "content_sha256": "a8924e36b3e2cb3352906c5d98989a1b78185885c3ccbf529e4730f1fdb8e004",
+      "chars": 1027
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:19464037:1",
+      "content_sha256": "224b05698c4e79e36eaf536f358b4db77d7c334a7602ecfbbefcfcf82e22368f",
+      "chars": 1139
+     }
+    ],
+    "elapsed_s": 0.0036
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nEvidence passages from your search for \"common epithelial cancers hospital admission resource-deprived areas emergency events first admission rate\":\n<<<PASSAGES\n[P1] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOBJECTIVES To determine the extent to which type of hospital admission (emergency compared with elective) and surgical procedure varied by socioeconomic circumstances, age, sex, and year of admission for colorectal, breast, and lung cancer. DESIGN Repeated cross sectional study with data from individual patients, 1 April 1999 to 31 March 2006. SETTING Hospital episode statistics (HES) dataset. PARTICIPANTS 564 821 patients aged 50 and over admitted with a diagnosis of colorectal, breast, or lung cancer. MAIN OUTCOME MEASURES Proportion of patients admitted as emergencies, and the proportion receiving the recommended surgical treatment. RESULTS Patients from deprived areas, older people, and women were more likely to be admitted as emergencies.\n\n[P2] The association of Red cell distribution width and in-hospital mortality in older adults admitted to the emergency department\nMultivariate logistic analysis showed that RDW was associated with all-cause in-hospital mortality after adjusting for other confounding factors. DISCUSSION RDW value at admission is an independent predictor of all-cause in-hospital mortality among patients older than 65 years. After adjustment for multiple confounders, the all-cause in-hospital mortality rate increased by 21.8% for each 1% increase in RDW. CONCLUSION These results show that RDW at admission is associated with in-hospital mortality among patients older than 65. Thus, RDW at admission may represent a surrogate marker of disease severity. We caution against using these findings to aid clinical decision-making process until they are externally validated.\n\n[P3] The association of Red cell distribution width and in-hospital mortality in older adults admitted to the emergency department\nBACKGROUND The objective of the study was to test the hypothesis that elevated red cell distribution width (RDW) at admission increases the risk of mortality in older patients admitted to the emergency department (ED). METHODS We performed a retrospective analysis of patients admitted to the ED between May 2013 and October 2013. We included patients who were older than 65 years who visited the ED with any medical problems. Baseline RDW values were measured at the time of admission to the ED. The primary outcome was all-cause in-hospital mortality. Multivariate logistic analysis was performed. RESULTS A total of 1,990 patients were finally included in this study. The mean age was 75 years (SD 7), and 936 (47 %) subjects were male. The in-hospital mortality rate was 3.76 % (74 patients). RDW values higher in non-survivors than in survivors (15.9 ± 2.5 vs. 13.8 ± 1.7, p < 0.001).\n\n[P4] Heart failure admissions in adults with congenital heart disease; risk factors and prognosis.\nBACKGROUND Heart failure (HF) is a serious complication and often the cause of death in adults with congenital heart disease (CHD). Therefore, our aims were to determine the frequency of HF-admissions, and to assess risk factors of first HF-admission and of mortality after first HF-admission in adults with CHD. METHODS The Dutch CONCOR registry was linked to the Hospital Discharge Registry and National Mortality Registry to obtain data on HF-admissions and mortality. Risk factors for both HF-admission and mortality were assessed using Cox regression models. RESULTS Of 10,808 adult patients (49% male), 274 (2.5%) were admitted for HF during a median follow-up period of 21 years. The incidence of first HF-admission was 1.2 per 1000 patient-years, but the incidence of HF itself will be higher. Main defect, multiple defects, and surgical interventions in childhood were identified as independent risk factors of HF-admission.\n\n[P5] Hospital and 1-year survival of patients admitted to intensive care units with acute exacerbation of chronic obstructive pulmonary disease.\nOn multiple regression analysis, variables associated with hospital mortality included age, severity of respiratory and nonrespiratory organ system dysfunction, and hospital length of stay before ICU admission. Development of nonrespiratory organ system dysfunction was the major predictor of hospital mortality (60% of total explanatory power) and 180-day outcomes (54% of explanatory power). Respiratory physiological variables (respiratory rate, serum pH, PaCO2, PaO2, and alveolar-arterial difference in partial pressure of oxygen [PAO2-PaO2]) indicative of advanced dysfunction were more strongly associated with 180-day mortality rates (22% of explanatory power) than hospital death rates (4% of explanatory power). After controlling for severity of illness, mechanical ventilation at ICU admission was not associated with either hospital mortality or subsequent survival. CONCLUSIONS Patients with COPD admitted to an ICU for an acute exacerbation have a substantial hospital mortality (24%).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3e7b26fb6fa53b2d3a22c1c1f17bc5412f22d4e1b7fcb5c7268351616a46deae",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792720482.5540428,
+      "end_wall": 1792720503.789869,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3022,
+    "start_wall": 1792720482.5540428,
+    "start_mono": 390039.588662791,
+    "end_wall": 1792720503.789869,
+    "end_mono": 390060.824403333,
+    "raw_response": "{\n  \"reasoning\": \"The provided passages suggest that patients from deprived areas are more likely to be admitted as emergencies for colorectal, breast, and lung cancer (P1). However, the passages do not specifically mention that these emergency events are the first hospital admission for patients with common epithelial cancers in resource-deprived areas. The passages (P2, P3, P4, P5) do not relate to the claim in question.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21230853416,
+     "load_duration": 15085250,
+     "prompt_eval_count": 1603,
+     "prompt_eval_duration": 7100792709,
+     "eval_count": 137,
+     "eval_duration": 13688702377,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:55:03.786193Z"
+    },
+    "elapsed_s": 21.236,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3022,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:16390264:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 408,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "31e19029e4bfa0f9c25276c498f01947c882cf5587fb3e88e5396219e88049ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792720478.9948769,
+      "end_wall": 1792720488.732544,
+      "error": null
+     }
+    ],
+    "start_wall": 1792720478.9948769,
+    "start_mono": 390036.029511625,
+    "end_wall": 1792720488.732544,
+    "end_mono": 390045.767138583,
+    "raw_response": "{\"query\": \"resource-deprived patients epithelial cancer emergency\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9734412584,
+     "load_duration": 4758856959,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 858537917,
+     "eval_count": 16,
+     "eval_duration": 3798238959,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:54:48.731022Z"
+    },
+    "elapsed_s": 9.738,
+    "query_used": "resource-deprived patients epithelial cancer emergency",
+    "query_source": "json",
+    "query_arrival_seq": 3024
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "resource-deprived patients epithelial cancer emergency",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16390264:1",
+       "score_q": 8247
+      },
+      {
+       "passage_key": "scifact:16390264:0",
+       "score_q": 8082
+      },
+      {
+       "passage_key": "scifact:5641851:1",
+       "score_q": 7879
+      },
+      {
+       "passage_key": "scifact:16390264:2",
+       "score_q": 6888
+      },
+      {
+       "passage_key": "scifact:5641851:0",
+       "score_q": 5690
+      }
+     ],
+     "retrieval_sha256": "dfc2a4ed16a917c577c14a246259315365520c1826e8514364939eea9caedfa3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "dfc2a4ed16a917c577c14a246259315365520c1826e8514364939eea9caedfa3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16390264:1",
+      "content_sha256": "1918ced14d6cdc091c9490c552e929cc502a4ca90cfef709e5885f6f5cd3d993",
+      "chars": 976
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16390264:0",
+      "content_sha256": "e23dd812b355acdf54b2906fa3228a9aab43d41b4564dbcf7ce268dfd28cb226",
+      "chars": 929
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5641851:1",
+      "content_sha256": "714086b4a6b667a7620a83b6d4db0cb0bca6796b9a06be764300a51bfe42fe5c",
+      "chars": 1035
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16390264:2",
+      "content_sha256": "ba0faa6d4e99f1ed539e293bb2dea58bbcd1f89d23bcfa05b2930adee321d9b5",
+      "chars": 845
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5641851:0",
+      "content_sha256": "77695273c83106fd310d4c32c232d5ad45cd4661f0d92d28422f3c40344e5f95",
+      "chars": 981
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nEvidence passages from your search for \"resource-deprived patients epithelial cancer emergency\":\n<<<PASSAGES\n[P1] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nFor example, the adjusted odds ratio for patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and the adjusted odds ratio for patients with lung cancer aged 80-89 compared with those aged 50-59 was 3.13 (2.93 to 3.34). There were some improvements in disparities between age groups but not for patients living in deprived areas over time. Patients from deprived areas were less likely to receive preferred procedures for rectal, breast, and lung cancer. These findings did not improve with time. For example, 67.4% (3529/5237) of patients in the most deprived fifth of deprivation had anterior resection for rectal cancer compared with 75.5% (4497/5959) of patients in the least deprived fifth (1.34, 1.22 to 1.47).\n\n[P2] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOBJECTIVES To determine the extent to which type of hospital admission (emergency compared with elective) and surgical procedure varied by socioeconomic circumstances, age, sex, and year of admission for colorectal, breast, and lung cancer. DESIGN Repeated cross sectional study with data from individual patients, 1 April 1999 to 31 March 2006. SETTING Hospital episode statistics (HES) dataset. PARTICIPANTS 564 821 patients aged 50 and over admitted with a diagnosis of colorectal, breast, or lung cancer. MAIN OUTCOME MEASURES Proportion of patients admitted as emergencies, and the proportion receiving the recommended surgical treatment. RESULTS Patients from deprived areas, older people, and women were more likely to be admitted as emergencies.\n\n[P3] Social and geographical factors affecting access to treatment of colorectal cancer: a cancer registry study\nRESULTS Patients in the most deprived quartile were significantly more likely to be diagnosed at stage 4 for rectal cancer (OR 1.516, p<0.05) but less so for colonic cancer. There was a trend for both sites for patients in the most deprived quartile to be less likely to receive chemotherapy for stage 4 disease. Patients with colonic cancer were very significantly less likely to receive any treatment if they came from any but the most affluent area (ORs 0.639, 0.603 and 0.544 in increasingly deprived quartiles), this may have been exacerbated if the hospital was distant from their residence (OR for forth quartile for both travel and deprivation 0.731, not significant). The effect was less for rectal cancer and no effect of distance was seen. CONCLUSIONS Residing in a deprived area is associated with tendencies to higher stage at diagnosis and especially in the case of colonic cancer to reduced receipt of treatment.\n\n[P4] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOver half (54.0%, 11 256/20 849) of patients in the most deprived fifth of deprivation had breast conserving surgery compared with 63.7% (18 445/28 960) of patients in the least deprived fifth (1.21, 1.16 to 1.26). Men were less likely than women to undergo anterior resection and lung cancer resection and older people were less likely to receive breast conserving surgery and lung cancer resection. For example, the adjusted odds ratio for lung cancer patients aged 80-89 compared with those aged 50-59 was 0.52 (0.46 to 0.59). Conclusions Despite the implementation of the NHS Cancer Plan, social factors still strongly influence access to and the provision of care.\n\n[P5] Social and geographical factors affecting access to treatment of colorectal cancer: a cancer registry study\nOBJECTIVE Cancer outcomes vary between and within countries with patients from deprived backgrounds known to have inferior survival. The authors set out to explore the effect of deprivation in relation to the accessibility of hospitals offering diagnostic and therapeutic services on stage at presentation and receipt of treatment. DESIGN Analysis of a Cancer Registry Database. Data included stage and treatment details from the first 6 months. The socioeconomic status of the immediate area of residence and the travel time from home to hospital was derived from the postcode. SETTING Population-based study of patients resident in a large area in the north of England. PARTICIPANTS 39 619 patients with colorectal cancer diagnosed between 1994 and 2002. OUTCOMES MEASURED Stage of diagnosis and receipt of treatment in relation to deprivation and distance from hospital.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1cc2bba1ff14d63704481394bf56401244f6ed2cfe8d52d10ed0008dbb19ffff",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792720488.733463,
+      "end_wall": 1792720512.700605,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3023,
+    "start_wall": 1792720488.733463,
+    "start_mono": 390045.768058916,
+    "end_wall": 1792720512.700605,
+    "end_mono": 390069.735103125,
+    "raw_response": "{\"reasoning\": \"The passages all show that patients in deprived areas are less likely to receive the recommended care and treatment for cancer. This suggests they are more likely to have an emergency as their first hospital admission.\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23961600250,
+     "load_duration": 17012682166,
+     "prompt_eval_count": 1372,
+     "prompt_eval_duration": 3372943917,
+     "eval_count": 60,
+     "eval_duration": 2320974129,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:55:12.696089Z"
+    },
+    "elapsed_s": 23.967,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3023,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 218,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "31e19029e4bfa0f9c25276c498f01947c882cf5587fb3e88e5396219e88049ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792720478.995022,
+      "end_wall": 1792720481.345904,
+      "error": null
+     }
+    ],
+    "start_wall": 1792720478.995022,
+    "start_mono": 390036.029656958,
+    "end_wall": 1792720481.345904,
+    "end_mono": 390038.380528291,
+    "raw_response": "{\"query\": \"link between epithelial cancers and emergency hospital admissions in low-income areas\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2348417834,
+     "load_duration": 20743334,
+     "prompt_eval_count": 209,
+     "prompt_eval_duration": 365204834,
+     "eval_count": 28,
+     "eval_duration": 1884254123,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:54:41.345029Z"
+    },
+    "elapsed_s": 2.351,
+    "query_used": "link between epithelial cancers and emergency hospital admissions in low-income areas",
+    "query_source": "json",
+    "query_arrival_seq": 3021
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "link between epithelial cancers and emergency hospital admissions in low-income areas",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14319754:1",
+       "score_q": 701
+      },
+      {
+       "passage_key": "scifact:16390264:0",
+       "score_q": 694
+      },
+      {
+       "passage_key": "scifact:20610390:1",
+       "score_q": 691
+      },
+      {
+       "passage_key": "scifact:5372432:1",
+       "score_q": 685
+      },
+      {
+       "passage_key": "scifact:20610390:0",
+       "score_q": 684
+      }
+     ],
+     "retrieval_sha256": "a0954d2956f4b1cfb2a453405ec5e399f1641cdf870657246de0480494c946c1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a0954d2956f4b1cfb2a453405ec5e399f1641cdf870657246de0480494c946c1",
+    "query_embedding_sha256": "b7bcc7b388e3f2a369c7d235790f19fd36c3a62bd68bb2eabf44022ace9cf587",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14319754:1",
+      "content_sha256": "7aeed6125955da9b9ead31f6a7713164332fcb55aefc518a8c6f44ca5c109b4f",
+      "chars": 1121
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:16390264:0",
+      "content_sha256": "e23dd812b355acdf54b2906fa3228a9aab43d41b4564dbcf7ce268dfd28cb226",
+      "chars": 929
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:20610390:1",
+      "content_sha256": "22dfacc6ccf20c9795168f6c9fcb88bfdb4677f8c6fc6ba62269b3cad8932f1f",
+      "chars": 680
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5372432:1",
+      "content_sha256": "06894f851334c2c861b5b7654be91d0a40b60cd544cf3e0995f2b3f2abb23065",
+      "chars": 483
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:20610390:0",
+      "content_sha256": "f46a999cfb26e7969afe255ae21fd8e080dc6794726bd0b9549a9df80af0ea2f",
+      "chars": 1140
+     }
+    ],
+    "elapsed_s": 6.9704
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with common epithelial cancers  are more likely to have an emergency event as their first hospital admission if they live in resource-deprived areas.\n\nEvidence passages from your search for \"link between epithelial cancers and emergency hospital admissions in low-income areas\":\n<<<PASSAGES\n[P1] The Antiretroviral Therapy in Lower Income Countries (ART-LINC) Collaboration and ART Cohort Collaboration (ART-CC) groups Summary\nAt 6 months, the median number of CD4 cells gained (106 cells per muL vs 103 cells per muL) and the percentage of patients reaching HIV-1 RNA levels lower than 500 copies/mL (76%vs 77%) were similar. Mortality was higher in low-income settings (124 deaths during 2236 person-years of follow-up) than in high-income settings (414 deaths during 20,532 person-years). The adjusted hazard ratio (HR) of mortality comparing low-income with high-income settings fell from 4.3 (95% CI 1.6-11.8) during the first month to 1.5 (0.7-3.0) during months 7-12. The provision of treatment free of charge in low-income settings was associated with lower mortality (adjusted HR 0.23; 95% CI 0.08-0.61). INTERPRETATION Patients starting HAART in resource-poor settings have increased mortality rates in the first months on therapy, compared with those in developed countries. Timely diagnosis and assessment of treatment eligibility, coupled with free provision of HAART, might reduce this excess mortality.\n\n[P2] Social variations in access to hospital care for patients with colorectal, breast, and lung cancer between 1999 and 2006: retrospective analysis of hospital episode statistics\nOBJECTIVES To determine the extent to which type of hospital admission (emergency compared with elective) and surgical procedure varied by socioeconomic circumstances, age, sex, and year of admission for colorectal, breast, and lung cancer. DESIGN Repeated cross sectional study with data from individual patients, 1 April 1999 to 31 March 2006. SETTING Hospital episode statistics (HES) dataset. PARTICIPANTS 564 821 patients aged 50 and over admitted with a diagnosis of colorectal, breast, or lung cancer. MAIN OUTCOME MEASURES Proportion of patients admitted as emergencies, and the proportion receiving the recommended surgical treatment. RESULTS Patients from deprived areas, older people, and women were more likely to be admitted as emergencies.\n\n[P3] Exploring the epidemiological characteristics of cancers of unknown primary site in an Australian population: implications for research and clinical care.\nCUP represented a higher proportion of cancers in Indigenous patients. Case survival was 7% at 10 years from diagnosis. Factors predictive of lower case survival included older age, male sex, Indigenous status, lower socio-economic status, and unspecified histology type. CONCLUSION Results point to poor CUP outcomes, but with a modest improvement in survival. The study identifies socio-demographic groups at elevated risk of CUP and of worse treatment outcomes where increased research and clinical attention are required.\n\n[P4] Geographical access to healthcare in Northern England and post-mortem diagnosis of cancer.\nThose in the most deprived and furthest travel time to hospital quartile were 2.6 times more likely to be a diagnosis at death case compared with those in the most affluent and proximal areas. CONCLUSIONS There is some evidence that poorer geographical access to tertiary care, in particular when coupled with social disadvantages, may be associated with increased odds of diagnosis at death.\n\n[P5] Exploring the epidemiological characteristics of cancers of unknown primary site in an Australian population: implications for research and clinical care.\nOBJECTIVES To investigate incidence, mortality and case survival trends for cancer of unknown primary site (CUP) and consider clinical implications. METHOD South Australian Cancer Registry data were used to calculate age-standardised incidence and mortality rates from 1977 to 2004. Disease-specific survivals, socio-demographic, histological and secular predictors of CUP, compared with cancers of known primary site, and of CUP histological types, using multivariable logistic regression were investigated. RESULTS Incidence and mortality rates increased approximately 60% between 1977--80 and 1981--84. Rates peaked in 1993--96. Male to female incidence and mortality rate ratios approximated 1.3:1. Incidence and mortality rates increased with age. The odds of unspecified histological type, compared with the more common adenocarcinomas, were higher for males than females, non-metropolitan residents, low socio-economic areas, and for 1977--88 than subsequent diagnostic periods.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "45914e3f1af09eec6687800393b8732f5bdccde18bb3f538e024ff27667b63f0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792720488.3168309,
+      "end_wall": 1792720513.44931,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3024,
+    "start_wall": 1792720488.3168309,
+    "start_mono": 390045.35142825,
+    "end_wall": 1792720513.44931,
+    "end_mono": 390070.483806166,
+    "raw_response": "{\n  \"reasoning\": \"The evidence points to a higher likelihood of emergency hospital admissions among patients from low-income areas. While the passages do not explicitly mention epithelial cancers, the general trend and the mention of deprived areas in relation to healthcare access and outcomes suggest that the claim could be supported, especially considering the known challenges in accessing timely cancer care in resource-deprived regions.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P4\", \"P5\"],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25127962792,
+     "load_duration": 15818143292,
+     "prompt_eval_count": 1528,
+     "prompt_eval_duration": 4307423125,
+     "eval_count": 136,
+     "eval_duration": 4644456381,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T01:55:13.445873Z"
+    },
+    "elapsed_s": 25.132,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3024,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:16390264:0",
+     "scifact:5372432:1",
+     "scifact:20610390:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 425,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "575e029821bc01c748de7b0d2478b219a741fd57b77a86999b12aa7a4ba3a3bc",
+  "qwen2.5:3b": "26f84f183b3fe79186ebcf82b50c7230b828db4b15edc8e7f6dae0b71438a791",
+  "mistral": "a43eb597c142c8bb46ec860a1315e481d2329e131580bd14c040eb669ba1d74c",
+  "gemma2:2b": "dfc2a4ed16a917c577c14a246259315365520c1826e8514364939eea9caedfa3",
+  "phi3:mini": "a0954d2956f4b1cfb2a453405ec5e399f1641cdf870657246de0480494c946c1"
+ },
+ "item_start_wall": 1792720478.9945421,
+ "item_wall_s": 34.455,
+ "ollama_ps_samples": [
+  [
+   1792720478.995,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792720480.999,
+   [
+    "mistral:latest",
+    "phi3:mini",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792720483.007,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720485.012,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720487.018,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720489.023,
+   [
+    "nomic-embed-text:latest",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720491.032,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720493.042,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720495.14,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720497.147,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720499.159,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720501.17,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792720503.181,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720505.184,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720507.195,
+   [
+    "phi3:mini",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720509.198,
+   [
+    "phi3:mini",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720511.206,
+   [
+    "phi3:mini",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792720513.216,
+   [
+    "phi3:mini",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

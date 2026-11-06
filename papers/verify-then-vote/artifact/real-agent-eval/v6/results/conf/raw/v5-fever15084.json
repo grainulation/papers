@@ -1,0 +1,1248 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever15084",
+ "order": 771,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever15084",
+  "order": 771,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Joe Walsh was inducted into the Vocal Group Hall of Fame."
+ },
+ "item_view_sha256": "c34faabb077df9bd3172c4f5c5ea6bd25395ff15fa2544b356480b8200a13483",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "df3973a3fcf793dcd7b2870745cbce710f8bc7e2a4ac138a3a9939ccb985da4e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875192.206769,
+      "end_wall": 1792875193.22776,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875192.206769,
+    "start_mono": 544748.887720375,
+    "end_wall": 1792875193.22776,
+    "end_mono": 544749.908706375,
+    "raw_response": "{\"query\": \"Joe Walsh vocal group hall of fame\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1018775958,
+     "load_duration": 104496292,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 347125958,
+     "eval_count": 14,
+     "eval_duration": 418289293,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:13.227134Z"
+    },
+    "elapsed_s": 1.021,
+    "query_used": "Joe Walsh vocal group hall of fame",
+    "query_source": "json",
+    "query_arrival_seq": 3855
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Joe Walsh vocal group hall of fame",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Midnighters:1",
+       "score_q": 12934
+      },
+      {
+       "passage_key": "fever17:The_Lennon_Sisters:1",
+       "score_q": 12821
+      },
+      {
+       "passage_key": "fever17:Vocal_Group_Hall_of_Fame:0",
+       "score_q": 12576
+      },
+      {
+       "passage_key": "fever17:Joe_Walsh:2",
+       "score_q": 12280
+      },
+      {
+       "passage_key": "fever17:The_Whispers:0",
+       "score_q": 12254
+      }
+     ],
+     "retrieval_sha256": "8ebf8c4e393d2493d84d9241cf625747f8a76ef2e8ec7af1fcdef3e1aada2919"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8ebf8c4e393d2493d84d9241cf625747f8a76ef2e8ec7af1fcdef3e1aada2919",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Midnighters:1",
+      "content_sha256": "05df3d45c085eeeebadf2f72dcd9a745916fc8310fbea07fd3660041ee8ffa7b",
+      "chars": 359
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:The_Lennon_Sisters:1",
+      "content_sha256": "8519c8d22df20a5d30ea718ee7cb06767deda571523dd09a9850c4f99c703b5a",
+      "chars": 91
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Vocal_Group_Hall_of_Fame:0",
+      "content_sha256": "7df6151885730426126a659f4239b0b931e55725f6910317f67e22cb9179f3aa",
+      "chars": 906
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Joe_Walsh:2",
+      "content_sha256": "fc7908b04717ef1bf7d190c99e413d8daa7b1546a5de531ec4937142b873fbef",
+      "chars": 991
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:The_Whispers:0",
+      "content_sha256": "fb2c827fa8e14310929cbff38ccde29c26d1497f8fa65f9b1f0ee75d41ac384e",
+      "chars": 439
+     }
+    ],
+    "elapsed_s": 0.034
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nEvidence passages from your search for \"Joe Walsh vocal group hall of fame\":\n<<<PASSAGES\n[P1] The Midnighters\nThey received the Rhythm and Blues Foundation 's prestigious Pioneer Award in 1992 and were inducted into the Vocal Group Hall of Fame in 1999 . The group 's lead singer , Hank Ballard , was inducted into the Rock and Roll Hall of Fame in 1990 . The Midnighters as a group were inducted into the Rock and Roll Hall of Fame on April 14 , 2012 .\n\n[P2] The Lennon Sisters\nThe Lennon Sisters were 2001 inductees of the Vocal Group Hall of Fame .\n\n[P3] Vocal Group Hall of Fame\nThe Vocal Group Hall of Fame ( VGHF ) was organized by Tony Butala , also the founder ( and now only surviving original member ) of The Lettermen , to honor outstanding vocal groups throughout the world . Headquartered in Sharon , Pennsylvania , United States , it includes a theater and a museum . The VGHF typically inducts sixteen artists annually . Unlike the Rock and Roll Hall of Fame , artists are inducted within categories . Each category has at least one representative . The categories are 1940s , 1950s , 1960s , 1970s , 1980s , and duos . Only groups are eligible ; solo artists may be inducted if they have a legitimate backing band with backing singers ( for example , Tom Petty and the Heartbreakers ) . The Vocal Group Hall of Fame releases a public ballot ; allowing everyone to vote for both the nominees and the inductees . It was originally organized in 1998 .\n\n[P4] Joe Walsh\nBesides his work with his several bands , he has released twelve solo studio albums , six compilation albums and two live albums . His solo hits include `` Rocky Mountain Way '' , `` Life 's Been Good '' , `` All Night Long '' , `` A Life of Illusion '' and `` Ordinary Average Guy '' . As a member of the Eagles , Walsh was inducted into the Rock and Roll Hall of Fame in 1998 , and into the Vocal Group Hall of Fame in 2001 . The Eagles are considered to be one of the most influential bands of the 1970s , and they remain the best-selling American band in the history of popular music . His creative contribution to music has received praise from many of the best rock guitarists , including Led Zeppelin 's Jimmy Page , who said , `` He has a tremendous feel for the instrument . I 've loved his style since the early James Gang . '' Eric Clapton said that `` He 's one of the best guitarists to surface in some time . I do n't listen to many records , but I listen to his . ''\n\n[P5] The Whispers\nThe Whispers are an American group from Los Angeles , California , who have scored hit records since the late 1960s . The Whispers were inducted into the Vocal Group Hall of Fame in 2003 , and were winners of the Rhythm and Blues Foundation 's Pioneer Award in 2008 . By popular vote , the group was inducted into The SoulMusic Hall Of Fame at SoulMusic.com in December 2012 , and The Official R&B Music Hall of Fame in 2014 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "aa805285c747ed0bccb50208dad8bd2000b438095005df6ad18bd77399cc109e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875193.2621,
+      "end_wall": 1792875200.4403179,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3855,
+    "start_wall": 1792875193.2621,
+    "start_mono": 544749.943047416,
+    "end_wall": 1792875200.4403179,
+    "end_mono": 544757.121234875,
+    "raw_response": "{\"reasoning\": \"Joe Walsh was inducted into the Vocal Group Hall of Fame in 2001, as mentioned in P4 and P3.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7175762333,
+     "load_duration": 59020291,
+     "prompt_eval_count": 1074,
+     "prompt_eval_duration": 1898043833,
+     "eval_count": 66,
+     "eval_duration": 4570088998,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:20.439025Z"
+    },
+    "elapsed_s": 7.178,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3855,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Joe_Walsh:2",
+     "fever17:Vocal_Group_Hall_of_Fame:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 92,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "df3973a3fcf793dcd7b2870745cbce710f8bc7e2a4ac138a3a9939ccb985da4e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875192.206431,
+      "end_wall": 1792875194.813925,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875192.206431,
+    "start_mono": 544748.887382166,
+    "end_wall": 1792875194.813925,
+    "end_mono": 544751.494863791,
+    "raw_response": "{\"query\": \"Joe Walsh Vocal Group Hall of Fame induction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2604443416,
+     "load_duration": 55299500,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 477564667,
+     "eval_count": 15,
+     "eval_duration": 1959039459,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:14.81284Z"
+    },
+    "elapsed_s": 2.607,
+    "query_used": "Joe Walsh Vocal Group Hall of Fame induction",
+    "query_source": "json",
+    "query_arrival_seq": 3856
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Joe Walsh Vocal Group Hall of Fame induction",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Marvelettes:2",
+       "score_q": 15621
+      },
+      {
+       "passage_key": "fever17:New_Zealand_Racing_Hall_of_Fame:0",
+       "score_q": 13231
+      },
+      {
+       "passage_key": "fever17:The_Drifters:1",
+       "score_q": 13205
+      },
+      {
+       "passage_key": "fever17:The_Midnighters:1",
+       "score_q": 12934
+      },
+      {
+       "passage_key": "fever17:The_Lennon_Sisters:1",
+       "score_q": 12821
+      }
+     ],
+     "retrieval_sha256": "0609275e24bb02a78b61c81f79af5bdf585bb4a0235d7c84a2ce87ff77a22324"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0609275e24bb02a78b61c81f79af5bdf585bb4a0235d7c84a2ce87ff77a22324",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Marvelettes:2",
+      "content_sha256": "2b0d86fbca33aee75aa8bdd935a14fa99160647cd660a31fd5f3cb09f0442477",
+      "chars": 637
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:New_Zealand_Racing_Hall_of_Fame:0",
+      "content_sha256": "71b6961a490fd199d68f146eb2a23c81ba4b8a31cd4b9704da65d48dc264e828",
+      "chars": 361
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:The_Drifters:1",
+      "content_sha256": "547102b82e79bb8883806bd4f273412d98c901ef5280cf6ffbe9ba35208e4367",
+      "chars": 893
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Midnighters:1",
+      "content_sha256": "05df3d45c085eeeebadf2f72dcd9a745916fc8310fbea07fd3660041ee8ffa7b",
+      "chars": 359
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:The_Lennon_Sisters:1",
+      "content_sha256": "8519c8d22df20a5d30ea718ee7cb06767deda571523dd09a9850c4f99c703b5a",
+      "chars": 91
+     }
+    ],
+    "elapsed_s": 0.0342
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nEvidence passages from your search for \"Joe Walsh Vocal Group Hall of Fame induction\":\n<<<PASSAGES\n[P1] The Marvelettes\nThe group has received several honors including induction into the Vocal Group Hall of Fame , as well as receiving the Pioneer Award from the Rhythm and Blues Foundation . In 2005 , two of the group 's most successful recordings , `` Please Mr. Postman '' and `` Do n't Mess with Bill '' earned million-selling Gold singles from the RIAA . On August 17 , 2013 , in Cleveland , Ohio , at Cleveland State University , the Marvelettes were inducted into the 1st class of the Official Rhythm & Blues Music Hall of Fame . The Marvelettes were nominated for induction to the Rock & Roll Hall of Fame in 2013 and again in 2015 .\n\n[P2] New Zealand Racing Hall of Fame\nThe New Zealand Racing Hall of Fame is an organization created to recognise and honour those whose achievements have enriched the New Zealand Horse racing industry . The Hall of Fame 's first group of honorees were inducted in 2006 . The numbers in brackets after each name indicates the year of induction into the Hall of Fame .\n\n[P3] The Drifters\nThe second Drifters , featuring Ben E. King , was separately inducted into the Vocal Group Hall of Fame as `` Ben E. King and the Drifters '' . In their induction , the Rock and Roll Hall of Fame selected four members from the first Drifters , two from the second Drifters , and one from the post-Atlantic Drifters . According to the Vocal Group Hall of Fame : `` Through turmoil and changes , the ( original ) Drifters managed to set musical trends and give the public 13 chart hits , most of which are legendary recordings today . '' Matching that feat , subsequent formations of the Drifters recorded 13 Billboard Hot 100 top 30 chart hits . A 1970s revival in Britain , with both old and new material , was not matched in the United States , although it saw their biggest successes on the UK pop charts , peaking with the # 2 hit `` Kissin ' in the Back Row of the Movies '' .\n\n[P4] The Midnighters\nThey received the Rhythm and Blues Foundation 's prestigious Pioneer Award in 1992 and were inducted into the Vocal Group Hall of Fame in 1999 . The group 's lead singer , Hank Ballard , was inducted into the Rock and Roll Hall of Fame in 1990 . The Midnighters as a group were inducted into the Rock and Roll Hall of Fame on April 14 , 2012 .\n\n[P5] The Lennon Sisters\nThe Lennon Sisters were 2001 inductees of the Vocal Group Hall of Fame .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "232b647137e69a7229b599ebef864dbefa2197b079e363d3b5e9caa7217347cb",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875194.8484979,
+      "end_wall": 1792875212.9321249,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3856,
+    "start_wall": 1792875194.8484979,
+    "start_mono": 544751.529438166,
+    "end_wall": 1792875212.9321249,
+    "end_mono": 544769.612991083,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages do not contain any information specifically about Joe Walsh being inducted into the Vocal Group Hall of Fame. Passages mention inductions for groups like The Marvelettes, The Drifters, The Midnighters, and The Lennon Sisters, but Joe Walsh is not mentioned in any of these contexts. Without specific evidence for Joe Walsh's induction, the claim cannot be supported based on the given information.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18079909375,
+     "load_duration": 47732875,
+     "prompt_eval_count": 900,
+     "prompt_eval_duration": 3537441084,
+     "eval_count": 125,
+     "eval_duration": 13380748920,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:32.929723Z"
+    },
+    "elapsed_s": 18.084,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3856,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 428,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "df3973a3fcf793dcd7b2870745cbce710f8bc7e2a4ac138a3a9939ccb985da4e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875192.2061272,
+      "end_wall": 1792875198.813448,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875192.2061272,
+    "start_mono": 544748.887077708,
+    "end_wall": 1792875198.813448,
+    "end_mono": 544755.494370875,
+    "raw_response": "{\"query\": \"Joe Walsh vocal group Hall of Fame induction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6604771875,
+     "load_duration": 1165951667,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 817449292,
+     "eval_count": 20,
+     "eval_duration": 4531796501,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:18.8123Z"
+    },
+    "elapsed_s": 6.607,
+    "query_used": "Joe Walsh vocal group Hall of Fame induction",
+    "query_source": "json",
+    "query_arrival_seq": 3857
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Joe Walsh vocal group Hall of Fame induction",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Marvelettes:2",
+       "score_q": 15621
+      },
+      {
+       "passage_key": "fever17:New_Zealand_Racing_Hall_of_Fame:0",
+       "score_q": 13231
+      },
+      {
+       "passage_key": "fever17:The_Drifters:1",
+       "score_q": 13205
+      },
+      {
+       "passage_key": "fever17:The_Midnighters:1",
+       "score_q": 12934
+      },
+      {
+       "passage_key": "fever17:The_Lennon_Sisters:1",
+       "score_q": 12821
+      }
+     ],
+     "retrieval_sha256": "afe7ebe7f05ed3cd7bb3ab50cf4638b3a6196fc8d255f01050326d40f72284f9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "afe7ebe7f05ed3cd7bb3ab50cf4638b3a6196fc8d255f01050326d40f72284f9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Marvelettes:2",
+      "content_sha256": "2b0d86fbca33aee75aa8bdd935a14fa99160647cd660a31fd5f3cb09f0442477",
+      "chars": 637
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:New_Zealand_Racing_Hall_of_Fame:0",
+      "content_sha256": "71b6961a490fd199d68f146eb2a23c81ba4b8a31cd4b9704da65d48dc264e828",
+      "chars": 361
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:The_Drifters:1",
+      "content_sha256": "547102b82e79bb8883806bd4f273412d98c901ef5280cf6ffbe9ba35208e4367",
+      "chars": 893
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Midnighters:1",
+      "content_sha256": "05df3d45c085eeeebadf2f72dcd9a745916fc8310fbea07fd3660041ee8ffa7b",
+      "chars": 359
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:The_Lennon_Sisters:1",
+      "content_sha256": "8519c8d22df20a5d30ea718ee7cb06767deda571523dd09a9850c4f99c703b5a",
+      "chars": 91
+     }
+    ],
+    "elapsed_s": 0.0282
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nEvidence passages from your search for \"Joe Walsh vocal group Hall of Fame induction\":\n<<<PASSAGES\n[P1] The Marvelettes\nThe group has received several honors including induction into the Vocal Group Hall of Fame , as well as receiving the Pioneer Award from the Rhythm and Blues Foundation . In 2005 , two of the group 's most successful recordings , `` Please Mr. Postman '' and `` Do n't Mess with Bill '' earned million-selling Gold singles from the RIAA . On August 17 , 2013 , in Cleveland , Ohio , at Cleveland State University , the Marvelettes were inducted into the 1st class of the Official Rhythm & Blues Music Hall of Fame . The Marvelettes were nominated for induction to the Rock & Roll Hall of Fame in 2013 and again in 2015 .\n\n[P2] New Zealand Racing Hall of Fame\nThe New Zealand Racing Hall of Fame is an organization created to recognise and honour those whose achievements have enriched the New Zealand Horse racing industry . The Hall of Fame 's first group of honorees were inducted in 2006 . The numbers in brackets after each name indicates the year of induction into the Hall of Fame .\n\n[P3] The Drifters\nThe second Drifters , featuring Ben E. King , was separately inducted into the Vocal Group Hall of Fame as `` Ben E. King and the Drifters '' . In their induction , the Rock and Roll Hall of Fame selected four members from the first Drifters , two from the second Drifters , and one from the post-Atlantic Drifters . According to the Vocal Group Hall of Fame : `` Through turmoil and changes , the ( original ) Drifters managed to set musical trends and give the public 13 chart hits , most of which are legendary recordings today . '' Matching that feat , subsequent formations of the Drifters recorded 13 Billboard Hot 100 top 30 chart hits . A 1970s revival in Britain , with both old and new material , was not matched in the United States , although it saw their biggest successes on the UK pop charts , peaking with the # 2 hit `` Kissin ' in the Back Row of the Movies '' .\n\n[P4] The Midnighters\nThey received the Rhythm and Blues Foundation 's prestigious Pioneer Award in 1992 and were inducted into the Vocal Group Hall of Fame in 1999 . The group 's lead singer , Hank Ballard , was inducted into the Rock and Roll Hall of Fame in 1990 . The Midnighters as a group were inducted into the Rock and Roll Hall of Fame on April 14 , 2012 .\n\n[P5] The Lennon Sisters\nThe Lennon Sisters were 2001 inductees of the Vocal Group Hall of Fame .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3fed402ef6c163be8a7b605dd14a6fb1488491ce14076e75c46805858ee985c3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875198.842022,
+      "end_wall": 1792875216.051766,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3857,
+    "start_wall": 1792875198.842022,
+    "start_mono": 544755.522946625,
+    "end_wall": 1792875216.051766,
+    "end_mono": 544772.732619041,
+    "raw_response": "{\n  \"reasoning\": \"Joe Walsh is a musician known for his work with the Eagles, not a member of any vocal group that received induction into the Vocal Group Hall of Fame. The evidence passages mention inductions for several vocal groups, including The Marvelettes, The Drifters, The Midnighters, and The Lennon Sisters, none of whom included Joe Walsh.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17206407542,
+     "load_duration": 8966316708,
+     "prompt_eval_count": 998,
+     "prompt_eval_duration": 1913519875,
+     "eval_count": 133,
+     "eval_duration": 5500358456,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:36.049367Z"
+    },
+    "elapsed_s": 17.21,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3857,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:The_Marvelettes:2",
+     "fever17:The_Drifters:1",
+     "fever17:The_Midnighters:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 332,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "df3973a3fcf793dcd7b2870745cbce710f8bc7e2a4ac138a3a9939ccb985da4e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875192.206284,
+      "end_wall": 1792875202.114387,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875192.206284,
+    "start_mono": 544748.887235,
+    "end_wall": 1792875202.114387,
+    "end_mono": 544758.795296833,
+    "raw_response": "{\"query\": \"Joe Walsh Vocal Group Hall of Fame\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9905203958,
+     "load_duration": 8305174917,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 734856417,
+     "eval_count": 13,
+     "eval_duration": 741961377,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:22.113534Z"
+    },
+    "elapsed_s": 9.908,
+    "query_used": "Joe Walsh Vocal Group Hall of Fame",
+    "query_source": "json",
+    "query_arrival_seq": 3858
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Joe Walsh Vocal Group Hall of Fame",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Midnighters:1",
+       "score_q": 12934
+      },
+      {
+       "passage_key": "fever17:The_Lennon_Sisters:1",
+       "score_q": 12821
+      },
+      {
+       "passage_key": "fever17:Vocal_Group_Hall_of_Fame:0",
+       "score_q": 12576
+      },
+      {
+       "passage_key": "fever17:Joe_Walsh:2",
+       "score_q": 12280
+      },
+      {
+       "passage_key": "fever17:The_Whispers:0",
+       "score_q": 12254
+      }
+     ],
+     "retrieval_sha256": "793f25e0817f617185ce77eec4e900dffcfa69f6f03992cb41a2be83c1947a37"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "793f25e0817f617185ce77eec4e900dffcfa69f6f03992cb41a2be83c1947a37",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Midnighters:1",
+      "content_sha256": "05df3d45c085eeeebadf2f72dcd9a745916fc8310fbea07fd3660041ee8ffa7b",
+      "chars": 359
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:The_Lennon_Sisters:1",
+      "content_sha256": "8519c8d22df20a5d30ea718ee7cb06767deda571523dd09a9850c4f99c703b5a",
+      "chars": 91
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Vocal_Group_Hall_of_Fame:0",
+      "content_sha256": "7df6151885730426126a659f4239b0b931e55725f6910317f67e22cb9179f3aa",
+      "chars": 906
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Joe_Walsh:2",
+      "content_sha256": "fc7908b04717ef1bf7d190c99e413d8daa7b1546a5de531ec4937142b873fbef",
+      "chars": 991
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:The_Whispers:0",
+      "content_sha256": "fb2c827fa8e14310929cbff38ccde29c26d1497f8fa65f9b1f0ee75d41ac384e",
+      "chars": 439
+     }
+    ],
+    "elapsed_s": 0.0229
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nEvidence passages from your search for \"Joe Walsh Vocal Group Hall of Fame\":\n<<<PASSAGES\n[P1] The Midnighters\nThey received the Rhythm and Blues Foundation 's prestigious Pioneer Award in 1992 and were inducted into the Vocal Group Hall of Fame in 1999 . The group 's lead singer , Hank Ballard , was inducted into the Rock and Roll Hall of Fame in 1990 . The Midnighters as a group were inducted into the Rock and Roll Hall of Fame on April 14 , 2012 .\n\n[P2] The Lennon Sisters\nThe Lennon Sisters were 2001 inductees of the Vocal Group Hall of Fame .\n\n[P3] Vocal Group Hall of Fame\nThe Vocal Group Hall of Fame ( VGHF ) was organized by Tony Butala , also the founder ( and now only surviving original member ) of The Lettermen , to honor outstanding vocal groups throughout the world . Headquartered in Sharon , Pennsylvania , United States , it includes a theater and a museum . The VGHF typically inducts sixteen artists annually . Unlike the Rock and Roll Hall of Fame , artists are inducted within categories . Each category has at least one representative . The categories are 1940s , 1950s , 1960s , 1970s , 1980s , and duos . Only groups are eligible ; solo artists may be inducted if they have a legitimate backing band with backing singers ( for example , Tom Petty and the Heartbreakers ) . The Vocal Group Hall of Fame releases a public ballot ; allowing everyone to vote for both the nominees and the inductees . It was originally organized in 1998 .\n\n[P4] Joe Walsh\nBesides his work with his several bands , he has released twelve solo studio albums , six compilation albums and two live albums . His solo hits include `` Rocky Mountain Way '' , `` Life 's Been Good '' , `` All Night Long '' , `` A Life of Illusion '' and `` Ordinary Average Guy '' . As a member of the Eagles , Walsh was inducted into the Rock and Roll Hall of Fame in 1998 , and into the Vocal Group Hall of Fame in 2001 . The Eagles are considered to be one of the most influential bands of the 1970s , and they remain the best-selling American band in the history of popular music . His creative contribution to music has received praise from many of the best rock guitarists , including Led Zeppelin 's Jimmy Page , who said , `` He has a tremendous feel for the instrument . I 've loved his style since the early James Gang . '' Eric Clapton said that `` He 's one of the best guitarists to surface in some time . I do n't listen to many records , but I listen to his . ''\n\n[P5] The Whispers\nThe Whispers are an American group from Los Angeles , California , who have scored hit records since the late 1960s . The Whispers were inducted into the Vocal Group Hall of Fame in 2003 , and were winners of the Rhythm and Blues Foundation 's Pioneer Award in 2008 . By popular vote , the group was inducted into The SoulMusic Hall Of Fame at SoulMusic.com in December 2012 , and The Official R&B Music Hall of Fame in 2014 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ded832241352dc1cda376dccfeea04ea4a246fbf5a9202d94050afa51cc8e660",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875202.1376839,
+      "end_wall": 1792875216.459649,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3858,
+    "start_wall": 1792875202.1376839,
+    "start_mono": 544758.818594791,
+    "end_wall": 1792875216.459649,
+    "end_mono": 544773.140500666,
+    "raw_response": "{\"reasoning\": \"Joe Walsh was indeed inducted into the Vocal Group Hall of Fame as stated in passage P4. This claim is supported by the specific mention of Walsh's induction in 2001 within the context of the Eagles being inducted into the same hall of fame, which strengthens the credibility of this detail. Additionally, other passages confirm the existence and function of the Vocal Group Hall of Fame, lending further support to the claim. No contradictory evidence is provided in the passages. Therefore, the claim is SUPPORTED.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14318668500,
+     "load_duration": 46804250,
+     "prompt_eval_count": 928,
+     "prompt_eval_duration": 3689624792,
+     "eval_count": 128,
+     "eval_duration": 9070568879,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:36.457464Z"
+    },
+    "elapsed_s": 14.322,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3858,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Joe_Walsh:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 516,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "df3973a3fcf793dcd7b2870745cbce710f8bc7e2a4ac138a3a9939ccb985da4e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875192.206578,
+      "end_wall": 1792875206.634867,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875192.206578,
+    "start_mono": 544748.887528958,
+    "end_wall": 1792875206.634867,
+    "end_mono": 544763.31575775,
+    "raw_response": "{\"query\": \"did joe walsh receive vocal group hall of fame induction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14425463667,
+     "load_duration": 9878696750,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 757583417,
+     "eval_count": 18,
+     "eval_duration": 3405597167,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:26.633775Z"
+    },
+    "elapsed_s": 14.428,
+    "query_used": "did joe walsh receive vocal group hall of fame induction",
+    "query_source": "json",
+    "query_arrival_seq": 3859
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "did joe walsh receive vocal group hall of fame induction",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Walter_Runge:1",
+       "score_q": 17175
+      },
+      {
+       "passage_key": "fever17:The_Marvelettes:2",
+       "score_q": 15621
+      },
+      {
+       "passage_key": "fever17:Baseball_Hall_of_Fame_balloting,_1937:1",
+       "score_q": 13785
+      },
+      {
+       "passage_key": "fever17:Eddie_Doucette:1",
+       "score_q": 13667
+      },
+      {
+       "passage_key": "fever17:Canadian_News_Hall_of_Fame:0",
+       "score_q": 13595
+      }
+     ],
+     "retrieval_sha256": "5b4b9c17036d170f83975af1077c9e9cf187251483266e5a6912e4562b37440a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5b4b9c17036d170f83975af1077c9e9cf187251483266e5a6912e4562b37440a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Walter_Runge:1",
+      "content_sha256": "e5a311f92f4f55ba3476a473034b0b8054fc991a66403dabf6dade4ecd0ffa94",
+      "chars": 210
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:The_Marvelettes:2",
+      "content_sha256": "2b0d86fbca33aee75aa8bdd935a14fa99160647cd660a31fd5f3cb09f0442477",
+      "chars": 637
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Baseball_Hall_of_Fame_balloting,_1937:1",
+      "content_sha256": "f5bf1581469f83093278140c607dd2eee9e3f38682d3f513597795b94cb945d8",
+      "chars": 366
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Eddie_Doucette:1",
+      "content_sha256": "1dfb39d40b7ad872dc510b9dfc62034c5d37e3b89b81f0d912f5f0fbe9add565",
+      "chars": 406
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Canadian_News_Hall_of_Fame:0",
+      "content_sha256": "0f1d2f1247be3643635f2ecf93a11b9105ee8c68084b11bcdefb309b723e56fb",
+      "chars": 1008
+     }
+    ],
+    "elapsed_s": 0.0292
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Joe Walsh was inducted into the Vocal Group Hall of Fame.\n\nEvidence passages from your search for \"did joe walsh receive vocal group hall of fame induction\":\n<<<PASSAGES\n[P1] Walter Runge\nIn 1959 , he was nominated for induction into the College Football Hall of Fame , but did not receive enough votes . Runge was inducted into the Colgate University Athletics Hall of Honor in 1980 .\n\n[P2] The Marvelettes\nThe group has received several honors including induction into the Vocal Group Hall of Fame , as well as receiving the Pioneer Award from the Rhythm and Blues Foundation . In 2005 , two of the group 's most successful recordings , `` Please Mr. Postman '' and `` Do n't Mess with Bill '' earned million-selling Gold singles from the RIAA . On August 17 , 2013 , in Cleveland , Ohio , at Cleveland State University , the Marvelettes were inducted into the 1st class of the Official Rhythm & Blues Music Hall of Fame . The Marvelettes were nominated for induction to the Rock & Roll Hall of Fame in 2013 and again in 2015 .\n\n[P3] Baseball Hall of Fame balloting, 1937\nAny candidate receiving votes on at least 75 % of the ballots would be honored with induction to the Hall upon its opening in the sport 's supposed centennial year of 1939 . Again , individuals who had been barred from baseball were not formally ineligible ; Hal Chase received some votes , though Shoeless Joe Jackson did not .\n\n[P4] Eddie Doucette\nHe resides in Poway , California with his wife Karen . They have two grown sons : Brett and Cory . The Naismith Memorial Basketball Hall of Fame has announced that Doucette will receive the Curt Gowdy Media Award in the Electronic Media category during the 2013 Hall of Fame induction ceremony in September . He was inducted into the Wisconsin Broadcasters Association Hall of Fame in 2011 .\n\n[P5] Canadian News Hall of Fame\nFounded by the Toronto Press Club ( now known as the Toronto Press and Media Club ) in 1965 , the Canadian News Hall of Fame is an iconic tribute to excellence in journalism in Canada and a program of national significance . It now honours more than 100 men and women who have made significant contributions to journalism in this country . Nominations for induction into the Hall of Fame can be submitted to the Press and Media Club at any time . The list of nominations is distributed to a group of Selectors across Canada , who then vote on the individuals and make their recommendations to the committee chairman . The Selectors are drawn from the ranks of senior Canadian journalists who are well qualified to judge their peers . Most are Members of the Hall of Fame . Induction of new Members takes place annually at a banquet in downtown Toronto , where the honourees receive an engraved personal plaque . Their names are also added individually to the Hall of Fame plaques .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d387a662a1be9f179f7e50f49b139408b67b51d3b8bb34455332a3794624a744",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875206.664435,
+      "end_wall": 1792875220.493645,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3859,
+    "start_wall": 1792875206.664435,
+    "start_mono": 544763.34532775,
+    "end_wall": 1792875220.493645,
+    "end_mono": 544777.174480583,
+    "raw_response": "{\"reasoning\": \"Joe Walsh was not inducted into the Vocal Group Hall of Fame, as the passage P2 only mentions The Marvelettes for induction, not Joe Walsh.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13825563541,
+     "load_duration": 10440488458,
+     "prompt_eval_count": 882,
+     "prompt_eval_duration": 1341985917,
+     "eval_count": 54,
+     "eval_duration": 1090252046,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:53:40.491061Z"
+    },
+    "elapsed_s": 13.829,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3859,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 139,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "8ebf8c4e393d2493d84d9241cf625747f8a76ef2e8ec7af1fcdef3e1aada2919",
+  "exaone3.5:7.8b": "0609275e24bb02a78b61c81f79af5bdf585bb4a0235d7c84a2ce87ff77a22324",
+  "granite3.3:2b": "afe7ebe7f05ed3cd7bb3ab50cf4638b3a6196fc8d255f01050326d40f72284f9",
+  "olmo2:7b": "793f25e0817f617185ce77eec4e900dffcfa69f6f03992cb41a2be83c1947a37",
+  "nemotron-mini:4b": "5b4b9c17036d170f83975af1077c9e9cf187251483266e5a6912e4562b37440a"
+ },
+ "item_start_wall": 1792875192.2058618,
+ "item_wall_s": 28.288,
+ "ollama_ps_samples": [
+  [
+   1792875192.206,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875194.208,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875196.22,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875198.221,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875200.226,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792875202.232,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875204.238,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875206.239,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875208.251,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875210.259,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875212.261,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875214.268,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792875216.274,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792875218.286,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875220.288,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

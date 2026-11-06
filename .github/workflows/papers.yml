@@ -1,0 +1,70 @@
+name: papers
+
+# Repository-wide checks: catalogue consistency, and the PDF and arXiv bundle of
+# every catalogued paper. Paper-specific artifact checks live in their own
+# workflow files (see CONTRIBUTING.md).
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  catalogue:
+    runs-on: ubuntu-24.04
+    outputs:
+      slugs: ${{ steps.slugs.outputs.slugs }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the collection layout
+        run: python3 scripts/check_repo.py
+      - name: Check public release files
+        run: python3 scripts/check_public_release.py
+      - name: Test the paper template archive builder
+        run: python3 -m unittest discover -s templates/paper/tex -p 'test_build_arxiv.py'
+      - name: Test release checks
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - id: slugs
+        name: List the catalogued papers
+        run: echo "slugs=$(python3 scripts/check_repo.py --slugs)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: catalogue
+    if: needs.catalogue.outputs.slugs != '[]'
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: ${{ fromJSON(needs.catalogue.outputs.slugs) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF text extraction
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes poppler-utils
+      - name: Install Tectonic
+        run: |
+          curl -fsSL -o tectonic.tar.gz \
+            "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/tectonic-0.17.0-x86_64-unknown-linux-musl.tar.gz"
+          tar xzf tectonic.tar.gz
+          sudo install -m 0755 tectonic /usr/local/bin/tectonic
+          tectonic --version
+      - name: Test source archive packaging
+        working-directory: papers/${{ matrix.slug }}/tex
+        run: python3 -m unittest -v test_build_arxiv.py
+      - name: Build the paper and the arXiv bundle
+        working-directory: papers/${{ matrix.slug }}/tex
+        run: make arxiv
+      - name: Check the public PDF matches the manuscript
+        env:
+          PAPER_SLUG: ${{ matrix.slug }}
+        run: |
+          python3 scripts/check_pdf.py "papers/$PAPER_SLUG/paper.pdf" "papers/$PAPER_SLUG/tex/main.pdf"
+          if test -f "papers/$PAPER_SLUG/tex/supplement.tex"; then
+            python3 scripts/check_pdf.py "papers/$PAPER_SLUG/supplement.pdf" "papers/$PAPER_SLUG/tex/supplement.pdf"
+          fi
+      - name: Inspect and independently compile the source archive
+        env:
+          PAPER_SLUG: ${{ matrix.slug }}
+        run: python3 scripts/check_arxiv.py "papers/$PAPER_SLUG"

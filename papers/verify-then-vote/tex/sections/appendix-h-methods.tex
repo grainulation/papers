@@ -1,0 +1,118 @@
+\section{Evaluation Methods and Prespecified Analyses}
+\label{sec:prereg}
+\label[appendix]{app:methods}
+
+OVERTURN poses questions that a small fleet answers mostly right but often wrongly in unison, gives the agents a fixed corpus to cite, and grades every method against dataset gold. Its design meets the four requirements for evaluating arbitration set out in \cref{sec:freetext}. Its protocol, items, grader, canonicalizer, analysis code, reducer binary, checker identity, and policy templates were frozen by hash before any confirmatory response was collected (\cref{app:artifact}).
+
+\paragraph{Items.} Gold is copied mechanically from four public datasets: SciFact claims with their abstracts \citep{wadden2020scifact}, PopQA functional relations in three popularity strata \citep{mallen2023popqa}, FEVER claims \citep{thorne2018fever}, and TruthfulQA multiple-choice \citep{lin2022truthfulqa}. The confirmatory set has 1,100 items: 250 SciFact, 400 PopQA, and 350 FEVER, which form the primary set P, and a 100-item TruthfulQA stratum T. A disjoint 160-item development split fixed every configuration and the sample size. TruthfulQA probes misconceptions that an encyclopedic corpus rarely addresses. On development, the retrieved passages supported its gold on 18\% of decisive items, against 56--90\% elsewhere, so the protocol tests it separately, for non-inferiority.
+
+\paragraph{Agent collection.} Five small open-weight models (Llama~3.2 3B, Mistral 7B, Gemma~2 2B, Phi-3 mini, Qwen~2.5 3B), served locally with recorded digests at temperature 0.7 and a fixed seed, answer each question in two turns. In the first, each writes a search query of at most 12 words. Retrieval returns its top five passages. For PopQA, FEVER, and TruthfulQA it uses BM25 \citep{robertson2009bm25} over the FEVER 2017 Wikipedia passages. For SciFact it searches the abstracts with BM25 or a dense embedder (nomic-embed-text), chosen per item by a seeded draw. In the second turn each agent answers in a constrained output schema over a closed answer space (an entity, SUPPORTED/REFUTED, or an option letter). It also gives a confidence level and cites at most three of the passages it was shown. Requests are dispatched concurrently in a seeded random order, and arrival order is recorded. All 1,100 items were collected with all five answers parsed.
+
+A second pool of five open-weight models from other families (Falcon~3 3B, OLMo~2 7B, EXAONE~3.5 7.8B, Nemotron-Mini 4B, Granite~3.3 2B), qualified on the development split before its own freeze, answered the same 1,100 items under the same protocol (\paperref{main-paper second-pool results}).
+
+\paragraph{Answer representation.} Each parsed answer becomes one AFFIRM contribution whose object is the canonical answer. Its confidence is 0.85, 0.65, or 0.45 for a stated high, medium, or low level, every agent has one calibration factor of 0.7, and each cited passage becomes one CITATION item of weight 1.0. All answers to an item share one slot, so each distinct canonical answer is a value of \paperref{main-paper rule definition}.
+
+The checker sees each answer as a one-sentence proposition rendered without gold. For SciFact and FEVER this is the dataset claim, whose supports and refutes labels are swapped when read for the answer REFUTED. For TruthfulQA it is the question with the chosen option, and for PopQA a relation template filled with subject and answer.
+
+\paragraph{Checker.} Support labels come from Claude Sonnet~5.5 with tools disabled, a different model family from the agents, run with a pinned client whose version is part of the checker identity. It was validated on fresh FEVER and SciFact slices disjoint from every benchmark item (\cref{tab:checker}) and accepted into the policy before collection.
+
+\paragraph{Validation limits.} The checker emitted supports on 18 of 350 validation pairs whose gold relation was not supports. This raw-label rate was the pre-specified forecast input. It excludes false refutes: the raw validation records contain 22 refutes labels on 350 pairs whose gold relation was not refutes. A refutes label verifies a REFUTED answer after the answer-relative swap, so 18/350 is not a pooled false-verification rate for both answer directions.
+
+\paragraph{Alternative checkers.} Our current claim representation requires three-way labels: an answer REFUTED is verified by a refutes label on the original claim. A checker that only separates supported from unsupported cannot verify that answer through this representation. A binary checker could instead assess an explicitly negated proposition, but that would change the rendering and require separate validation; we did not test it. Substituting a compact two-way grounding checker \citep{tang2024minicheck} for the hosted checker on OVERTURN keeps overturns of right majorities low (5 against 4 on P) but lowers verified default first from 87.3\% to 77.8\%.
+
+\paragraph{Prompt sensitivity.} We re-checked 227 pairs, including every pair that licensed an overturn or supported a wrong answer, under three paraphrased checker prompts. The paraphrases changed 2.6--5.7\% of labels, against 4.4\% for re-running the original prompt, and no wording changed the number of right majorities that verified default first overturns.
+
+\begin{table}[t]
+  \centering
+  \caption{Support-checker validation on fresh slices disjoint from OVERTURN. Intervals are bootstrap for F1 and precision and Wilson for proportions; thresholds apply to point estimates.}
+  \label{tab:checker}
+  \small
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    Metric & Result & 95\% CI & Threshold \\
+    \midrule
+    macro-F1 (FEVER, $n = 300$) & 0.899 & [0.864, 0.932] & $\geq 0.70$ \\
+    refutes precision (FEVER) & 0.886 & [0.819, 0.941] & $\geq 0.80$ \\
+    supports precision (FEVER) & 0.898 & --- & $\geq 0.85$ \\
+    raw false-support rate (FEVER, SciFact) & 18/350 (0.051) & [0.033, 0.080] & --- \\
+    raw false-refute rate (post hoc audit) & 22/350 (0.063) & --- & --- \\
+    prompt-injection success & 0/50 & [0\%, 7.1\%] & $\leq 5\%$ \\
+    identical label on regeneration & 48/50 (96\%) & [86.5\%, 98.9\%] & $\geq 95\%$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Methods.} Every method decides the same slots from the same sealed inputs. Verify-then-vote is evaluated with three selectors. \emph{Verified vote} uses plurality: the most common verified answer, or the majority when none is verified. The pre-specified primary method, which we call \emph{verify-then-vote} below, uses the scoring reducer of \cref{app:reducer} as its selector. It is the gate of \paperref{main-paper rule definition} over the order-free reducer (zero recency weight, recency removed from the tie-break voters, residual ties by identifier), with the evidence policy, a not-enough-information factor of 0.5, and the validated checker accepted. We chose it on development among nine gated configurations, as the one with the largest margin of corrected over overturned majorities. Ties were broken by fewer overturns and then by fewer policy settings changed from the base.
+
+The \emph{ungated reducer} uses the evidence policy without the gate, at the not-enough-information factor selected on development among ungated configurations (0.1). Evidence-only weights share its settings.
+
+\emph{Verified default first} keeps the majority when it is verified and otherwise applies verified vote. We specified it after the OVERTURN analysis, from its harm cases, and it is the pre-specified primary rule of the second pool (\paperref{main-paper second-pool results}).
+
+\paragraph{Controls and model references.} Controls isolate each ingredient: the order-free reducer with unverified citations (no evidence policy), evidence-only weights, \emph{cite vote} (plurality among answers that cite any passage, unverified), confidence-weighted vote, and the best single model on development (Mistral).
+
+Three Sonnet~5.5 references measure what a strong model achieves under different inputs. The judge sees the agents' answers, confidences, and cited passages and must pick one of the proposed answers. The reader answers from the union of the agents' retrieved passages, and the third reference is a closed-book model. A local judge, Mistral 7B with the same judge prompt, is the same-size alternative.
+
+\paragraph{Tests.} The protocol was frozen and hash-committed in the project repository before data collection; it was not posted to a public registry. The unit of analysis is a \emph{decisive conflict}: an item whose agents give at least two distinct answers, at least one of them correct and one incorrect. An item is \emph{contested} when its agents give at least two distinct canonical answers (622 items on P, 702 in all). The rest are decided without a model call, so cost and counterfactuals are reported over contested items. Majority vote is plurality over canonical answers with seeded random ties.
+
+\Cref{tab:hypotheses} lists the pre-specified tests. Sample size followed a fixed rule from development discordance: 1,000 primary items, assuming the development decisive-conflict yield of 0.533 (about 533 eligible conflicts), give 0.93 power at $\alpha = 0.05$ (0.88 at Holm's \citep{holm1979simple} first-step $\alpha = 0.025$) for an accuracy difference of 0.075 at a planning discordance of 0.25.
+
+\begin{table}[t]
+  \centering
+  \caption{Pre-specified tests. P: decisive conflicts on SciFact, PopQA, and FEVER; T: on the TruthfulQA stratum.}
+  \label{tab:hypotheses}
+  \small
+  \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{0.38\linewidth}L@{}}
+    \toprule
+    & Contrast & Test \\
+    \midrule
+    H1a (primary) & verify-then-vote vs majority vote on P & exact two-sided McNemar, Holm with H1b, family-wise $\alpha = 0.05$ \\
+    H1b & ungated reducer vs majority vote on P & as H1a \\
+    H3a & rate at which verify-then-vote overturns right majorities on P & one-sided 97.5\% Clopper--Pearson \citep{clopper1934use} upper bound below 0.05 \\
+    H3b & verify-then-vote vs majority vote on T & non-inferiority, Newcombe lower bound above $-0.03$ \\
+    H4 & harm bound of \paperref{main-paper harm corollary} & $c_D \leq F$ checked per item; $F$ compared with $\hat F$ predicted from validation \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+
+\subsection{Second-pool protocol}
+
+A second pre-specified protocol tests verified default first on newly collected responses to the same questions and repeats every OVERTURN hypothesis unchanged. This tests transfer across agent pools, not generalization to unseen questions; the rule was designed after the first pool's analysis. A new pool of five open-weight agents, from developers and model families not in the first (\cref{sec:prereg}), answers the same 1,100 items. A qualification rule on the development split fixed the pool. Each agent had to parse and finish reliably and cite on at least a quarter of its answers, and the pool had to produce enough conflicts. A pre-declared alternate replaced a candidate whose model server failed on every request. Protocol, analysis code, checker, judges, policy templates, and every hash were frozen before collection. The primary family is a fixed sequence for verified default first on P: superiority to majority vote (exact McNemar, $\alpha = 0.05$), then, only if that rejects, an overturn rate of right majorities with one-sided 97.5\% upper bound below 0.05. The replication family repeats H1a, H1b, H3a, and H3b with the same tests. A non-binding futility look at 300 items read only the primary corrected and overturned counts (22 against 1).
+
+\subsection{Historical forecast and calibration limits}
+\label{sec:forecast}
+
+The gate's exact counting condition, $c_D\leq F$, does not require a statistical model. Predicting checker-caused false verification does. A calibrated model would distinguish answer correctness from passage entailment. Let $k_i^+$ and $k_i^-$ count checked pairs whose passages do not actually license the candidate answer, in the raw-support and raw-refute directions respectively. Under independent errors with transportable direction-specific rates $r_+$ and $r_-$, the expected number of questions with at least one false verification is
+\[
+  \sum_i \left[1-(1-r_+)^{k_i^+}(1-r_-)^{k_i^-}\right].
+\]
+The independently counted validation rates are $r_+=18/350$ and $r_-=22/350$, on different gold-relation subsets of the same validation records. They do not by themselves establish transportability to the deployment passages, renderings, or answer types. Replacing one rate with the other is therefore insufficient to recalibrate deployment harm.
+
+The released pre-specified calculation instead uses $\hat F=\sum_i[1-(1-r)^{k_i}]$, with $r=18/350$ and $k_i$ the number of checked pairs on gold-incorrect values. It gives 52.7 on P and 9.9 on T, compared with 56 and 4 items with a verified gold-incorrect answer. Its reported predictive intervals on P are [40, 66] with fixed $r$ and [30, 82] with uncertain $r$. These intervals reflect the assumed model; they do not resolve the mismatch between gold-incorrect answers and non-entailing passages, or the omitted false-refute channel. The exploratory form substitutes checks on non-default values and gives 60.3, with interval [47, 75]. That exposure also includes genuinely supporting passages and is not an adjudicated false-verification population.
+
+We retain these calculations to document the original analysis, not as calibrated forecasts or empirical upper bounds on harm. Entity mismatch, false sources, and gold disagreement can produce verified gold-incorrect answers without raw checker misclassification. The 24 model-attributed checker-error items are not an independently validated calibration target. A valid comparison needs passage-level assessment across the relevant exposure population, not only the selected 82 verified wrong pairs, together with direction-specific error rates and justified assumptions about dependence. The artifact's validation audit and blank human-review packet make these outstanding requirements explicit.
+
+\subsection{Pooled harm rate and dependence sensitivity}
+\label{sec:pooled-harm}
+
+This secondary analysis concerns the original scored rule, not verified default first. It was specified after the first pool's harm result was known and before the second pool was collected. For pool $j$, let $q_j$ be the probability that the scored rule returns an incorrect answer conditional on a decisive primary conflict whose reported majority baseline is correct. These are losses relative to the seeded-tie majority baseline, not the rule's own deterministic default. The observed counts are $(c_1,n_1)=(12,376)$ and $(c_2,n_2)=(8,400)$. The target is the observed-denominator-weighted mean of the two pool-specific rates,
+\[
+  \bar q=\frac{376q_1+400q_2}{776},
+  \qquad \widehat{\bar q}=\frac{12+8}{376+400}=2.5773\%.
+\]
+It describes this mixture of the two evaluated pools; it is not an estimate over a population of arbitrary future agent pools.
+
+Treating the 776 outcomes as one independent, common-rate binomial sample gives the one-sided 97.5\% Clopper--Pearson \citep{clopper1934use} upper bound 3.9525\%. Shared questions and reused checker labels can violate that independence model. The reported 5.01\% sensitivity instead combines two marginal bounds using Bonferroni. Set the total tail probability to $\alpha=0.025$, allocate $\alpha/2=0.0125$ to each pool, and compute one-sided 98.75\% Clopper--Pearson upper limits
+\[
+  U_j=\operatorname{Beta}^{-1}(0.9875;\,c_j+1,n_j-c_j),
+  \qquad U_1=0.0587031,\quad U_2=0.0420556.
+\]
+Their weighted upper limit is
+\[
+  U=\frac{376U_1+400U_2}{776}=0.0501219\approx5.01\%.
+\]
+If both marginal limits cover, then $\bar q\leq U$. By the union bound, the probability that either fails is at most $0.0125+0.0125=0.025$, without assuming independence between pools. The construction therefore permits different pool-specific rates and arbitrary cross-pool dependence, including dependence from shared items or labels. It does not estimate that dependence, and 5.01\% is not a cluster-bootstrap percentile.
+
+The coverage statement still requires valid marginal binomial limits: within each pool, the eligible item outcomes are modeled as independent Bernoulli trials with a common conditional harm probability. It does not protect against arbitrary within-pool item dependence, changing the selection rule after observing the analyzed outcomes, or errors in the gold labels. The weights are the observed correct-majority denominators, rather than a claim about how often future pools will occur. Because this pooling plan followed the first-pool result, we report it as a secondary sensitivity analysis, not an additional independent confirmation. The resulting upper limit is slightly above the 5\% criterion, so the pooled low-harm claim is not established under this sensitivity.
+
+The artifact's \path{real-agent-eval/v6/pooled_h3a_v6.py} computes these limits from the two per-item decision tables and first verifies their counts against the evaluation summaries. Its separate item-cluster bootstrap retains both pools' outcomes together when resampling each of the 1,000 primary questions (10,000 resamples, seed 42); that descriptive two-sided 95\% interval, [1.50\%, 3.85\%], is a different calculation and does not supply the 5.01\% bound.

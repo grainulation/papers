@@ -1,0 +1,208 @@
+\section{Evaluation}
+\label{sec:evaluation}
+
+We report accuracy, harmful overturns, passage controls, transfer to a second agent pool, and the cost and audit value of replay. Negative results and the limits of each comparison accompany the corresponding findings.
+
+\paragraph{Evaluation scope and methods.} OVERTURN contains 1,000 primary questions (set P: SciFact, PopQA, and FEVER) and a separate 100-question TruthfulQA stratum (T). Five small open-weight agents answer using retrieved passages from a fixed corpus. Claude Sonnet~5.5, validated before acceptance, labels each cited proposition--passage pair; every method then reads the same sealed inputs. Full collection, checker validation, policies, and statistical tests are in \suppref{S8}.
+
+We use different populations for different questions. All-item accuracy measures performance over the full primary set. A \emph{decisive conflict} contains both a correct and an incorrect proposed answer, so it measures selection where either outcome is available. A \emph{contested} item has at least two distinct proposed answers, whether or not any is correct; cost and replay analyses use this broader population because a selection decision is still needed. TruthfulQA is reported separately because it tests misconceptions that the corpus rarely addresses.
+
+We also distinguish two baselines. The reported majority vote uses seeded-random tie breaking, whereas the scored rule's own plurality default $D$ uses its deterministic selector. Comparing the final rule with the reported majority therefore includes any effect of changing the tie policy. Comparing it with $D$ measures changes relative to the default used in the formal harm result.
+
+\paragraph{Rules and analysis timing.} The original primary rule uses the scoring selector, with a not-enough-information factor of 0.5; the separately tuned ungated comparator uses 0.1. Verified vote instead selects by plurality among verified answers. Verified default first keeps a verified default and otherwise uses verified vote. The original scored rule improved accuracy but missed its pre-specified harm criterion. Verified default first was developed after analyzing the first pool, then specified before testing a second agent pool on the same questions, with some checker labels reused. Its first-pool results are exploratory; its second-pool results test transfer across agent pools, not generalization to unseen questions. Protocols were hash-committed before their respective collections, without a public registry timestamp. New matched-parameter analyses are reported as post hoc and do not replace the original tests.
+
+\subsection{Accuracy: overall gains and matched baselines}
+\label{sec:overturn-results}
+
+Over all 1,000 primary items, decisive or not, verify-then-vote raises accuracy from 77.1\% for majority vote to 85.0\%. The 1,000 primary items yield 526 decisive conflicts, on which majority vote is right 376 times and wrong 150 times. Verify-then-vote corrects 91 of the 150 wrong majorities and overturns 12 of the 376 right ones, raising accuracy from 71.5\% to 86.5\%. The difference is 0.150 (\citet{newcombe1998paired} 95\% CI [0.115, 0.186]), with the exact \citet{mcnemar1947note} test, $p = 3.5 \times 10^{-16}$ (Holm-adjusted $6.9 \times 10^{-16}$). The pre-specified superiority null is rejected in favor of verify-then-vote.
+
+Verified vote, the plurality selector, reaches the same 86.5\% with 88 corrections and the fewest overturns of any pre-specified evidence-using method, 9. The scoring selector therefore adds no accuracy on this benchmark. Verified evidence supplies most of the gain, and the gate sets the balance between corrections and harmful overturns. The ungated reducer, which reads the same labels, also beats the vote (99 corrected, 23 overturned, 85.9\%, $p = 2.0 \times 10^{-12}$). This comparison changes both the gate and the not-enough-information factor, so it does not isolate the gate's effect.
+
+The fixed plurality default $D$ is correct on 386 of the same 526 items (73.4\%), against 376 for the seeded-random-tie majority baseline. The scored rule corrects 79 errors and loses 10 correct answers relative to $D$, reaching the same 455 correct answers (86.5\%). Thus 10 of the 79 net gains against the reported majority baseline come from changing the tie default; the remaining 69 are the net gain from verification and selection relative to that fixed default. These matched-default counts (\cref{tab:matched-default}) are descriptive; the pre-specified primary comparison remains unchanged. \Cref{tab:overturn} gives every method.
+
+\begin{table}[t]
+  \centering
+  \caption{Accuracy on the 526 decisive conflicts of P, and paired comparison with majority vote: b corrects a wrong majority, c overturns a right one. $^\dagger$Specified after this analysis; tested on a second pool using the same questions in \cref{tab:replication}.}
+  \label{tab:overturn}
+  \small
+  \begin{tabular}{@{}llrrr@{}}
+    \toprule
+    Method & Model calls per decision & Accuracy & b & c \\
+    \midrule
+    Majority vote & none & 71.5\% & --- & --- \\
+    Fixed plurality default $D$ & labels for tied plurality & 73.4\% & 13 & 3 \\
+    \textbf{Verify-then-vote, scored (pre-specified)} & checker labels & \textbf{86.5\%} & \textbf{91} & \textbf{12} \\
+    Verified vote & checker labels & 86.5\% & 88 & 9 \\
+    Verified default first$^\dagger$ & checker labels & 87.3\% & 87 & 4 \\
+    Ungated reducer & checker labels & 85.9\% & 99 & 23 \\
+    Evidence-only weights & checker labels & 85.7\% & 100 & 25 \\
+    Confidence-weighted vote & none & 73.6\% & 13 & 2 \\
+    Best single model (Mistral) & none & 69.6\% & 58 & 68 \\
+    Cite vote (unverified) & none & 69.0\% & 29 & 42 \\
+    Order-free reducer, unchecked citations & none & 63.7\% & 47 & 88 \\
+    \midrule
+    Local judge (Mistral 7B) & 1 local & 69.6\% & 54 & 64 \\
+    Sonnet~5.5 closed-book & 1 hosted & 90.9\% & 128 & 26 \\
+    Sonnet~5.5 judge & 1 hosted & 93.9\% & 131 & 13 \\
+    Sonnet~5.5 reader & 1 hosted & 94.3\% & 134 & 14 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Three distinct accuracy comparisons for the original scored rule on the first pool. All-item accuracy measures the overall gain; the two conflict rows distinguish the reported majority baseline from the rule's own default.}
+  \label{tab:matched-default}
+  \small
+  \begin{tabular}{@{}llrrr@{}}
+    \toprule
+    Population & Baseline & Baseline accuracy & Scored rule & Gain \\
+    \midrule
+    All 1,000 primary items & Majority & 77.1\% & 85.0\% & 7.9 pp \\
+    526 decisive conflicts & Majority & 71.5\% & 86.5\% & 15.0 pp \\
+    Same 526 conflicts & Fixed default $D$ & 73.4\% & 86.5\% & 13.1 pp \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The gain holds on every source (\cref{tab:sources}). It is largest where the corpus speaks directly to the claim: on FEVER, 28 corrections against 2 overturns, and on SciFact, 33 against 2. On the 43 SciFact claims whose gold is REFUTED, which the fleet tends to accept, accuracy rises from 39.5\% to 83.7\% with 19 corrections and no overturn. On the TruthfulQA stratum, where the corpus rarely addresses the misconception, verify-then-vote still corrects 9 majorities against 1 overturn (44.9\% to 56.5\%, Newcombe 95\% CI [0.030, 0.197]). The pre-specified non-inferiority criterion therefore holds: it is non-inferior to the vote, and, descriptively, the interval also excludes zero. Both pre-declared sensitivity analyses agree: without PopQA, 61 corrections against 4 overturns ($p = 3.9 \times 10^{-14}$), and with majority ties broken by earliest arrival instead of at random, 90 against 11.
+
+\begin{table}[t]
+  \centering
+  \caption{Verify-then-vote against majority vote by source, on decisive conflicts.}
+  \label{tab:sources}
+  \small
+  \begin{tabular}{@{}lrrrrr@{}}
+    \toprule
+    Source & Decisive & Majority & Scored verify-then-vote & b / c & $p$ \\
+    \midrule
+    FEVER & 199 & 76.9\% & 89.9\% & 28 / 2 & $8.7 \times 10^{-7}$ \\
+    SciFact & 154 & 68.8\% & 89.0\% & 33 / 2 & $3.7 \times 10^{-8}$ \\
+    \quad of which gold REFUTED & 43 & 39.5\% & 83.7\% & 19 / 0 & $3.8 \times 10^{-6}$ \\
+    PopQA & 173 & 67.6\% & 80.3\% & 30 / 8 & $4.7 \times 10^{-4}$ \\
+    TruthfulQA (stratum T) & 69 & 44.9\% & 56.5\% & 9 / 1 & 0.021 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Harm and what produces it}
+\label{sec:harm-results}
+
+The scored rule overturns 3.2\% of right majorities (12 of 376), with a one-sided 97.5\% upper bound of 5.5\%, just above the pre-specified 5\% ceiling. The scored verified-default-first variant keeps a verified default instead of re-selecting among verified answers and removes half of these overturns (87 corrections against 6). Verified default first over plurality overturns 4 right majorities against 87 corrections, with an upper bound of 2.7\%. The second pool tests that rule prospectively (\cref{sec:replication}).
+
+\par\medskip\noindent
+\begin{minipage}{\linewidth}
+\Cref{cor:gate} says that verify-then-vote loses a correct default only where some wrong answer is verified. On P the gate's own default winner $D$, an order-free plurality, was correct and the gated winner wrong on $c_D = 10$ items. All 10 lie among the $F = 56$ items where some wrong answer carries an accepted supports label, and the same holds on T ($c_D = 0$, $F = 4$). The bound holds on every item, as the theorem requires. Of the 12 overturns counted against majority vote, 11 fall among the $F$ items. The twelfth is a plurality tie: random tie-breaking chose correctly, but the deterministic default did not.
+\par
+\end{minipage}
+\par
+
+\par\medskip\noindent
+\begin{minipage}{\linewidth}
+\paragraph{What the verified wrong answers are.} Two annotators, both Claude Opus~5.5 instances and each blind to the other's labels, classified every one of the 82 supported (incorrect answer, passage) pairs on the 56 items. Each read the proposition against the passage and the gold and assigned one of four classes. The two annotations agree on 79 pairs (Cohen's $\kappa = 0.95$). A third Claude Opus~5.5 pass adjudicated the three disagreements against the class definitions, and the per-pair table with both labels is released with the artifact. An item takes the first class, in the order listed, that any of its pairs has. These are model-attributed categories, not independently validated diagnoses; agreement measures consistency rather than accuracy. The artifact includes blank review forms for all 82 pairs, with passage-relation assessment separated from gold review. No human review has yet been completed.
+\begin{itemize}
+  \item \emph{Checker false support} (24 items): the passage does not support the proposition as written, mostly answers of the wrong type (a state given where a country is asked) or non-answers.
+  \item \emph{Entity mismatch} (8): the passage is accurate about a different entity with the same name, and supports the proposition only under that reading. The corpus fact is correct.
+  \item \emph{False or outdated source} (5): the passage states, about the intended entity, an outdated or alternative account.
+  \item \emph{Gold or grading} (19): a spelling or alias the gold list lacks (9), a coarser or alternative answer the passage supports (3), or a source--gold disagreement, in which the passage contradicts the gold label and either can be the one in error (7). We count the last as suspected gold issues.
+\end{itemize}
+The 10 lost defaults divide 5, 1, 1, and 3, and the 3 in the last class are all source--gold disagreements. Checker false supports and entity mismatches are both failures of matching the answer to the passage, addressed by the checker and the proposition renderer. False sources are addressed by the corpus, and gold issues by the benchmark.
+\par
+\end{minipage}
+\par
+
+\par\medskip\noindent
+\begin{minipage}{\linewidth}
+\paragraph{What the forecast does not establish.} The historical harm forecast is not calibrated to checker-caused harm: it counts checks on gold-incorrect answers rather than adjudicated non-entailing passages, and its validation rate excludes false-refute errors that can verify REFUTED answers. The comparison with model-attributed checker errors cannot establish overprediction. The original calculations and calibration requirements are in \suppref{S8.2}.
+\par
+\end{minipage}
+\par
+
+
+\par\medskip\noindent
+\begin{minipage}{\linewidth}
+\paragraph{Matched gate ablation (post hoc).} To isolate the gate, we re-ran the sealed first-pool inputs with it off and on at each of the two not-enough-information factors, holding every other policy field and input fixed. No new model calls were made. At factor 0.1 the gate reduces losses of correct majorities from 23 to 12 but also reduces corrections from 99 to 89; accuracy changes from 85.9\% to 86.1\%. At factor 0.5 it reduces losses from 33 to 12 and corrections from 96 to 91, raising accuracy from 83.5\% to 86.5\% (\cref{tab:matched-gate}). Thus the lower harm is present in both matched comparisons, with a cost in corrections. These descriptive analyses supplement the original tests; they were not pre-specified. The default is fixed within each comparison, but its tied-plurality choices can differ between factors.
+
+\begin{center}
+\begin{minipage}{\linewidth}
+  \centering
+  \captionsetup{hypcap=false}
+  \captionof{table}{Matched gate ablation on the same 526 decisive primary conflicts. Corrections and losses are relative to the reported majority baseline. Within each factor, only the gate changes.}
+  \label{tab:matched-gate}
+  \small
+  \begin{tabular}{@{}llrrr@{}}
+    \toprule
+    NEI factor & Gate & Accuracy & Corrections & Losses \\
+    \midrule
+    0.1 & off & 85.9\% & 99 & 23 \\
+    0.1 & on  & 86.1\% & 89 & 12 \\
+    0.5 & off & 83.5\% & 96 & 33 \\
+    0.5 & on  & 86.5\% & 91 & 12 \\
+    \bottomrule
+  \end{tabular}
+\end{minipage}
+\end{center}
+\par
+\end{minipage}
+\par
+
+\subsection{What the passage controls establish}
+\label{sec:ingredient}
+
+The controls in \cref{tab:overturn} separate what produces the gain. Citations alone do not: the order-free reducer weighting the same unverified citations overturns more right majorities than it corrects (47 against 88), and a vote among citing agents scores 69.0\%. Checking the citations changes this. Every pre-specified evidence-using configuration in \cref{tab:overturn} rises above 85\%. The two pre-specified gated rules reduce harmful overturns relative to the separately tuned ungated methods. Scored verify-then-vote and verified vote tie on accuracy (9 against 9 between them, $p = 1.0$); verified vote overturns the fewest right majorities among the pre-specified evidence-using methods. Evidence-only weights match the full ungated reducer (6 against 5), so the checker's labels carry the signal and the remaining score features refine ties. A companion pre-specified benchmark isolates the same point from the other side. On 600 questions from the same four datasets, the same five agents answered from memory with no corpus, so there was nothing to verify. On its 293 decisive conflicts the order-free reducer scored 58.4\% against majority vote's 62.8\% (45 against 58, exact McNemar $p = 0.24$, Newcombe 95\% CI [$-0.111$, 0.023]), and its pre-specified 10-point non-inferiority margin was not established. On OVERTURN, where there are passages to verify, verify-then-vote gains 15 points over the vote.
+
+\paragraph{The gain depends on passages under ablation.} A control run after the confirmatory analysis tests whether the checker's supporting labels persist without the cited text or with unrelated text. We took the 118 witness pairs that licensed overturns on P and 118 seeded-random supported pairs that did not. The same checker labeled each answer again, once with the passage withheld and once with the passage replaced by an unrelated passage from the same source. In each condition it returned supports on none of the 236 pairs (two-sided 95\% Wilson upper bound 1.6\%). Not one of the 118 licensing pairs among them was supported (upper bound 3.2\%). The checker labeled every one not-enough-information. Re-deciding P with these labels in place of the witnesses' labels leaves 15 corrections and 2 overturns, 74.0\% against the majority's 71.5\%. The substitution removes 76 of the 91 corrections and 10 of the 12 overturns. Of the remaining corrections, 13 involve no overturn of the fixed default and arise from how it breaks plurality ties. These controls establish dependence on the cited passages in the tested path, not the absence of parametric-knowledge influence when relevant passages are present.
+
+Against the references, verify-then-vote closes 66.9\% of the gap between majority vote and the Sonnet~5.5 judge (bootstrap 95\% CI [55.8\%, 77.9\%]). The judge, the reader, and the closed-book model use outside knowledge and a much larger model at every decision. Verify-then-vote uses that model only to label passages and decides with a frozen rule. A judge of the agents' own size mostly follows the wrong majority. Given the same answers, confidences, and passages, the local Mistral judge follows it on 87 of 150 items and scores 69.6\%. Verify-then-vote beats it by 110 decisions to 21 ($p = 9.4 \times 10^{-16}$). A judge weighs five answers at once; the gate asks its checker only to label one passage against one proposition, a task validated before use. The judge's errors concentrate where the gate's do. It is wrong on 17 of the 56 questions with a verified wrong answer, including 9 of the 19 gold issues, and on 15 of the other 470 (odds ratio 13.2, $p = 4.5 \times 10^{-10}$). Paired with the scored rule on the 526 decisive conflicts, the judge is right where the rule is wrong on 50 and wrong where the rule is right on 11. Fourteen of its 50 wins fall on questions with a verified wrong answer, including 5 of the rule's 10 lost defaults, so the judge does rescue some of the rule's losses. The other 36 are questions on which no answer was verified and the rule kept a wrong default. On the second pool, verified default first closes 63\% of the gap to the judge.
+
+\subsection{Second agent pool on the same questions}
+\label{sec:replication}
+
+The second pool tests verified default first on newly collected responses from five other model families to the same 1,100 questions, reusing an existing checker label whenever the proposition--passage pair is unchanged. The rule and its analysis were specified after the first-pool analysis but before this collection. Its primary tests require both superiority to majority vote and a one-sided 97.5\% upper bound below 5\% on overturns of correct majorities. This is a prospective test across agent pools, not on unseen questions; the full protocol and repeated original-rule tests are in \suppref{S8}.
+
+The new pool reaches 547 decisive conflicts on P, on which majority vote is right 400 times. Verified default first corrects 73 of the 147 wrong majorities and overturns 3 of the 400 right ones, from 73.1\% to 85.9\% ($p = 1.9 \times 10^{-18}$; Newcombe 95\% CI [0.099, 0.158]). Its overturn rate is 0.75\% with a one-sided 97.5\% upper bound of 2.2\%, so both steps reject, and harm below 5\% is established for verified default first on this pool. Removing the 15 items whose harm cases informed the rule leaves 73 against 3 (bound 2.2\%), and grading with a frozen alias list leaves the same counts. Every lost default lies among the 46 items with a verified wrong answer, as \cref{cor:gate} requires. The gain holds on every source: 22 against 2 on FEVER, 21 against 0 on SciFact, and 30 against 1 on PopQA.
+
+\begin{table}[t]
+  \centering
+  \caption{Second agent pool, pre-specified: decisive conflicts on P (547; majority right on 400) and on the TruthfulQA stratum T (68). Bound: one-sided 97.5\% Clopper--Pearson upper bound on the rate of overturned right majorities.}
+  \label{tab:replication}
+  \small
+  \begin{tabular}{@{}lrrrrr@{}}
+    \toprule
+    Method & Accuracy & b & c & $p$ & Bound \\
+    \midrule
+    Majority vote & 73.1\% & --- & --- & --- & --- \\
+    \textbf{Verified default first (primary)} & \textbf{85.9\%} & \textbf{73} & \textbf{3} & $1.9 \times 10^{-18}$ & \textbf{2.2\%} \\
+    Verify-then-vote, scored & 86.3\% & 80 & 8 & $4.6 \times 10^{-16}$ & 3.9\% \\
+    Scored, verified default first & 86.3\% & 77 & 5 & $1.2 \times 10^{-17}$ & 2.9\% \\
+    Verified vote & 85.9\% & 76 & 6 & $1.6 \times 10^{-16}$ & --- \\
+    Ungated reducer & 85.7\% & 92 & 23 & $5.8 \times 10^{-11}$ & 8.5\% \\
+    Best single model (EXAONE~3.5) & 79.3\% & 84 & 50 & 0.004 & --- \\
+    Sonnet~5.5 judge & 93.6\% & 122 & 10 & $1.2 \times 10^{-25}$ & --- \\
+    Sonnet~5.5 reader & 94.3\% & 128 & 12 & $1.2 \times 10^{-25}$ & --- \\
+    \midrule
+    \multicolumn{6}{@{}l}{\emph{TruthfulQA stratum T (majority 48.5\%)}} \\
+    Verified default first & 50.0\% & 2 & 1 & 1.0 & --- \\
+    Verify-then-vote, scored & 51.5\% & 7 & 5 & 0.77 & --- \\
+    Ungated reducer & 35.3\% & 10 & 19 & 0.14 & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Three of the four original OVERTURN criteria are met on the second pool: superiority of the scored and ungated configurations to majority vote, and the scored rule's harm-rate criterion. The accuracy gains hold on the new agent pool, and the harm-rate criterion, which the first pool narrowly missed, is satisfied on this pool. The fourth, non-inferiority on TruthfulQA, is inconclusive. The scored rule beats majority vote with 80 corrections against 8 ($p = 4.6 \times 10^{-16}$, Holm-adjusted $9.2 \times 10^{-16}$) and the ungated reducer does so with 92 against 23. The scored rule's overturn rate has an upper bound of 3.9\%, below the ceiling; across both pools it overturns 20 of 776 right majorities. Treating these as a single binomial sample gives a 3.95\% upper bound. The secondary Bonferroni sensitivity analysis permits different pool-specific rates and dependence between pools, giving 5.01\%, just above the ceiling; it retains within-pool binomial assumptions (\suppref{S8.3}). The scored gated configuration has fewer overturns than the separately tuned ungated configuration (8 versus 23); because their evidence factors differ, this is a comparison of configurations, not an isolated gate effect. On the TruthfulQA stratum, where the corpus rarely speaks to the misconception, the gated rules stay level with the vote (2 against 1 and 7 against 5), and non-inferiority is not shown at 68 items. The ungated reducer, by contrast, overturns more right majorities than it corrects (10 against 19). Effect sizes on P agree across pools within their confidence intervals.
+
+\subsection{Audit, replay, and cost}
+\label{sec:audit-results}
+
+Every OVERTURN decision is a replay of a sealed input. Each of the 1,100 items was reduced twice under each evidence policy and the outputs were byte-identical in every case. An independent re-implementation of the reducer's selection matched the binary on all 7,910 slots. Because the checker's labels are sealed, we can replay a decision after removing an agent. For each of the 702 contested items, we omitted one agent and selected from the remaining four, then restored it and omitted the next. These five variants per item gave $702 \times 5 = 3{,}510$ decisions. Replaying them took 23\,s with no new model call, and 9.4\% selected a different answer from the original decision. The same analysis for the Sonnet judge needs five new calls, about \$0.071 and 19\,s per item. Re-asking the judge on 200 items reproduced 97.5\% of its own decisions.
+
+Each overturn is also small to audit. The gate's trace names the verified answer and its witnesses. An overturn on P is licensed by a median of one labeled passage of about 950 characters (maximum four), against a median of 3,649 tokens of context behind each judge decision. The reducer takes 6.0\,ms per decision (95th percentile 12.6\,ms).
+
+The model cost is the checker's, and it is counted only where a label can change a decision. Agents cited 4,742 distinct (proposition, passage) pairs across all 1,100 items, each labeled once. Of these, 2,739 fall on the 622 contested items of P (4.4 per decision) and 440 on the 80 contested items of T (5.5 per decision); the other 1,563 fall on unanimous items, where no label can change the answer. A further 2,506 labels on gold-answer propositions measured how often the retrieved passages supported the gold (\suppref{S6}). They are a diagnostic and enter no decision or cost. At a measured \$0.0048 per label, verify-then-vote costs \$0.021 per contested decision on P, 1.5 times one judge call (\$0.014), so the judge is cheaper for a first decision. The stored labels make every later decision cheaper. All evidence-using methods and every counterfactual above re-decide from the same labels at no further model cost. This reuse extends to policies restricted to the existing sealed inputs and accepted labels; new answers, evidence, proposition renderings, or checker identities can require additional checking, and each label remains individually auditable. The labels also carry over to new agents. A label is keyed by its proposition and passage, so when the second pool cited a pair the first pool had cited, its sealed label was reused. In all, 49\% of the second pool's cited checks were already labeled. Its 634 contested decisions on P read 4.4 labels each, as before. Priced at each label's original call, the cost is again \$0.021 per decision; the new calls cost \$0.011, 0.83 of one judge call (\$0.014), so a second pool's first decisions already cost less than a judge's. Verified vote, verified default first, the scored rule, and the ungated reducer read the same labels and share this cost.
+
+\subsection{Replay and tamper evidence}
+\label{sec:replay}
+
+The replay tests cover five synthetic topics with 100 agents each (seed 42). All 500 in-memory recompilations and 100 input-order permutations preserved their respective certificates and decisions. Four builds---native macOS arm64, translated macOS x86-64, containerized Linux arm64, and translated containerized Linux x86-64---produced 20 dumps that were byte-identical per topic, and all 80 cross-replays passed. These builds span two instruction sets, two operating systems, and two compiler patch releases on one physical host; they do not establish agreement for every possible input or platform.
+
+Nine constructed forgeries, replayed on all four builds, were rejected identically in all 36 trials. For example, editing a claim and recomputing its root hash still fails if its retained identifier no longer matches its content. Detection is relative to trusted outputs or a certificate held independently of the bundle: an attacker who replaces all copies of that commitment can recompute the hashes. The full replay matrix, mutation inventory, and further field-level tests are in \suppref{S10}; \cref{sec:limitations} states the scope of these results.

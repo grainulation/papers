@@ -1,0 +1,1229 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever20121",
+ "order": 932,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever20121",
+  "order": 932,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Rob Sheridan was born in 1980."
+ },
+ "item_view_sha256": "571b3acd7bd9591130ba7279eb234b00e841f3e01c5b9fa1d6f253ca1c72577e",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "qwen2.5:3b",
+  "phi3:mini",
+  "gemma2:2b",
+  "llama3.2:3b",
+  "mistral"
+ ],
+ "arrival_order": [
+  "mistral",
+  "phi3:mini",
+  "llama3.2:3b",
+  "gemma2:2b",
+  "qwen2.5:3b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rob Sheridan was born in 1980.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c8bd7e96de6fcb0fc130fd2905f939339ddd01784ef701fc55514ac02ad5db05",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792728924.940423,
+      "end_wall": 1792728926.248855,
+      "error": null
+     }
+    ],
+    "start_wall": 1792728924.940423,
+    "start_mono": 398481.954030041,
+    "end_wall": 1792728926.248855,
+    "end_mono": 398483.262449833,
+    "raw_response": "{\"query\": \"Rob Sheridan birth year 1980\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1306105875,
+     "load_duration": 17117166,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 457260792,
+     "eval_count": 16,
+     "eval_duration": 791493874,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:26.247598Z"
+    },
+    "elapsed_s": 1.308,
+    "query_used": "Rob Sheridan birth year 1980",
+    "query_source": "json",
+    "query_arrival_seq": 4661
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rob Sheridan birth year 1980",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rob_Sheridan:0",
+       "score_q": 9559
+      },
+      {
+       "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+       "score_q": 9410
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+       "score_q": 8954
+      },
+      {
+       "passage_key": "fever17:Ricky_Lancelotti:1",
+       "score_q": 8589
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+       "score_q": 8444
+      }
+     ],
+     "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rob_Sheridan:0",
+      "content_sha256": "7e628aab0da673f2c1380327515b7000b5fa502d2566ef64fbadcdbcdf961edd",
+      "chars": 873
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+      "content_sha256": "0d2b94c2a5782d8297d0c71c3bf0f07631cb21f4ef2e624e6d60ed55221a5f0d",
+      "chars": 195
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+      "content_sha256": "11c82e3e80a86db51f08f7eb036289535bb559f00e76c3576a7093b973b0bad7",
+      "chars": 1011
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ricky_Lancelotti:1",
+      "content_sha256": "4d7557f4afe09119f7264e9a6d2d8afd339233d2cc111148262b29a997b4df54",
+      "chars": 104
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+      "content_sha256": "7511f1125e107e2043e30144e673806d72a3ac15c074bd9013586961f9624ed0",
+      "chars": 965
+     }
+    ],
+    "elapsed_s": 0.0297
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rob Sheridan was born in 1980.\n\nEvidence passages from your search for \"Rob Sheridan birth year 1980\":\n<<<PASSAGES\n[P1] Rob Sheridan\nRob Sheridan ( born October 11 , 1979 ) is an American graphic designer , director , and photographer best known for his extensive work with the band Nine Inch Nails . Sheridan attended art school at New York 's Pratt Institute for one year before being hired at age 19 by Nine Inch Nails ' Trent Reznor in 1999 , on the merits of a Nine Inch Nails fansite he created during high school . He was initially hired to maintain the newly launched official Nine Inch Nails website . Since then he has taken over as art director for the band , contributing photography , web design , album covers , music videos , live tour visuals , and two live concert films . He was also credited for assisting Trent Reznor with the mythology of the alternate reality game built around Nine Inch Nails ' 2007 album Year Zero . Sheridan is widely known for his analog glitch art .\n\n[P2] Margaret Sheridan (writer)\nMargaret Sheridan , Comtesse de Renéville ( 1912-1980 ) was a British writer who wrote under the name Mary Motley . Sheridan was daughter of sculptress Clare Sheridan .\n\n[P3] Sheridan (surname)\nMichael Sheridan ( Irish politician ) ( died 1970 ) , Irish Fianna Fáil politician Michael John Sheridan ( born 1945 ) , Bishop of Colorado Springs Michael J. Sheridan ( born 1958 ) , Democratic member of the Wisconsin State Assembly Mike Sheridan ( born 1991 ) , Danish producer of electronic music Nicollette Sheridan ( born 1963 ) , British actress Pat Sheridan ( born 1957 ) , former professional baseball player Philip Sheridan ( 1831 -- 1888 ) , United States Army General and namesake of the M551 Sheridan Richard Brinsley Sheridan ( 1751 -- 1816 ) , pre-eminent Irish playwright ( The Rivals ) , poet and politician Richard Brinsley Sheridan ( -- 2 May 1888 ) , British politician Rob Sheridan ( born 1979 ) , American graphic designer , director and photographer Rondell Sheridan ( born 1958 ) , American actor and comedian Steven Foley-Sheridan ( born 1986 ) , Irish footballer Susan Sheridan ( 1947 -- 2015 ) , English voice actress Sybil Sheridan , writer and British Reform rabbi\n\n[P4] Ricky Lancelotti\nCategory : Year of birth missing Category :1980 deaths Category : American male singers\n\n[P5] Sheridan (surname)\nJohn Sheridan ( footballer ) ( born 1964 ) , English-born footballer John Sheridan ( Royal Navy officer ) ( c. 1770 -- 1862 ) , naval officer John D. Sheridan ( 1903 -- 1980 ) , Irish writer and humourist John E. Sheridan ( 1902 -- 1987 ) , U.S. Representative from Pennsylvania Keith Sheridan ( born 1971 ) , Scottish cricketer Kelly Sheridan ( born 1977 ) , Canadian voice actor Lawrence A. Sheridan ( 1919 -- 2001 ) , Louisiana politician Leisa Sheridan ( born 1964 ) , American model and actress Lisa Sheridan ( born 1974 ) , American actress Liz Sheridan ( born 1929 ) , American actress Margaret Sheridan ( 1926-1982 ) , American actress Mark Sheridan ( 1864 -- 1918 ) , English music hall comedian Martin Sheridan ( 1881 -- 1918 ) , athlete Matt Sheridan ( born 1977 ) , professional Canadian football offensive lineman Michael Sheridan ( disambiguation ) , several people , including : Michael Sheridan ( musician ) , Australian guitarist\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "caafc318f950656df3ab99768586a6f931e780f3ca09718b950749bcd12f2644",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792728926.2788942,
+      "end_wall": 1792728941.0206459,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4660,
+    "start_wall": 1792728926.2788942,
+    "start_mono": 398483.292490375,
+    "end_wall": 1792728941.0206459,
+    "end_mono": 398498.034130291,
+    "raw_response": "{\"reasoning\": \"The passage P3 provides the birth year of Rob Sheridan, stating he was born in 1979. No contradictory evidence was found.\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P3\"],\n\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14738010417,
+     "load_duration": 22543750,
+     "prompt_eval_count": 1220,
+     "prompt_eval_duration": 6110905750,
+     "eval_count": 63,
+     "eval_duration": 8443334046,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:41.018208Z"
+    },
+    "elapsed_s": 14.742,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4660,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Sheridan_-LRB-surname-RRB-:3"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 121,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rob Sheridan was born in 1980.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c8bd7e96de6fcb0fc130fd2905f939339ddd01784ef701fc55514ac02ad5db05",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792728924.939987,
+      "end_wall": 1792728931.3847091,
+      "error": null
+     }
+    ],
+    "start_wall": 1792728924.939987,
+    "start_mono": 398481.953594166,
+    "end_wall": 1792728931.3847091,
+    "end_mono": 398488.398264041,
+    "raw_response": "{\"query\": \"Rob Sheridan birth year\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6442278959,
+     "load_duration": 1416579750,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 990370708,
+     "eval_count": 13,
+     "eval_duration": 3998508168,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:31.38382Z"
+    },
+    "elapsed_s": 6.445,
+    "query_used": "Rob Sheridan birth year",
+    "query_source": "json",
+    "query_arrival_seq": 4662
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rob Sheridan birth year",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rob_Sheridan:0",
+       "score_q": 9559
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+       "score_q": 8954
+      },
+      {
+       "passage_key": "fever17:Birth_of_the_Living_Dead:0",
+       "score_q": 8054
+      },
+      {
+       "passage_key": "fever17:Rob_Heyvaert:0",
+       "score_q": 7784
+      },
+      {
+       "passage_key": "fever17:Sheridan_High_School_-LRB-Arkansas-RRB-:0",
+       "score_q": 7689
+      }
+     ],
+     "retrieval_sha256": "690ad31d8816a86258e9c34ea2ffefe81b0b7cfc3d24f286b1d578751f942dde"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "690ad31d8816a86258e9c34ea2ffefe81b0b7cfc3d24f286b1d578751f942dde",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rob_Sheridan:0",
+      "content_sha256": "7e628aab0da673f2c1380327515b7000b5fa502d2566ef64fbadcdbcdf961edd",
+      "chars": 873
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+      "content_sha256": "11c82e3e80a86db51f08f7eb036289535bb559f00e76c3576a7093b973b0bad7",
+      "chars": 1011
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Birth_of_the_Living_Dead:0",
+      "content_sha256": "b244b6e1d8ad4ae3eb9cbdf80f588ec3ab7b7e50a92bcb14e2ce4f42976dce5e",
+      "chars": 425
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Rob_Heyvaert:0",
+      "content_sha256": "80ad2936d3436b37e922e8b7cd617b30837b95861416cb1c2faa83c7b0366d1d",
+      "chars": 534
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Sheridan_High_School_-LRB-Arkansas-RRB-:0",
+      "content_sha256": "603888610cf198e9844d53a3bbdf46375add08f228c42f940b3121d161bb96bc",
+      "chars": 774
+     }
+    ],
+    "elapsed_s": 0.0184
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rob Sheridan was born in 1980.\n\nEvidence passages from your search for \"Rob Sheridan birth year\":\n<<<PASSAGES\n[P1] Rob Sheridan\nRob Sheridan ( born October 11 , 1979 ) is an American graphic designer , director , and photographer best known for his extensive work with the band Nine Inch Nails . Sheridan attended art school at New York 's Pratt Institute for one year before being hired at age 19 by Nine Inch Nails ' Trent Reznor in 1999 , on the merits of a Nine Inch Nails fansite he created during high school . He was initially hired to maintain the newly launched official Nine Inch Nails website . Since then he has taken over as art director for the band , contributing photography , web design , album covers , music videos , live tour visuals , and two live concert films . He was also credited for assisting Trent Reznor with the mythology of the alternate reality game built around Nine Inch Nails ' 2007 album Year Zero . Sheridan is widely known for his analog glitch art .\n\n[P2] Sheridan (surname)\nMichael Sheridan ( Irish politician ) ( died 1970 ) , Irish Fianna Fáil politician Michael John Sheridan ( born 1945 ) , Bishop of Colorado Springs Michael J. Sheridan ( born 1958 ) , Democratic member of the Wisconsin State Assembly Mike Sheridan ( born 1991 ) , Danish producer of electronic music Nicollette Sheridan ( born 1963 ) , British actress Pat Sheridan ( born 1957 ) , former professional baseball player Philip Sheridan ( 1831 -- 1888 ) , United States Army General and namesake of the M551 Sheridan Richard Brinsley Sheridan ( 1751 -- 1816 ) , pre-eminent Irish playwright ( The Rivals ) , poet and politician Richard Brinsley Sheridan ( -- 2 May 1888 ) , British politician Rob Sheridan ( born 1979 ) , American graphic designer , director and photographer Rondell Sheridan ( born 1958 ) , American actor and comedian Steven Foley-Sheridan ( born 1986 ) , Irish footballer Susan Sheridan ( 1947 -- 2015 ) , English voice actress Sybil Sheridan , writer and British Reform rabbi\n\n[P3] Birth of the Living Dead\nBirth of the Living Dead ( sometimes known by its working title Year of the Living Dead ) is a 2012 American documentary film directed by Rob Kuhns . It is about the 1968 horror film Night of the Living Dead and that film 's legacy . It features interviews with Night of the Living Dead director George A. Romero , Elvis Mitchell , Jason Zinoman , Larry Fessenden , Gale Anne Hurd , and Mark Harris .\n\n[P4] Rob Heyvaert\nRob Heyvaert is a Belgian businessman . He is the founder , chairman and former Chief Executive Officer of the Capital Markets Company , commonly known as Capco , a consultancy . Before founding Capco , he created Cimad Consultants and sold it to IBM . In 2006 he appeared on the Belgian Flemish television channel VT4 in a television program called `` De Topmanager , '' the Belgian version of The Apprentice . Category : Belgian businesspeople Category : Living people Category : Year of birth missing ( living people )\n\n[P5] Sheridan High School (Arkansas)\nSheridan High School is a comprehensive four-year public high school located in Sheridan , Arkansas , United States . It is one of two public high schools in Grant County and the sole high school administered by the Sheridan School District . In 2012 , Sheridan High School was nationally recognized as a Silver Medalist in the U.S. News & World Report Best High Schools 2012 report , which ranked the school as the No. 1,976 high school in the nation and No. 21 in Arkansas . Sheridan High School was ranked No. 1,271 of 2,008 high schools in the 2012 Challenge Index high school scoring system with an index score of 1.683 , which is the number of college-level tests given at a school in 2011 divided by the number of graduates that year .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f83b429cca5d0752140a902aa448b802f80237f77979e20776b6baa562505449",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792728931.403469,
+      "end_wall": 1792728941.45572,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4661,
+    "start_wall": 1792728931.403469,
+    "start_mono": 398488.417025458,
+    "end_wall": 1792728941.45572,
+    "end_mono": 398498.469201291,
+    "raw_response": "{\n  \"reasoning\": \"The claim is refuted as the evidence clearly states Rob Sheridan's birth year as 1979, which is not consistent with the claim of him being born in 1980.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P2\", \"P5\"]\n  ,\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10047324583,
+     "load_duration": 13925167,
+     "prompt_eval_count": 1292,
+     "prompt_eval_duration": 3418128084,
+     "eval_count": 89,
+     "eval_duration": 6392264920,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:41.4519Z"
+    },
+    "elapsed_s": 10.052,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4661,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Sheridan_-LRB-surname-RRB-:3",
+     "fever17:Sheridan_High_School_-LRB-Arkansas-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 152,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rob Sheridan was born in 1980.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c8bd7e96de6fcb0fc130fd2905f939339ddd01784ef701fc55514ac02ad5db05",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792728924.940314,
+      "end_wall": 1792728937.472588,
+      "error": null
+     }
+    ],
+    "start_wall": 1792728924.940314,
+    "start_mono": 398481.953921458,
+    "end_wall": 1792728937.472588,
+    "end_mono": 398494.486097208,
+    "raw_response": "{\"query\": \"Rob Sheridan birth year 1980\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12530125125,
+     "load_duration": 11185100584,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 433302625,
+     "eval_count": 13,
+     "eval_duration": 748040581,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:37.471801Z"
+    },
+    "elapsed_s": 12.532,
+    "query_used": "Rob Sheridan birth year 1980",
+    "query_source": "json",
+    "query_arrival_seq": 4664
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rob Sheridan birth year 1980",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rob_Sheridan:0",
+       "score_q": 9559
+      },
+      {
+       "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+       "score_q": 9410
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+       "score_q": 8954
+      },
+      {
+       "passage_key": "fever17:Ricky_Lancelotti:1",
+       "score_q": 8589
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+       "score_q": 8444
+      }
+     ],
+     "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rob_Sheridan:0",
+      "content_sha256": "7e628aab0da673f2c1380327515b7000b5fa502d2566ef64fbadcdbcdf961edd",
+      "chars": 873
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+      "content_sha256": "0d2b94c2a5782d8297d0c71c3bf0f07631cb21f4ef2e624e6d60ed55221a5f0d",
+      "chars": 195
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+      "content_sha256": "11c82e3e80a86db51f08f7eb036289535bb559f00e76c3576a7093b973b0bad7",
+      "chars": 1011
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ricky_Lancelotti:1",
+      "content_sha256": "4d7557f4afe09119f7264e9a6d2d8afd339233d2cc111148262b29a997b4df54",
+      "chars": 104
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+      "content_sha256": "7511f1125e107e2043e30144e673806d72a3ac15c074bd9013586961f9624ed0",
+      "chars": 965
+     }
+    ],
+    "elapsed_s": 0.0258
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rob Sheridan was born in 1980.\n\nEvidence passages from your search for \"Rob Sheridan birth year 1980\":\n<<<PASSAGES\n[P1] Rob Sheridan\nRob Sheridan ( born October 11 , 1979 ) is an American graphic designer , director , and photographer best known for his extensive work with the band Nine Inch Nails . Sheridan attended art school at New York 's Pratt Institute for one year before being hired at age 19 by Nine Inch Nails ' Trent Reznor in 1999 , on the merits of a Nine Inch Nails fansite he created during high school . He was initially hired to maintain the newly launched official Nine Inch Nails website . Since then he has taken over as art director for the band , contributing photography , web design , album covers , music videos , live tour visuals , and two live concert films . He was also credited for assisting Trent Reznor with the mythology of the alternate reality game built around Nine Inch Nails ' 2007 album Year Zero . Sheridan is widely known for his analog glitch art .\n\n[P2] Margaret Sheridan (writer)\nMargaret Sheridan , Comtesse de Renéville ( 1912-1980 ) was a British writer who wrote under the name Mary Motley . Sheridan was daughter of sculptress Clare Sheridan .\n\n[P3] Sheridan (surname)\nMichael Sheridan ( Irish politician ) ( died 1970 ) , Irish Fianna Fáil politician Michael John Sheridan ( born 1945 ) , Bishop of Colorado Springs Michael J. Sheridan ( born 1958 ) , Democratic member of the Wisconsin State Assembly Mike Sheridan ( born 1991 ) , Danish producer of electronic music Nicollette Sheridan ( born 1963 ) , British actress Pat Sheridan ( born 1957 ) , former professional baseball player Philip Sheridan ( 1831 -- 1888 ) , United States Army General and namesake of the M551 Sheridan Richard Brinsley Sheridan ( 1751 -- 1816 ) , pre-eminent Irish playwright ( The Rivals ) , poet and politician Richard Brinsley Sheridan ( -- 2 May 1888 ) , British politician Rob Sheridan ( born 1979 ) , American graphic designer , director and photographer Rondell Sheridan ( born 1958 ) , American actor and comedian Steven Foley-Sheridan ( born 1986 ) , Irish footballer Susan Sheridan ( 1947 -- 2015 ) , English voice actress Sybil Sheridan , writer and British Reform rabbi\n\n[P4] Ricky Lancelotti\nCategory : Year of birth missing Category :1980 deaths Category : American male singers\n\n[P5] Sheridan (surname)\nJohn Sheridan ( footballer ) ( born 1964 ) , English-born footballer John Sheridan ( Royal Navy officer ) ( c. 1770 -- 1862 ) , naval officer John D. Sheridan ( 1903 -- 1980 ) , Irish writer and humourist John E. Sheridan ( 1902 -- 1987 ) , U.S. Representative from Pennsylvania Keith Sheridan ( born 1971 ) , Scottish cricketer Kelly Sheridan ( born 1977 ) , Canadian voice actor Lawrence A. Sheridan ( 1919 -- 2001 ) , Louisiana politician Leisa Sheridan ( born 1964 ) , American model and actress Lisa Sheridan ( born 1974 ) , American actress Liz Sheridan ( born 1929 ) , American actress Margaret Sheridan ( 1926-1982 ) , American actress Mark Sheridan ( 1864 -- 1918 ) , English music hall comedian Martin Sheridan ( 1881 -- 1918 ) , athlete Matt Sheridan ( born 1977 ) , professional Canadian football offensive lineman Michael Sheridan ( disambiguation ) , several people , including : Michael Sheridan ( musician ) , Australian guitarist\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "caafc318f950656df3ab99768586a6f931e780f3ca09718b950749bcd12f2644",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792728937.498807,
+      "end_wall": 1792728942.6867,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4662,
+    "start_wall": 1792728937.498807,
+    "start_mono": 398494.512317083,
+    "end_wall": 1792728942.6867,
+    "end_mono": 398499.700172708,
+    "raw_response": "{\"reasoning\": \"The claim is refuted because one of the evidence passages lists Rob Sheridan as being born in 1979, while another lists Margaret Sheridan as being born in 1980.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5185448084,
+     "load_duration": 99685459,
+     "prompt_eval_count": 1013,
+     "prompt_eval_duration": 1917848042,
+     "eval_count": 67,
+     "eval_duration": 2474227330,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:42.685578Z"
+    },
+    "elapsed_s": 5.188,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4662,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Rob_Sheridan:0",
+     "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 160,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rob Sheridan was born in 1980.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c8bd7e96de6fcb0fc130fd2905f939339ddd01784ef701fc55514ac02ad5db05",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792728924.94014,
+      "end_wall": 1792728926.234114,
+      "error": null
+     }
+    ],
+    "start_wall": 1792728924.94014,
+    "start_mono": 398481.95374725,
+    "end_wall": 1792728926.234114,
+    "end_mono": 398483.247709666,
+    "raw_response": "{\"query\": \"Rob Sheridan birth date 1980\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1291456125,
+     "load_duration": 109039625,
+     "prompt_eval_count": 169,
+     "prompt_eval_duration": 348767041,
+     "eval_count": 16,
+     "eval_duration": 525697291,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:26.232867Z"
+    },
+    "elapsed_s": 1.294,
+    "query_used": "Rob Sheridan birth date 1980",
+    "query_source": "json",
+    "query_arrival_seq": 4660
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rob Sheridan birth date 1980",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+       "score_q": 9410
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+       "score_q": 8954
+      },
+      {
+       "passage_key": "fever17:List_of_Prime_Ministers_of_Thailand_by_date_of_birth:0",
+       "score_q": 8452
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+       "score_q": 8444
+      },
+      {
+       "passage_key": "fever17:List_of_Prime_Ministers_of_New_Zealand_by_date_of_birth:0",
+       "score_q": 8347
+      }
+     ],
+     "retrieval_sha256": "1a838bfcd440f8a61b03e5a9c42aedd61329cf82afd8e9c96000c6a3838aedc8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1a838bfcd440f8a61b03e5a9c42aedd61329cf82afd8e9c96000c6a3838aedc8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+      "content_sha256": "0d2b94c2a5782d8297d0c71c3bf0f07631cb21f4ef2e624e6d60ed55221a5f0d",
+      "chars": 195
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+      "content_sha256": "11c82e3e80a86db51f08f7eb036289535bb559f00e76c3576a7093b973b0bad7",
+      "chars": 1011
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:List_of_Prime_Ministers_of_Thailand_by_date_of_birth:0",
+      "content_sha256": "6dce016a6f52be6f6ee06be67cbf292d3489228ad94aaf93cbefd86290b85222",
+      "chars": 117
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+      "content_sha256": "7511f1125e107e2043e30144e673806d72a3ac15c074bd9013586961f9624ed0",
+      "chars": 965
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:List_of_Prime_Ministers_of_New_Zealand_by_date_of_birth:0",
+      "content_sha256": "5ad4f1f92419c92e89122e72da0b409979f708a138766e2036e280c9dcfac3b9",
+      "chars": 196
+     }
+    ],
+    "elapsed_s": 0.0247
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rob Sheridan was born in 1980.\n\nEvidence passages from your search for \"Rob Sheridan birth date 1980\":\n<<<PASSAGES\n[P1] Margaret Sheridan (writer)\nMargaret Sheridan , Comtesse de Renéville ( 1912-1980 ) was a British writer who wrote under the name Mary Motley . Sheridan was daughter of sculptress Clare Sheridan .\n\n[P2] Sheridan (surname)\nMichael Sheridan ( Irish politician ) ( died 1970 ) , Irish Fianna Fáil politician Michael John Sheridan ( born 1945 ) , Bishop of Colorado Springs Michael J. Sheridan ( born 1958 ) , Democratic member of the Wisconsin State Assembly Mike Sheridan ( born 1991 ) , Danish producer of electronic music Nicollette Sheridan ( born 1963 ) , British actress Pat Sheridan ( born 1957 ) , former professional baseball player Philip Sheridan ( 1831 -- 1888 ) , United States Army General and namesake of the M551 Sheridan Richard Brinsley Sheridan ( 1751 -- 1816 ) , pre-eminent Irish playwright ( The Rivals ) , poet and politician Richard Brinsley Sheridan ( -- 2 May 1888 ) , British politician Rob Sheridan ( born 1979 ) , American graphic designer , director and photographer Rondell Sheridan ( born 1958 ) , American actor and comedian Steven Foley-Sheridan ( born 1986 ) , Irish footballer Susan Sheridan ( 1947 -- 2015 ) , English voice actress Sybil Sheridan , writer and British Reform rabbi\n\n[P3] List of Prime Ministers of Thailand by date of birth\nList of Prime Ministers of Thailand by date and place of birth .\n\n[P4] Sheridan (surname)\nJohn Sheridan ( footballer ) ( born 1964 ) , English-born footballer John Sheridan ( Royal Navy officer ) ( c. 1770 -- 1862 ) , naval officer John D. Sheridan ( 1903 -- 1980 ) , Irish writer and humourist John E. Sheridan ( 1902 -- 1987 ) , U.S. Representative from Pennsylvania Keith Sheridan ( born 1971 ) , Scottish cricketer Kelly Sheridan ( born 1977 ) , Canadian voice actor Lawrence A. Sheridan ( 1919 -- 2001 ) , Louisiana politician Leisa Sheridan ( born 1964 ) , American model and actress Lisa Sheridan ( born 1974 ) , American actress Liz Sheridan ( born 1929 ) , American actress Margaret Sheridan ( 1926-1982 ) , American actress Mark Sheridan ( 1864 -- 1918 ) , English music hall comedian Martin Sheridan ( 1881 -- 1918 ) , athlete Matt Sheridan ( born 1977 ) , professional Canadian football offensive lineman Michael Sheridan ( disambiguation ) , several people , including : Michael Sheridan ( musician ) , Australian guitarist\n\n[P5] List of Prime Ministers of New Zealand by date of birth\nThe following is a list of Prime Ministers of New Zealand , organised by date of birth , plus additional lists of birth related statistics .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "327a466947042498a74a60d13070396e5a1a5407577b5b649d90222a19e5eb8f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792728926.259176,
+      "end_wall": 1792728947.4198568,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4663,
+    "start_wall": 1792728926.259176,
+    "start_mono": 398483.272772666,
+    "end_wall": 1792728947.4198568,
+    "end_mono": 398504.433296583,
+    "raw_response": "{\"reasoning\": \"The evidence passages all list Rob Sheridan's birth date as 1979, not 1980. \", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21156021084,
+     "load_duration": 16837454584,
+     "prompt_eval_count": 942,
+     "prompt_eval_duration": 1063990167,
+     "eval_count": 49,
+     "eval_duration": 2367988043,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:47.417287Z"
+    },
+    "elapsed_s": 21.161,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4663,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 76,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Rob Sheridan was born in 1980.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c8bd7e96de6fcb0fc130fd2905f939339ddd01784ef701fc55514ac02ad5db05",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792728924.9398232,
+      "end_wall": 1792728934.348629,
+      "error": null
+     }
+    ],
+    "start_wall": 1792728924.9398232,
+    "start_mono": 398481.953430833,
+    "end_wall": 1792728934.348629,
+    "end_mono": 398491.362161125,
+    "raw_response": "{\"query\": \"Rob Sheridan birth year 1980\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9405911458,
+     "load_duration": 2688738541,
+     "prompt_eval_count": 161,
+     "prompt_eval_duration": 997831833,
+     "eval_count": 15,
+     "eval_duration": 5546397790,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:34.347079Z"
+    },
+    "elapsed_s": 9.409,
+    "query_used": "Rob Sheridan birth year 1980",
+    "query_source": "json",
+    "query_arrival_seq": 4663
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Rob Sheridan birth year 1980",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rob_Sheridan:0",
+       "score_q": 9559
+      },
+      {
+       "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+       "score_q": 9410
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+       "score_q": 8954
+      },
+      {
+       "passage_key": "fever17:Ricky_Lancelotti:1",
+       "score_q": 8589
+      },
+      {
+       "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+       "score_q": 8444
+      }
+     ],
+     "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rob_Sheridan:0",
+      "content_sha256": "7e628aab0da673f2c1380327515b7000b5fa502d2566ef64fbadcdbcdf961edd",
+      "chars": 873
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Margaret_Sheridan_-LRB-writer-RRB-:0",
+      "content_sha256": "0d2b94c2a5782d8297d0c71c3bf0f07631cb21f4ef2e624e6d60ed55221a5f0d",
+      "chars": 195
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:3",
+      "content_sha256": "11c82e3e80a86db51f08f7eb036289535bb559f00e76c3576a7093b973b0bad7",
+      "chars": 1011
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ricky_Lancelotti:1",
+      "content_sha256": "4d7557f4afe09119f7264e9a6d2d8afd339233d2cc111148262b29a997b4df54",
+      "chars": 104
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Sheridan_-LRB-surname-RRB-:2",
+      "content_sha256": "7511f1125e107e2043e30144e673806d72a3ac15c074bd9013586961f9624ed0",
+      "chars": 965
+     }
+    ],
+    "elapsed_s": 0.0184
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Rob Sheridan was born in 1980.\n\nEvidence passages from your search for \"Rob Sheridan birth year 1980\":\n<<<PASSAGES\n[P1] Rob Sheridan\nRob Sheridan ( born October 11 , 1979 ) is an American graphic designer , director , and photographer best known for his extensive work with the band Nine Inch Nails . Sheridan attended art school at New York 's Pratt Institute for one year before being hired at age 19 by Nine Inch Nails ' Trent Reznor in 1999 , on the merits of a Nine Inch Nails fansite he created during high school . He was initially hired to maintain the newly launched official Nine Inch Nails website . Since then he has taken over as art director for the band , contributing photography , web design , album covers , music videos , live tour visuals , and two live concert films . He was also credited for assisting Trent Reznor with the mythology of the alternate reality game built around Nine Inch Nails ' 2007 album Year Zero . Sheridan is widely known for his analog glitch art .\n\n[P2] Margaret Sheridan (writer)\nMargaret Sheridan , Comtesse de Renéville ( 1912-1980 ) was a British writer who wrote under the name Mary Motley . Sheridan was daughter of sculptress Clare Sheridan .\n\n[P3] Sheridan (surname)\nMichael Sheridan ( Irish politician ) ( died 1970 ) , Irish Fianna Fáil politician Michael John Sheridan ( born 1945 ) , Bishop of Colorado Springs Michael J. Sheridan ( born 1958 ) , Democratic member of the Wisconsin State Assembly Mike Sheridan ( born 1991 ) , Danish producer of electronic music Nicollette Sheridan ( born 1963 ) , British actress Pat Sheridan ( born 1957 ) , former professional baseball player Philip Sheridan ( 1831 -- 1888 ) , United States Army General and namesake of the M551 Sheridan Richard Brinsley Sheridan ( 1751 -- 1816 ) , pre-eminent Irish playwright ( The Rivals ) , poet and politician Richard Brinsley Sheridan ( -- 2 May 1888 ) , British politician Rob Sheridan ( born 1979 ) , American graphic designer , director and photographer Rondell Sheridan ( born 1958 ) , American actor and comedian Steven Foley-Sheridan ( born 1986 ) , Irish footballer Susan Sheridan ( 1947 -- 2015 ) , English voice actress Sybil Sheridan , writer and British Reform rabbi\n\n[P4] Ricky Lancelotti\nCategory : Year of birth missing Category :1980 deaths Category : American male singers\n\n[P5] Sheridan (surname)\nJohn Sheridan ( footballer ) ( born 1964 ) , English-born footballer John Sheridan ( Royal Navy officer ) ( c. 1770 -- 1862 ) , naval officer John D. Sheridan ( 1903 -- 1980 ) , Irish writer and humourist John E. Sheridan ( 1902 -- 1987 ) , U.S. Representative from Pennsylvania Keith Sheridan ( born 1971 ) , Scottish cricketer Kelly Sheridan ( born 1977 ) , Canadian voice actor Lawrence A. Sheridan ( 1919 -- 2001 ) , Louisiana politician Leisa Sheridan ( born 1964 ) , American model and actress Lisa Sheridan ( born 1974 ) , American actress Liz Sheridan ( born 1929 ) , American actress Margaret Sheridan ( 1926-1982 ) , American actress Mark Sheridan ( 1864 -- 1918 ) , English music hall comedian Martin Sheridan ( 1881 -- 1918 ) , athlete Matt Sheridan ( born 1977 ) , professional Canadian football offensive lineman Michael Sheridan ( disambiguation ) , several people , including : Michael Sheridan ( musician ) , Australian guitarist\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "caafc318f950656df3ab99768586a6f931e780f3ca09718b950749bcd12f2644",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792728934.367361,
+      "end_wall": 1792728949.0976691,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4664,
+    "start_wall": 1792728934.367361,
+    "start_mono": 398491.380894791,
+    "end_wall": 1792728949.0976691,
+    "end_mono": 398506.11109725,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passage P1 provides Rob Sheridan's birth year as 1979, which directly contradicts the claim that Rob Sheridan was born in 1980. Other passages do not contain relevant information about Rob Sheridan's birth year.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14726116959,
+     "load_duration": 10243070875,
+     "prompt_eval_count": 1097,
+     "prompt_eval_duration": 1941651709,
+     "eval_count": 81,
+     "eval_duration": 1661714504,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T04:15:49.094637Z"
+    },
+    "elapsed_s": 14.73,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4664,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 224,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "mistral": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560",
+  "phi3:mini": "690ad31d8816a86258e9c34ea2ffefe81b0b7cfc3d24f286b1d578751f942dde",
+  "llama3.2:3b": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560",
+  "gemma2:2b": "1a838bfcd440f8a61b03e5a9c42aedd61329cf82afd8e9c96000c6a3838aedc8",
+  "qwen2.5:3b": "29bbd5c9e1338c8932890344d7101710f2936c697ade19e6224073fcf5580560"
+ },
+ "item_start_wall": 1792728924.93951,
+ "item_wall_s": 24.158,
+ "ollama_ps_samples": [
+  [
+   1792728924.94,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728926.945,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728928.952,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792728930.953,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792728932.96,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792728934.962,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728936.966,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728938.97,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728940.977,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728942.984,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728944.989,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728946.995,
+   [
+    "gemma2:2b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792728949.002,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

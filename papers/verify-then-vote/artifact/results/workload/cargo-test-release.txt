@@ -1,0 +1,339 @@
+warning: unused variable: `subject`
+   --> src/agents.rs:370:5
+    |
+370 |     subject: &str,
+    |     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_subject`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `predicate`
+   --> src/agents.rs:371:5
+    |
+371 |     predicate: &str,
+    |     ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_predicate`
+
+warning: unused variable: `object`
+   --> src/agents.rs:372:5
+    |
+372 |     object: &str,
+    |     ^^^^^^ help: if this is intentional, prefix it with an underscore: `_object`
+
+warning: unused variable: `raw_text`
+   --> src/agents.rs:373:5
+    |
+373 |     raw_text: &str,
+    |     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_raw_text`
+
+warning: unused variable: `name`
+   --> src/agents.rs:382:5
+    |
+382 |     name: &str,
+    |     ^^^^ help: if this is intentional, prefix it with an underscore: `_name`
+
+warning: variable does not need to be mutable
+    --> src/compiler.rs:2505:13
+     |
+2505 |         let mut gen_vec = |rng: &mut ChaCha8Rng| -> [i64; 5] {
+     |             ----^^^^^^^
+     |             |
+     |             help: remove this `mut`
+     |
+     = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `variance_str`
+    --> src/main.rs:2790:17
+     |
+2790 |             let variance_str = if certs.len() == 1 {
+     |                 ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_variance_str`
+
+warning: variable `total_ok` is assigned to, but never used
+    --> src/main.rs:2825:9
+     |
+2825 |     let mut total_ok = 0usize;
+     |         ^^^^^^^^^^^^
+     |
+     = note: consider using `_total_ok` instead
+
+warning: value assigned to `total_ok` is never read
+    --> src/main.rs:2860:13
+     |
+2860 |             total_ok += 1;
+     |             ^^^^^^^^^^^^^
+     |
+     = help: maybe it is overwritten before being read?
+     = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: trait `EvidenceOracle` is never used
+  --> src/ir.rs:85:11
+   |
+85 | pub trait EvidenceOracle {
+   |           ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `DefaultOracle` is never constructed
+  --> src/ir.rs:90:12
+   |
+90 | pub struct DefaultOracle;
+   |            ^^^^^^^^^^^^^
+
+warning: struct `AgentHistory` is never constructed
+   --> src/ir.rs:103:12
+    |
+103 | pub struct AgentHistory {
+    |            ^^^^^^^^^^^^
+
+warning: associated items `new`, `update`, and `calibration_factor` are never used
+   --> src/ir.rs:114:12
+    |
+113 | impl AgentHistory {
+    | ----------------- associated items in this implementation
+114 |     pub fn new(agent_id: &str) -> Self {
+    |            ^^^
+...
+124 |     pub fn update(&mut self, confidence: f64, is_correct: bool) {
+    |            ^^^^^^
+...
+132 |     pub fn calibration_factor(&self) -> f64 {
+    |            ^^^^^^^^^^^^^^^^^^
+
+warning: associated function `with_verification` is never used
+   --> src/ir.rs:555:12
+    |
+541 | impl EvidenceItem {
+    | ----------------- associated function in this implementation
+...
+555 |     pub fn with_verification(
+    |            ^^^^^^^^^^^^^^^^^
+
+warning: field `trust` is never read
+  --> src/agents.rs:37:9
+   |
+32 | pub struct AgentPersonality {
+   |            ---------------- field in this struct
+...
+37 |     pub trust: f64,
+   |         ^^^^^
+   |
+   = note: `AgentPersonality` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: function `make_sybil` is never used
+   --> src/agents.rs:368:8
+    |
+368 | pub fn make_sybil(
+    |        ^^^^^^^^^^
+
+warning: methods `score_evidence` and `behavioral_ees` are never used
+    --> src/compiler.rs:965:8
+     |
+ 436 | impl BranCompiler {
+     | ----------------- methods in this implementation
+...
+ 965 |     fn score_evidence(&self, c: &Contribution) -> f64 {
+     |        ^^^^^^^^^^^^^^
+...
+1174 |     pub fn behavioral_ees(
+     |            ^^^^^^^^^^^^^^
+
+warning: function `analytical_ees` is never used
+    --> src/compiler.rs:1916:8
+     |
+1916 | pub fn analytical_ees(n: usize, base_roster: &[AgentPersonality]) -> f64 {
+     |        ^^^^^^^^^^^^^^
+
+warning: variant `Speculative` is never constructed
+  --> src/lowering.rs:60:5
+   |
+54 | pub enum ConfidenceBand {
+   |          -------------- variant in this enum
+...
+60 |     Speculative, // 0.00-0.20: pure speculation
+   |     ^^^^^^^^^^^
+   |
+   = note: `ConfidenceBand` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: function `normalize_predicate` is never used
+   --> src/lowering.rs:205:4
+    |
+205 | fn normalize_predicate(words: &[String]) -> String {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `extract_noun_phrase` is never used
+   --> src/lowering.rs:214:4
+    |
+214 | fn extract_noun_phrase(tokens: &[String], start: usize, end: usize) -> String {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `find_token` is never used
+   --> src/lowering.rs:242:4
+    |
+242 | fn find_token(tokens: &[String], word: &str) -> Option<usize> {
+    |    ^^^^^^^^^^
+
+warning: function `find_any_token` is never used
+   --> src/lowering.rs:247:4
+    |
+247 | fn find_any_token(tokens: &[String], words: &[&str]) -> Option<usize> {
+    |    ^^^^^^^^^^^^^^
+
+warning: field `kind` is never read
+   --> src/lowering.rs:943:9
+    |
+940 | pub struct LoweringResult {
+    |            -------------- field in this struct
+...
+943 |     pub kind: ContributionKind,
+    |         ^^^^
+    |
+    = note: `LoweringResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `total` is never used
+   --> src/properties.rs:566:12
+    |
+559 | impl PropertyReport {
+    | ------------------- method in this implementation
+...
+566 |     pub fn total(&self) -> usize {
+    |            ^^^^^
+
+warning: `bran` (bin "bran" test) generated 25 warnings (run `cargo fix --bin "bran" -p bran --tests` to apply 7 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.29s
+     Running unittests src/main.rs (target/release/deps/bran-0b6946de319d0590)
+
+running 133 tests
+test cli_feature_tests::reduce_parse_errors_name_the_item ... ok
+test cli_feature_tests::version_reports_compatibility_ids ... ok
+test cli_feature_tests::weights_with_overlay_is_an_error ... ok
+test cli_feature_tests::legacy_dumps_carry_no_envelope ... ok
+test compiler::content_id_tests::content_id_changes_when_any_covered_field_changes ... ok
+test compiler::content_id_tests::content_id_ignores_excluded_fields ... ok
+test compiler::content_id_tests::legacy_seal_still_accepts_foreign_ids ... ok
+test compiler::content_id_tests::content_id_equals_reference_payload_hash ... ok
+test cli_feature_tests::format_errors_have_own_code_and_messages ... ok
+test cli_feature_tests::reduce_ids_optional_with_id_scheme ... ok
+test compiler::content_id_tests::p3_rejects_synthesis_with_audit_reason ... ok
+test compiler::evidence_reduce_tests::accepted_checkers_order_and_duplicates_do_not_matter ... ok
+test compiler::evidence_reduce_tests::context_associated_placeholder_loses_xref_bonus ... ok
+test compiler::content_id_tests::tampered_claim_with_kept_id_is_rejected_at_seal ... ok
+test compiler::evidence_reduce_tests::default_policy_hash_is_legacy_literal ... ok
+test compiler::policy_extension_tests::functional_predicates_change_slots_and_critique_targets ... ok
+test compiler::evidence_reduce_tests::xref_counts_distinct_supporting_agents_by_canonical_url ... ok
+test compiler::policy_extension_tests::functional_predicates_default_hashes_unchanged ... ok
+test compiler::policy_extension_tests::presets_and_constants_id ... ok
+test cli_feature_tests::emit_artifact_reproduces_the_compilers_seal ... ok
+test compiler::content_id_tests::admitted_ids_are_only_assertions ... ok
+test compiler::evidence_reduce_tests::captured_evidence_changes_scores_and_is_sealed ... ok
+test compiler::policy_extension_tests::rejection_reasons_cover_every_rejected_id ... ok
+test compiler::policy_hash_tests::canonical_policy_json_is_sorted_and_compact ... ok
+test compiler::policy_hash_tests::any_single_field_change_changes_hash ... ok
+test compiler::policy_hash_tests::default_policy_hash_unchanged_by_tiebreak_fields ... ok
+test compiler::policy_hash_tests::non_finite_weight_rejected - should panic ... ok
+test compiler::schulze_equivalence_tests::excluding_recency_changes_a_recency_decided_winner ... ok
+test compiler::policy_hash_tests::table_key_and_object_order_do_not_matter ... ok
+test compiler::policy_hash_tests::same_policy_same_hash ... ok
+test compiler::content_id_tests::compiled_sets_are_content_addressed ... ok
+test compiler::schulze_equivalence_tests::schulze_small_edge_cases ... ok
+test compiler::schulze_equivalence_tests::schulze_timing ... ignored
+test compiler::policy_hash_tests::policy_change_changes_certificate ... ok
+test compiler::schulze_equivalence_tests::id_order_is_independent_of_seq_permutation ... ok
+test compiler::seal_tests::compile_equals_reduce_of_seal ... ok
+test compiler::schulze_equivalence_tests::score_then_canonical_keeps_score_leader_in_deadband ... ok
+test compiler::seal_tests::reducer_inputs_are_covered_by_hash ... ok
+test compiler::seal_tests::schulze_never_selects_outside_deadband ... ok
+test compiler::evidence_reduce_tests::permutation_invariance_with_evidence ... ok
+test compiler::seal_tests::sealed_set_json_roundtrip_verifies ... ok
+test compiler::slot_tests::arity_classification ... ok
+test compiler::slot_tests::empty_value_policy_keeps_per_object_slots ... ok
+test compiler::slot_tests::exclusive_values_share_group_slot ... ok
+test compiler::slot_tests::functional_predicate_keeps_sp_slot ... ok
+test compiler::slot_tests::non_functional_compatible_values_get_separate_slots ... ok
+test compiler::slot_tests::non_functional_polarity_conflict_shares_slot ... ok
+test compiler::seal_tests::schulze_winner_always_within_deadband_random ... ok
+test content_id_replay_tests::dumped_v4_artifact_replays ... ok
+test cli_feature_tests::envelope_detects_metadata_edits ... ok
+test compiler::schulze_equivalence_tests::schulze_leader_chain_uses_closure_and_matches ... ok
+test compiler::seal_tests::changing_any_seq_changes_hash ... ok
+test content_id_replay_tests::synthesis_in_v4_set_rejected ... ok
+test evidence::tests::corpus_factors_and_grounded_unchecked_factor ... ok
+test evidence::tests::corpus_kind_and_url_parsing ... ok
+test evidence::tests::corpus_record_shape_enforced ... ok
+test evidence::tests::corpus_xref_key_and_bonus ... ok
+test content_id_replay_tests::edited_claim_with_kept_id_rejected ... ok
+test evidence::tests::every_corpus_record_field_changes_ids_and_root ... ok
+test evidence::tests::every_record_field_changes_ids_and_root ... ok
+test evidence::tests::golden_corpus_capture_ids ... ok
+test evidence::tests::formula_table_matches_spec_quantized ... ok
+test evidence::tests::golden_cross_language_ids ... ok
+test evidence::tests::intrinsic_types_keep_quality_one ... ok
+test evidence::tests::non_ok_support_status_is_unchecked ... ok
+test evidence::tests::policy_rejects_out_of_range_and_unknown_fields ... ok
+test content_id_replay_tests::scheme_downgrade_and_format_retag_rejected ... ok
+test evidence::tests::refutes_zeroes_the_item ... ok
+test evidence::tests::telemetry_cannot_enter_a_record ... ok
+test evidence::tests::seal_errors ... ok
+test evidence::tests::grounded_policy_serialization_and_hash ... ok
+test evidence::tests::unaccepted_checker_scores_as_unchecked ... ok
+test evidence::tests::use_support_score_scales_by_score_q ... ok
+test content_id_replay_tests::v4_with_evidence_records_replays ... ok
+test evidence_replay_tests::committed_evidence_fixture_replays ... ok
+test content_id_replay_tests::legacy_ids_reproduce_committed_v2_dumps ... ok
+test evidence_replay_tests::corpus_flipped_label_is_hash_mismatch ... ok
+test evidence_replay_tests::corpus_policy_edits ... ok
+test evidence_replay_tests::corpus_consistent_forgeries_fail_on_outputs ... ok
+test compiler::seal_tests::permuted_input_order_yields_identical_output ... ok
+test evidence_replay_tests::evidence_artifact_replays_offline ... ok
+test compiler::content_id_tests::content_seal_is_permutation_invariant ... ok
+test evidence_replay_tests::flipped_label_is_hash_mismatch ... ok
+test evidence_replay_tests::corpus_artifact_replays_offline ... ok
+test gate::tests::gate_field_serialization_and_hash ... ok
+test gate::tests::nei_factor_zero ... ok
+test cli_feature_tests::v4_dumps_unchanged_except_envelope ... ok
+test gate::tests::only_supports_verifies_and_tied_plurality ... ok
+test evidence_replay_tests::corpus_shape_forgeries_rejected ... ok
+test gate::tests::unverified_minority_never_overturns ... ok
+test evidence_replay_tests::reduce_input_accepts_evidence_records ... ok
+test gate::tests::verified_majority_vs_verified_minority ... ok
+test lowering::tests::test_clause_segmentation ... ok
+test gate::tests::verified_minority_overturns ... ok
+test evidence_replay_tests::unaccepting_a_checker ... ok
+test evidence_replay_tests::format_tag_must_match_contents ... ok
+test evidence_replay_tests::consistent_forgeries_fail_on_outputs ... ok
+test lowering::tests::test_hedge_detection ... ok
+test lowering::tests::test_jaccard_similarity ... ok
+test lowering::tests::test_active_voice_extraction ... ok
+test lowering::tests::test_comparison_extraction ... ok
+test lowering::tests::test_copular_extraction ... ok
+test lowering::tests::test_evidence_extraction ... ok
+test lowering::tests::test_negation_extraction ... ok
+test evidence_replay_tests::gated_artifact_replays_and_rejects_tamper ... ok
+test reduce_policy_tests::overlay_full_policy_is_identity_and_partial_overlays ... ok
+test lowering::tests::test_full_pipeline ... ok
+test topics::tests::all_keys_resolve ... ok
+test lowering::tests::test_passive_extraction ... ok
+test topics::tests::australia_facts_count ... ok
+test topics::tests::evidence_types_are_valid ... ok
+test topics::tests::nutrition_facts_count ... ok
+test topics::tests::tcp_facts_count ... ok
+test topics::tests::unknown_key_returns_none ... ok
+test value_mode::tests::cli_parse ... ok
+test value_mode::tests::default_is_member_and_not_serialized ... ok
+test value_mode::tests::polarity_and_normalization ... ok
+test value_mode::tests::pooled_evidence_capped ... ok
+test value_mode::tests::many_identical_members ... ok
+test value_mode::tests::reduce_overlay_accepts_candidate_mode ... ok
+test value_mode::tests::single_value_never_deadband ... ok
+test value_mode::tests::value_modes_serialize_and_change_hash ... ok
+test value_mode::tests::ties ... ok
+test replay_tests::policy_and_hash_both_forged_caught_by_outputs ... ok
+test replay_tests::dumped_artifact_replays ... ok
+test replay_tests::tampered_stored_policy_hash_rejected ... ok
+test replay_tests::tampered_artifact_and_outputs_have_distinct_errors ... ok
+test replay_tests::tampered_policy_rejected_as_policy_mismatch ... ok
+test value_mode::tests::winner_is_rep_and_inside_value_deadband ... ok
+test gate::tests::permutation_invariance ... ok
+test compiler::evidence_reduce_tests::absent_evidence_never_changes_outcomes ... ok
+test compiler::schulze_equivalence_tests::schulze_dims_mask_equals_reference_on_zeroed_dims ... ok
+test compiler::schulze_equivalence_tests::schulze_matches_floyd_warshall_reference ... ok
+
+test result: ok. 132 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 38.08s
+

@@ -1,0 +1,1283 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev100",
+ "order": 153,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev100",
+  "order": 153,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "All hematopoietic stem cells segregate their chromosomes randomly."
+ },
+ "item_view_sha256": "d374ffc2edd95a712cb44a7bc7457d4c96a0d4cd14257dc286ae45923573fd35",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9b5c550a26c2501eedc912357cd0bf46205d2b9a151517c593163835a420c0c4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844498.9114418,
+      "end_wall": 1792844499.910201,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844498.9114418,
+    "start_mono": 514055.618212458,
+    "end_wall": 1792844499.910201,
+    "end_mono": 514056.61695275,
+    "raw_response": "{\"query\": \"hematopoietic stem cells chromosome segregation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 996292041,
+     "load_duration": 118436625,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 312552583,
+     "eval_count": 13,
+     "eval_duration": 420608290,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:39.909506Z"
+    },
+    "elapsed_s": 0.999,
+    "query_used": "hematopoietic stem cells chromosome segregation",
+    "query_source": "json",
+    "query_arrival_seq": 765
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "hematopoietic stem cells chromosome segregation",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:23727313:0",
+       "score_q": 753
+      },
+      {
+       "passage_key": "scifact:4381486:1",
+       "score_q": 751
+      },
+      {
+       "passage_key": "scifact:16686383:1",
+       "score_q": 749
+      },
+      {
+       "passage_key": "scifact:14550841:0",
+       "score_q": 748
+      },
+      {
+       "passage_key": "scifact:23727313:1",
+       "score_q": 746
+      }
+     ],
+     "retrieval_sha256": "a392aa72a48dd610ef18fcecb264d8922d1a4b86d4aa182d0f9b52c5805e3b31"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a392aa72a48dd610ef18fcecb264d8922d1a4b86d4aa182d0f9b52c5805e3b31",
+    "query_embedding_sha256": "241aa6d20c0401d8dc7f1437da9a31cc44814cf50a8d67766eddecacf3da142d",
+    "query_embedding_f32_b64": "KhXEPF1K/DyiZyu+ZAK+vBV0XD2/3tW8NwbYPJzh+jyQxGW7Iejoua6yhzwv+Uw9sEqDPe1UJDsEpTC9RuODPK9rjb0e93M8E0c7vdBkiT0Gc0C9ImiWPMVECr34xRk89AMQPrvltT1cfB28dJEzu5m+6bsp4IY8Us6CPW3pQDw7pco8JL0GvelOyLxKd9C8IVwGPc1P4LzYxpC82QJPPSfe6zz1spk80TD1vIdN4r1ekCa8MmAAvNkcMT03QJS8P2QgPQLokLzykB09vAqxPM4lE728YNK7LveOPaQheLxEzgO6RnCoOlUWHT1vhrC5FewwPfI30j0kvom9F1/wPK4gezzUqhu9Je5Bu7loNz0U97y8uGuYvM3KLz1rjBq8FP+hPZxgJLs6Gz68KawuvQeuSbxhjok8xhaUPLv75jxxx568BkSZPN4mZDxqwHM9YYcZvJKPVT3BQ1W9gwM/vf7xxbx8Lyc9EHs8PZyG+TyUgLI8L1S8PMaaYr0jpO48qf7VPADUDT1mRWm9cnn3vGgg+rxKKCa8doslPYVJnbwDXU28Q2NsPMbSGj16Gyk9GgIxPb/lRDzNJ2e8BqbfPEW3CL1hvb47bVodPT5gw7wQHuI8jjH3vN2lXzxUHVi97ZnPPMem2LwrsWK7PCChPceb07sxJF89xCydvFPGTjwwDbY823oovXzfQr0odhy94gesvFNZUT3Lo1C8fWgDPeYR6ry+Qwa9FMcePYZuFT2broE90y0cPE0unjz9z728+kqjPPr5Wb24FDo9mfo/vah8/7zTxT099KD+u0kKmjxxRzO9gFhwu3AlPDpuwsG7F/OQPJXXDj0yHP88A38IPMLFm7s1lG68DxR3vQGv9Txxp9+8v9Rzvbiw+DxqPmU9FkxrPHocFT1wd/+8wMknvO5vmzyPjpw8y1jlPO+ohDwYkGe7Y+U5OuCVDTzEXpA8NtJSvJS2zrwsRx083z4oPIeJ1LwfZ00761glvd8FN71SLDe9rlccvBjusrxxRSA9+2uhvaZtYb3CE+K8bjdsvPTtGLz/fQe8njjvPMJ3Br0kWUA6vEKzvLTZQrzbikQ7ABLPukpqETlcrN48lltPvMZ6S7wtcQ49fwaKPbwiiDwyUim9bWv5O0ETsbugzIy9fCUMvEIfh71a0oi85H+YO/wKZryIxd+7DmKuu5HTbLpCt6k8gstTPGDMnLteEzm9bBgJvey5Y71pD7C8DxAvvfTSfzy8yoq9Q/EFvXlTwTwRg8O8nrAtPYI7Db2x5Qk9E7ZYvLlWbz1PZ7G8zjjXvPC0hTxmigA8CXayPWLaIrx0Hgk8172hOvo6eryKM2K9g9wpPDrJ7zr91508vVJMvdeQBr0gXag8xluHPB4xEjyrYn67Ce+ZutH+DD1GVQq9xFPGvCHp2bw1+YQ80Dk3vbfgTjuwTi86inEPPFtNnT3aAKy7qdLDPOFvADwUt+28Ms6LOjzbA71vTwC9mzk8PWafojy3d+O5PAOAvdRtKr37dfG8tQSOPVgrDz2/KNu84f/Zuw9+VT1WcjI9gnIAvYSKqTyqK7a8wgGHPS3wBD2bIoA9bIn3vASbuDyXQSy8LmcXPUj/8jwp32k9NwPuPO3ijboOsVC9vFrfPBDzcrxFOIQ92NozPHiFRjw4lty8KrEyvPHD/jzFsoQ8HBUfvS0fBTsoBnE8bl09PYtp97yR3ZY7Gb6JvECJB73u7/O8WVqYPJuBOz3kld87jKtkPVYNa73C4W68ozE5u44TlD0rbOU8oDTxvDd9KL0Yc6w5pFoavdNvjzsVjya9NMMkPZRWoDzPhlG87wk/PVt2jbwl0ea7bDtOvKzGRTwz1Ey8lEowPfsMwz0uCeS8VSctvPzXTDyfh8q7Q9lTPSI2Cbuwcae7jM+CvLpLtTyRaOu7jX4uPdVM7boB27G8l4qfOvnJ0LnPDB89oOeEPavHOT2WmFs94Ryfu17q9LxcJik6eqiTvH7c8DyYTIw5PSfZPLUaw72MgR87le3oOyZYsTy33Gg9BVK8vS5vCrzbiva8pz93vOpsv7aJ3GU7mhsOvXlkmbxtej88TkhCvXoV3jsnEhq9OCNbvMLyDjz+Mum8dtA3PHsIDz2LqVs9zOkOvPEuUb3X9am9MLjIvJ1MIb2XS5K86v88PX4UjL3LcYi8Jel9PfzzYT3SBUA9tE6+PQBBFT2Y+1u93cIBPTNASDyfrSQ7rfNaPXl4zryGWA89uRQWPcFQNj0PH8u7bqGyOwxeCL2vfKY8FZG5vJfoejw1gXa8dItpvR4TvbxBem09Pcb0PEv9g7z7e1c96ijIvE7klzwTiBm7VxW+vB1LwT19uAM8Q4GmvXYmVjjTJMm7d/EAPWjYlD1sR4g8cexsvbG3SL01stA88EiGPYK+g7kc9Qq83SZOPei6XD0sd2e9uajNvI35c7vaciY9M0ctPHRjtLwmQbY8V+7HvMTNmDsjoAg93GbVu96XkDtUA3K8AXobPaUguT0i3229gYHrO/semTwRuHw8Jw5qvfxXVDxEvsi8BFJ4PPeOSzo4nyU8EMVXPCvtAL2JCfe7h1yfvc7fqrxtxGU9+syzvD+i0rwGE109pyQcPeXeXLyqrJa7tAhUPYkfb7znjuE8fymPvaXnxzwCxne8ycX/PN+LCb0dnMs9ww4lPL8EBD2MqnM8uqsdPQr1/Ty0/kg9Fc6dvFG6Lrx4y5a8DzW8vd7JrTwUmso9FRhxPdkHx7zZF5679TBMvX1pJj35dc+6JAQPvbBhXb0eFCC94QcHvRVhvjxcGxS8pWLNvNZUGLvVN7y7xkG/vEAOXLsaVs86aW2gOjuz87pP6AW9R+NTusQFhb1whWe80MF7PBh5uzzKR367q8MrPYlk5zz3Z1K8u35Cux891LzDbK87EEZkvS3mZL1cpZC8aL9uvVogNL0zy2a9/48nu68ge73E/ZM8ieQOvbzH4DtUW0G9ueehvB5cWjwHBsc7/geXutXJVD03TCM87BtHPaFRur3OAwI9ucL8O9WITjyV2Qc9hDjMPJwkVb1rnSO9JESpO6rbDr1vHAi7OtWwvIaoDzwjmkG9YzWMvDTf+zvoi6C8o1Teu0a+ET3iIxs82orZOxGj4TvKmPm80JRDPaqup7vbpee82T3IPCuVlbySBCM8/zUUPMFV9zycRIW8X1DIvFlNHLsqtQW91tBOPcbg1LyRmVU9/HF6vc6NNDxC1AA9InUfvXVn2T1yAfQ7DzpgvPQ4gz2dkAC9zCSfvfQvSb0kJNo8/yIRvC+H2Dvf7JW81DpWvS4ZWbxWlfu7mMYrva0CS70MUby8EZxoPXn47TxZ8dK7fiuFvQvQEDzxPuc8kdZqvEmZCTyDRCm9czVcvN0jIzxhtQE9AO+qvQceBLqaAi29xdaCPT96RT31UKk7U70avZnfvzteSBU9CGIkPR8LG7t4jvE8pdbJPO5E+bwaZQE9yNI6PdViFDyGbY68bzZrvEmqeDpejgw9CBKavetud70eNyq87noZvbL7QD2WNaO8+KOGPA9SuTv8oeS6/WJkO+BkqbyKyM29LeHsOisn4jzOshK80T8dvNd+WzpUj1S8rcyWPOK1zzpACE48Mb8ZvJI/yrxY+Xu8irGou8v13bvvzAC9HNAePU11T71NqTg77r5zvW9h2zyN7lG81XJMvafRh70lDaG8kNGzPC3MGj17FHQ8sFMlvPSmsDyxnr28JS5CPfKInrwjKGY7GBiFPGoXMDxcsPC8Dme5vEDnkrsYilG82dE8PWoINLztHim9vrNHu04MvLv1Mcu6XNGGPXYSmbumGt28ei2KvT5pWTn5/2U8xlVDvHDd3LtujUq9Y28MvX7iw7sNUWK95iloPQ5xarxiJx89jlQLu3FzoLy0ayk83SrOPHko9TsQJC68ZrnhO74JSrw5J1S8lptLuluS1Lyn/mq93qBFPdq37rv8xzg795yCPGDENz267ya9GQ21PCj8TT2QmOI8/BEMvGW4n7xYKnu9uSFrPGBQAj0OQw48UM8+PUDeNTzLqKU9PqwDvBGy3zwf4Aq94AufvNuBhj369/m8qXk5vTmtL72VQJO8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:23727313:0",
+      "content_sha256": "cc3a8b41c8f95c92cb0d0c3aa5310a3e740ff1a5bf8aa03b667f75e8c8622daf",
+      "chars": 1034
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4381486:1",
+      "content_sha256": "885569784d3452b2da303805ed10a3608b28feacad1b91e2092c5bc3bbeaa5e0",
+      "chars": 891
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:16686383:1",
+      "content_sha256": "9137c92d5435979a0e0a97ceb426865da69e388106d5fd22d71917498f7f3e39",
+      "chars": 855
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14550841:0",
+      "content_sha256": "7bf53192a4a1ad0ed0f9b70d5f97658e29ed648789bba8d3e7c523238214b5fd",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23727313:1",
+      "content_sha256": "8cbb72c5442184ff1c728b1a0a8dd9f8f6c37f1223e3db7d9146d95f9652ee3c",
+      "chars": 776
+     }
+    ],
+    "elapsed_s": 8.0585
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nEvidence passages from your search for \"hematopoietic stem cells chromosome segregation\":\n<<<PASSAGES\n[P1] CD34+ hematopoietic stem-progenitor cell microRNA expression and function: a circuit diagram of differentiation control.\nMicroRNAs (miRNAs) are a recently identified class of epigenetic elements consisting of small noncoding RNAs that bind to the 3' untranslated region of mRNAs and down-regulate their translation to protein. miRNAs play critical roles in many different cellular processes including metabolism, apoptosis, differentiation, and development. We found 33 miRNAs expressed in CD34+ hematopoietic stem-progenitor cells (HSPCs) from normal human bone marrow and mobilized human peripheral blood stem cell harvests. We then combined these data with human HSPC mRNA expression data and with miRNA-mRNA target predictions, into a previously undescribed miRNA:mRNA interaction database called the Transcriptome Interaction Database. The in silico predictions from the Transcriptome Interaction Database pointed to miRNA control of hematopoietic differentiation through translational control of mRNAs critical to hematopoiesis.\n\n[P2] Haematopoietic stem cells do not asymmetrically segregate chromosomes or retain BrdU\nWe administered BrdU to newborn mice, mice treated with cyclophosphamide and granulocyte colony-stimulating factor, and normal adult mice for 4 to 10 days, followed by 70 days without BrdU. In each case, less than 6% of HSCs retained BrdU and less than 0.5% of all BrdU-retaining haematopoietic cells were HSCs, revealing that BrdU has poor specificity and poor sensitivity as an HSC marker. Sequential administration of 5-chloro-2-deoxyuridine and 5-iodo-2-deoxyuridine indicated that all HSCs segregate their chromosomes randomly. Division of individual HSCs in culture revealed no asymmetric segregation of the label. Thus, HSCs cannot be identified on the basis of BrdU-label retention and do not retain older DNA strands during division, indicating that these are not general properties of stem cells.\n\n[P3] Phosphorylation of centromeric histone H3 variant regulates chromosome segregation in Saccharomyces cerevisiae\nConsistent with these results, we observe that a phosphomimetic cse4-4SD mutant suppresses the temperature-sensitive growth of ipl1-2 and Ipl1 substrate mutants dam1 spc34 and ndc80, which are defective for chromosome biorientation. Furthermore, cell biology approaches using a green fluorescent protein-labeled chromosome show that cse4-4SD suppresses chromosome segregation defects in dam1 spc34 strains. On the basis of these results, we propose that phosphorylation of Cse4 destabilizes defective kinetochores to promote biorientation and ensure faithful chromosome segregation. Taken together, our results provide a detailed analysis, in vivo and in vitro, of Cse4 phosphorylation and its role in promoting faithful chromosome segregation.\n\n[P4] Asymmetric Cell Divisions Sustain Long-Term Hematopoiesis from Single-sorted Human Fetal Liver Cells\nHematopoietic stem cells (HSCs) in adult marrow are believed to be derived from fetal liver precursors. To study cell kinetics involved in long-term hematopoiesis, we studied single-sorted candidate HSCs from fetal liver that were cultured in the presence of a mixture of stimulatory cytokines. After 8–10 d, the number of cells in primary cultures varied from 10,000 cells. Single cells in slow growing colonies were recloned upon reaching a 100–200 cell stage. Strikingly, the number of cells in subclones varied widely again. These results are indicative of asymmetric divisions in primitive hematopoietic cells in which proliferative potential and cell cycle properties are unevenly distributed among daughter cells. The continuous generation of functional heterogeneity among the clonal progeny of HSCs is in support of intrinsic control of stem cell fate and provides a model for the long-term maintenance of hematopoiesis in vitro and in vivo.\n\n[P5] CD34+ hematopoietic stem-progenitor cell microRNA expression and function: a circuit diagram of differentiation control.\nFrom these predictions, we formulated a model for miRNA control of stages of hematopoiesis in which many of the genes specifying hematopoietic differentiation are expressed by HSPCs, but are held in check by miRNAs until differentiation occurs. We validated miRNA control of several of these target mRNAs by demonstrating that their translation in fact is decreased by miRNAs. Finally, we chose miRNA-155 for functional characterization in hematopoiesis, because we predicted that it would control both myelopoiesis and erythropoiesis. As predicted, miRNA-155 transduction greatly reduced both myeloid and erythroid colony formation of normal human HSPCs.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bc4153ab05dd385af96b8271c39edd79dcc0b221870707b77a6de26921d336ae",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844507.969435,
+      "end_wall": 1792844517.8881202,
+      "error": null
+     }
+    ],
+    "arrival_seq": 765,
+    "start_wall": 1792844507.969435,
+    "start_mono": 514064.676042958,
+    "end_wall": 1792844517.8881202,
+    "end_mono": 514074.594548666,
+    "raw_response": "{\"reasoning\": \"The evidence from passages P2 and P4 strongly suggests that hematopoietic stem cells segregate their chromosomes randomly and undergo asymmetric divisions, respectively, supporting the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9915390916,
+     "load_duration": 3032975625,
+     "prompt_eval_count": 1276,
+     "prompt_eval_duration": 3275811791,
+     "eval_count": 70,
+     "eval_duration": 2855855291,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:57.886043Z"
+    },
+    "elapsed_s": 9.919,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 765,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:4381486:1",
+     "scifact:14550841:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 191,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9b5c550a26c2501eedc912357cd0bf46205d2b9a151517c593163835a420c0c4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844498.91136,
+      "end_wall": 1792844500.239265,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844498.91136,
+    "start_mono": 514055.618130166,
+    "end_wall": 1792844500.239265,
+    "end_mono": 514056.946010208,
+    "raw_response": "{\"query\": \"hematopoietic stem cells chromosome segregation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1324904208,
+     "load_duration": 62433875,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 468215500,
+     "eval_count": 15,
+     "eval_duration": 665796167,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:40.23824Z"
+    },
+    "elapsed_s": 1.328,
+    "query_used": "hematopoietic stem cells chromosome segregation",
+    "query_source": "json",
+    "query_arrival_seq": 766
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "hematopoietic stem cells chromosome segregation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4398832:1",
+       "score_q": 7851
+      },
+      {
+       "passage_key": "scifact:7583161:0",
+       "score_q": 7812
+      },
+      {
+       "passage_key": "scifact:30658796:0",
+       "score_q": 7146
+      },
+      {
+       "passage_key": "scifact:16686383:1",
+       "score_q": 7137
+      },
+      {
+       "passage_key": "scifact:4398832:0",
+       "score_q": 7013
+      }
+     ],
+     "retrieval_sha256": "67bff471e33d25d4970587bfb842426f9249c896e357112f8097411db74973f1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "67bff471e33d25d4970587bfb842426f9249c896e357112f8097411db74973f1",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4398832:1",
+      "content_sha256": "986d61377515b435055b7d505331ac587b631cb561117ca02414ab74c3c70ada",
+      "chars": 592
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7583161:0",
+      "content_sha256": "9274cbea31c2290b8bf19c3bde04fe120353356f35ee9044f74632d4732d9ad6",
+      "chars": 998
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:30658796:0",
+      "content_sha256": "b25988f6d5facf8c57f3908f7ccb0d81383006d260fe6b2348362b6a9175bc45",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16686383:1",
+      "content_sha256": "9137c92d5435979a0e0a97ceb426865da69e388106d5fd22d71917498f7f3e39",
+      "chars": 855
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4398832:0",
+      "content_sha256": "5653816eedb5850e85cfa94fded42d1cfc790ec099163644f9de76a42874990f",
+      "chars": 1077
+     }
+    ],
+    "elapsed_s": 0.0017
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nEvidence passages from your search for \"hematopoietic stem cells chromosome segregation\":\n<<<PASSAGES\n[P1] Cyclin A Regulates Kinetochore-Microtubules to Promote Faithful Chromosome Segregation\nBy contrast, k-MTs are prematurely stabilized in cyclin-A-deficient cells. Consequently, cells lacking cyclin A display higher rates of chromosome mis-segregation. Thus, the stability of k-MT attachments increases decisively in a coordinated fashion among all chromosomes as cells transit from prometaphase to metaphase. Cyclin A creates a cellular environment that promotes microtubule detachment from kinetochores in prometaphase to ensure efficient error correction and faithful chromosome segregation.\n\n[P2] Heterotopic of bone marrow. Analysis of precursor cells for osteogenic and hematopoietic tissues.\nIn semisyngeneic heterotopic bone marrow transplants the donor or recipient origin of cells of osteogenic and hematopoietic tissues was identified by chromosome markers (T6) and by reverse transplantation into the initial donor line. In syngeneic and semisyngeneic grafts of bone marrow under the renal capsule bone and bone marrow are formed. In allogeneic grafts only bone is formed; this bone is subsequently resorbed. In 14-month semisyngeneic transplants the bone marrow consists of recipient cells. This is true for both the proliferating pool and the stem cells of hematopoietic tissue. At the same time, osteogenic precursor cells and bone tissue in these transplants are of donor origin. A discussion is presented of the interrelationship between determinated osteogenic precursor cells (preosteoblasts) and hematopoietic stem cells (or their descendants) in which osteogenesis is inducible.\n\n[P3] Anaphase catastrophe is a target for cancer therapy.\nNeoplastic cells are genetically unstable. Strategies that target pathways affecting genome instability can be exploited to disrupt tumor cell growth, potentially with limited consequences to normal cells. Chromosomal instability (CIN) is one type of genome instability characterized by mitotic defects that increase the rate of chromosome mis-segregation. CIN is frequently caused by extra centrosomes that transiently disrupt normal bipolar spindle geometry needed for accurate chromosome segregation. Tumor cells survive with extra centrosomes because of biochemical pathways that cluster centrosomes and promote chromosome segregation on bipolar spindles. Recent work shows that targeted inhibition of these pathways prevents centrosome clustering and forces chromosomes to segregate to multiple daughter cells, an event triggering apoptosis that we refer to as anaphase catastrophe. Anaphase catastrophe specifically kills tumor cells with more than 2 centrosomes.\n\n[P4] Phosphorylation of centromeric histone H3 variant regulates chromosome segregation in Saccharomyces cerevisiae\nConsistent with these results, we observe that a phosphomimetic cse4-4SD mutant suppresses the temperature-sensitive growth of ipl1-2 and Ipl1 substrate mutants dam1 spc34 and ndc80, which are defective for chromosome biorientation. Furthermore, cell biology approaches using a green fluorescent protein-labeled chromosome show that cse4-4SD suppresses chromosome segregation defects in dam1 spc34 strains. On the basis of these results, we propose that phosphorylation of Cse4 destabilizes defective kinetochores to promote biorientation and ensure faithful chromosome segregation. Taken together, our results provide a detailed analysis, in vivo and in vitro, of Cse4 phosphorylation and its role in promoting faithful chromosome segregation.\n\n[P5] Cyclin A Regulates Kinetochore-Microtubules to Promote Faithful Chromosome Segregation\nThe most conspicuous event in the cell cycle is the alignment of chromosomes in metaphase. Chromosome alignment fosters faithful segregation through the formation of bi-oriented attachments of kinetochores to spindle microtubules. Notably, numerous kinetochore-microtubule (k-MT) attachment errors are present in early mitosis (prometaphase), and the persistence of those errors is the leading cause of chromosome mis-segregation in aneuploid human tumour cells that continually mis-segregate whole chromosomes and display chromosomal instability. How robust error correction is achieved in prometaphase to ensure error-free mitosis remains unknown. Here we show that k-MT attachments in prometaphase cells are considerably less stable than in metaphase cells. The switch to more stable k-MT attachments in metaphase requires the proteasome-dependent destruction of cyclin A in prometaphase. Persistent cyclin A expression prevents k-MT stabilization even in cells with aligned chromosomes.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d32b1aedb6c871144827ef26549754822334399d393f2ea8d2dc4c37f00c173f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844500.241965,
+      "end_wall": 1792844520.397658,
+      "error": null
+     }
+    ],
+    "arrival_seq": 766,
+    "start_wall": 1792844500.241965,
+    "start_mono": 514056.948712041,
+    "end_wall": 1792844520.397658,
+    "end_mono": 514077.104041208,
+    "raw_response": "{\"reasoning\": \"The passages P1, P4, and P5 provide evidence that hematopoietic stem cells have mechanisms to ensure faithful chromosome segregation through various processes like cyclin A regulation, centromeric histone H3 phosphorylation, and error correction during prometaphase to metaphase transition. P1 discusses cyclin A's role in promoting error-free segregation, P4 describes how phosphorylation of Cse4 destabilizes defective kinetochores, and P5 explains how cyclin A regulates kinetochore-microtubule stability. These mechanisms collectively indicate that hematopoietic stem cells do not randomly segreg\"\n\n  ,\"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P4\", \"P5\"],\n  \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20151794250,
+     "load_duration": 46526833,
+     "prompt_eval_count": 1213,
+     "prompt_eval_duration": 5307558958,
+     "eval_count": 165,
+     "eval_duration": 13199653247,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:22:00.394854Z"
+    },
+    "elapsed_s": 20.155,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 766,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:4398832:1",
+     "scifact:16686383:1",
+     "scifact:4398832:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9b5c550a26c2501eedc912357cd0bf46205d2b9a151517c593163835a420c0c4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844498.9112902,
+      "end_wall": 1792844505.713483,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844498.9112902,
+    "start_mono": 514055.618060208,
+    "end_wall": 1792844505.713483,
+    "end_mono": 514062.420129833,
+    "raw_response": "{\"query\": \"random chromosome segregation hematopoietic stem cells\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6799134209,
+     "load_duration": 1455757000,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 1056862250,
+     "eval_count": 18,
+     "eval_duration": 4209732959,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:45.712382Z"
+    },
+    "elapsed_s": 6.802,
+    "query_used": "random chromosome segregation hematopoietic stem cells",
+    "query_source": "json",
+    "query_arrival_seq": 767
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "random chromosome segregation hematopoietic stem cells",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14550841:0",
+       "score_q": 742
+      },
+      {
+       "passage_key": "scifact:40234452:0",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:4381486:1",
+       "score_q": 732
+      },
+      {
+       "passage_key": "scifact:23727313:0",
+       "score_q": 725
+      },
+      {
+       "passage_key": "scifact:40234452:1",
+       "score_q": 721
+      }
+     ],
+     "retrieval_sha256": "6161647e383ab6f9e2b6f9b68f659efe69fa2cd25a442dd2ed07d153ca189527"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6161647e383ab6f9e2b6f9b68f659efe69fa2cd25a442dd2ed07d153ca189527",
+    "query_embedding_sha256": "8b0ac0b8ae93485ffcfcb4027335ea9a8e205b6ace9e9716cab9993854f6aac1",
+    "query_embedding_f32_b64": "4nomPJUrFz1Gz0G+qIMOvYPKHz0UgMK8ZBf2PHOQNjxVUh084EIlvCK6nzyCf3w9Y5hmPZGbGjxgk5e9INhjPJyFTb1r2jM8GgRkvRm4kz07e2e9lV/CuyMpt7wfs548wscBPlcRoD2jam+700vsuy/21rwEp726K2lTPV6tIjzPbTM8kCPVvDP+5bwDsTG8T+tBPWS8N72mN/c6Y7MRPV1PNDs0gzU99/Kdu3eawL3yQoO8GM75PGh5Cj3seq085mM/PZiqQLtt0CY9ZnP0POZAYrw63nW88ew+PXy+qbyF43+7szK1vDTytDwOwaI7P4hPPYR80T01WrK9eAbCPGJEhTyr1bO80sYOPGs+Pj1H1H+8v/eKvFY0gT2Bp5s7DqpcPb9llrzJXAq9m67zvPjvory++Mc8NLKYPOuD0DzRJhS9TZKcO9Zwjjzz2ls9yqHjO1FySD1TkTy9XNDKvE2Iorzu2SA9ctCJPYtX/TxJU9g8nsTxPOA6Lr0GIgM9K9PCu2A3izzNT2S91ibZvP/F4LyquBm8uP7qPOGw37xfeQi9f3FnPBNesjw/wmQ9sq05PUJGRDrb1Oi8eXAfPWFkt7zYvIU8fHlRPfGoH72EP8Q8yf6evNA68TxfVxu9Ga9rPGHmXbwhIAe9cbGUPYS2qLwenYs9ndUxvFAZXzvVZuI8vjUrvc0ZKL02ZsG8FEoOvZPJCT2bfsi87rEQPekhHrxjRae8xHs0PQvBBT0PVG49Wj6GPEMnhjxkCKi8AVmEOwlHOr2rmGQ9FiqHvUEBNr0tbgg9v3KFvKwmhLrqfSO9xUhXvDysgztG8WQ7TcpQPI8bFD22dIs8fTWdPI20KDtcyI07AfwUvfG96jwyX5e8NcWYvc6fFD05y149JseZO37Akzy5kpe8fg3pvPLYjzy+zsa6/D69PPzWQDyVUvy7jRy3O7LzYzxS/eO7q84uPJPrCr33NJo8M1nIu8Wa1Lyktsy70fc1vd0ijLyIqRy9s3K5vJu7Q7v21ak80zHRvd0Xir11L5W83QQvPD/v6Tsi2cU783PnPFKw87xqkIk8gYUXvd05yLxMbJI8IAFDO6QvhrvV7d487WZtvCuql7yXGjk9uw6PPcPeiDwzvEG9lStMvMa7SjwCx4m9DkiTuwVRq71OS0C8pP0mvGuUDTxqpZG7z9Khu9zABrwyqCo9r4PHO2lj/LuYYFy9PxZdvF7L6byvZbi8F4llvSN3tDys0Xi9364xvZGDJTyZnhg6960LPUqABr324CQ8RzeTvJPZej20iQm9cV/VuySchbyzFAE8OoahPdx5+Lzm0mK78KmFPM62hryItka928fMO8snnLyuaJI8DXZZvZ7ut7zi08s8j1AhPGQuuDumdv67vy7Au5fa5DxDpoa8OY4LvdPcOrz0Bec8Djz3vDYyg7wMr1q4VL6XOxT0aD2P7k4804hTPaMX9Tv6Mau8sWO9u6qd87z7w/q8I5sQPYmj7DwUK7S87FwzvbjHb7wiqku9evZQPR0VQT0WXyy9UX0AvFDBZj2u8C09Z7vlvKMhIz3CWyO8/NeQPeMmyzxDVBQ9OA13vMTr2zzyD548fymMPEd1zTznsYQ9ycgtPad1pryvwRa9DYv/PKvU6bzesoA9JhkUPGmd7bu2Y9C8ht8IvaNz6DyCUf87+CEwva77GDy7th49iTcrPeSZvrxsibI7oR6UvJ2PHb34vVe96nfEPO1BMj1VeYS7UBmQPTiFMr3VsnS8lXY1PMklkT1W0QE9jWYnvbFHNr0yT/q7XzD0vFWR9jwR3fq8etTLPPwzBT2HvYy8ZEkvPTEV47y3yPK77jTwO1sSojwUuhe9O1lSPdhcyT1sVYS8sX7WvA6NZzxvKKi7OOlZPVp8FjphRIu7X5RRvFD76TzkPUa8v30XPbau9rxgbN+7eJg1u1tzijqru1I9v1poPb+gMj0+0Co9H96iO8VPBr2KJN86liHfOokxLz3JbfE7mK9TPYy/tr2cRsK8M4uTPO33izwKfyA9UEzXvayYjjqTLLi8tbTPvNh/UzxLNLw7NgACvdD4mbyAkPk5ka4yvdaPK7v68D69TnqWvAQB+TsUMfq8uKX/PC3foDx0xFc9kUmGOzosJL0Ryam9kawvvWxQ7bzl+8a8UuGLPeXaQ73AcW68YdZ5PQIkKj1o9Mk8T0SlPU8aNj3WHWS9YUgtPTt4lroVle24iQlZPYpabry6UBA9u4YVPTgAkzx7hri7bkiKPEvuNb04Ek46y/t1OhslJz2xvOS7Ic1kvRHxpzuOu2M9NYOyPDGgbLodnzE9djwlvRPw4Tv/3RI8U07XvBJlxj1KWzA8llLNvW2tWDxCs6a72ecmPZEWnT3rqRI9LIRwvRdKI7011BI9hpB4PSGIZrxUi/q5woEwPXDojD1DfIS9LPnjvCuUaDxmwHo9tjGePIpoGr3M7r48t0TyvCP8gTzs0qo7Dl8JO4vDwjwzxpa8tmB4PQ4bwD1roF69Jgy4O7aWoDweCZE88ByJvbT/YDxcFF888lFfPD3gO7tOZKU8A0HwOvKr17zrZb067pWtvW6aC7zxgFc9p3ycvLZmBb0uRVk9IEnaPMR1/LwHpRg8SQVoPbEagrw7m7g8XpyBvQPShzwngUA82LO8O9ck27yCr7g9gseAPDW28Ty6GB687MqbPHidozzsd/c8vvuCvAg8hrwTNkm8vPSrvT1eAj2oAdQ9GQ8pPaiYCL3fEw08L8qEvfelEj3z2M47PyfwvLSkJL3SUwq9wnIbvRvShjw17Qe9aLAFvZhjCL1P0BI6HGvIvH1C6Tpps2G8kdGCvFPIZrwQzCC9jl/EvDcdJ71tqZ68/q7cPFJbkDzYSZI7hnQ1PUMdAj2LjdE7V32pvK9/Xbxkcsk7WtNpvbFpSr0GLMO8eKemvfjtAL1ca1W9Q/KAvATEWr0jIz67Q3BCvWa6qzupElW9u/ALvTFH/zyloYi4YFW4vFhNiD2DbU88oVANPbFjlb1tvXQ8J8MCO2g2prvPY1M9LtLQPPO3Qb3kbSO9U/2LPFePRrwXbKi7E6dhvLWljjyzVA69E2MCvCqIkjuB5sy8CvABPHtnEz0N6pw7wIEZPCIY4jrPDPW8fFUrPbUMIr0gtOm8ZPe+PFT2c7zdyEi8SHtkvBdghTxo0e86K6DZvAvlVrx38P+8aW72PMZ9wLxSHWo97Edqvc77YzyjW6M8vLArvWIVnD1aTz87flXyu5mqjT0TZ7m8XlSNvVGcn7zfKQk90cVIvB0tnLv9GIe8q5B3vWuPXbwrmaA6xEL5vC4FBb1LuMm8MH1LPatJ8jwzNKm88zaTvUtyyjvvAas8Q7WmvMSAkzz9Sim9+LZKPCAl2jvokjQ9YCC0vWE6Cjptmg282c2cPTkPKT0e05c8PeoXvdSeSLuK+HQ9r6v0PJhtyDz1mjA9KajUPEqpjrwfMTc8IPY1PRzbqTtmBxy9tH8lvJYAoDxKbHE9o35qvb4GV73TVBC9JNI8vRsAej213/G8fQ5mvK2fzjwmCJe8/Uk2PIcNabzXEa69wj0KOr6hCT1ow7y7BnVfvBz3mLtUzJs6Ili6PJt+qDwy4xk9BHIBvC9CkLwExsC8mb13vMq7LjxyDha9k7yrPGP3E70INes8lUByvXcTwzyntp68B1YlvYwZYr2Le4u8x1W9PKSS+jwatBY9GpOEvA13OzxGGIW8We9QPav4C73Hs+I7/chSPIggDjzB+/C8tGcfvTT0yzsMR1u8t/chPQtZvbxerB+9PY+qu8cFiLwVICA89kkYPYuE4DsY5tC7vO5FvWzw1Tvug7c5i0V8vEuunLslQm+9geZ+vD/lB7vKZvG8qfcQPc6lALz7q149Gdy6vMaYmLw+vRS8EIoEPCZ1njzGSxw8Fs3gPJIckryOBM07XjQ8PCkn8rxGv2O9B9BMPbf1zDu6vBE8hJ4LPL1aDD05aBm9tmmAPByesDwa5Qk8hvqFvF4FDL1ol4W9xARsPOmYDD1yoxI8ChhFPffArTzO87g9kEnYvOIs9TzVDFu9m6UMvRpulj3s4wW9zvIyvTNMD73j9Gg8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14550841:0",
+      "content_sha256": "7bf53192a4a1ad0ed0f9b70d5f97658e29ed648789bba8d3e7c523238214b5fd",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:40234452:0",
+      "content_sha256": "a1b49b89de34238d446d790f0fca0ada642f21f658d388ae351ca9465770c589",
+      "chars": 1077
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4381486:1",
+      "content_sha256": "885569784d3452b2da303805ed10a3608b28feacad1b91e2092c5bc3bbeaa5e0",
+      "chars": 891
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:23727313:0",
+      "content_sha256": "cc3a8b41c8f95c92cb0d0c3aa5310a3e740ff1a5bf8aa03b667f75e8c8622daf",
+      "chars": 1034
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:40234452:1",
+      "content_sha256": "de8629216131c68329528afe1950e3304a4fbb3afafc802b396959e9d91e5acf",
+      "chars": 434
+     }
+    ],
+    "elapsed_s": 2.289
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nEvidence passages from your search for \"random chromosome segregation hematopoietic stem cells\":\n<<<PASSAGES\n[P1] Asymmetric Cell Divisions Sustain Long-Term Hematopoiesis from Single-sorted Human Fetal Liver Cells\nHematopoietic stem cells (HSCs) in adult marrow are believed to be derived from fetal liver precursors. To study cell kinetics involved in long-term hematopoiesis, we studied single-sorted candidate HSCs from fetal liver that were cultured in the presence of a mixture of stimulatory cytokines. After 8–10 d, the number of cells in primary cultures varied from 10,000 cells. Single cells in slow growing colonies were recloned upon reaching a 100–200 cell stage. Strikingly, the number of cells in subclones varied widely again. These results are indicative of asymmetric divisions in primitive hematopoietic cells in which proliferative potential and cell cycle properties are unevenly distributed among daughter cells. The continuous generation of functional heterogeneity among the clonal progeny of HSCs is in support of intrinsic control of stem cell fate and provides a model for the long-term maintenance of hematopoiesis in vitro and in vivo.\n\n[P2] HES-1 preserves purified hematopoietic stem cells ex vivo and accumulates side population cells in vivo.\nMouse long-term hematopoietic reconstituting cells exist in the c-Kit+Sca-1+Lin- (KSL) cell population; among them, CD34(low/-) cells represent the most highly purified population of hematopoietic stem cells in the adult bone marrow. Here, we demonstrate that retrovirus-mediated transduction of CD34(low/-)c-Kit+Sca-1+Lin- (34-KSL) cells with the HES-1 gene, which encodes a basic helix-loop-helix transcription factor functioning downstream of the Notch receptor, and is a key molecule for the growth phase of neural stem cells in the embryo, preserves the long-term reconstituting activity of these cells in vitro. We also show that cells derived from the HES-1-transduced 34-KSL population produce progenies characterized by negative Hoechst dye staining, which defines the side population, and by CD34(low/-) profile in the bone marrow KSL population in each recipient mouse at ratios 3.5- and 7.8-fold those produced by nontransduced 34-KSL-derived competitor cells.\n\n[P3] Haematopoietic stem cells do not asymmetrically segregate chromosomes or retain BrdU\nWe administered BrdU to newborn mice, mice treated with cyclophosphamide and granulocyte colony-stimulating factor, and normal adult mice for 4 to 10 days, followed by 70 days without BrdU. In each case, less than 6% of HSCs retained BrdU and less than 0.5% of all BrdU-retaining haematopoietic cells were HSCs, revealing that BrdU has poor specificity and poor sensitivity as an HSC marker. Sequential administration of 5-chloro-2-deoxyuridine and 5-iodo-2-deoxyuridine indicated that all HSCs segregate their chromosomes randomly. Division of individual HSCs in culture revealed no asymmetric segregation of the label. Thus, HSCs cannot be identified on the basis of BrdU-label retention and do not retain older DNA strands during division, indicating that these are not general properties of stem cells.\n\n[P4] CD34+ hematopoietic stem-progenitor cell microRNA expression and function: a circuit diagram of differentiation control.\nMicroRNAs (miRNAs) are a recently identified class of epigenetic elements consisting of small noncoding RNAs that bind to the 3' untranslated region of mRNAs and down-regulate their translation to protein. miRNAs play critical roles in many different cellular processes including metabolism, apoptosis, differentiation, and development. We found 33 miRNAs expressed in CD34+ hematopoietic stem-progenitor cells (HSPCs) from normal human bone marrow and mobilized human peripheral blood stem cell harvests. We then combined these data with human HSPC mRNA expression data and with miRNA-mRNA target predictions, into a previously undescribed miRNA:mRNA interaction database called the Transcriptome Interaction Database. The in silico predictions from the Transcriptome Interaction Database pointed to miRNA control of hematopoietic differentiation through translational control of mRNAs critical to hematopoiesis.\n\n[P5] HES-1 preserves purified hematopoietic stem cells ex vivo and accumulates side population cells in vivo.\nWe conclude that HES-1 preserves the long-term reconstituting hematopoietic activity of 34-KSL stem cells ex vivo. Up-regulation of HES-1 protein in the 34-KSL population before unnecessary cell division, that is, without retrovirus transduction, may represent a potent approach to absolute expansion of hematopoietic stem cells.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2db4f302e3a5630d740e7325ad920c24c3b14fc0e5ee89dc6f63d7acc05bf532",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844508.003077,
+      "end_wall": 1792844520.826134,
+      "error": null
+     }
+    ],
+    "arrival_seq": 767,
+    "start_wall": 1792844508.003077,
+    "start_mono": 514064.709683791,
+    "end_wall": 1792844520.826134,
+    "end_mono": 514077.532508666,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that all hematopoietic stem cells (HSCs) segregate their chromosomes randomly. However, the evidence passages suggest otherwise. Passage P3 reveals that HSCs do not asymmetrically segregate their chromosomes, and sequential administration of BrdU showed that all HSCs segregate their chromosomes randomly. Passage P1 also discusses asymmetric divisions in HSCs but does not contradict the random chromosome segregation. Therefore, the claim is refuted.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12817842750,
+     "load_duration": 1537757084,
+     "prompt_eval_count": 1529,
+     "prompt_eval_duration": 3981626126,
+     "eval_count": 149,
+     "eval_duration": 6532134046,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:22:00.822417Z"
+    },
+    "elapsed_s": 12.823,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 767,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:14550841:0",
+     "scifact:4381486:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 469,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9b5c550a26c2501eedc912357cd0bf46205d2b9a151517c593163835a420c0c4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844498.911191,
+      "end_wall": 1792844508.6237671,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844498.911191,
+    "start_mono": 514055.617961375,
+    "end_wall": 1792844508.6237671,
+    "end_mono": 514065.330361,
+    "raw_response": "{\"query\": \"random chromosome segregation of hematopoietic stem cells\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9709059209,
+     "load_duration": 8617241125,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 358879875,
+     "eval_count": 13,
+     "eval_duration": 446564043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:48.62242Z"
+    },
+    "elapsed_s": 9.712,
+    "query_used": "random chromosome segregation of hematopoietic stem cells",
+    "query_source": "json",
+    "query_arrival_seq": 769
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "random chromosome segregation of hematopoietic stem cells",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4398832:1",
+       "score_q": 7851
+      },
+      {
+       "passage_key": "scifact:7583161:0",
+       "score_q": 7812
+      },
+      {
+       "passage_key": "scifact:30658796:0",
+       "score_q": 7146
+      },
+      {
+       "passage_key": "scifact:16686383:1",
+       "score_q": 7137
+      },
+      {
+       "passage_key": "scifact:1944452:1",
+       "score_q": 7046
+      }
+     ],
+     "retrieval_sha256": "ea78aa767c1ff18da53323911c6430c51806be1b1e4afdaf7b33547f43fe039f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ea78aa767c1ff18da53323911c6430c51806be1b1e4afdaf7b33547f43fe039f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4398832:1",
+      "content_sha256": "986d61377515b435055b7d505331ac587b631cb561117ca02414ab74c3c70ada",
+      "chars": 592
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7583161:0",
+      "content_sha256": "9274cbea31c2290b8bf19c3bde04fe120353356f35ee9044f74632d4732d9ad6",
+      "chars": 998
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:30658796:0",
+      "content_sha256": "b25988f6d5facf8c57f3908f7ccb0d81383006d260fe6b2348362b6a9175bc45",
+      "chars": 1022
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16686383:1",
+      "content_sha256": "9137c92d5435979a0e0a97ceb426865da69e388106d5fd22d71917498f7f3e39",
+      "chars": 855
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:1944452:1",
+      "content_sha256": "1d597db7f190c9437630315cd15184bd97a4b7ca0d6614940b6f4c5fb0f054f0",
+      "chars": 570
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nEvidence passages from your search for \"random chromosome segregation of hematopoietic stem cells\":\n<<<PASSAGES\n[P1] Cyclin A Regulates Kinetochore-Microtubules to Promote Faithful Chromosome Segregation\nBy contrast, k-MTs are prematurely stabilized in cyclin-A-deficient cells. Consequently, cells lacking cyclin A display higher rates of chromosome mis-segregation. Thus, the stability of k-MT attachments increases decisively in a coordinated fashion among all chromosomes as cells transit from prometaphase to metaphase. Cyclin A creates a cellular environment that promotes microtubule detachment from kinetochores in prometaphase to ensure efficient error correction and faithful chromosome segregation.\n\n[P2] Heterotopic of bone marrow. Analysis of precursor cells for osteogenic and hematopoietic tissues.\nIn semisyngeneic heterotopic bone marrow transplants the donor or recipient origin of cells of osteogenic and hematopoietic tissues was identified by chromosome markers (T6) and by reverse transplantation into the initial donor line. In syngeneic and semisyngeneic grafts of bone marrow under the renal capsule bone and bone marrow are formed. In allogeneic grafts only bone is formed; this bone is subsequently resorbed. In 14-month semisyngeneic transplants the bone marrow consists of recipient cells. This is true for both the proliferating pool and the stem cells of hematopoietic tissue. At the same time, osteogenic precursor cells and bone tissue in these transplants are of donor origin. A discussion is presented of the interrelationship between determinated osteogenic precursor cells (preosteoblasts) and hematopoietic stem cells (or their descendants) in which osteogenesis is inducible.\n\n[P3] Anaphase catastrophe is a target for cancer therapy.\nNeoplastic cells are genetically unstable. Strategies that target pathways affecting genome instability can be exploited to disrupt tumor cell growth, potentially with limited consequences to normal cells. Chromosomal instability (CIN) is one type of genome instability characterized by mitotic defects that increase the rate of chromosome mis-segregation. CIN is frequently caused by extra centrosomes that transiently disrupt normal bipolar spindle geometry needed for accurate chromosome segregation. Tumor cells survive with extra centrosomes because of biochemical pathways that cluster centrosomes and promote chromosome segregation on bipolar spindles. Recent work shows that targeted inhibition of these pathways prevents centrosome clustering and forces chromosomes to segregate to multiple daughter cells, an event triggering apoptosis that we refer to as anaphase catastrophe. Anaphase catastrophe specifically kills tumor cells with more than 2 centrosomes.\n\n[P4] Phosphorylation of centromeric histone H3 variant regulates chromosome segregation in Saccharomyces cerevisiae\nConsistent with these results, we observe that a phosphomimetic cse4-4SD mutant suppresses the temperature-sensitive growth of ipl1-2 and Ipl1 substrate mutants dam1 spc34 and ndc80, which are defective for chromosome biorientation. Furthermore, cell biology approaches using a green fluorescent protein-labeled chromosome show that cse4-4SD suppresses chromosome segregation defects in dam1 spc34 strains. On the basis of these results, we propose that phosphorylation of Cse4 destabilizes defective kinetochores to promote biorientation and ensure faithful chromosome segregation. Taken together, our results provide a detailed analysis, in vivo and in vitro, of Cse4 phosphorylation and its role in promoting faithful chromosome segregation.\n\n[P5] Insertional mutagenesis in gene therapy and stem cell biology.\nDatabases summarizing vector insertion sites in dominant hematopoietic clones are evolving as new tools to identify genes that regulate clonal homeostasis. SUMMARY Mechanistic studies of insertional mutagenesis by random gene vector insertion will lead to improved tools for advanced hematopoietic cell therapy. Simultaneously, fascinating insights into gene networks that regulate cell fitness will be generated, with important consequences for the fields of hematology, oncology and regenerative medicine.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e9c1a31789f74bb412d2ce3937a433111cb146ff8922c53e9aba5ad9815a8650",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844508.625589,
+      "end_wall": 1792844535.785669,
+      "error": null
+     }
+    ],
+    "arrival_seq": 768,
+    "start_wall": 1792844508.625589,
+    "start_mono": 514065.332185041,
+    "end_wall": 1792844535.785669,
+    "end_mono": 514092.491774875,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not support the claim. In P1, the stability of kinetochore-microtubule attachments increases in a coordinated fashion among all chromosomes as cells transit from prometaphase to metaphase. P2 discusses the relationship between determinate osteogenic precursor cells and hematopoietic stem cells, and P3 and P4 discuss chromosome segregation and genome instability in cancer cells. However, none of these passages directly address the claim that all hematopoietic stem cells segregate their chromosomes randomly.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27154154333,
+     "load_duration": 15715426708,
+     "prompt_eval_count": 1042,
+     "prompt_eval_duration": 4289492874,
+     "eval_count": 120,
+     "eval_duration": 4602113418,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:22:15.780984Z"
+    },
+    "elapsed_s": 27.16,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 768,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 536,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "9b5c550a26c2501eedc912357cd0bf46205d2b9a151517c593163835a420c0c4",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844498.911068,
+      "end_wall": 1792844506.43185,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844498.911068,
+    "start_mono": 514055.617838458,
+    "end_wall": 1792844506.43185,
+    "end_mono": 514063.138483666,
+    "raw_response": "{\"query\": \"hematopoietic stem cell chromosome segregation mechanisms\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7517178583,
+     "load_duration": 4159503125,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 1595876625,
+     "eval_count": 15,
+     "eval_duration": 1634163165,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:21:46.43053Z"
+    },
+    "elapsed_s": 7.521,
+    "query_used": "hematopoietic stem cell chromosome segregation mechanisms",
+    "query_source": "json",
+    "query_arrival_seq": 768
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "hematopoietic stem cell chromosome segregation mechanisms",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:16686383:1",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:11951999:1",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:23727313:1",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:16686383:0",
+       "score_q": 753
+      },
+      {
+       "passage_key": "scifact:18909530:0",
+       "score_q": 751
+      }
+     ],
+     "retrieval_sha256": "ef0faa9d9f5ce561af758f9f82d5b4ed56820dbb1ce47068be6d78dac298d53e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ef0faa9d9f5ce561af758f9f82d5b4ed56820dbb1ce47068be6d78dac298d53e",
+    "query_embedding_sha256": "d45376d7de3aaab1f20bc5b3a7e216ea1b4616e01ed1da3da9cd10bcaf5f179c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:16686383:1",
+      "content_sha256": "9137c92d5435979a0e0a97ceb426865da69e388106d5fd22d71917498f7f3e39",
+      "chars": 855
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11951999:1",
+      "content_sha256": "dab6a1ba601a99635b90eaca76d0e330a40f0d72b4bad2de9d7518643d387628",
+      "chars": 1028
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23727313:1",
+      "content_sha256": "8cbb72c5442184ff1c728b1a0a8dd9f8f6c37f1223e3db7d9146d95f9652ee3c",
+      "chars": 776
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:16686383:0",
+      "content_sha256": "3e78c7f7a0f805cf6ac7de9de0e29bc15568e85697096196d504e424a34be2af",
+      "chars": 884
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18909530:0",
+      "content_sha256": "5a2fe403859e835484636344052abe151628ae53bc6ea155bfe9184292526db5",
+      "chars": 1034
+     }
+    ],
+    "elapsed_s": 1.6151
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: All hematopoietic stem cells segregate their chromosomes randomly.\n\nEvidence passages from your search for \"hematopoietic stem cell chromosome segregation mechanisms\":\n<<<PASSAGES\n[P1] Phosphorylation of centromeric histone H3 variant regulates chromosome segregation in Saccharomyces cerevisiae\nConsistent with these results, we observe that a phosphomimetic cse4-4SD mutant suppresses the temperature-sensitive growth of ipl1-2 and Ipl1 substrate mutants dam1 spc34 and ndc80, which are defective for chromosome biorientation. Furthermore, cell biology approaches using a green fluorescent protein-labeled chromosome show that cse4-4SD suppresses chromosome segregation defects in dam1 spc34 strains. On the basis of these results, we propose that phosphorylation of Cse4 destabilizes defective kinetochores to promote biorientation and ensure faithful chromosome segregation. Taken together, our results provide a detailed analysis, in vivo and in vitro, of Cse4 phosphorylation and its role in promoting faithful chromosome segregation.\n\n[P2] The Ten-Eleven Translocation-2 (TET2) gene in hematopoiesis and hematopoietic diseases\nIn addition to their hydroxylase activity, TET proteins recruit the O-linked β-D-N-acetylglucosamine (O-GlcNAc) transferase (OGT) enzyme to chromatin, which promotes post-transcriptional modifications of histones and facilitates gene expression. The TET2 level is regulated by interaction with IDAX, originating from TET2 gene fission during evolution, and by the microRNA miR-22. TET2 has pleiotropic roles during hematopoiesis, including stem-cell self-renewal, lineage commitment and terminal differentiation of monocytes. Analysis of Tet2 knockout mice, which are viable and fertile, demonstrated that Tet2 functions as a tumor suppressor whose haploinsufficiency initiates myeloid and lymphoid transformations. This review summarizes the recently identified TET2 physiological and pathological functions and discusses how this knowledge influences our therapeutic approaches in hematological malignancies and possibly other tumor types.\n\n[P3] CD34+ hematopoietic stem-progenitor cell microRNA expression and function: a circuit diagram of differentiation control.\nFrom these predictions, we formulated a model for miRNA control of stages of hematopoiesis in which many of the genes specifying hematopoietic differentiation are expressed by HSPCs, but are held in check by miRNAs until differentiation occurs. We validated miRNA control of several of these target mRNAs by demonstrating that their translation in fact is decreased by miRNAs. Finally, we chose miRNA-155 for functional characterization in hematopoiesis, because we predicted that it would control both myelopoiesis and erythropoiesis. As predicted, miRNA-155 transduction greatly reduced both myeloid and erythroid colony formation of normal human HSPCs.\n\n[P4] Phosphorylation of centromeric histone H3 variant regulates chromosome segregation in Saccharomyces cerevisiae\nThe centromeric histone H3 variant (CenH3) is essential for chromosome segregation in eukaryotes. We identify posttranslational modifications of Saccharomyces cerevisiae CenH3, Cse4. Functional characterization of cse4 phosphorylation mutants shows growth and chromosome segregation defects when combined with kinetochore mutants okp1 and ame1. Using a phosphoserine-specific antibody, we show that the association of phosphorylated Cse4 with centromeres increases in response to defective microtubule attachment or reduced cohesion. We determine that evolutionarily conserved Ipl1/Aurora B contributes to phosphorylation of Cse4, as levels of phosphorylated Cse4 are reduced at centromeres in ipl1 strains in vivo, and in vitro assays show phosphorylation of Cse4 by Ipl1.\n\n[P5] Contractile forces sustain and polarize hematopoiesis from stem and progenitor cells.\nSelf-renewal and differentiation of stem cells depend on asymmetric division and polarized motility processes that in other cell types are modulated by nonmuscle myosin-II (MII) forces and matrix mechanics. Here, mass spectrometry-calibrated intracellular flow cytometry of human hematopoiesis reveals MIIB to be a major isoform that is strongly polarized in hematopoietic stem cells and progenitors (HSC/Ps) and thereby downregulated in differentiated cells via asymmetric division. MIIA is constitutive and activated by dephosphorylation during cytokine-triggered differentiation of cells grown on stiff, endosteum-like matrix, but not soft, marrow-like matrix. In vivo, MIIB is required for generation of blood, while MIIA is required for sustained HSC/P engraftment. Reversible inhibition of both isoforms in culture with blebbistatin enriches for long-term hematopoietic multilineage reconstituting cells by 5-fold or more as assessed in vivo.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e005617f16455c973af2813c4e2d6425cb5709cc844be86e27c477ecedf8ecd8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844508.04779,
+      "end_wall": 1792844536.676331,
+      "error": null
+     }
+    ],
+    "arrival_seq": 769,
+    "start_wall": 1792844508.04779,
+    "start_mono": 514064.754396666,
+    "end_wall": 1792844536.676331,
+    "end_mono": 514093.382421583,
+    "raw_response": "{\"reasoning\": \"The provided evidence passages primarily focus on mechanisms related to chromosome segregation and hematopoietic stem cell functions such as roles of specific genes and proteins (e.g., TET2, miRNAs, contractile forces), but none directly address the mechanism of chromosome segregation specifically in hematopoietic stem cells regarding randomness. Since there is no explicit evidence provided that confirms or refutes the claim about random segregation exclusively in hematopoietic stem cells, the claim cannot be definitively supported or refuted based solely on the given evidence. However, based,\"\n  , \"answer\": \"REFUTED\",\n  \"citations\": []\n  , \"confidence\": \"low\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28623598167,
+     "load_duration": 14210520500,
+     "prompt_eval_count": 1249,
+     "prompt_eval_duration": 6499565083,
+     "eval_count": 135,
+     "eval_duration": 6839743635,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:22:16.672767Z"
+    },
+    "elapsed_s": 28.628,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 769,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "a392aa72a48dd610ef18fcecb264d8922d1a4b86d4aa182d0f9b52c5805e3b31",
+  "olmo2:7b": "67bff471e33d25d4970587bfb842426f9249c896e357112f8097411db74973f1",
+  "granite3.3:2b": "6161647e383ab6f9e2b6f9b68f659efe69fa2cd25a442dd2ed07d153ca189527",
+  "nemotron-mini:4b": "ea78aa767c1ff18da53323911c6430c51806be1b1e4afdaf7b33547f43fe039f",
+  "exaone3.5:7.8b": "ef0faa9d9f5ce561af758f9f82d5b4ed56820dbb1ce47068be6d78dac298d53e"
+ },
+ "item_start_wall": 1792844498.910882,
+ "item_wall_s": 37.765,
+ "ollama_ps_samples": [
+  [
+   1792844498.911,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844500.923,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844502.935,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844504.946,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844506.949,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844508.955,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844510.966,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844512.971,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844514.979,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844516.989,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844518.997,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844521.009,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844523.021,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844525.034,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844527.046,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844529.056,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844531.062,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844533.072,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844535.082,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

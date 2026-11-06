@@ -1,0 +1,1288 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1153",
+ "order": 648,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1153",
+  "order": 648,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces."
+ },
+ "item_view_sha256": "d07fec024cf2131d25b192e93c68b7f0ca5b3269a48bf964ef172485ae61e91f",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e030d9e3a0e2b3f4e6e74b7433cb38869ef6f8ec8ff8911c85f5dc6009ae0492",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871672.631534,
+      "end_wall": 1792871674.157212,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871672.631534,
+    "start_mono": 541229.332078291,
+    "end_wall": 1792871674.157212,
+    "end_mono": 541230.857750041,
+    "raw_response": "{\"query\": \"CLEC-2 dendritic cells actin cytoskeleton motility\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1523420542,
+     "load_duration": 112757625,
+     "prompt_eval_count": 196,
+     "prompt_eval_duration": 444999667,
+     "eval_count": 17,
+     "eval_duration": 773611708,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:34.15659Z"
+    },
+    "elapsed_s": 1.526,
+    "query_used": "CLEC-2 dendritic cells actin cytoskeleton motility",
+    "query_source": "json",
+    "query_arrival_seq": 3240
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "CLEC-2 dendritic cells actin cytoskeleton motility",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 776
+      },
+      {
+       "passage_key": "scifact:5700349:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:8596357:1",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:11195653:0",
+       "score_q": 728
+      }
+     ],
+     "retrieval_sha256": "f6a871ae7b466fcff4d2be8809b49b3d3a641e9fe01b6d8aa13ae09d6a712c1f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f6a871ae7b466fcff4d2be8809b49b3d3a641e9fe01b6d8aa13ae09d6a712c1f",
+    "query_embedding_sha256": "29a70bef89799cddfb25ec4348f8b447e018447042b4575280bc00a57e97bea9",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:5700349:0",
+      "content_sha256": "4cecdb363df2a44720ccfff869da06d3c97a2dad143b03fe3c9c7595d2729a86",
+      "chars": 1094
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8596357:1",
+      "content_sha256": "9067348bc0e9d762e337c4ef7dc48aa15f7b0874633d82229c547531c1fe4287",
+      "chars": 524
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11195653:0",
+      "content_sha256": "34751e950004f80baba33442433385d5775542b3880649ba5032a3a4d708be37",
+      "chars": 1064
+     }
+    ],
+    "elapsed_s": 4.4804
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nEvidence passages from your search for \"CLEC-2 dendritic cells actin cytoskeleton motility\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P2] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nThe morphology of neuronal dendritic spines is a critical indicator of synaptic function. It is regulated by several factors, including the intracellular actin/myosin cytoskeleton and transcellular N-cadherin adhesions. To examine the mechanical relationship between these molecular components, we performed quantitative live-imaging experiments in primary hippocampal neurons. We found that actin turnover and structural motility were lower in dendritic spines than in immature filopodia and increased upon expression of a nonadhesive N-cadherin mutant, resulting in an inverse relationship between spine motility and actin enrichment. Furthermore, the pharmacological stimulation of myosin II induced the rearward motion of actin structures in spines, showing that myosin II exerts tension on the actin network. Strikingly, the formation of stable, spine-like structures enriched in actin was induced at contacts between dendritic filopodia and N-cadherin-coated beads or micropatterns.\n\n[P3] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P4] Porcine circovirus type 2 DNA influences cytoskeleton rearrangements in plasmacytoid and monocyte-derived dendritic cells.\nConfocal microscopy and cytometry analysis strongly suggested that PCV2 DNA impairs actin polymerization and endocytosis in pDC and monocyte-derived DC, respectively. Altogether, this study delineates for the first time particular molecular mechanisms involved in PCV2 interference with DC danger recognition, which may be responsible for the virus-induced immunosuppression observed in infected pigs.\n\n[P5] Opposing Effects of PKCθ and WASp on Symmetry Breaking and Relocation of the Immunological Synapse\nThe immunological synapse (IS) is a junction between the T cell and antigen-presenting cell and is composed of supramolecular activation clusters (SMACs). No studies have been published on naive T cell IS dynamics. Here, we find that IS formation during antigen recognition comprises cycles of stable IS formation and autonomous naive T cell migration. The migration phase is driven by PKCtheta, which is localized to the F-actin-dependent peripheral (p)SMAC. PKCtheta(-/-) T cells formed hyperstable IS in vitro and in vivo and, like WT cells, displayed fast oscillations in the distal SMAC, but they showed reduced slow oscillations in pSMAC integrity. IS reformation is driven by the Wiscott Aldrich Syndrome protein (WASp). WASp(-/-) T cells displayed normal IS formation but were unable to reform IS after migration unless PKCtheta was inhibited. Thus, opposing effects of PKCtheta and WASp control IS stability through pSMAC symmetry breaking and reformation.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3eba46145f74d503ff4fb95b6e24071183fe205010bf8620cca1c2c3a52c7104",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871678.6380632,
+      "end_wall": 1792871691.933548,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3240,
+    "start_wall": 1792871678.6380632,
+    "start_mono": 541235.338584166,
+    "end_wall": 1792871691.933548,
+    "end_mono": 541248.634017916,
+    "raw_response": "{\"reasoning\": \"The claim states that CLEC-2 rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces. The evidence supports this claim as several passages discuss CLEC-2's role in dendritic cell motility and actin cytoskeleton rearrangement.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13292348042,
+     "load_duration": 5944235000,
+     "prompt_eval_count": 1150,
+     "prompt_eval_duration": 2549273375,
+     "eval_count": 96,
+     "eval_duration": 3761620124,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:51.931787Z"
+    },
+    "elapsed_s": 13.295,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3240,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:7370282:0",
+     "scifact:5700349:0",
+     "scifact:7370282:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 275,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e030d9e3a0e2b3f4e6e74b7433cb38869ef6f8ec8ff8911c85f5dc6009ae0492",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871672.631615,
+      "end_wall": 1792871674.783277,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871672.631615,
+    "start_mono": 541229.332159375,
+    "end_wall": 1792871674.783277,
+    "end_mono": 541231.48381225,
+    "raw_response": "{\"query\": \"CLEC-2 actin cytoskeleton dendritic cell motility\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2149123125,
+     "load_duration": 1187020042,
+     "prompt_eval_count": 202,
+     "prompt_eval_duration": 402330542,
+     "eval_count": 22,
+     "eval_duration": 471107373,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:34.782212Z"
+    },
+    "elapsed_s": 2.152,
+    "query_used": "CLEC-2 actin cytoskeleton dendritic cell motility",
+    "query_source": "json",
+    "query_arrival_seq": 3242
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "CLEC-2 actin cytoskeleton dendritic cell motility",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 20345
+      },
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 15078
+      },
+      {
+       "passage_key": "scifact:5700349:0",
+       "score_q": 12318
+      },
+      {
+       "passage_key": "scifact:8997410:0",
+       "score_q": 8594
+      },
+      {
+       "passage_key": "scifact:3506723:0",
+       "score_q": 8444
+      }
+     ],
+     "retrieval_sha256": "042f58691dfccd287f9d4ce076717c591d0b76f0ccb08f5f923df73258457465"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "042f58691dfccd287f9d4ce076717c591d0b76f0ccb08f5f923df73258457465",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5700349:0",
+      "content_sha256": "4cecdb363df2a44720ccfff869da06d3c97a2dad143b03fe3c9c7595d2729a86",
+      "chars": 1094
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8997410:0",
+      "content_sha256": "61d907f34321f8a66c03ac1b64bcb0edf107d5a49f62c7677afd0cfbe792923a",
+      "chars": 1021
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:3506723:0",
+      "content_sha256": "daca6b0b3abeb7a5293c8e94ac13538e9bbe907a6ecf2d7a55211f6ebeb24e90",
+      "chars": 635
+     }
+    ],
+    "elapsed_s": 0.0026
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nEvidence passages from your search for \"CLEC-2 actin cytoskeleton dendritic cell motility\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P3] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nThe morphology of neuronal dendritic spines is a critical indicator of synaptic function. It is regulated by several factors, including the intracellular actin/myosin cytoskeleton and transcellular N-cadherin adhesions. To examine the mechanical relationship between these molecular components, we performed quantitative live-imaging experiments in primary hippocampal neurons. We found that actin turnover and structural motility were lower in dendritic spines than in immature filopodia and increased upon expression of a nonadhesive N-cadherin mutant, resulting in an inverse relationship between spine motility and actin enrichment. Furthermore, the pharmacological stimulation of myosin II induced the rearward motion of actin structures in spines, showing that myosin II exerts tension on the actin network. Strikingly, the formation of stable, spine-like structures enriched in actin was induced at contacts between dendritic filopodia and N-cadherin-coated beads or micropatterns.\n\n[P4] Arp2/3 complex inhibition radically alters lamellipodial actin architecture, suspended cell shape, and the cell spreading process\nRecent studies have investigated the dendritic actin cytoskeleton of the cell edge's lamellipodial (LP) region by experimentally decreasing the activity of the actin filament nucleator and branch former, the Arp2/3 complex. Here we extend these studies via pharmacological inhibition of the Arp2/3 complex in sea urchin coelomocytes, cells that possess an unusually broad LP region and display correspondingly exaggerated centripetal flow. Using light and electron microscopy, we demonstrate that Arp2/3 complex inhibition via the drug CK666 dramatically altered LP actin architecture, slowed centripetal flow, drove a lamellipodial-to-filopodial shape change in suspended cells, and induced a novel actin structural organization during cell spreading. A general feature of the CK666 phenotype in coelomocytes was transverse actin arcs, and arc generation was arrested by a formin inhibitor.\n\n[P5] Formins at the Junction.\nThe actin cytoskeleton and adhesion junctions are physically and functionally coupled at the cell-cell interface between epithelial cells. The actin regulatory complex Arp2/3 has an established role in the turnover of junctional actin; however, the role of formins, the largest group of actin regulators, is less clear. Formins dynamically shape the actin cytoskeleton and have various functions within cells. In this review we describe recent progress on how formins regulate actin dynamics at cell-cell contacts and highlight formin functions during polarized protein traffic necessary for epithelialization.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "09bf0e8c57af1e41d74a19d475ccde358626f2f37f48dc3ec870c5b753ae9cd1",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871674.787426,
+      "end_wall": 1792871693.960325,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3241,
+    "start_wall": 1792871674.787426,
+    "start_mono": 541231.487962625,
+    "end_wall": 1792871693.960325,
+    "end_mono": 541250.660788208,
+    "raw_response": "{\n  \"reasoning\": \"The claim is supported by multiple evidence passages. Specifically, [P1] and [P2] detail how activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to enhance their motility along stromal surfaces. [P4] further supports this by demonstrating how Arp2/3 complex inhibition affects the lamellipodial actin architecture, suggesting a role of CLEC-2 in actin reorganization.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 19168966542,
+     "load_duration": 8350814375,
+     "prompt_eval_count": 1415,
+     "prompt_eval_duration": 3419810042,
+     "eval_count": 141,
+     "eval_duration": 6788738332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:53.957339Z"
+    },
+    "elapsed_s": 19.173,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3241,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:7370282:1",
+     "scifact:7370282:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 385,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e030d9e3a0e2b3f4e6e74b7433cb38869ef6f8ec8ff8911c85f5dc6009ae0492",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871672.631436,
+      "end_wall": 1792871677.8268852,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871672.631436,
+    "start_mono": 541229.331980208,
+    "end_wall": 1792871677.8268852,
+    "end_mono": 541234.527407875,
+    "raw_response": "{\"query\": \"CLEC-2 actin rearrangement dendritic cells\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5192192875,
+     "load_duration": 3825380792,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 657669875,
+     "eval_count": 17,
+     "eval_duration": 563565043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:37.825557Z"
+    },
+    "elapsed_s": 5.195,
+    "query_used": "CLEC-2 actin rearrangement dendritic cells",
+    "query_source": "json",
+    "query_arrival_seq": 3243
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "CLEC-2 actin rearrangement dendritic cells",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 11950
+      },
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 11717
+      },
+      {
+       "passage_key": "scifact:5700349:1",
+       "score_q": 7125
+      },
+      {
+       "passage_key": "scifact:5700349:0",
+       "score_q": 6942
+      },
+      {
+       "passage_key": "scifact:8997410:1",
+       "score_q": 6819
+      }
+     ],
+     "retrieval_sha256": "dc6b0253101eba796b11236de14d7318abb63db8bc15bdfffc6597c0c9d00e97"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "dc6b0253101eba796b11236de14d7318abb63db8bc15bdfffc6597c0c9d00e97",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5700349:1",
+      "content_sha256": "ae4c6e212da1012ca6baf0732e4de80839ad1c71a5e51bba65fdc5e6b719d4c9",
+      "chars": 607
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5700349:0",
+      "content_sha256": "4cecdb363df2a44720ccfff869da06d3c97a2dad143b03fe3c9c7595d2729a86",
+      "chars": 1094
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:8997410:1",
+      "content_sha256": "b63112e1dc76c5c2283b3bd4be1b09fe2ae362ec4c949084215cc1a31a0ba23e",
+      "chars": 539
+     }
+    ],
+    "elapsed_s": 0.0014
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nEvidence passages from your search for \"CLEC-2 actin rearrangement dendritic cells\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P3] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nFinally, computer simulations of actin dynamics mimicked various experimental conditions, pointing to the actin flow rate as an important parameter controlling actin enrichment in dendritic spines. Together these data demonstrate that a clutch-like mechanism between N-cadherin adhesions and the actin flow underlies the stabilization of dendritic filopodia into mature spines, a mechanism that may have important implications in synapse initiation, maturation, and plasticity in the developing brain.\n\n[P4] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nThe morphology of neuronal dendritic spines is a critical indicator of synaptic function. It is regulated by several factors, including the intracellular actin/myosin cytoskeleton and transcellular N-cadherin adhesions. To examine the mechanical relationship between these molecular components, we performed quantitative live-imaging experiments in primary hippocampal neurons. We found that actin turnover and structural motility were lower in dendritic spines than in immature filopodia and increased upon expression of a nonadhesive N-cadherin mutant, resulting in an inverse relationship between spine motility and actin enrichment. Furthermore, the pharmacological stimulation of myosin II induced the rearward motion of actin structures in spines, showing that myosin II exerts tension on the actin network. Strikingly, the formation of stable, spine-like structures enriched in actin was induced at contacts between dendritic filopodia and N-cadherin-coated beads or micropatterns.\n\n[P5] Arp2/3 complex inhibition radically alters lamellipodial actin architecture, suspended cell shape, and the cell spreading process\nWe also demonstrate that CK666 treatment produces actin arcs in other cells with broad LP regions, namely fish keratocytes and Drosophila S2 cells. We hypothesize that the actin arcs made visible by Arp2/3 complex inhibition in coelomocytes may represent an exaggerated manifestation of the elongate mother filaments that could possibly serve as the scaffold for the production of the dendritic actin network.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "49d73396bc70c9ef5c54156127ec8190e079b7a6990d9d9dd8c1156b53b6b0e5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871677.830111,
+      "end_wall": 1792871698.525144,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3242,
+    "start_wall": 1792871677.830111,
+    "start_mono": 541234.530635791,
+    "end_wall": 1792871698.525144,
+    "end_mono": 541255.225584375,
+    "raw_response": "{\"reasoning\": \"The claim states that the C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces. Passages P1 and P2 provide direct evidence by describing how podoplanin-rich stromal networks activate CLEC-2 to rearrange the actin cytoskeleton in dendritic cells, enabling efficient migration along stromal surfaces. These passages explain that CLEC-2 engagement with PDPN leads to cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation, and triggers F-actin-rich protrusions via Vav signaling and,\",\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20691303583,
+     "load_duration": 47527625,
+     "prompt_eval_count": 1082,
+     "prompt_eval_duration": 3992265209,
+     "eval_count": 169,
+     "eval_duration": 15103111552,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:58.522549Z"
+    },
+    "elapsed_s": 20.695,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3242,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:7370282:1",
+     "scifact:7370282:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e030d9e3a0e2b3f4e6e74b7433cb38869ef6f8ec8ff8911c85f5dc6009ae0492",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871672.631327,
+      "end_wall": 1792871681.9736168,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871672.631327,
+    "start_mono": 541229.331871375,
+    "end_wall": 1792871681.9736168,
+    "end_mono": 541238.674124416,
+    "raw_response": "{\"query\": \"clec-2 actin cytoskeleton motility\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9338635166,
+     "load_duration": 5365089666,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 947489750,
+     "eval_count": 13,
+     "eval_duration": 2764356040,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:41.972003Z"
+    },
+    "elapsed_s": 9.342,
+    "query_used": "clec-2 actin cytoskeleton motility",
+    "query_source": "json",
+    "query_arrival_seq": 3244
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "clec-2 actin cytoskeleton motility",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 16747
+      },
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 11649
+      },
+      {
+       "passage_key": "scifact:5700349:0",
+       "score_q": 9106
+      },
+      {
+       "passage_key": "scifact:3506723:0",
+       "score_q": 7340
+      },
+      {
+       "passage_key": "scifact:1539159:0",
+       "score_q": 6727
+      }
+     ],
+     "retrieval_sha256": "2cea541051cd65accb2217af2179bc860fde950805aeb7be3d41fa6029287729"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2cea541051cd65accb2217af2179bc860fde950805aeb7be3d41fa6029287729",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5700349:0",
+      "content_sha256": "4cecdb363df2a44720ccfff869da06d3c97a2dad143b03fe3c9c7595d2729a86",
+      "chars": 1094
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3506723:0",
+      "content_sha256": "daca6b0b3abeb7a5293c8e94ac13538e9bbe907a6ecf2d7a55211f6ebeb24e90",
+      "chars": 635
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:1539159:0",
+      "content_sha256": "960b6635fc3a85bccdd8c18b65aedc8d4aac29d1827b2c8475201c834cab6654",
+      "chars": 537
+     }
+    ],
+    "elapsed_s": 0.0013
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nEvidence passages from your search for \"clec-2 actin cytoskeleton motility\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P3] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nThe morphology of neuronal dendritic spines is a critical indicator of synaptic function. It is regulated by several factors, including the intracellular actin/myosin cytoskeleton and transcellular N-cadherin adhesions. To examine the mechanical relationship between these molecular components, we performed quantitative live-imaging experiments in primary hippocampal neurons. We found that actin turnover and structural motility were lower in dendritic spines than in immature filopodia and increased upon expression of a nonadhesive N-cadherin mutant, resulting in an inverse relationship between spine motility and actin enrichment. Furthermore, the pharmacological stimulation of myosin II induced the rearward motion of actin structures in spines, showing that myosin II exerts tension on the actin network. Strikingly, the formation of stable, spine-like structures enriched in actin was induced at contacts between dendritic filopodia and N-cadherin-coated beads or micropatterns.\n\n[P4] Formins at the Junction.\nThe actin cytoskeleton and adhesion junctions are physically and functionally coupled at the cell-cell interface between epithelial cells. The actin regulatory complex Arp2/3 has an established role in the turnover of junctional actin; however, the role of formins, the largest group of actin regulators, is less clear. Formins dynamically shape the actin cytoskeleton and have various functions within cells. In this review we describe recent progress on how formins regulate actin dynamics at cell-cell contacts and highlight formin functions during polarized protein traffic necessary for epithelialization.\n\n[P5] Lifeact: a versatile marker to visualize F-actin\nLive imaging of the actin cytoskeleton is crucial for the study of many fundamental biological processes, but current approaches to visualize actin have several limitations. Here we describe Lifeact, a 17-amino-acid peptide, which stained filamentous actin (F-actin) structures in eukaryotic cells and tissues. Lifeact did not interfere with actin dynamics in vitro and in vivo and in its chemically modified peptide form allowed visualization of actin dynamics in nontransfectable cells.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0677daab8357a5866685055d32689f781371978d0375ffdff88a13b94a705eb2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871681.9755058,
+      "end_wall": 1792871704.574239,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3243,
+    "start_wall": 1792871681.9755058,
+    "start_mono": 541238.676015291,
+    "end_wall": 1792871704.574239,
+    "end_mono": 541261.274659541,
+    "raw_response": "{\"reasoning\": \"The claim is supported by P1 and P2, which describe how CLEC-2 is involved in DCs' motility and spreading on stromal surfaces.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22593262292,
+     "load_duration": 15234870250,
+     "prompt_eval_count": 1000,
+     "prompt_eval_duration": 3750160374,
+     "eval_count": 62,
+     "eval_duration": 2431244878,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:55:04.57001Z"
+    },
+    "elapsed_s": 22.599,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3243,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:7370282:1",
+     "scifact:7370282:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 126,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e030d9e3a0e2b3f4e6e74b7433cb38869ef6f8ec8ff8911c85f5dc6009ae0492",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871672.6311839,
+      "end_wall": 1792871674.547588,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871672.6311839,
+    "start_mono": 541229.331728541,
+    "end_wall": 1792871674.547588,
+    "end_mono": 541231.248124083,
+    "raw_response": "{\"query\": \"CLEC-2 actin cytoskeleton rearrangement dendritic cell motility\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1913152417,
+     "load_duration": 62715333,
+     "prompt_eval_count": 194,
+     "prompt_eval_duration": 633487125,
+     "eval_count": 17,
+     "eval_duration": 1080373000,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:54:34.546375Z"
+    },
+    "elapsed_s": 1.916,
+    "query_used": "CLEC-2 actin cytoskeleton rearrangement dendritic cell motility",
+    "query_source": "json",
+    "query_arrival_seq": 3241
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "CLEC-2 actin cytoskeleton rearrangement dendritic cell motility",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7370282:1",
+       "score_q": 801
+      },
+      {
+       "passage_key": "scifact:7370282:0",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:5700349:0",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:15491404:0",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:29073751:0",
+       "score_q": 737
+      }
+     ],
+     "retrieval_sha256": "e00af34bd1b7afe4168908e6533dae6809fed6c91066c09ee6df727e4336e1ad"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e00af34bd1b7afe4168908e6533dae6809fed6c91066c09ee6df727e4336e1ad",
+    "query_embedding_sha256": "4bcf87808cac240b26b13be12d3cd7960b03aaef361c8651339b27c7c169ebbc",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7370282:1",
+      "content_sha256": "008eb3316f78215582dc87547339b3fa193a3f709602912fbc88ff274d22e031",
+      "chars": 245
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7370282:0",
+      "content_sha256": "dfeec4db6f93747c16f654875457f09845c23f94db44dc0700004edbc448150d",
+      "chars": 1059
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:5700349:0",
+      "content_sha256": "4cecdb363df2a44720ccfff869da06d3c97a2dad143b03fe3c9c7595d2729a86",
+      "chars": 1094
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:15491404:0",
+      "content_sha256": "e50151584703fea249ea05e06f76d9d6688bc3f0b409473870d86023412578d7",
+      "chars": 1105
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29073751:0",
+      "content_sha256": "f1d694093f489a0b96b0b9f70c0f300d76258ea3c6a51dd8c1d01dc2153ba0df",
+      "chars": 838
+     }
+    ],
+    "elapsed_s": 4.3371
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to promote efficient motility along stromal surfaces.\n\nEvidence passages from your search for \"CLEC-2 actin cytoskeleton rearrangement dendritic cell motility\":\n<<<PASSAGES\n[P1] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nThus, activation of CLEC-2 by PDPN rearranges the actin cytoskeleton in DCs to promote efficient motility along stromal surfaces.\n\n[P2] Podoplanin-Rich Stromal Networks Induce Dendritic Cell Motility via Activation of the C-type Lectin Receptor CLEC-2\nTo initiate adaptive immunity, dendritic cells (DCs) move from parenchymal tissues to lymphoid organs by migrating along stromal scaffolds that display the glycoprotein podoplanin (PDPN). PDPN is expressed by lymphatic endothelial and fibroblastic reticular cells and promotes blood-lymph separation during development by activating the C-type lectin receptor, CLEC-2, on platelets. Here, we describe a role for CLEC-2 in the morphodynamic behavior and motility of DCs. CLEC-2 deficiency in DCs impaired their entry into lymphatics and trafficking to and within lymph nodes, thereby reducing T cell priming. CLEC-2 engagement of PDPN was necessary for DCs to spread and migrate along stromal surfaces and sufficient to induce membrane protrusions. CLEC-2 activation triggered cell spreading via downregulation of RhoA activity and myosin light-chain phosphorylation and triggered F-actin-rich protrusions via Vav signaling and Rac1 activation.\n\n[P3] Mechanical coupling between transsynaptic N-cadherin adhesions and actin flow stabilizes dendritic spines\nThe morphology of neuronal dendritic spines is a critical indicator of synaptic function. It is regulated by several factors, including the intracellular actin/myosin cytoskeleton and transcellular N-cadherin adhesions. To examine the mechanical relationship between these molecular components, we performed quantitative live-imaging experiments in primary hippocampal neurons. We found that actin turnover and structural motility were lower in dendritic spines than in immature filopodia and increased upon expression of a nonadhesive N-cadherin mutant, resulting in an inverse relationship between spine motility and actin enrichment. Furthermore, the pharmacological stimulation of myosin II induced the rearward motion of actin structures in spines, showing that myosin II exerts tension on the actin network. Strikingly, the formation of stable, spine-like structures enriched in actin was induced at contacts between dendritic filopodia and N-cadherin-coated beads or micropatterns.\n\n[P4] Rapid and persistent modulation of actin dynamics regulates postsynaptic reorganization underlying bidirectional plasticity\nThe synapse is a highly organized cellular specialization whose structure and composition are reorganized, both positively and negatively, depending on the strength of input signals. The mechanisms orchestrating these changes are not well understood. A plausible locus for the reorganization of synapse components and structure is actin, because it serves as both cytoskeleton and scaffold for synapses and exists in a dynamic equilibrium between F-actin and G-actin that is modulated bidirectionally by cellular signaling. Using a new FRET-based imaging technique to monitor F-actin/G-actin equilibrium, we show here that tetanic stimulation causes a rapid, persistent shift of actin equilibrium toward F-actin in the dendritic spines of rat hippocampal neurons. This enlarges the spines and increases postsynaptic binding capacity. In contrast, prolonged low-frequency stimulation shifts the equilibrium toward G-actin, resulting in a loss of postsynaptic actin and of structure.\n\n[P5] Redox-dependent downregulation of Rho by Rac\nRac and Rho GTPases function as critical regulators of actin cytoskeleton remodelling during cell spreading and migration. Here we demonstrate that Rac-mediated reactive oxygen species (ROS) production results in the downregulation of Rho activity. The redox-dependent decrease in Rho activity is required for Rac-induced formation of membrane ruffles and integrin-mediated cell spreading. The pathway linking generation of ROS to downregulation of Rho involves inhibition of the low-molecular-weight protein tyrosine phosphatase (LMW-PTP) and then an increase in the tyrosine phosphorylation and activation of its target, p190Rho-GAP. Our findings define a novel mechanism for the coupling of changes in cellular redox state to the control of actin cytoskeleton rearrangements by Rho GTPases.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "0ed3efc658b577ea2d64f7aa6acfeb388db7ee8781389c6dca63fe5bbefad98a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871678.885229,
+      "end_wall": 1792871707.4910998,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3244,
+    "start_wall": 1792871678.885229,
+    "start_mono": 541235.585750333,
+    "end_wall": 1792871707.4910998,
+    "end_mono": 541264.191511666,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from passages P1 and P2 directly supports the claim by indicating that activation of CLEC-2 by podoplanin rearranges the actin cytoskeleton in dendritic cells (DCs), promoting their motility along stromal surfaces. Both passages highlight CLEC-2's role in facilitating cell spreading and migration via actin cytoskeleton changes necessary for efficient movement along structured environments.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28601401500,
+     "load_duration": 16269421708,
+     "prompt_eval_count": 1163,
+     "prompt_eval_duration": 6111557958,
+     "eval_count": 119,
+     "eval_duration": 5326002038,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:55:07.487733Z"
+    },
+    "elapsed_s": 28.606,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3244,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:7370282:1",
+     "scifact:7370282:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 405,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "f6a871ae7b466fcff4d2be8809b49b3d3a641e9fe01b6d8aa13ae09d6a712c1f",
+  "granite3.3:2b": "042f58691dfccd287f9d4ce076717c591d0b76f0ccb08f5f923df73258457465",
+  "olmo2:7b": "dc6b0253101eba796b11236de14d7318abb63db8bc15bdfffc6597c0c9d00e97",
+  "nemotron-mini:4b": "2cea541051cd65accb2217af2179bc860fde950805aeb7be3d41fa6029287729",
+  "exaone3.5:7.8b": "e00af34bd1b7afe4168908e6533dae6809fed6c91066c09ee6df727e4336e1ad"
+ },
+ "item_start_wall": 1792871672.630958,
+ "item_wall_s": 34.86,
+ "ollama_ps_samples": [
+  [
+   1792871672.631,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871674.643,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871676.654,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871678.657,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871680.658,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871682.662,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871684.671,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871686.679,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871688.69,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871690.693,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871692.703,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871694.715,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871696.721,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871698.733,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871700.742,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871702.749,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871704.758,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792871706.761,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

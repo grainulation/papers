@@ -1,0 +1,1211 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever208133",
+ "order": 100,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever208133",
+  "order": 100,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Easy A is an American teen comedy film."
+ },
+ "item_view_sha256": "39a2546407cebd197b7766f5454090efaed7b0ded295138ecb164532ff737071",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:2.4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Easy A is an American teen comedy film.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "686a2f1ec87ea65a06251e425a4c3f0871ab1a25636e587e5870fa72943a39ac",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836411.407671,
+      "end_wall": 1792836415.17931,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836411.407671,
+    "start_mono": 505968.261888333,
+    "end_wall": 1792836415.17931,
+    "end_mono": 505972.033485708,
+    "raw_response": "{\"query\": \"easy a american teen comedy film\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3769566125,
+     "load_duration": 2653327875,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 648247958,
+     "eval_count": 13,
+     "eval_duration": 331062084,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:55.178195Z"
+    },
+    "elapsed_s": 3.772,
+    "query_used": "easy a american teen comedy film",
+    "query_source": "json",
+    "query_arrival_seq": 502
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "easy a american teen comedy film",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+       "score_q": 12584
+      },
+      {
+       "passage_key": "fever17:Easy_A:0",
+       "score_q": 12070
+      },
+      {
+       "passage_key": "fever17:Teen_Wolf_Too:0",
+       "score_q": 11564
+      },
+      {
+       "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+       "score_q": 11450
+      },
+      {
+       "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+       "score_q": 11314
+      }
+     ],
+     "retrieval_sha256": "7528f6995b600d65d87d0c27899d674cbe4608ab04ca288414aec0b70c2bc441"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7528f6995b600d65d87d0c27899d674cbe4608ab04ca288414aec0b70c2bc441",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "4670197c94bdc3c359bc1ac1e17cf6e47dc026ff7f7ef71236117170dee5a354",
+      "chars": 153
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Easy_A:0",
+      "content_sha256": "6f20fbd230770545bb14de9f883c3182a32414df70d336363aae6c910e6bdd57",
+      "chars": 553
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Teen_Wolf_Too:0",
+      "content_sha256": "c8452eff03cf9d06f0c60002e48fe7c7b656e9f84f1e7b1b9e056031ab21198c",
+      "chars": 242
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+      "content_sha256": "bbfd749f279895c32d2ecbdf8ef817cba1ca07c9e68c18e323845f85a2a11675",
+      "chars": 228
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+      "content_sha256": "9dae47a13e33ce59c6c0c2b3abfc5bbd694c6ced5bffd403b6269bc3a85e524a",
+      "chars": 117
+     }
+    ],
+    "elapsed_s": 0.0418
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Easy A is an American teen comedy film.\n\nEvidence passages from your search for \"easy a american teen comedy film\":\n<<<PASSAGES\n[P1] Teen Wolf (disambiguation)\nTeen Wolf is a 1985 American comedy film . Teen Wolf may also refer to : Teen Wolf Too is a 1987 sequel to the original film .\n\n[P2] Easy A\nEasy A ( stylized as easy A ) is a 2010 American teen comedy film directed by Will Gluck , written by Bert V. Royal and starring Emma Stone , Stanley Tucci , Patricia Clarkson , Thomas Haden Church , Dan Byrd , Amanda Bynes , Penn Badgley , Cam Gigandet , Lisa Kudrow and Aly Michalka . The screenplay was partially inspired by the novel The Scarlet Letter by Nathaniel Hawthorne . Shot at Screen Gems studios and in Ojai , California , the film was released on September 17 , 2010 , received positive reviews and grossed $ 75 million worldwide .\n\n[P3] Teen Wolf Too\nTeen Wolf Too is a 1987 American fantasy comedy film and is the sequel to Teen Wolf . The film , directed by Christopher Leitch and written by R. Timothy Kring , stars Jason Bateman , James Hampton , John Astin , and Kim Darby .\n\n[P4] Free and Easy (1930 film)\nFor the 1941 MGM film of the same name , see Free and Easy ( 1941 film ) . Free and Easy is a 1930 American Pre-Code comedy film starring Buster Keaton . It was Keaton 's first starring talkie vehicle .\n\n[P5] Loser (film)\nLoser is a 2000 American teen romantic comedy film starring Jason Biggs , Mena Suvari and Greg Kinnear .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f624fe58961889bbbb99ff90271569d1314618ce18d1a561e5018abbafbd15df",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836415.221432,
+      "end_wall": 1792836420.2883909,
+      "error": null
+     }
+    ],
+    "arrival_seq": 500,
+    "start_wall": 1792836415.221432,
+    "start_mono": 505972.075609041,
+    "end_wall": 1792836420.2883909,
+    "end_mono": 505977.142514875,
+    "raw_response": "{\"reasoning\": \"Easy A (2010) is an American teen comedy film directed by Will Gluck and starring Emma Stone, Stanley Tucci, and others. It received positive reviews and grossed $75 million worldwide. It was inspired by Nathaniel Hawthorne's novel The Scarlet Letter.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5064936083,
+     "load_duration": 65982167,
+     "prompt_eval_count": 690,
+     "prompt_eval_duration": 1154632624,
+     "eval_count": 90,
+     "eval_duration": 2880899755,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:07:00.287322Z"
+    },
+    "elapsed_s": 5.067,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 500,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Easy_A:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 251,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Easy A is an American teen comedy film.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "686a2f1ec87ea65a06251e425a4c3f0871ab1a25636e587e5870fa72943a39ac",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836411.406591,
+      "end_wall": 1792836412.59443,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836411.406591,
+    "start_mono": 505968.260807916,
+    "end_wall": 1792836412.59443,
+    "end_mono": 505969.448633083,
+    "raw_response": "{\"query\": \"Easy A film genre\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1184945458,
+     "load_duration": 55733292,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 422433458,
+     "eval_count": 10,
+     "eval_duration": 613905834,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:52.592904Z"
+    },
+    "elapsed_s": 1.188,
+    "query_used": "Easy A film genre",
+    "query_source": "json",
+    "query_arrival_seq": 501
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Easy A film genre",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Take_It_Easy_-LRB-2011_film-RRB-:0",
+       "score_q": 10092
+      },
+      {
+       "passage_key": "fever17:Il_Sorpasso:0",
+       "score_q": 8291
+      },
+      {
+       "passage_key": "fever17:Dead_Easy:0",
+       "score_q": 8187
+      },
+      {
+       "passage_key": "fever17:Easy_Come,_Easy_Go_-LRB-1947_film-RRB-:0",
+       "score_q": 8046
+      },
+      {
+       "passage_key": "fever17:Easy_Virtue:0",
+       "score_q": 7824
+      }
+     ],
+     "retrieval_sha256": "fe27cdc7b31b6f872643c661b3f69e57c19a477c9f4302a0b9614da6c47f586c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "fe27cdc7b31b6f872643c661b3f69e57c19a477c9f4302a0b9614da6c47f586c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Take_It_Easy_-LRB-2011_film-RRB-:0",
+      "content_sha256": "e0a33ab615b39e6cbda082a6e442d868b5ef5d61907a5114390434e9bae66d0d",
+      "chars": 280
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Il_Sorpasso:0",
+      "content_sha256": "39bc79240ed0eb1171c4b129c8971ba4b8e5f065d7c22007fbb9307dbdd44a8b",
+      "chars": 344
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dead_Easy:0",
+      "content_sha256": "ccbbb92acd410af7a882a99384aacc752b52c0ba0bc280c99b124307d05269fe",
+      "chars": 132
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Easy_Come,_Easy_Go_-LRB-1947_film-RRB-:0",
+      "content_sha256": "dce267571e8713788b14f6727a084e94bb7ab1f40c9931d35d034c3d8c3aeef2",
+      "chars": 91
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Easy_Virtue:0",
+      "content_sha256": "60bc81f4193e93cd9fc3c29ef39159df6838db1fe2143e01cf7498a850e3a128",
+      "chars": 274
+     }
+    ],
+    "elapsed_s": 0.0385
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Easy A is an American teen comedy film.\n\nEvidence passages from your search for \"Easy A film genre\":\n<<<PASSAGES\n[P1] Take It Easy (2011 film)\nTake It Easy is a 2011 Kannada film in the comedy genre starring Anant Nag , Shashi Kumar and Sanjana in the lead roles . The film has been directed and written by Anantha Padmanabha and produced by Nargis Babu . The film is released on 25 February 2011 .\n\n[P2] Il Sorpasso\nIl Sorpasso ( Italian for `` the overtaking '' ; The Easy Life ) is a 1962 Italian cult movie comedy film co-written and directed by Dino Risi and starring Vittorio Gassman , Jean-Louis Trintignant and Catherine Spaak . It is considered Risi 's masterpiece and one of the more famous examples of Commedia all ` italiana film genre .\n\n[P3] Dead Easy\nDead Easy may refer to : Dead Easy ( 1970 film ) , a 1970 Australian film Dead Easy ( 1982 film ) , a 1982 Australian film\n\n[P4] Easy Come, Easy Go (1947 film)\nEasy Come , Easy Go is a 1947 film directed by John Farrow .\n\n[P5] Easy Virtue\nEasy Virtue may refer to : Easy Virtue ( play ) , a play by Noël Coward Easy Virtue ( 1928 film ) , a silent film adaptation of the play directed by Alfred Hitchcock Easy Virtue ( 2008 film ) , an adaptation of the play co-written and directed by Stephan Elliott\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "66ce05bd33366e1e99e8621a16e01b47c088411b69156275f84d29a6e64f4e7d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836412.633226,
+      "end_wall": 1792836427.615784,
+      "error": null
+     }
+    ],
+    "arrival_seq": 501,
+    "start_wall": 1792836412.633226,
+    "start_mono": 505969.487430333,
+    "end_wall": 1792836427.615784,
+    "end_mono": 505984.469831208,
+    "raw_response": "{\"reasoning\": \"The claim states that Easy A is an American teen comedy film. The evidence passages provided mention films with different genres like Kannada comedy ('Take It Easy'), Italian comedy ('Il Sorpasso'), Australian films ('Dead Easy' 1970 and 1982), and adaptations of a Noël Coward play ('Easy Virtue' 1928 and 2008). None of these films or their genres match the claim about Easy A being an American teen comedy film. From my own knowledge, Easy A is indeed an American teen comedy film released in 2010 and starring Emma Stone. Therefore, the claim is supported, but no evidence from the provided texts\" , \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14979409875,
+     "load_duration": 106220583,
+     "prompt_eval_count": 570,
+     "prompt_eval_duration": 1909519792,
+     "eval_count": 159,
+     "eval_duration": 11529007959,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:07:07.613897Z"
+    },
+    "elapsed_s": 14.982,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 501,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Easy A is an American teen comedy film.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "686a2f1ec87ea65a06251e425a4c3f0871ab1a25636e587e5870fa72943a39ac",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836411.4070148,
+      "end_wall": 1792836412.584448,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836411.4070148,
+    "start_mono": 505968.261231833,
+    "end_wall": 1792836412.584448,
+    "end_mono": 505969.438651875,
+    "raw_response": "{\"query\": \"Easy A American teen comedy film\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1175090500,
+     "load_duration": 29932292,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 440414959,
+     "eval_count": 14,
+     "eval_duration": 638738375,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:52.583449Z"
+    },
+    "elapsed_s": 1.177,
+    "query_used": "Easy A American teen comedy film",
+    "query_source": "json",
+    "query_arrival_seq": 500
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Easy A American teen comedy film",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+       "score_q": 12584
+      },
+      {
+       "passage_key": "fever17:Easy_A:0",
+       "score_q": 12070
+      },
+      {
+       "passage_key": "fever17:Teen_Wolf_Too:0",
+       "score_q": 11564
+      },
+      {
+       "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+       "score_q": 11450
+      },
+      {
+       "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+       "score_q": 11314
+      }
+     ],
+     "retrieval_sha256": "9bd95a4edee73d5b43c48046cf2c56ee2b1f1ac7d1ce218b0bf48bb83fc95830"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9bd95a4edee73d5b43c48046cf2c56ee2b1f1ac7d1ce218b0bf48bb83fc95830",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "4670197c94bdc3c359bc1ac1e17cf6e47dc026ff7f7ef71236117170dee5a354",
+      "chars": 153
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Easy_A:0",
+      "content_sha256": "6f20fbd230770545bb14de9f883c3182a32414df70d336363aae6c910e6bdd57",
+      "chars": 553
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Teen_Wolf_Too:0",
+      "content_sha256": "c8452eff03cf9d06f0c60002e48fe7c7b656e9f84f1e7b1b9e056031ab21198c",
+      "chars": 242
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+      "content_sha256": "bbfd749f279895c32d2ecbdf8ef817cba1ca07c9e68c18e323845f85a2a11675",
+      "chars": 228
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+      "content_sha256": "9dae47a13e33ce59c6c0c2b3abfc5bbd694c6ced5bffd403b6269bc3a85e524a",
+      "chars": 117
+     }
+    ],
+    "elapsed_s": 0.0267
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Easy A is an American teen comedy film.\n\nEvidence passages from your search for \"Easy A American teen comedy film\":\n<<<PASSAGES\n[P1] Teen Wolf (disambiguation)\nTeen Wolf is a 1985 American comedy film . Teen Wolf may also refer to : Teen Wolf Too is a 1987 sequel to the original film .\n\n[P2] Easy A\nEasy A ( stylized as easy A ) is a 2010 American teen comedy film directed by Will Gluck , written by Bert V. Royal and starring Emma Stone , Stanley Tucci , Patricia Clarkson , Thomas Haden Church , Dan Byrd , Amanda Bynes , Penn Badgley , Cam Gigandet , Lisa Kudrow and Aly Michalka . The screenplay was partially inspired by the novel The Scarlet Letter by Nathaniel Hawthorne . Shot at Screen Gems studios and in Ojai , California , the film was released on September 17 , 2010 , received positive reviews and grossed $ 75 million worldwide .\n\n[P3] Teen Wolf Too\nTeen Wolf Too is a 1987 American fantasy comedy film and is the sequel to Teen Wolf . The film , directed by Christopher Leitch and written by R. Timothy Kring , stars Jason Bateman , James Hampton , John Astin , and Kim Darby .\n\n[P4] Free and Easy (1930 film)\nFor the 1941 MGM film of the same name , see Free and Easy ( 1941 film ) . Free and Easy is a 1930 American Pre-Code comedy film starring Buster Keaton . It was Keaton 's first starring talkie vehicle .\n\n[P5] Loser (film)\nLoser is a 2000 American teen romantic comedy film starring Jason Biggs , Mena Suvari and Greg Kinnear .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "562204116cdfddd201f13a3314e2d7dc957568b5c39510d0bb01f1854beab6fa",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836412.61136,
+      "end_wall": 1792836427.834257,
+      "error": null
+     }
+    ],
+    "arrival_seq": 502,
+    "start_wall": 1792836412.61136,
+    "start_mono": 505969.465563833,
+    "end_wall": 1792836427.834257,
+    "end_mono": 505984.688303083,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that 'Easy A' is an American teen comedy film. The evidence passages confirm this as Easy A is explicitly identified as a 2010 American teen comedy film in [P2].\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15218233708,
+     "load_duration": 8814913666,
+     "prompt_eval_count": 732,
+     "prompt_eval_duration": 1195687625,
+     "eval_count": 81,
+     "eval_duration": 4869704253,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:07:07.83263Z"
+    },
+    "elapsed_s": 15.223,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 502,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Easy_A:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 178,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Easy A is an American teen comedy film.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "686a2f1ec87ea65a06251e425a4c3f0871ab1a25636e587e5870fa72943a39ac",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836411.4073339,
+      "end_wall": 1792836417.5669708,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836411.4073339,
+    "start_mono": 505968.261551416,
+    "end_wall": 1792836417.5669708,
+    "end_mono": 505974.421122625,
+    "raw_response": "{\"query\": \"title:Easy A is an American teen comedy film\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6157533833,
+     "load_duration": 4195823291,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 754298584,
+     "eval_count": 16,
+     "eval_duration": 858091332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:57.565797Z"
+    },
+    "elapsed_s": 6.16,
+    "query_used": "title:Easy A is an American teen comedy film",
+    "query_source": "json",
+    "query_arrival_seq": 503
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "title:Easy A is an American teen comedy film",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+       "score_q": 12584
+      },
+      {
+       "passage_key": "fever17:Easy_A:0",
+       "score_q": 12070
+      },
+      {
+       "passage_key": "fever17:Meredith_Salenger:0",
+       "score_q": 11706
+      },
+      {
+       "passage_key": "fever17:Teen_Wolf_Too:0",
+       "score_q": 11564
+      },
+      {
+       "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+       "score_q": 11450
+      }
+     ],
+     "retrieval_sha256": "05871d8baa8d4935ab0333b5f803bb75916bc9106803f3759d507d317d793a16"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "05871d8baa8d4935ab0333b5f803bb75916bc9106803f3759d507d317d793a16",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "4670197c94bdc3c359bc1ac1e17cf6e47dc026ff7f7ef71236117170dee5a354",
+      "chars": 153
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Easy_A:0",
+      "content_sha256": "6f20fbd230770545bb14de9f883c3182a32414df70d336363aae6c910e6bdd57",
+      "chars": 553
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Meredith_Salenger:0",
+      "content_sha256": "c27b37f06b526c0a15f6e9a7fe76607b2fbd9073a945daf0d1f45514c5035717",
+      "chars": 220
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Teen_Wolf_Too:0",
+      "content_sha256": "c8452eff03cf9d06f0c60002e48fe7c7b656e9f84f1e7b1b9e056031ab21198c",
+      "chars": 242
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+      "content_sha256": "bbfd749f279895c32d2ecbdf8ef817cba1ca07c9e68c18e323845f85a2a11675",
+      "chars": 228
+     }
+    ],
+    "elapsed_s": 0.0282
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Easy A is an American teen comedy film.\n\nEvidence passages from your search for \"title:Easy A is an American teen comedy film\":\n<<<PASSAGES\n[P1] Teen Wolf (disambiguation)\nTeen Wolf is a 1985 American comedy film . Teen Wolf may also refer to : Teen Wolf Too is a 1987 sequel to the original film .\n\n[P2] Easy A\nEasy A ( stylized as easy A ) is a 2010 American teen comedy film directed by Will Gluck , written by Bert V. Royal and starring Emma Stone , Stanley Tucci , Patricia Clarkson , Thomas Haden Church , Dan Byrd , Amanda Bynes , Penn Badgley , Cam Gigandet , Lisa Kudrow and Aly Michalka . The screenplay was partially inspired by the novel The Scarlet Letter by Nathaniel Hawthorne . Shot at Screen Gems studios and in Ojai , California , the film was released on September 17 , 2010 , received positive reviews and grossed $ 75 million worldwide .\n\n[P3] Meredith Salenger\nMeredith Dawn Salenger ( born March 14 , 1970 ) is an American actress . She is best known for her title role in the 1985 film The Journey of Natty Gann and the 1989 teen comedy , Dream a Little Dream .\n\n[P4] Teen Wolf Too\nTeen Wolf Too is a 1987 American fantasy comedy film and is the sequel to Teen Wolf . The film , directed by Christopher Leitch and written by R. Timothy Kring , stars Jason Bateman , James Hampton , John Astin , and Kim Darby .\n\n[P5] Free and Easy (1930 film)\nFor the 1941 MGM film of the same name , see Free and Easy ( 1941 film ) . Free and Easy is a 1930 American Pre-Code comedy film starring Buster Keaton . It was Keaton 's first starring talkie vehicle .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "70c8f7183f068790796a292e68d6be873f97f85dc6f9191ef3a355f1116e7c71",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836417.5953898,
+      "end_wall": 1792836427.893882,
+      "error": null
+     }
+    ],
+    "arrival_seq": 503,
+    "start_wall": 1792836417.5953898,
+    "start_mono": 505974.449542375,
+    "end_wall": 1792836427.893882,
+    "end_mono": 505984.747926791,
+    "raw_response": "{\n  \"reasoning\": \"The claim is supported by passage P2, which states that Easy A is an American teen comedy film.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10294964667,
+     "load_duration": 5095918667,
+     "prompt_eval_count": 673,
+     "prompt_eval_duration": 1263880875,
+     "eval_count": 60,
+     "eval_duration": 2835534837,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:07:07.891488Z"
+    },
+    "elapsed_s": 10.298,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 503,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Easy_A:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 95,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Easy A is an American teen comedy film.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "686a2f1ec87ea65a06251e425a4c3f0871ab1a25636e587e5870fa72943a39ac",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836411.406776,
+      "end_wall": 1792836412.220094,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836412.220167,
+      "end_wall": 1792836418.8800771,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836418.880151,
+      "end_wall": 1792836428.901781,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792836411.406776,
+    "start_mono": null,
+    "end_wall": 1792836428.901781,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Easy A is an American teen comedy film.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 504
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Easy A is an American teen comedy film.",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+       "score_q": 12584
+      },
+      {
+       "passage_key": "fever17:Easy_A:0",
+       "score_q": 12070
+      },
+      {
+       "passage_key": "fever17:Teen_Wolf_Too:0",
+       "score_q": 11564
+      },
+      {
+       "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+       "score_q": 11450
+      },
+      {
+       "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+       "score_q": 11314
+      }
+     ],
+     "retrieval_sha256": "e0f7b04e498daa6a89d446ba4e923d48c0fa0fba41ef0cbaea254ebe2d019626"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e0f7b04e498daa6a89d446ba4e923d48c0fa0fba41ef0cbaea254ebe2d019626",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Teen_Wolf_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "4670197c94bdc3c359bc1ac1e17cf6e47dc026ff7f7ef71236117170dee5a354",
+      "chars": 153
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Easy_A:0",
+      "content_sha256": "6f20fbd230770545bb14de9f883c3182a32414df70d336363aae6c910e6bdd57",
+      "chars": 553
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Teen_Wolf_Too:0",
+      "content_sha256": "c8452eff03cf9d06f0c60002e48fe7c7b656e9f84f1e7b1b9e056031ab21198c",
+      "chars": 242
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Free_and_Easy_-LRB-1930_film-RRB-:0",
+      "content_sha256": "bbfd749f279895c32d2ecbdf8ef817cba1ca07c9e68c18e323845f85a2a11675",
+      "chars": 228
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Loser_-LRB-film-RRB-:0",
+      "content_sha256": "9dae47a13e33ce59c6c0c2b3abfc5bbd694c6ced5bffd403b6269bc3a85e524a",
+      "chars": 117
+     }
+    ],
+    "elapsed_s": 0.0378
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Easy A is an American teen comedy film.\n\nEvidence passages from your search for \"Easy A is an American teen comedy film.\":\n<<<PASSAGES\n[P1] Teen Wolf (disambiguation)\nTeen Wolf is a 1985 American comedy film . Teen Wolf may also refer to : Teen Wolf Too is a 1987 sequel to the original film .\n\n[P2] Easy A\nEasy A ( stylized as easy A ) is a 2010 American teen comedy film directed by Will Gluck , written by Bert V. Royal and starring Emma Stone , Stanley Tucci , Patricia Clarkson , Thomas Haden Church , Dan Byrd , Amanda Bynes , Penn Badgley , Cam Gigandet , Lisa Kudrow and Aly Michalka . The screenplay was partially inspired by the novel The Scarlet Letter by Nathaniel Hawthorne . Shot at Screen Gems studios and in Ojai , California , the film was released on September 17 , 2010 , received positive reviews and grossed $ 75 million worldwide .\n\n[P3] Teen Wolf Too\nTeen Wolf Too is a 1987 American fantasy comedy film and is the sequel to Teen Wolf . The film , directed by Christopher Leitch and written by R. Timothy Kring , stars Jason Bateman , James Hampton , John Astin , and Kim Darby .\n\n[P4] Free and Easy (1930 film)\nFor the 1941 MGM film of the same name , see Free and Easy ( 1941 film ) . Free and Easy is a 1930 American Pre-Code comedy film starring Buster Keaton . It was Keaton 's first starring talkie vehicle .\n\n[P5] Loser (film)\nLoser is a 2000 American teen romantic comedy film starring Jason Biggs , Mena Suvari and Greg Kinnear .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9d045aa93c8ae0ad7adedfdbb00d6fb431c0c512c4f3a15cc0df115156012ecd",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836428.939976,
+      "end_wall": 1792836430.313659,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836430.313727,
+      "end_wall": 1792836431.677311,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836431.677469,
+      "end_wall": 1792836433.037538,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 504,
+    "start_wall": 1792836428.939976,
+    "start_mono": null,
+    "end_wall": 1792836433.037538,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 504,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "7528f6995b600d65d87d0c27899d674cbe4608ab04ca288414aec0b70c2bc441",
+  "olmo2:7b": "fe27cdc7b31b6f872643c661b3f69e57c19a477c9f4302a0b9614da6c47f586c",
+  "granite3.3:2b": "9bd95a4edee73d5b43c48046cf2c56ee2b1f1ac7d1ce218b0bf48bb83fc95830",
+  "nemotron-mini:4b": "05871d8baa8d4935ab0333b5f803bb75916bc9106803f3759d507d317d793a16",
+  "exaone3.5:2.4b": "e0f7b04e498daa6a89d446ba4e923d48c0fa0fba41ef0cbaea254ebe2d019626"
+ },
+ "item_start_wall": 1792836411.406156,
+ "item_wall_s": 21.631,
+ "ollama_ps_samples": [
+  [
+   1792836411.406,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836413.418,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792836415.421,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836417.43,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836419.442,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836421.451,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836423.459,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836425.469,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836427.473,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836429.476,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836431.477,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

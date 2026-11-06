@@ -1,0 +1,1260 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever49217",
+ "order": 20,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever49217",
+  "order": 20,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Kellyanne Conway has used a phrase."
+ },
+ "item_view_sha256": "cd0ee94884e1807d506472199a680d5e1e62d4212c37320083d72a887b709775",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Kellyanne Conway has used a phrase.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "51cb87e171e9277043b68faa3e616ebe679a97cb56bb01322c59a662e4ade0dd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853395.779496,
+      "end_wall": 1792853397.64148,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853395.779496,
+    "start_mono": 522952.48040875,
+    "end_wall": 1792853397.64148,
+    "end_mono": 522954.342385208,
+    "raw_response": "{\"query\": \"Kellyanne Conway 'alternative facts'\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1859310625,
+     "load_duration": 65994375,
+     "prompt_eval_count": 159,
+     "prompt_eval_duration": 661882875,
+     "eval_count": 13,
+     "eval_duration": 1025355499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:49:57.640468Z"
+    },
+    "elapsed_s": 1.862,
+    "query_used": "Kellyanne Conway 'alternative facts'",
+    "query_source": "json",
+    "query_arrival_seq": 100
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Kellyanne Conway 'alternative facts'",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Alternative_facts:0",
+       "score_q": 18589
+      },
+      {
+       "passage_key": "fever17:Alternative_facts:1",
+       "score_q": 14756
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:1",
+       "score_q": 14286
+      },
+      {
+       "passage_key": "fever17:Wikitribune:0",
+       "score_q": 12319
+      },
+      {
+       "passage_key": "fever17:Counselor_to_the_President:0",
+       "score_q": 12283
+      }
+     ],
+     "retrieval_sha256": "4697dab923c4e518cd6e6b1eb8a9afb352ecec9907bad41a1a78a2bfa06c767e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4697dab923c4e518cd6e6b1eb8a9afb352ecec9907bad41a1a78a2bfa06c767e",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Alternative_facts:0",
+      "content_sha256": "9c140c305c48b8c50a23512edc159a3b7d97d349004c354a97f07e4626839b7e",
+      "chars": 931
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Alternative_facts:1",
+      "content_sha256": "cee37ad0dbbe4e0ed7bd4281e0328695612e09c830b3d445dc824047de0f5e82",
+      "chars": 370
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Kellyanne_Conway:1",
+      "content_sha256": "aa7321f759ffd6243a450607d894af2362ecb79ceeb88196d1ccc8afec50a219",
+      "chars": 768
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Wikitribune:0",
+      "content_sha256": "83890261cc0f746b6f7c3c315a91b913010a6f244346943ae3f489d659e2d0bc",
+      "chars": 985
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Counselor_to_the_President:0",
+      "content_sha256": "333cd8c3de0e7162f1820fb72dcd69f81c932a82024b588e9a1d3e3eef93d69e",
+      "chars": 244
+     }
+    ],
+    "elapsed_s": 0.0225
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Kellyanne Conway has used a phrase.\n\nEvidence passages from your search for \"Kellyanne Conway 'alternative facts'\":\n<<<PASSAGES\n[P1] Alternative facts\n`` Alternative facts '' is a phrase used by U.S. Counselor to the President Kellyanne Conway during a Meet the Press interview on January 22 , 2017 , in which she defended White House Press Secretary Sean Spicer 's false statement about the attendance numbers of Donald Trump 's inauguration as President of the United States . When pressed during the interview with Chuck Todd to explain why Spicer `` utter [ ed ] a provable falsehood '' , Conway stated that Spicer was giving `` alternative facts '' . Todd responded , `` Look , alternative facts are not facts . They 're falsehoods . '' Conway 's use of the phrase `` alternative facts '' to describe demonstrable falsehoods was widely mocked on social media and sharply criticized by journalists and media organizations , including Dan Rather , Jill Abramson , and the Public Relations Society of America . The phrase was extensively described as Orwellian .\n\n[P2] Alternative facts\nWithin four days from the interview , sales of the book 1984 had increased by 9,500 % , which The New York Times and others attributed to Conway 's use of the phrase , making it the number-one bestseller on Amazon.com . Conway later defended her choice of words , defining `` alternative facts '' as `` additional facts and alternative information '' .\n\n[P3] Kellyanne Conway\nSince Trump 's inauguration , Conway has been embroiled in a series of controversies , including using the phrase `` alternative facts '' , making reference to a `` Bowling Green massacre '' that never occurred , claiming Michael Flynn had the full confidence of the president hours before he was dismissed , and publicly endorsing commercial products associated with the president 's daughter Ivanka Trump . As a result , a number of media outlets have called her credibility into question , with some refusing her requests for one-on-one interviews . According to Joe Scarborough and Mika Brzezinski , she is privately `` disgusted '' by her job and Donald Trump , and her words do not reflect her actual beliefs - though Conway disputed the claim .\n\n[P4] Wikitribune\nWikitribune ( stylized as WikiTRIBUNE ) is a planned news website in which professional journalists research and report news stories alongside volunteers who curate articles by proofreading , fact-checking , suggesting changes and adding sources . Jimmy Wales , co-founder of Wikipedia , announced the site in April 2017 as a for-profit site , not affiliated with Wikipedia or its support organisation , the Wikimedia Foundation . `` This will be the first time that professional journalists and citizen journalists will work side-by-side as equals writing stories as they happen , editing them live as they develop and at all times backed by a community checking and rechecking all facts '' , said Wales . Wales intends for the project to help fight fake news online ; he was reportedly motivated to address this problem after hearing the Counselor to the U.S. president , Kellyanne Conway , use the expression `` alternative facts '' during an interview in January 2017 .\n\n[P5] Counselor to the President\nCounselor to the President is a title used by high-ranking assistants to the President of the United States and senior members of the Executive Office of the President . The current office-holder is Kellyanne Conway .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "aab8b2025a1d6f90d16c5b1108b64bcc95a5847bf2279b706df0f6425ee4ec4c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853397.6642969,
+      "end_wall": 1792853412.930494,
+      "error": null
+     }
+    ],
+    "arrival_seq": 100,
+    "start_wall": 1792853397.6642969,
+    "start_mono": 522954.365203333,
+    "end_wall": 1792853412.930494,
+    "end_mono": 522969.631342875,
+    "raw_response": "{\"reasoning\": \"Kellyanne Conway used the term 'alternative facts' to defend Sean Spicer's false statement about inauguration attendance. This term has been widely mocked and criticized by journalists and media organizations. Conway's use of this term and her subsequent involvement in other controversies suggest she has been actively involved in presenting information that has been questioned for accuracy.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15262714250,
+     "load_duration": 46934375,
+     "prompt_eval_count": 910,
+     "prompt_eval_duration": 5968678416,
+     "eval_count": 91,
+     "eval_duration": 8433548832,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:12.928169Z"
+    },
+    "elapsed_s": 15.266,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 100,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Alternative_facts:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 393,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Kellyanne Conway has used a phrase.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "51cb87e171e9277043b68faa3e616ebe679a97cb56bb01322c59a662e4ade0dd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853395.779395,
+      "end_wall": 1792853397.812524,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853395.779395,
+    "start_mono": 522952.480307875,
+    "end_wall": 1792853397.812524,
+    "end_mono": 522954.513428333,
+    "raw_response": "{\"query\": \"Kellyanne Conway famous catchphrase examples\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2030439916,
+     "load_duration": 68433708,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 660485417,
+     "eval_count": 14,
+     "eval_duration": 1189194919,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:49:57.811602Z"
+    },
+    "elapsed_s": 2.033,
+    "query_used": "Kellyanne Conway famous catchphrase examples",
+    "query_source": "json",
+    "query_arrival_seq": 101
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Kellyanne Conway famous catchphrase examples",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Counselor_to_the_President:0",
+       "score_q": 12283
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:0",
+       "score_q": 11783
+      },
+      {
+       "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+       "score_q": 11024
+      },
+      {
+       "passage_key": "fever17:Rebekah_Mercer_-LRB-donor-RRB-:2",
+       "score_q": 10812
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Farquhar:0",
+       "score_q": 10310
+      }
+     ],
+     "retrieval_sha256": "1bd4833e6da19d05675ee9e72d76f9a768049d7ae9d167131cbecf10f1f1bc02"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1bd4833e6da19d05675ee9e72d76f9a768049d7ae9d167131cbecf10f1f1bc02",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Counselor_to_the_President:0",
+      "content_sha256": "333cd8c3de0e7162f1820fb72dcd69f81c932a82024b588e9a1d3e3eef93d69e",
+      "chars": 244
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Kellyanne_Conway:0",
+      "content_sha256": "363f309ee9c2b442390e131d3c2e53b1299699d1b5b73bee0596fb0c3ea77513",
+      "chars": 947
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+      "content_sha256": "58c1d822202ada8d16b69020d5c46c1684754b4194629ebcebee9a25969a6581",
+      "chars": 971
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Rebekah_Mercer_-LRB-donor-RRB-:2",
+      "content_sha256": "3a65e8a24274ca2a2c548e38d0718650b7a00552e37fe8a206326e104c5714f1",
+      "chars": 490
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Kellyanne_Farquhar:0",
+      "content_sha256": "78046e524355526739d1386cdb48606711b889c2daf42e7275ae77878c2f3361",
+      "chars": 470
+     }
+    ],
+    "elapsed_s": 0.0157
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Kellyanne Conway has used a phrase.\n\nEvidence passages from your search for \"Kellyanne Conway famous catchphrase examples\":\n<<<PASSAGES\n[P1] Counselor to the President\nCounselor to the President is a title used by high-ranking assistants to the President of the United States and senior members of the Executive Office of the President . The current office-holder is Kellyanne Conway .\n\n[P2] Kellyanne Conway\nKellyanne Elizabeth Conway ( née Fitzpatrick ; born January 20 , 1967 ) is the current Counselor to U.S. president Donald Trump . She has been a Republican Party campaign manager , strategist , and pollster , and was formerly president and CEO of The Polling Company Inc. / Woman Trend . In 2016 , Conway endorsed Ted Cruz in the Republican presidential primaries and chaired a pro-Cruz political action committee , Keep the Promise I , which ran advertisements critical of then Republican candidate Donald Trump . That July , Cruz had withdrawn from the race , and Trump appointed Conway as a senior advisor and later campaign manager to his campaign . She was the first woman to run a successful presidential campaign . On December 22 , 2016 , Trump announced that Conway would join his administration as Counselor to the President , serving alongside Steve Bannon , assistant to the President and White House chief strategist .\n\n[P3] Conway (surname)\nHenry Seymour Conway , British general and statesman Henry Wharton Conway , American politician Jack Conway ( politician ) , Kentucky 's current Attorney General James Conway ( disambiguation ) Jack Conway ( disambiguation ) Jill Ker Conway , Australian-American author Jim Conway ( baseball ) ( 1858 -- 1912 ) , American baseball player Jimmy Conway , Irish-American gangster John B. Conway , mathematics professor at University of Tennessee John Horton Conway , mathematics professor at Princeton University Jon Conway , American soccer player Kate Conway , Canadian actress playing the leading role of Rose Miller in LGBT Canadian webseries Out with Dad Kathie Conway , Member of the Missouri House of Representatives Kellyanne Conway , American Republican campaign manager , strategist and pollster Kevin Conway ( disambiguation ) Lynn Conway , American computer scientist and inventor Martin Conway ( disambiguation ) , multiple people with the name\n\n[P4] Rebekah Mercer (donor)\nPaul Manafort , Kellyanne Conway 's predecessor as campaign director , was also said to be critical of Cambridge Analytica , which had worked for Ted Cruz and was financially backed by the Mercers . Conway reportedly said that after the inauguration , the expectation was that Mercer was likely to lead an outside group , funded by her father , aimed at bolstering Mr. Trump 's agenda . It was assumed that Cambridge Analytica would also assist the group 's efforts .\n\n[P5] Kellyanne Farquhar\nKellyanne Farquhar is a Scottish television actress . She joined the cast of the BBC 's Monarch of the Glen for its final series in 2005 , starring as boarding school runaway Amy McDougal . Kellyanne graduated from Queen Margaret University College in 2004 . Kellyanne won a Scottish Bafta for her role in Monarch . Kellyanne also appeared in the New Found Land film Night People which won the audience award at the Bafta Scotland awards the same year\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5251c19fbc3693b021ac8f937ae63c1aa570b04cdd7a59eeb8638168fee28639",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853397.828585,
+      "end_wall": 1792853416.135011,
+      "error": null
+     }
+    ],
+    "arrival_seq": 101,
+    "start_wall": 1792853397.828585,
+    "start_mono": 522954.529489916,
+    "end_wall": 1792853416.135011,
+    "end_mono": 522972.835846916,
+    "raw_response": "{\"reasoning\": \"While the provided passages do not explicitly mention a specific famous catchphrase used by Kellyanne Conway, they collectively highlight her significant role as a campaign manager, strategist, and advisor, suggesting she likely employed distinctive phrases in her professional interactions and speeches. However, without explicit mention of a catchphrase in the evidence passages, direct support is limited. Based on public knowledge not directly sourced here, Conway is notably recognized for phrases like 'alternative facts.' This claim leans towards being supported by her influential speaking, a\" , \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18302238083,
+     "load_duration": 51401333,
+     "prompt_eval_count": 957,
+     "prompt_eval_duration": 6118130041,
+     "eval_count": 142,
+     "eval_duration": 10981765883,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:16.131868Z"
+    },
+    "elapsed_s": 18.306,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 101,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Counselor_to_the_President:0",
+     "fever17:Kellyanne_Conway:0",
+     "fever17:Conway_-LRB-surname-RRB-:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Kellyanne Conway has used a phrase.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "51cb87e171e9277043b68faa3e616ebe679a97cb56bb01322c59a662e4ade0dd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853395.779644,
+      "end_wall": 1792853404.21732,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853395.779644,
+    "start_mono": 522952.480557291,
+    "end_wall": 1792853404.21732,
+    "end_mono": 522960.918200916,
+    "raw_response": "{\"query\": \"Kellyanne Conway phrase 'alternative facts'\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8435392416,
+     "load_duration": 1200503166,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 402129584,
+     "eval_count": 17,
+     "eval_duration": 6757507417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:04.216399Z"
+    },
+    "elapsed_s": 8.438,
+    "query_used": "Kellyanne Conway phrase 'alternative facts'",
+    "query_source": "json",
+    "query_arrival_seq": 102
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Kellyanne Conway phrase 'alternative facts'",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Alternative_facts:0",
+       "score_q": 22552
+      },
+      {
+       "passage_key": "fever17:Alternative_facts:1",
+       "score_q": 17993
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:1",
+       "score_q": 16665
+      },
+      {
+       "passage_key": "fever17:Wikitribune:0",
+       "score_q": 12319
+      },
+      {
+       "passage_key": "fever17:Counselor_to_the_President:0",
+       "score_q": 12283
+      }
+     ],
+     "retrieval_sha256": "3f056ebc88ab18ba1fb475a96aba232ef8f332d5313f4024520172d63888f729"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3f056ebc88ab18ba1fb475a96aba232ef8f332d5313f4024520172d63888f729",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Alternative_facts:0",
+      "content_sha256": "9c140c305c48b8c50a23512edc159a3b7d97d349004c354a97f07e4626839b7e",
+      "chars": 931
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Alternative_facts:1",
+      "content_sha256": "cee37ad0dbbe4e0ed7bd4281e0328695612e09c830b3d445dc824047de0f5e82",
+      "chars": 370
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Kellyanne_Conway:1",
+      "content_sha256": "aa7321f759ffd6243a450607d894af2362ecb79ceeb88196d1ccc8afec50a219",
+      "chars": 768
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Wikitribune:0",
+      "content_sha256": "83890261cc0f746b6f7c3c315a91b913010a6f244346943ae3f489d659e2d0bc",
+      "chars": 985
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Counselor_to_the_President:0",
+      "content_sha256": "333cd8c3de0e7162f1820fb72dcd69f81c932a82024b588e9a1d3e3eef93d69e",
+      "chars": 244
+     }
+    ],
+    "elapsed_s": 0.015
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Kellyanne Conway has used a phrase.\n\nEvidence passages from your search for \"Kellyanne Conway phrase 'alternative facts'\":\n<<<PASSAGES\n[P1] Alternative facts\n`` Alternative facts '' is a phrase used by U.S. Counselor to the President Kellyanne Conway during a Meet the Press interview on January 22 , 2017 , in which she defended White House Press Secretary Sean Spicer 's false statement about the attendance numbers of Donald Trump 's inauguration as President of the United States . When pressed during the interview with Chuck Todd to explain why Spicer `` utter [ ed ] a provable falsehood '' , Conway stated that Spicer was giving `` alternative facts '' . Todd responded , `` Look , alternative facts are not facts . They 're falsehoods . '' Conway 's use of the phrase `` alternative facts '' to describe demonstrable falsehoods was widely mocked on social media and sharply criticized by journalists and media organizations , including Dan Rather , Jill Abramson , and the Public Relations Society of America . The phrase was extensively described as Orwellian .\n\n[P2] Alternative facts\nWithin four days from the interview , sales of the book 1984 had increased by 9,500 % , which The New York Times and others attributed to Conway 's use of the phrase , making it the number-one bestseller on Amazon.com . Conway later defended her choice of words , defining `` alternative facts '' as `` additional facts and alternative information '' .\n\n[P3] Kellyanne Conway\nSince Trump 's inauguration , Conway has been embroiled in a series of controversies , including using the phrase `` alternative facts '' , making reference to a `` Bowling Green massacre '' that never occurred , claiming Michael Flynn had the full confidence of the president hours before he was dismissed , and publicly endorsing commercial products associated with the president 's daughter Ivanka Trump . As a result , a number of media outlets have called her credibility into question , with some refusing her requests for one-on-one interviews . According to Joe Scarborough and Mika Brzezinski , she is privately `` disgusted '' by her job and Donald Trump , and her words do not reflect her actual beliefs - though Conway disputed the claim .\n\n[P4] Wikitribune\nWikitribune ( stylized as WikiTRIBUNE ) is a planned news website in which professional journalists research and report news stories alongside volunteers who curate articles by proofreading , fact-checking , suggesting changes and adding sources . Jimmy Wales , co-founder of Wikipedia , announced the site in April 2017 as a for-profit site , not affiliated with Wikipedia or its support organisation , the Wikimedia Foundation . `` This will be the first time that professional journalists and citizen journalists will work side-by-side as equals writing stories as they happen , editing them live as they develop and at all times backed by a community checking and rechecking all facts '' , said Wales . Wales intends for the project to help fight fake news online ; he was reportedly motivated to address this problem after hearing the Counselor to the U.S. president , Kellyanne Conway , use the expression `` alternative facts '' during an interview in January 2017 .\n\n[P5] Counselor to the President\nCounselor to the President is a title used by high-ranking assistants to the President of the United States and senior members of the Executive Office of the President . The current office-holder is Kellyanne Conway .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "13b268c93d52bbe5676ac13e6de1973d2d2c7da92b9d4b69721177be92f0c72f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853404.232738,
+      "end_wall": 1792853417.512442,
+      "error": null
+     }
+    ],
+    "arrival_seq": 102,
+    "start_wall": 1792853404.232738,
+    "start_mono": 522960.933619583,
+    "end_wall": 1792853417.512442,
+    "end_mono": 522974.213273416,
+    "raw_response": "{\n  \"reasoning\": \"Kellyanne Conway's use of the phrase 'alternative facts' has been widely discussed and documented in multiple sources. This phrase was introduced during a press conference to defend false statements made about Donald Trump's inauguration attendance, leading to widespread criticism and comparison to George Orwell's 1984. Furthermore, the spike in 1984's sales on Amazon is attributed to Conway's use of the phrase. These points collectively support the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13276315792,
+     "load_duration": 6710701583,
+     "prompt_eval_count": 1111,
+     "prompt_eval_duration": 2160832416,
+     "eval_count": 149,
+     "eval_duration": 3798007580,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:17.510127Z"
+    },
+    "elapsed_s": 13.28,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 102,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Alternative_facts:0",
+     "fever17:Alternative_facts:1",
+     "fever17:Wikitribune:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 460,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Kellyanne Conway has used a phrase.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "51cb87e171e9277043b68faa3e616ebe679a97cb56bb01322c59a662e4ade0dd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853395.7797031,
+      "end_wall": 1792853406.790559,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853395.7797031,
+    "start_mono": 522952.480615708,
+    "end_wall": 1792853406.790559,
+    "end_mono": 522963.49143025,
+    "raw_response": "{\"query\": \"Kellyanne Conway quote\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11008735083,
+     "load_duration": 9974263292,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 360742250,
+     "eval_count": 11,
+     "eval_duration": 539386998,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:06.789907Z"
+    },
+    "elapsed_s": 11.011,
+    "query_used": "Kellyanne Conway quote",
+    "query_source": "json",
+    "query_arrival_seq": 103
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Kellyanne Conway quote",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Counselor_to_the_President:0",
+       "score_q": 12283
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:0",
+       "score_q": 11783
+      },
+      {
+       "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+       "score_q": 11024
+      },
+      {
+       "passage_key": "fever17:Rebekah_Mercer_-LRB-donor-RRB-:2",
+       "score_q": 10812
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Farquhar:0",
+       "score_q": 10310
+      }
+     ],
+     "retrieval_sha256": "d835ad4a1dce9561474f0a52ce7ea1d93c7a691eaf9bc777209c490604481488"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d835ad4a1dce9561474f0a52ce7ea1d93c7a691eaf9bc777209c490604481488",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Counselor_to_the_President:0",
+      "content_sha256": "333cd8c3de0e7162f1820fb72dcd69f81c932a82024b588e9a1d3e3eef93d69e",
+      "chars": 244
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Kellyanne_Conway:0",
+      "content_sha256": "363f309ee9c2b442390e131d3c2e53b1299699d1b5b73bee0596fb0c3ea77513",
+      "chars": 947
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+      "content_sha256": "58c1d822202ada8d16b69020d5c46c1684754b4194629ebcebee9a25969a6581",
+      "chars": 971
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Rebekah_Mercer_-LRB-donor-RRB-:2",
+      "content_sha256": "3a65e8a24274ca2a2c548e38d0718650b7a00552e37fe8a206326e104c5714f1",
+      "chars": 490
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Kellyanne_Farquhar:0",
+      "content_sha256": "78046e524355526739d1386cdb48606711b889c2daf42e7275ae77878c2f3361",
+      "chars": 470
+     }
+    ],
+    "elapsed_s": 0.0137
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Kellyanne Conway has used a phrase.\n\nEvidence passages from your search for \"Kellyanne Conway quote\":\n<<<PASSAGES\n[P1] Counselor to the President\nCounselor to the President is a title used by high-ranking assistants to the President of the United States and senior members of the Executive Office of the President . The current office-holder is Kellyanne Conway .\n\n[P2] Kellyanne Conway\nKellyanne Elizabeth Conway ( née Fitzpatrick ; born January 20 , 1967 ) is the current Counselor to U.S. president Donald Trump . She has been a Republican Party campaign manager , strategist , and pollster , and was formerly president and CEO of The Polling Company Inc. / Woman Trend . In 2016 , Conway endorsed Ted Cruz in the Republican presidential primaries and chaired a pro-Cruz political action committee , Keep the Promise I , which ran advertisements critical of then Republican candidate Donald Trump . That July , Cruz had withdrawn from the race , and Trump appointed Conway as a senior advisor and later campaign manager to his campaign . She was the first woman to run a successful presidential campaign . On December 22 , 2016 , Trump announced that Conway would join his administration as Counselor to the President , serving alongside Steve Bannon , assistant to the President and White House chief strategist .\n\n[P3] Conway (surname)\nHenry Seymour Conway , British general and statesman Henry Wharton Conway , American politician Jack Conway ( politician ) , Kentucky 's current Attorney General James Conway ( disambiguation ) Jack Conway ( disambiguation ) Jill Ker Conway , Australian-American author Jim Conway ( baseball ) ( 1858 -- 1912 ) , American baseball player Jimmy Conway , Irish-American gangster John B. Conway , mathematics professor at University of Tennessee John Horton Conway , mathematics professor at Princeton University Jon Conway , American soccer player Kate Conway , Canadian actress playing the leading role of Rose Miller in LGBT Canadian webseries Out with Dad Kathie Conway , Member of the Missouri House of Representatives Kellyanne Conway , American Republican campaign manager , strategist and pollster Kevin Conway ( disambiguation ) Lynn Conway , American computer scientist and inventor Martin Conway ( disambiguation ) , multiple people with the name\n\n[P4] Rebekah Mercer (donor)\nPaul Manafort , Kellyanne Conway 's predecessor as campaign director , was also said to be critical of Cambridge Analytica , which had worked for Ted Cruz and was financially backed by the Mercers . Conway reportedly said that after the inauguration , the expectation was that Mercer was likely to lead an outside group , funded by her father , aimed at bolstering Mr. Trump 's agenda . It was assumed that Cambridge Analytica would also assist the group 's efforts .\n\n[P5] Kellyanne Farquhar\nKellyanne Farquhar is a Scottish television actress . She joined the cast of the BBC 's Monarch of the Glen for its final series in 2005 , starring as boarding school runaway Amy McDougal . Kellyanne graduated from Queen Margaret University College in 2004 . Kellyanne won a Scottish Bafta for her role in Monarch . Kellyanne also appeared in the New Found Land film Night People which won the audience award at the Bafta Scotland awards the same year\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "78aae891d6926446e29ecab67d2700f323422928e95981bded8d665fd6a246f9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853406.8045719,
+      "end_wall": 1792853423.5427468,
+      "error": null
+     }
+    ],
+    "arrival_seq": 103,
+    "start_wall": 1792853406.8045719,
+    "start_mono": 522963.505444041,
+    "end_wall": 1792853423.5427468,
+    "end_mono": 522980.243555416,
+    "raw_response": "{\"reasoning\": \"Kellyanne Conway is a high-ranking assistant to the President of the United States, as confirmed by the passages provided.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16735184334,
+     "load_duration": 12160844459,
+     "prompt_eval_count": 1004,
+     "prompt_eval_duration": 1397066333,
+     "eval_count": 58,
+     "eval_duration": 2612803084,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:23.540951Z"
+    },
+    "elapsed_s": 16.738,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 103,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Kellyanne_Conway:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 122,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Kellyanne Conway has used a phrase.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "51cb87e171e9277043b68faa3e616ebe679a97cb56bb01322c59a662e4ade0dd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853395.779582,
+      "end_wall": 1792853409.763115,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853395.779582,
+    "start_mono": 522952.480495,
+    "end_wall": 1792853409.763115,
+    "end_mono": 522966.463974625,
+    "raw_response": "{\"query\": \"kellyanne conway phrase\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13980903833,
+     "load_duration": 12605111458,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 408544208,
+     "eval_count": 12,
+     "eval_duration": 705501959,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:09.76198Z"
+    },
+    "elapsed_s": 13.983,
+    "query_used": "kellyanne conway phrase",
+    "query_source": "json",
+    "query_arrival_seq": 104
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "kellyanne conway phrase",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Alternative_facts:0",
+       "score_q": 13027
+      },
+      {
+       "passage_key": "fever17:Counselor_to_the_President:0",
+       "score_q": 12283
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:1",
+       "score_q": 11993
+      },
+      {
+       "passage_key": "fever17:Kellyanne_Conway:0",
+       "score_q": 11783
+      },
+      {
+       "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+       "score_q": 11024
+      }
+     ],
+     "retrieval_sha256": "3b724af9d2f126d370210823e537fb8ff297fe5aecb20f1bedef07421b8d70b9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3b724af9d2f126d370210823e537fb8ff297fe5aecb20f1bedef07421b8d70b9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Alternative_facts:0",
+      "content_sha256": "9c140c305c48b8c50a23512edc159a3b7d97d349004c354a97f07e4626839b7e",
+      "chars": 931
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Counselor_to_the_President:0",
+      "content_sha256": "333cd8c3de0e7162f1820fb72dcd69f81c932a82024b588e9a1d3e3eef93d69e",
+      "chars": 244
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Kellyanne_Conway:1",
+      "content_sha256": "aa7321f759ffd6243a450607d894af2362ecb79ceeb88196d1ccc8afec50a219",
+      "chars": 768
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kellyanne_Conway:0",
+      "content_sha256": "363f309ee9c2b442390e131d3c2e53b1299699d1b5b73bee0596fb0c3ea77513",
+      "chars": 947
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Conway_-LRB-surname-RRB-:1",
+      "content_sha256": "58c1d822202ada8d16b69020d5c46c1684754b4194629ebcebee9a25969a6581",
+      "chars": 971
+     }
+    ],
+    "elapsed_s": 0.0131
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Kellyanne Conway has used a phrase.\n\nEvidence passages from your search for \"kellyanne conway phrase\":\n<<<PASSAGES\n[P1] Alternative facts\n`` Alternative facts '' is a phrase used by U.S. Counselor to the President Kellyanne Conway during a Meet the Press interview on January 22 , 2017 , in which she defended White House Press Secretary Sean Spicer 's false statement about the attendance numbers of Donald Trump 's inauguration as President of the United States . When pressed during the interview with Chuck Todd to explain why Spicer `` utter [ ed ] a provable falsehood '' , Conway stated that Spicer was giving `` alternative facts '' . Todd responded , `` Look , alternative facts are not facts . They 're falsehoods . '' Conway 's use of the phrase `` alternative facts '' to describe demonstrable falsehoods was widely mocked on social media and sharply criticized by journalists and media organizations , including Dan Rather , Jill Abramson , and the Public Relations Society of America . The phrase was extensively described as Orwellian .\n\n[P2] Counselor to the President\nCounselor to the President is a title used by high-ranking assistants to the President of the United States and senior members of the Executive Office of the President . The current office-holder is Kellyanne Conway .\n\n[P3] Kellyanne Conway\nSince Trump 's inauguration , Conway has been embroiled in a series of controversies , including using the phrase `` alternative facts '' , making reference to a `` Bowling Green massacre '' that never occurred , claiming Michael Flynn had the full confidence of the president hours before he was dismissed , and publicly endorsing commercial products associated with the president 's daughter Ivanka Trump . As a result , a number of media outlets have called her credibility into question , with some refusing her requests for one-on-one interviews . According to Joe Scarborough and Mika Brzezinski , she is privately `` disgusted '' by her job and Donald Trump , and her words do not reflect her actual beliefs - though Conway disputed the claim .\n\n[P4] Kellyanne Conway\nKellyanne Elizabeth Conway ( née Fitzpatrick ; born January 20 , 1967 ) is the current Counselor to U.S. president Donald Trump . She has been a Republican Party campaign manager , strategist , and pollster , and was formerly president and CEO of The Polling Company Inc. / Woman Trend . In 2016 , Conway endorsed Ted Cruz in the Republican presidential primaries and chaired a pro-Cruz political action committee , Keep the Promise I , which ran advertisements critical of then Republican candidate Donald Trump . That July , Cruz had withdrawn from the race , and Trump appointed Conway as a senior advisor and later campaign manager to his campaign . She was the first woman to run a successful presidential campaign . On December 22 , 2016 , Trump announced that Conway would join his administration as Counselor to the President , serving alongside Steve Bannon , assistant to the President and White House chief strategist .\n\n[P5] Conway (surname)\nHenry Seymour Conway , British general and statesman Henry Wharton Conway , American politician Jack Conway ( politician ) , Kentucky 's current Attorney General James Conway ( disambiguation ) Jack Conway ( disambiguation ) Jill Ker Conway , Australian-American author Jim Conway ( baseball ) ( 1858 -- 1912 ) , American baseball player Jimmy Conway , Irish-American gangster John B. Conway , mathematics professor at University of Tennessee John Horton Conway , mathematics professor at Princeton University Jon Conway , American soccer player Kate Conway , Canadian actress playing the leading role of Rose Miller in LGBT Canadian webseries Out with Dad Kathie Conway , Member of the Missouri House of Representatives Kellyanne Conway , American Republican campaign manager , strategist and pollster Kevin Conway ( disambiguation ) Lynn Conway , American computer scientist and inventor Martin Conway ( disambiguation ) , multiple people with the name\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6a6fc356913df994da33f34ea40daa7cb29f61e1b2cf521ae305939af06df806",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853409.776642,
+      "end_wall": 1792853425.192666,
+      "error": null
+     }
+    ],
+    "arrival_seq": 104,
+    "start_wall": 1792853409.776642,
+    "start_mono": 522966.477502625,
+    "end_wall": 1792853425.192666,
+    "end_mono": 522981.893469375,
+    "raw_response": "{\"reasoning\": \"The evidence shows that Kellyanne Conway used the phrase 'alternative facts' to describe Sean Spicer's false statement, but the phrase was widely mocked and criticized.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15411764625,
+     "load_duration": 10764040167,
+     "prompt_eval_count": 1039,
+     "prompt_eval_duration": 1780939000,
+     "eval_count": 68,
+     "eval_duration": 1638015249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:50:25.189283Z"
+    },
+    "elapsed_s": 15.416,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 104,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Alternative_facts:0",
+     "fever17:Counselor_to_the_President:0",
+     "fever17:Kellyanne_Conway:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 168,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "olmo2:7b": "4697dab923c4e518cd6e6b1eb8a9afb352ecec9907bad41a1a78a2bfa06c767e",
+  "exaone3.5:7.8b": "1bd4833e6da19d05675ee9e72d76f9a768049d7ae9d167131cbecf10f1f1bc02",
+  "granite3.3:2b": "3f056ebc88ab18ba1fb475a96aba232ef8f332d5313f4024520172d63888f729",
+  "falcon3:3b": "d835ad4a1dce9561474f0a52ce7ea1d93c7a691eaf9bc777209c490604481488",
+  "nemotron-mini:4b": "3b724af9d2f126d370210823e537fb8ff297fe5aecb20f1bedef07421b8d70b9"
+ },
+ "item_start_wall": 1792853395.779194,
+ "item_wall_s": 29.413,
+ "ollama_ps_samples": [
+  [
+   1792853395.779,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853397.782,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853399.793,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853401.805,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853403.816,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853405.824,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792853407.832,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792853409.837,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792853411.839,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853413.841,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853415.852,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853417.855,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792853419.864,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853421.873,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853423.882,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

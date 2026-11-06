@@ -1,0 +1,1281 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1105",
+ "order": 794,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1105",
+  "order": 794,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers."
+ },
+ "item_view_sha256": "a07cb606f08066b77c44d7e68ec8bbf781c328493f4c6b6b8500843ba6984509",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "falcon3:3b",
+  "granite3.3:2b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "fb6aeb67cac1b7327de5aa37828acba5e2ede9b57f545e9587d30c0cc7e2ce98",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875859.5427709,
+      "end_wall": 1792875871.927853,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875859.5427709,
+    "start_mono": 545416.19693025,
+    "end_wall": 1792875871.927853,
+    "end_mono": 545428.581910708,
+    "raw_response": "{\"query\": \"early medical school performance and professional misconduct\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12382194666,
+     "load_duration": 8037107375,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 916666416,
+     "eval_count": 13,
+     "eval_duration": 3165756790,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:31.926462Z"
+    },
+    "elapsed_s": 12.385,
+    "query_used": "early medical school performance and professional misconduct",
+    "query_source": "json",
+    "query_arrival_seq": 3974
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "early medical school performance and professional misconduct",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6710713:1",
+       "score_q": 15860
+      },
+      {
+       "passage_key": "scifact:6710713:0",
+       "score_q": 15326
+      },
+      {
+       "passage_key": "scifact:28017005:0",
+       "score_q": 7485
+      },
+      {
+       "passage_key": "scifact:11624482:0",
+       "score_q": 6800
+      },
+      {
+       "passage_key": "scifact:17374970:1",
+       "score_q": 6720
+      }
+     ],
+     "retrieval_sha256": "cc4b4cf842cd88fad58abc8b671c7883546ae71f62565034b25dc743fd7089c3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "cc4b4cf842cd88fad58abc8b671c7883546ae71f62565034b25dc743fd7089c3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6710713:1",
+      "content_sha256": "c566b90ac47701e600000b049064293abe86d5a021d4d86085589dd96a73a3fc",
+      "chars": 999
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6710713:0",
+      "content_sha256": "013fa9bcb413214e26b8a0aa16461bd044bc138c580a7af0777c82c204b668f4",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:28017005:0",
+      "content_sha256": "bc9c93bd89da37734be83bf0875cf399c139635c47328d76ff9202d02939c6c2",
+      "chars": 1026
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11624482:0",
+      "content_sha256": "605f83d6d27203affa46d40c4c25b30a27ca0a750db60f4617b6cdea4af5f165",
+      "chars": 887
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:17374970:1",
+      "content_sha256": "b98454f1181ae974bfba66957286771e283de89fc1feeaabc1fdb88a3917f904",
+      "chars": 405
+     }
+    ],
+    "elapsed_s": 0.0017
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nEvidence passages from your search for \"early medical school performance and professional misconduct\":\n<<<PASSAGES\n[P1] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nRESULTS Univariate conditional logistic regression analysis found that cases were more likely to be men, to be of lower estimated social class, and to have had academic difficulties during their medical course, especially in the early years. Multivariable analysis showed that male sex (odds ratio 9.80, 95% confidence interval 2.43 to 39.44, P=0.001), lower social class (4.28, 1.52 to 12.09, P=0.006), and failure of early or preclinical examinations (5.47, 2.17 to 13.79, P<0.001) were independently associated with being a case. CONCLUSIONS This small study suggests that male sex, a lower socioeconomic background, and early academic difficulties at medical school could be risk factors for subsequent professional misconduct. The findings are preliminary and should be interpreted with caution. Most doctors with risk factors will not come before the GMC's disciplinary panels.\n\n[P2] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nOBJECTIVE To determine whether there are risk factors in a doctor's time at medical school that are associated with subsequent professional misconduct. DESIGN Matched case-control study. Setting Records from medical schools and the General Medical Council (GMC). PARTICIPANTS 59 doctors who had graduated from any one of eight medical schools in the United Kingdom in 1958-97 and had a proved finding of serious professional misconduct in GMC proceedings in 1999-2004 (cases); 236 controls (four for each case) were selected by systematic sampling from matching graduation cohorts. Case-control status was revealed by the GMC after completion of data entry. MAIN OUTCOME MEASURE Odds ratios for being a \"case,\" with multivariable conditional logistic regression of potential risk factors including pre-admission characteristics and progress during the course. These data were obtained from anonymised copies of the students' progress files held by their original medical schools.\n\n[P3] Assessment for selection for the health care professions and specialty training: consensus statement and recommendations from the Ottawa 2010 Conference.\nAssessment for selection in medicine and the health professions should follow the same quality assurance processes as in-course assessment. The literature on selection is limited and is not strongly theoretical or conceptual. For written testing, there is evidence of the predictive validity of Medical College Admission Test (MCAT) for medical school and licensing examination performance. There is also evidence for the predictive validity of grade point average, particularly in combination with MCAT for graduate entry but little evidence about the predictive validity of school leaver scores. Interviews have not been shown to be robust selection measures. Studies of multiple mini-interviews have indicated good predictive validity and reliability. Of other measures used in selection, only the growing interest in personality testing appears to warrant future work.\n\n[P4] Factors associated with American Board of Medical Specialties member board certification among US medical school graduates.\nCONTEXT Certification by an American Board of Medical Specialties (ABMS) member board is emerging as a measure of physician quality. OBJECTIVE To identify demographic and educational factors associated with ABMS member board certification of US medical school graduates. DESIGN, SETTING, AND PARTICIPANTS Retrospective study of a national cohort of 1997-2000 US medical school graduates, grouped by specialty choice at graduation and followed up through March 2, 2009. In separate multivariable logistic regression models for each specialty category, factors associated with ABMS member board certification were identified. MAIN OUTCOME MEASURE ABMS member board certification. RESULTS Of 42,440 graduates in the study sample, 37,054 (87.3%) were board certified.\n\n[P5] Predictors of Attrition and Academic Success of Medical Students: A 30-Year Retrospective Study\nSignificant predictors of graduation grades were high school grades and entrance exam score. Entrance exam score predicted length of studying. CONCLUSION Preadmission academic qualifications and year of enrollment predict academic success in medical school. More attention should be devoted to high attrition.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "40316d4748feb5e7b8631e8f6fa9f74175905b357490c7b0ea38d40d81dd193d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875871.930021,
+      "end_wall": 1792875883.218375,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3970,
+    "start_wall": 1792875871.930021,
+    "start_mono": 545428.584080291,
+    "end_wall": 1792875883.218375,
+    "end_mono": 545439.872340958,
+    "raw_response": "{\"reasoning\": \"The claim is supported by passage P1, which shows that failure of early or preclinical examinations is associated with professional misconduct, and by passage P3, which mentions that written tests have predictive validity for licensing examination performance, implying that early academic difficulties could impact professional conduct.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11283066833,
+     "load_duration": 1220981708,
+     "prompt_eval_count": 1176,
+     "prompt_eval_duration": 2365643875,
+     "eval_count": 85,
+     "eval_duration": 5944580081,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:43.214085Z"
+    },
+    "elapsed_s": 11.288,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3970,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:6710713:1",
+     "scifact:28017005:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 337,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "fb6aeb67cac1b7327de5aa37828acba5e2ede9b57f545e9587d30c0cc7e2ce98",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875859.542546,
+      "end_wall": 1792875860.6294599,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875859.542546,
+    "start_mono": 545416.196705416,
+    "end_wall": 1792875860.6294599,
+    "end_mono": 545417.283608541,
+    "raw_response": "{\"query\": \"medical school performance and professional misconduct\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1084236459,
+     "load_duration": 52246375,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 456690583,
+     "eval_count": 12,
+     "eval_duration": 480966749,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:20.628444Z"
+    },
+    "elapsed_s": 1.087,
+    "query_used": "medical school performance and professional misconduct",
+    "query_source": "json",
+    "query_arrival_seq": 3971
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "medical school performance and professional misconduct",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6710713:0",
+       "score_q": 15326
+      },
+      {
+       "passage_key": "scifact:6710713:1",
+       "score_q": 13953
+      },
+      {
+       "passage_key": "scifact:28017005:0",
+       "score_q": 7485
+      },
+      {
+       "passage_key": "scifact:11624482:0",
+       "score_q": 6800
+      },
+      {
+       "passage_key": "scifact:17374970:1",
+       "score_q": 6720
+      }
+     ],
+     "retrieval_sha256": "cd0c79142012da6b44765770ac1f2bfdde1ed91801dd1e1b12ea76a4a10c29b8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "cd0c79142012da6b44765770ac1f2bfdde1ed91801dd1e1b12ea76a4a10c29b8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6710713:0",
+      "content_sha256": "013fa9bcb413214e26b8a0aa16461bd044bc138c580a7af0777c82c204b668f4",
+      "chars": 1095
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6710713:1",
+      "content_sha256": "c566b90ac47701e600000b049064293abe86d5a021d4d86085589dd96a73a3fc",
+      "chars": 999
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:28017005:0",
+      "content_sha256": "bc9c93bd89da37734be83bf0875cf399c139635c47328d76ff9202d02939c6c2",
+      "chars": 1026
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11624482:0",
+      "content_sha256": "605f83d6d27203affa46d40c4c25b30a27ca0a750db60f4617b6cdea4af5f165",
+      "chars": 887
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:17374970:1",
+      "content_sha256": "b98454f1181ae974bfba66957286771e283de89fc1feeaabc1fdb88a3917f904",
+      "chars": 405
+     }
+    ],
+    "elapsed_s": 0.0087
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nEvidence passages from your search for \"medical school performance and professional misconduct\":\n<<<PASSAGES\n[P1] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nOBJECTIVE To determine whether there are risk factors in a doctor's time at medical school that are associated with subsequent professional misconduct. DESIGN Matched case-control study. Setting Records from medical schools and the General Medical Council (GMC). PARTICIPANTS 59 doctors who had graduated from any one of eight medical schools in the United Kingdom in 1958-97 and had a proved finding of serious professional misconduct in GMC proceedings in 1999-2004 (cases); 236 controls (four for each case) were selected by systematic sampling from matching graduation cohorts. Case-control status was revealed by the GMC after completion of data entry. MAIN OUTCOME MEASURE Odds ratios for being a \"case,\" with multivariable conditional logistic regression of potential risk factors including pre-admission characteristics and progress during the course. These data were obtained from anonymised copies of the students' progress files held by their original medical schools.\n\n[P2] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nRESULTS Univariate conditional logistic regression analysis found that cases were more likely to be men, to be of lower estimated social class, and to have had academic difficulties during their medical course, especially in the early years. Multivariable analysis showed that male sex (odds ratio 9.80, 95% confidence interval 2.43 to 39.44, P=0.001), lower social class (4.28, 1.52 to 12.09, P=0.006), and failure of early or preclinical examinations (5.47, 2.17 to 13.79, P<0.001) were independently associated with being a case. CONCLUSIONS This small study suggests that male sex, a lower socioeconomic background, and early academic difficulties at medical school could be risk factors for subsequent professional misconduct. The findings are preliminary and should be interpreted with caution. Most doctors with risk factors will not come before the GMC's disciplinary panels.\n\n[P3] Assessment for selection for the health care professions and specialty training: consensus statement and recommendations from the Ottawa 2010 Conference.\nAssessment for selection in medicine and the health professions should follow the same quality assurance processes as in-course assessment. The literature on selection is limited and is not strongly theoretical or conceptual. For written testing, there is evidence of the predictive validity of Medical College Admission Test (MCAT) for medical school and licensing examination performance. There is also evidence for the predictive validity of grade point average, particularly in combination with MCAT for graduate entry but little evidence about the predictive validity of school leaver scores. Interviews have not been shown to be robust selection measures. Studies of multiple mini-interviews have indicated good predictive validity and reliability. Of other measures used in selection, only the growing interest in personality testing appears to warrant future work.\n\n[P4] Factors associated with American Board of Medical Specialties member board certification among US medical school graduates.\nCONTEXT Certification by an American Board of Medical Specialties (ABMS) member board is emerging as a measure of physician quality. OBJECTIVE To identify demographic and educational factors associated with ABMS member board certification of US medical school graduates. DESIGN, SETTING, AND PARTICIPANTS Retrospective study of a national cohort of 1997-2000 US medical school graduates, grouped by specialty choice at graduation and followed up through March 2, 2009. In separate multivariable logistic regression models for each specialty category, factors associated with ABMS member board certification were identified. MAIN OUTCOME MEASURE ABMS member board certification. RESULTS Of 42,440 graduates in the study sample, 37,054 (87.3%) were board certified.\n\n[P5] Predictors of Attrition and Academic Success of Medical Students: A 30-Year Retrospective Study\nSignificant predictors of graduation grades were high school grades and entrance exam score. Entrance exam score predicted length of studying. CONCLUSION Preadmission academic qualifications and year of enrollment predict academic success in medical school. More attention should be devoted to high attrition.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fc915275f90f9200251f26084f4d5506f076725d945b0a15b723af13a5a0d541",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875860.6391869,
+      "end_wall": 1792875883.2715049,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3971,
+    "start_wall": 1792875860.6391869,
+    "start_mono": 545417.293337333,
+    "end_wall": 1792875883.2715049,
+    "end_mono": 545439.925471333,
+    "raw_response": "{\"reasoning\": \"The passages suggest that early academic difficulties in medical school are associated with later professional misconduct. P1 indicates that men, lower social class, and early academic difficulties are risk factors. P2 confirms these factors and specifically highlights early academic difficulties as associated with later misconduct. P3 and P5 discuss predictors of academic success and attrition, which indirectly imply that the opposite factors (like high school grades and entrance exam scores) are linked to better outcomes, thus supporting the claim that early difficulties may lead to latermis\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22628209459,
+     "load_duration": 49677875,
+     "prompt_eval_count": 1117,
+     "prompt_eval_duration": 5118223917,
+     "eval_count": 133,
+     "eval_duration": 16255566837,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:43.268356Z"
+    },
+    "elapsed_s": 22.632,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3971,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:6710713:0",
+     "scifact:6710713:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "fb6aeb67cac1b7327de5aa37828acba5e2ede9b57f545e9587d30c0cc7e2ce98",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875859.542973,
+      "end_wall": 1792875866.1811059,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875859.542973,
+    "start_mono": 545416.197132333,
+    "end_wall": 1792875866.1811059,
+    "end_mono": 545422.835209708,
+    "raw_response": "{\"query\": \"medical school academic performance misconduct career outcomes\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6635814792,
+     "load_duration": 1495966583,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 1636824458,
+     "eval_count": 14,
+     "eval_duration": 3391119499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:26.180034Z"
+    },
+    "elapsed_s": 6.638,
+    "query_used": "medical school academic performance misconduct career outcomes",
+    "query_source": "json",
+    "query_arrival_seq": 3973
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "medical school academic performance misconduct career outcomes",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6710713:1",
+       "score_q": 13915
+      },
+      {
+       "passage_key": "scifact:6710713:0",
+       "score_q": 11505
+      },
+      {
+       "passage_key": "scifact:17374970:1",
+       "score_q": 11321
+      },
+      {
+       "passage_key": "scifact:17374970:0",
+       "score_q": 9638
+      },
+      {
+       "passage_key": "scifact:28017005:0",
+       "score_q": 7485
+      }
+     ],
+     "retrieval_sha256": "bd8e85c585d457dad9a9ec25ccbf70d19989577084aaf668110157ed0d96c26b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bd8e85c585d457dad9a9ec25ccbf70d19989577084aaf668110157ed0d96c26b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6710713:1",
+      "content_sha256": "c566b90ac47701e600000b049064293abe86d5a021d4d86085589dd96a73a3fc",
+      "chars": 999
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6710713:0",
+      "content_sha256": "013fa9bcb413214e26b8a0aa16461bd044bc138c580a7af0777c82c204b668f4",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:17374970:1",
+      "content_sha256": "b98454f1181ae974bfba66957286771e283de89fc1feeaabc1fdb88a3917f904",
+      "chars": 405
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:17374970:0",
+      "content_sha256": "d4580d1cb920a9c9b19547c9a0dd3e6760f212b8dd81f5c9516d6d91eaa96283",
+      "chars": 1089
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:28017005:0",
+      "content_sha256": "bc9c93bd89da37734be83bf0875cf399c139635c47328d76ff9202d02939c6c2",
+      "chars": 1026
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nEvidence passages from your search for \"medical school academic performance misconduct career outcomes\":\n<<<PASSAGES\n[P1] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nRESULTS Univariate conditional logistic regression analysis found that cases were more likely to be men, to be of lower estimated social class, and to have had academic difficulties during their medical course, especially in the early years. Multivariable analysis showed that male sex (odds ratio 9.80, 95% confidence interval 2.43 to 39.44, P=0.001), lower social class (4.28, 1.52 to 12.09, P=0.006), and failure of early or preclinical examinations (5.47, 2.17 to 13.79, P<0.001) were independently associated with being a case. CONCLUSIONS This small study suggests that male sex, a lower socioeconomic background, and early academic difficulties at medical school could be risk factors for subsequent professional misconduct. The findings are preliminary and should be interpreted with caution. Most doctors with risk factors will not come before the GMC's disciplinary panels.\n\n[P2] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nOBJECTIVE To determine whether there are risk factors in a doctor's time at medical school that are associated with subsequent professional misconduct. DESIGN Matched case-control study. Setting Records from medical schools and the General Medical Council (GMC). PARTICIPANTS 59 doctors who had graduated from any one of eight medical schools in the United Kingdom in 1958-97 and had a proved finding of serious professional misconduct in GMC proceedings in 1999-2004 (cases); 236 controls (four for each case) were selected by systematic sampling from matching graduation cohorts. Case-control status was revealed by the GMC after completion of data entry. MAIN OUTCOME MEASURE Odds ratios for being a \"case,\" with multivariable conditional logistic regression of potential risk factors including pre-admission characteristics and progress during the course. These data were obtained from anonymised copies of the students' progress files held by their original medical schools.\n\n[P3] Predictors of Attrition and Academic Success of Medical Students: A 30-Year Retrospective Study\nSignificant predictors of graduation grades were high school grades and entrance exam score. Entrance exam score predicted length of studying. CONCLUSION Preadmission academic qualifications and year of enrollment predict academic success in medical school. More attention should be devoted to high attrition.\n\n[P4] Predictors of Attrition and Academic Success of Medical Students: A 30-Year Retrospective Study\nAIM To determine attrition and predictors of academic success among medical students at University of Split, Croatia. METHODS We analysed academic records of 2054 students enrolled during 1979-2008 period. RESULTS We found that 26% (533/2054) of enrolled students did not graduate. The most common reasons for attrition were 'personal' (36.4%), transfer to another medical school (35.6%), and dismissal due to unsatisfactory academic record (21.2%). Grade point average (GPA) and study duration of attrition students were significantly associated with parental education. There were 1126 graduates, 395 men and 731 women. Their average graduation GPA was 3.67±0.53 and study duration 7.6±2.44 years. During 5-year curriculum only 6.4% (42/654) of students graduated in time, and 55% (240/472) of students graduated in time after curriculum was extended to 6 years. Variables predicting whether a student will graduate or not were high school grades, entrance exam score and year of enrollment.\n\n[P5] Assessment for selection for the health care professions and specialty training: consensus statement and recommendations from the Ottawa 2010 Conference.\nAssessment for selection in medicine and the health professions should follow the same quality assurance processes as in-course assessment. The literature on selection is limited and is not strongly theoretical or conceptual. For written testing, there is evidence of the predictive validity of Medical College Admission Test (MCAT) for medical school and licensing examination performance. There is also evidence for the predictive validity of grade point average, particularly in combination with MCAT for graduate entry but little evidence about the predictive validity of school leaver scores. Interviews have not been shown to be robust selection measures. Studies of multiple mini-interviews have indicated good predictive validity and reliability. Of other measures used in selection, only the growing interest in personality testing appears to warrant future work.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "902753c981368b1ed9117dee3cd3eb083c1194136eec271d1f3948754538f389",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875866.181906,
+      "end_wall": 1792875884.150452,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3972,
+    "start_wall": 1792875866.181906,
+    "start_mono": 545422.836011291,
+    "end_wall": 1792875884.150452,
+    "end_mono": 545440.804411416,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from multiple studies (P1 and P2) indicates that early academic difficulties, particularly in the early years of medical school, are independently associated with an increased likelihood of subsequent professional misconduct. This directly supports the claim that poor performance in early medical school years correlates with higher risks of professional misconduct later in their careers. Although other factors like socioeconomic background and gender are also mentioned, early academic struggles emerge as a significant predictor.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17964023167,
+     "load_duration": 56649083,
+     "prompt_eval_count": 1304,
+     "prompt_eval_duration": 5463151333,
+     "eval_count": 131,
+     "eval_duration": 11358247833,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:44.147078Z"
+    },
+    "elapsed_s": 17.968,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3972,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:6710713:1",
+     "scifact:6710713:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 547,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "fb6aeb67cac1b7327de5aa37828acba5e2ede9b57f545e9587d30c0cc7e2ce98",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875859.542345,
+      "end_wall": 1792875865.978928,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875859.542345,
+    "start_mono": 545416.196504333,
+    "end_wall": 1792875865.978928,
+    "end_mono": 545422.633033458,
+    "raw_response": "{\"query\": \"medical school students early years professional misconduct risk\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6434454000,
+     "load_duration": 2984399833,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 714688875,
+     "eval_count": 15,
+     "eval_duration": 2583006917,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:25.978254Z"
+    },
+    "elapsed_s": 6.437,
+    "query_used": "medical school students early years professional misconduct risk",
+    "query_source": "json",
+    "query_arrival_seq": 3972
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "medical school students early years professional misconduct risk",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6710713:1",
+       "score_q": 783
+      },
+      {
+       "passage_key": "scifact:6710713:0",
+       "score_q": 752
+      },
+      {
+       "passage_key": "scifact:11624482:2",
+       "score_q": 672
+      },
+      {
+       "passage_key": "scifact:11624482:1",
+       "score_q": 667
+      },
+      {
+       "passage_key": "scifact:17374970:0",
+       "score_q": 645
+      }
+     ],
+     "retrieval_sha256": "533c1822d815025e40057b076bc6ef89a697cff66916e1791b0410924741d07b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "533c1822d815025e40057b076bc6ef89a697cff66916e1791b0410924741d07b",
+    "query_embedding_sha256": "e310aed5a795cd72581d1404d517852d8484c18e4e103383002ca84ac3c1d129",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6710713:1",
+      "content_sha256": "c566b90ac47701e600000b049064293abe86d5a021d4d86085589dd96a73a3fc",
+      "chars": 999
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6710713:0",
+      "content_sha256": "013fa9bcb413214e26b8a0aa16461bd044bc138c580a7af0777c82c204b668f4",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11624482:2",
+      "content_sha256": "36fe3f1c46b389d2d25fd5e3c78fa55408036a51fb42e47c710707c65cd96dd8",
+      "chars": 603
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11624482:1",
+      "content_sha256": "c9ca0d3eef9764ec5bcee041598ce57640907aa3cdf694638ede7f2dbabf5c6a",
+      "chars": 941
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:17374970:0",
+      "content_sha256": "d4580d1cb920a9c9b19547c9a0dd3e6760f212b8dd81f5c9516d6d91eaa96283",
+      "chars": 1089
+     }
+    ],
+    "elapsed_s": 17.659
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nEvidence passages from your search for \"medical school students early years professional misconduct risk\":\n<<<PASSAGES\n[P1] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nRESULTS Univariate conditional logistic regression analysis found that cases were more likely to be men, to be of lower estimated social class, and to have had academic difficulties during their medical course, especially in the early years. Multivariable analysis showed that male sex (odds ratio 9.80, 95% confidence interval 2.43 to 39.44, P=0.001), lower social class (4.28, 1.52 to 12.09, P=0.006), and failure of early or preclinical examinations (5.47, 2.17 to 13.79, P<0.001) were independently associated with being a case. CONCLUSIONS This small study suggests that male sex, a lower socioeconomic background, and early academic difficulties at medical school could be risk factors for subsequent professional misconduct. The findings are preliminary and should be interpreted with caution. Most doctors with risk factors will not come before the GMC's disciplinary panels.\n\n[P2] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nOBJECTIVE To determine whether there are risk factors in a doctor's time at medical school that are associated with subsequent professional misconduct. DESIGN Matched case-control study. Setting Records from medical schools and the General Medical Council (GMC). PARTICIPANTS 59 doctors who had graduated from any one of eight medical schools in the United Kingdom in 1958-97 and had a proved finding of serious professional misconduct in GMC proceedings in 1999-2004 (cases); 236 controls (four for each case) were selected by systematic sampling from matching graduation cohorts. Case-control status was revealed by the GMC after completion of data entry. MAIN OUTCOME MEASURE Odds ratios for being a \"case,\" with multivariable conditional logistic regression of potential risk factors including pre-admission characteristics and progress during the course. These data were obtained from anonymised copies of the students' progress files held by their original medical schools.\n\n[P3] Factors associated with American Board of Medical Specialties member board certification among US medical school graduates.\nWith each $50,000 unit increase in debt (vs no debt), graduates choosing obstetrics/gynecology were less likely to be board certified (AOR, 0.89; 95% CI, 0.83-0.96), and graduates choosing family medicine were more likely to be board certified (AOR, 1.13; 95% CI, 1.01-1.26). CONCLUSION Demographic and educational factors were associated with board certification among US medical school graduates in every specialty category examined; findings varied among specialty categories.\n\n[P4] Factors associated with American Board of Medical Specialties member board certification among US medical school graduates.\nGraduates in all specialty categories with first-attempt passing scores in the highest tertile (vs first-attempt failing scores) on US Medical Licensing Examination Step 2 Clinical Knowledge were more likely to be board certified; adjusted odds ratios (AORs) varied by specialty category, with the lowest odds for emergency medicine (87.4% vs 73.6%; AOR, 1.82; 95% CI, 1.03-3.20) and highest odds for radiology (98.1% vs 74.9%; AOR, 13.19; 95% CI, 5.55-31.32). In each specialty category except family medicine, graduates self-identified as underrepresented racial/ethnic minorities (vs white) were less likely to be board certified, ranging from 83.5% vs 95.6% in the pediatrics category (AOR, 0.44; 95% CI, 0.33-0.58) to 71.5% vs 83.7% in the other nongeneralist specialties category (AOR, 0.79; 95% CI, 0.64-0.96).\n\n[P5] Predictors of Attrition and Academic Success of Medical Students: A 30-Year Retrospective Study\nAIM To determine attrition and predictors of academic success among medical students at University of Split, Croatia. METHODS We analysed academic records of 2054 students enrolled during 1979-2008 period. RESULTS We found that 26% (533/2054) of enrolled students did not graduate. The most common reasons for attrition were 'personal' (36.4%), transfer to another medical school (35.6%), and dismissal due to unsatisfactory academic record (21.2%). Grade point average (GPA) and study duration of attrition students were significantly associated with parental education. There were 1126 graduates, 395 men and 731 women. Their average graduation GPA was 3.67±0.53 and study duration 7.6±2.44 years. During 5-year curriculum only 6.4% (42/654) of students graduated in time, and 55% (240/472) of students graduated in time after curriculum was extended to 6 years. Variables predicting whether a student will graduate or not were high school grades, entrance exam score and year of enrollment.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c83ea61b5856cf15f1b3cb7752bca0bdc245ea323cce62f52edd562d583f1085",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875883.6391292,
+      "end_wall": 1792875893.12496,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3973,
+    "start_wall": 1792875883.6391292,
+    "start_mono": 545440.293094541,
+    "end_wall": 1792875893.12496,
+    "end_mono": 545449.77884575,
+    "raw_response": "{\"reasoning\": \"The evidence from multiple passages suggests that students who perform poorly in the early years of medical school are more likely to face difficulties and have a higher risk of professional misconduct later in their careers. This aligns with the findings that academic difficulties during early years, male sex, lower social class, and early academic failures are independently associated with professional misconduct.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P5\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9482294209,
+     "load_duration": 2335544667,
+     "prompt_eval_count": 1517,
+     "prompt_eval_duration": 3249743042,
+     "eval_count": 110,
+     "eval_duration": 2708472880,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:53.122398Z"
+    },
+    "elapsed_s": 9.486,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3973,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:6710713:1",
+     "scifact:6710713:0",
+     "scifact:17374970:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 419,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "fb6aeb67cac1b7327de5aa37828acba5e2ede9b57f545e9587d30c0cc7e2ce98",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792875859.5421498,
+      "end_wall": 1792875860.4927192,
+      "error": null
+     }
+    ],
+    "start_wall": 1792875859.5421498,
+    "start_mono": 545416.196309666,
+    "end_wall": 1792875860.4927192,
+    "end_mono": 545417.146869291,
+    "raw_response": "{\"query\": \"early medical school performance misconduct risk\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 947579209,
+     "load_duration": 28660667,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 475127750,
+     "eval_count": 13,
+     "eval_duration": 391990582,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:20.491783Z"
+    },
+    "elapsed_s": 0.951,
+    "query_used": "early medical school performance misconduct risk",
+    "query_source": "json",
+    "query_arrival_seq": 3970
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "early medical school performance misconduct risk",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6710713:1",
+       "score_q": 768
+      },
+      {
+       "passage_key": "scifact:6710713:0",
+       "score_q": 715
+      },
+      {
+       "passage_key": "scifact:11624482:1",
+       "score_q": 650
+      },
+      {
+       "passage_key": "scifact:79231308:1",
+       "score_q": 632
+      },
+      {
+       "passage_key": "scifact:13906581:1",
+       "score_q": 631
+      }
+     ],
+     "retrieval_sha256": "a2a5826ddd19b1ee44cfe903bbec4639f896073d195e4396dd3ac1e5f06190b2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a2a5826ddd19b1ee44cfe903bbec4639f896073d195e4396dd3ac1e5f06190b2",
+    "query_embedding_sha256": "a937901dbd801aeea9ef08ab9efba1817eacf8007bb802bdc8ce19d2a4fa98de",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6710713:1",
+      "content_sha256": "c566b90ac47701e600000b049064293abe86d5a021d4d86085589dd96a73a3fc",
+      "chars": 999
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6710713:0",
+      "content_sha256": "013fa9bcb413214e26b8a0aa16461bd044bc138c580a7af0777c82c204b668f4",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11624482:1",
+      "content_sha256": "c9ca0d3eef9764ec5bcee041598ce57640907aa3cdf694638ede7f2dbabf5c6a",
+      "chars": 941
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:79231308:1",
+      "content_sha256": "11d1fc43fe1358d538899c095ff703933b27ba11cba0e917ec6712e81897713d",
+      "chars": 1030
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13906581:1",
+      "content_sha256": "4ae2205fe3bc362b84936649a80188d6d626801fc2d1211ebb1898799c674555",
+      "chars": 989
+     }
+    ],
+    "elapsed_s": 11.8907
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Students who perform poorly in the early years of medical school are at increased risk for professional misconduct later in their careers.\n\nEvidence passages from your search for \"early medical school performance misconduct risk\":\n<<<PASSAGES\n[P1] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nRESULTS Univariate conditional logistic regression analysis found that cases were more likely to be men, to be of lower estimated social class, and to have had academic difficulties during their medical course, especially in the early years. Multivariable analysis showed that male sex (odds ratio 9.80, 95% confidence interval 2.43 to 39.44, P=0.001), lower social class (4.28, 1.52 to 12.09, P=0.006), and failure of early or preclinical examinations (5.47, 2.17 to 13.79, P<0.001) were independently associated with being a case. CONCLUSIONS This small study suggests that male sex, a lower socioeconomic background, and early academic difficulties at medical school could be risk factors for subsequent professional misconduct. The findings are preliminary and should be interpreted with caution. Most doctors with risk factors will not come before the GMC's disciplinary panels.\n\n[P2] Risk factors at medical school for subsequent professional misconduct: multicentre retrospective case-control study\nOBJECTIVE To determine whether there are risk factors in a doctor's time at medical school that are associated with subsequent professional misconduct. DESIGN Matched case-control study. Setting Records from medical schools and the General Medical Council (GMC). PARTICIPANTS 59 doctors who had graduated from any one of eight medical schools in the United Kingdom in 1958-97 and had a proved finding of serious professional misconduct in GMC proceedings in 1999-2004 (cases); 236 controls (four for each case) were selected by systematic sampling from matching graduation cohorts. Case-control status was revealed by the GMC after completion of data entry. MAIN OUTCOME MEASURE Odds ratios for being a \"case,\" with multivariable conditional logistic regression of potential risk factors including pre-admission characteristics and progress during the course. These data were obtained from anonymised copies of the students' progress files held by their original medical schools.\n\n[P3] Factors associated with American Board of Medical Specialties member board certification among US medical school graduates.\nGraduates in all specialty categories with first-attempt passing scores in the highest tertile (vs first-attempt failing scores) on US Medical Licensing Examination Step 2 Clinical Knowledge were more likely to be board certified; adjusted odds ratios (AORs) varied by specialty category, with the lowest odds for emergency medicine (87.4% vs 73.6%; AOR, 1.82; 95% CI, 1.03-3.20) and highest odds for radiology (98.1% vs 74.9%; AOR, 13.19; 95% CI, 5.55-31.32). In each specialty category except family medicine, graduates self-identified as underrepresented racial/ethnic minorities (vs white) were less likely to be board certified, ranging from 83.5% vs 95.6% in the pediatrics category (AOR, 0.44; 95% CI, 0.33-0.58) to 71.5% vs 83.7% in the other nongeneralist specialties category (AOR, 0.79; 95% CI, 0.64-0.96).\n\n[P4] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nThis approach was taken one step further by these authors, who evaluated whether notifying physicians that their patients were at increased risk for venous thromboembolism would decrease the incidence of deep vein thrombosis or pulmonary embolism. The premise was that simply notifying the physician would increase the use of appropriate prophylactic measures. Major surgery (defined as anything requiring general anesthesia), cancer and age greater than 75 years were included among the risk factors, each of which frequently applies to a urology population. In fact, more than 13% of the patients in the intervention group had a known diagnosis of a genitourinary cancer. The computer alert decreased the risk of deep vein thrombosis or pulmonary embolism by 41%. There are 2 lessons urologists can learn from this study. First, many urology patients are at increased risk for venous thromboembolism and appropriate prophylaxis should be used.\n\n[P5] Patient Outcomes with Teaching Versus Nonteaching Healthcare: A Systematic Review\nSynthesis of the available adjusted estimates on mortality yielded a summary relative risk of 0.96 (95% confidence interval [CI], 0.93–1.00) for teaching versus nonteaching healthcare structures and 1.04 (95% CI, 0.99–1.10) for minor teaching versus nonteaching ones. There was considerable heterogeneity between studies (I2 = 72% for the main analysis). Results were similar in studies using clinical and those using administrative databases. No differences were seen in the 14 studies fully adjusting for volume/experience, severity, and comorbidity (relative risk 1.01). Smaller studies did not differ in their results from larger studies. Differences were seen for some diagnoses (e.g., significantly better survival for breast cancer and cerebrovascular accidents in teaching hospitals and significantly better survival from cholecystectomy in nonteaching hospitals), but these were small in magnitude.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c78ac0b1b89d194398a6015f082e6746fa57f3334a364bb178178181045880f9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792875872.384011,
+      "end_wall": 1792875893.403291,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3974,
+    "start_wall": 1792875872.384011,
+    "start_mono": 545429.038066625,
+    "end_wall": 1792875893.403291,
+    "end_mono": 545450.057175875,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests a correlation between early medical school performance and subsequent professional misconduct. The evidence passages P1 and P2 both support this assertion, identifying male sex, lower social class, and early academic difficulties as risk factors for future professional misconduct. Although other studies (P3, P4, P5) discuss different aspects such as computerized systems, patient outcomes, and teaching versus nonteaching healthcare, none directly address the relationship between early medical school performance and professional misconduct.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21015041000,
+     "load_duration": 12384539459,
+     "prompt_eval_count": 1670,
+     "prompt_eval_duration": 4501871084,
+     "eval_count": 142,
+     "eval_duration": 3528666334,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:04:53.400107Z"
+    },
+    "elapsed_s": 21.019,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3974,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:6710713:1",
+     "scifact:6710713:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 563,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "nemotron-mini:4b": "cc4b4cf842cd88fad58abc8b671c7883546ae71f62565034b25dc743fd7089c3",
+  "olmo2:7b": "cd0c79142012da6b44765770ac1f2bfdde1ed91801dd1e1b12ea76a4a10c29b8",
+  "exaone3.5:7.8b": "bd8e85c585d457dad9a9ec25ccbf70d19989577084aaf668110157ed0d96c26b",
+  "falcon3:3b": "533c1822d815025e40057b076bc6ef89a697cff66916e1791b0410924741d07b",
+  "granite3.3:2b": "a2a5826ddd19b1ee44cfe903bbec4639f896073d195e4396dd3ac1e5f06190b2"
+ },
+ "item_start_wall": 1792875859.541804,
+ "item_wall_s": 33.861,
+ "ollama_ps_samples": [
+  [
+   1792875859.542,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792875861.554,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792875863.56,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792875865.572,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792875867.581,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875869.592,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875871.603,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875873.612,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875875.62,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875877.623,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875879.628,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875881.64,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792875883.65,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875885.657,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875887.662,
+   [
+    "granite3.3:2b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875889.664,
+   [
+    "falcon3:3b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792875891.67,
+   [
+    "granite3.3:2b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

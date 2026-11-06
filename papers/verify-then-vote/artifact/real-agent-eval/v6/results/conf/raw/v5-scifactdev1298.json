@@ -1,0 +1,1301 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1298",
+ "order": 626,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1298",
+  "order": 626,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke."
+ },
+ "item_view_sha256": "3d68b9da091b53f1c5c79397d340ed4ae3461b8c518d682b8e486e28aa7cf223",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e8b67a97bd44b51d633e91f4b7ae3cccd90fb760f0c9ed0f9c4c2cc5db7d78bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871016.651853,
+      "end_wall": 1792871018.446955,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871016.651853,
+    "start_mono": 540573.354899875,
+    "end_wall": 1792871018.446955,
+    "end_mono": 540575.149994166,
+    "raw_response": "{\"query\": \"thigh-length graduated compression stockings stroke hospital immobile reduce deep vein thrombosis\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1792510458,
+     "load_duration": 107220167,
+     "prompt_eval_count": 195,
+     "prompt_eval_duration": 459400334,
+     "eval_count": 21,
+     "eval_duration": 966772250,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:38.446202Z"
+    },
+    "elapsed_s": 1.795,
+    "query_used": "thigh-length graduated compression stockings stroke hospital immobile reduce deep vein thrombosis",
+    "query_source": "json",
+    "query_arrival_seq": 3130
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "thigh-length graduated compression stockings stroke hospital immobile reduce deep vein thrombosis",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11718220:2",
+       "score_q": 884
+      },
+      {
+       "passage_key": "scifact:11718220:0",
+       "score_q": 877
+      },
+      {
+       "passage_key": "scifact:11718220:1",
+       "score_q": 867
+      },
+      {
+       "passage_key": "scifact:6212802:0",
+       "score_q": 667
+      },
+      {
+       "passage_key": "scifact:79231308:0",
+       "score_q": 667
+      }
+     ],
+     "retrieval_sha256": "9e599e92f0272b1cdec0820b0c3fdbf7d515b38dfc922e6dde204b23be418356"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9e599e92f0272b1cdec0820b0c3fdbf7d515b38dfc922e6dde204b23be418356",
+    "query_embedding_sha256": "a892eff4dd6a90bd849d7806db63d2f2441259d8baafaf71c44d6a9e9a9a0cd2",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11718220:2",
+      "content_sha256": "b14ed89e2e8cae2920d95c66a98055ee8f3b527e19b8292b6b2c770c1d5d8c20",
+      "chars": 360
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11718220:0",
+      "content_sha256": "c56c8d199acd338bd24b6c828bc34b0c7391a5ebd70f4013cc4b2b297043ff9b",
+      "chars": 1150
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11718220:1",
+      "content_sha256": "58b329a949fe2c6238a988da21defb6b046a098bd967545e2709af6fe3b82733",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6212802:0",
+      "content_sha256": "b51e16f55a452adab1e21563f5cc61b84c72e5efd92a0a359e28c89435d1f25b",
+      "chars": 1005
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:79231308:0",
+      "content_sha256": "4523545e23b3803f640aff7724767de6c92b24785fc872500a4ef9842611cf27",
+      "chars": 1045
+     }
+    ],
+    "elapsed_s": 7.6344
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nEvidence passages from your search for \"thigh-length graduated compression stockings stroke hospital immobile reduce deep vein thrombosis\":\n<<<PASSAGES\n[P1] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nFUNDING Medical Research Council (UK), Chief Scientist Office of Scottish Government, Chest Heart and Stroke Scotland, Tyco Healthcare (Covidien) USA, and UK Stroke Research Network.\n\n[P2] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nBACKGROUND Deep vein thrombosis (DVT) and pulmonary embolism are common after stroke. In small trials of patients undergoing surgery, graduated compression stockings (GCS) reduce the risk of DVT. National stroke guidelines extrapolating from these trials recommend their use in patients with stroke despite insufficient evidence. We assessed the effectiveness of thigh-length GCS to reduce DVT after stroke. METHODS In this outcome-blinded, randomised controlled trial, 2518 patients who were admitted to hospital within 1 week of an acute stroke and who were immobile were enrolled from 64 centres in the UK, Italy, and Australia. Patients were allocated via a central randomisation system to routine care plus thigh-length GCS (n=1256) or to routine care plus avoidance of GCS (n=1262). A technician who was blinded to treatment allocation undertook compression Doppler ultrasound of both legs at about 7-10 days and, when practical, again at 25-30 days after enrolment.\n\n[P3] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nThe primary outcome was the occurrence of symptomatic or asymptomatic DVT in the popliteal or femoral veins. Analyses were by intention to treat. This study is registered, number ISRCTN28163533. FINDINGS All patients were included in the analyses. The primary outcome occurred in 126 (10.0%) patients allocated to thigh-length GCS and in 133 (10.5%) allocated to avoid GCS, resulting in a non-significant absolute reduction in risk of 0.5% (95% CI -1.9% to 2.9%). Skin breaks, ulcers, blisters, and skin necrosis were significantly more common in patients allocated to GCS than in those allocated to avoid their use (64 [5%] vs 16 [1%]; odds ratio 4.18, 95% CI 2.40-7.27). INTERPRETATION These data do not lend support to the use of thigh-length GCS in patients admitted to hospital with acute stroke. National guidelines for stroke might need to be revised on the basis of these results.\n\n[P4] Simvastatin reduces CD40 expression in an experimental model of early arterialization of saphenous vein graft.\nBACKGROUND Saphenous vein graft (VG) failure occurs more frequently compared with arterial grafts, and graft thrombosis represents the main cause of early occlusion. Because CD40-CD40L pathway CD40 represents a culprit link between local inflammation and coagulation cascade, we investigate the role of CD40 and its soluble ligand (sCD40L) in the immediate in vitro response of VG to arterial pressures, and the potential effects of Simvastatin (Merck Sharp&Dohme, White-house Station, NJ) supplementation. METHODS Samples of saphenous vein and of internal mammary artery (IMA) were obtained from sixteen patients without history of statin therapy. Segments underwent pulsatile pressure distension and culture with or without supplementation of Simvastatin. CD40 and sCD40L were assessed in tissue lysate and in culture supernatant, respectively. sCD40L serum concentrations were also measured.\n\n[P5] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nas compared with 103 (8.2 percent) in the control group; the Kaplan-Meier estimates of the likelihood of freedom from deep-vein thrombosis or pulmonary embolism at 90 days were 94.1 percent (95 percent confidence interval, 92.5 to 95.4 percent) and 90.6 percent (95 percent confidence interval, 88.7 to 92.2 percent), respectively (P 0.001). The computer alert reduced the risk of deep-vein thrombosis or pulmonary embolism at 90 days by 41 percent (hazard ratio, 0.59; 95 percent confidence interval, 0.43 to 0.81; P 0.001). CONCLUSIONS The institution of a computer-alert program increased physicians’ use of prophylaxis and markedly reduced the rates of deep-vein thrombosis and pulmonary embolism among hospitalized patients at risk. Editorial Comment: Most hospitals have adopted electronic systems to alert physicians of drug interactions or possible substitutions, as well as other measures designed to improve the quality of care and decrease expenses.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "bce28ba68b83ed75a5efdfc9497a01abb28dc537c8c08be797509926029dccd3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871026.082643,
+      "end_wall": 1792871039.18366,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3130,
+    "start_wall": 1792871026.082643,
+    "start_mono": 540582.785653875,
+    "end_wall": 1792871039.18366,
+    "end_mono": 540595.886619833,
+    "raw_response": "{\"reasoning\": \"Thigh-length graduated compression stockings (GCS) were not shown to reduce deep vein thrombosis (DVT) in patients with acute stroke who are immobile, based on a well-designed clinical trial. The trial found no significant reduction in DVT risk and found GCS to be associated with increased skin issues. Given this evidence, the claim is REFUTED.\", \"answer\": \"REFUTED\", \"citations\": [\"P3\", \"P1\", \"P2\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13097447666,
+     "load_duration": 1348549916,
+     "prompt_eval_count": 1407,
+     "prompt_eval_duration": 4107584499,
+     "eval_count": 118,
+     "eval_duration": 6292691296,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:59.18185Z"
+    },
+    "elapsed_s": 13.101,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3130,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3",
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:11718220:1",
+     "scifact:11718220:2",
+     "scifact:11718220:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 346,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e8b67a97bd44b51d633e91f4b7ae3cccd90fb760f0c9ed0f9c4c2cc5db7d78bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871016.651617,
+      "end_wall": 1792871018.6990788,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871016.651617,
+    "start_mono": 540573.354663791,
+    "end_wall": 1792871018.6990788,
+    "end_mono": 540575.402117,
+    "raw_response": "{\"query\": \"compression stockings stroke immobile deep vein thrombosis studies results\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2043821958,
+     "load_duration": 56988417,
+     "prompt_eval_count": 197,
+     "prompt_eval_duration": 627230666,
+     "eval_count": 18,
+     "eval_duration": 1186351916,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:38.6978Z"
+    },
+    "elapsed_s": 2.047,
+    "query_used": "compression stockings stroke immobile deep vein thrombosis studies results",
+    "query_source": "json",
+    "query_arrival_seq": 3131
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "compression stockings stroke immobile deep vein thrombosis studies results",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11718220:0",
+       "score_q": 24351
+      },
+      {
+       "passage_key": "scifact:11718220:2",
+       "score_q": 21708
+      },
+      {
+       "passage_key": "scifact:11718220:1",
+       "score_q": 16053
+      },
+      {
+       "passage_key": "scifact:79231308:0",
+       "score_q": 11211
+      },
+      {
+       "passage_key": "scifact:34338075:0",
+       "score_q": 11149
+      }
+     ],
+     "retrieval_sha256": "76edb9e5846737a243aa8dda05ed38aafe3e8fbecbc213fb4f51d31daad54c49"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "76edb9e5846737a243aa8dda05ed38aafe3e8fbecbc213fb4f51d31daad54c49",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11718220:0",
+      "content_sha256": "c56c8d199acd338bd24b6c828bc34b0c7391a5ebd70f4013cc4b2b297043ff9b",
+      "chars": 1150
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11718220:2",
+      "content_sha256": "b14ed89e2e8cae2920d95c66a98055ee8f3b527e19b8292b6b2c770c1d5d8c20",
+      "chars": 360
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11718220:1",
+      "content_sha256": "58b329a949fe2c6238a988da21defb6b046a098bd967545e2709af6fe3b82733",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:79231308:0",
+      "content_sha256": "4523545e23b3803f640aff7724767de6c92b24785fc872500a4ef9842611cf27",
+      "chars": 1045
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:34338075:0",
+      "content_sha256": "6f2db64cceafcc134b4febed908d406cbc3041176a705ce8cf0c4cf90dd19151",
+      "chars": 961
+     }
+    ],
+    "elapsed_s": 0.003
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nEvidence passages from your search for \"compression stockings stroke immobile deep vein thrombosis studies results\":\n<<<PASSAGES\n[P1] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nBACKGROUND Deep vein thrombosis (DVT) and pulmonary embolism are common after stroke. In small trials of patients undergoing surgery, graduated compression stockings (GCS) reduce the risk of DVT. National stroke guidelines extrapolating from these trials recommend their use in patients with stroke despite insufficient evidence. We assessed the effectiveness of thigh-length GCS to reduce DVT after stroke. METHODS In this outcome-blinded, randomised controlled trial, 2518 patients who were admitted to hospital within 1 week of an acute stroke and who were immobile were enrolled from 64 centres in the UK, Italy, and Australia. Patients were allocated via a central randomisation system to routine care plus thigh-length GCS (n=1256) or to routine care plus avoidance of GCS (n=1262). A technician who was blinded to treatment allocation undertook compression Doppler ultrasound of both legs at about 7-10 days and, when practical, again at 25-30 days after enrolment.\n\n[P2] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nFUNDING Medical Research Council (UK), Chief Scientist Office of Scottish Government, Chest Heart and Stroke Scotland, Tyco Healthcare (Covidien) USA, and UK Stroke Research Network.\n\n[P3] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nThe primary outcome was the occurrence of symptomatic or asymptomatic DVT in the popliteal or femoral veins. Analyses were by intention to treat. This study is registered, number ISRCTN28163533. FINDINGS All patients were included in the analyses. The primary outcome occurred in 126 (10.0%) patients allocated to thigh-length GCS and in 133 (10.5%) allocated to avoid GCS, resulting in a non-significant absolute reduction in risk of 0.5% (95% CI -1.9% to 2.9%). Skin breaks, ulcers, blisters, and skin necrosis were significantly more common in patients allocated to GCS than in those allocated to avoid their use (64 [5%] vs 16 [1%]; odds ratio 4.18, 95% CI 2.40-7.27). INTERPRETATION These data do not lend support to the use of thigh-length GCS in patients admitted to hospital with acute stroke. National guidelines for stroke might need to be revised on the basis of these results.\n\n[P4] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nas compared with 103 (8.2 percent) in the control group; the Kaplan-Meier estimates of the likelihood of freedom from deep-vein thrombosis or pulmonary embolism at 90 days were 94.1 percent (95 percent confidence interval, 92.5 to 95.4 percent) and 90.6 percent (95 percent confidence interval, 88.7 to 92.2 percent), respectively (P 0.001). The computer alert reduced the risk of deep-vein thrombosis or pulmonary embolism at 90 days by 41 percent (hazard ratio, 0.59; 95 percent confidence interval, 0.43 to 0.81; P 0.001). CONCLUSIONS The institution of a computer-alert program increased physicians’ use of prophylaxis and markedly reduced the rates of deep-vein thrombosis and pulmonary embolism among hospitalized patients at risk. Editorial Comment: Most hospitals have adopted electronic systems to alert physicians of drug interactions or possible substitutions, as well as other measures designed to improve the quality of care and decrease expenses.\n\n[P5] Prevention of central venous catheter-associated thrombosis: a meta-analysis.\nPURPOSE Anticoagulant prophylaxis in patients with central venous catheters is controversial. We performed a meta-analysis of randomized controlled trials of anticoagulant prophylaxis in patients with central venous catheters. METHODS MEDLINE and EMBASE were searched up to May 2006, supplemented by manual searches of conference proceedings and bibliographies. RESULTS Fifteen trials were included. Unfractionated heparin infusion, oral fixed low-dose vitamin K antagonist, and subcutaneous low-molecular-weight heparin were evaluated. For all catheter-associated deep vein thrombosis (symptomatic and asymptomatic combined), the summary relative risks ranged from 0.31 to 0.73 (all achieved statistical significance). For symptomatic deep vein thrombosis, the summary relative risks ranged from 0.28 to 0.72, but did not achieve statistical significance for any individual regimen.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c71d69f2732ee676596282cb0e9d4ae0208aae1a23ae7fede646ef7b62772ce4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871018.70272,
+      "end_wall": 1792871045.525784,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3131,
+    "start_wall": 1792871018.70272,
+    "start_mono": 540575.40575875,
+    "end_wall": 1792871045.525784,
+    "end_mono": 540602.228719166,
+    "raw_response": "{\n  \"reasoning\": \"The CLOTS trial (P1-P3) found that thigh-length graduated compression stockings (GCS) did not significantly reduce the risk of deep vein thrombosis (DVT) in immobile patients admitted after an acute stroke. The primary outcome analysis showed a non-significant reduction in DVT risk with GCS use, and even noted a higher incidence of adverse skin effects in GCS users compared to non-users. This directly refutes the claim that GCS did not reduce DVT in such patients.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26817842125,
+     "load_duration": 54052209,
+     "prompt_eval_count": 1378,
+     "prompt_eval_duration": 6047477291,
+     "eval_count": 149,
+     "eval_duration": 19479594335,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:44:05.521834Z"
+    },
+    "elapsed_s": 26.823,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3131,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:11718220:0",
+     "scifact:11718220:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 468,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e8b67a97bd44b51d633e91f4b7ae3cccd90fb760f0c9ed0f9c4c2cc5db7d78bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871016.651733,
+      "end_wall": 1792871025.587231,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871016.651733,
+    "start_mono": 540573.354779625,
+    "end_wall": 1792871025.587231,
+    "end_mono": 540582.290241666,
+    "raw_response": "{\"query\": \"deep vein thrombosis compression stockings acute stroke\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8932427209,
+     "load_duration": 4368955167,
+     "prompt_eval_count": 183,
+     "prompt_eval_duration": 1757037834,
+     "eval_count": 15,
+     "eval_duration": 2677576749,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:45.586075Z"
+    },
+    "elapsed_s": 8.935,
+    "query_used": "deep vein thrombosis compression stockings acute stroke",
+    "query_source": "json",
+    "query_arrival_seq": 3134
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deep vein thrombosis compression stockings acute stroke",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11718220:0",
+       "score_q": 22293
+      },
+      {
+       "passage_key": "scifact:11718220:2",
+       "score_q": 21708
+      },
+      {
+       "passage_key": "scifact:11718220:1",
+       "score_q": 16762
+      },
+      {
+       "passage_key": "scifact:79231308:0",
+       "score_q": 11211
+      },
+      {
+       "passage_key": "scifact:34338075:1",
+       "score_q": 11079
+      }
+     ],
+     "retrieval_sha256": "131b266a3a7405410b6675e725bbfaf00ab306eefffba121d87907fb2a4f2c21"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "131b266a3a7405410b6675e725bbfaf00ab306eefffba121d87907fb2a4f2c21",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11718220:0",
+      "content_sha256": "c56c8d199acd338bd24b6c828bc34b0c7391a5ebd70f4013cc4b2b297043ff9b",
+      "chars": 1150
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11718220:2",
+      "content_sha256": "b14ed89e2e8cae2920d95c66a98055ee8f3b527e19b8292b6b2c770c1d5d8c20",
+      "chars": 360
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11718220:1",
+      "content_sha256": "58b329a949fe2c6238a988da21defb6b046a098bd967545e2709af6fe3b82733",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:79231308:0",
+      "content_sha256": "4523545e23b3803f640aff7724767de6c92b24785fc872500a4ef9842611cf27",
+      "chars": 1045
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:34338075:1",
+      "content_sha256": "5ee88b574086c48370b1b01ebe6b9d16297d5468deeb45d5bd0cb13b99f7cbb4",
+      "chars": 348
+     }
+    ],
+    "elapsed_s": 0.0006
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nEvidence passages from your search for \"deep vein thrombosis compression stockings acute stroke\":\n<<<PASSAGES\n[P1] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nBACKGROUND Deep vein thrombosis (DVT) and pulmonary embolism are common after stroke. In small trials of patients undergoing surgery, graduated compression stockings (GCS) reduce the risk of DVT. National stroke guidelines extrapolating from these trials recommend their use in patients with stroke despite insufficient evidence. We assessed the effectiveness of thigh-length GCS to reduce DVT after stroke. METHODS In this outcome-blinded, randomised controlled trial, 2518 patients who were admitted to hospital within 1 week of an acute stroke and who were immobile were enrolled from 64 centres in the UK, Italy, and Australia. Patients were allocated via a central randomisation system to routine care plus thigh-length GCS (n=1256) or to routine care plus avoidance of GCS (n=1262). A technician who was blinded to treatment allocation undertook compression Doppler ultrasound of both legs at about 7-10 days and, when practical, again at 25-30 days after enrolment.\n\n[P2] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nFUNDING Medical Research Council (UK), Chief Scientist Office of Scottish Government, Chest Heart and Stroke Scotland, Tyco Healthcare (Covidien) USA, and UK Stroke Research Network.\n\n[P3] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nThe primary outcome was the occurrence of symptomatic or asymptomatic DVT in the popliteal or femoral veins. Analyses were by intention to treat. This study is registered, number ISRCTN28163533. FINDINGS All patients were included in the analyses. The primary outcome occurred in 126 (10.0%) patients allocated to thigh-length GCS and in 133 (10.5%) allocated to avoid GCS, resulting in a non-significant absolute reduction in risk of 0.5% (95% CI -1.9% to 2.9%). Skin breaks, ulcers, blisters, and skin necrosis were significantly more common in patients allocated to GCS than in those allocated to avoid their use (64 [5%] vs 16 [1%]; odds ratio 4.18, 95% CI 2.40-7.27). INTERPRETATION These data do not lend support to the use of thigh-length GCS in patients admitted to hospital with acute stroke. National guidelines for stroke might need to be revised on the basis of these results.\n\n[P4] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nas compared with 103 (8.2 percent) in the control group; the Kaplan-Meier estimates of the likelihood of freedom from deep-vein thrombosis or pulmonary embolism at 90 days were 94.1 percent (95 percent confidence interval, 92.5 to 95.4 percent) and 90.6 percent (95 percent confidence interval, 88.7 to 92.2 percent), respectively (P 0.001). The computer alert reduced the risk of deep-vein thrombosis or pulmonary embolism at 90 days by 41 percent (hazard ratio, 0.59; 95 percent confidence interval, 0.43 to 0.81; P 0.001). CONCLUSIONS The institution of a computer-alert program increased physicians’ use of prophylaxis and markedly reduced the rates of deep-vein thrombosis and pulmonary embolism among hospitalized patients at risk. Editorial Comment: Most hospitals have adopted electronic systems to alert physicians of drug interactions or possible substitutions, as well as other measures designed to improve the quality of care and decrease expenses.\n\n[P5] Prevention of central venous catheter-associated thrombosis: a meta-analysis.\nCONCLUSION Anticoagulant prophylaxis is effective for preventing all catheter-associated deep vein thrombosis in patients with central venous catheters. The effectiveness for preventing symptomatic venous thromboembolism, including pulmonary embolism, remains uncertain.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b29d1f1a2c2c33d2aecc588387bee3b68182deb9089d3a4e4c49abed7aafed19",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871025.588835,
+      "end_wall": 1792871047.099338,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3132,
+    "start_wall": 1792871025.588835,
+    "start_mono": 540582.29184775,
+    "end_wall": 1792871047.099338,
+    "end_mono": 540603.80226725,
+    "raw_response": "{\"reasoning\": \"The claim is refuted because the CLOTS trial 1, a multicentre, randomised controlled trial, found that the use of thigh-length graduated compression stockings (GCS) did not reduce the risk of deep vein thrombosis in patients admitted to hospital who were immobile due to acute stroke. The primary outcome showed no significant reduction in the risk of DVT with the use of GCS. Additionally, the trial found that GCS use led to a higher incidence of skin breaks, ulcers, blisters, and skin necrosis. This evidence from a well-designed and controlled trial contradicts the claim that GCS reduce DVT in,\",\"answer\": \"REFUTED\",\"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21506413125,
+     "load_duration": 52406083,
+     "prompt_eval_count": 1197,
+     "prompt_eval_duration": 6121762292,
+     "eval_count": 155,
+     "eval_duration": 13790974240,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:44:07.096226Z"
+    },
+    "elapsed_s": 21.51,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3132,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e8b67a97bd44b51d633e91f4b7ae3cccd90fb760f0c9ed0f9c4c2cc5db7d78bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871016.651978,
+      "end_wall": 1792871019.335784,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871016.651978,
+    "start_mono": 540573.355024833,
+    "end_wall": 1792871019.335784,
+    "end_mono": 540576.038819875,
+    "raw_response": "{\"query\": \"Thigh-length GCS stroke patients DVT study\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2680740791,
+     "load_duration": 1171317208,
+     "prompt_eval_count": 202,
+     "prompt_eval_duration": 416251750,
+     "eval_count": 17,
+     "eval_duration": 990071043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:39.334759Z"
+    },
+    "elapsed_s": 2.684,
+    "query_used": "Thigh-length GCS stroke patients DVT study",
+    "query_source": "json",
+    "query_arrival_seq": 3132
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Thigh-length GCS stroke patients DVT study",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:46764350:0",
+       "score_q": 683
+      },
+      {
+       "passage_key": "scifact:32328114:1",
+       "score_q": 677
+      },
+      {
+       "passage_key": "scifact:3898784:1",
+       "score_q": 677
+      },
+      {
+       "passage_key": "scifact:23627419:1",
+       "score_q": 675
+      },
+      {
+       "passage_key": "scifact:32328114:2",
+       "score_q": 673
+      }
+     ],
+     "retrieval_sha256": "6877c09cb3baf0845682ebd18624b5a387392985db3dc369c485eb45a2a87ddd"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6877c09cb3baf0845682ebd18624b5a387392985db3dc369c485eb45a2a87ddd",
+    "query_embedding_sha256": "0a8ee0e376f06ef462429549d9c75b6ad0e3ddee56779e0ae6d44a265147b18c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:46764350:0",
+      "content_sha256": "785b6da90ff06a36c070caae7f27a2a115eba2baf664053380a594d242801ae1",
+      "chars": 972
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:32328114:1",
+      "content_sha256": "f286727a540919c6cdcb95d4d7904cb6fb3ebfcd037ed00551e5e86b58cddee6",
+      "chars": 1104
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:3898784:1",
+      "content_sha256": "0a26e9822d6298b1a9d9a12ba494ebe9923e22e219a9a41cc94777c13fd2d22e",
+      "chars": 911
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:23627419:1",
+      "content_sha256": "af364317d659e578c4681f8978100a27eac3c69ede6c067533e1e236732b8a2d",
+      "chars": 885
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:32328114:2",
+      "content_sha256": "3dcd43f10db1b70bb9e7f68cbf4d070fb3a15ec4b9b8b81160d07bcee771dc3c",
+      "chars": 1106
+     }
+    ],
+    "elapsed_s": 6.8897
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nEvidence passages from your search for \"Thigh-length GCS stroke patients DVT study\":\n<<<PASSAGES\n[P1] Frontal stroke syndromes.\nThe frontal lobe is the largest lobe of the brain, and it is thus commonly involved in stroke. Moreover, almost one in five strokes is limited to the prerolandic areas. This high frequency of anatomical involvement is in sharp contrast with the apparent rarity of clinical frontal dysfunction in stroke. It is remarkable that frontal behavioral syndromes have been rather uncommonly reported in patients with stroke as compared to patients with other diseases, such as brain tumor. This fact is paradoxical, because an acute process (stroke) is expected to yield more clinical dysfunction than a more chronic disease (tumor). A volume effect may be the main factor leading to this phenomenon. Another interesting aspect of frontal strokes is the contribution of so-called 'silent' strokes, the recurrence of which may nevertheless lead to intellectual decline and compromise recovery from another stroke with more specific neurologic dysfunction.\n\n[P2] Primary prevention of ischemic stroke: A statement for healthcare professionals from the Stroke Council of the American Heart Association.\nIt is now estimated that there are more than 700 000 incident strokes annually and 4.4 million stroke survivors.1 2 The economic burden of stroke was estimated by the American Heart Association to be $51 billion (direct and indirect costs) in 1999.3 Despite the advent of treatment of selected patients with acute ischemic stroke with tissue plasminogen activator and the promise of other experimental therapies, the best approach to reducing the burden of stroke remains prevention.4 5 High-risk or stroke-prone individuals can be identified and targeted for specific interventions.6 This is important because epidemiological data suggest a substantial leveling off of prior declines in stroke-related mortality and a possible increase in stroke incidence.7 8 The Stroke Council of the American Heart Association formed an ad hoc writing group to provide a clear and concise overview of the evidence regarding various established and potential stroke risk factors.\n\n[P3] Association of Intracerebral Hemorrhage Among Patients Taking Non–Vitamin K Antagonist vs Vitamin K Antagonist Oral Anticoagulants With In-Hospital Mortality\nResults Among 141 311 patients with ICH (mean [SD] age, 68.3 [15.3] years; 48.1% women), 15 036 (10.6%) were taking warfarin and 4918 (3.5%) were taking NOACs preceding ICH, and 39 585 (28.0%) and 5783 (4.1%) were taking concomitant single and dual antiplatelet agents, respectively. Patients with prior use of warfarin or NOACs were older and had higher prevalence of atrial fibrillation and prior stroke. Acute ICH stroke severity (measured by the National Institutes of Health Stroke Scale) was not significantly different across the 3 groups (median, 9 [interquartile range, 2-21] for warfarin, 8 [2-20] for NOACs, and 8 [2-19] for no OACs). The unadjusted in-hospital mortality rates were 32.6% for warfarin, 26.5% for NOACs, and 22.5% for no OACs.\n\n[P4] Obstructive sleep apnea-hypopnea and incident stroke: the sleep heart health study.\nIn covariate-adjusted Cox proportional hazard models, a significant positive association between ischemic stroke and OAHI was observed in men (P value for linear trend: P = 0.016). Men in the highest OAHI quartile (>19) had an adjusted hazard ratio of 2.86 (95% confidence interval, 1.1-7.4). In the mild to moderate range (OAHI, 5-25), each one-unit increase in OAHI in men was estimated to increase stroke risk by 6% (95% confidence interval, 2-10%). In women, stroke was not significantly associated with OAHI quartiles, but increased risk was observed at an OAHI greater than 25. CONCLUSIONS The strong adjusted association between ischemic stroke and OAHI in community-dwelling men with mild to moderate sleep apnea suggests that this is an appropriate target for future stroke prevention trials.\n\n[P5] Primary prevention of ischemic stroke: A statement for healthcare professionals from the Stroke Council of the American Heart Association.\nThe writing group was chosen based on expertise in specific subject areas, and it used literature review, reference to previously published guidelines, and expert opinion to summarize existing evidence and formulate recommendations (Table 1⇓). View this table: Table 1. Levels of Evidence and Grading of Recommendations As given in Tables 2 through 4⇓⇓⇓, risk factors or risk markers for a first stroke were classified according to potential for modification (nonmodifiable, modifiable, or potentially modifiable) and strength of evidence (well documented, less well documented).5 The tables give the estimated prevalence, population attributable risk, relative risk, and risk reduction with treatment for each factor when known. Population attributable risk reflects the proportion of ischemic strokes in the population that can be attributed to a particular risk factor and is given by the formula 100×[prevalence(relative risk−1)/prevalence(relative risk−1)+1]). …\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "40fe0b4cbb59263159f4c7ddef50ca61f8b32dbc0183c4ff275a9e164c65ec38",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871026.226207,
+      "end_wall": 1792871048.5990531,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3133,
+    "start_wall": 1792871026.226207,
+    "start_mono": 540582.929216916,
+    "end_wall": 1792871048.5990531,
+    "end_mono": 540605.301977083,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages do not directly address the claim about thigh-length graduated compression stockings (GCS) and their effectiveness in reducing deep vein thrombosis (DVT) in immobile stroke patients. They focus on stroke types, risk factors, and prevention strategies without discussing GCS's impact on DVT specifically in this population. Therefore, we cannot support or refute the claim from the given evidence.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22368777375,
+     "load_duration": 14505506125,
+     "prompt_eval_count": 1637,
+     "prompt_eval_duration": 3346842750,
+     "eval_count": 135,
+     "eval_duration": 3825429828,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:44:08.596291Z"
+    },
+    "elapsed_s": 22.373,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3133,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:46764350:0",
+     "scifact:32328114:1",
+     "scifact:3898784:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 427,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "e8b67a97bd44b51d633e91f4b7ae3cccd90fb760f0c9ed0f9c4c2cc5db7d78bd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792871016.651497,
+      "end_wall": 1792871025.53233,
+      "error": null
+     }
+    ],
+    "start_wall": 1792871016.651497,
+    "start_mono": 540573.354544166,
+    "end_wall": 1792871025.53233,
+    "end_mono": 540582.235340875,
+    "raw_response": "{\"query\": \"deep vein thrombosis hospital immobile stroke GCS\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8877330875,
+     "load_duration": 5908258833,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 1000399125,
+     "eval_count": 13,
+     "eval_duration": 1702536416,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:43:45.530858Z"
+    },
+    "elapsed_s": 8.881,
+    "query_used": "deep vein thrombosis hospital immobile stroke GCS",
+    "query_source": "json",
+    "query_arrival_seq": 3133
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "deep vein thrombosis hospital immobile stroke GCS",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:79231308:0",
+       "score_q": 654
+      },
+      {
+       "passage_key": "scifact:79231308:1",
+       "score_q": 617
+      },
+      {
+       "passage_key": "scifact:26132041:0",
+       "score_q": 609
+      },
+      {
+       "passage_key": "scifact:11718220:0",
+       "score_q": 605
+      },
+      {
+       "passage_key": "scifact:23513718:0",
+       "score_q": 603
+      }
+     ],
+     "retrieval_sha256": "d3048d08cf60c5b21cbbeaaf7f0257d83c27b91b4d155d356767e23f79d7664f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d3048d08cf60c5b21cbbeaaf7f0257d83c27b91b4d155d356767e23f79d7664f",
+    "query_embedding_sha256": "b2622eddccdab9173c9bc865e4dda7129e7bc0068133695abd1f3a31ef9da44d",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:79231308:0",
+      "content_sha256": "4523545e23b3803f640aff7724767de6c92b24785fc872500a4ef9842611cf27",
+      "chars": 1045
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:79231308:1",
+      "content_sha256": "11d1fc43fe1358d538899c095ff703933b27ba11cba0e917ec6712e81897713d",
+      "chars": 1030
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:26132041:0",
+      "content_sha256": "e5f0fdacf703bcc58c32e09ff7fae802c23b7733d7393f7642f6f2efbc3cba40",
+      "chars": 717
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11718220:0",
+      "content_sha256": "c56c8d199acd338bd24b6c828bc34b0c7391a5ebd70f4013cc4b2b297043ff9b",
+      "chars": 1150
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:23513718:0",
+      "content_sha256": "d25796979dab84ec5fd7f11c640367acd986d28946d78d627da27645d2a5649f",
+      "chars": 1048
+     }
+    ],
+    "elapsed_s": 14.0708
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\n\nEvidence passages from your search for \"deep vein thrombosis hospital immobile stroke GCS\":\n<<<PASSAGES\n[P1] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nas compared with 103 (8.2 percent) in the control group; the Kaplan-Meier estimates of the likelihood of freedom from deep-vein thrombosis or pulmonary embolism at 90 days were 94.1 percent (95 percent confidence interval, 92.5 to 95.4 percent) and 90.6 percent (95 percent confidence interval, 88.7 to 92.2 percent), respectively (P 0.001). The computer alert reduced the risk of deep-vein thrombosis or pulmonary embolism at 90 days by 41 percent (hazard ratio, 0.59; 95 percent confidence interval, 0.43 to 0.81; P 0.001). CONCLUSIONS The institution of a computer-alert program increased physicians’ use of prophylaxis and markedly reduced the rates of deep-vein thrombosis and pulmonary embolism among hospitalized patients at risk. Editorial Comment: Most hospitals have adopted electronic systems to alert physicians of drug interactions or possible substitutions, as well as other measures designed to improve the quality of care and decrease expenses.\n\n[P2] Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors\nThis approach was taken one step further by these authors, who evaluated whether notifying physicians that their patients were at increased risk for venous thromboembolism would decrease the incidence of deep vein thrombosis or pulmonary embolism. The premise was that simply notifying the physician would increase the use of appropriate prophylactic measures. Major surgery (defined as anything requiring general anesthesia), cancer and age greater than 75 years were included among the risk factors, each of which frequently applies to a urology population. In fact, more than 13% of the patients in the intervention group had a known diagnosis of a genitourinary cancer. The computer alert decreased the risk of deep vein thrombosis or pulmonary embolism by 41%. There are 2 lessons urologists can learn from this study. First, many urology patients are at increased risk for venous thromboembolism and appropriate prophylaxis should be used.\n\n[P3] Vanishing cerebellar infarcts in a migraine patient.\nRecent population-based studies have suggested that migraine is a risk factor for the development of infarct-like lesions in the territory of the posterior circulation. These lesions are thought to be true vascular infarcts based on their size, location and magnetic resonance imaging (MRI) characteristics. However, as there are no postmortem studies identifying the pathology of these MRI findings, their true aetiology is unknown. A case patient with migraine is presented, who developed what appeared to be cerebellar infarcts on MRI, but these lesions vanished on repeat imaging 16 days later, questioning their aetiology as vascular ischaemic based infarcts.\n\n[P4] Effectiveness of thigh-length graduated compression stockings to reduce the risk of deep vein thrombosis after stroke (CLOTS trial 1): a multicentre, randomised controlled trial\nBACKGROUND Deep vein thrombosis (DVT) and pulmonary embolism are common after stroke. In small trials of patients undergoing surgery, graduated compression stockings (GCS) reduce the risk of DVT. National stroke guidelines extrapolating from these trials recommend their use in patients with stroke despite insufficient evidence. We assessed the effectiveness of thigh-length GCS to reduce DVT after stroke. METHODS In this outcome-blinded, randomised controlled trial, 2518 patients who were admitted to hospital within 1 week of an acute stroke and who were immobile were enrolled from 64 centres in the UK, Italy, and Australia. Patients were allocated via a central randomisation system to routine care plus thigh-length GCS (n=1256) or to routine care plus avoidance of GCS (n=1262). A technician who was blinded to treatment allocation undertook compression Doppler ultrasound of both legs at about 7-10 days and, when practical, again at 25-30 days after enrolment.\n\n[P5] Role of soluble guanylate cyclase in dilator responses of the cerebral microcirculation.\nResponses of cerebral blood vessels to nitric oxide (NO) are mediated by soluble guanylate cyclase (sGC)-dependent and potentially by sGC-independent mechanisms. One sGC-independent mechanism by which NO may produce vasodilatation is inhibition of formation of a vasoconstrictor metabolite produced through the cytochrome P450 pathway. In these experiments, we examined the hypothesis that dilatation of cerebral microvessels in response to NO is dependent on activation of sGC. Diameters of cerebral arterioles (baseline diameter=94+/-5 micrometers, mean+/-S.E.) were measured using a closed cranial window in anesthetized rabbits. Under control conditions, YC-1 [3-(5'-hydroxymethyl-2'-furyl)-1-benzyl indazole], an NO-independent activator of sGC, produced vasodilation that was blocked by ODQ (1H-[1,2,4]oxadiazolo[4,3,-a]quinoxalin-1-one)(10 microM), an inhibitor of sGC. These findings indicate that sGC is functionally important in cerebral arterioles.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dbc2384b4124578f6689bb116d281af1f9023f723207e2e88e419343f445245b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792871039.603772,
+      "end_wall": 1792871055.224718,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3134,
+    "start_wall": 1792871039.603772,
+    "start_mono": 540596.306731125,
+    "end_wall": 1792871055.224718,
+    "end_mono": 540611.927616625,
+    "raw_response": "{\"reasoning\": \"The study in P4 did not find a reduction in deep vein thrombosis in patients admitted to the hospital who were immobile because of acute stroke who used thigh-length graduated compression stockings. Therefore, the claim is refuted.\", \"answer\": \"REFUTED\", \"citations\": [\"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15616024750,
+     "load_duration": 10759360250,
+     "prompt_eval_count": 1375,
+     "prompt_eval_duration": 2127875667,
+     "eval_count": 70,
+     "eval_duration": 1455100871,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T19:44:15.220782Z"
+    },
+    "elapsed_s": 15.621,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3134,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:11718220:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 231,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "9e599e92f0272b1cdec0820b0c3fdbf7d515b38dfc922e6dde204b23be418356",
+  "exaone3.5:7.8b": "76edb9e5846737a243aa8dda05ed38aafe3e8fbecbc213fb4f51d31daad54c49",
+  "olmo2:7b": "131b266a3a7405410b6675e725bbfaf00ab306eefffba121d87907fb2a4f2c21",
+  "granite3.3:2b": "6877c09cb3baf0845682ebd18624b5a387392985db3dc369c485eb45a2a87ddd",
+  "nemotron-mini:4b": "d3048d08cf60c5b21cbbeaaf7f0257d83c27b91b4d155d356767e23f79d7664f"
+ },
+ "item_start_wall": 1792871016.651273,
+ "item_wall_s": 38.573,
+ "ollama_ps_samples": [
+  [
+   1792871016.651,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871018.663,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871020.674,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871022.68,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871024.682,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792871026.693,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871028.698,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871030.705,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871032.716,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871034.728,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871036.739,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871038.749,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792871040.757,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871042.766,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871044.77,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871046.774,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792871048.786,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871050.798,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871052.81,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792871054.816,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

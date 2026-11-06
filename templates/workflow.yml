@@ -1,0 +1,21 @@
+# Copy to .github/workflows/<<slug>>.yml and fill in the artifact checks.
+# The PDF build is already covered by papers.yml.
+name: <<slug>>
+
+on:
+  push:
+    paths: ["papers/<<slug>>/**", ".github/workflows/<<slug>>.yml"]
+  pull_request:
+    paths: ["papers/<<slug>>/**", ".github/workflows/<<slug>>.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  artifact:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Artifact checks
+        working-directory: papers/<<slug>>/artifact
+        run: <<commands from artifact/README.md that need no models or hosted calls>>

@@ -1,0 +1,1353 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain272",
+ "order": 150,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain272",
+  "order": 150,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy."
+ },
+ "item_view_sha256": "ea731a1e655b2a00486d2b70caf89dfcfd3d5a999416f430ea2a586247a524ea",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8b0d6d1fd6b5cec9b40d7c7f6a102d527ce6c4e6215fe39b868c15a6ad9b067d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844382.342798,
+      "end_wall": 1792844390.564687,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844382.342798,
+    "start_mono": 513939.051664416,
+    "end_wall": 1792844390.564687,
+    "end_mono": 513947.273403,
+    "raw_response": "{\"query\": \"combination nicotine replacement therapies varenicline or bupropion vs varenicline monotherapy 12 weeks\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8219414959,
+     "load_duration": 3204244084,
+     "prompt_eval_count": 199,
+     "prompt_eval_duration": 1078255208,
+     "eval_count": 30,
+     "eval_duration": 3605677458,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:19:50.563574Z"
+    },
+    "elapsed_s": 8.222,
+    "query_used": "combination nicotine replacement therapies varenicline or bupropion vs varenicline monotherapy 12 weeks",
+    "query_source": "json",
+    "query_arrival_seq": 752
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "combination nicotine replacement therapies varenicline or bupropion vs varenicline monotherapy 12 weeks",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11614737:2",
+       "score_q": 25579
+      },
+      {
+       "passage_key": "scifact:11614737:0",
+       "score_q": 23498
+      },
+      {
+       "passage_key": "scifact:11614737:1",
+       "score_q": 23147
+      },
+      {
+       "passage_key": "scifact:5114940:0",
+       "score_q": 19911
+      },
+      {
+       "passage_key": "scifact:5114940:5",
+       "score_q": 17730
+      }
+     ],
+     "retrieval_sha256": "1f682bc3ed9dc30b849e7084c0a724e06c92f40b5e3b38cf7423e8d18066713a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1f682bc3ed9dc30b849e7084c0a724e06c92f40b5e3b38cf7423e8d18066713a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11614737:2",
+      "content_sha256": "7be430029f698f11a46688614aec45ca4f8eecb85c7e927507ed341324989798",
+      "chars": 993
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11614737:0",
+      "content_sha256": "af85784205bf132baf61d4327be85913920b8b6b00815ca7309cf3d00c687aa4",
+      "chars": 1071
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11614737:1",
+      "content_sha256": "cd013df234de4f6b311176fa05d65b13056d0d56e6d690ab037924c68858de14",
+      "chars": 862
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5114940:0",
+      "content_sha256": "a41d7215f4f8817f1d869f1f13e3fc681196f3d12b5e549e1ff08eaee52fe056",
+      "chars": 998
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5114940:5",
+      "content_sha256": "d10c62c579837f0c8782d4e80108f8cd7b1de96c9aac8e4dd041020dbde57f0a",
+      "chars": 906
+     }
+    ],
+    "elapsed_s": 0.0034
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nEvidence passages from your search for \"combination nicotine replacement therapies varenicline or bupropion vs varenicline monotherapy 12 weeks\":\n<<<PASSAGES\n[P1] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nAt 52 weeks, 30.9% of the combination therapy group achieved prolonged and 36.6% achieved 7-day point-prevalence smoking abstinence compared with 24.5% and 29.2% in varenicline monotherapy (OR, 1.39; 95% CI, 0.93-2.07; P = .11 and OR, 1.40; 95% CI, 0.96-2.05; P = .08, respectively). Participants receiving combination therapy reported more anxiety (7.2% vs 3.1%; P = .04) and depressive symptoms (3.6% vs 0.8%; P = .03). CONCLUSIONS AND RELEVANCE Among cigarette smokers, combined use of varenicline and bupropion, compared with varenicline alone, increased prolonged abstinence but not 7-day point prevalence at 12 and 26 weeks. Neither outcome was significantly different at 52 weeks. Further research is required to determine the role of combination therapy in smoking cessation. TRIAL REGISTRATION clinicaltrials.gov Identifier: http://clinicaltrials.gov/show/NCT00935818.\n\n[P2] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nIMPORTANCE Combining pharmacotherapies for tobacco-dependence treatment may increase smoking abstinence. OBJECTIVE To determine efficacy and safety of varenicline and bupropion sustained-release (SR; combination therapy) compared with varenicline (monotherapy) in cigarette smokers. DESIGN, SETTING, AND PARTICIPANTS Randomized, blinded, placebo-controlled multicenter clinical trial with a 12-week treatment period and follow-up through week 52 conducted between October 2009 and April 2013 at 3 midwestern clinical research sites. Five hundred six adult (≥18 years) cigarette smokers were randomly assigned and 315 (62%) completed the study. INTERVENTIONS Twelve weeks of varenicline and bupropion SR or varenicline and placebo. MAIN OUTCOMES AND MEASURES Primary outcome was abstinence rates at week 12, defined as prolonged (no smoking from 2 weeks after the target quit date) abstinence and 7-day point-prevalence (no smoking past 7 days) abstinence.\n\n[P3] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nSecondary outcomes were prolonged and point-prevalence smoking abstinence rates at weeks 26 and 52. Outcomes were biochemically confirmed. RESULTS At 12 weeks, 53.0% of the combination therapy group achieved prolonged smoking abstinence and 56.2% achieved 7-day point-prevalence smoking abstinence compared with 43.2% and 48.6% in varenicline monotherapy (odds ratio [OR], 1.49; 95% CI, 1.05-2.12; P = .03 and OR, 1.36; 95% CI, 0.95-1.93; P = .09, respectively). At 26 weeks, 36.6% of the combination therapy group achieved prolonged and 38.2% achieved 7-day point-prevalence smoking abstinence compared with 27.6% and 31.9% in varenicline monotherapy (OR, 1.52; 95% CI, 1.04-2.22; P = .03 and OR, 1.32; 95% CI, 0.91-1.91; P = .14, respectively).\n\n[P4] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nBACKGROUND Smoking is the leading preventable cause of illness and premature death worldwide. Some medications have been proven to help people to quit, with three licensed for this purpose in Europe and the USA: nicotine replacement therapy (NRT), bupropion, and varenicline. Cytisine (a treatment pharmacologically similar to varenicline) is also licensed for use in Russia and some of the former socialist economy countries. Other therapies, including nortriptyline, have also been tested for effectiveness. OBJECTIVES How do NRT, bupropion and varenicline compare with placebo and with each other in achieving long-term abstinence (six months or longer)? How do the remaining treatments compare with placebo in achieving long-term abstinence? How do the risks of adverse and serious adverse events (SAEs) compare between the treatments, and are there instances where the harms may outweigh the benefits?\n\n[P5] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nNicotine vaccines are not yet licensed for use as an aid to smoking cessation or relapse prevention. Nicobrevin's UK license is now revoked, and the manufacturers of rimonabant, taranabant and dianicline are no longer supporting the development or testing of these treatments. AUTHORS' CONCLUSIONS NRT, bupropion, varenicline and cytisine have been shown to improve the chances of quitting. Combination NRT and varenicline are equally effective as quitting aids. Nortriptyline also improves the chances of quitting. On current evidence, none of the treatments appear to have an incidence of adverse events that would mitigate their use. Further research is warranted into the safety of varenicline and into cytisine's potential as an effective and affordable treatment, but not into the efficacy and safety of NRT.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dde3f1ecf13c6233e7a622fe9f42c01cbd3fa1c459e554aad31926259afa26f7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844390.570404,
+      "end_wall": 1792844405.210196,
+      "error": null
+     }
+    ],
+    "arrival_seq": 750,
+    "start_wall": 1792844390.570404,
+    "start_mono": 513947.279122833,
+    "end_wall": 1792844405.210196,
+    "end_mono": 513961.918650333,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that combination therapies (varenicline and bupropion) result in higher abstinence rates compared to varenicline monotherapy, particularly for prolonged abstinence. This suggests that the claim is supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P1\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14636383584,
+     "load_duration": 4608027417,
+     "prompt_eval_count": 1628,
+     "prompt_eval_duration": 3520623626,
+     "eval_count": 89,
+     "eval_duration": 5545784877,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:20:05.208051Z"
+    },
+    "elapsed_s": 14.64,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 750,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:11614737:1",
+     "scifact:11614737:2",
+     "scifact:5114940:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 234,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8b0d6d1fd6b5cec9b40d7c7f6a102d527ce6c4e6215fe39b868c15a6ad9b067d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844382.343683,
+      "end_wall": 1792844384.234006,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844382.343683,
+    "start_mono": 513939.052549625,
+    "end_wall": 1792844384.234006,
+    "end_mono": 513940.942836958,
+    "raw_response": "{\"query\": \"nicotine replacement therapy with varenicline or bupropion effectiveness 12 weeks\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1888070625,
+     "load_duration": 60259750,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 574480583,
+     "eval_count": 24,
+     "eval_duration": 1035141291,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:19:44.233137Z"
+    },
+    "elapsed_s": 1.89,
+    "query_used": "nicotine replacement therapy with varenicline or bupropion effectiveness 12 weeks",
+    "query_source": "json",
+    "query_arrival_seq": 751
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "nicotine replacement therapy with varenicline or bupropion effectiveness 12 weeks",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:5114940:0",
+       "score_q": 16564
+      },
+      {
+       "passage_key": "scifact:11614737:2",
+       "score_q": 14981
+      },
+      {
+       "passage_key": "scifact:11614737:0",
+       "score_q": 14839
+      },
+      {
+       "passage_key": "scifact:11614737:1",
+       "score_q": 13855
+      },
+      {
+       "passage_key": "scifact:5114940:1",
+       "score_q": 13418
+      }
+     ],
+     "retrieval_sha256": "36ba7f95988010128389f8ea51c0940533fbd1c68f298e930b5396e3c9e885cf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "36ba7f95988010128389f8ea51c0940533fbd1c68f298e930b5396e3c9e885cf",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:5114940:0",
+      "content_sha256": "a41d7215f4f8817f1d869f1f13e3fc681196f3d12b5e549e1ff08eaee52fe056",
+      "chars": 998
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11614737:2",
+      "content_sha256": "7be430029f698f11a46688614aec45ca4f8eecb85c7e927507ed341324989798",
+      "chars": 993
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11614737:0",
+      "content_sha256": "af85784205bf132baf61d4327be85913920b8b6b00815ca7309cf3d00c687aa4",
+      "chars": 1071
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:11614737:1",
+      "content_sha256": "cd013df234de4f6b311176fa05d65b13056d0d56e6d690ab037924c68858de14",
+      "chars": 862
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5114940:1",
+      "content_sha256": "7befac327b1f6c8307ee7556818c123ac80394a17af4fd4c4fe8e0c3efdfdee9",
+      "chars": 1072
+     }
+    ],
+    "elapsed_s": 0.0029
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nEvidence passages from your search for \"nicotine replacement therapy with varenicline or bupropion effectiveness 12 weeks\":\n<<<PASSAGES\n[P1] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nBACKGROUND Smoking is the leading preventable cause of illness and premature death worldwide. Some medications have been proven to help people to quit, with three licensed for this purpose in Europe and the USA: nicotine replacement therapy (NRT), bupropion, and varenicline. Cytisine (a treatment pharmacologically similar to varenicline) is also licensed for use in Russia and some of the former socialist economy countries. Other therapies, including nortriptyline, have also been tested for effectiveness. OBJECTIVES How do NRT, bupropion and varenicline compare with placebo and with each other in achieving long-term abstinence (six months or longer)? How do the remaining treatments compare with placebo in achieving long-term abstinence? How do the risks of adverse and serious adverse events (SAEs) compare between the treatments, and are there instances where the harms may outweigh the benefits?\n\n[P2] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nAt 52 weeks, 30.9% of the combination therapy group achieved prolonged and 36.6% achieved 7-day point-prevalence smoking abstinence compared with 24.5% and 29.2% in varenicline monotherapy (OR, 1.39; 95% CI, 0.93-2.07; P = .11 and OR, 1.40; 95% CI, 0.96-2.05; P = .08, respectively). Participants receiving combination therapy reported more anxiety (7.2% vs 3.1%; P = .04) and depressive symptoms (3.6% vs 0.8%; P = .03). CONCLUSIONS AND RELEVANCE Among cigarette smokers, combined use of varenicline and bupropion, compared with varenicline alone, increased prolonged abstinence but not 7-day point prevalence at 12 and 26 weeks. Neither outcome was significantly different at 52 weeks. Further research is required to determine the role of combination therapy in smoking cessation. TRIAL REGISTRATION clinicaltrials.gov Identifier: http://clinicaltrials.gov/show/NCT00935818.\n\n[P3] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nIMPORTANCE Combining pharmacotherapies for tobacco-dependence treatment may increase smoking abstinence. OBJECTIVE To determine efficacy and safety of varenicline and bupropion sustained-release (SR; combination therapy) compared with varenicline (monotherapy) in cigarette smokers. DESIGN, SETTING, AND PARTICIPANTS Randomized, blinded, placebo-controlled multicenter clinical trial with a 12-week treatment period and follow-up through week 52 conducted between October 2009 and April 2013 at 3 midwestern clinical research sites. Five hundred six adult (≥18 years) cigarette smokers were randomly assigned and 315 (62%) completed the study. INTERVENTIONS Twelve weeks of varenicline and bupropion SR or varenicline and placebo. MAIN OUTCOMES AND MEASURES Primary outcome was abstinence rates at week 12, defined as prolonged (no smoking from 2 weeks after the target quit date) abstinence and 7-day point-prevalence (no smoking past 7 days) abstinence.\n\n[P4] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nSecondary outcomes were prolonged and point-prevalence smoking abstinence rates at weeks 26 and 52. Outcomes were biochemically confirmed. RESULTS At 12 weeks, 53.0% of the combination therapy group achieved prolonged smoking abstinence and 56.2% achieved 7-day point-prevalence smoking abstinence compared with 43.2% and 48.6% in varenicline monotherapy (odds ratio [OR], 1.49; 95% CI, 1.05-2.12; P = .03 and OR, 1.36; 95% CI, 0.95-1.93; P = .09, respectively). At 26 weeks, 36.6% of the combination therapy group achieved prolonged and 38.2% achieved 7-day point-prevalence smoking abstinence compared with 27.6% and 31.9% in varenicline monotherapy (OR, 1.52; 95% CI, 1.04-2.22; P = .03 and OR, 1.32; 95% CI, 0.91-1.91; P = .14, respectively).\n\n[P5] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nMETHODS The overview is restricted to Cochrane reviews, all of which include randomised trials. Participants are usually adult smokers, but we exclude reviews of smoking cessation for pregnant women and in particular disease groups or specific settings. We cover nicotine replacement therapy (NRT), antidepressants (bupropion and nortriptyline), nicotine receptor partial agonists (varenicline and cytisine), anxiolytics, selective type 1 cannabinoid receptor antagonists (rimonabant), clonidine, lobeline, dianicline, mecamylamine, Nicobrevin, opioid antagonists, nicotine vaccines, and silver acetate. Our outcome for benefit is continuous or prolonged abstinence at least six months from the start of treatment. Our outcome for harms is the incidence of serious adverse events associated with each of the treatments. We searched the Cochrane Database of Systematic Reviews (CDSR) in The Cochrane Library, for any reviews with 'smoking' in the title, abstract or keyword fields.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ea05ca80cefcf1a1d32dbbcd485c992359e1ca7d43d422dc08fe5b5d28d0fc31",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844384.237393,
+      "end_wall": 1792844407.340294,
+      "error": null
+     }
+    ],
+    "arrival_seq": 751,
+    "start_wall": 1792844384.237393,
+    "start_mono": 513940.946225,
+    "end_wall": 1792844407.340294,
+    "end_mono": 513964.048709,
+    "raw_response": "{\"reasoning\": \"The claim states that combination nicotine replacement therapy with varenicline or bupropion is more effective after 12 weeks of treatment compared to varenicline monotherapy. Evidence passages P2, P4, and P5 support this claim by reporting increased prolonged abstinence and 7-day point-prevalence abstinence rates for the combination therapy at 12 weeks compared to varenicline monotherapy. These passages provide direct evidence from randomized controlled trials showing that the combination therapy was more effective in achieving smoking abstinence at 12 weeks. Additionally, passage P3 confirms\",\"answer\": \"SUPPORTED\",\"citations\": [\"P2\", \"P4\", \"P5\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23098102917,
+     "load_duration": 44765792,
+     "prompt_eval_count": 1533,
+     "prompt_eval_duration": 7612747833,
+     "eval_count": 152,
+     "eval_duration": 14040651499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:20:07.336931Z"
+    },
+    "elapsed_s": 23.102,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 751,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:11614737:2",
+     "scifact:11614737:1",
+     "scifact:5114940:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8b0d6d1fd6b5cec9b40d7c7f6a102d527ce6c4e6215fe39b868c15a6ad9b067d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844382.3425019,
+      "end_wall": 1792844383.803815,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844382.3425019,
+    "start_mono": 513939.051368416,
+    "end_wall": 1792844383.803815,
+    "end_mono": 513940.512653083,
+    "raw_response": "{\"query\": \"nicotine combination effectiveness varenicline bupropion 12 weeks\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1458177875,
+     "load_duration": 35979584,
+     "prompt_eval_count": 203,
+     "prompt_eval_duration": 530113958,
+     "eval_count": 24,
+     "eval_duration": 781644252,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:19:43.802574Z"
+    },
+    "elapsed_s": 1.461,
+    "query_used": "nicotine combination effectiveness varenicline bupropion 12 weeks",
+    "query_source": "json",
+    "query_arrival_seq": 750
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "nicotine combination effectiveness varenicline bupropion 12 weeks",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11614737:2",
+       "score_q": 837
+      },
+      {
+       "passage_key": "scifact:11614737:1",
+       "score_q": 815
+      },
+      {
+       "passage_key": "scifact:11614737:0",
+       "score_q": 783
+      },
+      {
+       "passage_key": "scifact:5114940:4",
+       "score_q": 741
+      },
+      {
+       "passage_key": "scifact:5114940:0",
+       "score_q": 728
+      }
+     ],
+     "retrieval_sha256": "bd787e86de344689609a0e117fea674c3692ea0dffaac9ce20fcf8163b7a1955"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bd787e86de344689609a0e117fea674c3692ea0dffaac9ce20fcf8163b7a1955",
+    "query_embedding_sha256": "2904f6c1648a565f42518329f34351164f50292c88403a10fd5e33de726d3b4e",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11614737:2",
+      "content_sha256": "7be430029f698f11a46688614aec45ca4f8eecb85c7e927507ed341324989798",
+      "chars": 993
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11614737:1",
+      "content_sha256": "cd013df234de4f6b311176fa05d65b13056d0d56e6d690ab037924c68858de14",
+      "chars": 862
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11614737:0",
+      "content_sha256": "af85784205bf132baf61d4327be85913920b8b6b00815ca7309cf3d00c687aa4",
+      "chars": 1071
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5114940:4",
+      "content_sha256": "2237b81e6bb6d3985b1fcfdb60f615d2b1db76984c908df8087b17ad9fb1c9fe",
+      "chars": 1076
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5114940:0",
+      "content_sha256": "a41d7215f4f8817f1d869f1f13e3fc681196f3d12b5e549e1ff08eaee52fe056",
+      "chars": 998
+     }
+    ],
+    "elapsed_s": 10.155
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nEvidence passages from your search for \"nicotine combination effectiveness varenicline bupropion 12 weeks\":\n<<<PASSAGES\n[P1] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nAt 52 weeks, 30.9% of the combination therapy group achieved prolonged and 36.6% achieved 7-day point-prevalence smoking abstinence compared with 24.5% and 29.2% in varenicline monotherapy (OR, 1.39; 95% CI, 0.93-2.07; P = .11 and OR, 1.40; 95% CI, 0.96-2.05; P = .08, respectively). Participants receiving combination therapy reported more anxiety (7.2% vs 3.1%; P = .04) and depressive symptoms (3.6% vs 0.8%; P = .03). CONCLUSIONS AND RELEVANCE Among cigarette smokers, combined use of varenicline and bupropion, compared with varenicline alone, increased prolonged abstinence but not 7-day point prevalence at 12 and 26 weeks. Neither outcome was significantly different at 52 weeks. Further research is required to determine the role of combination therapy in smoking cessation. TRIAL REGISTRATION clinicaltrials.gov Identifier: http://clinicaltrials.gov/show/NCT00935818.\n\n[P2] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nSecondary outcomes were prolonged and point-prevalence smoking abstinence rates at weeks 26 and 52. Outcomes were biochemically confirmed. RESULTS At 12 weeks, 53.0% of the combination therapy group achieved prolonged smoking abstinence and 56.2% achieved 7-day point-prevalence smoking abstinence compared with 43.2% and 48.6% in varenicline monotherapy (odds ratio [OR], 1.49; 95% CI, 1.05-2.12; P = .03 and OR, 1.36; 95% CI, 0.95-1.93; P = .09, respectively). At 26 weeks, 36.6% of the combination therapy group achieved prolonged and 38.2% achieved 7-day point-prevalence smoking abstinence compared with 27.6% and 31.9% in varenicline monotherapy (OR, 1.52; 95% CI, 1.04-2.22; P = .03 and OR, 1.32; 95% CI, 0.91-1.91; P = .14, respectively).\n\n[P3] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nIMPORTANCE Combining pharmacotherapies for tobacco-dependence treatment may increase smoking abstinence. OBJECTIVE To determine efficacy and safety of varenicline and bupropion sustained-release (SR; combination therapy) compared with varenicline (monotherapy) in cigarette smokers. DESIGN, SETTING, AND PARTICIPANTS Randomized, blinded, placebo-controlled multicenter clinical trial with a 12-week treatment period and follow-up through week 52 conducted between October 2009 and April 2013 at 3 midwestern clinical research sites. Five hundred six adult (≥18 years) cigarette smokers were randomly assigned and 315 (62%) completed the study. INTERVENTIONS Twelve weeks of varenicline and bupropion SR or varenicline and placebo. MAIN OUTCOMES AND MEASURES Primary outcome was abstinence rates at week 12, defined as prolonged (no smoking from 2 weeks after the target quit date) abstinence and 7-day point-prevalence (no smoking past 7 days) abstinence.\n\n[P4] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nSAE meta-analysis of the bupropion studies demonstrated no excess of neuropsychiatric (RR 0.88; 95% CI 0.31 to 2.50) or cardiovascular events (RR 0.77; 95% CI 0.37 to 1.59). SAE meta-analysis of 14 varenicline trials found no difference between the varenicline and placebo arms (RR 1.06; 95% CI 0.72 to 1.55), and subgroup analyses detected no significant excess of neuropsychiatric events (RR 0.53; 95% CI 0.17 to 1.67), or of cardiac events (RR 1.26; 95% CI 0.62 to 2.56). Nortriptyline increased the chances of quitting (RR 2.03; 95% CI 1.48 to 2.78). Neither nortriptyline nor bupropion were shown to enhance the effect of NRT compared with NRT alone. Clonidine increased the chances of quitting (RR 1.63; 95% CI 1.22 to 2.18), but this was offset by a dose-dependent rise in adverse events. Mecamylamine in combination with NRT may increase the chances of quitting, but the current evidence is inconclusive. Other treatments failed to demonstrate a benefit compared with placebo.\n\n[P5] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nBACKGROUND Smoking is the leading preventable cause of illness and premature death worldwide. Some medications have been proven to help people to quit, with three licensed for this purpose in Europe and the USA: nicotine replacement therapy (NRT), bupropion, and varenicline. Cytisine (a treatment pharmacologically similar to varenicline) is also licensed for use in Russia and some of the former socialist economy countries. Other therapies, including nortriptyline, have also been tested for effectiveness. OBJECTIVES How do NRT, bupropion and varenicline compare with placebo and with each other in achieving long-term abstinence (six months or longer)? How do the remaining treatments compare with placebo in achieving long-term abstinence? How do the risks of adverse and serious adverse events (SAEs) compare between the treatments, and are there instances where the harms may outweigh the benefits?\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "84ea4452524d65d33dffd5dd8f1828e1f747147bc8e264bbc630e1ce4d36271d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844393.959465,
+      "end_wall": 1792844408.2448761,
+      "error": null
+     }
+    ],
+    "arrival_seq": 752,
+    "start_wall": 1792844393.959465,
+    "start_mono": 513950.668122041,
+    "end_wall": 1792844408.2448761,
+    "end_mono": 513964.953275666,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of treatment compared to varenicline monotherapy. The evidence passages support this claim by showing increased prolonged abstinence rates and 7-day point-prevalence smoking abstinence in the combination therapy groups compared to varenicline monotherapy at 12 and 26 weeks. However, the 52-week results do not show a significant difference.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14281263459,
+     "load_duration": 2340476459,
+     "prompt_eval_count": 2015,
+     "prompt_eval_duration": 5289063250,
+     "eval_count": 155,
+     "eval_duration": 5958117923,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:20:08.241901Z"
+    },
+    "elapsed_s": 14.285,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 752,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:11614737:2",
+     "scifact:11614737:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 470,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8b0d6d1fd6b5cec9b40d7c7f6a102d527ce6c4e6215fe39b868c15a6ad9b067d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844382.344533,
+      "end_wall": 1792844393.553327,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844382.344533,
+    "start_mono": 513939.0533995,
+    "end_wall": 1792844393.553327,
+    "end_mono": 513950.261989791,
+    "raw_response": "{\"query\": \"varenicline or bupropion combination therapy effectiveness after 12 weeks\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11205475125,
+     "load_duration": 9506145708,
+     "prompt_eval_count": 193,
+     "prompt_eval_duration": 472705333,
+     "eval_count": 21,
+     "eval_duration": 757843625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:19:53.551631Z"
+    },
+    "elapsed_s": 11.209,
+    "query_used": "varenicline or bupropion combination therapy effectiveness after 12 weeks",
+    "query_source": "json",
+    "query_arrival_seq": 754
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "varenicline or bupropion combination therapy effectiveness after 12 weeks",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11614737:2",
+       "score_q": 835
+      },
+      {
+       "passage_key": "scifact:11614737:1",
+       "score_q": 809
+      },
+      {
+       "passage_key": "scifact:11614737:0",
+       "score_q": 781
+      },
+      {
+       "passage_key": "scifact:5114940:4",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:5114940:2",
+       "score_q": 727
+      }
+     ],
+     "retrieval_sha256": "2f637af5a63c0ccd60034c2bf7ea6831701ec199e5456d696267de05283728ea"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2f637af5a63c0ccd60034c2bf7ea6831701ec199e5456d696267de05283728ea",
+    "query_embedding_sha256": "5d38878ca16b7bedc56bd0af88ec43b60f390cca949b9b5a693f021cea79164d",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11614737:2",
+      "content_sha256": "7be430029f698f11a46688614aec45ca4f8eecb85c7e927507ed341324989798",
+      "chars": 993
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11614737:1",
+      "content_sha256": "cd013df234de4f6b311176fa05d65b13056d0d56e6d690ab037924c68858de14",
+      "chars": 862
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11614737:0",
+      "content_sha256": "af85784205bf132baf61d4327be85913920b8b6b00815ca7309cf3d00c687aa4",
+      "chars": 1071
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5114940:4",
+      "content_sha256": "2237b81e6bb6d3985b1fcfdb60f615d2b1db76984c908df8087b17ad9fb1c9fe",
+      "chars": 1076
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5114940:2",
+      "content_sha256": "4d7225f0d403ce8cbd9d045574696cc0888dbd48fb869fac8787a00d0303a6a5",
+      "chars": 1049
+     }
+    ],
+    "elapsed_s": 0.5746
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nEvidence passages from your search for \"varenicline or bupropion combination therapy effectiveness after 12 weeks\":\n<<<PASSAGES\n[P1] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nAt 52 weeks, 30.9% of the combination therapy group achieved prolonged and 36.6% achieved 7-day point-prevalence smoking abstinence compared with 24.5% and 29.2% in varenicline monotherapy (OR, 1.39; 95% CI, 0.93-2.07; P = .11 and OR, 1.40; 95% CI, 0.96-2.05; P = .08, respectively). Participants receiving combination therapy reported more anxiety (7.2% vs 3.1%; P = .04) and depressive symptoms (3.6% vs 0.8%; P = .03). CONCLUSIONS AND RELEVANCE Among cigarette smokers, combined use of varenicline and bupropion, compared with varenicline alone, increased prolonged abstinence but not 7-day point prevalence at 12 and 26 weeks. Neither outcome was significantly different at 52 weeks. Further research is required to determine the role of combination therapy in smoking cessation. TRIAL REGISTRATION clinicaltrials.gov Identifier: http://clinicaltrials.gov/show/NCT00935818.\n\n[P2] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nSecondary outcomes were prolonged and point-prevalence smoking abstinence rates at weeks 26 and 52. Outcomes were biochemically confirmed. RESULTS At 12 weeks, 53.0% of the combination therapy group achieved prolonged smoking abstinence and 56.2% achieved 7-day point-prevalence smoking abstinence compared with 43.2% and 48.6% in varenicline monotherapy (odds ratio [OR], 1.49; 95% CI, 1.05-2.12; P = .03 and OR, 1.36; 95% CI, 0.95-1.93; P = .09, respectively). At 26 weeks, 36.6% of the combination therapy group achieved prolonged and 38.2% achieved 7-day point-prevalence smoking abstinence compared with 27.6% and 31.9% in varenicline monotherapy (OR, 1.52; 95% CI, 1.04-2.22; P = .03 and OR, 1.32; 95% CI, 0.91-1.91; P = .14, respectively).\n\n[P3] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nIMPORTANCE Combining pharmacotherapies for tobacco-dependence treatment may increase smoking abstinence. OBJECTIVE To determine efficacy and safety of varenicline and bupropion sustained-release (SR; combination therapy) compared with varenicline (monotherapy) in cigarette smokers. DESIGN, SETTING, AND PARTICIPANTS Randomized, blinded, placebo-controlled multicenter clinical trial with a 12-week treatment period and follow-up through week 52 conducted between October 2009 and April 2013 at 3 midwestern clinical research sites. Five hundred six adult (≥18 years) cigarette smokers were randomly assigned and 315 (62%) completed the study. INTERVENTIONS Twelve weeks of varenicline and bupropion SR or varenicline and placebo. MAIN OUTCOMES AND MEASURES Primary outcome was abstinence rates at week 12, defined as prolonged (no smoking from 2 weeks after the target quit date) abstinence and 7-day point-prevalence (no smoking past 7 days) abstinence.\n\n[P4] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nSAE meta-analysis of the bupropion studies demonstrated no excess of neuropsychiatric (RR 0.88; 95% CI 0.31 to 2.50) or cardiovascular events (RR 0.77; 95% CI 0.37 to 1.59). SAE meta-analysis of 14 varenicline trials found no difference between the varenicline and placebo arms (RR 1.06; 95% CI 0.72 to 1.55), and subgroup analyses detected no significant excess of neuropsychiatric events (RR 0.53; 95% CI 0.17 to 1.67), or of cardiac events (RR 1.26; 95% CI 0.62 to 2.56). Nortriptyline increased the chances of quitting (RR 2.03; 95% CI 1.48 to 2.78). Neither nortriptyline nor bupropion were shown to enhance the effect of NRT compared with NRT alone. Clonidine increased the chances of quitting (RR 1.63; 95% CI 1.22 to 2.18), but this was offset by a dose-dependent rise in adverse events. Mecamylamine in combination with NRT may increase the chances of quitting, but the current evidence is inconclusive. Other treatments failed to demonstrate a benefit compared with placebo.\n\n[P5] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nThe last search was conducted in November 2012. We assessed methodological quality using a revised version of the AMSTAR scale. For NRT, bupropion and varenicline we conducted network meta-analyses, comparing each with the others and with placebo for benefit, and varenicline and bupropion for risks of serious adverse events. MAIN RESULTS We identified 12 treatment-specific reviews. The analyses covered 267 studies, involving 101,804 participants. Both NRT and bupropion were superior to placebo (odds ratios (OR) 1.84; 95% credible interval (CredI) 1.71 to 1.99, and 1.82; 95% CredI 1.60 to 2.06 respectively). Varenicline increased the odds of quitting compared with placebo (OR 2.88; 95% CredI 2.40 to 3.47). Head-to-head comparisons between bupropion and NRT showed equal efficacy (OR 0.99; 95% CredI 0.86 to 1.13). Varenicline was superior to single forms of NRT (OR 1.57; 95% CredI 1.29 to 1.91), and to bupropion (OR 1.59; 95% CredI 1.29 to 1.96).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2e814cfa961541ab62368c7394d73ae2bbff03a37dda4c22932c706dd863c092",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844394.128552,
+      "end_wall": 1792844426.595037,
+      "error": null
+     }
+    ],
+    "arrival_seq": 753,
+    "start_wall": 1792844394.128552,
+    "start_mono": 513950.837206,
+    "end_wall": 1792844426.595037,
+    "end_mono": 513983.303106583,
+    "raw_response": "{\"reasoning\": \"The study showed that combination varenicline and bupropion SR had higher prolonged abstinence rates compared to varenicline monotherapy. However, the difference in point-prevalence abstinence was not significant. Therefore, the claim that combination therapy is more effective than varenicline monotherapy after 12 weeks of treatment is partially supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 32459969792,
+     "load_duration": 17851275709,
+     "prompt_eval_count": 1834,
+     "prompt_eval_duration": 8041100418,
+     "eval_count": 102,
+     "eval_duration": 4503908664,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:20:26.589876Z"
+    },
+    "elapsed_s": 32.466,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 753,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:11614737:2",
+     "scifact:11614737:1",
+     "scifact:11614737:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 358,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8b0d6d1fd6b5cec9b40d7c7f6a102d527ce6c4e6215fe39b868c15a6ad9b067d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792844382.343075,
+      "end_wall": 1792844392.405439,
+      "error": null
+     }
+    ],
+    "start_wall": 1792844382.343075,
+    "start_mono": 513939.051941416,
+    "end_wall": 1792844392.405439,
+    "end_mono": 513949.114123583,
+    "raw_response": "{\"query\": \"nicotine replacement therapies varenicline bupropion effectiveness 12 weeks comparison\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10058092167,
+     "load_duration": 2000908375,
+     "prompt_eval_count": 199,
+     "prompt_eval_duration": 2010751667,
+     "eval_count": 24,
+     "eval_duration": 5854320334,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:19:52.404331Z"
+    },
+    "elapsed_s": 10.062,
+    "query_used": "nicotine replacement therapies varenicline bupropion effectiveness 12 weeks comparison",
+    "query_source": "json",
+    "query_arrival_seq": 753
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "nicotine replacement therapies varenicline bupropion effectiveness 12 weeks comparison",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:11614737:2",
+       "score_q": 814
+      },
+      {
+       "passage_key": "scifact:11614737:1",
+       "score_q": 813
+      },
+      {
+       "passage_key": "scifact:11614737:0",
+       "score_q": 770
+      },
+      {
+       "passage_key": "scifact:5114940:0",
+       "score_q": 756
+      },
+      {
+       "passage_key": "scifact:5114940:2",
+       "score_q": 753
+      }
+     ],
+     "retrieval_sha256": "aa88feb31d61cf3a64fea29bdd599c4607231002498c0e69e404463346d15273"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "aa88feb31d61cf3a64fea29bdd599c4607231002498c0e69e404463346d15273",
+    "query_embedding_sha256": "a3902c4d66c5ed7be28f3876b7a0228c344e97435fedba3a978964251f8bdf64",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:11614737:2",
+      "content_sha256": "7be430029f698f11a46688614aec45ca4f8eecb85c7e927507ed341324989798",
+      "chars": 993
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:11614737:1",
+      "content_sha256": "cd013df234de4f6b311176fa05d65b13056d0d56e6d690ab037924c68858de14",
+      "chars": 862
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11614737:0",
+      "content_sha256": "af85784205bf132baf61d4327be85913920b8b6b00815ca7309cf3d00c687aa4",
+      "chars": 1071
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:5114940:0",
+      "content_sha256": "a41d7215f4f8817f1d869f1f13e3fc681196f3d12b5e549e1ff08eaee52fe056",
+      "chars": 998
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:5114940:2",
+      "content_sha256": "4d7225f0d403ce8cbd9d045574696cc0888dbd48fb869fac8787a00d0303a6a5",
+      "chars": 1049
+     }
+    ],
+    "elapsed_s": 1.6096
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combination nicotine replacement therapies with varenicline or bupropion are more effective after 12 weeks of reatment compared to varenicline monotherapy.\n\nEvidence passages from your search for \"nicotine replacement therapies varenicline bupropion effectiveness 12 weeks comparison\":\n<<<PASSAGES\n[P1] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nAt 52 weeks, 30.9% of the combination therapy group achieved prolonged and 36.6% achieved 7-day point-prevalence smoking abstinence compared with 24.5% and 29.2% in varenicline monotherapy (OR, 1.39; 95% CI, 0.93-2.07; P = .11 and OR, 1.40; 95% CI, 0.96-2.05; P = .08, respectively). Participants receiving combination therapy reported more anxiety (7.2% vs 3.1%; P = .04) and depressive symptoms (3.6% vs 0.8%; P = .03). CONCLUSIONS AND RELEVANCE Among cigarette smokers, combined use of varenicline and bupropion, compared with varenicline alone, increased prolonged abstinence but not 7-day point prevalence at 12 and 26 weeks. Neither outcome was significantly different at 52 weeks. Further research is required to determine the role of combination therapy in smoking cessation. TRIAL REGISTRATION clinicaltrials.gov Identifier: http://clinicaltrials.gov/show/NCT00935818.\n\n[P2] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nSecondary outcomes were prolonged and point-prevalence smoking abstinence rates at weeks 26 and 52. Outcomes were biochemically confirmed. RESULTS At 12 weeks, 53.0% of the combination therapy group achieved prolonged smoking abstinence and 56.2% achieved 7-day point-prevalence smoking abstinence compared with 43.2% and 48.6% in varenicline monotherapy (odds ratio [OR], 1.49; 95% CI, 1.05-2.12; P = .03 and OR, 1.36; 95% CI, 0.95-1.93; P = .09, respectively). At 26 weeks, 36.6% of the combination therapy group achieved prolonged and 38.2% achieved 7-day point-prevalence smoking abstinence compared with 27.6% and 31.9% in varenicline monotherapy (OR, 1.52; 95% CI, 1.04-2.22; P = .03 and OR, 1.32; 95% CI, 0.91-1.91; P = .14, respectively).\n\n[P3] Combination varenicline and bupropion SR for tobacco-dependence treatment in cigarette smokers: a randomized trial.\nIMPORTANCE Combining pharmacotherapies for tobacco-dependence treatment may increase smoking abstinence. OBJECTIVE To determine efficacy and safety of varenicline and bupropion sustained-release (SR; combination therapy) compared with varenicline (monotherapy) in cigarette smokers. DESIGN, SETTING, AND PARTICIPANTS Randomized, blinded, placebo-controlled multicenter clinical trial with a 12-week treatment period and follow-up through week 52 conducted between October 2009 and April 2013 at 3 midwestern clinical research sites. Five hundred six adult (≥18 years) cigarette smokers were randomly assigned and 315 (62%) completed the study. INTERVENTIONS Twelve weeks of varenicline and bupropion SR or varenicline and placebo. MAIN OUTCOMES AND MEASURES Primary outcome was abstinence rates at week 12, defined as prolonged (no smoking from 2 weeks after the target quit date) abstinence and 7-day point-prevalence (no smoking past 7 days) abstinence.\n\n[P4] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nBACKGROUND Smoking is the leading preventable cause of illness and premature death worldwide. Some medications have been proven to help people to quit, with three licensed for this purpose in Europe and the USA: nicotine replacement therapy (NRT), bupropion, and varenicline. Cytisine (a treatment pharmacologically similar to varenicline) is also licensed for use in Russia and some of the former socialist economy countries. Other therapies, including nortriptyline, have also been tested for effectiveness. OBJECTIVES How do NRT, bupropion and varenicline compare with placebo and with each other in achieving long-term abstinence (six months or longer)? How do the remaining treatments compare with placebo in achieving long-term abstinence? How do the risks of adverse and serious adverse events (SAEs) compare between the treatments, and are there instances where the harms may outweigh the benefits?\n\n[P5] Pharmacological interventions for smoking cessation: an overview and network meta-analysis.\nThe last search was conducted in November 2012. We assessed methodological quality using a revised version of the AMSTAR scale. For NRT, bupropion and varenicline we conducted network meta-analyses, comparing each with the others and with placebo for benefit, and varenicline and bupropion for risks of serious adverse events. MAIN RESULTS We identified 12 treatment-specific reviews. The analyses covered 267 studies, involving 101,804 participants. Both NRT and bupropion were superior to placebo (odds ratios (OR) 1.84; 95% credible interval (CredI) 1.71 to 1.99, and 1.82; 95% CredI 1.60 to 2.06 respectively). Varenicline increased the odds of quitting compared with placebo (OR 2.88; 95% CredI 2.40 to 3.47). Head-to-head comparisons between bupropion and NRT showed equal efficacy (OR 0.99; 95% CredI 0.86 to 1.13). Varenicline was superior to single forms of NRT (OR 1.57; 95% CredI 1.29 to 1.91), and to bupropion (OR 1.59; 95% CredI 1.29 to 1.96).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d5852cf42de2689b120e2d58f8f8f21395f7f3eeafc8fa41980f7625d4c68529",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792844394.015596,
+      "end_wall": 1792844430.9850519,
+      "error": null
+     }
+    ],
+    "arrival_seq": 754,
+    "start_wall": 1792844394.015596,
+    "start_mono": 513950.724251791,
+    "end_wall": 1792844430.9850519,
+    "end_mono": 513987.693042625,
+    "raw_response": "{\"reasoning\": \"Evidence from multiple passages (P1, P2, P3) indicates that combination therapy using varenicline and bupropion showed significantly higher rates of prolonged smoking abstinence and 7-day point-prevalence abstinence compared to varenicline monotherapy at both 12 weeks and 26 weeks. Specifically, at 12 weeks, 53.0% in the combination group achieved prolonged abstinence versus 43.2% in the monotherapy group, and 56.2% in the combination group achieved 7-day abstinence compared to 48.6% in monotherapy. These findings support the claim that combination therapy is more effective than monotherapy in\"\n, \"answer\": \"SUPPORTED\",\n\"citations\": [\"P1\", \"P2\", \"P3\"],\n\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 36964156708,
+     "load_duration": 16917059458,
+     "prompt_eval_count": 1759,
+     "prompt_eval_duration": 9620997499,
+     "eval_count": 183,
+     "eval_duration": 8989289707,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:20:30.981503Z"
+    },
+    "elapsed_s": 36.969,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 754,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:11614737:2",
+     "scifact:11614737:1",
+     "scifact:11614737:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "1f682bc3ed9dc30b849e7084c0a724e06c92f40b5e3b38cf7423e8d18066713a",
+  "olmo2:7b": "36ba7f95988010128389f8ea51c0940533fbd1c68f298e930b5396e3c9e885cf",
+  "granite3.3:2b": "bd787e86de344689609a0e117fea674c3692ea0dffaac9ce20fcf8163b7a1955",
+  "nemotron-mini:4b": "2f637af5a63c0ccd60034c2bf7ea6831701ec199e5456d696267de05283728ea",
+  "exaone3.5:7.8b": "aa88feb31d61cf3a64fea29bdd599c4607231002498c0e69e404463346d15273"
+ },
+ "item_start_wall": 1792844382.341876,
+ "item_wall_s": 48.642,
+ "ollama_ps_samples": [
+  [
+   1792844382.342,
+   [
+    "granite3.3:2b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844384.352,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844386.36,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844388.37,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844390.38,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844392.388,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792844394.4,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844396.41,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844398.415,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844400.418,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844402.422,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844404.43,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844406.434,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792844408.442,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844410.454,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792844412.467,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844414.479,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844416.491,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844418.502,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844420.514,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844422.526,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844424.538,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844426.546,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844428.55,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792844430.554,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

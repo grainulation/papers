@@ -1,0 +1,1296 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain470",
+ "order": 464,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain470",
+  "order": 464,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis."
+ },
+ "item_view_sha256": "db0c76a8e52c00fcf9b73f15746b42c9afa5d0fc7bf5563153ae57f6be8582a7",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "dense",
+  "qwen2.5:3b": "dense"
+ },
+ "dispatch_order": [
+  "mistral",
+  "gemma2:2b",
+  "qwen2.5:3b",
+  "phi3:mini",
+  "llama3.2:3b"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "phi3:mini",
+  "mistral",
+  "gemma2:2b",
+  "qwen2.5:3b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "b9f57c9c3fbc7a90ca2b10fe155df2ff5d0c9ccfc11dc77f1318ee28a266c641",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716717.432117,
+      "end_wall": 1792716718.937776,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716717.432117,
+    "start_mono": 386274.526013416,
+    "end_wall": 1792716718.937776,
+    "end_mono": 386276.031676166,
+    "raw_response": "{\"query\": \"characteristics of glioblastoma multiforme\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1503007958,
+     "load_duration": 119768916,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 457557542,
+     "eval_count": 16,
+     "eval_duration": 735471250,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:51:58.936212Z"
+    },
+    "elapsed_s": 1.506,
+    "query_used": "characteristics of glioblastoma multiforme",
+    "query_source": "json",
+    "query_arrival_seq": 2320
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "characteristics of glioblastoma multiforme",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:51706771:0",
+       "score_q": 739
+      },
+      {
+       "passage_key": "scifact:6363093:0",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:195689757:1",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:21692235:0",
+       "score_q": 729
+      },
+      {
+       "passage_key": "scifact:470625:1",
+       "score_q": 722
+      }
+     ],
+     "retrieval_sha256": "646f8fe41ce19f84f372e1240648e736bb06b3ba9f87eb3d027fe0257b023e9d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "646f8fe41ce19f84f372e1240648e736bb06b3ba9f87eb3d027fe0257b023e9d",
+    "query_embedding_sha256": "471a103530b69064da42cdad2396fa1b3de499bd2b5e4ddb336c5797225d0617",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:51706771:0",
+      "content_sha256": "24745bc518082b92c46234770a3761f68a2a766b76c9b772b74b62da8fcd4627",
+      "chars": 942
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6363093:0",
+      "content_sha256": "54ac301c0d798e93b7c3058d936e404eac4e5e9aeb040f01093c4224c53a0178",
+      "chars": 973
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:195689757:1",
+      "content_sha256": "37e7b9ca21de5289221681f3c444661093bdeaeb3010bc7a2a876e6fb46e15c8",
+      "chars": 244
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21692235:0",
+      "content_sha256": "8d395e6e4724341be150176b3c042d116cd3259356f98387d6d322f142b398fa",
+      "chars": 1076
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:470625:1",
+      "content_sha256": "1caeaf99348b411441bbcb3b2779feaaf9ee4b7406b9a15bb9875c64b8235df1",
+      "chars": 266
+     }
+    ],
+    "elapsed_s": 10.2932
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nEvidence passages from your search for \"characteristics of glioblastoma multiforme\":\n<<<PASSAGES\n[P1] Comparison of glioblastoma (GBM) molecular classification methods.\nGlioblastoma (GBM) is the most aggressive and common form of brain cancer in adults. GBM is characterized by poor survival and remarkably high tumors heterogeneity (both intertumoral and intratumoral), and lack of effective therapies. Recent high-throughput data revealed heterogeneous genetic/genomic/epigenetic features and led to multiple methods aiming to classify tumors according to the key molecular events that drive the most aggressive cellular components so that targeted therapies can be developed for individual subtypes. However, GBM molecular subtypes have not led to improvement of patients outcomes. Targeted or tailored therapies for specific mutations or subtypes largely failed due to the complexities arising from intratumoral molecular heterogeneity. Most tumors develop resistance to treatment and soon recur. GBM stem cells (GSCs) have been identified.\n\n[P2] Glioblastoma Subclasses Can Be Defined by Activity among Signal Transduction Pathways and Associated Genomic Alterations\nBACKGROUND Glioblastoma multiforme (GBM) is an umbrella designation that includes a heterogeneous group of primary brain tumors. Several classification strategies of GBM have been reported, some by clinical course and others by resemblance to cell types either in the adult or during development. From a practical and therapeutic standpoint, classifying GBMs by signal transduction pathway activation and by mutation in pathway member genes may be particularly valuable for the development of targeted therapies. METHODOLOGY/PRINCIPAL FINDINGS We performed targeted proteomic analysis of 27 surgical glioma samples to identify patterns of coordinate activation among glioma-relevant signal transduction pathways, then compared these results with integrated analysis of genomic and expression data of 243 GBM samples from The Cancer Genome Atlas (TCGA).\n\n[P3] Targeting metabolic remodeling in glioblastoma multiforme.\nTargeting key metabolic enzymes involved in modulating the \"Warburg Effect\" may provide a novel therapeutic approach either singularly or in combination with existing therapies in GBMs.\n\n[P4] Integrated genomic analysis identifies clinically relevant subtypes of glioblastoma characterized by abnormalities in PDGFRA, IDH1, EGFR, and NF1.\nThe Cancer Genome Atlas Network recently cataloged recurrent genomic abnormalities in glioblastoma multiforme (GBM). We describe a robust gene expression-based molecular classification of GBM into Proneural, Neural, Classical, and Mesenchymal subtypes and integrate multidimensional genomic data to establish patterns of somatic mutations and DNA copy number. Aberrations and gene expression of EGFR, NF1, and PDGFRA/IDH1 each define the Classical, Mesenchymal, and Proneural subtypes, respectively. Gene signatures of normal brain cell types show a strong relationship between subtypes and different neural lineages. Additionally, response to aggressive therapy differs by subtype, with the greatest benefit in the Classical subtype and no benefit in the Proneural subtype. We provide a framework that unifies transcriptomic and genomic dimensions for GBM molecular stratification with important implications for future studies.\n\n[P5] Identification of p18 INK4c as a tumor suppressor gene in glioblastoma multiforme.\nThese studies identify p18(INK4c) as a GBM tumor suppressor gene, revealing an additional mechanism leading to aberrant activation of cyclin/cdk complexes in this terrible malignancy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c7384ba9ad3e0cd04f56cd7457c45019b0517c7219717a65b846740b51010343",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716729.2313411,
+      "end_wall": 1792716742.098051,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2320,
+    "start_wall": 1792716729.2313411,
+    "start_mono": 386286.325281416,
+    "end_wall": 1792716742.098051,
+    "end_mono": 386299.192038708,
+    "raw_response": "{\"reasoning\": \"The claim is partially supported by passages that describe glioblastoma multiforme as aggressive and having poor survival rates, but it is not supported by evidence of extensive invasion, rapid growth, necrosis, and angiogenesis.\", \"answer\": \"REFUTED\", \"citations\": [\"P3\", \"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12864179542,
+     "load_duration": 2963949917,
+     "prompt_eval_count": 994,
+     "prompt_eval_duration": 3668968501,
+     "eval_count": 77,
+     "eval_duration": 5398464376,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:22.096547Z"
+    },
+    "elapsed_s": 12.867,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2320,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:195689757:1",
+     "scifact:21692235:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 229,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "b9f57c9c3fbc7a90ca2b10fe155df2ff5d0c9ccfc11dc77f1318ee28a266c641",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716717.4319518,
+      "end_wall": 1792716724.976212,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716717.4319518,
+    "start_mono": 386274.525847833,
+    "end_wall": 1792716724.976212,
+    "end_mono": 386282.070135583,
+    "raw_response": "{\"query\": \"glioblastoma multiforme characteristics invasion growth necrosis angiogenesis\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7541856041,
+     "load_duration": 1667980708,
+     "prompt_eval_count": 204,
+     "prompt_eval_duration": 560447917,
+     "eval_count": 27,
+     "eval_duration": 5238610128,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:04.975132Z"
+    },
+    "elapsed_s": 7.544,
+    "query_used": "glioblastoma multiforme characteristics invasion growth necrosis angiogenesis",
+    "query_source": "json",
+    "query_arrival_seq": 2322
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "glioblastoma multiforme characteristics invasion growth necrosis angiogenesis",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7028976:1",
+       "score_q": 723
+      },
+      {
+       "passage_key": "scifact:7028976:0",
+       "score_q": 714
+      },
+      {
+       "passage_key": "scifact:12685434:0",
+       "score_q": 710
+      },
+      {
+       "passage_key": "scifact:13235609:0",
+       "score_q": 710
+      },
+      {
+       "passage_key": "scifact:4979184:0",
+       "score_q": 707
+      }
+     ],
+     "retrieval_sha256": "c63c33e8b5106fc4811abc99253dff26fb8b18db4abdb10789d16858a13c397d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c63c33e8b5106fc4811abc99253dff26fb8b18db4abdb10789d16858a13c397d",
+    "query_embedding_sha256": "74eab5c1eff46129290eb5e1b5344612f55f1c807a99a8c8ac2fb404b9fafc22",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7028976:1",
+      "content_sha256": "35028cf2fc8702104f40db3077931d64a2fee2cf02aa77729c87e0645ffaad5a",
+      "chars": 421
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7028976:0",
+      "content_sha256": "a2b490f317479bd2c42be7f0247d030f2a9d96ed427e328e25e2b9fb5d0a00bb",
+      "chars": 1134
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:12685434:0",
+      "content_sha256": "1cbb3536e8c99654b47f0bb78409f398d6b11ae2de0d1a483af3ab0128887414",
+      "chars": 1001
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:13235609:0",
+      "content_sha256": "e1156cc092d19ce2089bbd8eac2e60e137b88474006d8fa8495c56f0d97a73a3",
+      "chars": 990
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4979184:0",
+      "content_sha256": "53ff0d45eb8064e1f44df8fcd5dfb1802f5fcec8c9b26cef8dc3fd08d3551ff3",
+      "chars": 1046
+     }
+    ],
+    "elapsed_s": 4.2972
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nEvidence passages from your search for \"glioblastoma multiforme characteristics invasion growth necrosis angiogenesis\":\n<<<PASSAGES\n[P1] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nThese findings open up the possibility of new therapeutically relevant scenarios, as the presence of functionally heterogeneous EGFR(pos) and EGFR(neg) TIC subpopulations within the same tumor might affect clinical response to treatment.\n\n[P2] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nEpidermal growth factor receptor (EGFR) is a known diagnostic and, although controversial, prognostic marker of human glioblastoma multiforme (GBM). However, its functional role and biological significance in GBM remain elusive. Here, we show that multiple GBM cell subpopulations could be purified from the specimens of patients with GBM and from cancer stem cell (CSC) lines based on the expression of EGFR and of other putative CSC markers. All these subpopulations are molecularly and functionally distinct, are tumorigenic, and need to express EGFR to promote experimental tumorigenesis. Among them, EGFR-expressing tumor-initiating cells (TIC) display the most malignant functional and molecular phenotype. Accordingly, modulation of EGFR expression by gain-of-function and loss-of-function strategies in GBM CSC lines enhances and reduces their tumorigenic ability, respectively, suggesting that EGFR plays a fundamental role in gliomagenesis.\n\n[P3] Guanylate binding protein 1 is a novel effector of EGFR-driven invasion in glioblastoma\nAlthough GBP1 (guanylate binding protein 1) was among the first interferon-inducible proteins identified, its function is still largely unknown. Epidermal growth factor receptor (EGFR) activation by amplification or mutation is one of the most frequent genetic lesions in a variety of human tumors. These include glioblastoma multiforme (GBM), which is characterized by independent but interrelated features of extensive invasion into normal brain parenchyma, rapid growth, necrosis, and angiogenesis. In this study, we show that EGFR activation promoted GBP1 expression in GBM cell lines through a signaling pathway involving Src and p38 mitogen-activated protein kinase. Moreover, we identified YY1 (Yin Yang 1) as the downstream transcriptional regulator regulating EGFR-driven GBP1 expression. GBP1 was required for EGFR-mediated MMP1 (matrix metalloproteinase 1) expression and glioma cell invasion in vitro.\n\n[P4] VEGF inhibits tumor cell invasion and mesenchymal transition through a MET/VEGFR2 complex.\nInhibition of VEGF signaling leads to a proinvasive phenotype in mouse models of glioblastoma multiforme (GBM) and in a subset of GBM patients treated with bevacizumab. Here, we demonstrate that vascular endothelial growth factor (VEGF) directly and negatively regulates tumor cell invasion through enhanced recruitment of the protein tyrosine phosphatase 1B (PTP1B) to a MET/VEGFR2 heterocomplex, thereby suppressing HGF-dependent MET phosphorylation and tumor cell migration. Consequently, VEGF blockade restores and increases MET activity in GBM cells in a hypoxia-independent manner, while inducing a program reminiscent of epithelial-to-mesenchymal transition highlighted by a T-cadherin to N-cadherin switch and enhanced mesenchymal features. Inhibition of MET in GBM mouse models blocks mesenchymal transition and invasion provoked by VEGF ablation, resulting in substantial survival benefit.\n\n[P5] Transdifferentiation of glioblastoma cells into vascular endothelial cells.\nGlioblastoma (GBM) is the most malignant brain tumor and is highly resistant to intensive combination therapies and anti-VEGF therapies. To assess the resistance mechanism to anti-VEGF therapy, we examined the vessels of GBMs in tumors that were induced by the transduction of p53(+/-) heterozygous mice with lentiviral vectors containing oncogenes and the marker GFP in the hippocampus of GFAP-Cre recombinase (Cre) mice. We were surprised to observe GFP(+) vascular endothelial cells (ECs). Transplantation of mouse GBM cells revealed that the tumor-derived endothelial cells (TDECs) originated from tumor-initiating cells and did not result from cell fusion of ECs and tumor cells. An in vitro differentiation assay suggested that hypoxia is an important factor in the differentiation of tumor cells to ECs and is independent of VEGF. TDEC formation was not only resistant to an anti-VEGF receptor inhibitor in mouse GBMs but it led to an increase in their frequency.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3fc43a905a6df059895f582a2aa77b37cb8e4b487676e0801e947ac625638ad9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716729.2739022,
+      "end_wall": 1792716743.5376341,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2321,
+    "start_wall": 1792716729.2739022,
+    "start_mono": 386286.367842416,
+    "end_wall": 1792716743.5376341,
+    "end_mono": 386300.631626708,
+    "raw_response": "{\n  \"reasoning\": \"The claim that GBM is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis is supported by the passages. Passages P2, P3, and P4 directly discuss invasion, growth, necrosis, and angiogenesis aspects of GBM, respectively.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14259244208,
+     "load_duration": 1102187833,
+     "prompt_eval_count": 1585,
+     "prompt_eval_duration": 5675926333,
+     "eval_count": 115,
+     "eval_duration": 7186720629,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:23.534316Z"
+    },
+    "elapsed_s": 14.264,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2321,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:7028976:0",
+     "scifact:12685434:0",
+     "scifact:13235609:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 245,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "dense"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "b9f57c9c3fbc7a90ca2b10fe155df2ff5d0c9ccfc11dc77f1318ee28a266c641",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716717.43154,
+      "end_wall": 1792716720.073371,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716717.43154,
+    "start_mono": 386274.52543725,
+    "end_wall": 1792716720.073371,
+    "end_mono": 386277.167276208,
+    "raw_response": "{\"query\": \"Glioblastoma multiforme characteristics invasion growth necrosis angiogenesis\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2638960417,
+     "load_duration": 53951208,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 655023875,
+     "eval_count": 25,
+     "eval_duration": 1861403585,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:00.072183Z"
+    },
+    "elapsed_s": 2.642,
+    "query_used": "Glioblastoma multiforme characteristics invasion growth necrosis angiogenesis",
+    "query_source": "json",
+    "query_arrival_seq": 2321
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Glioblastoma multiforme characteristics invasion growth necrosis angiogenesis",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:12685434:0",
+       "score_q": 13893
+      },
+      {
+       "passage_key": "scifact:13235609:0",
+       "score_q": 8907
+      },
+      {
+       "passage_key": "scifact:7028976:1",
+       "score_q": 7915
+      },
+      {
+       "passage_key": "scifact:7028976:0",
+       "score_q": 7833
+      },
+      {
+       "passage_key": "scifact:15570691:0",
+       "score_q": 7651
+      }
+     ],
+     "retrieval_sha256": "b404e848a709c2ee1cf8397353596d68a2779e02645fea716085f555f117e3a8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b404e848a709c2ee1cf8397353596d68a2779e02645fea716085f555f117e3a8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:12685434:0",
+      "content_sha256": "1cbb3536e8c99654b47f0bb78409f398d6b11ae2de0d1a483af3ab0128887414",
+      "chars": 1001
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13235609:0",
+      "content_sha256": "e1156cc092d19ce2089bbd8eac2e60e137b88474006d8fa8495c56f0d97a73a3",
+      "chars": 990
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7028976:1",
+      "content_sha256": "35028cf2fc8702104f40db3077931d64a2fee2cf02aa77729c87e0645ffaad5a",
+      "chars": 421
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7028976:0",
+      "content_sha256": "a2b490f317479bd2c42be7f0247d030f2a9d96ed427e328e25e2b9fb5d0a00bb",
+      "chars": 1134
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:15570691:0",
+      "content_sha256": "3ecd81b2c6b137e4f229b22f6014ef31bbd16c4207686af6392ee3911ac73342",
+      "chars": 1021
+     }
+    ],
+    "elapsed_s": 0.0031
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nEvidence passages from your search for \"Glioblastoma multiforme characteristics invasion growth necrosis angiogenesis\":\n<<<PASSAGES\n[P1] Guanylate binding protein 1 is a novel effector of EGFR-driven invasion in glioblastoma\nAlthough GBP1 (guanylate binding protein 1) was among the first interferon-inducible proteins identified, its function is still largely unknown. Epidermal growth factor receptor (EGFR) activation by amplification or mutation is one of the most frequent genetic lesions in a variety of human tumors. These include glioblastoma multiforme (GBM), which is characterized by independent but interrelated features of extensive invasion into normal brain parenchyma, rapid growth, necrosis, and angiogenesis. In this study, we show that EGFR activation promoted GBP1 expression in GBM cell lines through a signaling pathway involving Src and p38 mitogen-activated protein kinase. Moreover, we identified YY1 (Yin Yang 1) as the downstream transcriptional regulator regulating EGFR-driven GBP1 expression. GBP1 was required for EGFR-mediated MMP1 (matrix metalloproteinase 1) expression and glioma cell invasion in vitro.\n\n[P2] VEGF inhibits tumor cell invasion and mesenchymal transition through a MET/VEGFR2 complex.\nInhibition of VEGF signaling leads to a proinvasive phenotype in mouse models of glioblastoma multiforme (GBM) and in a subset of GBM patients treated with bevacizumab. Here, we demonstrate that vascular endothelial growth factor (VEGF) directly and negatively regulates tumor cell invasion through enhanced recruitment of the protein tyrosine phosphatase 1B (PTP1B) to a MET/VEGFR2 heterocomplex, thereby suppressing HGF-dependent MET phosphorylation and tumor cell migration. Consequently, VEGF blockade restores and increases MET activity in GBM cells in a hypoxia-independent manner, while inducing a program reminiscent of epithelial-to-mesenchymal transition highlighted by a T-cadherin to N-cadherin switch and enhanced mesenchymal features. Inhibition of MET in GBM mouse models blocks mesenchymal transition and invasion provoked by VEGF ablation, resulting in substantial survival benefit.\n\n[P3] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nThese findings open up the possibility of new therapeutically relevant scenarios, as the presence of functionally heterogeneous EGFR(pos) and EGFR(neg) TIC subpopulations within the same tumor might affect clinical response to treatment.\n\n[P4] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nEpidermal growth factor receptor (EGFR) is a known diagnostic and, although controversial, prognostic marker of human glioblastoma multiforme (GBM). However, its functional role and biological significance in GBM remain elusive. Here, we show that multiple GBM cell subpopulations could be purified from the specimens of patients with GBM and from cancer stem cell (CSC) lines based on the expression of EGFR and of other putative CSC markers. All these subpopulations are molecularly and functionally distinct, are tumorigenic, and need to express EGFR to promote experimental tumorigenesis. Among them, EGFR-expressing tumor-initiating cells (TIC) display the most malignant functional and molecular phenotype. Accordingly, modulation of EGFR expression by gain-of-function and loss-of-function strategies in GBM CSC lines enhances and reduces their tumorigenic ability, respectively, suggesting that EGFR plays a fundamental role in gliomagenesis.\n\n[P5] Pharmacologic inhibition of cyclin-dependent kinases 4 and 6 arrests the growth of glioblastoma multiforme intracranial xenografts.\nActivation of cyclin-dependent kinases 4 and 6 (cdk4/6) occurs in the majority of glioblastoma multiforme (GBM) tumors, and represents a promising molecular target for the development of small molecule inhibitors. In the current study, we investigated the molecular determinants and in vivo response of diverse GBM cell lines and xenografts to PD-0332991, a cdk4/6-specific inhibitor. In vitro testing of PD-0332991 against a panel of GBM cell lines revealed a potent G(1) cell cycle arrest and induction of senescence in each of 16 retinoblastoma protein (Rb)-proficient cell lines regardless of other genetic lesions, whereas 5 cell lines with homozygous inactivation of Rb were completely resistant to treatment. Short hairpin RNA depletion of Rb expression conferred resistance of GBM cells to PD-0332991, further demonstrating a requirement of Rb for sensitivity to cdk4/6 inhibition.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d1b20bd0ee8648bd107f35282be47afe16dc1615505b70fdd93742a1a7fe4410",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716720.076908,
+      "end_wall": 1792716743.678918,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2322,
+    "start_wall": 1792716720.076908,
+    "start_mono": 386277.170813791,
+    "end_wall": 1792716743.678918,
+    "end_mono": 386300.772911791,
+    "raw_response": "{\n  \"reasoning\": \"The claim that Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis is supported by the evidence provided. Passage P1 mentions GBM's invasive nature into normal brain parenchyma, rapid growth, and angiogenesis. Passage P4 discusses GBM's growth and necrosis, and P2 implies angiogenesis through VEGF regulation. Therefore, the claim is supported.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P4\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23597045500,
+     "load_duration": 15745041,
+     "prompt_eval_count": 1536,
+     "prompt_eval_duration": 6895442041,
+     "eval_count": 157,
+     "eval_duration": 16265366045,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:23.674819Z"
+    },
+    "elapsed_s": 23.602,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2322,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:12685434:0",
+     "scifact:7028976:0",
+     "scifact:13235609:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 404,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "b9f57c9c3fbc7a90ca2b10fe155df2ff5d0c9ccfc11dc77f1318ee28a266c641",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716717.4316611,
+      "end_wall": 1792716729.974933,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716717.4316611,
+    "start_mono": 386274.525556791,
+    "end_wall": 1792716729.974933,
+    "end_mono": 386287.068874708,
+    "raw_response": "{\"query\": \"glioblastoma multiforme invasion growth necrosis angiogenesis\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12540323167,
+     "load_duration": 11366218375,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 327105500,
+     "eval_count": 15,
+     "eval_duration": 534858626,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:09.973283Z"
+    },
+    "elapsed_s": 12.543,
+    "query_used": "glioblastoma multiforme invasion growth necrosis angiogenesis",
+    "query_source": "json",
+    "query_arrival_seq": 2324
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "glioblastoma multiforme invasion growth necrosis angiogenesis",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:12685434:0",
+       "score_q": 13893
+      },
+      {
+       "passage_key": "scifact:13235609:0",
+       "score_q": 8907
+      },
+      {
+       "passage_key": "scifact:7028976:1",
+       "score_q": 7915
+      },
+      {
+       "passage_key": "scifact:7028976:0",
+       "score_q": 7833
+      },
+      {
+       "passage_key": "scifact:15570691:0",
+       "score_q": 7651
+      }
+     ],
+     "retrieval_sha256": "8837bbf20beb658c7e2f55b1788dec9dc32be2d890344fdc8db62e7034c2184f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8837bbf20beb658c7e2f55b1788dec9dc32be2d890344fdc8db62e7034c2184f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:12685434:0",
+      "content_sha256": "1cbb3536e8c99654b47f0bb78409f398d6b11ae2de0d1a483af3ab0128887414",
+      "chars": 1001
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13235609:0",
+      "content_sha256": "e1156cc092d19ce2089bbd8eac2e60e137b88474006d8fa8495c56f0d97a73a3",
+      "chars": 990
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7028976:1",
+      "content_sha256": "35028cf2fc8702104f40db3077931d64a2fee2cf02aa77729c87e0645ffaad5a",
+      "chars": 421
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7028976:0",
+      "content_sha256": "a2b490f317479bd2c42be7f0247d030f2a9d96ed427e328e25e2b9fb5d0a00bb",
+      "chars": 1134
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:15570691:0",
+      "content_sha256": "3ecd81b2c6b137e4f229b22f6014ef31bbd16c4207686af6392ee3911ac73342",
+      "chars": 1021
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nEvidence passages from your search for \"glioblastoma multiforme invasion growth necrosis angiogenesis\":\n<<<PASSAGES\n[P1] Guanylate binding protein 1 is a novel effector of EGFR-driven invasion in glioblastoma\nAlthough GBP1 (guanylate binding protein 1) was among the first interferon-inducible proteins identified, its function is still largely unknown. Epidermal growth factor receptor (EGFR) activation by amplification or mutation is one of the most frequent genetic lesions in a variety of human tumors. These include glioblastoma multiforme (GBM), which is characterized by independent but interrelated features of extensive invasion into normal brain parenchyma, rapid growth, necrosis, and angiogenesis. In this study, we show that EGFR activation promoted GBP1 expression in GBM cell lines through a signaling pathway involving Src and p38 mitogen-activated protein kinase. Moreover, we identified YY1 (Yin Yang 1) as the downstream transcriptional regulator regulating EGFR-driven GBP1 expression. GBP1 was required for EGFR-mediated MMP1 (matrix metalloproteinase 1) expression and glioma cell invasion in vitro.\n\n[P2] VEGF inhibits tumor cell invasion and mesenchymal transition through a MET/VEGFR2 complex.\nInhibition of VEGF signaling leads to a proinvasive phenotype in mouse models of glioblastoma multiforme (GBM) and in a subset of GBM patients treated with bevacizumab. Here, we demonstrate that vascular endothelial growth factor (VEGF) directly and negatively regulates tumor cell invasion through enhanced recruitment of the protein tyrosine phosphatase 1B (PTP1B) to a MET/VEGFR2 heterocomplex, thereby suppressing HGF-dependent MET phosphorylation and tumor cell migration. Consequently, VEGF blockade restores and increases MET activity in GBM cells in a hypoxia-independent manner, while inducing a program reminiscent of epithelial-to-mesenchymal transition highlighted by a T-cadherin to N-cadherin switch and enhanced mesenchymal features. Inhibition of MET in GBM mouse models blocks mesenchymal transition and invasion provoked by VEGF ablation, resulting in substantial survival benefit.\n\n[P3] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nThese findings open up the possibility of new therapeutically relevant scenarios, as the presence of functionally heterogeneous EGFR(pos) and EGFR(neg) TIC subpopulations within the same tumor might affect clinical response to treatment.\n\n[P4] Epidermal growth factor receptor expression identifies functionally and molecularly distinct tumor-initiating cells in human glioblastoma multiforme and is required for gliomagenesis.\nEpidermal growth factor receptor (EGFR) is a known diagnostic and, although controversial, prognostic marker of human glioblastoma multiforme (GBM). However, its functional role and biological significance in GBM remain elusive. Here, we show that multiple GBM cell subpopulations could be purified from the specimens of patients with GBM and from cancer stem cell (CSC) lines based on the expression of EGFR and of other putative CSC markers. All these subpopulations are molecularly and functionally distinct, are tumorigenic, and need to express EGFR to promote experimental tumorigenesis. Among them, EGFR-expressing tumor-initiating cells (TIC) display the most malignant functional and molecular phenotype. Accordingly, modulation of EGFR expression by gain-of-function and loss-of-function strategies in GBM CSC lines enhances and reduces their tumorigenic ability, respectively, suggesting that EGFR plays a fundamental role in gliomagenesis.\n\n[P5] Pharmacologic inhibition of cyclin-dependent kinases 4 and 6 arrests the growth of glioblastoma multiforme intracranial xenografts.\nActivation of cyclin-dependent kinases 4 and 6 (cdk4/6) occurs in the majority of glioblastoma multiforme (GBM) tumors, and represents a promising molecular target for the development of small molecule inhibitors. In the current study, we investigated the molecular determinants and in vivo response of diverse GBM cell lines and xenografts to PD-0332991, a cdk4/6-specific inhibitor. In vitro testing of PD-0332991 against a panel of GBM cell lines revealed a potent G(1) cell cycle arrest and induction of senescence in each of 16 retinoblastoma protein (Rb)-proficient cell lines regardless of other genetic lesions, whereas 5 cell lines with homozygous inactivation of Rb were completely resistant to treatment. Short hairpin RNA depletion of Rb expression conferred resistance of GBM cells to PD-0332991, further demonstrating a requirement of Rb for sensitivity to cdk4/6 inhibition.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dded49789acfff72015a204631bad305bc5c8a6d9403487c09edbdf02f5260ae",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716729.975874,
+      "end_wall": 1792716752.135637,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2323,
+    "start_wall": 1792716729.975874,
+    "start_mono": 386287.0698165,
+    "end_wall": 1792716752.135637,
+    "end_mono": 386309.229661375,
+    "raw_response": "{\"reasoning\": \"The passages provided all support the claim by describing the characteristics of glioblastoma multiforme (GBM) like extensive invasion, rapid growth, necrosis, and angiogenesis.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22153769916,
+     "load_duration": 16720205250,
+     "prompt_eval_count": 1222,
+     "prompt_eval_duration": 2331335667,
+     "eval_count": 65,
+     "eval_duration": 1850647584,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:32.130451Z"
+    },
+    "elapsed_s": 22.16,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2323,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:12685434:0",
+     "scifact:13235609:0",
+     "scifact:7028976:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 177,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "b9f57c9c3fbc7a90ca2b10fe155df2ff5d0c9ccfc11dc77f1318ee28a266c641",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792716717.4317708,
+      "end_wall": 1792716727.1626902,
+      "error": null
+     }
+    ],
+    "start_wall": 1792716717.4317708,
+    "start_mono": 386274.525666791,
+    "end_wall": 1792716727.1626902,
+    "end_mono": 386284.256621416,
+    "raw_response": "{\"query\": \"Glioblastoma multiforme invasion growth necrosis angiogenesis\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9727995417,
+     "load_duration": 2970834708,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 988164667,
+     "eval_count": 20,
+     "eval_duration": 5518696375,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:07.16137Z"
+    },
+    "elapsed_s": 9.731,
+    "query_used": "Glioblastoma multiforme invasion growth necrosis angiogenesis",
+    "query_source": "json",
+    "query_arrival_seq": 2323
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Glioblastoma multiforme invasion growth necrosis angiogenesis",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13070316:0",
+       "score_q": 706
+      },
+      {
+       "passage_key": "scifact:13329980:1",
+       "score_q": 698
+      },
+      {
+       "passage_key": "scifact:20568364:0",
+       "score_q": 695
+      },
+      {
+       "passage_key": "scifact:8290953:0",
+       "score_q": 695
+      },
+      {
+       "passage_key": "scifact:9600826:0",
+       "score_q": 692
+      }
+     ],
+     "retrieval_sha256": "4ce96c237de4712da5dd3d0263fe55586f4309589e4d9203936509aa5dd6bfaf"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4ce96c237de4712da5dd3d0263fe55586f4309589e4d9203936509aa5dd6bfaf",
+    "query_embedding_sha256": "34534fd59407c95f74e55cb5d27f3ad0effea7bcd5b2934b233da216f2f90b6e",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13070316:0",
+      "content_sha256": "00c4608bb8dc185d69d2c4f40575514290511460e3cf0c85388e664715df1320",
+      "chars": 1020
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:13329980:1",
+      "content_sha256": "355631c0a2ea1f035c8498c4421b8e096fbc6198571a193cdcfd488c4cd4f283",
+      "chars": 1082
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:20568364:0",
+      "content_sha256": "d7b445b789da137f17afb5087a79478993c433bc79deb85ca236a57c1a38c2dc",
+      "chars": 999
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8290953:0",
+      "content_sha256": "f08f39186ab44d41dd94af830ffd26e86c92ac8ec0e97e268ff10e908bd0d2ea",
+      "chars": 1100
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9600826:0",
+      "content_sha256": "8124b2ab60e80a4774740a71e380f9c32b1fa2b2f2edb8a1df6432048ab64691",
+      "chars": 1004
+     }
+    ],
+    "elapsed_s": 2.1572
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Glioblastoma multiforme (GBM) is characterized by extensive invasion, rapid growth, necrosis, and angiogenesis.\n\nEvidence passages from your search for \"Glioblastoma multiforme invasion growth necrosis angiogenesis\":\n<<<PASSAGES\n[P1] Role of tumor associated macrophages in tumor angiogenesis and lymphangiogenesis\nTumor angiogenesis is an essential process for supplying rapidly growing malignant tissues with essential nutrients and oxygen. An angiogenic switch allows tumor cells to survive and grow, and provides them access to vasculature resulting in metastatic disease. Monocyte-derived macrophages recruited and reprogrammed by tumor cells serve as a major source of angiogenic factors boosting the angiogenic switch. Tumor endothelium releases angiopoietin-2 and further facilitates recruitment of TIE2 receptor expressing monocytes (TEM) into tumor sites. Tumor-associated macrophages (TAM) sense hypoxia in avascular areas of tumors, and react by production of angiogenic factors such as VEGFA. VEGFA stimulates chemotaxis of endothelial cells (EC) and macrophages. In some tumors, TAM appeared to be a major source of MMP9. Elevated expression of MMP9 by TAM mediates extracellular matrix (ECM) degradation and the release of bioactive VEGFA.\n\n[P2] Phosphoinositide 3-kinase signalling pathways in tumor progression, invasion and angiogenesis.\nThis activation potentiates not only cell survival and proliferation, but also cytoskeletal deformability and motility; key elements in tumor invasion. In addition the PI3K pathway is implicated in many aspects of angiogenesis, including upregulation of angiogenic cytokines due to tumor hypoxia or oncogene activation and endothelial cell responses to them. These cytokines signal though receptors such as VEGF-R, FGF-R and Tie-2 and potentiate processes essential for neoangiogenesis including cell proliferation, migration, differentiation into tubules and \"invasion\" of these capillary sprouts into extracellular matrix (ECM). CONCLUSIONS A more complete understanding of the role of the PI3 kinase pathway in cancer will lead the way to the development of more potent and selective inhibitors which should be a useful adjunct to conventional therapies, potentially interfering with tumor progression at several pivotal points; in particular cell survival, invasion and angiogenesis.\n\n[P3] Crosstalk between tumor and endothelial cells promotes tumor angiogenesis by MAPK activation of Notch signaling.\nWhile significant progress has been made in understanding the induction of tumor vasculature by secreted angiogenic factors, little is known regarding contact-dependent signals that promote tumor angiogenesis. Here, we report that the Notch ligand Jagged1 induced by growth factors via mitogen-activating protein kinase (MAPK) in head and neck squamous cell carcinoma (HNSCC) cells triggered Notch activation in neighboring endothelial cells (ECs) and promoted capillary-like sprout formation. Jagged1-expressing HNSCC cells significantly enhanced neovascularization and tumor growth in vivo. Moreover, the level of Jagged1 was significantly correlated with tumor blood vessel content and associated with HNSCC development. Our results elucidate a novel mechanism by which the direct interplay between tumor cells and ECs promotes angiogenesis through MAPK and Notch signaling pathways.\n\n[P4] Scaffold-based three-dimensional human fibroblast culture provides a structural matrix that supports angiogenesis in infarcted heart tissue.\nBACKGROUND We have developed techniques to implant angiogenic patches onto the epicardium over regions of infarcted cardiac tissue to stimulate revascularization of the damaged tissue. These experiments used a scaffold-based 3D human dermal fibroblast culture (3DFC) as an epicardial patch. The 3DFC contains viable cells that secrete angiogenic growth factors and has previously been shown to stimulate angiogenic activity. The hypothesis tested was that a viable 3DFC cardiac patch would stimulate an angiogenic response within an area of infarcted cardiac tissue. METHODS AND RESULTS A coronary occlusion of a branch of the left anterior descending coronary artery was performed by thermal ligation in severe combined immunodeficient mice. 3DFCs with or without viable cells were sized to the damaged area, implanted in replicate mice onto the epicardium at the site of tissue injury, and compared with animals that received infarct surgery but no implant.\n\n[P5] GEP100-Arf6-AMAP1-Cortactin Pathway Frequently Used in Cancer Invasion Is Activated by VEGFR2 to Promote Angiogenesis\nAngiogenesis and cancer invasiveness greatly contribute to cancer malignancy. Arf6 and its effector, AMAP1, are frequently overexpressed in breast cancer, and constitute a central pathway to induce the invasion and metastasis. In this pathway, Arf6 is activated by EGFR via GEP100. Arf6 is highly expressed also in human umbilical vein endothelial cells (HUVECs) and is implicated in angiogenesis. Here, we found that HUVECs also highly express AMAP1, and that vascular endothelial growth factor receptor-2 (VEGFR2) recruits GEP100 to activate Arf6. AMAP1 functions by binding to cortactin in cancer invasion and metastasis. We demonstrate that the same GEP100-Arf6-AMAP1-cortactin pathway is essential for angiogenesis activities, including cell migration and tubular formation, as well as for the enhancement of cell permeability and VE-cadherin endocytosis of VEGF-stimulated HUVECs.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9b09aa6f778abdff63938cd6da4ffb9da5236baf2d20f885c2c1cba837b65254",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792716729.32069,
+      "end_wall": 1792716752.5763042,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2324,
+    "start_wall": 1792716729.32069,
+    "start_mono": 386286.414631375,
+    "end_wall": 1792716752.5763042,
+    "end_mono": 386309.670330875,
+    "raw_response": "{\n  \"reasoning\": \"The claim about Glioblastoma multiforme (GBM) being characterized by extensive invasion, rapid growth, necrosis, and angiogenesis is supported by the evidence passages provided, particularly those that discuss angiogenesis and its role in tumor growth and invasion.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23250308500,
+     "load_duration": 15750704000,
+     "prompt_eval_count": 1414,
+     "prompt_eval_duration": 2975785625,
+     "eval_count": 94,
+     "eval_duration": 3422138253,
+     "done_reason": "stop",
+     "created_at": "2026-10-23T00:52:32.57229Z"
+    },
+    "elapsed_s": 23.256,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2324,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:13329980:1",
+     "scifact:20568364:0",
+     "scifact:8290953:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 265,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "646f8fe41ce19f84f372e1240648e736bb06b3ba9f87eb3d027fe0257b023e9d",
+  "phi3:mini": "c63c33e8b5106fc4811abc99253dff26fb8b18db4abdb10789d16858a13c397d",
+  "mistral": "b404e848a709c2ee1cf8397353596d68a2779e02645fea716085f555f117e3a8",
+  "gemma2:2b": "8837bbf20beb658c7e2f55b1788dec9dc32be2d890344fdc8db62e7034c2184f",
+  "qwen2.5:3b": "4ce96c237de4712da5dd3d0263fe55586f4309589e4d9203936509aa5dd6bfaf"
+ },
+ "item_start_wall": 1792716717.4311922,
+ "item_wall_s": 35.145,
+ "ollama_ps_samples": [
+  [
+   1792716717.431,
+   [
+    "llama3.2:3b",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716719.44,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716721.447,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716723.455,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716725.465,
+   [
+    "phi3:mini",
+    "mistral:latest",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792716727.473,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716729.475,
+   [
+    "nomic-embed-text:latest",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792716731.485,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716733.494,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716735.503,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716737.513,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716739.515,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716741.522,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716743.527,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792716745.534,
+   [
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716747.535,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716749.54,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792716751.542,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ]
+ ]
+}

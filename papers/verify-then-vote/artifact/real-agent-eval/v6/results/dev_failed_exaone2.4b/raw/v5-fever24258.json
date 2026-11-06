@@ -1,0 +1,1210 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever24258",
+ "order": 97,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever24258",
+  "order": 97,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "The University of Illinois at Chicago is state-funded."
+ },
+ "item_view_sha256": "2dd18e9aa969b9200155048b28ea046a5572a4a6d11263a50b61de34732b3bec",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The University of Illinois at Chicago is state-funded.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7e6b8ff9587f29afaa5921a612e886275ed0ae66cbbf69051bc72db097141870",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836347.952557,
+      "end_wall": 1792836352.45757,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836347.952557,
+    "start_mono": 505904.807452333,
+    "end_wall": 1792836352.45757,
+    "end_mono": 505909.312412541,
+    "raw_response": "{\"query\": \"university of illinois at chicago state-funded\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4503553792,
+     "load_duration": 2624522209,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 758426917,
+     "eval_count": 15,
+     "eval_duration": 913493876,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:52.457022Z"
+    },
+    "elapsed_s": 4.505,
+    "query_used": "university of illinois at chicago state-funded",
+    "query_source": "json",
+    "query_arrival_seq": 487
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "university of illinois at chicago state-funded",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+       "score_q": 12081
+      },
+      {
+       "passage_key": "fever17:Chicago_State_University:0",
+       "score_q": 12041
+      },
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+       "score_q": 11823
+      },
+      {
+       "passage_key": "fever17:Illini_and_Saluki:0",
+       "score_q": 10999
+      },
+      {
+       "passage_key": "fever17:William_Carbys_Zimmerman:0",
+       "score_q": 10988
+      }
+     ],
+     "retrieval_sha256": "8247d108086ca3cab6a5435594dfb780d56aefe7b80bdd7275d2fba0b2e7ee86"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8247d108086ca3cab6a5435594dfb780d56aefe7b80bdd7275d2fba0b2e7ee86",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+      "content_sha256": "0df7e744893f3a67d5f639c650e35ec49f527ae54df4d60e110ed9e40c5becd3",
+      "chars": 985
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Chicago_State_University:0",
+      "content_sha256": "e66e1d271a9ed8966b89dc974fff6a8e7ac46306da7d13203cef3996ef241be6",
+      "chars": 202
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+      "content_sha256": "360817b16557d84488dfd62381c33ff213bcb4d106b0239cd053c8b84d3ae2c8",
+      "chars": 146
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Illini_and_Saluki:0",
+      "content_sha256": "fa1d477f973f093a863afb27b81efd7b407a2092619e5e7bd74a70d8dc597a59",
+      "chars": 460
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:William_Carbys_Zimmerman:0",
+      "content_sha256": "91082005fd8454464b754b166b0166469d166b8b12b0bedafc4c388b4319d1d0",
+      "chars": 233
+     }
+    ],
+    "elapsed_s": 0.0267
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The University of Illinois at Chicago is state-funded.\n\nEvidence passages from your search for \"university of illinois at chicago state-funded\":\n<<<PASSAGES\n[P1] University of Illinois at Chicago\nThe University of Illinois at Chicago or UIC is a state-funded public research-intensive university located in Chicago , Illinois , United States . Its campus is in the Near West Side community area , adjacent to the Chicago Loop . The second campus established under the University of Illinois system , UIC is also the largest university in the Chicago area , having approximately 29,000 students enrolled in 15 colleges . UIC operates the largest medical school in the United States , and serves as the principal educator for Illinois ' physicians , dentists , pharmacists , physical therapists , nurses and other healthcare professionals . UIC 's medical school has research expenditures exceeding $ 412 million and consistently ranks in the top 50 U.S. institutions for research expenditures . In the 2015 U.S. News & World Report 's ranking of colleges and universities , UIC ranked as the 129th best in the `` national universities '' category .\n\n[P2] Chicago State University\nChicago State University ( CSU ) is a state university of the U.S. state of Illinois , located in Chicago . The University is a member-school of Thurgood Marshall College Fund .\n\n[P3] University of Illinois at Chicago (disambiguation)\nChicago State University , a public university located in the Pullman neighborhood of Chicago .\n\n[P4] Illini and Saluki\nThe Illini and Saluki are a pair of passenger trains operated by Amtrak between Chicago and Carbondale , Illinois . They are part of Amtrak 's Illinois Service and are primarily funded by the state of Illinois . Additional service over the route is provided by the long-distance City of New Orleans . The Illini has operated since 1973 ; a previous version operated in 1971 -- 1972 between Chicago and Champaign . The Saluki debuted in 2006 .\n\n[P5] William Carbys Zimmerman\nWilliam Carbys Zimmerman ( 1856 -- 1932 ) was an American architect . He was the Illinois State Architect from 1905 to 1915 , designing many state-funded buildings , especially at the University of Illinois .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "82bf840fe5fcc8e295b444f963f83eeb7ee49bb5bcb9d9d8ceefa7523bbf0117",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836352.4845629,
+      "end_wall": 1792836355.852405,
+      "error": null
+     }
+    ],
+    "arrival_seq": 485,
+    "start_wall": 1792836352.4845629,
+    "start_mono": 505909.339405375,
+    "end_wall": 1792836355.852405,
+    "end_mono": 505912.707207375,
+    "raw_response": "{\"reasoning\": \"The University of Illinois at Chicago is publicly funded, making the claim supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3365670916,
+     "load_duration": 64500916,
+     "prompt_eval_count": 801,
+     "prompt_eval_duration": 1153758875,
+     "eval_count": 49,
+     "eval_duration": 1692697792,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:55.851051Z"
+    },
+    "elapsed_s": 3.368,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 485,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:University_of_Illinois_at_Chicago:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 85,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The University of Illinois at Chicago is state-funded.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7e6b8ff9587f29afaa5921a612e886275ed0ae66cbbf69051bc72db097141870",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836347.951961,
+      "end_wall": 1792836349.281603,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836347.951961,
+    "start_mono": 505904.806855916,
+    "end_wall": 1792836349.281603,
+    "end_mono": 505906.136481916,
+    "raw_response": "{\"query\": \"University of Illinois at Chicago state funding\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1327293209,
+     "load_duration": 59406334,
+     "prompt_eval_count": 161,
+     "prompt_eval_duration": 422438833,
+     "eval_count": 13,
+     "eval_duration": 717704043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:49.28062Z"
+    },
+    "elapsed_s": 1.33,
+    "query_used": "University of Illinois at Chicago state funding",
+    "query_source": "json",
+    "query_arrival_seq": 486
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "University of Illinois at Chicago state funding",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Chicago_State_University:0",
+       "score_q": 12041
+      },
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+       "score_q": 11823
+      },
+      {
+       "passage_key": "fever17:Loop_-LRB-Amtrak_train-RRB-:0",
+       "score_q": 11530
+      },
+      {
+       "passage_key": "fever17:Chicago_State_Cougars_women's_basketball:0",
+       "score_q": 10908
+      },
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:0",
+       "score_q": 10877
+      }
+     ],
+     "retrieval_sha256": "41efb53f9881f93086488e49d558926a1871804d7af4292bb603d3962e2e8bed"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "41efb53f9881f93086488e49d558926a1871804d7af4292bb603d3962e2e8bed",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Chicago_State_University:0",
+      "content_sha256": "e66e1d271a9ed8966b89dc974fff6a8e7ac46306da7d13203cef3996ef241be6",
+      "chars": 202
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+      "content_sha256": "360817b16557d84488dfd62381c33ff213bcb4d106b0239cd053c8b84d3ae2c8",
+      "chars": 146
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Loop_-LRB-Amtrak_train-RRB-:0",
+      "content_sha256": "b1b354e4e975f2ffa832dba431149e4fe5fa5b44b00bab5d0710f2186d1d61c8",
+      "chars": 673
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Chicago_State_Cougars_women's_basketball:0",
+      "content_sha256": "e34ddad51d8e6936987b2590be80000a96a8df4842b99cc8035200f64027af24",
+      "chars": 242
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "17739523e3d2e7814f5068d6aea3cb4f663b222d4094fa82cbd16c3a576dfe2c",
+      "chars": 995
+     }
+    ],
+    "elapsed_s": 0.0221
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The University of Illinois at Chicago is state-funded.\n\nEvidence passages from your search for \"University of Illinois at Chicago state funding\":\n<<<PASSAGES\n[P1] Chicago State University\nChicago State University ( CSU ) is a state university of the U.S. state of Illinois , located in Chicago . The University is a member-school of Thurgood Marshall College Fund .\n\n[P2] University of Illinois at Chicago (disambiguation)\nChicago State University , a public university located in the Pullman neighborhood of Chicago .\n\n[P3] Loop (Amtrak train)\nThe Loop was a daily passenger train operated by Amtrak between Chicago and Springfield , Illinois . The Loop began on April 27 , 1986 , with funding support from the state of Illinois . The train acted as a counterpart to the State House , departing Chicago in the morning and returning in the afternoon . Funding shortfalls eliminated Saturday service in mid-1995 , and the train ended altogether on June 28 , 1996 , after Illinois withdrew its support . The Loop originally operated with refurbished bilevel cars from the Chicago & North Western Railway , but by 1987 Amtrak substituted Amfleet coaches , later supplemented by Horizon Fleet coaches .\n\n[P4] Chicago State Cougars women's basketball\nThe Chicago State Cougars women 's basketball team represents Chicago State University in Chicago , Illinois , United States . The school 's team currently competes in the Western Athletic Conference .\n\n[P5] University of Illinois at Chicago (disambiguation)\nUniversity of Illinois at Chicago may refer to : University of Illinois at Chicago , a public university located in the Little Italy/University Village neighborhood of Chicago that is part of the University of Illinois system . University of Illinois at Navy Pier , a public university at Navy Pier with a two-year undergraduate program for educating returning World War II veterans before transitioning to the permanent campus that is now the University of Illinois at Chicago . There are also a private and a public universities located in Chicago that share names similar to the University of Illinois at Chicago and at times are confused with UIC . Neither university is in any way affiliated with the University of Illinois at Chicago : The University of Chicago , a private university located in the Hyde Park neighborhood of Chicago . ( The abbreviated form for the University of Chicago is `` U of C '' , which sounds similar to UIC . )\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "81fcd8680e472157c4d254dfa27deb1a542983f965d941e130af846bf64a9415",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836349.304001,
+      "end_wall": 1792836362.709536,
+      "error": null
+     }
+    ],
+    "arrival_seq": 486,
+    "start_wall": 1792836349.304001,
+    "start_mono": 505906.158880291,
+    "end_wall": 1792836362.709536,
+    "end_mono": 505919.564264083,
+    "raw_response": "{\"reasoning\": \"The evidence indicates that the University of Illinois at Chicago is a public university, which implies it receives funding from the state of Illinois. While the evidence mentions other Illinois universities and specific train funding, it provides direct support for the claim that UIC is state-funded through its status as a member of the University of Illinois system and the mention of its affiliation with a state-funded train service, the Loop. Therefore, the claim is SUPPORTED by the passages listed.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P5\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13402458750,
+     "load_duration": 46706917,
+     "prompt_eval_count": 705,
+     "prompt_eval_duration": 2461842834,
+     "eval_count": 118,
+     "eval_duration": 9851976001,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:02.707532Z"
+    },
+    "elapsed_s": 13.405,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 486,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 507,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The University of Illinois at Chicago is state-funded.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7e6b8ff9587f29afaa5921a612e886275ed0ae66cbbf69051bc72db097141870",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836347.951709,
+      "end_wall": 1792836354.4624472,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836347.951709,
+    "start_mono": 505904.806604541,
+    "end_wall": 1792836354.4624472,
+    "end_mono": 505911.317264958,
+    "raw_response": "{\"query\": \"is the University of Illinois at Chicago state-funded\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6507808625,
+     "load_duration": 4176227917,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 376705291,
+     "eval_count": 16,
+     "eval_duration": 1606971708,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:54.46123Z"
+    },
+    "elapsed_s": 6.511,
+    "query_used": "is the University of Illinois at Chicago state-funded",
+    "query_source": "json",
+    "query_arrival_seq": 488
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "is the University of Illinois at Chicago state-funded",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+       "score_q": 12081
+      },
+      {
+       "passage_key": "fever17:Chicago_State_University:0",
+       "score_q": 12041
+      },
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+       "score_q": 11823
+      },
+      {
+       "passage_key": "fever17:Illini_and_Saluki:0",
+       "score_q": 10999
+      },
+      {
+       "passage_key": "fever17:William_Carbys_Zimmerman:0",
+       "score_q": 10988
+      }
+     ],
+     "retrieval_sha256": "4eb936207bbb4365d0b4b75588448bd1c74d0d4140d0915605dbb439a9478dc1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4eb936207bbb4365d0b4b75588448bd1c74d0d4140d0915605dbb439a9478dc1",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+      "content_sha256": "0df7e744893f3a67d5f639c650e35ec49f527ae54df4d60e110ed9e40c5becd3",
+      "chars": 985
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Chicago_State_University:0",
+      "content_sha256": "e66e1d271a9ed8966b89dc974fff6a8e7ac46306da7d13203cef3996ef241be6",
+      "chars": 202
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+      "content_sha256": "360817b16557d84488dfd62381c33ff213bcb4d106b0239cd053c8b84d3ae2c8",
+      "chars": 146
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Illini_and_Saluki:0",
+      "content_sha256": "fa1d477f973f093a863afb27b81efd7b407a2092619e5e7bd74a70d8dc597a59",
+      "chars": 460
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:William_Carbys_Zimmerman:0",
+      "content_sha256": "91082005fd8454464b754b166b0166469d166b8b12b0bedafc4c388b4319d1d0",
+      "chars": 233
+     }
+    ],
+    "elapsed_s": 0.0243
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The University of Illinois at Chicago is state-funded.\n\nEvidence passages from your search for \"is the University of Illinois at Chicago state-funded\":\n<<<PASSAGES\n[P1] University of Illinois at Chicago\nThe University of Illinois at Chicago or UIC is a state-funded public research-intensive university located in Chicago , Illinois , United States . Its campus is in the Near West Side community area , adjacent to the Chicago Loop . The second campus established under the University of Illinois system , UIC is also the largest university in the Chicago area , having approximately 29,000 students enrolled in 15 colleges . UIC operates the largest medical school in the United States , and serves as the principal educator for Illinois ' physicians , dentists , pharmacists , physical therapists , nurses and other healthcare professionals . UIC 's medical school has research expenditures exceeding $ 412 million and consistently ranks in the top 50 U.S. institutions for research expenditures . In the 2015 U.S. News & World Report 's ranking of colleges and universities , UIC ranked as the 129th best in the `` national universities '' category .\n\n[P2] Chicago State University\nChicago State University ( CSU ) is a state university of the U.S. state of Illinois , located in Chicago . The University is a member-school of Thurgood Marshall College Fund .\n\n[P3] University of Illinois at Chicago (disambiguation)\nChicago State University , a public university located in the Pullman neighborhood of Chicago .\n\n[P4] Illini and Saluki\nThe Illini and Saluki are a pair of passenger trains operated by Amtrak between Chicago and Carbondale , Illinois . They are part of Amtrak 's Illinois Service and are primarily funded by the state of Illinois . Additional service over the route is provided by the long-distance City of New Orleans . The Illini has operated since 1973 ; a previous version operated in 1971 -- 1972 between Chicago and Champaign . The Saluki debuted in 2006 .\n\n[P5] William Carbys Zimmerman\nWilliam Carbys Zimmerman ( 1856 -- 1932 ) was an American architect . He was the Illinois State Architect from 1905 to 1915 , designing many state-funded buildings , especially at the University of Illinois .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d1cb0e1ab22431d86524fff667d8a1e966475176f64176fe1fe09e040e70bb18",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836354.487044,
+      "end_wall": 1792836363.8186681,
+      "error": null
+     }
+    ],
+    "arrival_seq": 487,
+    "start_wall": 1792836354.487044,
+    "start_mono": 505911.341864083,
+    "end_wall": 1792836363.8186681,
+    "end_mono": 505920.673383041,
+    "raw_response": "{\"reasoning\": \"The University of Illinois at Chicago is a state-funded public research-intensive university, but the passage about Chicago State University clearly states that it is a state university, not a state-funded one.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9327910625,
+     "load_duration": 3803172792,
+     "prompt_eval_count": 743,
+     "prompt_eval_duration": 1605629875,
+     "eval_count": 64,
+     "eval_duration": 2635065585,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:03.816084Z"
+    },
+    "elapsed_s": 9.332,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 487,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 210,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The University of Illinois at Chicago is state-funded.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7e6b8ff9587f29afaa5921a612e886275ed0ae66cbbf69051bc72db097141870",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836347.9522848,
+      "end_wall": 1792836349.0986629,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836347.9522848,
+    "start_mono": 505904.807179791,
+    "end_wall": 1792836349.0986629,
+    "end_mono": 505905.953543791,
+    "raw_response": "{\"query\": \"UICC state funding Illinois government\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1143656459,
+     "load_duration": 36772292,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 442160125,
+     "eval_count": 13,
+     "eval_duration": 594504750,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:49.097064Z"
+    },
+    "elapsed_s": 1.146,
+    "query_used": "UICC state funding Illinois government",
+    "query_source": "json",
+    "query_arrival_seq": 485
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "UICC state funding Illinois government",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Rend_Lake:1",
+       "score_q": 9308
+      },
+      {
+       "passage_key": "fever17:Universal_Integrated_Circuit_Card:0",
+       "score_q": 9241
+      },
+      {
+       "passage_key": "fever17:Single_Wire_Protocol:0",
+       "score_q": 8496
+      },
+      {
+       "passage_key": "fever17:List_of_Illinois_state_agencies:0",
+       "score_q": 8441
+      },
+      {
+       "passage_key": "fever17:Responsible_Budget_Coalition:0",
+       "score_q": 8419
+      }
+     ],
+     "retrieval_sha256": "f9c817f420282e5bff573a0a74db651a8cdb2b5db60b08bd28a9eb0aa2e3739b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "f9c817f420282e5bff573a0a74db651a8cdb2b5db60b08bd28a9eb0aa2e3739b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Rend_Lake:1",
+      "content_sha256": "ddc53201cf10457b32718ea0a71f619fbde5e1d53fb22e10ea78476b5d0b2746",
+      "chars": 325
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Universal_Integrated_Circuit_Card:0",
+      "content_sha256": "a8d6ef515b02b4fc1754c442d71666324f96e6dea837586215716fc5799c2545",
+      "chars": 980
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Single_Wire_Protocol:0",
+      "content_sha256": "7fddf068589b57a19d967c0c1f7e28ea7fff340de4e848c457904a108e02887f",
+      "chars": 860
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:List_of_Illinois_state_agencies:0",
+      "content_sha256": "b8b5e51a99e98816afb1ade33da69ad3ab0115d1b3b6c0a9a3d667d157b21432",
+      "chars": 163
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Responsible_Budget_Coalition:0",
+      "content_sha256": "48d7778714cc6f4a05a2d278e2123bbe7b48a6ead1263af50ae4926e68b3d74b",
+      "chars": 515
+     }
+    ],
+    "elapsed_s": 0.0315
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The University of Illinois at Chicago is state-funded.\n\nEvidence passages from your search for \"UICC state funding Illinois government\":\n<<<PASSAGES\n[P1] Rend Lake\nAn adjacent Illinois Artisans Shop & Visitors Center is part of the Illinois State Museum system and is operated by the Illinois Department of Natural Resources . ( This facility is currently closed due to lack of funding from the state . ) In 2010 , Rend Lake was designated as an Important Bird Area of Illinois .\n\n[P2] Universal Integrated Circuit Card\nThe Universal Integrated Circuit Card ( UICC ) is the smart card used in mobile terminals in GSM and UMTS networks . The UICC ensures the integrity and security of all kinds of personal data , and it typically holds a few hundred kilobytes . With the advent of more services , the storage space will need to be larger . Note : the official definition for UICC is found in ETSI TR 102 216 where it is defined as a `` smart card that conforms to the specifications written and maintained by the ETSI Smart Card Platform project '' . In addition , the definition has a note that states that `` UICC is neither an abbreviation nor an acronym . '' In a GSM network , the UICC contains a SIM application and in a UMTS network it is the USIM application . A UICC may contain several applications , making it possible for the same smart card to give access to both GSM and UMTS networks , and also provide storage of a phone book and other applications .\n\n[P3] Single Wire Protocol\nThe Single Wire Protocol ( SWP ) is a specification for a single-wire connection between the SIM card and a near field communication ( NFC ) chip in a cell phone . It is currently under final review by the European Telecommunications Standards Institute ( ETSI ) . SWP is an interface between Contactless frontend ( CLF ) and UICC ( SIM card chip ) . It is a contact based protocol which is used for contactless communication . C6 pin of UICC is connected to CLF for SWP support . It is a bit oriented full duplex protocol i.e. at the same time transmission as well as reception is possible . CLF acts as a master and UICC as a slave . CLF provides the UICC with energy , a transmission clock , data and signal for bus management . The data to be transmitted are represented by the binary states of voltage and current on the single wire .\n\n[P4] List of Illinois state agencies\nThe Illinois state government has numerous departments , but the so-called code departments provide most of the state 's services .\n\n[P5] Responsible Budget Coalition\nThe Responsible Budget Coalition ( RBC ) is an Illinois-based progressive issue advocacy group comprising over 250 organizations . The group advocates for the funding of state government programs for children , families , and community-based programs . According to RBC 's website , it operates under three main principles : `` Adequate revenue to support state priorities and make smart investments '' `` No more cuts to vital programs and services '' `` Fairness in raising revenue ''\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "59f7ed4f518228a91ec3f40bc5399b9149098f46a6a7ba392652bf27b0320803",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836349.130476,
+      "end_wall": 1792836365.2721028,
+      "error": null
+     }
+    ],
+    "arrival_seq": 488,
+    "start_wall": 1792836349.130476,
+    "start_mono": 505905.985357416,
+    "end_wall": 1792836365.2721028,
+    "end_mono": 505922.12680325,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages do not directly discuss the funding of the University of Illinois at Chicago (UIC). Instead, they focus on state funding for various projects and government departments in Illinois, such as the Illinois State Museum and the Illinois Department of Natural Resources. Additionally, the passages pertain to the Universal Integrated Circuit Card (UICC), a technology standard, and the Responsible Budget Coalition, which advocates for state government funding. There is no direct mention of UIC directly receiving state funding. Therefore, based on the provided information\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16138465583,
+     "load_duration": 7871340000,
+     "prompt_eval_count": 972,
+     "prompt_eval_duration": 1885622917,
+     "eval_count": 160,
+     "eval_duration": 5721675832,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:06:05.269847Z"
+    },
+    "elapsed_s": 16.141,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 488,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Rend_Lake:1",
+     "fever17:List_of_Illinois_state_agencies:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The University of Illinois at Chicago is state-funded.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "7e6b8ff9587f29afaa5921a612e886275ed0ae66cbbf69051bc72db097141870",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836347.9510112,
+      "end_wall": 1792836348.7739599,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836348.774036,
+      "end_wall": 1792836355.775964,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836355.776036,
+      "end_wall": 1792836364.79937,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792836347.9510112,
+    "start_mono": null,
+    "end_wall": 1792836364.79937,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "The University of Illinois at Chicago is state-funded.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 489
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "The University of Illinois at Chicago is state-funded.",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+       "score_q": 12081
+      },
+      {
+       "passage_key": "fever17:Chicago_State_University:0",
+       "score_q": 12041
+      },
+      {
+       "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+       "score_q": 11823
+      },
+      {
+       "passage_key": "fever17:Illini_and_Saluki:0",
+       "score_q": 10999
+      },
+      {
+       "passage_key": "fever17:William_Carbys_Zimmerman:0",
+       "score_q": 10988
+      }
+     ],
+     "retrieval_sha256": "215095b1f0d2bed6640d69562a095a0ff2322022005632cafa2136cb8e85862c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "215095b1f0d2bed6640d69562a095a0ff2322022005632cafa2136cb8e85862c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago:0",
+      "content_sha256": "0df7e744893f3a67d5f639c650e35ec49f527ae54df4d60e110ed9e40c5becd3",
+      "chars": 985
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Chicago_State_University:0",
+      "content_sha256": "e66e1d271a9ed8966b89dc974fff6a8e7ac46306da7d13203cef3996ef241be6",
+      "chars": 202
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:University_of_Illinois_at_Chicago_-LRB-disambiguation-RRB-:1",
+      "content_sha256": "360817b16557d84488dfd62381c33ff213bcb4d106b0239cd053c8b84d3ae2c8",
+      "chars": 146
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Illini_and_Saluki:0",
+      "content_sha256": "fa1d477f973f093a863afb27b81efd7b407a2092619e5e7bd74a70d8dc597a59",
+      "chars": 460
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:William_Carbys_Zimmerman:0",
+      "content_sha256": "91082005fd8454464b754b166b0166469d166b8b12b0bedafc4c388b4319d1d0",
+      "chars": 233
+     }
+    ],
+    "elapsed_s": 0.0218
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The University of Illinois at Chicago is state-funded.\n\nEvidence passages from your search for \"The University of Illinois at Chicago is state-funded.\":\n<<<PASSAGES\n[P1] University of Illinois at Chicago\nThe University of Illinois at Chicago or UIC is a state-funded public research-intensive university located in Chicago , Illinois , United States . Its campus is in the Near West Side community area , adjacent to the Chicago Loop . The second campus established under the University of Illinois system , UIC is also the largest university in the Chicago area , having approximately 29,000 students enrolled in 15 colleges . UIC operates the largest medical school in the United States , and serves as the principal educator for Illinois ' physicians , dentists , pharmacists , physical therapists , nurses and other healthcare professionals . UIC 's medical school has research expenditures exceeding $ 412 million and consistently ranks in the top 50 U.S. institutions for research expenditures . In the 2015 U.S. News & World Report 's ranking of colleges and universities , UIC ranked as the 129th best in the `` national universities '' category .\n\n[P2] Chicago State University\nChicago State University ( CSU ) is a state university of the U.S. state of Illinois , located in Chicago . The University is a member-school of Thurgood Marshall College Fund .\n\n[P3] University of Illinois at Chicago (disambiguation)\nChicago State University , a public university located in the Pullman neighborhood of Chicago .\n\n[P4] Illini and Saluki\nThe Illini and Saluki are a pair of passenger trains operated by Amtrak between Chicago and Carbondale , Illinois . They are part of Amtrak 's Illinois Service and are primarily funded by the state of Illinois . Additional service over the route is provided by the long-distance City of New Orleans . The Illini has operated since 1973 ; a previous version operated in 1971 -- 1972 between Chicago and Champaign . The Saluki debuted in 2006 .\n\n[P5] William Carbys Zimmerman\nWilliam Carbys Zimmerman ( 1856 -- 1932 ) was an American architect . He was the Illinois State Architect from 1905 to 1915 , designing many state-funded buildings , especially at the University of Illinois .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a3c527cb2b75534bb61ec5e7cd9a70ab90c0941141fe9971a998b2112333ec98",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836364.821422,
+      "end_wall": 1792836366.294755,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836366.294825,
+      "end_wall": 1792836367.794271,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836367.794338,
+      "end_wall": 1792836369.294351,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 489,
+    "start_wall": 1792836364.821422,
+    "start_mono": null,
+    "end_wall": 1792836369.294351,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 489,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "8247d108086ca3cab6a5435594dfb780d56aefe7b80bdd7275d2fba0b2e7ee86",
+  "olmo2:7b": "41efb53f9881f93086488e49d558926a1871804d7af4292bb603d3962e2e8bed",
+  "nemotron-mini:4b": "4eb936207bbb4365d0b4b75588448bd1c74d0d4140d0915605dbb439a9478dc1",
+  "granite3.3:2b": "f9c817f420282e5bff573a0a74db651a8cdb2b5db60b08bd28a9eb0aa2e3739b",
+  "exaone3.5:2.4b": "215095b1f0d2bed6640d69562a095a0ff2322022005632cafa2136cb8e85862c"
+ },
+ "item_start_wall": 1792836347.9500642,
+ "item_wall_s": 21.344,
+ "ollama_ps_samples": [
+  [
+   1792836347.95,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836349.959,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792836351.961,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836353.966,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836355.969,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836357.976,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836359.979,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836361.982,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792836363.993,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836365.997,
+   [
+    "exaone3.5:2.4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836368.007,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

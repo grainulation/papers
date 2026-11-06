@@ -1,0 +1,87 @@
+
+────────────────────────────────────────────────────────────────
+  SCORING COMPONENT ABLATION STUDY
+────────────────────────────────────────────────────────────────
+
+  Testing: which scoring components actually flip conflict winners?
+  N=100, seed=42
+
+  australia — What is the capital of Australia?
+
+    ┌────────────────┬───────┬─────┬─────┬─────┬────────────────┐
+    │    Profile     │ Prec  │ FP  │ FN  │ Adm │Winners Changed │
+    ├────────────────┼───────┼─────┼─────┼─────┼────────────────┤
+    │    Default     │ 100%  │  0  │ 85  │  4  │       —        │
+    │  No evidence   │ 100%  │  0  │ 85  │  4  │      3/4       │
+    │ No confidence  │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │No critique-surv│ 100%  │  0  │ 85  │  4  │      0/4       │
+    │   No recency   │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │ No constraint  │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │ Evidence only  │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │Confidence only │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │    CS only     │ 100%  │  0  │ 85  │  4  │      0/4       │
+    │    Uniform     │ 100%  │  0  │ 85  │  4  │      3/4       │
+    └────────────────┴───────┴─────┴─────┴─────┴────────────────┘
+
+  tcp — How does TCP ensure reliable data delivery?
+
+    ┌────────────────┬───────┬─────┬─────┬─────┬────────────────┐
+    │    Profile     │ Prec  │ FP  │ FN  │ Adm │Winners Changed │
+    ├────────────────┼───────┼─────┼─────┼─────┼────────────────┤
+    │    Default     │  79%  │  3  │ 71  │ 14  │       —        │
+    │  No evidence   │  79%  │  3  │ 71  │ 14  │      8/14      │
+    │ No confidence  │  79%  │  3  │ 71  │ 14  │      2/14      │
+    │No critique-surv│  79%  │  3  │ 71  │ 14  │      0/14      │
+    │   No recency   │  79%  │  3  │ 71  │ 14  │      0/14      │
+    │ No constraint  │  79%  │  3  │ 71  │ 14  │      0/14      │
+    │ Evidence only  │  79%  │  3  │ 71  │ 14  │      0/14      │
+    │Confidence only │  79%  │  3  │ 71  │ 14  │      1/14      │
+    │    CS only     │  79%  │  3  │ 71  │ 14  │      0/14      │
+    │    Uniform     │  79%  │  3  │ 71  │ 14  │      9/14      │
+    └────────────────┴───────┴─────┴─────┴─────┴────────────────┘
+
+  nutrition — Is saturated fat bad for heart health?
+
+    ┌────────────────┬───────┬─────┬─────┬─────┬────────────────┐
+    │    Profile     │ Prec  │ FP  │ FN  │ Adm │Winners Changed │
+    ├────────────────┼───────┼─────┼─────┼─────┼────────────────┤
+    │    Default     │  67%  │  5  │ 76  │ 15  │       —        │
+    │  No evidence   │  67%  │  5  │ 76  │ 15  │      9/15      │
+    │ No confidence  │  67%  │  5  │ 76  │ 15  │      2/15      │
+    │No critique-surv│  67%  │  5  │ 76  │ 15  │      0/15      │
+    │   No recency   │  67%  │  5  │ 76  │ 15  │      0/15      │
+    │ No constraint  │  67%  │  5  │ 76  │ 15  │      0/15      │
+    │ Evidence only  │  67%  │  5  │ 76  │ 15  │      0/15      │
+    │Confidence only │  67%  │  5  │ 76  │ 15  │      1/15      │
+    │    CS only     │  67%  │  5  │ 76  │ 15  │      0/15      │
+    │    Uniform     │  67%  │  5  │ 76  │ 15  │     10/15      │
+    └────────────────┴───────┴─────┴─────┴─────┴────────────────┘
+
+
+
+  ▸ Lowering Factor Ablation: All agents HIGH vs Default mix
+  ························································
+
+  australia
+    Default mix (H/M/L):  Prec=100%, FP=0, Admitted=4
+    All HIGH lowering:    Prec=100%, FP=0, Admitted=4
+    All LOW lowering:     Prec=100%, FP=0, Admitted=0
+
+  tcp
+    Default mix (H/M/L):  Prec=79%, FP=3, Admitted=14
+    All HIGH lowering:    Prec=79%, FP=3, Admitted=14
+    All LOW lowering:     Prec=100%, FP=0, Admitted=0
+
+  nutrition
+    Default mix (H/M/L):  Prec=67%, FP=5, Admitted=15
+    All HIGH lowering:    Prec=67%, FP=5, Admitted=15
+    All LOW lowering:     Prec=100%, FP=0, Admitted=0
+
+
+  ▸ Critique Impact Analysis
+  ························································
+
+  australia: 11 critiques, 3/4 conflicts have reduced CS scores
+  tcp: 7 critiques, 5/14 conflicts have reduced CS scores
+  nutrition: 4 critiques, 3/15 conflicts have reduced CS scores
+

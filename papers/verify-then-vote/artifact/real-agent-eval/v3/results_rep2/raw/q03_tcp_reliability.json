@@ -1,0 +1,341 @@
+{
+  "id": "q03_tcp_reliability",
+  "question": "How does TCP ensure reliable data delivery?",
+  "dispatch_order": [
+    "phi3:mini",
+    "gemma2:2b",
+    "llama3.2:3b",
+    "mistral",
+    "qwen2.5:3b"
+  ],
+  "arrival_order": [
+    "gemma2:2b",
+    "mistral",
+    "phi3:mini",
+    "qwen2.5:3b",
+    "llama3.2:3b"
+  ],
+  "list_order": [
+    "llama3.2:3b",
+    "mistral",
+    "gemma2:2b",
+    "phi3:mini",
+    "qwen2.5:3b"
+  ],
+  "responses": [
+    {
+      "model": "gemma2:2b",
+      "request_seed": 43,
+      "start_wall": 1792608830.973709,
+      "start_mono": 301492.884602708,
+      "end_mono": 301509.497239333,
+      "end_wall": 1792608847.5864031,
+      "arrival_seq": 10,
+      "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through a combination of mechanisms:\n\n**1. Connection-Oriented:** TCP creates a dedicated connection between sender and receiver before data transfer. This establishes a reliable communication channel. \n    * **Source:** RFC 793 [https://tools.ietf.org/html/rfc793]\n\n**2. Acknowledgement (ACK) Mechanism:** TCP relies on acknowledgements to verify that data has been successfully received. \n    * **Source:** RFC 793, RFC 768 [https://tools.ietf.org/html/rfc768]\n \n**3. Sequence Numbers:** Data packets include unique sequence numbers, allowing for accurate order and reordering if needed. \n    * **Source:** RFC 768\n\n**4. Retransmission:** If a packet is lost, TCP will retransmit it.  \n    * **Source:** RFC 793\n\n**5. Error Checking:** TCP uses checksums to detect and correct errors during transmission. \n    * **Source:** RFC 793\n\n\n**Confidence Level:** High. The details and functions described above are well-documented and widely used in the networking industry. \n",
+      "ollama_meta": {
+        "total_duration": 16609630959,
+        "load_duration": 97727250,
+        "prompt_eval_count": 86,
+        "prompt_eval_duration": 113258500,
+        "eval_count": 260,
+        "eval_duration": 16303122996,
+        "done_reason": "stop",
+        "created_at": "2026-10-21T18:54:07.584667Z"
+      },
+      "error": null,
+      "arrival_rank": 0,
+      "dispatch_index": 1,
+      "list_index": 2,
+      "agent": "gemma2_2b",
+      "elapsed_s": 16.613
+    },
+    {
+      "model": "mistral",
+      "request_seed": 43,
+      "start_wall": 1792608830.973944,
+      "start_mono": 301492.884837833,
+      "end_mono": 301518.741922833,
+      "end_wall": 1792608856.831119,
+      "arrival_seq": 11,
+      "raw_response": " TCP, or Transmission Control Protocol, ensures reliable data delivery by using a combination of techniques, primarily:\n\n1. **Flow Control**: TCP uses a mechanism called sliding window, which allows the sender to send multiple unacknowledged segments without waiting for an acknowledgement for each segment. This improves the efficiency of the connection by allowing the sender to control the rate at which data is sent based on the receiver's buffering capacity. (Source: RFC 793)\n\n2. **Congestion Control**: TCP uses various algorithms to control the rate at which data is sent in order to prevent network congestion. One of the most famous congestion control algorithms is TCP Tahoe and its derivatives (TCP Reno, TCP NewReno, etc.). These algorithms adjust the sending rate based on network congestion signs like packet loss and delay. (Source: RFC 5681)\n\n3. **Error Detection and Correction**: TCP uses checksums to detect errors in transmitted data. If a segment is found to be corrupted, it is retransmitted. This is done using the Selective Acknowledgement (SACK) option or the older Stop-and-Wait protocol. (Source: RFC 793)\n\n4. **Sequencing**: Each packet of data in a TCP connection is numbered, allowing the receiver to verify the order in which the packets were sent and to detect any lost or out-of-order packets. (Source: RFC 793)\n\nConfidence Level: High",
+      "ollama_meta": {
+        "total_duration": 25854802708,
+        "load_duration": 35875000,
+        "prompt_eval_count": 82,
+        "prompt_eval_duration": 159073917,
+        "eval_count": 338,
+        "eval_duration": 25638032712,
+        "done_reason": "stop",
+        "created_at": "2026-10-21T18:54:16.829721Z"
+      },
+      "error": null,
+      "arrival_rank": 1,
+      "dispatch_index": 3,
+      "list_index": 1,
+      "agent": "mistral",
+      "elapsed_s": 25.857
+    },
+    {
+      "model": "phi3:mini",
+      "request_seed": 43,
+      "start_wall": 1792608830.973623,
+      "start_mono": 301492.884516333,
+      "end_mono": 301522.160817375,
+      "end_wall": 1792608860.2500238,
+      "arrival_seq": 12,
+      "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through a combination of mechanisms, such as:\n\n1. Sequencing: TCP breaks down data into segments and assigns sequence numbers to each segment. This allows the receiving end to reassemble the data in the correct order, even if packets arrive out of order (Confidence Level: High). This is based on the standard design of TCP, as specified in RFC 793 (https://tools.ietf.org/html/rfc793).\n\n2. Acknowledgments (ACKs): The receiver sends an acknowledgment for each packet received, enabling the sender to know which segments have been received and which need to be resent (Confidence Level: High). The sender can also infer lost packets through the use of timers and retransmission of unacknowledged packets (Confidence Level: High).\n\n3. Flush ACKs: If a sender does not receive an ACK for a packet within a certain timeout period, it will retransmit the packet, assuming it was lost (Confidence Level: High).\n\n4. Error detection: TCP uses checksums to detect corruption in data and retransmits corrupted packets (Confidence Level: High).\n\n5. Congestion control: TCP uses mechanisms like slow start, congestion window and congestion control algorithms (e.g., slow-path, fast-path) to prevent network congestion (Confidence Level: High).\n\n6. Flow control: TCP adjusts the rate of data transmission based on the receiver's ability to process it, avoiding data overflow (Confidence Level: High).\n\n7. Cumulative ACKs: TCP only acknowledges successfully received segments, not the next expected ones (Confidence Level: High).\n\n8. Windowing: TCP maintains a window of data that can be sent before needing an acknowledgment (Confidence Level: High).\n\n9. Retransmission timeout (RTO): TCP sets a timeout period after which it expects an ACK, retransmitting the packet if it does not arrive (Confidence Level: High).\n\n10. Selective Acknowledgments: TCP only acknowledges received segments, not the next expected ones (Confidence Level: High).\n\n11. Three-way handshake: TCP uses a three-way handshake to establish a connection and ensure both ends are ready for communication (Confidence Level: High).\n\n12. Nagle's algorithm: TCP combines small outgoing messages into a single packet to reduce overhead and improve efficiency (Confidence Level: Medium).\n\n13. Selective Acknowledgments: TCP only acknowledges received segments, not the next expected ones (Confidence Level: High).\n\nSources:\n- RFC 793: https://tools.ietf.org/html/rfc793\n- RFC 1122: https://tools.ietf.org/html/rfc1122",
+      "ollama_meta": {
+        "total_duration": 29273690500,
+        "load_duration": 884418375,
+        "prompt_eval_count": 91,
+        "prompt_eval_duration": 267758000,
+        "eval_count": 667,
+        "eval_duration": 28081780206,
+        "done_reason": "stop",
+        "created_at": "2026-10-21T18:54:20.248443Z"
+      },
+      "error": null,
+      "arrival_rank": 2,
+      "dispatch_index": 0,
+      "list_index": 3,
+      "agent": "phi3_mini",
+      "elapsed_s": 29.276
+    },
+    {
+      "model": "qwen2.5:3b",
+      "request_seed": 43,
+      "start_wall": 1792608830.974049,
+      "start_mono": 301492.88494275,
+      "end_mono": 301538.615110083,
+      "end_wall": 1792608876.704372,
+      "arrival_seq": 13,
+      "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through several mechanisms, primarily involving sequence numbers, acknowledgment (ACK) packets, and error detection.\n\n1. **Sequence Numbers**: TCP uses sequence numbers to ensure that data packets are delivered in the correct order. Each segment sent by a TCP sender includes a sequence number, which is incremented by the sender with each segment. The receiver acknowledges received packets with a sequence number that matches the next expected packet. This ensures that packets are received in the order they were sent.\n\n   - **Source**: RFC 793 (the original description of TCP), 1185, and RFC 793 updates.\n\n2. **Acknowledgments (ACK) Packets**: Receivers send ACK packets to the sender, indicating which packets have been received successfully. This helps the sender to know if a packet was lost in transit and to resend it if necessary. Without ACKs, a sender might keep retransmitting a packet if the receiver had dropped it.\n\n   - **Source**: RFC 793, 1185, and 794 (which discusses the original TCP specification and subsequent enhancements).\n\n3. **Retransmission**: If a sender does not receive an ACK for a segment within a specified time, it retransmits the segment. This mechanism helps in ensuring that all data is delivered reliably. Retransmission can be configured to a specific number of retries or can be determined by the time-to-live (TTL) of the segment.\n\n   - **Source**: RFC 793, 1185, and RFC 794.\n\n4. **Error Detection**: TCP uses the checksum field in each segment to detect transmission errors. If the checksum fails, the segment is discarded and the sender may retransmit the data. This helps in ensuring that the data integrity is maintained during transmission.\n\n   - **Source**: RFC 793, 1185, and RFC 794.\n\nMy confidence level for these claims is high, as these mechanisms are fundamental to TCP's operation and are well-documented in various RFCs and standards.",
+      "ollama_meta": {
+        "total_duration": 45727172917,
+        "load_duration": 30900817584,
+        "prompt_eval_count": 82,
+        "prompt_eval_duration": 171912250,
+        "eval_count": 436,
+        "eval_duration": 14585292214,
+        "done_reason": "stop",
+        "created_at": "2026-10-21T18:54:36.702306Z"
+      },
+      "error": null,
+      "arrival_rank": 3,
+      "dispatch_index": 4,
+      "list_index": 4,
+      "agent": "qwen2.5_3b",
+      "elapsed_s": 45.73
+    },
+    {
+      "model": "llama3.2:3b",
+      "request_seed": 43,
+      "start_wall": 1792608830.973829,
+      "start_mono": 301492.884722958,
+      "end_mono": 301538.754527625,
+      "end_wall": 1792608876.84379,
+      "arrival_seq": 14,
+      "raw_response": "TCP (Transmission Control Protocol) ensures reliable data delivery through a combination of mechanisms. Here are the key steps:\n\n1. **Segmentation and Reassembly**: TCP breaks data into smaller segments, adds a header with sequence numbers, and reassembles the data at the receiving end. This allows for efficient error detection and correction. (Source: RFC 793, \"Transmission Control Protocol\")\n2. **Sequence Numbers**: Each segment contains a sequence number that indicates its position in the original data stream. This allows the receiving device to reassemble the segments in the correct order. (Source: RFC 793, \"Transmission Control Protocol\")\n3. **Acknowledgments**: The receiving device sends acknowledgments (ACKs) back to the sender for each segment it receives. The ACKs include the expected sequence number, allowing the sender to determine if a segment has been lost or corrupted. (Source: RFC 793, \"Transmission Control Protocol\")\n4. **Retransmission**: If a segment is not acknowledged within a certain time (called the \"time-out\" interval), the sender retransmits the segment. This ensures that data is resent if it is lost or corrupted during transmission. (Source: RFC 793, \"Transmission Control Protocol\")\n5. **Error Detection**: TCP uses a checksum (CRC) to detect errors in the data. If an error is detected, the receiver can request the sender to retransmit the affected segment. (Source: RFC 793, \"Transmission Control Protocol\")\n6. **Flow Control**: TCP uses a windowing mechanism to prevent congestion and ensure that data is transmitted in a timely manner. This prevents the sender from overwhelming the receiver with too much data. (Source: RFC 793, \"Transmission Control Protocol\")\n\nBy combining these mechanisms, TCP ensures reliable data delivery by detecting and correcting errors, retransmitting lost or corrupted data, and preventing congestion.\n\n**Confidence level:** High",
+      "ollama_meta": {
+        "total_duration": 45868018208,
+        "load_duration": 32705061250,
+        "prompt_eval_count": 94,
+        "prompt_eval_duration": 190040833,
+        "eval_count": 387,
+        "eval_duration": 12915789255,
+        "done_reason": "stop",
+        "created_at": "2026-10-21T18:54:36.843037Z"
+      },
+      "error": null,
+      "arrival_rank": 4,
+      "dispatch_index": 2,
+      "list_index": 0,
+      "agent": "llama3.2_3b",
+      "elapsed_s": 45.87
+    }
+  ],
+  "ollama_ps_samples": [
+    [
+      1792608830.973,
+      [
+        "gemma2:2b",
+        "qwen2.5:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608832.978,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608834.98,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608836.987,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608838.992,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608840.996,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608843.002,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608845.009,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608847.014,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608849.02,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608851.024,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608853.028,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608855.035,
+      [
+        "gemma2:2b",
+        "mistral:latest",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608857.04,
+      [
+        "mistral:latest",
+        "gemma2:2b",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608859.046,
+      [
+        "mistral:latest",
+        "gemma2:2b",
+        "phi3:mini"
+      ]
+    ],
+    [
+      1792608861.05,
+      [
+        "mistral:latest",
+        "gemma2:2b"
+      ]
+    ],
+    [
+      1792608863.052,
+      [
+        "qwen2.5:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608865.056,
+      [
+        "llama3.2:3b",
+        "qwen2.5:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608867.057,
+      [
+        "qwen2.5:3b",
+        "llama3.2:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608869.059,
+      [
+        "qwen2.5:3b",
+        "llama3.2:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608871.06,
+      [
+        "qwen2.5:3b",
+        "llama3.2:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608873.062,
+      [
+        "qwen2.5:3b",
+        "llama3.2:3b",
+        "mistral:latest"
+      ]
+    ],
+    [
+      1792608875.064,
+      [
+        "qwen2.5:3b",
+        "llama3.2:3b",
+        "mistral:latest"
+      ]
+    ]
+  ]
+}

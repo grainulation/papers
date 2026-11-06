@@ -1,0 +1,38 @@
+\section{Sealed Evidence and Replay}
+\label{sec:evidence}
+
+Verify-then-vote is useful to an auditor only if its inputs are fixed: which passage each agent cited, what the passage said, and what the checker labeled it. Everything the decision reads is therefore produced first and sealed into one content-addressed artifact set, and the decision is a pure function of that set and a hashed policy.
+
+\subsection{Capture and support checking}
+\label{sec:capture}
+
+\emph{Capture} turns each cited source into a record. Two kinds of source are supported. Web citations (URLs, DOIs, RFC numbers, arXiv identifiers) are fetched once per epoch with TLS verification, bounded redirects, per-host rate limits, and robots.txt checks. Capture refuses private and metadata addresses, and each fetch gets one of 14 outcome classes. Corpus citations name a passage of a fixed, hashed retrieval corpus by a canonical identifier, and capture reads the passage from it. Each record holds the outcome, the body's content hash, and at most three 1,000-character spans, and is identified by a hash of its canonical form; bodies stay in a cache outside $A$.
+
+\emph{Support checking} asks an LLM to label each (claim, spans) pair as supports, refutes, or not-enough-information. The claim is rendered as a one-sentence proposition, and the checker sees only that proposition and the passage, never other agents' answers, vote counts, or gold. Checks are de-duplicated by (proposition, passage), so each label is computed once and reused by every policy that reads it. The checker's identity is a hash of its model, prompt, tool version, and flags, and fetched text is treated as data, with delimiter look-alikes neutralized.
+
+Both record types are sealed into $A$'s evidence store. A label applies only if its checker identity is on the policy's list of accepted checkers. That list is part of the hashed policy, so the reducer enforces acceptance-before-use; validating a checker before accepting it is the study or application's responsibility. \Cref{app:reducer} gives the evidence weights the scoring selector derives from captures and labels.
+
+Replay reads only the sealed records, so evidence verification inherits the replay guarantee below. A flipped label changes the root hash, and removing an accepted checker changes the policy hash.
+
+\subsection{Artifact set, policy, and certificate}
+\label{sec:artifact-set}
+
+The artifact set $A$ contains the normalized intent, the contributions, the evidence items, the calibration snapshot (one factor per agent), and optionally an evidence store of capture and support records (\cref{sec:capture}). Each contribution carries its content-addressed identifier and recorded arrival index $\sigma$. Each evidence item records its type, source, weight, verification level, and agent-reported reachability. $A$ is serialized canonically, without wall-clock timestamps, and hashed before reduction. Every field the reducer reads is inside that hash.
+
+The policy $P$ holds the weights, lowering factors, deadband, Schulze indifference threshold, arity and exclusivity tables, and optional tie-break, candidate, and evidence settings, and is frozen per compilation. Its hash also covers the constants compiled into the reducer, so, under the same reducer implementation, equal policy hashes identify the same scoring settings, subject to hash-collision assumptions. The policy hash does not by itself bind implementation identity; reproductions must also identify the reducer source or binary. The \emph{certificate} hashes $A$'s root hash, the policy hash, and the admitted identifiers in admission order.
+
+The purity constraints are few. Calibration comes only from the snapshot in $A$. All ordering derives from canonical keys or the recorded $\sigma$ alone, independent of iteration order and the clock. Scores are compared only after quantization to integers on a 10,000 scale. These comparisons use integers, but agreement across platforms still depends on the floating-point arithmetic before quantization; the cross-build tests in \paperref{main-paper replay tests} establish agreement for the tested inputs and builds. Under them the reducer satisfies one guarantee.
+
+\begin{guarantee}[Replay]
+\label{guar:replay}
+The reducer is a pure function: $A_1 = A_2 \wedge P_1 = P_2 \implies C(A_1, P_1) = C(A_2, P_2)$. Its output is the admitted/rejected partition of contribution identifiers together with the per-slot selections (slot, members, winner, and quantized scores). Reduction begins only after $A$ is sealed.
+\end{guarantee}
+
+\subsection{Why seal}
+\label{sec:why-seal}
+
+Replay needs only exact preservation of the reducer's inputs: exact input logging with \emph{any} deterministic reducer, weighted voting included, would replay. The reducer hashes its inputs for three further properties: tamper evidence for an artifact that travels between parties, cheap equality checks, and idempotent re-submission. The architectural principle is that arbitration is a function over an explicitly preserved, canonical input. Anything that can vary belongs to artifact production and is recorded before it can influence reduction.
+
+Two consequences follow. Arrival order is a recorded input: recency reads $\sigma$ from $A$, so even an order-dependent feature depends only on sealed state. Whether arrival order \emph{should} matter is a policy question, and \cref{sec:freetext} makes the case for order-free selection. Model calls are artifacts: their outputs are committed into $A$, and the reducer is deterministic over those recorded outputs. Re-running a model to \emph{regenerate} an artifact is a separate operation that lies outside the replay guarantee.
+
+\paragraph{Tamper evidence is relative to a trusted commitment.} Subject to hash-collision assumptions, hashes make an edit detectable against a certificate or root hash that the verifier already trusts. A producer who hands an auditor a decision also records its certificate somewhere the auditor trusts independently of the bundle, such as a signed release, an append-only log, or a preregistration's freeze record. Any bundle presented later is checked against that record, and an edited claim, label, arrival index, policy, or output then fails (\paperref{main-paper replay tests}). An adversary who can replace the bundle and every trusted copy of its certificate can recompute all hashes, so the guarantee is as strong as the authentication of the certificate. For OVERTURN, the preregistration's freeze record fixes the analysis code, reducer binary, checker identity, and policy templates by hash before collection. The artifact includes the root hashes and certificates of the collected sets. A verifier must preserve a trusted copy independently; inclusion in the same editable bundle does not authenticate that bundle. The certificate keeps 64 bits; an auditor who needs collision resistance against the producer records the 128-bit root and policy hashes instead.

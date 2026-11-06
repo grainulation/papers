@@ -1,0 +1,1247 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain227",
+ "order": 129,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain227",
+  "order": 129,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms."
+ },
+ "item_view_sha256": "611636a77fe6e5313140d9d5e0fc6dc4f9f6059badce9141e967c7504aff9c04",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "falcon3:3b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8da73f268c181e866578eb69101d480012d11cfc36013e3756f92cecd38fca5c",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837157.6053948,
+      "end_wall": 1792837162.872413,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837157.6053948,
+    "start_mono": 506714.451898458,
+    "end_wall": 1792837162.872413,
+    "end_mono": 506719.718860583,
+    "raw_response": "{\"query\": \"mechanisms of resistance to epidermal growth factor receptor targeted therapies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5263972875,
+     "load_duration": 4125608916,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 291665667,
+     "eval_count": 17,
+     "eval_duration": 494157540,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:22.871164Z"
+    },
+    "elapsed_s": 5.267,
+    "query_used": "mechanisms of resistance to epidermal growth factor receptor targeted therapies",
+    "query_source": "json",
+    "query_arrival_seq": 648
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mechanisms of resistance to epidermal growth factor receptor targeted therapies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:26973393:0",
+       "score_q": 847
+      },
+      {
+       "passage_key": "scifact:9505402:0",
+       "score_q": 776
+      },
+      {
+       "passage_key": "scifact:34066665:1",
+       "score_q": 767
+      },
+      {
+       "passage_key": "scifact:34066665:0",
+       "score_q": 760
+      },
+      {
+       "passage_key": "scifact:9486930:0",
+       "score_q": 760
+      }
+     ],
+     "retrieval_sha256": "edcb97c74e3c8a7413cb0941ee3123f856bcbe1e9cff7679b18fe7a38f402e11"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "edcb97c74e3c8a7413cb0941ee3123f856bcbe1e9cff7679b18fe7a38f402e11",
+    "query_embedding_sha256": "6572723860fdb9c8fd96045086b251cebe53638dfbd3c4790240efca31e6c814",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:26973393:0",
+      "content_sha256": "12c40e8def00ad62112d9891be9f94e5b0aabb47c95890fe2e3f9bc8505b6e2b",
+      "chars": 846
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:9505402:0",
+      "content_sha256": "7892af8774caed89d00ff4be8bc5db073c3e8830fca11a8337df1b6c8248bb05",
+      "chars": 1012
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34066665:1",
+      "content_sha256": "72d28f54e2e7c6698bada7b886e83613cc4c4c9c8e0d315502df1b361af76445",
+      "chars": 538
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34066665:0",
+      "content_sha256": "2d765cb83505d9cfaf476358de577afef6fd74cd17e110d1b56cc3d1b847c39e",
+      "chars": 1024
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9486930:0",
+      "content_sha256": "f78e442007d7c0fe3c9bcecc239051c15e69108efda3e4e8fc2eee61a7452f75",
+      "chars": 1170
+     }
+    ],
+    "elapsed_s": 0.0679
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nEvidence passages from your search for \"mechanisms of resistance to epidermal growth factor receptor targeted therapies\":\n<<<PASSAGES\n[P1] The quest to overcome resistance to EGFR-targeted therapies in cancer\nAll patients with metastatic lung, colorectal, pancreatic or head and neck cancers who initially benefit from epidermal growth factor receptor (EGFR)-targeted therapies eventually develop resistance. An increasing understanding of the number and complexity of resistance mechanisms highlights the Herculean challenge of killing tumors that are resistant to EGFR inhibitors. Our growing knowledge of resistance pathways provides an opportunity to develop new mechanism-based inhibitors and combination therapies to prevent or overcome therapeutic resistance in tumors. We present a comprehensive review of resistance pathways to EGFR-targeted therapies in lung, colorectal and head and neck cancers and discuss therapeutic strategies that are designed to circumvent resistance.\n\n[P2] Acquired EGFR C797S mutation mediates resistance to AZD9291 in non–small cell lung cancer harboring EGFR T790M\nHere we studied cell-free plasma DNA (cfDNA) collected from subjects with advanced lung cancer whose tumors had developed resistance to the epidermal growth factor receptor (EGFR) tyrosine kinase inhibitor (TKI) AZD9291. We first performed next-generation sequencing of cfDNA from seven subjects and detected an acquired EGFR C797S mutation in one; expression of this mutant EGFR construct in a cell line rendered it resistant to AZD9291. We then performed droplet digital PCR on serial cfDNA specimens collected from 15 AZD9291-treated subjects. All were positive for the T790M mutation before treatment, but upon developing AZD9291 resistance three molecular subtypes emerged: six cases acquired the C797S mutation, five cases maintained the T790M mutation but did not acquire the C797S mutation and four cases lost the T790M mutation despite the presence of the underlying EGFR activating mutation.\n\n[P3] Crosstalk between the estrogen receptor and the HER tyrosine kinase receptor family: molecular mechanism and clinical implications for endocrine therapy resistance.\nThe aim of this review article is to summarize the current knowledge on mechanisms of resistance of breast cancer cells to endocrine therapies due to the crosstalk between the ER and the HER growth factor receptor signaling pathways and to explore new available therapeutic strategies that could prolong duration of response and circumvent endocrine resistant tumor growth.\n\n[P4] Crosstalk between the estrogen receptor and the HER tyrosine kinase receptor family: molecular mechanism and clinical implications for endocrine therapy resistance.\nBreast cancer evolution and tumor progression are governed by the complex interactions between steroid receptor [estrogen receptor (ER) and progesterone receptor] and growth factor receptor signaling. In recent years, the field of cancer therapy has witnessed the emergence of multiple strategies targeting these specific cancer pathways and key molecules (ER and growth factor receptors) to arrest tumor growth and achieve tumor eradication; treatment success, however, has varied and both de novo (up front) and acquired resistance have proven a challenge. Recent studies of ER biology have revealed new insights into ER action in breast cancer and have highlighted the role of an intimate crosstalk between the ER and HER family signaling pathways as a fundamental contributor to the development of resistance to endocrine therapies against the ER pathway.\n\n[P5] Stem cell-related \"self-renewal\" signature and high epidermal growth factor receptor expression associated with resistance to concomitant chemoradiotherapy in glioblastoma.\nPURPOSE Glioblastomas are notorious for resistance to therapy, which has been attributed to DNA-repair proficiency, a multitude of deregulated molecular pathways, and, more recently, to the particular biologic behavior of tumor stem-like cells. Here, we aimed to identify molecular profiles specific for treatment resistance to the current standard of care of concomitant chemoradiotherapy with the alkylating agent temozolomide. PATIENTS AND METHODS Gene expression profiles of 80 glioblastomas were interrogated for associations with resistance to therapy. Patients were treated within clinical trials testing the addition of concomitant and adjuvant temozolomide to radiotherapy. RESULTS An expression signature dominated by HOX genes, which comprises Prominin-1 (CD133), emerged as a predictor for poor survival in patients treated with concomitant chemoradiotherapy (n = 42; hazard ratio = 2.69; 95% CI, 1.38 to 5.26; P = .004). This association could be validated in an independent data set.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8a95f1d61352fd2b3f8081e2fb041c9a684a2b18f9916bbc4ac749f8b4dab2a0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837162.941372,
+      "end_wall": 1792837169.08759,
+      "error": null
+     }
+    ],
+    "arrival_seq": 645,
+    "start_wall": 1792837162.941372,
+    "start_mono": 506719.787820583,
+    "end_wall": 1792837169.08759,
+    "end_mono": 506725.9339735,
+    "raw_response": "{\"reasoning\": \"The passages describe mechanisms of resistance to EGFR-targeted therapies, but they do not directly address or refute the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6141194125,
+     "load_duration": 96378583,
+     "prompt_eval_count": 1180,
+     "prompt_eval_duration": 2722297209,
+     "eval_count": 48,
+     "eval_duration": 2442394164,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:29.083396Z"
+    },
+    "elapsed_s": 6.146,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 645,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 128,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8da73f268c181e866578eb69101d480012d11cfc36013e3756f92cecd38fca5c",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837157.605936,
+      "end_wall": 1792837158.963501,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837157.605936,
+    "start_mono": 506714.452439208,
+    "end_wall": 1792837158.963501,
+    "end_mono": 506715.809989458,
+    "raw_response": "{\"query\": \"mechanism epidermal growth factor receptor resistance cancer\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1354948541,
+     "load_duration": 31306250,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 509434667,
+     "eval_count": 18,
+     "eval_duration": 735928874,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:18.962434Z"
+    },
+    "elapsed_s": 1.358,
+    "query_used": "mechanism epidermal growth factor receptor resistance cancer",
+    "query_source": "json",
+    "query_arrival_seq": 645
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mechanism epidermal growth factor receptor resistance cancer",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:26973393:0",
+       "score_q": 10867
+      },
+      {
+       "passage_key": "scifact:5406411:0",
+       "score_q": 10275
+      },
+      {
+       "passage_key": "scifact:34066665:0",
+       "score_q": 10037
+      },
+      {
+       "passage_key": "scifact:34066665:1",
+       "score_q": 9967
+      },
+      {
+       "passage_key": "scifact:22401720:0",
+       "score_q": 8865
+      }
+     ],
+     "retrieval_sha256": "30e265fadfaa5e3ddcd4b411a8c76acc76599ff37063f86bbc28f6ae17481f3a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "30e265fadfaa5e3ddcd4b411a8c76acc76599ff37063f86bbc28f6ae17481f3a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:26973393:0",
+      "content_sha256": "12c40e8def00ad62112d9891be9f94e5b0aabb47c95890fe2e3f9bc8505b6e2b",
+      "chars": 846
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:5406411:0",
+      "content_sha256": "981819299655be0388279384fc31ac75f07235a56d2126a469e5b94ea8785c61",
+      "chars": 947
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34066665:0",
+      "content_sha256": "2d765cb83505d9cfaf476358de577afef6fd74cd17e110d1b56cc3d1b847c39e",
+      "chars": 1024
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34066665:1",
+      "content_sha256": "72d28f54e2e7c6698bada7b886e83613cc4c4c9c8e0d315502df1b361af76445",
+      "chars": 538
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:22401720:0",
+      "content_sha256": "94338cb7e8d9074de63c6c1cfc3901d5f7290ba8855a9566a94233bf27663c49",
+      "chars": 1251
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nEvidence passages from your search for \"mechanism epidermal growth factor receptor resistance cancer\":\n<<<PASSAGES\n[P1] The quest to overcome resistance to EGFR-targeted therapies in cancer\nAll patients with metastatic lung, colorectal, pancreatic or head and neck cancers who initially benefit from epidermal growth factor receptor (EGFR)-targeted therapies eventually develop resistance. An increasing understanding of the number and complexity of resistance mechanisms highlights the Herculean challenge of killing tumors that are resistant to EGFR inhibitors. Our growing knowledge of resistance pathways provides an opportunity to develop new mechanism-based inhibitors and combination therapies to prevent or overcome therapeutic resistance in tumors. We present a comprehensive review of resistance pathways to EGFR-targeted therapies in lung, colorectal and head and neck cancers and discuss therapeutic strategies that are designed to circumvent resistance.\n\n[P2] Amphiregulin enhances regulatory T cell-suppressive function via the epidermal growth factor receptor.\nEpidermal growth factor receptor (EGFR) is known to be critically involved in tissue development and homeostasis as well as in the pathogenesis of cancer. Here we showed that Foxp3(+) regulatory T (Treg) cells express EGFR under inflammatory conditions. Stimulation with the EGF-like growth factor Amphiregulin (AREG) markedly enhanced Treg cell function in vitro, and in a colitis and tumor vaccination model we showed that AREG was critical for efficient Treg cell function in vivo. In addition, mast cell-derived AREG fully restored optimal Treg cell function. These findings reveal EGFR as a component in the regulation of local immune responses and establish a link between mast cells and Treg cells. Targeting of this immune regulatory mechanism may contribute to the therapeutic successes of EGFR-targeting treatments in cancer patients.\n\n[P3] Crosstalk between the estrogen receptor and the HER tyrosine kinase receptor family: molecular mechanism and clinical implications for endocrine therapy resistance.\nBreast cancer evolution and tumor progression are governed by the complex interactions between steroid receptor [estrogen receptor (ER) and progesterone receptor] and growth factor receptor signaling. In recent years, the field of cancer therapy has witnessed the emergence of multiple strategies targeting these specific cancer pathways and key molecules (ER and growth factor receptors) to arrest tumor growth and achieve tumor eradication; treatment success, however, has varied and both de novo (up front) and acquired resistance have proven a challenge. Recent studies of ER biology have revealed new insights into ER action in breast cancer and have highlighted the role of an intimate crosstalk between the ER and HER family signaling pathways as a fundamental contributor to the development of resistance to endocrine therapies against the ER pathway.\n\n[P4] Crosstalk between the estrogen receptor and the HER tyrosine kinase receptor family: molecular mechanism and clinical implications for endocrine therapy resistance.\nThe aim of this review article is to summarize the current knowledge on mechanisms of resistance of breast cancer cells to endocrine therapies due to the crosstalk between the ER and the HER growth factor receptor signaling pathways and to explore new available therapeutic strategies that could prolong duration of response and circumvent endocrine resistant tumor growth.\n\n[P5] Expression of the angiogenic factors vascular endothelial cell growth factor, acidic and basic fibroblast growth factor, tumor growth factor beta-1, platelet-derived endothelial cell growth factor, placenta growth factor, and pleiotrophin in human primary breast cancer and its relation to angiogenes\nAngiogenesis is a significant prognostic factor in breast cancer, but the factors that control angiogenesis in vivo are not well defined. Multiple angiogenic polypeptides are known, and we have determined the expression of seven of these in primary human breast cancers; the relationship of expression to estrogen receptor and vascular density was also examined. Vascular endothelial growth factor (VEGF) and its four isoforms (121, 165, 189, and 206 amino acids), transforming growth factor (TGF)-beta1, pleiotrophin, acidic and basic fibroblast growth factor (FGF), placental growth factor, and thymidine phosphorylase (platelet-derived endothelial cell growth factor) were quantitated by RNase protection analysis. beta-FGF was also measured by ELISA. The estrogen receptor (ER), epidermal growth factor receptor, and vascular density were analyzed in 64 primary breast cancers. All tumors expressed at least six different vascular growth factors.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2e57e1833f897b974a38b303bf813186489518209a788ef8c9cacb9ad1d5461c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837158.96561,
+      "end_wall": 1792837172.9891782,
+      "error": null
+     }
+    ],
+    "arrival_seq": 646,
+    "start_wall": 1792837158.96561,
+    "start_mono": 506715.812099166,
+    "end_wall": 1792837172.9891782,
+    "end_mono": 506729.835521208,
+    "raw_response": "{\n  \"reasoning\": \"The claim states that cancers initially benefiting from EGFR-targeted therapies later become refractory through several mechanisms. The evidence passages confirm this by detailing various resistance mechanisms, including those involving EGFR signaling pathways, crosstalk between ER and HER pathways, and angiogenesis.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14019344375,
+     "load_duration": 4986250166,
+     "prompt_eval_count": 1443,
+     "prompt_eval_duration": 3237523375,
+     "eval_count": 108,
+     "eval_duration": 5366608958,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:32.986025Z"
+    },
+    "elapsed_s": 14.023,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 646,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:26973393:0",
+     "scifact:34066665:0",
+     "scifact:34066665:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 318,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8da73f268c181e866578eb69101d480012d11cfc36013e3756f92cecd38fca5c",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837157.606302,
+      "end_wall": 1792837158.450204,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837158.450337,
+      "end_wall": 1792837162.7358432,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837162.735918,
+      "end_wall": 1792837165.387948,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792837157.606302,
+    "start_mono": null,
+    "end_wall": 1792837165.387948,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 649
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:26973393:0",
+       "score_q": 20214
+      },
+      {
+       "passage_key": "scifact:22980205:0",
+       "score_q": 13048
+      },
+      {
+       "passage_key": "scifact:4820792:0",
+       "score_q": 12884
+      },
+      {
+       "passage_key": "scifact:9486930:1",
+       "score_q": 12061
+      },
+      {
+       "passage_key": "scifact:38886345:0",
+       "score_q": 11366
+      }
+     ],
+     "retrieval_sha256": "15ceb4526d88883e74437b4976f703f5fbc24eecf51c7e8caba54f7a0b7187cb"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "15ceb4526d88883e74437b4976f703f5fbc24eecf51c7e8caba54f7a0b7187cb",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:26973393:0",
+      "content_sha256": "12c40e8def00ad62112d9891be9f94e5b0aabb47c95890fe2e3f9bc8505b6e2b",
+      "chars": 846
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22980205:0",
+      "content_sha256": "eff0d6e82d3b68c8fc6de3a2d9a95cddc4c864ed2d65363b447af724ef1c6aaf",
+      "chars": 885
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4820792:0",
+      "content_sha256": "b9976c2d6101edd1cf1116547b2520fbe39e41ecbc30f2d55bdc36cc213fcdb3",
+      "chars": 999
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9486930:1",
+      "content_sha256": "3bec10a9c3f7b4efc66c608330e035a31fe9cbe3c2961e4bed3a058a5a0b9c3c",
+      "chars": 1125
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:38886345:0",
+      "content_sha256": "e3946faf2b4229877274b9016d6d0518648c40dc30e200bd95bd2d26bf8c7e3b",
+      "chars": 1020
+     }
+    ],
+    "elapsed_s": 0.0019
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nEvidence passages from your search for \"Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\":\n<<<PASSAGES\n[P1] The quest to overcome resistance to EGFR-targeted therapies in cancer\nAll patients with metastatic lung, colorectal, pancreatic or head and neck cancers who initially benefit from epidermal growth factor receptor (EGFR)-targeted therapies eventually develop resistance. An increasing understanding of the number and complexity of resistance mechanisms highlights the Herculean challenge of killing tumors that are resistant to EGFR inhibitors. Our growing knowledge of resistance pathways provides an opportunity to develop new mechanism-based inhibitors and combination therapies to prevent or overcome therapeutic resistance in tumors. We present a comprehensive review of resistance pathways to EGFR-targeted therapies in lung, colorectal and head and neck cancers and discuss therapeutic strategies that are designed to circumvent resistance.\n\n[P2] Targeted therapies in urothelial carcinoma.\nPURPOSE OF REVIEW Greater understanding of the biology and genetics of urothelial carcinoma is helping to identify and define the role of molecules and pathways appropriate for novel-targeted therapies. Here, we review the targeted therapies that have been reported or are in ongoing urothelial carcinoma clinical trials, and highlight molecular targets characterized in preclinical and clinical studies. RECENT FINDINGS Trials in nonmuscle-invasive bladder cancer are evaluating the role of immunotherapy and agents targeting vascular endothelial growth factor (VEGF) or fibroblast growth factor receptor-3. In muscle-invasive bladder cancer, neoadjuvant studies have focused on combining VEGF agents with chemotherapy; adjuvant studies are testing vaccines and agents targeting the human epidermal growth factor receptor 2, p53, and Hsp27.\n\n[P3] β1 integrin mediates an alternative survival pathway in breast cancer cells resistant to lapatinib\nINTRODUCTION The overexpression of human epidermal growth factor receptor (HER)-2 in 20% of human breast cancers and its association with aggressive growth has led to widespread use of HER2-targeted therapies, such as trastuzumab (T) and lapatinib (L). Despite the success of these drugs, their efficacy is limited in patients whose tumors demonstrate de novo or acquired resistance to treatment. The β1 integrin resides on the membrane of the breast cancer cell, activating several elements of breast tumor progression including proliferation and survival. METHODS We developed a panel of HER2-overexpressing cell lines resistant to L, T, and the potent LT combination through long-term exposure and validated these models in 3D culture. Parental and L/T/LT-resistant cells were subject to HER2 and β1 integrin inhibitors in 3D and monitored for 12 days, followed by quantification of colony number.\n\n[P4] Stem cell-related \"self-renewal\" signature and high epidermal growth factor receptor expression associated with resistance to concomitant chemoradiotherapy in glioblastoma.\nProvocatively, the HOX cluster was reminiscent of a \"self-renewal\" signature (P = .008; Gene Set Enrichment Analysis) recently characterized in a mouse leukemia model. The HOX signature and EGFR expression were independent prognostic factors in multivariate analysis, adjusted for the O-6-methylguanine-DNA methyltransferase (MGMT) methylation status, a known predictive factor for benefit from temozolomide, and age. Better outcome was associated with gene clusters characterizing features of tumor-host interaction including tumor vascularization and cell adhesion, and innate immune response. CONCLUSION This study provides first clinical evidence for the implication of a \"glioma stem cell\" or \"self-renewal\" phenotype in treatment resistance of glioblastoma. Biologic mechanisms identified here to be relevant for resistance will guide future targeted therapies and respective marker development for individualized treatment and patient selection.\n\n[P5] Use of a targeted oncolytic poxvirus, JX-594, in patients with refractory primary or metastatic liver cancer: a phase I trial.\nBACKGROUND JX-594 is a targeted oncolytic poxvirus designed to selectively replicate in and destroy cancer cells with cell-cycle abnormalities and epidermal growth factor receptor (EGFR)-ras pathway activation. Direct oncolysis plus granulocyte-macrophage colony-stimulating factor (GM-CSF) expression also stimulates shutdown of tumour vasculature and antitumoral immunity. We aimed to assess intratumoral injection of JX-594 in patients with refractory primary or metastatic liver cancer. METHODS Between Jan 4, 2006, and July 4, 2007, 14 patients with histologically confirmed refractory primary or metastatic liver tumours (up to 10.9 cm total diameter) that were amenable to image-guided intratumoral injections were enrolled into this non-comparative, open-label, phase I dose-escalation trial (standard 3x3 design; two to six patients for each dose with 12-18 estimated total patients).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a203af602f6bd54aa286ee8bf4ad55df5c6793f105a6503c2b551a63f0c7fa94",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837165.3923001,
+      "end_wall": 1792837177.22349,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837177.223594,
+      "end_wall": 1792837179.869517,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792837179.869665,
+      "end_wall": 1792837182.497921,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 647,
+    "start_wall": 1792837165.3923001,
+    "start_mono": null,
+    "end_wall": 1792837182.497921,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 647,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8da73f268c181e866578eb69101d480012d11cfc36013e3756f92cecd38fca5c",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837157.605672,
+      "end_wall": 1792837160.88734,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837157.605672,
+    "start_mono": 506714.452175625,
+    "end_wall": 1792837160.88734,
+    "end_mono": 506717.733807541,
+    "raw_response": "{\"query\": \"epidermal growth factor receptor targeted therapies later become refractory\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3278525500,
+     "load_duration": 2572638417,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 259325375,
+     "eval_count": 17,
+     "eval_duration": 257811542,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:20.886247Z"
+    },
+    "elapsed_s": 3.282,
+    "query_used": "epidermal growth factor receptor targeted therapies later become refractory",
+    "query_source": "json",
+    "query_arrival_seq": 647
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "epidermal growth factor receptor targeted therapies later become refractory",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:26973393:0",
+       "score_q": 778
+      },
+      {
+       "passage_key": "scifact:40710501:0",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:40710501:1",
+       "score_q": 731
+      },
+      {
+       "passage_key": "scifact:9929089:0",
+       "score_q": 724
+      },
+      {
+       "passage_key": "scifact:18682109:0",
+       "score_q": 721
+      }
+     ],
+     "retrieval_sha256": "283cb6f9265e01c888260f1e5cad9c5958d7e71d9f1a412c6b898cb1a4106f05"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "283cb6f9265e01c888260f1e5cad9c5958d7e71d9f1a412c6b898cb1a4106f05",
+    "query_embedding_sha256": "965f186bca1a843a02bd136440cca3d6ab3999d7db404be8a69626d8357b7a88",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:26973393:0",
+      "content_sha256": "12c40e8def00ad62112d9891be9f94e5b0aabb47c95890fe2e3f9bc8505b6e2b",
+      "chars": 846
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:40710501:0",
+      "content_sha256": "db22770e839ce73892dd137051d621ed124afbc58e11bd6c64e9eebf06399e02",
+      "chars": 926
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:40710501:1",
+      "content_sha256": "aa4b765007b793ee9257fe4b524dc3e9923e2ca5883ca8005331f2deafabb820",
+      "chars": 1028
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9929089:0",
+      "content_sha256": "3220690d8f74047adc5ff407efc96d3700284f065177a144d5d91a32294e5bfb",
+      "chars": 1066
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18682109:0",
+      "content_sha256": "dd8e5c6193c17df3f07f71b7b9b49091727c9b788b0f7495e8502cb7a75c42a4",
+      "chars": 962
+     }
+    ],
+    "elapsed_s": 2.0238
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nEvidence passages from your search for \"epidermal growth factor receptor targeted therapies later become refractory\":\n<<<PASSAGES\n[P1] The quest to overcome resistance to EGFR-targeted therapies in cancer\nAll patients with metastatic lung, colorectal, pancreatic or head and neck cancers who initially benefit from epidermal growth factor receptor (EGFR)-targeted therapies eventually develop resistance. An increasing understanding of the number and complexity of resistance mechanisms highlights the Herculean challenge of killing tumors that are resistant to EGFR inhibitors. Our growing knowledge of resistance pathways provides an opportunity to develop new mechanism-based inhibitors and combination therapies to prevent or overcome therapeutic resistance in tumors. We present a comprehensive review of resistance pathways to EGFR-targeted therapies in lung, colorectal and head and neck cancers and discuss therapeutic strategies that are designed to circumvent resistance.\n\n[P2] Different response of human glioma tumor-initiating cells to epidermal growth factor receptor kinase inhibitors.\nBecause a subpopulation of cancer stem cells (tumor-initiating cells, TICs) is believed to be responsible for the development, progression, and recurrence of many tumors, we evaluated the in vitro sensitivity of human glioma TICs to epidermal growth factor receptor (EGFR) kinase inhibitors (erlotinib and gefitinib) and possible molecular determinants for their effects. Cells isolated from seven glioblastomas (GBM 1-7) and grown using neural stem cell permissive conditions were characterized for in vivo tumorigenicity, expression of tumor stem cell markers (CD133, nestin), and multilineage differentiation properties, confirming that these cultures are enriched in TICs. TIC cultures were challenged with increasing concentrations of erlotinib and gefitinib, and their survival was evaluated after 1-4 days.\n\n[P3] Different response of human glioma tumor-initiating cells to epidermal growth factor receptor kinase inhibitors.\nIn most cases, a time- and concentration-dependent cell death was observed, although GBM 2 was completely insensitive to both drugs, and GBM 7 was responsive only to the highest concentrations tested. Using a radioligand binding assay, we show that all GBM TICs express EGFR. Erlotinib and gefitinib inhibited EGFR and ERK1/2 phosphorylation/activation in all GBMs, irrespective of the antiproliferative response observed. However, under basal conditions GBM 2 showed a high Akt phosphorylation that was completely insensitive to both drugs, whereas GBM 7 was completely insensitive to gefitinib, and Akt inactivation occurred only for the highest erlotinib concentration tested, showing a precise relationship with the antiproliferative effects of the drug. Interestingly, in GBM 2, phosphatase and tensin homolog expression was significantly down-regulated, possibly accounting for the insensitivity to the drugs.\n\n[P4] Subsequent chemotherapy reverses acquired tyrosine kinase inhibitor resistance and restores response to tyrosine kinase inhibitor in advanced non-small-cell lung cancer\nBACKGROUND Patients with advanced or metastatic non-small cell lung cancer (NSCLC) can develop acquired resistance to epidermal growth factor receptor tyrosine kinase inhibitors (TKIs) erlotinib and gefitinib. Here, we report the successful treatment with alternating chemotherapy and TKIs of two cases of advanced NSCLC who developed resistance to TKI. CASE PRESENTATION Two patients with advanced or metastatic NSCLC were treated with palliative chemotherapy followed by erlotinib/gefitinib. When TKI therapy failed, two cycles of chemotherapy were provided, which were followed by re-challenge with erlotinib or gefitinib. CONCLUSION NSCLC patients with acquired TKI resistance should be managed aggressively whenever possible. Subsequent chemotherapy and target treatment is one of the reasonable choices for those with an initial dramatic clinical response with erlotinib/gefitinib treatment.\n\n[P5] RB loss in resistant EGFR mutant lung adenocarcinomas that transform to small-cell lung cancer\nTyrosine kinase inhibitors are effective treatments for non-small-cell lung cancers (NSCLCs) with epidermal growth factor receptor (EGFR) mutations. However, relapse typically occurs after an average of 1 year of continuous treatment. A fundamental histological transformation from NSCLC to small-cell lung cancer (SCLC) is observed in a subset of the resistant cancers, but the molecular changes associated with this transformation remain unknown. Analysis of tumour samples and cell lines derived from resistant EGFR mutant patients revealed that Retinoblastoma (RB) is lost in 100% of these SCLC transformed cases, but rarely in those that remain NSCLC. Further, increased neuroendocrine marker and decreased EGFR expression as well as greater sensitivity to BCL2 family inhibition are observed in resistant SCLC transformed cancers compared with resistant NSCLCs.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b52f3d8c8fd3ec070b4274e0af09ed605f059a20fd909270a5ee8f6a765bed01",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837162.91253,
+      "end_wall": 1792837183.1358342,
+      "error": null
+     }
+    ],
+    "arrival_seq": 648,
+    "start_wall": 1792837162.91253,
+    "start_mono": 506719.758978375,
+    "end_wall": 1792837183.1358342,
+    "end_mono": 506739.982070958,
+    "raw_response": "{\"reasoning\": \"The evidence shows that cancers initially benefiting from EGFR-targeted therapies often become refractory due to various mechanisms, including RB loss in SCLC-transformed cancers and increased neuroendocrine marker expression. These findings support the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P5\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20219860625,
+     "load_duration": 8060488625,
+     "prompt_eval_count": 1245,
+     "prompt_eval_duration": 4309926876,
+     "eval_count": 76,
+     "eval_duration": 7017002789,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:43.133594Z"
+    },
+    "elapsed_s": 20.223,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 648,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:18682109:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 260,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "8da73f268c181e866578eb69101d480012d11cfc36013e3756f92cecd38fca5c",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792837157.6066759,
+      "end_wall": 1792837158.994057,
+      "error": null
+     }
+    ],
+    "start_wall": 1792837157.6066759,
+    "start_mono": 506714.4531795,
+    "end_wall": 1792837158.994057,
+    "end_mono": 506715.840544416,
+    "raw_response": "{\"query\": \"cancer resistance to EGFR therapies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1385290750,
+     "load_duration": 57115875,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 461063250,
+     "eval_count": 13,
+     "eval_duration": 757721749,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:18.992816Z"
+    },
+    "elapsed_s": 1.387,
+    "query_used": "cancer resistance to EGFR therapies",
+    "query_source": "json",
+    "query_arrival_seq": 646
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "cancer resistance to EGFR therapies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:26973393:0",
+       "score_q": 828
+      },
+      {
+       "passage_key": "scifact:2272614:1",
+       "score_q": 780
+      },
+      {
+       "passage_key": "scifact:4468861:0",
+       "score_q": 776
+      },
+      {
+       "passage_key": "scifact:9505402:0",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:18682109:0",
+       "score_q": 767
+      }
+     ],
+     "retrieval_sha256": "5e22f8b9fe3e96f54dd38167a659c6a87585c69bbb2b5e67a60a7e8913de0d58"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5e22f8b9fe3e96f54dd38167a659c6a87585c69bbb2b5e67a60a7e8913de0d58",
+    "query_embedding_sha256": "33a78d0762ffcac52ed45f58815b7fd2dd49d852b66af3bc7150892de2075e80",
+    "query_embedding_f32_b64": "B9dSPBJk6jwvBTC+KdVhvOrFaD2O+Z26KCNJvKBcszvy7Fk8OkWBPOzypDwlp3U9s2+uPb86yDwaU9k7TuikuecAozwT7/i8PC0hvSi3gD3/Iqe9h+AyvT/t+LswrUK9+SIRPblCiD2dU9k8MOuxvBh03LuGn2w9zT9pPfTdXb3Da2u7k59Ou+m4A7wWeF68jF+PPVXKi7yGxGA8ADg7u+8RTDts+rY6lNvfOpezV71UviM9jCRRPInyVrzBER49fmmeu0zrOr2Sixw9HKALvXTpC7sRAI28RDMzPS9mLb1rWT07fEmyPPBi9LwxN7q82fKuPSaSVD3bR3O9jjbIOmornT3lnUS9Z6dsPLaGID2BkSe8wS05vDZrnz0/ko68V+oqPRTI9TyOeMg8z2cjvV2tdjvCAgC84yUhvSzD07oyZG+9I00OvWtBdj3O4oa7h1NZPRc4ZjzUMsk8X8gDPVOJnLz5E0U9L5AfPMD0Bruwt6c7K2D7PC7wK703R7O8k/Bau+UWw7yiC5+9uhetvIva97wIGQM9J/NVOsoaLDzu3iW93UTGO3ZT4D10YQw9DjaqOziVSTwqLxy9/VhcPfghKL12ZLa8J6cMPWOqJb1ZqiM9KmOGvVsRhj3Vd4m8kOo8vJiUOL16s/88f80mPaUaiLrlMYI9IyE1vbBmGb3vZxm733qjPARwGrwpZou8+3KWvA3PzjyTB4A8cGqLPHsmsTtuwiS9CwCTPNo4YboCNF88dJ8NuwDSjD3Uf687fmRfvDvzorsYjiA9nishvCdlNL1+fE88IJq6PIY/dj3M13c8Uh5BvP28kDy2Qfm882D5OkY6iTxqfci8IQvVPJ6zOjzjkoc899pdvclvKTsj5r+8FNKtvWaCtrwyD3Q9XwnrvM8zFz3tnJy9nyOuvH4opTzXLqQ64bOBPXEThjywQpi8Hk6dPMn5yzsES5W9ef5/Pb6guTlag9c8fhw7PTcPHb1WZQq9WnMUPUwVAzvEfyO93vCwvYFvmbwVnC09OgYqvQYcC7u7MLm8Ft6pu4R1pzxHMRo8K/zcPSo8h71dkl+86KLMPBdzO7rBr4W8bnRxvd04bT1Lk+W8PRhKvAmraLxsHYg8gpyOPSLntbysS8I8Yq4lvKoT9znBDbG8EuPmPKxCAr2j1Wy91888PeFmUj1IuI+8dunTvDnXs7yZxok8Cf5bPJ9C7bzGkg28dKLpPMTr/7tcCRG9LpMvvRpdLTzzFLW7Q/8YPCZTvbtEPxu8VEaePTmbhTvBesY8RmusvB/B2zx3pZW8L2PmPBrD/btQLg095LKvPIOUfzyRK1S8RC03PQkOA70yPlQ8Q8MOvGimeDy6gRY99x5/PA3hML0s5ZW7T7DJO9m0Vj3+7Ek9ptxPvKdRDj2xhg69SOBMvenwmTq7OQi9mD22PHORB71UMVO8d55mO0Ihxz03FY+7WvlaPchKSjzqcwq9FKAaPeeBrryvZ/O83ew0uw9pWjxTC548A+GVvSCVQL19FwI7pzKIPcxBC7wMs2q8crvrvEOh8jzMeHM75vU3vZDVAb2PGWk9q5JmvPZJZLxfvDk9cg8YvQuIMDvLfSE8Dw8XPXpAWD1AoyI9dLsRu2TmYryItNO8dh3ZPKvMbb0JC0M9ag6GO9gsj730hM28G8YBvf15pTxFNiG95UjUPH3ClTzPDzQ91aaDPQAXpLwkQeC7JJgqPLc0e7xwDEu859cYPD15WDzREpC82CQ3PScCb7ww+ye9YagePR5yuD0S4WY9MuZOvdN2l7zYdZs7cOrGvB+BSz3c9/q8sXTePI32IjwbbQi8fbizvDcBErwUAcS6HYMQPRpBnbzujwY8T2SJPFfxuLwKPwe9SZITPfzs8bzT0xo8yOkLPYGF3byHgOM8gbZOPYp0VTysbj696L0KPdwMITsN+7Y8dgW5vOMizLwmkHw9Fq2jPfuiSrycXxc9q9qZOsn6Nr00xGC9eGEiPNMgELvqJRU8vlcQu9Fn5L395wY8zDoWvS677jw7OB29ubufvfZ2G7xhPVO87WfMu8OUfbt0p7a6ZwQUvRCHurxP4Kg8u+uWvK2pzLsuKwG9zQAivIONozw2YQu9UhtHPaDoGLyfQfo81eBvvHSRjzz2bCC9CCymPCoVeLpQwgm8ySn2PBgEQ70VhRe9+LKmPK4BSD0u7Lo85265OsQ44zys22K9CQ7hPAc41Tvmva+748T1vO0GpTpFhLg8YIXtPApw2zwoFbi8tVTgPAc6vDwU8Mo7eXLUPKP3bz2J1AA9ntk3vSk3Ij3c5Xw9kkGyOot3Bb1+RB244MOsvBw0zDu63f085UlrO/HOPDzMzIQ91L8RvVgWbL0hL1q99KokvEJ5ij2Xxyc9YSN7uj6bkrx+T5A9Qr0Mvam/ljzKco08pezEPHJvOz0Ipxa9JY0IPSbh5zzeDQI9sKgqPaazNbsISNu7g7g0vObjj7pfgx6985qRvHJfhbzkUz68c4llPWn+Cj0fjGG9GuVWvJ/3Hz0q3xq9b8YpvdSmVbvFLvg8yW96PPXOHzx9HHQ9YNuaPb1aZDydk8m9gx17vTUVd7xFg7U8Pxd7PLx69rtKv3o9ii8UvQ9lUrwla289BD36O6PB0LyEAhM9GVWFPLRncDtoikg9nUWxPCIOUrw6IWE999Ghux8Z1LxMbTI8ZwYpPY2tGjwWNuY9lUVJvRyZdL0G5dS8Zoe3vBKX5ruNTXY9sAgTPMYOkTwe3KQ7HDDkvHbDjztDSgk8NfStvI4F07tq00O7grSQvJ0QlDyBk1I8r87ZPJvp3LwYzx89LOOEPBHXAb2pYN+7vgtgPLHob73NdJ87au8QvdIE0Lxf4Kw8MQrvPII0jLxabA0620XXPKpQ5TyIkzc9ex7sPO7ujDu7m908ENCGvTT2jryvwFG9WaCKvEg7FL27U5a9ztjAvAaDu7wJswo84C7qvAoawbsal0i9KjQQPIdXwDsATou8/HaNPOJPqLuUVoW6/wwbPde5JL067o08dfuzuulDqLx06Tk9iuCKvHYig7wpP0s7BE8lvIiCA72EuQw8PiCfO1F+jL0cm5C9uO0OvWZqUrw/RJ29RmqJvKdA4bxd64y8t3lyPIRzOL0VT169stchPcU4Wb1lsKG9Tp2DvK9ikDoaBAc9QQ6juib/VbtWVtC8k0ZrvZ2NMTuhVX682BmcvCvMW7y1hIc9geB8vSFda7w14Yg8aNWBvOjbuTzCoRw7begcvTJ5lj1VHru8obxMPBz+b7vqfB+94qttvYG9OT22Eye8pUvmvDOD47whlB29gSQTvG9dpTx3Mwq9q8U6PXcIxrwk4ti8PdsqvcsAQLxOP1M9XTTWvFUiKDxa4xu9dyCYvLiuX72p/ts7WFhiuxdb4Dwi5Pm8k+3IPCKHYDyhUl29lMkBvV17tzr5qWs9InDtPORwRD3LJa09E86LPArWzbxjQck9BJOLPcvnPz2RUwq9Y3jXvKUQ4Dpf9Ds9JctvvUYUkr3ntD29bcG3vDRYyLzE25K7gxreO8443bso2Jo8jYXQu8iEQT2O6aK9BmT7vG/2GD3blYE85LNTvRHrKzxYVqU8/NMXvWVdfzx6l249QqhLu9Fo+LwX/Zk8btI4vM0ALz3zew28pjaHPKGDJr2mYiY95woVvN/XML0hW8O8lsMwvbqaNL0iEy+7C2iWPEMwYjuH7PU8ORwuO4UtTD0NhZ+7kudiPc269jzRB1O8yH8MvPUVHT26eWq8+IBePECuObzeGDu8H4suO8G6EDsqAlW8Ob8HPVKevjzZ2V89ihPhPDiz5zwccR+9UGMRvYwuibzveKI7akhyPb4Bu7xzQvy9tmDpvJep3DxmSuy8A0pKvG4MR704TvY8WhsDvGNB4zv5O2G91qWpu/FVObwv6+C8NyeqPIDFgb2tX0C7DXcXOzJw5rx+ooo8Eu5tPcV6ULtPrpw9s1QsvW6YnzwHxOo5FytCPeo2dzwvC1E9CJb/PM6gDD1tbCy9BJACPf7Odr2poyK8Cp4ZvcG/1zwkxLU9wNgqPBDk2zsG82u8h+AgPYbSGzwtZoa8MSRSvYmuV72Ku0i9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:26973393:0",
+      "content_sha256": "12c40e8def00ad62112d9891be9f94e5b0aabb47c95890fe2e3f9bc8505b6e2b",
+      "chars": 846
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2272614:1",
+      "content_sha256": "b1af2528ef6a4b6c9b0edef2f1b908e66049c3a5ea09d5bc9a30ea5b8f787b1f",
+      "chars": 233
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4468861:0",
+      "content_sha256": "4d7526dd9314600421719dc81e8b119a586ec8b53c87a34caedbb3a7232d733c",
+      "chars": 1019
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9505402:0",
+      "content_sha256": "7892af8774caed89d00ff4be8bc5db073c3e8830fca11a8337df1b6c8248bb05",
+      "chars": 1012
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:18682109:0",
+      "content_sha256": "dd8e5c6193c17df3f07f71b7b9b49091727c9b788b0f7495e8502cb7a75c42a4",
+      "chars": 962
+     }
+    ],
+    "elapsed_s": 3.8693
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms.\n\nEvidence passages from your search for \"cancer resistance to EGFR therapies\":\n<<<PASSAGES\n[P1] The quest to overcome resistance to EGFR-targeted therapies in cancer\nAll patients with metastatic lung, colorectal, pancreatic or head and neck cancers who initially benefit from epidermal growth factor receptor (EGFR)-targeted therapies eventually develop resistance. An increasing understanding of the number and complexity of resistance mechanisms highlights the Herculean challenge of killing tumors that are resistant to EGFR inhibitors. Our growing knowledge of resistance pathways provides an opportunity to develop new mechanism-based inhibitors and combination therapies to prevent or overcome therapeutic resistance in tumors. We present a comprehensive review of resistance pathways to EGFR-targeted therapies in lung, colorectal and head and neck cancers and discuss therapeutic strategies that are designed to circumvent resistance.\n\n[P2] Reduced NF1 expression confers resistance to EGFR inhibition in lung cancer.\nThese findings identify a subgroup of patients with EGFR-mutant lung adenocarcinoma who might benefit from combination therapy with EGFR and MEK inhibitors.\n\n[P3] Radiation and Dual Checkpoint Blockade Activates Non-Redundant Immune Mechanisms in Cancer\nImmune checkpoint inhibitors result in impressive clinical responses, but optimal results will require combination with each other and other therapies. This raises fundamental questions about mechanisms of non-redundancy and resistance. Here we report major tumour regressions in a subset of patients with metastatic melanoma treated with an anti-CTLA4 antibody (anti-CTLA4) and radiation, and reproduced this effect in mouse models. Although combined treatment improved responses in irradiated and unirradiated tumours, resistance was common. Unbiased analyses of mice revealed that resistance was due to upregulation of PD-L1 on melanoma cells and associated with T-cell exhaustion. Accordingly, optimal response in melanoma and other cancer types requires radiation, anti-CTLA4 and anti-PD-L1/PD-1. Anti-CTLA4 predominantly inhibits T-regulatory cells (Treg cells), thereby increasing the CD8 T-cell to Treg (CD8/Treg) ratio.\n\n[P4] Acquired EGFR C797S mutation mediates resistance to AZD9291 in non–small cell lung cancer harboring EGFR T790M\nHere we studied cell-free plasma DNA (cfDNA) collected from subjects with advanced lung cancer whose tumors had developed resistance to the epidermal growth factor receptor (EGFR) tyrosine kinase inhibitor (TKI) AZD9291. We first performed next-generation sequencing of cfDNA from seven subjects and detected an acquired EGFR C797S mutation in one; expression of this mutant EGFR construct in a cell line rendered it resistant to AZD9291. We then performed droplet digital PCR on serial cfDNA specimens collected from 15 AZD9291-treated subjects. All were positive for the T790M mutation before treatment, but upon developing AZD9291 resistance three molecular subtypes emerged: six cases acquired the C797S mutation, five cases maintained the T790M mutation but did not acquire the C797S mutation and four cases lost the T790M mutation despite the presence of the underlying EGFR activating mutation.\n\n[P5] RB loss in resistant EGFR mutant lung adenocarcinomas that transform to small-cell lung cancer\nTyrosine kinase inhibitors are effective treatments for non-small-cell lung cancers (NSCLCs) with epidermal growth factor receptor (EGFR) mutations. However, relapse typically occurs after an average of 1 year of continuous treatment. A fundamental histological transformation from NSCLC to small-cell lung cancer (SCLC) is observed in a subset of the resistant cancers, but the molecular changes associated with this transformation remain unknown. Analysis of tumour samples and cell lines derived from resistant EGFR mutant patients revealed that Retinoblastoma (RB) is lost in 100% of these SCLC transformed cases, but rarely in those that remain NSCLC. Further, increased neuroendocrine marker and decreased EGFR expression as well as greater sensitivity to BCL2 family inhibition are observed in resistant SCLC transformed cancers compared with resistant NSCLCs.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "97d78ea2983c77012556f2798e5dcff547dee9035b07654b3949408ca4e69efe",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792837162.8642519,
+      "end_wall": 1792837186.757719,
+      "error": null
+     }
+    ],
+    "arrival_seq": 649,
+    "start_wall": 1792837162.8642519,
+    "start_mono": 506719.710701125,
+    "end_wall": 1792837186.757719,
+    "end_mono": 506743.603919541,
+    "raw_response": "{\"reasoning\": \"The claim states that cancers that initially benefit from epidermal growth factor receptor targeted therapies later become refractory through several mechanisms. The passages provided offer detailed insights into various resistance mechanisms such as acquired mutations (P4), loss of RB (P5), and immune resistance (P3). These mechanisms illustrate how cancer cells can evolve to bypass the effects of EGFR-targeted therapies, thus supporting the claim. The passages collectively demonstrate that resistance is a complex process involving multiple genetic and cellular changes which contribute to the\" ,\"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23889426833,
+     "load_duration": 6914518166,
+     "prompt_eval_count": 1115,
+     "prompt_eval_duration": 6768879250,
+     "eval_count": 126,
+     "eval_duration": 9112229787,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:19:46.75484Z"
+    },
+    "elapsed_s": 23.893,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 649,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "nemotron-mini:4b": "edcb97c74e3c8a7413cb0941ee3123f856bcbe1e9cff7679b18fe7a38f402e11",
+  "granite3.3:2b": "30e265fadfaa5e3ddcd4b411a8c76acc76599ff37063f86bbc28f6ae17481f3a",
+  "exaone3.5:2.4b": "15ceb4526d88883e74437b4976f703f5fbc24eecf51c7e8caba54f7a0b7187cb",
+  "falcon3:3b": "283cb6f9265e01c888260f1e5cad9c5958d7e71d9f1a412c6b898cb1a4106f05",
+  "olmo2:7b": "5e22f8b9fe3e96f54dd38167a659c6a87585c69bbb2b5e67a60a7e8913de0d58"
+ },
+ "item_start_wall": 1792837157.604922,
+ "item_wall_s": 29.153,
+ "ollama_ps_samples": [
+  [
+   1792837157.605,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837159.616,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837161.628,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837163.64,
+   [
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837165.648,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837167.659,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792837169.672,
+   [
+    "granite3.3:2b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837171.683,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792837173.694,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837175.699,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837177.701,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837179.711,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837181.714,
+   [
+    "exaone3.5:2.4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792837183.723,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "exaone3.5:2.4b"
+   ]
+  ],
+  [
+   1792837185.728,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "exaone3.5:2.4b"
+   ]
+  ]
+ ]
+}

@@ -1,0 +1,49 @@
+\section{Verify, Then Vote}
+\label{sec:gate}
+
+Majority vote fails when most agents share a mistake, and the agents' citations are the natural signal that can say so. Weighting citations is not enough: many on-topic but silent passages can outvote a correct majority (\cref{sec:ingredient}). Verify-then-vote makes verification, not weight, the only condition under which its fixed plurality default can be overturned.
+
+\subsection{The rule}
+
+Each agent answers a question with a value and cites passages it was shown. A checker labels each (answer, passage) pair once as supports, refutes, or not-enough-information. The answer is rendered as a one-sentence proposition, and the checker sees only that proposition and the passage. A label counts only if the checker's identity is on the policy's list of accepted checkers. That list is part of the hashed policy. The reducer enforces acceptance-before-use; validation before acceptance is the study or application's responsibility.
+
+For example, suppose three agents answer ``Sydney'' and two answer ``Canberra'' to a question about Australia's capital. The plurality default is Sydney. If an accepted checker labels a cited passage as supporting Canberra and no cited passage verifies Sydney, the rule selects Canberra. If neither answer is verified, it retains Sydney. If both are verified, the selector determines which to choose. This example separates the verification requirement from the choice among answers that meet it.
+
+For one question, a \emph{value} is a normalized answer with its polarity, and $n(v)$ is the number of distinct agents asserting $v$. The plurality set $\mathcal{P}$ holds the values of maximal $n$. An agent's answer is a \emph{witness} if one of its citations carries an accepted supports label for that answer's own proposition, and the verified set $\mathcal{W}$ holds the values with a witness. A \emph{selector} $\mathrm{sel}$ maps a non-empty set of values to one of its members.
+
+\begin{definition}[Verify, then vote]
+\label{def:gate}
+The default winner is $D = \mathrm{sel}(\mathcal{P})$. It is deterministic for a fixed selector and policy; a scored selector can use evidence labels to break a plurality tie, so changing its policy can change $D$. If $\mathcal{W} = \emptyset$, the winner is $D$. Otherwise it is $\mathrm{sel}(\mathcal{W})$.
+\end{definition}
+
+A verified minority therefore overturns an unverified majority, and when the majority is itself verified the selector decides among the verified values. The simplest selector is plurality with a fixed tie order, which gives \emph{verified vote}: the most common verified answer, or the most common answer when none is verified. A richer selector scores candidates by their evidence, confidence, and other recorded features and breaks near-ties deterministically. \suppref{S2} specifies the scoring reducer we use and proves when its tie-break cannot change correctness. For \emph{verified default first}, first fix a separately named base selector $b$, compute $D_b=b(\mathcal{P})$, and fix a fallback selector $f$ that also returns a member of its input. Define
+\[
+  \mathrm{sel}^{\mathrm{VDF}}_{b,f}(S)=
+  \begin{cases}
+    D_b, & D_b\in S,\\
+    f(S), & D_b\notin S.
+  \end{cases}
+\]
+Use this selector in \cref{def:gate}. Since $D_b\in\mathcal{P}$, its default is $D_b$, computed from $b$ before the gate is applied. It keeps this default whenever it is verified and otherwise selects among verified alternatives. In the evaluated plurality variant, the default is the reported majority baseline, with its seeded tie rule; the fallback counts verified individual responses and uses a separately fixed seeded tie rule. These are fixed selection conventions, not additional evidence checks. The scored variant uses the scoring reducer for both $b$ and $f$ and retains that reducer's default $D$. All three are order-free: the decision depends on the set of answers and labels, not on the order in which they arrived. Each decision records its stage, default winner, candidates, and witnesses, so an auditor sees which label licensed each overturn.
+
+\subsection{What the rule can lose}
+
+The rule's harm property needs one fact about the selector: it returns a member of its input.
+
+\begin{proposition}[Harm requires a verified wrong answer]
+\label{prop:gate-harm}
+Let correctness be a property of the value, so that all answers with the same value are graded alike. If $D$ is correct and the winner is not, then some incorrect value carries an accepted supports label.
+\end{proposition}
+
+\begin{proof}
+Let $w$ be the winner. Since $w$ is incorrect and $D$ is correct, $w \neq D$, so $\mathcal{W} \neq \emptyset$ and $w = \mathrm{sel}(\mathcal{W}) \in \mathcal{W}$. Hence $w$ is verified and incorrect.
+\end{proof}
+
+\begin{corollary}[Counting form and no-loss]
+\label{cor:gate}
+Over any set of questions, let $c_D$ count those where $D$ is correct and the winner is not, and $F$ those where some incorrect value is verified. Then every $c_D$ question is an $F$ question, so $c_D \leq F$. On a question where no incorrect value is verified, the winner is correct whenever $D$ is.
+\end{corollary}
+
+\Cref{prop:gate-harm} and \cref{cor:gate} are machine-checked in Lean~4 for any selector with this closure property (\suppref{S4}). This is an inspectable necessary condition for harm, not a guarantee that verified wrong answers are rare or that the checker is reliable. Their frequency must be measured separately. The results hold for verified vote, for the scoring reducer, and for verified default first alike: the last returns the default or a member of its input, so selection closure holds with no new proof obligation.
+
+A verified wrong answer arises in three ways. The checker can label a passage as supporting an answer it does not support, a \emph{checker false support}. The passage can be accurate about a different entity with the same name, so that it supports the answer only under the wrong reading of which entity is meant, an \emph{entity mismatch}. Or the passage can itself state a false or outdated fact about the intended entity, a \emph{false source}. A passage stating that Sydney is the capital of Australia supports ``Sydney,'' a correct checker rightly labels it so, and the gate can then overturn a correct ``Canberra'' majority. The theorem covers all three; checker validation measures the first, entity resolution and proposition rendering govern the second, and the corpus governs the third. In evaluation, a fourth source counts as a verified wrong answer: gold that misses an acceptable answer. \Cref{sec:harm-results} classifies all four on OVERTURN.

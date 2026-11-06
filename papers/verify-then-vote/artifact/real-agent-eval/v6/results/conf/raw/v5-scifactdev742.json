@@ -1,0 +1,1292 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev742",
+ "order": 402,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev742",
+  "order": 402,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Macrolides have no protective effect against myocardial infarction."
+ },
+ "item_view_sha256": "ea843506078c3f3efa493c55c5b2b8ee16600631758e3cc38e5c238c19a57ae0",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "dense",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Macrolides have no protective effect against myocardial infarction.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aeca6b3dbd4edab32644178c90ef2fff21c338307dc34ee9eccd6170e3166b6e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864355.0830872,
+      "end_wall": 1792864356.1742442,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864355.0830872,
+    "start_mono": 533911.8113405,
+    "end_wall": 1792864356.1742442,
+    "end_mono": 533912.902492958,
+    "raw_response": "{\"query\": \"macrolides protective effect against myocardial infarction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1089453792,
+     "load_duration": 116064125,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 322387167,
+     "eval_count": 15,
+     "eval_duration": 487114000,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:36.173648Z"
+    },
+    "elapsed_s": 1.091,
+    "query_used": "macrolides protective effect against myocardial infarction",
+    "query_source": "json",
+    "query_arrival_seq": 2010
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "macrolides protective effect against myocardial infarction",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:32159283:1",
+       "score_q": 722
+      },
+      {
+       "passage_key": "scifact:3984231:0",
+       "score_q": 721
+      },
+      {
+       "passage_key": "scifact:10576136:1",
+       "score_q": 718
+      },
+      {
+       "passage_key": "scifact:10576136:0",
+       "score_q": 695
+      },
+      {
+       "passage_key": "scifact:3984231:1",
+       "score_q": 689
+      }
+     ],
+     "retrieval_sha256": "9b82314865821af8327c5dad01ef3dfb13b2310ecb2be5d10e4baf346e148f52"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9b82314865821af8327c5dad01ef3dfb13b2310ecb2be5d10e4baf346e148f52",
+    "query_embedding_sha256": "3ccd72650caf1fac0147d495f7a432e8a69afc545292486f750a9e951d35f34d",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:32159283:1",
+      "content_sha256": "f27eaa80fdb2bc24f450c955e14a4c18062fb4a4d0b6d9f11d9c95079cf04df1",
+      "chars": 951
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3984231:0",
+      "content_sha256": "19820f087a34a45638dc0496febf7e48951594fa19e63158edb5ce6142b38608",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10576136:1",
+      "content_sha256": "01b2210ac447a3199859252f48b230f3d7913ebbcb39667202b9089be41b7f5d",
+      "chars": 833
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:10576136:0",
+      "content_sha256": "fba8e8c694f453df1f094cfad204b0f6ff9e6638f470c452bd28747d54c4a3c7",
+      "chars": 1024
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:3984231:1",
+      "content_sha256": "b690f37a269cffe93675edd3ef621e1a1a14512ada36799a64d54e23c3eb36f4",
+      "chars": 892
+     }
+    ],
+    "elapsed_s": 12.0517
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Macrolides have no protective effect against myocardial infarction.\n\nEvidence passages from your search for \"macrolides protective effect against myocardial infarction\":\n<<<PASSAGES\n[P1] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nMAIN OUTCOME MEASURES Use of antibiotics among those who did or did not have a first-time acute myocardial infarction. RESULTS Cases were significantly less likely to have used tetracycline antibiotics (adjusted odds ratio [OR], 0.70; 95% confidence interval [CI], 0.55-0.90) or quinolones (adjusted OR, 0.45; 95% CI, 0.21-0.95). No effect was found for previous use of macrolides (primarily erythromycin), sulfonamides, penicillins, or cephalosporins. CONCLUSIONS The findings from this large case-control analysis provide further, albeit indirect, evidence for an association between bacterial infections with organisms susceptible to tetracycline or quinolone antibiotics and the risk of acute myocardial infarction. These results of preliminary nature should stimulate more research to further explore the role of infections in the etiology of acute myocardial infarction.\n\n[P2] Caveolin-1 deletion exacerbates cardiac interstitial fibrosis by promoting M2 macrophage activation in mice after myocardial infarction.\nAdverse remodeling following myocardial infarction (MI) leading to heart failure is driven by an imbalanced resolution of inflammation. The macrophage cell is an important control of post-MI inflammation, as macrophage subtypes secrete mediators to either promote inflammation and extend injury (M1 phenotype) or suppress inflammation and promote scar formation (M2 phenotype). We have previously shown that the absence of caveolin-1 (Cav1), a membrane scaffolding protein, is associated with adverse cardiac remodeling in mice, but the mechanisms responsible remain to be elucidated. We explore here the role of Cav1 in the activation of macrophages using wild type C57BL6/J (WT) and Cav1(tm1Mls/J) (Cav1(-/-)) mice. By echocardiography, cardiac function was comparable between WT and Cav1(-/-) mice at 3days post-MI. In the absence of Cav1, there were a surprisingly higher percentage of M2 macrophages (arginase-1 positive) detected in the infarcted zone.\n\n[P3] Interleukin-33 prevents apoptosis and improves survival after experimental myocardial infarction through ST2 signaling.\nIL-33 decreased both infarct and fibrosis volumes at 15 days; furthermore, both echocardiographic and hemodynamic studies revealed that IL-33 improved ventricular function. To determine whether cardioprotection by IL-33 is mediated through ST2 signaling, a randomized and blinded study of ST2(-/-) versus wild-type littermate mice was performed in 98 mice subjected to MI. At 4 weeks after MI, IL-33 reduced ventricular dilation and improved contractile function in wild-type mice but not in ST2(-/-) mice. Finally, IL-33 improved survival after MI in wild-type but not in ST2(-/-) mice. CONCLUSIONS IL-33 prevents cardiomyocyte apoptosis and improves cardiac function and survival after MI through ST2 signaling.\n\n[P4] Interleukin-33 prevents apoptosis and improves survival after experimental myocardial infarction through ST2 signaling.\nBACKGROUND ST2 is an interleukin (IL)-1 receptor family member with membrane-bound (ST2L) and soluble (sST2) isoforms, and sST2 is a biomarker for poor outcome in patients with myocardial infarction (MI). IL-33, the recently discovered ligand for ST2, activates nuclear factor kappaB and thus may regulate apoptotic cell death. We tested the hypothesis that IL-33 is cardioprotective after MI through ST2 signaling. METHODS AND RESULTS IL-33 protected cultured cardiomyocytes from hypoxia-induced apoptosis, and this cardioprotection was partially inhibited by sST2. IL-33 induced expression of the antiapoptotic factors XIAP, cIAP1, and survivin. To define the cardioprotective role of IL-33 in vivo, we performed a blinded and randomized study of ischemia/reperfusion in rats. IL-33 reduced cardiomyocyte apoptosis, suppressed caspase-3 activity, and increased expression of IAP family member proteins.\n\n[P5] Caveolin-1 deletion exacerbates cardiac interstitial fibrosis by promoting M2 macrophage activation in mice after myocardial infarction.\nConversely, restoring Cav1 function after MI in WT mice by adding back the Cav1 scaffolding domain reduced the M2 activation profile. Further, adoptive transfer of Cav1 null macrophages into WT mice on d3 post-MI exacerbated adverse cardiac remodeling at d14 post-MI. In vitro studies revealed that Cav1 null macrophages had a more pronounced M2 profile activation in response to IL-4 stimulation. In conclusion, Cav1 deletion promotes an array of maladaptive repair processes after MI, including increased TGF-β signaling, increased M2 macrophage infiltration and dysregulation of the M1/M2 balance. Our data also suggest that cardiac remodeling can be improved by therapeutic intervention regulating Cav1 function during the inflammatory response phase.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d0a78a7373dd33fe2ce138b936a8c4153a413a6996bf3a116610876fe142f3b9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864368.2267451,
+      "end_wall": 1792864379.321994,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2010,
+    "start_wall": 1792864368.2267451,
+    "start_mono": 533924.954956958,
+    "end_wall": 1792864379.321994,
+    "end_mono": 533936.050170208,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that antibiotics like tetracycline and quinolones are associated with a reduced risk of acute myocardial infarction, but no specific effect of macrolides is mentioned. The findings indicate that macrophage activation plays a role in post-myocardial infarction remodeling, but the specific effect of macrolides is not directly addressed.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"low\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11091878791,
+     "load_duration": 1553036083,
+     "prompt_eval_count": 1357,
+     "prompt_eval_duration": 2310908083,
+     "eval_count": 110,
+     "eval_duration": 5981410122,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:59.320033Z"
+    },
+    "elapsed_s": 11.095,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2010,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:32159283:1",
+     "scifact:3984231:0",
+     "scifact:10576136:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 358,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Macrolides have no protective effect against myocardial infarction.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aeca6b3dbd4edab32644178c90ef2fff21c338307dc34ee9eccd6170e3166b6e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864355.083638,
+      "end_wall": 1792864356.625302,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864355.083638,
+    "start_mono": 533911.811891375,
+    "end_wall": 1792864356.625302,
+    "end_mono": 533913.353550625,
+    "raw_response": "{\"query\": \"macrolides myocardial infarction protective studies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1539861000,
+     "load_duration": 65835791,
+     "prompt_eval_count": 177,
+     "prompt_eval_duration": 490160000,
+     "eval_count": 14,
+     "eval_duration": 877165916,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:36.624184Z"
+    },
+    "elapsed_s": 1.542,
+    "query_used": "macrolides myocardial infarction protective studies",
+    "query_source": "json",
+    "query_arrival_seq": 2011
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "macrolides myocardial infarction protective studies",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:32159283:1",
+       "score_q": 9851
+      },
+      {
+       "passage_key": "scifact:34873974:2",
+       "score_q": 8035
+      },
+      {
+       "passage_key": "scifact:32159283:0",
+       "score_q": 7393
+      },
+      {
+       "passage_key": "scifact:34873974:0",
+       "score_q": 7336
+      },
+      {
+       "passage_key": "scifact:43629704:2",
+       "score_q": 6781
+      }
+     ],
+     "retrieval_sha256": "30d2e8bd4e5600c34c809e0ebba7eab164df5df68df203700ff8e79f68b83e32"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "30d2e8bd4e5600c34c809e0ebba7eab164df5df68df203700ff8e79f68b83e32",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:32159283:1",
+      "content_sha256": "f27eaa80fdb2bc24f450c955e14a4c18062fb4a4d0b6d9f11d9c95079cf04df1",
+      "chars": 951
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:34873974:2",
+      "content_sha256": "3ee1a195e214a6ea64a0159bd7aea7549f19eb69de44b3515859b82ab80fa2ec",
+      "chars": 1169
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:32159283:0",
+      "content_sha256": "60900ae5b51e31fadf2618de652f51a882dd9b13d90d4d3f996445082ef58824",
+      "chars": 1005
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34873974:0",
+      "content_sha256": "7272a82f3de2c3956768ce8e93a5c551fb653c444127b5ec907d74fba3ea153b",
+      "chars": 1139
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:43629704:2",
+      "content_sha256": "6087914343437e9e90b2588dbc4043913fa47af4f9c9bfb8ef2392a2810547e8",
+      "chars": 433
+     }
+    ],
+    "elapsed_s": 0.0011
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Macrolides have no protective effect against myocardial infarction.\n\nEvidence passages from your search for \"macrolides myocardial infarction protective studies\":\n<<<PASSAGES\n[P1] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nMAIN OUTCOME MEASURES Use of antibiotics among those who did or did not have a first-time acute myocardial infarction. RESULTS Cases were significantly less likely to have used tetracycline antibiotics (adjusted odds ratio [OR], 0.70; 95% confidence interval [CI], 0.55-0.90) or quinolones (adjusted OR, 0.45; 95% CI, 0.21-0.95). No effect was found for previous use of macrolides (primarily erythromycin), sulfonamides, penicillins, or cephalosporins. CONCLUSIONS The findings from this large case-control analysis provide further, albeit indirect, evidence for an association between bacterial infections with organisms susceptible to tetracycline or quinolone antibiotics and the risk of acute myocardial infarction. These results of preliminary nature should stimulate more research to further explore the role of infections in the etiology of acute myocardial infarction.\n\n[P2] Diagnostic accuracy of single baseline measurement of Elecsys Troponin T high-sensitive assay for diagnosis of acute myocardial infarction in emergency department: systematic review and meta-analysis\nThis means that if 21 of 100 consecutive patients have the target condition (21%, the median prevalence across the studies), 2 (95% confidence interval 2 to 3) of 21 patients with acute myocardial infarction will be missed (false negatives) if 14 ng/L is used as a cut-off value and 18 (13 to 25) of 79 patients without acute myocardial infarction will test positive (false positives). If the 3-5 ng/L cut-off value is used, <1 (0 to 1) patient with acute myocardial infarction will be missed and 46 (36 to 54) patients without acute myocardial infarction will test positive. CONCLUSIONS The results indicate that a single baseline measurement of the Elecsys Troponin T high-sensitive assay could be used to rule out acute myocardial infarction if lower cut-off values such as 3 ng/L or 5 ng/L are used. However, this method should be part of a comprehensive triage strategy and may not be appropriate for patients who present less than three hours after symptom onset.\n\n[P3] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nCONTEXT Increasing evidence supports the hypothesis of a causal association between certain bacterial infections and increased risk of developing acute myocardial infarction. If such a causal association exists, subjects who used antibiotics active against the bacteria, regardless of indication, might be at lower risk of developing acute myocardial infarction than nonusers. OBJECTIVE To determine whether previous use of antibiotics decreases the risk of developing a first-time acute myocardial infarction. DESIGN Population-based case-control analysis. SETTING The United Kingdom-based General Practice Research Database comprising 350 general practices. PATIENTS A total of 3315 case patients aged 75 years or younger with a diagnosis of first-time acute myocardial infarction between 1992 and 1997 and 13139 controls without myocardial infarction matched to cases for age, sex, general practice attended, and calendar time.\n\n[P4] Diagnostic accuracy of single baseline measurement of Elecsys Troponin T high-sensitive assay for diagnosis of acute myocardial infarction in emergency department: systematic review and meta-analysis\nOBJECTIVE To obtain summary estimates of the accuracy of a single baseline measurement of the Elecsys Troponin T high-sensitive assay (Roche Diagnostics) for the diagnosis of acute myocardial infarction in patients presenting to the emergency department. DESIGN Systematic review and meta-analysis of diagnostic test accuracy studies. DATA SOURCES Medline, Embase, and other relevant electronic databases were searched for papers published between January 2006 and December 2013. STUDY SELECTION Studies were included if they evaluated the diagnostic accuracy of a single baseline measurement of Elecsys Troponin T high-sensitive assay for the diagnosis of acute myocardial infarction in patients presenting to the emergency department with suspected acute coronary syndrome. STUDY APPRAISAL AND DATA SYNTHESIS The first author screened all titles and abstracts identified through the searches and selected all potentially relevant papers.\n\n[P5] Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. West of Scotland Coronary Prevention Study Group.\nCONCLUSIONS Treatment with pravastatin significantly reduced the incidence of myocardial infarction and death from cardiovascular causes without adversely affecting the risk of death from noncardiovascular causes in men with moderate hypercholesterolemia and no history of myocardial infarction.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ea93fe340b231d569974db3e4fb35cb3732475f490ecaf1e888e70061af477bf",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864356.626841,
+      "end_wall": 1792864380.75918,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2011,
+    "start_wall": 1792864356.626841,
+    "start_mono": 533913.355089666,
+    "end_wall": 1792864380.75918,
+    "end_mono": 533937.487352125,
+    "raw_response": "{\"reasoning\": \"The provided evidence passages do not conclusively support or refute the claim that macrolides have no protective effect against myocardial infarction. Specifically, Passage P1 mentions that no effect was found for macrolides among various antibiotic classes studied, suggesting no protective effect, but this single piece of evidence is not enough to definitively refute potential nuanced or broader protective roles that might exist in other contexts or studies not covered here. Therefore, based solely on the given evidence, we cannot conclusively support or refute the claim with high confidence\", \"answer\": \"REFUTED\", \"citations\": [\"P1\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24127704667,
+     "load_duration": 48680792,
+     "prompt_eval_count": 1265,
+     "prompt_eval_duration": 6812771625,
+     "eval_count": 133,
+     "eval_duration": 16159544959,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:53:00.755658Z"
+    },
+    "elapsed_s": 24.132,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2011,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:32159283:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Macrolides have no protective effect against myocardial infarction.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aeca6b3dbd4edab32644178c90ef2fff21c338307dc34ee9eccd6170e3166b6e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864355.08351,
+      "end_wall": 1792864362.59066,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864355.08351,
+    "start_mono": 533911.811763791,
+    "end_wall": 1792864362.59066,
+    "end_mono": 533919.318889458,
+    "raw_response": "{\"query\": \"macrolides myocardial infarction protection\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7505436584,
+     "load_duration": 2619063750,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 1519573000,
+     "eval_count": 15,
+     "eval_duration": 3218472167,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:42.589793Z"
+    },
+    "elapsed_s": 7.507,
+    "query_used": "macrolides myocardial infarction protection",
+    "query_source": "json",
+    "query_arrival_seq": 2013
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "macrolides myocardial infarction protection",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:32159283:1",
+       "score_q": 9851
+      },
+      {
+       "passage_key": "scifact:32159283:0",
+       "score_q": 7393
+      },
+      {
+       "passage_key": "scifact:34873974:2",
+       "score_q": 7220
+      },
+      {
+       "passage_key": "scifact:43629704:2",
+       "score_q": 6781
+      },
+      {
+       "passage_key": "scifact:44384384:0",
+       "score_q": 6595
+      }
+     ],
+     "retrieval_sha256": "0104880f5605a42d2faf10452cbf667e985f5f5a4bae4486635b60cbf7877335"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0104880f5605a42d2faf10452cbf667e985f5f5a4bae4486635b60cbf7877335",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:32159283:1",
+      "content_sha256": "f27eaa80fdb2bc24f450c955e14a4c18062fb4a4d0b6d9f11d9c95079cf04df1",
+      "chars": 951
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:32159283:0",
+      "content_sha256": "60900ae5b51e31fadf2618de652f51a882dd9b13d90d4d3f996445082ef58824",
+      "chars": 1005
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34873974:2",
+      "content_sha256": "3ee1a195e214a6ea64a0159bd7aea7549f19eb69de44b3515859b82ab80fa2ec",
+      "chars": 1169
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:43629704:2",
+      "content_sha256": "6087914343437e9e90b2588dbc4043913fa47af4f9c9bfb8ef2392a2810547e8",
+      "chars": 433
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:44384384:0",
+      "content_sha256": "58a69f16daad3b5a7b3c822b32ac081d223a3e4da49ffbf52720cd03301aad73",
+      "chars": 1152
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Macrolides have no protective effect against myocardial infarction.\n\nEvidence passages from your search for \"macrolides myocardial infarction protection\":\n<<<PASSAGES\n[P1] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nMAIN OUTCOME MEASURES Use of antibiotics among those who did or did not have a first-time acute myocardial infarction. RESULTS Cases were significantly less likely to have used tetracycline antibiotics (adjusted odds ratio [OR], 0.70; 95% confidence interval [CI], 0.55-0.90) or quinolones (adjusted OR, 0.45; 95% CI, 0.21-0.95). No effect was found for previous use of macrolides (primarily erythromycin), sulfonamides, penicillins, or cephalosporins. CONCLUSIONS The findings from this large case-control analysis provide further, albeit indirect, evidence for an association between bacterial infections with organisms susceptible to tetracycline or quinolone antibiotics and the risk of acute myocardial infarction. These results of preliminary nature should stimulate more research to further explore the role of infections in the etiology of acute myocardial infarction.\n\n[P2] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nCONTEXT Increasing evidence supports the hypothesis of a causal association between certain bacterial infections and increased risk of developing acute myocardial infarction. If such a causal association exists, subjects who used antibiotics active against the bacteria, regardless of indication, might be at lower risk of developing acute myocardial infarction than nonusers. OBJECTIVE To determine whether previous use of antibiotics decreases the risk of developing a first-time acute myocardial infarction. DESIGN Population-based case-control analysis. SETTING The United Kingdom-based General Practice Research Database comprising 350 general practices. PATIENTS A total of 3315 case patients aged 75 years or younger with a diagnosis of first-time acute myocardial infarction between 1992 and 1997 and 13139 controls without myocardial infarction matched to cases for age, sex, general practice attended, and calendar time.\n\n[P3] Diagnostic accuracy of single baseline measurement of Elecsys Troponin T high-sensitive assay for diagnosis of acute myocardial infarction in emergency department: systematic review and meta-analysis\nThis means that if 21 of 100 consecutive patients have the target condition (21%, the median prevalence across the studies), 2 (95% confidence interval 2 to 3) of 21 patients with acute myocardial infarction will be missed (false negatives) if 14 ng/L is used as a cut-off value and 18 (13 to 25) of 79 patients without acute myocardial infarction will test positive (false positives). If the 3-5 ng/L cut-off value is used, <1 (0 to 1) patient with acute myocardial infarction will be missed and 46 (36 to 54) patients without acute myocardial infarction will test positive. CONCLUSIONS The results indicate that a single baseline measurement of the Elecsys Troponin T high-sensitive assay could be used to rule out acute myocardial infarction if lower cut-off values such as 3 ng/L or 5 ng/L are used. However, this method should be part of a comprehensive triage strategy and may not be appropriate for patients who present less than three hours after symptom onset.\n\n[P4] Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. West of Scotland Coronary Prevention Study Group.\nCONCLUSIONS Treatment with pravastatin significantly reduced the incidence of myocardial infarction and death from cardiovascular causes without adversely affecting the risk of death from noncardiovascular causes in men with moderate hypercholesterolemia and no history of myocardial infarction.\n\n[P5] In-hospital switching between adenosine diphosphate receptor inhibitors in patients with acute myocardial infarction treated with percutaneous coronary intervention: Insights into contemporary practice from the TRANSLATE-ACS study.\nAIMS While randomized clinical trials have compared clopidogrel with higher potency adenosine diphosphate (ADP) receptor inhibitors among patients with acute myocardial infarction, little is known about the frequency, effectiveness and safety of switching between ADP receptor inhibitors in routine clinical practice. METHODS AND RESULTS We studied 11,999 myocardial infarction patients treated with percutaneous coronary intervention at 230 hospitals from April 2010 to October 2012 in the TRANSLATE-ACS study. Multivariable Cox regression was used to compare six-month post-discharge risks of major adverse cardiovascular events (MACE: death, myocardial infarction, stroke, or unplanned revascularization) and Global Utilization of Streptokinase and t-PA for Occluded Coronary Arteries (GUSTO)-defined bleeding between in-hospital ADP receptor inhibitor switching versus continuation of the initially selected therapy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2021d57d310042d972558497476b91641bbc8cef03a41dd3fbd855e86d7acadc",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864362.5929651,
+      "end_wall": 1792864388.764509,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2012,
+    "start_wall": 1792864362.5929651,
+    "start_mono": 533919.321195583,
+    "end_wall": 1792864388.764509,
+    "end_mono": 533945.492656416,
+    "raw_response": "{\"reasoning\": \"The passages P1, P2, and P5 provide evidence that macrolides may have a role in reducing the risk of myocardial infarction, either directly or indirectly through their use in treating bacterial infections which could be risk factors for myocardial infarction. P1 suggests a reduction in myocardial infarction risk with tetracycline and quinolone use, with no effect noted for macrolides, indicating they might not have a protective effect. However, P2 and P5 suggest a potential role in decreasing myocardial infarction risk through reducing infection risk. P4 discusses the effectiveness of statins,\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P5\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26167533333,
+     "load_duration": 51399208,
+     "prompt_eval_count": 1286,
+     "prompt_eval_duration": 5663429749,
+     "eval_count": 167,
+     "eval_duration": 18906399955,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:53:08.761528Z"
+    },
+    "elapsed_s": 26.171,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2012,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:32159283:1",
+     "scifact:32159283:0",
+     "scifact:44384384:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Macrolides have no protective effect against myocardial infarction.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aeca6b3dbd4edab32644178c90ef2fff21c338307dc34ee9eccd6170e3166b6e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864355.082714,
+      "end_wall": 1792864360.552384,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864355.082714,
+    "start_mono": 533911.810968,
+    "end_wall": 1792864360.552384,
+    "end_mono": 533917.280618791,
+    "raw_response": "{\"query\": \"Macrolides protective myocardial infarction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5467309417,
+     "load_duration": 1179602334,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 336693458,
+     "eval_count": 18,
+     "eval_duration": 3868080751,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:40.551304Z"
+    },
+    "elapsed_s": 5.47,
+    "query_used": "Macrolides protective myocardial infarction",
+    "query_source": "json",
+    "query_arrival_seq": 2012
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Macrolides protective myocardial infarction",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:10576136:0",
+       "score_q": 716
+      },
+      {
+       "passage_key": "scifact:3984231:0",
+       "score_q": 707
+      },
+      {
+       "passage_key": "scifact:10576136:1",
+       "score_q": 698
+      },
+      {
+       "passage_key": "scifact:42601237:0",
+       "score_q": 695
+      },
+      {
+       "passage_key": "scifact:6270720:0",
+       "score_q": 695
+      }
+     ],
+     "retrieval_sha256": "638dab7b7e9543cb4e4a975957b563c8385251d40fe015af3185cb4325c5374d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "638dab7b7e9543cb4e4a975957b563c8385251d40fe015af3185cb4325c5374d",
+    "query_embedding_sha256": "8e40d85b2bf0225ada1faaf5b1b41ffddc3389b900e581211ef9101b5f45a9b2",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:10576136:0",
+      "content_sha256": "fba8e8c694f453df1f094cfad204b0f6ff9e6638f470c452bd28747d54c4a3c7",
+      "chars": 1024
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:3984231:0",
+      "content_sha256": "19820f087a34a45638dc0496febf7e48951594fa19e63158edb5ce6142b38608",
+      "chars": 1095
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10576136:1",
+      "content_sha256": "01b2210ac447a3199859252f48b230f3d7913ebbcb39667202b9089be41b7f5d",
+      "chars": 833
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:42601237:0",
+      "content_sha256": "f9911cb7c1902f7bb342b65445e2fc4e21e659ce88e9db6728d9e2fab13b12e0",
+      "chars": 1085
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:6270720:0",
+      "content_sha256": "86334df6706a14e7228bd9fd462978747b3afab6e9c7380492717f782f741ccb",
+      "chars": 1026
+     }
+    ],
+    "elapsed_s": 7.7723
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Macrolides have no protective effect against myocardial infarction.\n\nEvidence passages from your search for \"Macrolides protective myocardial infarction\":\n<<<PASSAGES\n[P1] Interleukin-33 prevents apoptosis and improves survival after experimental myocardial infarction through ST2 signaling.\nBACKGROUND ST2 is an interleukin (IL)-1 receptor family member with membrane-bound (ST2L) and soluble (sST2) isoforms, and sST2 is a biomarker for poor outcome in patients with myocardial infarction (MI). IL-33, the recently discovered ligand for ST2, activates nuclear factor kappaB and thus may regulate apoptotic cell death. We tested the hypothesis that IL-33 is cardioprotective after MI through ST2 signaling. METHODS AND RESULTS IL-33 protected cultured cardiomyocytes from hypoxia-induced apoptosis, and this cardioprotection was partially inhibited by sST2. IL-33 induced expression of the antiapoptotic factors XIAP, cIAP1, and survivin. To define the cardioprotective role of IL-33 in vivo, we performed a blinded and randomized study of ischemia/reperfusion in rats. IL-33 reduced cardiomyocyte apoptosis, suppressed caspase-3 activity, and increased expression of IAP family member proteins.\n\n[P2] Caveolin-1 deletion exacerbates cardiac interstitial fibrosis by promoting M2 macrophage activation in mice after myocardial infarction.\nAdverse remodeling following myocardial infarction (MI) leading to heart failure is driven by an imbalanced resolution of inflammation. The macrophage cell is an important control of post-MI inflammation, as macrophage subtypes secrete mediators to either promote inflammation and extend injury (M1 phenotype) or suppress inflammation and promote scar formation (M2 phenotype). We have previously shown that the absence of caveolin-1 (Cav1), a membrane scaffolding protein, is associated with adverse cardiac remodeling in mice, but the mechanisms responsible remain to be elucidated. We explore here the role of Cav1 in the activation of macrophages using wild type C57BL6/J (WT) and Cav1(tm1Mls/J) (Cav1(-/-)) mice. By echocardiography, cardiac function was comparable between WT and Cav1(-/-) mice at 3days post-MI. In the absence of Cav1, there were a surprisingly higher percentage of M2 macrophages (arginase-1 positive) detected in the infarcted zone.\n\n[P3] Interleukin-33 prevents apoptosis and improves survival after experimental myocardial infarction through ST2 signaling.\nIL-33 decreased both infarct and fibrosis volumes at 15 days; furthermore, both echocardiographic and hemodynamic studies revealed that IL-33 improved ventricular function. To determine whether cardioprotection by IL-33 is mediated through ST2 signaling, a randomized and blinded study of ST2(-/-) versus wild-type littermate mice was performed in 98 mice subjected to MI. At 4 weeks after MI, IL-33 reduced ventricular dilation and improved contractile function in wild-type mice but not in ST2(-/-) mice. Finally, IL-33 improved survival after MI in wild-type but not in ST2(-/-) mice. CONCLUSIONS IL-33 prevents cardiomyocyte apoptosis and improves cardiac function and survival after MI through ST2 signaling.\n\n[P4] Paracrine effects of direct intramyocardial implantation of bone marrow derived cells to enhance neovascularization in chronic ischaemic myocardium.\nOBJECTIVE To determine the optimal bone marrow (BM) cell types, and their potential mechanisms of action for neovascularization in chronic ischaemic myocardium. METHODS AND RESULTS The functional effects, angiogenic potential and cytokine expression of direct intramyocardial implantation of autologous BM CD31-positive endothelial progenitor cells (EPC, n=9), BM mononuclear cells (MNCs, n=9), and saline (n=9) were compared in a swine model of chronic ischaemic myocardium. Autologous BM cells were harvested and catheter-based electromechanical mapping-guided direct intramyocardial injection was performed to target ischaemic myocardium. After 12 weeks, injection of BM-MNC resulted in significant improvements in left ventricular dP/dt (+21+/-8%, P=0.032), left ventricular pressure (+17+/-4%, P=0.048) and regional microsphere myocardial perfusion over ischaemic endocardium (+74+/-28%, P<0.05) and epicardium (+73+/-29%, P<0.05).\n\n[P5] Myeloid differentiation factor-88/interleukin-1 signaling controls cardiac fibrosis and heart failure progression in inflammatory dilated cardiomyopathy.\nRATIONALE The myeloid differentiation factor (MyD)88/interleukin (IL)-1 axis activates self-antigen-presenting cells and promotes autoreactive CD4(+) T-cell expansion in experimental autoimmune myocarditis, a mouse model of inflammatory heart disease. OBJECTIVE The aim of this study was to determine the role of MyD88 and IL-1 in the progression of acute myocarditis to an end-stage heart failure. METHODS AND RESULTS Using alpha-myosin heavy chain peptide (MyHC-alpha)-loaded, activated dendritic cells, we induced myocarditis in wild-type and MyD88(-/-) mice with similar distributions of heart-infiltrating cell subsets and comparable CD4(+) T-cell responses. Injection of complete Freund's adjuvant (CFA) or MyHC-alpha/CFA into diseased mice promoted cardiac fibrosis, induced ventricular dilation, and impaired heart function in wild-type but not in MyD88(-/-) mice.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ec7ddeacadfe17b6e5aa077a440c0cef328f1cdd9b7ae6f9f758bb6e70d6684e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864368.325386,
+      "end_wall": 1792864390.723947,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2013,
+    "start_wall": 1792864368.325386,
+    "start_mono": 533925.053597875,
+    "end_wall": 1792864390.723947,
+    "end_mono": 533947.452088125,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that macrolides have no protective effect against myocardial infarction. However, several passages in the evidence discuss the cardioprotective effects of IL-33 and interleukin-33 signaling in myocardial infarction, indicating potential counterevidence to the claim.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22394453083,
+     "load_duration": 12565789541,
+     "prompt_eval_count": 1777,
+     "prompt_eval_duration": 4510788917,
+     "eval_count": 107,
+     "eval_duration": 4873623165,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:53:10.720987Z"
+    },
+    "elapsed_s": 22.398,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2013,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:10576136:0",
+     "scifact:10576136:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 285,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Macrolides have no protective effect against myocardial infarction.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "aeca6b3dbd4edab32644178c90ef2fff21c338307dc34ee9eccd6170e3166b6e",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864355.0822852,
+      "end_wall": 1792864367.723547,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864355.0822852,
+    "start_mono": 533911.810540375,
+    "end_wall": 1792864367.723547,
+    "end_mono": 533924.451758958,
+    "raw_response": "{\"query\": \"do macrolides protect against myocardial infarction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12638419291,
+     "load_duration": 7267085166,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 1213538458,
+     "eval_count": 14,
+     "eval_duration": 3884347376,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:52:47.722448Z"
+    },
+    "elapsed_s": 12.641,
+    "query_used": "do macrolides protect against myocardial infarction",
+    "query_source": "json",
+    "query_arrival_seq": 2014
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "do macrolides protect against myocardial infarction",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:32159283:1",
+       "score_q": 733
+      },
+      {
+       "passage_key": "scifact:21239672:2",
+       "score_q": 709
+      },
+      {
+       "passage_key": "scifact:21239672:1",
+       "score_q": 708
+      },
+      {
+       "passage_key": "scifact:3984231:0",
+       "score_q": 705
+      },
+      {
+       "passage_key": "scifact:10576136:1",
+       "score_q": 702
+      }
+     ],
+     "retrieval_sha256": "ef2aebfbf8d0ab5fac7c61886dc0fa2ae13730cc162bc53f1b057de9dc490e46"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ef2aebfbf8d0ab5fac7c61886dc0fa2ae13730cc162bc53f1b057de9dc490e46",
+    "query_embedding_sha256": "eef2c71e9a822185bdea9690dbe7d7bb86cd2ad18824f3e6331aeac314dac73f",
+    "query_embedding_f32_b64": "kc3GPNIUJj25gTG+NRLgOo/0KD2gvQe9Q1x3vLYvXTssa8o7tSWHvWQc6zzE65U847W8PEqFxLw00iM8xh30OwnAX7sAzxG9mj9ju+9C6Dw9g5+9oykWva1Xgr0JTjM94d2NPUf8uD2lxHM9umGoPOSsALzHpC49kiuRPSBYbL3R+Kg72+MlvZL6ibxd1QW9zmUsPU+/Dz2gsHu84U29OVEKLzz6Il09BGDAPQgtg71hrZo9fXEzPROGBz2aiXi86cRLPbNIWb167608UcSCvXhq+jv+2428ePlKPPq1JrsNBoU8Rz4tvZ51hD0lzGK9TPYgPSSZCT2V2wK76EJSvd5l7TzkfEW9EA9Nvdsa+zzjiJY8PfVzPcffibveIga9FMSOPQgCFrytzZK7i3sYPTulg73VaGO76QWRPEIMpzwSMYK8slhDPdxHjj0lJx+8Mk4/PXyBXzwOEKM8VHYpvZaQBb269qY9QDk7PYV5PTzwUZe8Z0toPK5mG72z8GY9zbsavZz72TzD1Q29wN3UPHNugryPGd48EWFUPZ8VNz0yG8U8IVdONpzrGj1VKiI8tVvnPDrcKTzrUaI83l0qPTGiMr2wzs28d0Y3PHbo6bv5lcE9EV48veJCZjyQ5hg9EBcMvTrEFb3EhIS6qN8cPQOUGz3sg7089JsovVT2YDqrAzA9hE8svQ1xKTxaZkQ8RTGXuw1R2ryaIQS9JqH7PCWPvLyfGs48a8hkvLFgJjy/Kwo9L1kYPey5UT2Yg507HK5xvWzzcb0QL5Y7Dcwbvd9Zl7tgxB68Zv9FvLKJ1TzQ9gC9VuYIPZhz6jwWrLW8ElA8vaR5ODzdR746b4r8PPq43Dtf3jY6aEoQvJosCz13lYU7AZlavThigz2pYW89yIP2u8PLjj3kIZC8JMBdvSSg07uqpQS9DWQ9PXG2OjxeqHa9/chnveIVyTxGk1q96CwkPf4NTr1OoTc9YdwKPcVbNrtfI/u7kS8aPZZysDzQaw67qaohPbaC87z4G/c7d7+PvdoIXL3MiH+863JIvXJVPD0WsZA8XerKOlPPMLy/uhC9+FuQO4kqS7s1JSa9lsODvZPCCT0avfC8CoiXPExKzbz6e9i8xpufPe4bWzykv169ItRjvNVdw7ynKra8lGfAO+6XzLtkwKW8tsIvPa0jgDzblG68u0T1PAAJoL0bM2U9SbeaO5n2hjpHzhm80bieOyQ/Kb1MOBC8PYjXvEzZVD3oZYm8KCzJOkj9JTxr2tA8jDuuPKg88bzBtfI7s36CPQwGqzwBTu08dRtCvZXkAjupMX096kQBPMskBDt/nw48l6G6PGnvtzxpAio9KsZNusJYrzzVYCA8Zi2tvE05HLxNcte8GAqkuyMKJD3C+oE9Gh0IvbtNwbuhwMW8dQNYvVYMhLs34hA8gy6BPLc0AT2giug8hcgqPB7vIz3QETG8vpnEPWBXRr0ajqi7rEnmPJafqLytF6+8VyAcu3t7JL1Ijqm84DI2vAmQx7zOx8o7hWt9PWjU/jzAOnk74sNfPdP+oDxKhCU9/du7u3P2iDz1+RI9p67uPFklfTwVYio9kASsvHJ9/zxWs6u9MIApPXGrDT3Yq2k8+bhgPb8CkDq7uVU8y0L+Oyn1TDtCZJM8ZHUwvByDZbuYhws7pqGevEgiJj39nLe8/2nAPE0riDyQwTM9rV06PUpkGj2mEyQ96sSuvHfmHL1L35K9SDOJvGNN+TpVDg+8ulpIPezPpLw+5j+9HqyWPEJGrT0nYUA9X77lvN3qWr1BBWG8lyNYvXLF5DyoBqS7/lsHPG1NEr0wyxO9K/fHPFWgXL29sDG8cQifuynuBL3dGtU8ha4LPQLrIL3AEb47b/WlvPIM9ru/aoQ740X5PCSvTb2r0+e76OY2PC+4Dj0PGXW8maLJPCI1Sr1Rwzy98yXcu7VlADxr1/c810hqPKKgvzx6HFk94rBlPDWn1bshd8Q8WhDPuw5yEzyHNeE8Np6WPHnexr0NluW83FtUvAGN37yp4Py8f6pYvdZbPT2yY8S82lj2vMyZlbyBihc9iEgKvVpZLLtJQ1o8vSgTPZxhWr3jZi297WZXvCNlvDyaAUi9NMxGu3+E8rzj/TA8GtsWvaApgr35+Jm8eXcSvELxN7xI56s8GPfJuznHTL0wdzG63pctPYvHBr3lakg9ihQTPZ6kKjyVVUS89mdaPAz2NT1PNRA9Y+sgvEF8UDwpBla7/ExEPdOEkTzWkoa8wHw3PbHtqjwGhDk9Qg2IuxU4Czyg/z284yvLvO50QzxAGIY8QHC7PIYSNrzVezq8ECzPORU53bwz+8C8vlBMvRjpRDzEgkM8kSN1vbz1DDxp8oe9NJwqPdvMxz3awSw8v/0PPOskXL0aKmE9LdUVPa6sALyjX6Q8CCh/Oy9RMz3u5mO967BbPZpjRDzZkTi7ea+GPTiBxbzAvPO84Xs0vCUR7jwzfwm9YuEEvX4I1DwiHdG89MqlPL4Qij0jfdm7BrfzuiGfHb25PZq9/XoOPJ93fL2zeDo9ugXSO+jUnbpA4kU9zbZ/PeU5ELs4QY693L2ovcSaAT0q0ug8E0P8uay49Ly/6bs8g4CYPMecLj10lHs9mQEYvQZ6mDxlnXk9U7yVPDzXAjuxaRi66PJePTXAh71q0lM8VNDUvOYujTpihrY6W27Zu9zCY7yag2E9xEZOvU9zgr2mGVs8iglavM9sY737k409OLHAPfJoJjzjac28EzKfu2RnSLvCHYU8+YeyvDrKsDwJE1+81KJGvdNBvTzNkQS97ex6PAW+XLx6qhy9EbEJPUqQ2TywUp08dCGRvJ3kqjsfPkI7ZVgpu1nutTsYZFa9485qPQMMsrs1qRO9ex3avE9nlbrfceo8NhNqPOfKkb3tyfa8mXs0u+j3FLyDV2i94AtHvZwvrTw467q5IdudPD7G9Lzj7Tk9dl7MPKDmUj34nCC9lCuIvJJ5iLzNdaQ7b/1VPB3RxDxeUuU6lI4MPaUOsbzmFqg8+Inpuxze2zxoNYc7XANjPaYuXryxUc87jA0CPaZL5ryVra48kiYFvaDPVT3kYg29ArObu93ArjsYgIy96ssfPXIbAr1+wUA9FlxVvfm3nbxMYym9Tf52PWnrg73mAQe9A6gJPEvPqjx72CO9fAxoOsuzDrqyv0C9s8XyvOY/1buvb+S8ia7bOy+9gTwsKfM81UxUvQLUV73aSmm8ln5ovRoKGbyBi/G8WPELvb2orzxmUou8GvUoPEbjebzNsg49MJNSvRYNHzyJU7K5ak3pvIbV7bgtPr68EoUuvbTpV7yyifM7aT1KPX+AETmdUi29xjNHvVmf3TwGmao8O1RmPKuP8DzbBgi9nGmDPB5cA712GUk9loKSu+4BEDvnBfa7PsUFPQh+fLvLaya8U4zlOs0yzjx8Qjc8SjLuu8m+sj2bnR09lWmmvM0WPb1Xca49sLixPZ9uNz3Qvg89s9mkPKqPNb2fIdU8vpSAvSeiprxRZlu9lFQzPBb21byxXq6735uJvf7Hjby0WZS8kq4+vZtfCzpp1aW9BaEeO7s+mDtbaCs89IYrveyi6rwTGQA98kvvO0ccEj3DvqS7kTcQPTwnkrwpmyi80IQDvfIrPT1Xing8eMl7vBI+ATz1LQc95S5DvWkrgbx5bTK8S5SivBz3r70Xx1c6feQyPFKA8Twgmte79jJkvI+8cD2l02i97qGWPD22vLxIGDQ94wsWvH7CzDyp/Dw9CJkiPWGrvbsPD5+94TqQuxSkILw/Eac8mRmYOp/pCz3ie4Q9YOZlPVjIWroYF2i9XKKFvR1MZDxPsxc9eoqKu3WDL71rQi69HJ5Xvds0ZLyf1bC9NqogvSkKGLwPoEu8B0M0u/6Q37zrj0C9JHkNvRqqh7tRonI6jVBRvbwZL70RBOi7rXFEvWszdrytNyy934MIPSYITrzEf7I8ToVvvLBOVD2YZMg8yZ6+PP/cCD0PYQS9M0mEPbQUGryOa8K9MlfXPPhaWryu3K+7Ij6APClx+DtgN5Q9VdtPO3ZJUT27Rdq8zKEoPTIQP7q3MUm9NFw3vawKo7zQb4u8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:32159283:1",
+      "content_sha256": "f27eaa80fdb2bc24f450c955e14a4c18062fb4a4d0b6d9f11d9c95079cf04df1",
+      "chars": 951
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:21239672:2",
+      "content_sha256": "6d3f6ee215ec7aa30286f9a3566f51e95a8fb13a8893f089bc91f869c14b4d96",
+      "chars": 495
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:21239672:1",
+      "content_sha256": "b9192e1723d5b0b907756236a334084697a6b6e04b5d70154c89a2cd41102aaf",
+      "chars": 1031
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3984231:0",
+      "content_sha256": "19820f087a34a45638dc0496febf7e48951594fa19e63158edb5ce6142b38608",
+      "chars": 1095
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10576136:1",
+      "content_sha256": "01b2210ac447a3199859252f48b230f3d7913ebbcb39667202b9089be41b7f5d",
+      "chars": 833
+     }
+    ],
+    "elapsed_s": 12.0331
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Macrolides have no protective effect against myocardial infarction.\n\nEvidence passages from your search for \"do macrolides protect against myocardial infarction\":\n<<<PASSAGES\n[P1] Antibiotics and risk of subsequent first-time acute myocardial infarction.\nMAIN OUTCOME MEASURES Use of antibiotics among those who did or did not have a first-time acute myocardial infarction. RESULTS Cases were significantly less likely to have used tetracycline antibiotics (adjusted odds ratio [OR], 0.70; 95% confidence interval [CI], 0.55-0.90) or quinolones (adjusted OR, 0.45; 95% CI, 0.21-0.95). No effect was found for previous use of macrolides (primarily erythromycin), sulfonamides, penicillins, or cephalosporins. CONCLUSIONS The findings from this large case-control analysis provide further, albeit indirect, evidence for an association between bacterial infections with organisms susceptible to tetracycline or quinolone antibiotics and the risk of acute myocardial infarction. These results of preliminary nature should stimulate more research to further explore the role of infections in the etiology of acute myocardial infarction.\n\n[P2] Use of macrolides in mother and child and risk of infantile hypertrophic pyloric stenosis: nationwide cohort study\nCONCLUSIONS Treatment of young infants with macrolide antibiotics was strongly associated with IHPS and should therefore only be administered if potential treatment benefits outweigh the risk. Maternal use of macrolides during the first two weeks after birth was also associated with an increased risk of IHPS. A possible association was also found with use during late pregnancy.\n\n[P3] Use of macrolides in mother and child and risk of infantile hypertrophic pyloric stenosis: nationwide cohort study\nCompared with infants with no use of macrolides, the adjusted rate ratio for IHPS in infants with use of macrolides during days 0 to 13 after birth was 29.8 (95% confidence interval 16.4 to 54.1) and during days 14 to 120 was 3.24 (1.20 to 8.74); the corresponding absolute risk differences were 24.4 (95% confidence interval 13.0 to 44.1) and 0.65 (0.06 to 2.21) cases per 1000 infants exposed to macrolides, respectively. The rate ratio for maternal use of macrolides for days 0 to 13 after birth was 3.49 (1.92 to 6.34) and for days 14 to 120 was 0.70 (0.26 to 1.90); the corresponding absolute risk differences were 2.15 (0.82 to 4.64) and -0.11 (-0.26 to 0.31). The rate ratios for maternal use of macrolides during pregnancy were 1.02 (0.65 to 1.59) for weeks 0 to 27 and 1.77 (0.95 to 3.31) for weeks 28 to birth; the corresponding absolute risk differences were 0.01 (-0.31 to 0.50) and 0.67 (-0.06 to 2.02).\n\n[P4] Caveolin-1 deletion exacerbates cardiac interstitial fibrosis by promoting M2 macrophage activation in mice after myocardial infarction.\nAdverse remodeling following myocardial infarction (MI) leading to heart failure is driven by an imbalanced resolution of inflammation. The macrophage cell is an important control of post-MI inflammation, as macrophage subtypes secrete mediators to either promote inflammation and extend injury (M1 phenotype) or suppress inflammation and promote scar formation (M2 phenotype). We have previously shown that the absence of caveolin-1 (Cav1), a membrane scaffolding protein, is associated with adverse cardiac remodeling in mice, but the mechanisms responsible remain to be elucidated. We explore here the role of Cav1 in the activation of macrophages using wild type C57BL6/J (WT) and Cav1(tm1Mls/J) (Cav1(-/-)) mice. By echocardiography, cardiac function was comparable between WT and Cav1(-/-) mice at 3days post-MI. In the absence of Cav1, there were a surprisingly higher percentage of M2 macrophages (arginase-1 positive) detected in the infarcted zone.\n\n[P5] Interleukin-33 prevents apoptosis and improves survival after experimental myocardial infarction through ST2 signaling.\nIL-33 decreased both infarct and fibrosis volumes at 15 days; furthermore, both echocardiographic and hemodynamic studies revealed that IL-33 improved ventricular function. To determine whether cardioprotection by IL-33 is mediated through ST2 signaling, a randomized and blinded study of ST2(-/-) versus wild-type littermate mice was performed in 98 mice subjected to MI. At 4 weeks after MI, IL-33 reduced ventricular dilation and improved contractile function in wild-type mice but not in ST2(-/-) mice. Finally, IL-33 improved survival after MI in wild-type but not in ST2(-/-) mice. CONCLUSIONS IL-33 prevents cardiomyocyte apoptosis and improves cardiac function and survival after MI through ST2 signaling.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "98ef24a34c5acff62d59c5ae681e31550ce86701ed4db384aec3551b8eda866d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864379.757151,
+      "end_wall": 1792864392.2580218,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2014,
+    "start_wall": 1792864379.757151,
+    "start_mono": 533936.485327083,
+    "end_wall": 1792864392.2580218,
+    "end_mono": 533948.98615775,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not support the claim. P1 and P3 report that antibiotics, specifically tetracycline and quinolones, have a protective effect against myocardial infarction, but macrolides do not show this protective effect. P2 and P4 show that caveolin-1 deletion exacerbates cardiac interstitial fibrosis, but do not address the protective effect of macrolides against myocardial infarction.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12495894542,
+     "load_duration": 3227520875,
+     "prompt_eval_count": 1397,
+     "prompt_eval_duration": 3699908000,
+     "eval_count": 101,
+     "eval_duration": 3439861823,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:53:12.254212Z"
+    },
+    "elapsed_s": 12.501,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2014,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 400,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "9b82314865821af8327c5dad01ef3dfb13b2310ecb2be5d10e4baf346e148f52",
+  "exaone3.5:7.8b": "30d2e8bd4e5600c34c809e0ebba7eab164df5df68df203700ff8e79f68b83e32",
+  "olmo2:7b": "0104880f5605a42d2faf10452cbf667e985f5f5a4bae4486635b60cbf7877335",
+  "granite3.3:2b": "638dab7b7e9543cb4e4a975957b563c8385251d40fe015af3185cb4325c5374d",
+  "nemotron-mini:4b": "ef2aebfbf8d0ab5fac7c61886dc0fa2ae13730cc162bc53f1b057de9dc490e46"
+ },
+ "item_start_wall": 1792864355.081901,
+ "item_wall_s": 37.176,
+ "ollama_ps_samples": [
+  [
+   1792864355.082,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792864357.093,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792864359.1,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864361.108,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792864363.113,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792864365.124,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792864367.129,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792864369.133,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792864371.139,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864373.145,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864375.147,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864377.151,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864379.155,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864381.162,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864383.169,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864385.175,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864387.182,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864389.188,
+   [
+    "granite3.3:2b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864391.195,
+   [
+    "nemotron-mini:4b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

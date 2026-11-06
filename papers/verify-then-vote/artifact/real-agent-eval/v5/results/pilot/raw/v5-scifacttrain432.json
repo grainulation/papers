@@ -1,0 +1,1283 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain432",
+ "order": 158,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain432",
+  "order": 158,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Foxk2 regulates autophagy genes in muscle cells and fibroblast cells."
+ },
+ "item_view_sha256": "4e377128979c6552fd05aabca4cf0ad045648b21cb75dab8d686a8c23d559b4b",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "dense",
+  "mistral": "dense",
+  "gemma2:2b": "dense",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "mistral",
+  "qwen2.5:3b",
+  "llama3.2:3b",
+  "gemma2:2b",
+  "phi3:mini"
+ ],
+ "arrival_order": [
+  "llama3.2:3b",
+  "qwen2.5:3b",
+  "phi3:mini",
+  "gemma2:2b",
+  "mistral"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over scientific paper abstracts.\n\nClaim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0d9fe6955b29862c689b09fa7d265ee59af67034515581aec6255e9c5fc3a8a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693161.382252,
+      "end_wall": 1792693162.774793,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693161.382252,
+    "start_mono": 362718.5764685,
+    "end_wall": 1792693162.774793,
+    "end_mono": 362719.969016583,
+    "raw_response": "{\"query\": \"Foxk2 autophagy genes muscle cells fibroblast cells\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1390240792,
+     "load_duration": 105024500,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 416521708,
+     "eval_count": 19,
+     "eval_duration": 650070499,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:22.774127Z"
+    },
+    "elapsed_s": 1.393,
+    "query_used": "Foxk2 autophagy genes muscle cells fibroblast cells",
+    "query_source": "json",
+    "query_arrival_seq": 90
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Foxk2 autophagy genes muscle cells fibroblast cells",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27647593:0",
+       "score_q": 777
+      },
+      {
+       "passage_key": "scifact:33507866:1",
+       "score_q": 760
+      },
+      {
+       "passage_key": "scifact:8002887:0",
+       "score_q": 760
+      },
+      {
+       "passage_key": "scifact:31882215:0",
+       "score_q": 755
+      },
+      {
+       "passage_key": "scifact:15728433:0",
+       "score_q": 754
+      }
+     ],
+     "retrieval_sha256": "6148cb0ecba34cd79ca794ed8c66324807a6575f8b2230504c2b1d41a7bd9c0e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6148cb0ecba34cd79ca794ed8c66324807a6575f8b2230504c2b1d41a7bd9c0e",
+    "query_embedding_sha256": "1fd7a746622d49af6a81ba5d47f898414a6767b9c01e28d1bb539e1877febe73",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27647593:0",
+      "content_sha256": "1e28c8aada83198b375c7c4d819c834f7330dedf8f01e776830a3d6f679e1565",
+      "chars": 1102
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33507866:1",
+      "content_sha256": "7b3f1c51b86008fe0b1a49ab91e5b2127b4e6ee449653a574d387b9859fad026",
+      "chars": 582
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8002887:0",
+      "content_sha256": "0b21d5806ac6439608571b8c1ee11668ef0309e247e6d2d578d7dd5aba6e329b",
+      "chars": 953
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:31882215:0",
+      "content_sha256": "ccea63a4005776636e6ad9688a713a377eedc0c21626a7c979e0718819d1d511",
+      "chars": 1042
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:15728433:0",
+      "content_sha256": "ded7efbb729a376d4a9fb83823cd3465b10213ab9a16eb56a33ff246eea7c1e7",
+      "chars": 968
+     }
+    ],
+    "elapsed_s": 6.3902
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nEvidence passages from your search for \"Foxk2 autophagy genes muscle cells fibroblast cells\":\n<<<PASSAGES\n[P1] Stromal-epithelial metabolic coupling in cancer: integrating autophagy and metabolism in the tumor microenvironment.\nCancer cells do not exist as pure homogeneous populations in vivo. Instead they are embedded in \"cancer cell nests\" that are surrounded by stromal cells, especially cancer associated fibroblasts. Thus, it is not unreasonable to suspect that stromal fibroblasts could influence the metabolism of adjacent cancer cells, and visa versa. In accordance with this idea, we have recently proposed that the Warburg effect in cancer cells may be due to culturing cancer cells by themselves, out of their normal stromal context or tumor microenvironment. In fact, when cancer cells are co-cultured with fibroblasts, then cancer cells increase their mitochondrial mass, while fibroblasts lose their mitochondria. An in depth analysis of this phenomenon reveals that aggressive cancer cells are \"parasites\" that use oxidative stress as a \"weapon\" to extract nutrients from surrounding stromal cells. Oxidative stress in fibroblasts induces the autophagic destruction of mitochondria, by mitophagy.\n\n[P2] Class III PI3K Vps34 plays an essential role in autophagy and in heart and liver function.\nAblation of Vps34 in the heart of muscle creatine kinase-Cre;Vps34(f/f) mice led to cardiomegaly and decreased contractility. In addition, while amino acid-stimulated mTOR activation was suppressed in the absence of Vps34, the steady-state level of mTOR signaling was not affected in Vps34-null MEFs, liver, or cardiomyocytes. Taken together, our results indicate that Vps34 plays an essential role in regulating functional autophagy and is indispensable for normal liver and heart function.\n\n[P3] Foxk proteins repress the initiation of starvation-induced atrophy and autophagy programs\nAutophagy is the primary catabolic process triggered in response to starvation. Although autophagic regulation within the cytosolic compartment is well established, it is becoming clear that nuclear events also regulate the induction or repression of autophagy. Nevertheless, a thorough understanding of the mechanisms by which sequence-specific transcription factors modulate expression of genes required for autophagy is lacking. Here, we identify Foxk proteins (Foxk1 and Foxk2) as transcriptional repressors of autophagy in muscle cells and fibroblasts. Interestingly, Foxk1/2 serve to counter-balance another forkhead transcription factor, Foxo3, which induces an overlapping set of autophagic and atrophic targets in muscle. Foxk1/2 specifically recruits Sin3A-HDAC complexes to restrict acetylation of histone H4 and expression of critical autophagy genes.\n\n[P4] Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrades p62, whose accumulation in autophagy-deficient cells facilitates reprogramming.\n\n[P5] Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging\nAutophagy is a constitutive lysosomal catabolic pathway that degrades damaged organelles and protein aggregates. Stem cells are characterized by self-renewal, pluripotency, and quiescence; their long life span, limited capacity to dilute cellular waste and spent organelles due to quiescence, along with their requirement for remodeling in order to differentiate, all suggest that they require autophagy more than other cell types. Here, we review the current literature on the role of autophagy in embryonic and adult stem cells, including hematopoietic, mesenchymal, and neuronal stem cells, highlighting the diverse and contrasting roles autophagy plays in their biology. Furthermore, we review the few studies on stem cells, lysosomal activity, and autophagy. Novel techniques to detect autophagy in primary cells are required to study autophagy in different stem cell types.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ab7221d6e419ad81750a20fd2ddae93638b0af6dfca89a87bd756d0db39f34d4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693169.1653628,
+      "end_wall": 1792693178.4033542,
+      "error": null
+     }
+    ],
+    "arrival_seq": 90,
+    "start_wall": 1792693169.1653628,
+    "start_mono": 362726.359621208,
+    "end_wall": 1792693178.4033542,
+    "end_mono": 362735.597660666,
+    "raw_response": "{\"reasoning\": \"Passages P3 and P4 mention Foxk2 as a transcriptional repressor of autophagy genes, indicating it regulates autophagy in muscle cells and fibroblast cells.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9235237916,
+     "load_duration": 2216950166,
+     "prompt_eval_count": 1319,
+     "prompt_eval_duration": 3071785375,
+     "eval_count": 69,
+     "eval_duration": 3217921835,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:38.401512Z"
+    },
+    "elapsed_s": 9.238,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 90,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:8002887:0",
+     "scifact:31882215:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 155,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over scientific paper abstracts.\n\nClaim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0d9fe6955b29862c689b09fa7d265ee59af67034515581aec6255e9c5fc3a8a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693161.382158,
+      "end_wall": 1792693168.750942,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693161.382158,
+    "start_mono": 362718.576374166,
+    "end_wall": 1792693168.750942,
+    "end_mono": 362725.945197833,
+    "raw_response": "{\"query\": \"Foxk2 autophagy muscle cells fibroblast cells regulation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7365874541,
+     "load_duration": 2930679291,
+     "prompt_eval_count": 164,
+     "prompt_eval_duration": 902227209,
+     "eval_count": 19,
+     "eval_duration": 3306484085,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:28.749735Z"
+    },
+    "elapsed_s": 7.369,
+    "query_used": "Foxk2 autophagy muscle cells fibroblast cells regulation",
+    "query_source": "json",
+    "query_arrival_seq": 94
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Foxk2 autophagy muscle cells fibroblast cells regulation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:8002887:0",
+       "score_q": 12518
+      },
+      {
+       "passage_key": "scifact:6227220:0",
+       "score_q": 7259
+      },
+      {
+       "passage_key": "scifact:11903247:0",
+       "score_q": 7131
+      },
+      {
+       "passage_key": "scifact:31882215:0",
+       "score_q": 6698
+      },
+      {
+       "passage_key": "scifact:15728433:0",
+       "score_q": 6149
+      }
+     ],
+     "retrieval_sha256": "766564d6882925e426eafa9058ed5c0aa375ae7421c7fe37ae976a702310f354"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "766564d6882925e426eafa9058ed5c0aa375ae7421c7fe37ae976a702310f354",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:8002887:0",
+      "content_sha256": "0b21d5806ac6439608571b8c1ee11668ef0309e247e6d2d578d7dd5aba6e329b",
+      "chars": 953
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6227220:0",
+      "content_sha256": "64bf0522b6e176fb18239c750d943b41868b4a7cc81f0635665a17c38bfc8bfd",
+      "chars": 1059
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11903247:0",
+      "content_sha256": "a7a81672a8f87775cc8c6754138843b29974f6d47a77ff0e70b67c4fac23fefc",
+      "chars": 1011
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:31882215:0",
+      "content_sha256": "ccea63a4005776636e6ad9688a713a377eedc0c21626a7c979e0718819d1d511",
+      "chars": 1042
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:15728433:0",
+      "content_sha256": "ded7efbb729a376d4a9fb83823cd3465b10213ab9a16eb56a33ff246eea7c1e7",
+      "chars": 968
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nEvidence passages from your search for \"Foxk2 autophagy muscle cells fibroblast cells regulation\":\n<<<PASSAGES\n[P1] Foxk proteins repress the initiation of starvation-induced atrophy and autophagy programs\nAutophagy is the primary catabolic process triggered in response to starvation. Although autophagic regulation within the cytosolic compartment is well established, it is becoming clear that nuclear events also regulate the induction or repression of autophagy. Nevertheless, a thorough understanding of the mechanisms by which sequence-specific transcription factors modulate expression of genes required for autophagy is lacking. Here, we identify Foxk proteins (Foxk1 and Foxk2) as transcriptional repressors of autophagy in muscle cells and fibroblasts. Interestingly, Foxk1/2 serve to counter-balance another forkhead transcription factor, Foxo3, which induces an overlapping set of autophagic and atrophic targets in muscle. Foxk1/2 specifically recruits Sin3A-HDAC complexes to restrict acetylation of histone H4 and expression of critical autophagy genes.\n\n[P2] Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine\nDespite growing interest and a recent surge in papers, the role of autophagy in glucose and lipid metabolism is unclear. We produced mice with skeletal muscle–specific deletion of Atg7 (encoding autophagy-related 7). Unexpectedly, these mice showed decreased fat mass and were protected from diet-induced obesity and insulin resistance; this phenotype was accompanied by increased fatty acid oxidation and browning of white adipose tissue (WAT) owing to induction of fibroblast growth factor 21 (Fgf21). Mitochondrial dysfunction induced by autophagy deficiency increased Fgf21 expression through induction of Atf4, a master regulator of the integrated stress response. Mitochondrial respiratory chain inhibitors also induced Fgf21 in an Atf4-dependent manner. We also observed induction of Fgf21, resistance to diet-induced obesity and amelioration of insulin resistance in mice with autophagy deficiency in the liver, another insulin target tissue.\n\n[P3] Regulation of autophagy by cytoplasmic p53\nMultiple cellular stressors, including activation of the tumour suppressor p53, can stimulate autophagy. Here we show that deletion, depletion or inhibition of p53 can induce autophagy in human, mouse and nematode cells subjected to knockout, knockdown or pharmacological inhibition of p53. Enhanced autophagy improved the survival of p53-deficient cancer cells under conditions of hypoxia and nutrient depletion, allowing them to maintain high ATP levels. Inhibition of p53 led to autophagy in enucleated cells, and cytoplasmic, not nuclear, p53 was able to repress the enhanced autophagy of p53−/− cells. Many different inducers of autophagy (for example, starvation, rapamycin and toxins affecting the endoplasmic reticulum) stimulated proteasome-mediated degradation of p53 through a pathway relying on the E3 ubiquitin ligase HDM2. Inhibition of p53 degradation prevented the activation of autophagy in several cell lines, in response to several distinct stimuli.\n\n[P4] Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrades p62, whose accumulation in autophagy-deficient cells facilitates reprogramming.\n\n[P5] Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging\nAutophagy is a constitutive lysosomal catabolic pathway that degrades damaged organelles and protein aggregates. Stem cells are characterized by self-renewal, pluripotency, and quiescence; their long life span, limited capacity to dilute cellular waste and spent organelles due to quiescence, along with their requirement for remodeling in order to differentiate, all suggest that they require autophagy more than other cell types. Here, we review the current literature on the role of autophagy in embryonic and adult stem cells, including hematopoietic, mesenchymal, and neuronal stem cells, highlighting the diverse and contrasting roles autophagy plays in their biology. Furthermore, we review the few studies on stem cells, lysosomal activity, and autophagy. Novel techniques to detect autophagy in primary cells are required to study autophagy in different stem cell types.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "c7f1de0e2862ff82414c05d14d4f55472bd4256b573a987bb117f451c136e4b3",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693168.751822,
+      "end_wall": 1792693178.637008,
+      "error": null
+     }
+    ],
+    "arrival_seq": 91,
+    "start_wall": 1792693168.751822,
+    "start_mono": 362725.946077916,
+    "end_wall": 1792693178.637008,
+    "end_mono": 362735.831316583,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages suggest that Foxk2 regulates autophagy genes in muscle cells and fibroblast cells, as indicated by the text from passage P1. This directly supports the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9880304500,
+     "load_duration": 856839333,
+     "prompt_eval_count": 1407,
+     "prompt_eval_duration": 3202989584,
+     "eval_count": 71,
+     "eval_duration": 4985961297,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:38.632897Z"
+    },
+    "elapsed_s": 9.885,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 91,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:8002887:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 180,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over scientific paper abstracts.\n\nClaim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0d9fe6955b29862c689b09fa7d265ee59af67034515581aec6255e9c5fc3a8a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693161.382422,
+      "end_wall": 1792693164.0734878,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693161.382422,
+    "start_mono": 362718.576638041,
+    "end_wall": 1792693164.0734878,
+    "end_mono": 362721.26771825,
+    "raw_response": "{\"query\": \"Foxk2 regulation of autophagy genes in muscle and fibroblast cells\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2688733458,
+     "load_duration": 1645297292,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 420742708,
+     "eval_count": 28,
+     "eval_duration": 549876875,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:24.07265Z"
+    },
+    "elapsed_s": 2.691,
+    "query_used": "Foxk2 regulation of autophagy genes in muscle and fibroblast cells",
+    "query_source": "json",
+    "query_arrival_seq": 92
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Foxk2 regulation of autophagy genes in muscle and fibroblast cells",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:8002887:0",
+       "score_q": 13493
+      },
+      {
+       "passage_key": "scifact:31882215:0",
+       "score_q": 7433
+      },
+      {
+       "passage_key": "scifact:6227220:0",
+       "score_q": 7259
+      },
+      {
+       "passage_key": "scifact:3504761:0",
+       "score_q": 6569
+      },
+      {
+       "passage_key": "scifact:11903247:0",
+       "score_q": 6182
+      }
+     ],
+     "retrieval_sha256": "5d78d8c418973dbc42bfa08e2b7d7f7f4045b220998531e06d7bed26d18feb65"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "5d78d8c418973dbc42bfa08e2b7d7f7f4045b220998531e06d7bed26d18feb65",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:8002887:0",
+      "content_sha256": "0b21d5806ac6439608571b8c1ee11668ef0309e247e6d2d578d7dd5aba6e329b",
+      "chars": 953
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:31882215:0",
+      "content_sha256": "ccea63a4005776636e6ad9688a713a377eedc0c21626a7c979e0718819d1d511",
+      "chars": 1042
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:6227220:0",
+      "content_sha256": "64bf0522b6e176fb18239c750d943b41868b4a7cc81f0635665a17c38bfc8bfd",
+      "chars": 1059
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:3504761:0",
+      "content_sha256": "cb5134a9b7fc9ad5c61e68f739ea4e6f2404d1328a1cbcc2670cde1ca5eb5426",
+      "chars": 1032
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11903247:0",
+      "content_sha256": "a7a81672a8f87775cc8c6754138843b29974f6d47a77ff0e70b67c4fac23fefc",
+      "chars": 1011
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nEvidence passages from your search for \"Foxk2 regulation of autophagy genes in muscle and fibroblast cells\":\n<<<PASSAGES\n[P1] Foxk proteins repress the initiation of starvation-induced atrophy and autophagy programs\nAutophagy is the primary catabolic process triggered in response to starvation. Although autophagic regulation within the cytosolic compartment is well established, it is becoming clear that nuclear events also regulate the induction or repression of autophagy. Nevertheless, a thorough understanding of the mechanisms by which sequence-specific transcription factors modulate expression of genes required for autophagy is lacking. Here, we identify Foxk proteins (Foxk1 and Foxk2) as transcriptional repressors of autophagy in muscle cells and fibroblasts. Interestingly, Foxk1/2 serve to counter-balance another forkhead transcription factor, Foxo3, which induces an overlapping set of autophagic and atrophic targets in muscle. Foxk1/2 specifically recruits Sin3A-HDAC complexes to restrict acetylation of histone H4 and expression of critical autophagy genes.\n\n[P2] Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrades p62, whose accumulation in autophagy-deficient cells facilitates reprogramming.\n\n[P3] Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine\nDespite growing interest and a recent surge in papers, the role of autophagy in glucose and lipid metabolism is unclear. We produced mice with skeletal muscle–specific deletion of Atg7 (encoding autophagy-related 7). Unexpectedly, these mice showed decreased fat mass and were protected from diet-induced obesity and insulin resistance; this phenotype was accompanied by increased fatty acid oxidation and browning of white adipose tissue (WAT) owing to induction of fibroblast growth factor 21 (Fgf21). Mitochondrial dysfunction induced by autophagy deficiency increased Fgf21 expression through induction of Atf4, a master regulator of the integrated stress response. Mitochondrial respiratory chain inhibitors also induced Fgf21 in an Atf4-dependent manner. We also observed induction of Fgf21, resistance to diet-induced obesity and amelioration of insulin resistance in mice with autophagy deficiency in the liver, another insulin target tissue.\n\n[P4] TAK1-mediated autophagy and fatty acid oxidation prevent hepatosteatosis and tumorigenesis.\nThe MAP kinase kinase kinase TGFβ-activated kinase 1 (TAK1) is activated by TLRs, IL-1, TNF, and TGFβ and in turn activates IKK-NF-κB and JNK, which regulate cell survival, growth, tumorigenesis, and metabolism. TAK1 signaling also upregulates AMPK activity and autophagy. Here, we investigated TAK1-dependent regulation of autophagy, lipid metabolism, and tumorigenesis in the liver. Fasted mice with hepatocyte-specific deletion of Tak1 exhibited severe hepatosteatosis with increased mTORC1 activity and suppression of autophagy compared with their WT counterparts. TAK1-deficient hepatocytes exhibited suppressed AMPK activity and autophagy in response to starvation or metformin treatment; however, ectopic activation of AMPK restored autophagy in these cells. Peroxisome proliferator-activated receptor α (PPARα) target genes and β-oxidation, which regulate hepatic lipid degradation, were also suppressed in hepatocytes lacking TAK1.\n\n[P5] Regulation of autophagy by cytoplasmic p53\nMultiple cellular stressors, including activation of the tumour suppressor p53, can stimulate autophagy. Here we show that deletion, depletion or inhibition of p53 can induce autophagy in human, mouse and nematode cells subjected to knockout, knockdown or pharmacological inhibition of p53. Enhanced autophagy improved the survival of p53-deficient cancer cells under conditions of hypoxia and nutrient depletion, allowing them to maintain high ATP levels. Inhibition of p53 led to autophagy in enucleated cells, and cytoplasmic, not nuclear, p53 was able to repress the enhanced autophagy of p53−/− cells. Many different inducers of autophagy (for example, starvation, rapamycin and toxins affecting the endoplasmic reticulum) stimulated proteasome-mediated degradation of p53 through a pathway relying on the E3 ubiquitin ligase HDM2. Inhibition of p53 degradation prevented the activation of autophagy in several cell lines, in response to several distinct stimuli.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7e8d16b70e318b0946030956d7500519d3dd6addd2ea63e81ae6f3b93cc760ec",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693164.074315,
+      "end_wall": 1792693179.083256,
+      "error": null
+     }
+    ],
+    "arrival_seq": 92,
+    "start_wall": 1792693164.074315,
+    "start_mono": 362721.268546083,
+    "end_wall": 1792693179.083256,
+    "end_mono": 362736.277566791,
+    "raw_response": "{\n  \"reasoning\": \"The claim is refuted based on the evidence provided. Passages P3 and P4 support the idea that Foxk2 does not regulate autophagy genes in muscle cells. Passage P3 suggests that skeletal muscle-specific deletion of Atg7 leads to increased fatty acid oxidation and browning of white adipose tissue, which is associated with the induction of Fgf21, not Foxk2. Passage P4 discusses TAK1's role in autophagy and lipid metabolism in the liver, not Foxk2.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15004720750,
+     "load_duration": 16726458,
+     "prompt_eval_count": 1788,
+     "prompt_eval_duration": 4305763249,
+     "eval_count": 172,
+     "eval_duration": 10235877915,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:39.079748Z"
+    },
+    "elapsed_s": 15.009,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 92,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:6227220:0",
+     "scifact:3504761:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 447,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over scientific paper abstracts.\n\nClaim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0d9fe6955b29862c689b09fa7d265ee59af67034515581aec6255e9c5fc3a8a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693161.382323,
+      "end_wall": 1792693168.676945,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693161.382323,
+    "start_mono": 362718.576539041,
+    "end_wall": 1792693168.676945,
+    "end_mono": 362725.871199958,
+    "raw_response": "{\"query\": \"Foxk2 autophagy muscle cells fibroblasts\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7292069083,
+     "load_duration": 4489855583,
+     "prompt_eval_count": 167,
+     "prompt_eval_duration": 672899583,
+     "eval_count": 14,
+     "eval_duration": 1862615375,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:28.675795Z"
+    },
+    "elapsed_s": 7.295,
+    "query_used": "Foxk2 autophagy muscle cells fibroblasts",
+    "query_source": "json",
+    "query_arrival_seq": 93
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Foxk2 autophagy muscle cells fibroblasts",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27647593:0",
+       "score_q": 775
+      },
+      {
+       "passage_key": "scifact:33507866:1",
+       "score_q": 747
+      },
+      {
+       "passage_key": "scifact:15728433:0",
+       "score_q": 738
+      },
+      {
+       "passage_key": "scifact:21676556:0",
+       "score_q": 737
+      },
+      {
+       "passage_key": "scifact:31882215:0",
+       "score_q": 737
+      }
+     ],
+     "retrieval_sha256": "bf2abe7aef4636ea85689e4e3070aae6e7174136402cbff6aff959cd42d9f7c6"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bf2abe7aef4636ea85689e4e3070aae6e7174136402cbff6aff959cd42d9f7c6",
+    "query_embedding_sha256": "078cfb1ce9ecdddefdbb36b40245024912db696fc812bdb51159b02089fb80ea",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27647593:0",
+      "content_sha256": "1e28c8aada83198b375c7c4d819c834f7330dedf8f01e776830a3d6f679e1565",
+      "chars": 1102
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33507866:1",
+      "content_sha256": "7b3f1c51b86008fe0b1a49ab91e5b2127b4e6ee449653a574d387b9859fad026",
+      "chars": 582
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:15728433:0",
+      "content_sha256": "ded7efbb729a376d4a9fb83823cd3465b10213ab9a16eb56a33ff246eea7c1e7",
+      "chars": 968
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:21676556:0",
+      "content_sha256": "313e4891aafdfc1834cafe37ef61a7937c2adddcb9d96abea5080b96535fb8d1",
+      "chars": 1093
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:31882215:0",
+      "content_sha256": "ccea63a4005776636e6ad9688a713a377eedc0c21626a7c979e0718819d1d511",
+      "chars": 1042
+     }
+    ],
+    "elapsed_s": 0.668
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nEvidence passages from your search for \"Foxk2 autophagy muscle cells fibroblasts\":\n<<<PASSAGES\n[P1] Stromal-epithelial metabolic coupling in cancer: integrating autophagy and metabolism in the tumor microenvironment.\nCancer cells do not exist as pure homogeneous populations in vivo. Instead they are embedded in \"cancer cell nests\" that are surrounded by stromal cells, especially cancer associated fibroblasts. Thus, it is not unreasonable to suspect that stromal fibroblasts could influence the metabolism of adjacent cancer cells, and visa versa. In accordance with this idea, we have recently proposed that the Warburg effect in cancer cells may be due to culturing cancer cells by themselves, out of their normal stromal context or tumor microenvironment. In fact, when cancer cells are co-cultured with fibroblasts, then cancer cells increase their mitochondrial mass, while fibroblasts lose their mitochondria. An in depth analysis of this phenomenon reveals that aggressive cancer cells are \"parasites\" that use oxidative stress as a \"weapon\" to extract nutrients from surrounding stromal cells. Oxidative stress in fibroblasts induces the autophagic destruction of mitochondria, by mitophagy.\n\n[P2] Class III PI3K Vps34 plays an essential role in autophagy and in heart and liver function.\nAblation of Vps34 in the heart of muscle creatine kinase-Cre;Vps34(f/f) mice led to cardiomegaly and decreased contractility. In addition, while amino acid-stimulated mTOR activation was suppressed in the absence of Vps34, the steady-state level of mTOR signaling was not affected in Vps34-null MEFs, liver, or cardiomyocytes. Taken together, our results indicate that Vps34 plays an essential role in regulating functional autophagy and is indispensable for normal liver and heart function.\n\n[P3] Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging\nAutophagy is a constitutive lysosomal catabolic pathway that degrades damaged organelles and protein aggregates. Stem cells are characterized by self-renewal, pluripotency, and quiescence; their long life span, limited capacity to dilute cellular waste and spent organelles due to quiescence, along with their requirement for remodeling in order to differentiate, all suggest that they require autophagy more than other cell types. Here, we review the current literature on the role of autophagy in embryonic and adult stem cells, including hematopoietic, mesenchymal, and neuronal stem cells, highlighting the diverse and contrasting roles autophagy plays in their biology. Furthermore, we review the few studies on stem cells, lysosomal activity, and autophagy. Novel techniques to detect autophagy in primary cells are required to study autophagy in different stem cell types.\n\n[P4] Midbody accumulation through evasion of autophagy contributes to cellular reprogramming and tumorigenicity\nThe midbody is a singular organelle formed between daughter cells during cytokinesis and required for their final separation. Midbodies persist in cells long after division as midbody derivatives (MBds), but their fate is unclear. Here we show that MBds are inherited asymmetrically by the daughter cell with the older centrosome. They selectively accumulate in stem cells, induced pluripotent stem cells and potential cancer ‘stem cells’ in vivo and in vitro. MBd loss accompanies stem-cell differentiation, and involves autophagic degradation mediated by binding of the autophagic receptor NBR1 to the midbody protein CEP55. Differentiating cells and normal dividing cells do not accumulate MBds and possess high autophagic activity. Stem cells and cancer cells accumulate MBds by evading autophagosome encapsulation and exhibit low autophagic activity. MBd enrichment enhances reprogramming to induced pluripotent stem cells and increases the in vitro tumorigenicity of cancer cells.\n\n[P5] Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrades p62, whose accumulation in autophagy-deficient cells facilitates reprogramming.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "95de990afebb7aa13ee9d8fd50c5c866c8977ebce5ace465994b1207ea524524",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693169.345506,
+      "end_wall": 1792693194.2777002,
+      "error": null
+     }
+    ],
+    "arrival_seq": 93,
+    "start_wall": 1792693169.345506,
+    "start_mono": 362726.53976575,
+    "end_wall": 1792693194.2777002,
+    "end_mono": 362751.472092958,
+    "raw_response": "{\"reasoning\": \"Several passages support the claim that Foxk2 regulates autophagy genes in muscle cells and fibroblast cells. For example,  P4 cites studies on midbody accumulation and its link to autophagy regulation in stem cells and cancer cells.  Further, P5 mentions the involvement of mTORC1 and autophagy in reprogramming, highlighting the regulatory role of Foxk2 in this process.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\", \"P5\"], \"confidence\": \"high\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24927084667,
+     "load_duration": 13416790334,
+     "prompt_eval_count": 1249,
+     "prompt_eval_duration": 5118260667,
+     "eval_count": 105,
+     "eval_duration": 4173124546,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:54.273304Z"
+    },
+    "elapsed_s": 24.932,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 93,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:21676556:0",
+     "scifact:31882215:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 372,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over scientific paper abstracts.\n\nClaim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "0d9fe6955b29862c689b09fa7d265ee59af67034515581aec6255e9c5fc3a8a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693161.382051,
+      "end_wall": 1792693163.300163,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693161.382051,
+    "start_mono": 362718.576267166,
+    "end_wall": 1792693163.300163,
+    "end_mono": 362720.494389125,
+    "raw_response": "{\"query\": \"Foxk2 AND autophagy genes AND muscle cells AND fibroblast cells\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1915064833,
+     "load_duration": 41750458,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 481147584,
+     "eval_count": 24,
+     "eval_duration": 1325469584,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:23.29914Z"
+    },
+    "elapsed_s": 1.918,
+    "query_used": "Foxk2 AND autophagy genes AND muscle cells AND fibroblast cells",
+    "query_source": "json",
+    "query_arrival_seq": 91
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Foxk2 AND autophagy genes AND muscle cells AND fibroblast cells",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27647593:0",
+       "score_q": 785
+      },
+      {
+       "passage_key": "scifact:33507866:1",
+       "score_q": 775
+      },
+      {
+       "passage_key": "scifact:8002887:0",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:31882215:0",
+       "score_q": 770
+      },
+      {
+       "passage_key": "scifact:33507866:0",
+       "score_q": 767
+      }
+     ],
+     "retrieval_sha256": "e5c5988984da750e772368301bb184fa0154f9dcd8632e4613c7b9762872f031"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e5c5988984da750e772368301bb184fa0154f9dcd8632e4613c7b9762872f031",
+    "query_embedding_sha256": "fe7a2b8a08f251ed102dadd6584785f3874255ea1ffe3c4f19e6302e2444955e",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27647593:0",
+      "content_sha256": "1e28c8aada83198b375c7c4d819c834f7330dedf8f01e776830a3d6f679e1565",
+      "chars": 1102
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:33507866:1",
+      "content_sha256": "7b3f1c51b86008fe0b1a49ab91e5b2127b4e6ee449653a574d387b9859fad026",
+      "chars": 582
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8002887:0",
+      "content_sha256": "0b21d5806ac6439608571b8c1ee11668ef0309e247e6d2d578d7dd5aba6e329b",
+      "chars": 953
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:31882215:0",
+      "content_sha256": "ccea63a4005776636e6ad9688a713a377eedc0c21626a7c979e0718819d1d511",
+      "chars": 1042
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:33507866:0",
+      "content_sha256": "d0d36cbdd410fcb2052db0d9eea8723a9e317be38b91e620561f29f309f4638c",
+      "chars": 989
+     }
+    ],
+    "elapsed_s": 6.0155
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Foxk2 regulates autophagy genes in muscle cells and fibroblast cells.\n\nEvidence passages from your search for \"Foxk2 AND autophagy genes AND muscle cells AND fibroblast cells\":\n<<<PASSAGES\n[P1] Stromal-epithelial metabolic coupling in cancer: integrating autophagy and metabolism in the tumor microenvironment.\nCancer cells do not exist as pure homogeneous populations in vivo. Instead they are embedded in \"cancer cell nests\" that are surrounded by stromal cells, especially cancer associated fibroblasts. Thus, it is not unreasonable to suspect that stromal fibroblasts could influence the metabolism of adjacent cancer cells, and visa versa. In accordance with this idea, we have recently proposed that the Warburg effect in cancer cells may be due to culturing cancer cells by themselves, out of their normal stromal context or tumor microenvironment. In fact, when cancer cells are co-cultured with fibroblasts, then cancer cells increase their mitochondrial mass, while fibroblasts lose their mitochondria. An in depth analysis of this phenomenon reveals that aggressive cancer cells are \"parasites\" that use oxidative stress as a \"weapon\" to extract nutrients from surrounding stromal cells. Oxidative stress in fibroblasts induces the autophagic destruction of mitochondria, by mitophagy.\n\n[P2] Class III PI3K Vps34 plays an essential role in autophagy and in heart and liver function.\nAblation of Vps34 in the heart of muscle creatine kinase-Cre;Vps34(f/f) mice led to cardiomegaly and decreased contractility. In addition, while amino acid-stimulated mTOR activation was suppressed in the absence of Vps34, the steady-state level of mTOR signaling was not affected in Vps34-null MEFs, liver, or cardiomyocytes. Taken together, our results indicate that Vps34 plays an essential role in regulating functional autophagy and is indispensable for normal liver and heart function.\n\n[P3] Foxk proteins repress the initiation of starvation-induced atrophy and autophagy programs\nAutophagy is the primary catabolic process triggered in response to starvation. Although autophagic regulation within the cytosolic compartment is well established, it is becoming clear that nuclear events also regulate the induction or repression of autophagy. Nevertheless, a thorough understanding of the mechanisms by which sequence-specific transcription factors modulate expression of genes required for autophagy is lacking. Here, we identify Foxk proteins (Foxk1 and Foxk2) as transcriptional repressors of autophagy in muscle cells and fibroblasts. Interestingly, Foxk1/2 serve to counter-balance another forkhead transcription factor, Foxo3, which induces an overlapping set of autophagic and atrophic targets in muscle. Foxk1/2 specifically recruits Sin3A-HDAC complexes to restrict acetylation of histone H4 and expression of critical autophagy genes.\n\n[P4] Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrades p62, whose accumulation in autophagy-deficient cells facilitates reprogramming.\n\n[P5] Class III PI3K Vps34 plays an essential role in autophagy and in heart and liver function.\nA critical regulator of autophagy is the Class III PI3K Vps34 (also called PIK3C3). Although Vps34 is known to play an essential role in autophagy in yeast, its role in mammals remains elusive. To elucidate the physiological function of Vps34 and to determine its precise role in autophagy, we have generated Vps34(f/f) mice, in which expression of Cre recombinase results in a deletion of exon 4 of Vps34 and a frame shift causing a deletion of 755 of the 887 amino acids of Vps34. Acute ablation of Vps34 in MEFs upon adenoviral Cre infection results in a diminishment of localized generation of phosphatidylinositol 3-phosphate and blockade of both endocytic and autophagic degradation. Starvation-induced autophagosome formation is blocked in both Vps34-null MEFs and liver. Liver-specific Albumin-Cre;Vps34(f/f) mice developed hepatomegaly and hepatic steatosis, and impaired protein turnover.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f34d6029a261fdd34453025143530e59ec1a6722b01ab7626818f79b4d94add4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693169.316195,
+      "end_wall": 1792693195.742754,
+      "error": null
+     }
+    ],
+    "arrival_seq": 94,
+    "start_wall": 1792693169.316195,
+    "start_mono": 362726.510454208,
+    "end_wall": 1792693195.742754,
+    "end_mono": 362752.937154291,
+    "raw_response": "{\"reasoning\": \"The claim that Foxk2 regulates autophagy genes in muscle cells and fibroblast cells is supported by passage P3, which states that Foxk proteins (Foxk1 and Foxk2) repress the initiation of starvation-induced atrophy and autophagy programs in these cells. The passage also mentions that Foxk1/2 specifically recruit Sin3A-HDAC complexes to restrict acetylation of histone H4 and expression of critical autophagy genes.\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P3\"],\n\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26422065792,
+     "load_duration": 11460563458,
+     "prompt_eval_count": 1593,
+     "prompt_eval_duration": 7664509751,
+     "eval_count": 140,
+     "eval_duration": 6899270088,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:19:55.738762Z"
+    },
+    "elapsed_s": 26.427,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 94,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:8002887:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 416,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "llama3.2:3b": "6148cb0ecba34cd79ca794ed8c66324807a6575f8b2230504c2b1d41a7bd9c0e",
+  "qwen2.5:3b": "766564d6882925e426eafa9058ed5c0aa375ae7421c7fe37ae976a702310f354",
+  "phi3:mini": "5d78d8c418973dbc42bfa08e2b7d7f7f4045b220998531e06d7bed26d18feb65",
+  "gemma2:2b": "bf2abe7aef4636ea85689e4e3070aae6e7174136402cbff6aff959cd42d9f7c6",
+  "mistral": "e5c5988984da750e772368301bb184fa0154f9dcd8632e4613c7b9762872f031"
+ },
+ "item_start_wall": 1792693161.381849,
+ "item_wall_s": 34.361,
+ "ollama_ps_samples": [
+  [
+   1792693161.382,
+   [
+    "qwen2.5:3b",
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693163.389,
+   [
+    "phi3:mini",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693165.396,
+   [
+    "qwen2.5:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693167.401,
+   [
+    "gemma2:2b",
+    "phi3:mini",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792693169.403,
+   [
+    "nomic-embed-text:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693171.408,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792693173.412,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792693175.414,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792693177.42,
+   [
+    "llama3.2:3b",
+    "phi3:mini",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792693179.426,
+   [
+    "phi3:mini",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693181.431,
+   [
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693183.436,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693185.443,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693187.449,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693189.453,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693191.457,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693193.462,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792693195.469,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "llama3.2:3b"
+   ]
+  ]
+ ]
+}

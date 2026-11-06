@@ -1,0 +1,1233 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever182269",
+ "order": 94,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever182269",
+  "order": 94,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Saturn Corporation is a subsidiary of General Motor."
+ },
+ "item_view_sha256": "b109960d0729f6102aca2e0198898f4e7de7f632630a3243f2771aea00028115",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:2.4b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "exaone3.5:2.4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:2.4b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Saturn Corporation is a subsidiary of General Motor.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "ab57f9c010d727dbf6cc0014adda4fe7e4aa7e5cd13302fa5551b60a44930137",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836278.4924119,
+      "end_wall": 1792836279.024853,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836278.4924119,
+    "start_mono": 505835.350008,
+    "end_wall": 1792836279.024853,
+    "end_mono": 505835.882376125,
+    "raw_response": "{\"query\": \"Saturn Corporation subsidiary General Motor\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 529933125,
+     "load_duration": 103182083,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 136497875,
+     "eval_count": 12,
+     "eval_duration": 175627084,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:39.024328Z"
+    },
+    "elapsed_s": 0.532,
+    "query_used": "Saturn Corporation subsidiary General Motor",
+    "query_source": "json",
+    "query_arrival_seq": 470
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Saturn Corporation subsidiary General Motor",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Saturn_Corporation:0",
+       "score_q": 12790
+      },
+      {
+       "passage_key": "fever17:Delta_Motor_Corporation:1",
+       "score_q": 11393
+      },
+      {
+       "passage_key": "fever17:Delta_Motors:0",
+       "score_q": 11364
+      },
+      {
+       "passage_key": "fever17:Saturn_I4_engine:0",
+       "score_q": 11104
+      },
+      {
+       "passage_key": "fever17:Toyota_Motor_East_Japan:0",
+       "score_q": 10724
+      }
+     ],
+     "retrieval_sha256": "028c0ffd4efe1edf292ae42b553577b57aed834993d66d8823d67f3ccc027c6a"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "028c0ffd4efe1edf292ae42b553577b57aed834993d66d8823d67f3ccc027c6a",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Saturn_Corporation:0",
+      "content_sha256": "d9c9b32d5fd973ac42d4f78c7b9275de068fa871480f6f8733df14270ebbf728",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Delta_Motor_Corporation:1",
+      "content_sha256": "5bdbb2b041fce225d0bf495799e51b90de68e7f5cc7e01992dc2a6ee96e77a82",
+      "chars": 283
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Delta_Motors:0",
+      "content_sha256": "0ddc54a3dd52829b009ce8e9cd18a1fbc0257ea0a12b039119386ebdd6c4187a",
+      "chars": 363
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saturn_I4_engine:0",
+      "content_sha256": "de1547b12bc3392e67a904dee16c48eea9de36a76bc1b5d3c74088c2348c005c",
+      "chars": 780
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Toyota_Motor_East_Japan:0",
+      "content_sha256": "9ec6a334157697ce53f877beb842a3116994d00cf78c2e4f67559535beeae2b9",
+      "chars": 242
+     }
+    ],
+    "elapsed_s": 0.0218
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Saturn Corporation is a subsidiary of General Motor.\n\nEvidence passages from your search for \"Saturn Corporation subsidiary General Motor\":\n<<<PASSAGES\n[P1] Saturn Corporation\nThe Saturn Corporation , also known as Saturn LLC , is a registered trademark established on January 7 , 1985 , as a subsidiary of General Motors . The company marketed itself as a `` different kind of car company '' and operated somewhat independently from its parent company for a time with its own assembly plant in Spring Hill , Tennessee ; unique models ; and a separate retailer network , and was GM 's attempt to compete with Japanese automakers . Following the withdrawal of a bid by Penske Automotive to acquire Saturn in September 2009 , General Motors discontinued the Saturn brand and ended its outstanding franchises on October 31 , 2010 . All new production was halted on October 7 , 2009 .\n\n[P2] Delta Motor Corporation\nFollowing the transition to democracy in the 1990s , GM acquired a 49 percent stake in the company in 1997 , and in 2004 the company once again became a wholly owned subsidiary of General Motors , reverting to its original name , General Motors South Africa .\n\n[P3] Delta Motors\nDelta Motors can mean any of the following : Delta Motors Corporation , a now defunct automobile company from the Philippines Delta Motor Corporation , now a fully owned subsidiary of General Motors South Africa Delta Motor Car Company , a now defunct automobile company from the United States Delta Motorsport Delta Veicoli Speciali of Turin , Italy\n\n[P4] Saturn I4 engine\nThis article is about the engine series produced by the Saturn subsidiary of General Motors . For the engine series produced by Mitsubishi Motors , please see Mitsubishi Saturn engine . The powerplant used in Saturn S-series automobiles was a straight-4 aluminum piston engine produced by Saturn , a subsidiary of General Motors . The engine was only used in the Saturn S-series line of vehicles ( SL , SC , SW ) from 1991 through 2002 . It was available in chain-driven SOHC or DOHC variants . This was an innovative engine for the time using the lost foam casting process for the engine block and cylinder head . Saturn was one of the first to use this casting process in a full-scale high-production environment . Both engine types used the same engine block .\n\n[P5] Toyota Motor East Japan\nToyota Motor East Japan is a manufacturing subsidiary of the Toyota group based in Japan . It was created in July 2012 by the merger of Kanto Auto Works Ltd , Central Motor Co. Ltd and Toyota Motor Tohoku Corporation .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f44ac96244ea5681470d8102484542c2f86c1b0e45c9d4708dc064a71938a651",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836279.046918,
+      "end_wall": 1792836284.663795,
+      "error": null
+     }
+    ],
+    "arrival_seq": 470,
+    "start_wall": 1792836279.046918,
+    "start_mono": 505835.904438083,
+    "end_wall": 1792836284.663795,
+    "end_mono": 505841.520667375,
+    "raw_response": "{\"reasoning\": \"The evidence clearly states that Saturn Corporation is a subsidiary of General Motors.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5613930042,
+     "load_duration": 58096792,
+     "prompt_eval_count": 859,
+     "prompt_eval_duration": 1225930375,
+     "eval_count": 48,
+     "eval_duration": 3888592250,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:44.662446Z"
+    },
+    "elapsed_s": 5.616,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 470,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Saturn_Corporation:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 86,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Saturn Corporation is a subsidiary of General Motor.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "ab57f9c010d727dbf6cc0014adda4fe7e4aa7e5cd13302fa5551b60a44930137",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836278.492737,
+      "end_wall": 1792836282.174199,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836278.492737,
+    "start_mono": 505835.350333166,
+    "end_wall": 1792836282.174199,
+    "end_mono": 505839.031330791,
+    "raw_response": "{\"query\": \"saturn corporation subsidiary of general motors\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3678087708,
+     "load_duration": 2090724583,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 641694834,
+     "eval_count": 13,
+     "eval_duration": 835146042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:42.172794Z"
+    },
+    "elapsed_s": 3.681,
+    "query_used": "saturn corporation subsidiary of general motors",
+    "query_source": "json",
+    "query_arrival_seq": 472
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "saturn corporation subsidiary of general motors",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Saturn_Corporation:0",
+       "score_q": 16665
+      },
+      {
+       "passage_key": "fever17:Saturn_I4_engine:0",
+       "score_q": 15479
+      },
+      {
+       "passage_key": "fever17:Mitsubishi_Saturn_engine:0",
+       "score_q": 14697
+      },
+      {
+       "passage_key": "fever17:Canada_Development_Investment_Corporation:1",
+       "score_q": 14280
+      },
+      {
+       "passage_key": "fever17:Delta_Motor_Corporation:1",
+       "score_q": 13218
+      }
+     ],
+     "retrieval_sha256": "a9e9c63f646bef3d06e227459a5ffd98d1793dbcdcc02be129fdd378f41fd186"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a9e9c63f646bef3d06e227459a5ffd98d1793dbcdcc02be129fdd378f41fd186",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Saturn_Corporation:0",
+      "content_sha256": "d9c9b32d5fd973ac42d4f78c7b9275de068fa871480f6f8733df14270ebbf728",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Saturn_I4_engine:0",
+      "content_sha256": "de1547b12bc3392e67a904dee16c48eea9de36a76bc1b5d3c74088c2348c005c",
+      "chars": 780
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Mitsubishi_Saturn_engine:0",
+      "content_sha256": "c59f76a36859d9d1ef359b619988055f4d7eabd539f6f60db796b76121af6d79",
+      "chars": 572
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Canada_Development_Investment_Corporation:1",
+      "content_sha256": "eeb486b42256ed655559356192be84237e50fed58b08cd30164104c5fba09232",
+      "chars": 155
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Delta_Motor_Corporation:1",
+      "content_sha256": "5bdbb2b041fce225d0bf495799e51b90de68e7f5cc7e01992dc2a6ee96e77a82",
+      "chars": 283
+     }
+    ],
+    "elapsed_s": 0.0419
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Saturn Corporation is a subsidiary of General Motor.\n\nEvidence passages from your search for \"saturn corporation subsidiary of general motors\":\n<<<PASSAGES\n[P1] Saturn Corporation\nThe Saturn Corporation , also known as Saturn LLC , is a registered trademark established on January 7 , 1985 , as a subsidiary of General Motors . The company marketed itself as a `` different kind of car company '' and operated somewhat independently from its parent company for a time with its own assembly plant in Spring Hill , Tennessee ; unique models ; and a separate retailer network , and was GM 's attempt to compete with Japanese automakers . Following the withdrawal of a bid by Penske Automotive to acquire Saturn in September 2009 , General Motors discontinued the Saturn brand and ended its outstanding franchises on October 31 , 2010 . All new production was halted on October 7 , 2009 .\n\n[P2] Saturn I4 engine\nThis article is about the engine series produced by the Saturn subsidiary of General Motors . For the engine series produced by Mitsubishi Motors , please see Mitsubishi Saturn engine . The powerplant used in Saturn S-series automobiles was a straight-4 aluminum piston engine produced by Saturn , a subsidiary of General Motors . The engine was only used in the Saturn S-series line of vehicles ( SL , SC , SW ) from 1991 through 2002 . It was available in chain-driven SOHC or DOHC variants . This was an innovative engine for the time using the lost foam casting process for the engine block and cylinder head . Saturn was one of the first to use this casting process in a full-scale high-production environment . Both engine types used the same engine block .\n\n[P3] Mitsubishi Saturn engine\n'' This article is about the engine series produced by Mitsubishi Motors . For the engine series produced by the Saturn subsidiary of General Motors , please see Saturn I4 engine . The Mitsubishi Saturn or 4G3 engine is series of overhead camshaft ( OHC ) straight-4 internal combustion engines introduced by Mitsubishi Motors in 1969 , along with the Astron , Orion , and Sirius . Displacement ranges from 1.2 L to 1.8 L . The early versions have chain driven valvetrain while the later versions are belt driven and equipped with balance shafts .\n\n[P4] Canada Development Investment Corporation\nIn 2009 , the corporation also , through its subsidiary 7176384 Canada Inc. , purchased 7.9 % of General Motors .\n\n[P5] Delta Motor Corporation\nFollowing the transition to democracy in the 1990s , GM acquired a 49 percent stake in the company in 1997 , and in 2004 the company once again became a wholly owned subsidiary of General Motors , reverting to its original name , General Motors South Africa .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2f7ed045b74d849c6586412d54767421104b364f4ff6d3acc65c963bd746de8c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836282.2164721,
+      "end_wall": 1792836294.48428,
+      "error": null
+     }
+    ],
+    "arrival_seq": 471,
+    "start_wall": 1792836282.2164721,
+    "start_mono": 505839.073601083,
+    "end_wall": 1792836294.48428,
+    "end_mono": 505851.340418708,
+    "raw_response": "{\"reasoning\": \"Saturn Corporation was a subsidiary of General Motors as evidenced by passage P1 which states that Saturn Corporation, established on January 7, 1985, was a subsidiary of General Motors. This is further supported by passage P4 indicating that in 2009, a subsidiary of GM purchased 7.9% of General Motors, which implies the relationship between Saturn and GM. Additionally, passage P5 shows GM's ownership of Delta Motor Corporation, a South African subsidiary, which confirms GM's practice of having subsidiaries. Therefore, based on these passages and my own knowledge, Saturn Corporation was indeed\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12263798250,
+     "load_duration": 51763250,
+     "prompt_eval_count": 792,
+     "prompt_eval_duration": 2658361041,
+     "eval_count": 151,
+     "eval_duration": 8108818215,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:54.482163Z"
+    },
+    "elapsed_s": 12.267,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 471,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Saturn_Corporation:0",
+     "fever17:Canada_Development_Investment_Corporation:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Saturn Corporation is a subsidiary of General Motor.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "ab57f9c010d727dbf6cc0014adda4fe7e4aa7e5cd13302fa5551b60a44930137",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836278.492633,
+      "end_wall": 1792836281.2478,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836278.492633,
+    "start_mono": 505835.350228833,
+    "end_wall": 1792836281.2478,
+    "end_mono": 505838.105040166,
+    "raw_response": "{\"query\": \"Saturn Corporation ownership structure\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2752092292,
+     "load_duration": 1173033292,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 712133166,
+     "eval_count": 11,
+     "eval_duration": 794262873,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:41.246768Z"
+    },
+    "elapsed_s": 2.755,
+    "query_used": "Saturn Corporation ownership structure",
+    "query_source": "json",
+    "query_arrival_seq": 471
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Saturn Corporation ownership structure",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Saturn_Cycling_Team:0",
+       "score_q": 9443
+      },
+      {
+       "passage_key": "fever17:Saturn_Electronics:0",
+       "score_q": 9387
+      },
+      {
+       "passage_key": "fever17:Development_Bank_of_Japan:0",
+       "score_q": 9040
+      },
+      {
+       "passage_key": "fever17:Saturn_MP_transmission:0",
+       "score_q": 8629
+      },
+      {
+       "passage_key": "fever17:Saturn_Corporation:0",
+       "score_q": 8588
+      }
+     ],
+     "retrieval_sha256": "7953c43bd359362b9ed17c6b2ce6f1763ef792c436bf7c7f4741d2efc4421a53"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7953c43bd359362b9ed17c6b2ce6f1763ef792c436bf7c7f4741d2efc4421a53",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Saturn_Cycling_Team:0",
+      "content_sha256": "305fc9d4d39d1e442f610e723cafc53d4d9a179d78e335ff276ed91d1a420347",
+      "chars": 177
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Saturn_Electronics:0",
+      "content_sha256": "9c623d64b1b86a5fe6fbab5746607544ce31ba4684b16f4e3596af89756c34a8",
+      "chars": 123
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Development_Bank_of_Japan:0",
+      "content_sha256": "09a7ac52c82f3b67a35fe2144826314187250e1442115251bf01474c996f36b2",
+      "chars": 262
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saturn_MP_transmission:0",
+      "content_sha256": "8d1e581095a092b44862de0d67cf175883ad1dc4c0cb997d351422e909b6ee6c",
+      "chars": 326
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Saturn_Corporation:0",
+      "content_sha256": "d9c9b32d5fd973ac42d4f78c7b9275de068fa871480f6f8733df14270ebbf728",
+      "chars": 723
+     }
+    ],
+    "elapsed_s": 0.0187
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Saturn Corporation is a subsidiary of General Motor.\n\nEvidence passages from your search for \"Saturn Corporation ownership structure\":\n<<<PASSAGES\n[P1] Saturn Cycling Team\nThe Saturn Cycling Team was an American cycling team that existed from 1992 to 2003 . It was managed by Tom Schuler and sponsored by the Saturn Corporation .\n\n[P2] Saturn Electronics\nSaturn Electronics Corporation is a PCB Manufacturing firm based in Romulus , Michigan , United States .\n\n[P3] Development Bank of Japan\nis a Japanese corporation incorporated on 1 October 2008 under the Development Bank of Japan Inc. . Law ( Law No. 85 of 2007 ) . Current ownership structure of DBJ is solely owned by the Government of Japan through Minister of Finance .\n\n[P4] Saturn MP transmission\nThe Saturn MP Transmission were a series of 5-speed manual and 4-speed automatic transmissions that were manufactured by Saturn Corporation exclusively for the S-Series . They were designed for transverse engine applications and was deployed in vehicles that output up to 122 ft · lbf of engine torque .\n\n[P5] Saturn Corporation\nThe Saturn Corporation , also known as Saturn LLC , is a registered trademark established on January 7 , 1985 , as a subsidiary of General Motors . The company marketed itself as a `` different kind of car company '' and operated somewhat independently from its parent company for a time with its own assembly plant in Spring Hill , Tennessee ; unique models ; and a separate retailer network , and was GM 's attempt to compete with Japanese automakers . Following the withdrawal of a bid by Penske Automotive to acquire Saturn in September 2009 , General Motors discontinued the Saturn brand and ended its outstanding franchises on October 31 , 2010 . All new production was halted on October 7 , 2009 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7de7fa27a9106f399123c6d9c7eb162cc084bb5e7796037e0d6a4cf7f8adb53b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836281.266737,
+      "end_wall": 1792836295.000701,
+      "error": null
+     }
+    ],
+    "arrival_seq": 472,
+    "start_wall": 1792836281.266737,
+    "start_mono": 505838.123975666,
+    "end_wall": 1792836295.000701,
+    "end_mono": 505851.856811583,
+    "raw_response": "{\n  \"reasoning\": \"The claim that Saturn Corporation is a subsidiary of General Motor is refuted by the evidence passages. Saturn Corporation was established as a separate subsidiary of General Motors in 1985 (P5). However, the Saturn Cycling Team and Saturn Electronics (P1, P2) are unrelated to each other or to the automobile industry. The Saturn MP Transmission (P4) is also a product of Saturn Corporation, not General Motors. Saturn Corporation was discontinued by General Motors in 2010, not acquired. The ownership of the Development Bank of Japan (P3) is solely by the Government of Japan, unrelated to either.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13730158083,
+     "load_duration": 6055863375,
+     "prompt_eval_count": 717,
+     "prompt_eval_duration": 1389046417,
+     "eval_count": 189,
+     "eval_duration": 5389754700,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:54.998853Z"
+    },
+    "elapsed_s": 13.733,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 472,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Saturn_Corporation:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:2.4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Saturn Corporation is a subsidiary of General Motor.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "ab57f9c010d727dbf6cc0014adda4fe7e4aa7e5cd13302fa5551b60a44930137",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836278.492853,
+      "end_wall": 1792836282.046339,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836282.046413,
+      "end_wall": 1792836288.5886662,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836288.588724,
+      "end_wall": 1792836296.929237,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "start_wall": 1792836278.492853,
+    "start_mono": null,
+    "end_wall": 1792836296.929237,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "query_used": "Saturn Corporation is a subsidiary of General Motor.",
+    "query_source": "fallback_question",
+    "query_arrival_seq": 474
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Saturn Corporation is a subsidiary of General Motor.",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Saturn_Corporation:0",
+       "score_q": 12790
+      },
+      {
+       "passage_key": "fever17:Delta_Motor_Corporation:1",
+       "score_q": 11393
+      },
+      {
+       "passage_key": "fever17:Delta_Motors:0",
+       "score_q": 11364
+      },
+      {
+       "passage_key": "fever17:Saturn_I4_engine:0",
+       "score_q": 11104
+      },
+      {
+       "passage_key": "fever17:Toyota_Motor_East_Japan:0",
+       "score_q": 10724
+      }
+     ],
+     "retrieval_sha256": "798c76f8b7ece90c2ba1e7caf51b969b578a8452e8cf0bbc636dae13863cfd0f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "798c76f8b7ece90c2ba1e7caf51b969b578a8452e8cf0bbc636dae13863cfd0f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Saturn_Corporation:0",
+      "content_sha256": "d9c9b32d5fd973ac42d4f78c7b9275de068fa871480f6f8733df14270ebbf728",
+      "chars": 723
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Delta_Motor_Corporation:1",
+      "content_sha256": "5bdbb2b041fce225d0bf495799e51b90de68e7f5cc7e01992dc2a6ee96e77a82",
+      "chars": 283
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Delta_Motors:0",
+      "content_sha256": "0ddc54a3dd52829b009ce8e9cd18a1fbc0257ea0a12b039119386ebdd6c4187a",
+      "chars": 363
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saturn_I4_engine:0",
+      "content_sha256": "de1547b12bc3392e67a904dee16c48eea9de36a76bc1b5d3c74088c2348c005c",
+      "chars": 780
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Toyota_Motor_East_Japan:0",
+      "content_sha256": "9ec6a334157697ce53f877beb842a3116994d00cf78c2e4f67559535beeae2b9",
+      "chars": 242
+     }
+    ],
+    "elapsed_s": 0.0347
+   },
+   "answer_turn": {
+    "model": "exaone3.5:2.4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Saturn Corporation is a subsidiary of General Motor.\n\nEvidence passages from your search for \"Saturn Corporation is a subsidiary of General Motor.\":\n<<<PASSAGES\n[P1] Saturn Corporation\nThe Saturn Corporation , also known as Saturn LLC , is a registered trademark established on January 7 , 1985 , as a subsidiary of General Motors . The company marketed itself as a `` different kind of car company '' and operated somewhat independently from its parent company for a time with its own assembly plant in Spring Hill , Tennessee ; unique models ; and a separate retailer network , and was GM 's attempt to compete with Japanese automakers . Following the withdrawal of a bid by Penske Automotive to acquire Saturn in September 2009 , General Motors discontinued the Saturn brand and ended its outstanding franchises on October 31 , 2010 . All new production was halted on October 7 , 2009 .\n\n[P2] Delta Motor Corporation\nFollowing the transition to democracy in the 1990s , GM acquired a 49 percent stake in the company in 1997 , and in 2004 the company once again became a wholly owned subsidiary of General Motors , reverting to its original name , General Motors South Africa .\n\n[P3] Delta Motors\nDelta Motors can mean any of the following : Delta Motors Corporation , a now defunct automobile company from the Philippines Delta Motor Corporation , now a fully owned subsidiary of General Motors South Africa Delta Motor Car Company , a now defunct automobile company from the United States Delta Motorsport Delta Veicoli Speciali of Turin , Italy\n\n[P4] Saturn I4 engine\nThis article is about the engine series produced by the Saturn subsidiary of General Motors . For the engine series produced by Mitsubishi Motors , please see Mitsubishi Saturn engine . The powerplant used in Saturn S-series automobiles was a straight-4 aluminum piston engine produced by Saturn , a subsidiary of General Motors . The engine was only used in the Saturn S-series line of vehicles ( SL , SC , SW ) from 1991 through 2002 . It was available in chain-driven SOHC or DOHC variants . This was an innovative engine for the time using the lost foam casting process for the engine block and cylinder head . Saturn was one of the first to use this casting process in a full-scale high-production environment . Both engine types used the same engine block .\n\n[P5] Toyota Motor East Japan\nToyota Motor East Japan is a manufacturing subsidiary of the Toyota group based in Japan . It was created in July 2012 by the merger of Kanto Auto Works Ltd , Central Motor Co. Ltd and Toyota Motor Tohoku Corporation .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8ea0d8fd99eeaca039029893a5b5d1dfbbff1143be6880e9598b2910c957d887",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836296.964525,
+      "end_wall": 1792836298.628743,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836298.628818,
+      "end_wall": 1792836300.2860868,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     },
+     {
+      "start_wall": 1792836300.286174,
+      "end_wall": 1792836301.955911,
+      "error": "<HTTPError 500: 'Internal Server Error'>"
+     }
+    ],
+    "arrival_seq": 473,
+    "start_wall": 1792836296.964525,
+    "start_mono": null,
+    "end_wall": 1792836301.955911,
+    "end_mono": null,
+    "raw_response": "",
+    "ollama_meta": null,
+    "error": "<HTTPError 500: 'Internal Server Error'>",
+    "n_attempts": 3,
+    "elapsed_s": null,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 473,
+   "parsed": {
+    "status": "request_error",
+    "answer": null,
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": null,
+    "reasoning_chars": null,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_2.4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Saturn Corporation is a subsidiary of General Motor.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "ab57f9c010d727dbf6cc0014adda4fe7e4aa7e5cd13302fa5551b60a44930137",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792836278.4925282,
+      "end_wall": 1792836287.29576,
+      "error": null
+     }
+    ],
+    "start_wall": 1792836278.4925282,
+    "start_mono": 505835.350123833,
+    "end_wall": 1792836287.29576,
+    "end_mono": 505844.152395583,
+    "raw_response": "{\"query\": \"Saturn Corporation ownership\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8799329334,
+     "load_duration": 7955340459,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 338940500,
+     "eval_count": 10,
+     "eval_duration": 301242041,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:04:47.294569Z"
+    },
+    "elapsed_s": 8.802,
+    "query_used": "Saturn Corporation ownership",
+    "query_source": "json",
+    "query_arrival_seq": 473
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Saturn Corporation ownership",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Saturn_Cycling_Team:0",
+       "score_q": 9443
+      },
+      {
+       "passage_key": "fever17:Saturn_Electronics:0",
+       "score_q": 9387
+      },
+      {
+       "passage_key": "fever17:Saturn_MP_transmission:0",
+       "score_q": 8629
+      },
+      {
+       "passage_key": "fever17:Saturn_Corporation:0",
+       "score_q": 8588
+      },
+      {
+       "passage_key": "fever17:Saturn_-LRB-store-RRB-:0",
+       "score_q": 7678
+      }
+     ],
+     "retrieval_sha256": "6de28a2e9b9a0361bba721acc62227514dbe3541adfa1b96497814355da67ae0"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6de28a2e9b9a0361bba721acc62227514dbe3541adfa1b96497814355da67ae0",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Saturn_Cycling_Team:0",
+      "content_sha256": "305fc9d4d39d1e442f610e723cafc53d4d9a179d78e335ff276ed91d1a420347",
+      "chars": 177
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Saturn_Electronics:0",
+      "content_sha256": "9c623d64b1b86a5fe6fbab5746607544ce31ba4684b16f4e3596af89756c34a8",
+      "chars": 123
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Saturn_MP_transmission:0",
+      "content_sha256": "8d1e581095a092b44862de0d67cf175883ad1dc4c0cb997d351422e909b6ee6c",
+      "chars": 326
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Saturn_Corporation:0",
+      "content_sha256": "d9c9b32d5fd973ac42d4f78c7b9275de068fa871480f6f8733df14270ebbf728",
+      "chars": 723
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Saturn_-LRB-store-RRB-:0",
+      "content_sha256": "6b6c1e92091be3a9848e110a2f098e6896331b967b9154b3311b8722ada7c919",
+      "chars": 978
+     }
+    ],
+    "elapsed_s": 0.0167
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Saturn Corporation is a subsidiary of General Motor.\n\nEvidence passages from your search for \"Saturn Corporation ownership\":\n<<<PASSAGES\n[P1] Saturn Cycling Team\nThe Saturn Cycling Team was an American cycling team that existed from 1992 to 2003 . It was managed by Tom Schuler and sponsored by the Saturn Corporation .\n\n[P2] Saturn Electronics\nSaturn Electronics Corporation is a PCB Manufacturing firm based in Romulus , Michigan , United States .\n\n[P3] Saturn MP transmission\nThe Saturn MP Transmission were a series of 5-speed manual and 4-speed automatic transmissions that were manufactured by Saturn Corporation exclusively for the S-Series . They were designed for transverse engine applications and was deployed in vehicles that output up to 122 ft · lbf of engine torque .\n\n[P4] Saturn Corporation\nThe Saturn Corporation , also known as Saturn LLC , is a registered trademark established on January 7 , 1985 , as a subsidiary of General Motors . The company marketed itself as a `` different kind of car company '' and operated somewhat independently from its parent company for a time with its own assembly plant in Spring Hill , Tennessee ; unique models ; and a separate retailer network , and was GM 's attempt to compete with Japanese automakers . Following the withdrawal of a bid by Penske Automotive to acquire Saturn in September 2009 , General Motors discontinued the Saturn brand and ended its outstanding franchises on October 31 , 2010 . All new production was halted on October 7 , 2009 .\n\n[P5] Saturn (store)\nNot to be confused with the Saturn Corporation . Saturn is a German chain of electronics stores , now found in several European countries . Saturn sells household appliances , home entertainment , and media such as CDs and DVDs . With Media Markt it constitutes Media-Saturn Holding , owned by the German retail trade company METRO . It is known for its slightly coarse German-language advertising slogan `` Geiz ist geil ! '' ( `` Stinginess is cool ! '' ) . With around 128 stores Saturn is one of the big players in German electronics retail business . It also has 13 stores in Austria , 17 in Poland , 2 in Luxembourg , 3 in Russia . In 2003 Saturn and Apple Inc. signed a contract for a `` store-in-store '' concept , allowing consumers to purchase Apple products in special sections of some branch stores . Saturn stores in Belgium , Greece , Hungary , the Netherlands , Spain , Switzerland , Turkey and Italy have been closed and re-opened as Media Markt .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d24df24a89f2e263b7a3cd8ac7cf30c729c4d8ac27ed334cc36703d6b1df5b9d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792836287.312893,
+      "end_wall": 1792836302.751827,
+      "error": null
+     }
+    ],
+    "arrival_seq": 474,
+    "start_wall": 1792836287.312893,
+    "start_mono": 505844.1695275,
+    "end_wall": 1792836302.751827,
+    "end_mono": 505859.607585708,
+    "raw_response": "{\"reasoning\": \"The claim is supported by P4, which states that Saturn Corporation was a registered trademark established on January 7, 1985, as a subsidiary of General Motors, indicating that Saturn Corporation was indeed a subsidiary of General Motors.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15433743791,
+     "load_duration": 8453626250,
+     "prompt_eval_count": 793,
+     "prompt_eval_duration": 1395875208,
+     "eval_count": 76,
+     "eval_duration": 4173456041,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T10:05:02.74878Z"
+    },
+    "elapsed_s": 15.438,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 474,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Saturn_Corporation:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 238,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "028c0ffd4efe1edf292ae42b553577b57aed834993d66d8823d67f3ccc027c6a",
+  "olmo2:7b": "a9e9c63f646bef3d06e227459a5ffd98d1793dbcdcc02be129fdd378f41fd186",
+  "granite3.3:2b": "7953c43bd359362b9ed17c6b2ce6f1763ef792c436bf7c7f4741d2efc4421a53",
+  "exaone3.5:2.4b": "798c76f8b7ece90c2ba1e7caf51b969b578a8452e8cf0bbc636dae13863cfd0f",
+  "nemotron-mini:4b": "6de28a2e9b9a0361bba721acc62227514dbe3541adfa1b96497814355da67ae0"
+ },
+ "item_start_wall": 1792836278.492188,
+ "item_wall_s": 24.258,
+ "ollama_ps_samples": [
+  [
+   1792836278.492,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792836280.498,
+   [
+    "granite3.3:2b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792836282.503,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792836284.513,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792836286.525,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836288.536,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836290.548,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836292.552,
+   [
+    "exaone3.5:2.4b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836294.554,
+   [
+    "olmo2:7b",
+    "exaone3.5:2.4b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792836296.566,
+   [
+    "exaone3.5:2.4b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836298.575,
+   [
+    "exaone3.5:2.4b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836300.578,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792836302.585,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:2.4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

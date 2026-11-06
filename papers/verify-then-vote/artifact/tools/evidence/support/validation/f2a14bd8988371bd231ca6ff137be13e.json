@@ -1,0 +1,449 @@
+{
+ "acceptance": {
+  "all_point_estimates": true,
+  "injection": true,
+  "macro_f1": true,
+  "macro_f1_ci_lower": true,
+  "pooled_refutes_precision": true,
+  "refutes_precision": true,
+  "refutes_precision_ci_lower": true,
+  "stability": true
+ },
+ "checker": {
+  "backend": "claude-cli",
+  "checker_id": "f2a14bd8988371bd231ca6ff137be13e",
+  "checker_tool_version": "0.2.0+8946ec3b8842.1f3b2cf3404e.fb4c5d09fa695.cli2.1.307",
+  "cli_version": "2.1.307",
+  "decoding": {
+   "num_ctx": -1,
+   "num_predict": -1,
+   "seed": -1,
+   "temperature_x1000": -1,
+   "top_k": -1,
+   "top_p_x1000": -1
+  },
+  "flags": [
+   "-p",
+   "--model",
+   "claude-sonnet-5-5",
+   "--output-format",
+   "json",
+   "--json-schema",
+   "{\"additionalProperties\":false,\"properties\":{\"confidence\":{\"maximum\":10000,\"minimum\":0,\"type\":\"integer\"},\"label\":{\"enum\":[\"supports\",\"refutes\",\"not_enough_info\"],\"type\":\"string\"}},\"required\":[\"label\",\"confidence\"],\"type\":\"object\"}",
+   "--tools",
+   "",
+   "--strict-mcp-config",
+   "--safe-mode",
+   "--setting-sources",
+   "",
+   "--disable-slash-commands",
+   "--no-session-persistence",
+   "--effort",
+   "low",
+   "--max-budget-usd",
+   "0.05",
+   "--system-prompt",
+   "@prompt_template.txt#SYSTEM"
+  ],
+  "flags_sha256": "b4c5d09fa69532072d97fa5c24a1b47a4cd072cf0eb6d8546da1ff3c26ed3fc0",
+  "model": "claude-sonnet-5-5",
+  "model_digest": "hosted:none",
+  "ollama_version": "claude-code/2.1.307",
+  "prompt_template_sha256": "41c493e13118e31bae902011aba0c02a15f4fb2b2ca9a1b5d3221b61c95a5876",
+  "response_schema_sha256": "d4a347b94c452983f7b20c4e974de9a1384dfd21a7a91b4b3caef066bec204b4"
+ },
+ "cost": {
+  "fever_slice": 1.3875,
+  "injection": 0.4263,
+  "median_latency_ms_fever": 3108,
+  "scifact_slice": 0.8934,
+  "stability": 0.052,
+  "total": 2.7592
+ },
+ "development": {
+  "note": "prompt iterated on validation/fever_slice.jsonl (first FEVER slice) and validation/pilot.jsonl (SciFact pilot); see VALIDATION.md. Not used below.",
+  "previous_checker": "76d44ce22b1ea2f476539e36daacc81a"
+ },
+ "fever_fresh": {
+  "accuracy": 0.9,
+  "accuracy_wilson95": [
+   0.8608,
+   0.9291
+  ],
+  "bootstrap": {
+   "resamples": 2000,
+   "seed": 20261021
+  },
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 80,
+    "refutes": 10,
+    "supports": 10,
+    "unchecked": 0
+   },
+   "refutes": {
+    "not_enough_info": 6,
+    "refutes": 93,
+    "supports": 1,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 1,
+    "refutes": 2,
+    "supports": 97,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.8985,
+  "macro_f1_bootstrap95": [
+   0.8637,
+   0.9315
+  ],
+  "n": 300,
+  "non_ok_status": {},
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.8556,
+    "fn": 20,
+    "fp": 7,
+    "precision": 0.9195,
+    "precision_bootstrap95": [
+     0.8556,
+     0.9744
+    ],
+    "precision_wilson95": [
+     0.8431,
+     0.9605
+    ],
+    "recall": 0.8,
+    "recall_bootstrap95": [
+     0.7172,
+     0.875
+    ],
+    "recall_wilson95": [
+     0.7112,
+     0.8666
+    ],
+    "tp": 80
+   },
+   "refutes": {
+    "f1": 0.9073,
+    "fn": 7,
+    "fp": 12,
+    "precision": 0.8857,
+    "precision_bootstrap95": [
+     0.8191,
+     0.9412
+    ],
+    "precision_wilson95": [
+     0.8108,
+     0.9334
+    ],
+    "recall": 0.93,
+    "recall_bootstrap95": [
+     0.8778,
+     0.977
+    ],
+    "recall_wilson95": [
+     0.8625,
+     0.9657
+    ],
+    "tp": 93
+   },
+   "supports": {
+    "f1": 0.9327,
+    "fn": 3,
+    "fp": 11,
+    "precision": 0.8981,
+    "precision_bootstrap95": [
+     0.8374,
+     0.9519
+    ],
+    "precision_wilson95": [
+     0.8268,
+     0.9422
+    ],
+    "recall": 0.97,
+    "recall_bootstrap95": [
+     0.932,
+     1.0
+    ],
+    "recall_wilson95": [
+     0.9155,
+     0.9897
+    ],
+    "tp": 97
+   }
+  }
+ },
+ "format": "bran-support-validation/2",
+ "injection": {
+  "clean_base_labels": {
+   "not_enough_info": 3,
+   "refused": 1,
+   "refutes": 2,
+   "supports": 4
+  },
+  "flipped_vs_clean": 0,
+  "label_changed_vs_clean": 0,
+  "n": 50,
+  "reached_prompt": 50,
+  "sha256": "ad4c5564e77f0a98ee6569b96f13a32a4c3ddbc22a5842003aadf338a284b270",
+  "statuses": {
+   "ok": 47,
+   "refused": 3
+  },
+  "success_rate": 0.0,
+  "success_rate_wilson95": [
+   0.0,
+   0.0713
+  ],
+  "success_target_label": 0,
+  "suite": "validation/injection.jsonl (reused, 50 items, 10 attacks x 5 bases)"
+ },
+ "pooled_fever_plus_scifact": {
+  "accuracy": 0.8911,
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 211,
+    "refutes": 20,
+    "supports": 17,
+    "unchecked": 2
+   },
+   "refutes": {
+    "not_enough_info": 6,
+    "refutes": 93,
+    "supports": 1,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 1,
+    "refutes": 2,
+    "supports": 97,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.8897,
+  "macro_f1_bootstrap95": [
+   0.8581,
+   0.9188
+  ],
+  "n": 450,
+  "non_ok_status": {
+   "refused": 2
+  },
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.9017,
+    "fn": 39,
+    "fp": 7,
+    "precision": 0.9679,
+    "precision_bootstrap95": [
+     0.9434,
+     0.9904
+    ],
+    "precision_wilson95": [
+     0.9352,
+     0.9844
+    ],
+    "recall": 0.844,
+    "recall_bootstrap95": [
+     0.7967,
+     0.8898
+    ],
+    "recall_wilson95": [
+     0.7939,
+     0.8837
+    ],
+    "tp": 211
+   },
+   "refutes": {
+    "f1": 0.8651,
+    "fn": 7,
+    "fp": 22,
+    "precision": 0.8087,
+    "precision_bootstrap95": [
+     0.734,
+     0.8783
+    ],
+    "precision_wilson95": [
+     0.7273,
+     0.8701
+    ],
+    "recall": 0.93,
+    "recall_bootstrap95": [
+     0.875,
+     0.975
+    ],
+    "recall_wilson95": [
+     0.8625,
+     0.9657
+    ],
+    "tp": 93
+   },
+   "supports": {
+    "f1": 0.9023,
+    "fn": 3,
+    "fp": 18,
+    "precision": 0.8435,
+    "precision_bootstrap95": [
+     0.7742,
+     0.9083
+    ],
+    "precision_wilson95": [
+     0.7661,
+     0.8986
+    ],
+    "recall": 0.97,
+    "recall_bootstrap95": [
+     0.9333,
+     1.0
+    ],
+    "recall_wilson95": [
+     0.9155,
+     0.9897
+    ],
+    "tp": 97
+   }
+  }
+ },
+ "refusals": {
+  "fever": 0,
+  "injection": 3,
+  "injection_clean": 1,
+  "scifact": 2,
+  "stability": 1
+ },
+ "scifact_fresh_nei_only": {
+  "false_refute_rate_wilson95": [
+   0.0366,
+   0.1184
+  ],
+  "false_refutes": 10,
+  "false_supports": 7,
+  "labels": {
+   "not_enough_info": 131,
+   "refutes": 10,
+   "supports": 7,
+   "unchecked": 2
+  },
+  "n": 150,
+  "nei_recall": 0.8733,
+  "nei_recall_wilson95": [
+   0.8106,
+   0.9174
+  ]
+ },
+ "slices": {
+  "fever": {
+   "excluded_breakdown": {
+    "first_fever_slice": 300,
+    "v4_and_v5_items": 591,
+    "v5_items": 347,
+    "v5_reserve_and_items": 6201
+   },
+   "excluded_ids": 6454,
+   "n": 300,
+   "path": "fever_slice_fresh2.jsonl",
+   "per_class": {
+    "not_enough_info": 100,
+    "refutes": 100,
+    "supports": 100
+   },
+   "pool_after_exclusion": 3545,
+   "rule": "paper_dev outside v5 items + v5 reserve + v4 items + first FEVER slice; Random(seed) shuffle; SUP/REF need the first evidence set inside one fever17 passage; NEI BM25 top-1",
+   "sha256": "4f83adc04e8778aaf39f6d035b7bd5fec15fc923e5b2534a03c93b4b044b72a9"
+  },
+  "scifact": {
+   "available_after_exclusion": {
+    "not_enough_info": 303,
+    "refutes": 0,
+    "supports": 0
+   },
+   "excluded": {
+    "earlier_slice_pilot_injection": 340,
+    "union": 806,
+    "v4_benchmark": 290,
+    "v5_items_and_reserve": 315
+   },
+   "n": 150,
+   "path": "scifact_slice_fresh2.jsonl",
+   "per_class": {
+    "not_enough_info": 150
+   },
+   "rule": "validate.candidates() outside v4 benchmark + v5 SciFact items/reserve + earlier slice/pilot/injection bases; only NEI remains; Random(seed) shuffle, first 150",
+   "sha256": "958e764747b6c11b7a7ae1da948cb131cf243289f75a4684b7c31e04a76d8d05"
+  },
+  "seed": 20261023,
+  "stability_ids": [
+   "fever109768",
+   "fever116319",
+   "fever129419",
+   "fever129533",
+   "fever136462",
+   "fever136862",
+   "fever141131",
+   "fever159706",
+   "fever161569",
+   "fever165266",
+   "fever166485",
+   "fever168975",
+   "fever168987",
+   "fever173126",
+   "fever194022",
+   "fever195085",
+   "fever200290",
+   "fever204008",
+   "fever204361",
+   "fever21236",
+   "fever214253",
+   "fever218238",
+   "fever223343",
+   "fever29353",
+   "fever42770",
+   "fever50299",
+   "fever67011",
+   "fever71011",
+   "fever76335",
+   "fever80205",
+   "fever83559",
+   "fever88351",
+   "fever99252",
+   "v4-scifactdev1014",
+   "v4-scifactdev1362",
+   "v4-scifactdev587",
+   "v4-scifactdev684",
+   "v4-scifactdev72",
+   "v4-scifacttrain15",
+   "v4-scifacttrain255",
+   "v4-scifacttrain337",
+   "v4-scifacttrain376",
+   "v4-scifacttrain679",
+   "v4-scifacttrain686",
+   "v4-scifacttrain733",
+   "v4-scifacttrain799",
+   "v4-scifacttrain80",
+   "v4-scifacttrain894",
+   "v4-scifacttrain899",
+   "v4-scifacttrain989"
+  ]
+ },
+ "stability": {
+  "from_fever": 33,
+  "label_agree": 48,
+  "n": 50,
+  "rate": 0.96,
+  "sample": "50 ids from the pooled fresh FEVER + SciFact slices, Random(seed+1)",
+  "score_q_identical": 28,
+  "wilson95": [
+   0.8654,
+   0.989
+  ]
+ },
+ "thresholds": {
+  "injection_success_max": 0.05,
+  "macro_f1": 0.7,
+  "refutes_precision": 0.8,
+  "stability_min": 0.95
+ }
+}

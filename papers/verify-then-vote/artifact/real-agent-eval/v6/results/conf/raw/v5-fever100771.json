@@ -1,0 +1,1229 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever100771",
+ "order": 215,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever100771",
+  "order": 215,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "The Road to El Dorado is a dog."
+ },
+ "item_view_sha256": "72b15639835d1abddfcc98ef21d442971d2f5ffb2ff07e93e396a93f6fed8a31",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The Road to El Dorado is a dog.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "09be17f965407c4f075a4dcfdaa0a16fcb7c487ce300487e320e8cc90ded54ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792858992.668158,
+      "end_wall": 1792858993.645164,
+      "error": null
+     }
+    ],
+    "start_wall": 1792858992.668158,
+    "start_mono": 528549.426367875,
+    "end_wall": 1792858993.645164,
+    "end_mono": 528550.403377875,
+    "raw_response": "{\"query\": \"road to el dorado dog\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 974863291,
+     "load_duration": 103343958,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 360699375,
+     "eval_count": 13,
+     "eval_duration": 379055833,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:13.644507Z"
+    },
+    "elapsed_s": 0.977,
+    "query_used": "road to el dorado dog",
+    "query_source": "json",
+    "query_arrival_seq": 1075
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "road to el dorado dog",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:El_Dorado,_Venezuela:0",
+       "score_q": 12940
+      },
+      {
+       "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+       "score_q": 12513
+      },
+      {
+       "passage_key": "fever17:El_Dorado_School_District:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:El_Dorado_High_School:0",
+       "score_q": 12106
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+       "score_q": 11913
+      }
+     ],
+     "retrieval_sha256": "ada6963094b0140086d5479dd8957610744e54f8b738a161c439af32b0b2fa63"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ada6963094b0140086d5479dd8957610744e54f8b738a161c439af32b0b2fa63",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:El_Dorado,_Venezuela:0",
+      "content_sha256": "1ba75a5fc6dd4e94713e6b1e018ee20d16c7f6966c74cc2284caf3c341995044",
+      "chars": 290
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+      "content_sha256": "d8ba97124f507843ea0a92871f5b4023504682e863aec49b381de19e2e040576",
+      "chars": 200
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:El_Dorado_School_District:0",
+      "content_sha256": "b045bbf3a0aafd2e9465951782e7be4c64a15e939e55104b7b8b4aab2982904e",
+      "chars": 286
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:El_Dorado_High_School:0",
+      "content_sha256": "c1c480fcd3a06c83520b78242c2a9ca09ea50fd8e2d64614a8a13cc57f0947e6",
+      "chars": 619
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "dc28b0f080e4b895c0a09d27e4805c2530016f788d3a15bce16bb7ac94438ce6",
+      "chars": 467
+     }
+    ],
+    "elapsed_s": 0.0274
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The Road to El Dorado is a dog.\n\nEvidence passages from your search for \"road to el dorado dog\":\n<<<PASSAGES\n[P1] El Dorado, Venezuela\nEl Dorado is a small town in eastern Venezuela . It is situated in Bolívar State , on the Cuyuni River . It is the second-largest town in Sifontes Municipality ; the capital of the municipality is Tumeremo . It is on the road to Brazil . El Dorado has a small airport .\n\n[P2] Middletown, El Dorado County, California\nMiddletown is a former settlement and mining camp in El Dorado County , California . It was located 2 mi to 3 mi from Placerville on the road to Cold Springs .\n\n[P3] El Dorado School District\nEl Dorado School District may refer to : El Dorado School District ( Arkansas ) , based in El Dorado , Arkansas El Dorado School District ( Kansas ) , based in El Dorado , Kansas . El Dorado Union High School District , based in El Dorado County , California .\n\n[P4] El Dorado High School\nEl Dorado High School may refer to one of several high schools in the United States : El Dorado High School ( Arizona ) -- Chandler , Arizona El Dorado High School ( Arkansas ) -- El Dorado , Arkansas El Dorado High School ( Placentia , California ) -- Placentia , California El Dorado High School ( Placerville , California ) -- Placerville , California El Dorado High School ( Kansas ) -- El Dorado , Kansas El Dorado High School ( New Mexico ) -- Albuquerque , New Mexico El Dorado High School ( El Paso , Texas ) -- El Paso , Texas El Dorado Springs High School -- El Dorado Springs , Missouri\n\n[P5] El Dorado Airport (disambiguation)\nEl Dorado Airport or Eldorado Airport may refer to : El Dorado International Airport in Bogotá , Colombia Captain Jack Thomas/El Dorado Airport in El Dorado , Kansas , United States South Arkansas Regional Airport at Goodwin Field in El Dorado , Arkansas , United States El Dorado Airport in El Dorado , Venezuela El Dorado Airport ( Argentina ) in Eldorado , Misiones , Argentina Eldorado Airport ( Texas ) outside Eldorado , Texas\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f5cde5b8f0264de7295d689ba3f16c020564a10d5b3892043bfe19cfbd894c33",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792858993.672865,
+      "end_wall": 1792859003.5701451,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1075,
+    "start_wall": 1792858993.672865,
+    "start_mono": 528550.431080041,
+    "end_wall": 1792859003.5701451,
+    "end_mono": 528560.328409125,
+    "raw_response": "{\"reasoning\": \"The claim states that 'The Road to El Dorado' is a dog, which is nonsensical as 'The Road to El Dorado' refers to an actual place, not a dog.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9895374500,
+     "load_duration": 59160417,
+     "prompt_eval_count": 772,
+     "prompt_eval_duration": 1293131959,
+     "eval_count": 82,
+     "eval_duration": 7725026669,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:23.569072Z"
+    },
+    "elapsed_s": 9.897,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1075,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:El_Dorado,_Venezuela:0",
+     "fever17:Middletown,_El_Dorado_County,_California:0",
+     "fever17:El_Dorado_School_District:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 141,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The Road to El Dorado is a dog.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "09be17f965407c4f075a4dcfdaa0a16fcb7c487ce300487e320e8cc90ded54ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792858992.667661,
+      "end_wall": 1792858995.106078,
+      "error": null
+     }
+    ],
+    "start_wall": 1792858992.667661,
+    "start_mono": 528549.425870708,
+    "end_wall": 1792858995.106078,
+    "end_mono": 528551.864300041,
+    "raw_response": "{\"query\": \"The Road to El Dorado animal characters\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2435654791,
+     "load_duration": 54206666,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 477773042,
+     "eval_count": 15,
+     "eval_duration": 1794820876,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:15.105113Z"
+    },
+    "elapsed_s": 2.438,
+    "query_used": "The Road to El Dorado animal characters",
+    "query_source": "json",
+    "query_arrival_seq": 1076
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "The Road to El Dorado animal characters",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:El_Dorado,_Venezuela:0",
+       "score_q": 12940
+      },
+      {
+       "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+       "score_q": 12513
+      },
+      {
+       "passage_key": "fever17:El_Dorado_School_District:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:El_Dorado_High_School:0",
+       "score_q": 12106
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+       "score_q": 11913
+      }
+     ],
+     "retrieval_sha256": "e37dd657de9cd5cac2194c4a4a0b065357999621d4230b239af13f07b825900f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e37dd657de9cd5cac2194c4a4a0b065357999621d4230b239af13f07b825900f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:El_Dorado,_Venezuela:0",
+      "content_sha256": "1ba75a5fc6dd4e94713e6b1e018ee20d16c7f6966c74cc2284caf3c341995044",
+      "chars": 290
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+      "content_sha256": "d8ba97124f507843ea0a92871f5b4023504682e863aec49b381de19e2e040576",
+      "chars": 200
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:El_Dorado_School_District:0",
+      "content_sha256": "b045bbf3a0aafd2e9465951782e7be4c64a15e939e55104b7b8b4aab2982904e",
+      "chars": 286
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:El_Dorado_High_School:0",
+      "content_sha256": "c1c480fcd3a06c83520b78242c2a9ca09ea50fd8e2d64614a8a13cc57f0947e6",
+      "chars": 619
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "dc28b0f080e4b895c0a09d27e4805c2530016f788d3a15bce16bb7ac94438ce6",
+      "chars": 467
+     }
+    ],
+    "elapsed_s": 0.02
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The Road to El Dorado is a dog.\n\nEvidence passages from your search for \"The Road to El Dorado animal characters\":\n<<<PASSAGES\n[P1] El Dorado, Venezuela\nEl Dorado is a small town in eastern Venezuela . It is situated in Bolívar State , on the Cuyuni River . It is the second-largest town in Sifontes Municipality ; the capital of the municipality is Tumeremo . It is on the road to Brazil . El Dorado has a small airport .\n\n[P2] Middletown, El Dorado County, California\nMiddletown is a former settlement and mining camp in El Dorado County , California . It was located 2 mi to 3 mi from Placerville on the road to Cold Springs .\n\n[P3] El Dorado School District\nEl Dorado School District may refer to : El Dorado School District ( Arkansas ) , based in El Dorado , Arkansas El Dorado School District ( Kansas ) , based in El Dorado , Kansas . El Dorado Union High School District , based in El Dorado County , California .\n\n[P4] El Dorado High School\nEl Dorado High School may refer to one of several high schools in the United States : El Dorado High School ( Arizona ) -- Chandler , Arizona El Dorado High School ( Arkansas ) -- El Dorado , Arkansas El Dorado High School ( Placentia , California ) -- Placentia , California El Dorado High School ( Placerville , California ) -- Placerville , California El Dorado High School ( Kansas ) -- El Dorado , Kansas El Dorado High School ( New Mexico ) -- Albuquerque , New Mexico El Dorado High School ( El Paso , Texas ) -- El Paso , Texas El Dorado Springs High School -- El Dorado Springs , Missouri\n\n[P5] El Dorado Airport (disambiguation)\nEl Dorado Airport or Eldorado Airport may refer to : El Dorado International Airport in Bogotá , Colombia Captain Jack Thomas/El Dorado Airport in El Dorado , Kansas , United States South Arkansas Regional Airport at Goodwin Field in El Dorado , Arkansas , United States El Dorado Airport in El Dorado , Venezuela El Dorado Airport ( Argentina ) in Eldorado , Misiones , Argentina Eldorado Airport ( Texas ) outside Eldorado , Texas\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4942d41a92fec5968ea467f4c0ec04c46c5fadee7dcfb9e0c74d2e00456b4921",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792858995.1263318,
+      "end_wall": 1792859010.746992,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1076,
+    "start_wall": 1792858995.1263318,
+    "start_mono": 528551.884554333,
+    "end_wall": 1792859010.746992,
+    "end_mono": 528567.505290708,
+    "raw_response": "{\"reasoning\": \"The provided evidence passages do not contain any information related to the animated film 'The Road to El Dorado' or its characters. They instead provide geographical and administrative details about places named El Dorado across different locations globally, none of which pertain to the claim about a dog being associated with the title character or any animal character in the film. Without relevant evidence supporting the claim, it cannot be substantiated based on the given information.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15614727875,
+     "load_duration": 52108500,
+     "prompt_eval_count": 763,
+     "prompt_eval_duration": 2744994792,
+     "eval_count": 115,
+     "eval_duration": 11870631335,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:30.742243Z"
+    },
+    "elapsed_s": 15.621,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1076,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 493,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The Road to El Dorado is a dog.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "09be17f965407c4f075a4dcfdaa0a16fcb7c487ce300487e320e8cc90ded54ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792858992.667922,
+      "end_wall": 1792858997.6955452,
+      "error": null
+     }
+    ],
+    "start_wall": 1792858992.667922,
+    "start_mono": 528549.426132166,
+    "end_wall": 1792858997.6955452,
+    "end_mono": 528554.453778958,
+    "raw_response": "{\"query\": \"Road to El Dorado dog origin\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5025328875,
+     "load_duration": 1172475125,
+     "prompt_eval_count": 173,
+     "prompt_eval_duration": 845999917,
+     "eval_count": 14,
+     "eval_duration": 2948227043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:17.694692Z"
+    },
+    "elapsed_s": 5.028,
+    "query_used": "Road to El Dorado dog origin",
+    "query_source": "json",
+    "query_arrival_seq": 1077
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Road to El Dorado dog origin",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:El_Dorado,_Venezuela:0",
+       "score_q": 12940
+      },
+      {
+       "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+       "score_q": 12513
+      },
+      {
+       "passage_key": "fever17:El_Dorado_School_District:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:El_Dorado_High_School:0",
+       "score_q": 12106
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+       "score_q": 11913
+      }
+     ],
+     "retrieval_sha256": "b0665054756361d8da1f21f5f1d4db347097b58d3f8b76bdfe204321b7dcde45"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b0665054756361d8da1f21f5f1d4db347097b58d3f8b76bdfe204321b7dcde45",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:El_Dorado,_Venezuela:0",
+      "content_sha256": "1ba75a5fc6dd4e94713e6b1e018ee20d16c7f6966c74cc2284caf3c341995044",
+      "chars": 290
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+      "content_sha256": "d8ba97124f507843ea0a92871f5b4023504682e863aec49b381de19e2e040576",
+      "chars": 200
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:El_Dorado_School_District:0",
+      "content_sha256": "b045bbf3a0aafd2e9465951782e7be4c64a15e939e55104b7b8b4aab2982904e",
+      "chars": 286
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:El_Dorado_High_School:0",
+      "content_sha256": "c1c480fcd3a06c83520b78242c2a9ca09ea50fd8e2d64614a8a13cc57f0947e6",
+      "chars": 619
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "dc28b0f080e4b895c0a09d27e4805c2530016f788d3a15bce16bb7ac94438ce6",
+      "chars": 467
+     }
+    ],
+    "elapsed_s": 0.0187
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The Road to El Dorado is a dog.\n\nEvidence passages from your search for \"Road to El Dorado dog origin\":\n<<<PASSAGES\n[P1] El Dorado, Venezuela\nEl Dorado is a small town in eastern Venezuela . It is situated in Bolívar State , on the Cuyuni River . It is the second-largest town in Sifontes Municipality ; the capital of the municipality is Tumeremo . It is on the road to Brazil . El Dorado has a small airport .\n\n[P2] Middletown, El Dorado County, California\nMiddletown is a former settlement and mining camp in El Dorado County , California . It was located 2 mi to 3 mi from Placerville on the road to Cold Springs .\n\n[P3] El Dorado School District\nEl Dorado School District may refer to : El Dorado School District ( Arkansas ) , based in El Dorado , Arkansas El Dorado School District ( Kansas ) , based in El Dorado , Kansas . El Dorado Union High School District , based in El Dorado County , California .\n\n[P4] El Dorado High School\nEl Dorado High School may refer to one of several high schools in the United States : El Dorado High School ( Arizona ) -- Chandler , Arizona El Dorado High School ( Arkansas ) -- El Dorado , Arkansas El Dorado High School ( Placentia , California ) -- Placentia , California El Dorado High School ( Placerville , California ) -- Placerville , California El Dorado High School ( Kansas ) -- El Dorado , Kansas El Dorado High School ( New Mexico ) -- Albuquerque , New Mexico El Dorado High School ( El Paso , Texas ) -- El Paso , Texas El Dorado Springs High School -- El Dorado Springs , Missouri\n\n[P5] El Dorado Airport (disambiguation)\nEl Dorado Airport or Eldorado Airport may refer to : El Dorado International Airport in Bogotá , Colombia Captain Jack Thomas/El Dorado Airport in El Dorado , Kansas , United States South Arkansas Regional Airport at Goodwin Field in El Dorado , Arkansas , United States El Dorado Airport in El Dorado , Venezuela El Dorado Airport ( Argentina ) in Eldorado , Misiones , Argentina Eldorado Airport ( Texas ) outside Eldorado , Texas\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "63aa675eeb8d85d3bd33e6c297136ca396f6aae7bf1ccb632563c534e1e2a3b4",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792858997.714487,
+      "end_wall": 1792859014.664757,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1077,
+    "start_wall": 1792858997.714487,
+    "start_mono": 528554.472722708,
+    "end_wall": 1792859014.664757,
+    "end_mono": 528571.423077625,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that 'Road to El Dorado' is a dog. However, 'Road to El Dorado' refers to a well-known location in Colombia and Venezuela, associated with El Dorado, a legendary city of great wealth. There's no evidence linking this concept to a canine. Therefore, the claim is REFUTED.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P3\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16947792542,
+     "load_duration": 10179839917,
+     "prompt_eval_count": 891,
+     "prompt_eval_duration": 1678242833,
+     "eval_count": 125,
+     "eval_duration": 4486508129,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:34.663029Z"
+    },
+    "elapsed_s": 16.95,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1077,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:El_Dorado,_Venezuela:0",
+     "fever17:El_Dorado_School_District:0",
+     "fever17:El_Dorado_High_School:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 289,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The Road to El Dorado is a dog.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "09be17f965407c4f075a4dcfdaa0a16fcb7c487ce300487e320e8cc90ded54ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792858992.668361,
+      "end_wall": 1792859000.843277,
+      "error": null
+     }
+    ],
+    "start_wall": 1792858992.668361,
+    "start_mono": 528549.426571583,
+    "end_wall": 1792859000.843277,
+    "end_mono": 528557.601527958,
+    "raw_response": "{\"query\": \"El Dorado character dog\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8172726292,
+     "load_duration": 6471835959,
+     "prompt_eval_count": 161,
+     "prompt_eval_duration": 807739458,
+     "eval_count": 11,
+     "eval_duration": 788252083,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:20.842319Z"
+    },
+    "elapsed_s": 8.175,
+    "query_used": "El Dorado character dog",
+    "query_source": "json",
+    "query_arrival_seq": 1078
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "El Dorado character dog",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:El_Dorado_School_District:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:El_Dorado_High_School:0",
+       "score_q": 12106
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+       "score_q": 11913
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Apartments:0",
+       "score_q": 11614
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-Venezuela-RRB-:0",
+       "score_q": 11573
+      }
+     ],
+     "retrieval_sha256": "0cb30160e78e4c21b2b93e6bc6a587702ac90916141214edc2f6659761918864"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0cb30160e78e4c21b2b93e6bc6a587702ac90916141214edc2f6659761918864",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:El_Dorado_School_District:0",
+      "content_sha256": "b045bbf3a0aafd2e9465951782e7be4c64a15e939e55104b7b8b4aab2982904e",
+      "chars": 286
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:El_Dorado_High_School:0",
+      "content_sha256": "c1c480fcd3a06c83520b78242c2a9ca09ea50fd8e2d64614a8a13cc57f0947e6",
+      "chars": 619
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "dc28b0f080e4b895c0a09d27e4805c2530016f788d3a15bce16bb7ac94438ce6",
+      "chars": 467
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:El_Dorado_Apartments:0",
+      "content_sha256": "4a4bfedd91c5319b215ebedbe90175ea17392b3d2c838e247030c733cc4345f3",
+      "chars": 347
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-Venezuela-RRB-:0",
+      "content_sha256": "eeb09081b44df02062d5d6ee9bba2131ec3b7da3e1e9fb6e561157d62e95e96e",
+      "chars": 206
+     }
+    ],
+    "elapsed_s": 0.017
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The Road to El Dorado is a dog.\n\nEvidence passages from your search for \"El Dorado character dog\":\n<<<PASSAGES\n[P1] El Dorado School District\nEl Dorado School District may refer to : El Dorado School District ( Arkansas ) , based in El Dorado , Arkansas El Dorado School District ( Kansas ) , based in El Dorado , Kansas . El Dorado Union High School District , based in El Dorado County , California .\n\n[P2] El Dorado High School\nEl Dorado High School may refer to one of several high schools in the United States : El Dorado High School ( Arizona ) -- Chandler , Arizona El Dorado High School ( Arkansas ) -- El Dorado , Arkansas El Dorado High School ( Placentia , California ) -- Placentia , California El Dorado High School ( Placerville , California ) -- Placerville , California El Dorado High School ( Kansas ) -- El Dorado , Kansas El Dorado High School ( New Mexico ) -- Albuquerque , New Mexico El Dorado High School ( El Paso , Texas ) -- El Paso , Texas El Dorado Springs High School -- El Dorado Springs , Missouri\n\n[P3] El Dorado Airport (disambiguation)\nEl Dorado Airport or Eldorado Airport may refer to : El Dorado International Airport in Bogotá , Colombia Captain Jack Thomas/El Dorado Airport in El Dorado , Kansas , United States South Arkansas Regional Airport at Goodwin Field in El Dorado , Arkansas , United States El Dorado Airport in El Dorado , Venezuela El Dorado Airport ( Argentina ) in Eldorado , Misiones , Argentina Eldorado Airport ( Texas ) outside Eldorado , Texas\n\n[P4] El Dorado Apartments\nEl Dorado Apartments may refer to : El Dorado Apartments ( El Dorado , Arkansas ) , listed on the NRHP in Arkansas Buildings at 1200-1206 Washington Street , Hoboken , New Jersey , known as the El Dorado Apartments El Dorado Apartments ( Fond du Lac , Wisconsin ) , listed on the NRHP in Wisconsin The Eldorado , New York City\n\n[P5] El Dorado Airport (Venezuela)\nEl Dorado Airport is an airport serving the town of El Dorado in the Bolívar state of Venezuela . The El Dorado non-directional beacon ( Ident : ELO ) is located on the field .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ca03aa95af2daad128ba3931f11580463ca00d4426ba75561c3d3df43304eb02",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859000.860548,
+      "end_wall": 1792859014.785331,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1078,
+    "start_wall": 1792859000.860548,
+    "start_mono": 528557.618799208,
+    "end_wall": 1792859014.785331,
+    "end_mono": 528571.543651541,
+    "raw_response": "{\"reasoning\": \"The claim that The Road to El Dorado is a dog is false because The Road to El Dorado is a 2000 animated film directed by Michael Kirk Jones and produced by Nickelodeon Movies. It stars the voices of Kevin Bacon and Danny Glover and follows the story of two Spanish explorers searching for the legendary city of gold El Dorado. The film features various characters, but a dog is not among them. No evidence from the provided passages supports the claim that the movie character is a dog, and using general knowledge about the film, this claim is clearly refuted.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13921508167,
+     "load_duration": 50087959,
+     "prompt_eval_count": 724,
+     "prompt_eval_duration": 2652738708,
+     "eval_count": 142,
+     "eval_duration": 9794152584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:34.783255Z"
+    },
+    "elapsed_s": 13.925,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1078,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 561,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: The Road to El Dorado is a dog.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "09be17f965407c4f075a4dcfdaa0a16fcb7c487ce300487e320e8cc90ded54ee",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792858992.6686091,
+      "end_wall": 1792859006.733299,
+      "error": null
+     }
+    ],
+    "start_wall": 1792858992.6686091,
+    "start_mono": 528549.426818833,
+    "end_wall": 1792859006.733299,
+    "end_mono": 528563.491578583,
+    "raw_response": "{\"query\": \"is The Road to El Dorado a dog\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14062387459,
+     "load_duration": 12481505750,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 402605042,
+     "eval_count": 14,
+     "eval_duration": 871009333,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:26.732059Z"
+    },
+    "elapsed_s": 14.065,
+    "query_used": "is The Road to El Dorado a dog",
+    "query_source": "json",
+    "query_arrival_seq": 1079
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "is The Road to El Dorado a dog",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:El_Dorado,_Venezuela:0",
+       "score_q": 12940
+      },
+      {
+       "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+       "score_q": 12513
+      },
+      {
+       "passage_key": "fever17:El_Dorado_School_District:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "fever17:El_Dorado_High_School:0",
+       "score_q": 12106
+      },
+      {
+       "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+       "score_q": 11913
+      }
+     ],
+     "retrieval_sha256": "2f155b9eed4dac6bc9fdd706aa8fe624ff728821ea1a07f2aa9a36dbe39e0286"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2f155b9eed4dac6bc9fdd706aa8fe624ff728821ea1a07f2aa9a36dbe39e0286",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:El_Dorado,_Venezuela:0",
+      "content_sha256": "1ba75a5fc6dd4e94713e6b1e018ee20d16c7f6966c74cc2284caf3c341995044",
+      "chars": 290
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Middletown,_El_Dorado_County,_California:0",
+      "content_sha256": "d8ba97124f507843ea0a92871f5b4023504682e863aec49b381de19e2e040576",
+      "chars": 200
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:El_Dorado_School_District:0",
+      "content_sha256": "b045bbf3a0aafd2e9465951782e7be4c64a15e939e55104b7b8b4aab2982904e",
+      "chars": 286
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:El_Dorado_High_School:0",
+      "content_sha256": "c1c480fcd3a06c83520b78242c2a9ca09ea50fd8e2d64614a8a13cc57f0947e6",
+      "chars": 619
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:El_Dorado_Airport_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "dc28b0f080e4b895c0a09d27e4805c2530016f788d3a15bce16bb7ac94438ce6",
+      "chars": 467
+     }
+    ],
+    "elapsed_s": 0.031
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: The Road to El Dorado is a dog.\n\nEvidence passages from your search for \"is The Road to El Dorado a dog\":\n<<<PASSAGES\n[P1] El Dorado, Venezuela\nEl Dorado is a small town in eastern Venezuela . It is situated in Bolívar State , on the Cuyuni River . It is the second-largest town in Sifontes Municipality ; the capital of the municipality is Tumeremo . It is on the road to Brazil . El Dorado has a small airport .\n\n[P2] Middletown, El Dorado County, California\nMiddletown is a former settlement and mining camp in El Dorado County , California . It was located 2 mi to 3 mi from Placerville on the road to Cold Springs .\n\n[P3] El Dorado School District\nEl Dorado School District may refer to : El Dorado School District ( Arkansas ) , based in El Dorado , Arkansas El Dorado School District ( Kansas ) , based in El Dorado , Kansas . El Dorado Union High School District , based in El Dorado County , California .\n\n[P4] El Dorado High School\nEl Dorado High School may refer to one of several high schools in the United States : El Dorado High School ( Arizona ) -- Chandler , Arizona El Dorado High School ( Arkansas ) -- El Dorado , Arkansas El Dorado High School ( Placentia , California ) -- Placentia , California El Dorado High School ( Placerville , California ) -- Placerville , California El Dorado High School ( Kansas ) -- El Dorado , Kansas El Dorado High School ( New Mexico ) -- Albuquerque , New Mexico El Dorado High School ( El Paso , Texas ) -- El Paso , Texas El Dorado Springs High School -- El Dorado Springs , Missouri\n\n[P5] El Dorado Airport (disambiguation)\nEl Dorado Airport or Eldorado Airport may refer to : El Dorado International Airport in Bogotá , Colombia Captain Jack Thomas/El Dorado Airport in El Dorado , Kansas , United States South Arkansas Regional Airport at Goodwin Field in El Dorado , Arkansas , United States El Dorado Airport in El Dorado , Venezuela El Dorado Airport ( Argentina ) in Eldorado , Misiones , Argentina Eldorado Airport ( Texas ) outside Eldorado , Texas\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3f70b06d06369a4c8e798e8fefdc6d27a6a720290f7274c3e438ecba95471e36",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792859006.764597,
+      "end_wall": 1792859018.509606,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1079,
+    "start_wall": 1792859006.764597,
+    "start_mono": 528563.522878291,
+    "end_wall": 1792859018.509606,
+    "end_mono": 528575.267944541,
+    "raw_response": "{\n  \"reasoning\": \"The claim is refuted as there is no passage that states The Road to El Dorado is a dog.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11741555291,
+     "load_duration": 8679962458,
+     "prompt_eval_count": 687,
+     "prompt_eval_duration": 1040224707,
+     "eval_count": 55,
+     "eval_duration": 1104849043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T16:23:38.506935Z"
+    },
+    "elapsed_s": 11.745,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1079,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 87,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "ada6963094b0140086d5479dd8957610744e54f8b738a161c439af32b0b2fa63",
+  "exaone3.5:7.8b": "e37dd657de9cd5cac2194c4a4a0b065357999621d4230b239af13f07b825900f",
+  "granite3.3:2b": "b0665054756361d8da1f21f5f1d4db347097b58d3f8b76bdfe204321b7dcde45",
+  "olmo2:7b": "0cb30160e78e4c21b2b93e6bc6a587702ac90916141214edc2f6659761918864",
+  "nemotron-mini:4b": "2f155b9eed4dac6bc9fdd706aa8fe624ff728821ea1a07f2aa9a36dbe39e0286"
+ },
+ "item_start_wall": 1792858992.6672819,
+ "item_wall_s": 25.843,
+ "ollama_ps_samples": [
+  [
+   1792858992.667,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792858994.68,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792858996.691,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792858998.695,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792859000.707,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792859002.709,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792859004.713,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792859006.725,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792859008.736,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792859010.747,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792859012.76,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792859014.771,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792859016.775,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

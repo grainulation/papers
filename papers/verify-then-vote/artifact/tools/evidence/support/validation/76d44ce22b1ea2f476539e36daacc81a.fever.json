@@ -1,0 +1,252 @@
+{
+ "checker": {
+  "backend": "claude-cli",
+  "checker_id": "76d44ce22b1ea2f476539e36daacc81a",
+  "checker_tool_version": "0.1.0+98ebbcf16546.2ba9284b9186.fb4c5d09fa695",
+  "decoding": {
+   "num_ctx": -1,
+   "num_predict": -1,
+   "seed": -1,
+   "temperature_x1000": -1,
+   "top_k": -1,
+   "top_p_x1000": -1
+  },
+  "flags": [
+   "-p",
+   "--model",
+   "claude-sonnet-5-5",
+   "--output-format",
+   "json",
+   "--json-schema",
+   "{\"additionalProperties\":false,\"properties\":{\"confidence\":{\"maximum\":10000,\"minimum\":0,\"type\":\"integer\"},\"label\":{\"enum\":[\"supports\",\"refutes\",\"not_enough_info\"],\"type\":\"string\"}},\"required\":[\"label\",\"confidence\"],\"type\":\"object\"}",
+   "--tools",
+   "",
+   "--strict-mcp-config",
+   "--safe-mode",
+   "--setting-sources",
+   "",
+   "--disable-slash-commands",
+   "--no-session-persistence",
+   "--effort",
+   "low",
+   "--max-budget-usd",
+   "0.05",
+   "--system-prompt",
+   "@prompt_template.txt#SYSTEM"
+  ],
+  "flags_sha256": "b4c5d09fa69532072d97fa5c24a1b47a4cd072cf0eb6d8546da1ff3c26ed3fc0",
+  "model": "claude-sonnet-5-5",
+  "model_digest": "hosted:none",
+  "ollama_version": "claude-code/2.1.307",
+  "prompt_template_sha256": "9e035ba0a61bd60a5bda70405fa02b37e15c225d6377318d108177783e8b9846",
+  "response_schema_sha256": "d4a347b94c452983f7b20c4e974de9a1384dfd21a7a91b4b3caef066bec204b4"
+ },
+ "cost": {
+  "live_calls": 350,
+  "median_latency_ms": 3050,
+  "usd": 1.482
+ },
+ "format": "bran-support-validation/fever/1",
+ "injection": "not re-run (passages are fixed corpus text; the SciFact suite stands for this checker_id)",
+ "metrics": {
+  "accuracy": 0.8433,
+  "accuracy_wilson95": [
+   0.7979,
+   0.8801
+  ],
+  "bootstrap": {
+   "resamples": 2000,
+   "seed": 20261021
+  },
+  "confusion_gold_by_pred": {
+   "not_enough_info": {
+    "not_enough_info": 66,
+    "refutes": 21,
+    "supports": 13,
+    "unchecked": 0
+   },
+   "refutes": {
+    "not_enough_info": 5,
+    "refutes": 93,
+    "supports": 2,
+    "unchecked": 0
+   },
+   "supports": {
+    "not_enough_info": 2,
+    "refutes": 4,
+    "supports": 94,
+    "unchecked": 0
+   }
+  },
+  "macro_f1": 0.8386,
+  "macro_f1_bootstrap95": [
+   0.7958,
+   0.8783
+  ],
+  "n": 300,
+  "non_ok_status": {},
+  "per_class": {
+   "not_enough_info": {
+    "f1": 0.763,
+    "fn": 34,
+    "fp": 7,
+    "precision": 0.9041,
+    "precision_bootstrap95": [
+     0.8333,
+     0.9683
+    ],
+    "precision_wilson95": [
+     0.815,
+     0.9528
+    ],
+    "recall": 0.66,
+    "recall_bootstrap95": [
+     0.57,
+     0.7526
+    ],
+    "recall_wilson95": [
+     0.5628,
+     0.7454
+    ],
+    "tp": 66
+   },
+   "refutes": {
+    "f1": 0.8532,
+    "fn": 7,
+    "fp": 25,
+    "precision": 0.7881,
+    "precision_bootstrap95": [
+     0.713,
+     0.8596
+    ],
+    "precision_wilson95": [
+     0.7059,
+     0.8522
+    ],
+    "recall": 0.93,
+    "recall_bootstrap95": [
+     0.875,
+     0.9737
+    ],
+    "recall_wilson95": [
+     0.8625,
+     0.9657
+    ],
+    "tp": 93
+   },
+   "supports": {
+    "f1": 0.8995,
+    "fn": 6,
+    "fp": 15,
+    "precision": 0.8624,
+    "precision_bootstrap95": [
+     0.7944,
+     0.9231
+    ],
+    "precision_wilson95": [
+     0.7853,
+     0.9148
+    ],
+    "recall": 0.94,
+    "recall_bootstrap95": [
+     0.8889,
+     0.9808
+    ],
+    "recall_wilson95": [
+     0.8752,
+     0.9722
+    ],
+    "tp": 94
+   }
+  }
+ },
+ "metrics_ok_only": null,
+ "pass": {
+  "macro_f1": true,
+  "macro_f1_ci_lower": true,
+  "refutes_precision": false,
+  "refutes_precision_ci_lower": false,
+  "stability": true
+ },
+ "slice": {
+  "excluded_fever_ids": 591,
+  "excluded_v5_fever_ids": 347,
+  "n": 300,
+  "overlap_with_excluded": 0,
+  "per_class": {
+   "not_enough_info": 100,
+   "refutes": 100,
+   "supports": 100
+  },
+  "rule": "SUP/REF from reversed reserve_order.json fever list, first evidence set contained in one fever17 passage; NEI from paper_dev NEI claims shuffled by Random(seed), BM25 top-1",
+  "seed": 20261022,
+  "slice_sha256": "35e1e16e5eef70b59c60da4d5c2621c84f1396049cf51f77713929ca90649888",
+  "stability_ids": [
+   "fever10146",
+   "fever10634",
+   "fever110703",
+   "fever113783",
+   "fever114093",
+   "fever11730",
+   "fever126936",
+   "fever127359",
+   "fever143375",
+   "fever156981",
+   "fever15733",
+   "fever161094",
+   "fever166475",
+   "fever167465",
+   "fever167987",
+   "fever168065",
+   "fever171629",
+   "fever175738",
+   "fever181994",
+   "fever184076",
+   "fever184094",
+   "fever191246",
+   "fever194928",
+   "fever19738",
+   "fever200382",
+   "fever204027",
+   "fever204451",
+   "fever206161",
+   "fever211276",
+   "fever215128",
+   "fever218467",
+   "fever24408",
+   "fever26444",
+   "fever34496",
+   "fever38549",
+   "fever5076",
+   "fever54623",
+   "fever54910",
+   "fever59777",
+   "fever61107",
+   "fever68084",
+   "fever68613",
+   "fever71967",
+   "fever81610",
+   "fever85190",
+   "fever88495",
+   "fever90901",
+   "fever96901",
+   "fever97091",
+   "fever99932"
+  ]
+ },
+ "stability": {
+  "label_agree": 49,
+  "n": 50,
+  "rate": 0.98,
+  "score_q_identical": 27,
+  "wilson95": [
+   0.895,
+   0.9965
+  ]
+ },
+ "thresholds": {
+  "macro_f1": 0.7,
+  "refutes_precision": 0.8,
+  "stability_min": 0.95
+ }
+}

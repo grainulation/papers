@@ -1,0 +1,1229 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever87336",
+ "order": 30,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever87336",
+  "order": 30,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Juventus F.C. competes at Juventus Stadium in Turin, Italy."
+ },
+ "item_view_sha256": "fcae6b77b8149c52ad160e208d8d5510f54a9602c51338965c94fd42043b77b1",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "mistral",
+  "qwen2.5:3b",
+  "llama3.2:3b",
+  "gemma2:2b",
+  "phi3:mini"
+ ],
+ "arrival_order": [
+  "mistral",
+  "llama3.2:3b",
+  "gemma2:2b",
+  "qwen2.5:3b",
+  "phi3:mini"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c3283041b052f4fb513ebb7f9395bf1d632f80c2350c2d2f15dac3168ad7d1ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792705551.22591,
+      "end_wall": 1792705552.364606,
+      "error": null
+     }
+    ],
+    "start_wall": 1792705551.22591,
+    "start_mono": 375108.328454458,
+    "end_wall": 1792705552.364606,
+    "end_mono": 375109.467142708,
+    "raw_response": "{\"query\": \"Juventus Stadium location\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1135551000,
+     "load_duration": 37603750,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 479730042,
+     "eval_count": 12,
+     "eval_duration": 588326417,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:45:52.363592Z"
+    },
+    "elapsed_s": 1.139,
+    "query_used": "Juventus Stadium location",
+    "query_source": "json",
+    "query_arrival_seq": 150
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Juventus Stadium location",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Juventus_Stadium:1",
+       "score_q": 10941
+      },
+      {
+       "passage_key": "fever17:Stadionul_Juventus:0",
+       "score_q": 10639
+      },
+      {
+       "passage_key": "fever17:Juventus_Stadium:0",
+       "score_q": 9930
+      },
+      {
+       "passage_key": "fever17:Juventus_FC_-LRB-Belize-RRB-:0",
+       "score_q": 9867
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+       "score_q": 9199
+      }
+     ],
+     "retrieval_sha256": "cf7748ee1444c7b34dd12385653e86c38bf6ff03899ba53585b4672b2c668ea9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "cf7748ee1444c7b34dd12385653e86c38bf6ff03899ba53585b4672b2c668ea9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Juventus_Stadium:1",
+      "content_sha256": "0dedec223ef9d2affa45040ec4f1c0b4f277d024d61c228172ea33807d07ade2",
+      "chars": 355
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Stadionul_Juventus:0",
+      "content_sha256": "b01c3bfc511dbfa55e252f1d6b765fcfd9ad2ce736c70e8e4e464a9ac08dca86",
+      "chars": 242
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Juventus_Stadium:0",
+      "content_sha256": "9b65e450557265a26da2607d3615c601d6987840ecca81aa29094f0a468dcfa5",
+      "chars": 900
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Juventus_FC_-LRB-Belize-RRB-:0",
+      "content_sha256": "3d73dd6f5efe888d699c0e7f4957a5354161d6560cc7a77e8a3e8401935c151a",
+      "chars": 257
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+      "content_sha256": "7c947b57e4cff420fe92356cc7b967e1a38bd8865c81038c847a12e0f4b1cdb8",
+      "chars": 626
+     }
+    ],
+    "elapsed_s": 0.0187
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nEvidence passages from your search for \"Juventus Stadium location\":\n<<<PASSAGES\n[P1] Juventus Stadium\nThe first official competitive match was Juventus -- Parma , played on 11 September 2011 , where Stephan Lichtsteiner scored the stadium 's first goal in the 16th minute . Juventus only lost three matches of their first 100 Italian top-flight league matches at the Juventus Stadium . The stadium hosted the 2014 UEFA Europa League Final .\n\n[P2] Stadionul Juventus\nJuventus Stadium is a multi-use stadium in Bucharest , Romania . It is the home ground of Juventus Bucureşti . It holds 3,000 people , all seated . Category : Sports venues in Bucharest Category : Football venues in Romania\n\n[P3] Juventus Stadium\nJuventus Stadium , sometimes simply known in Italy as the Stadium , is an all-seater football stadium in the Vallette borough of Turin , Italy , and the home of Serie A club Juventus Football Club . The stadium was built on the site of Juventus ' and Torino 's former home , the Stadio delle Alpi , and is one of only three club-owned football stadiums in Serie A , alongside Sassuolo 's Mapei Stadium and Udinese 's Stadio Friuli . It was opened at the start of the 2011 -- 12 season and has a capacity of just over 41,000 spectators . The stands are just 7.5 metres from the pitch , a major improvement from the Stadio delle Alpi . Juventus played the first match against the world 's oldest professional football club Notts County on 8 September 2011 in a friendly which ended 1 -- 1 . Veteran striker Luca Toni found the net after Fabio Quagliarella failed to convert a penalty .\n\n[P4] Juventus FC (Belize)\nJuventus is a Belizean football team which currently competes in the Belize Premier Football League ( BPFL ) of the Football Federation of Belize . The Team is based in Orange Walk . Their home stadium is Orange Walk People 's Stadium .\n\n[P5] Stadio di Corso Marsiglia\nThe Stadio di Corso Marsiglia ( offic . Campo Juventus ) was a stadium located in Turin ( Italy ) . The first Italian sportive stadium with artificial light and built in reinforced concrete , it was home to Italian giants Foot-Ball Club Juventus between 1923 ( The first game played at Corso Marsiglia was between Juventus and Modena for the Federal Championship , which the Torinese side won 4 -- 0 ) and 1933 , the year in which Juventus transferred to Stadio Mussolini . During these years the club won four national titles , including winning three consecutively ( 1926 , 1931 , 1932 and 1933 ) .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fea2b00ef52fb10b72789381c67e1578c5753656d037e48adca88953cbee8cbf",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792705552.383751,
+      "end_wall": 1792705562.300968,
+      "error": null
+     }
+    ],
+    "arrival_seq": 150,
+    "start_wall": 1792705552.383751,
+    "start_mono": 375109.486287958,
+    "end_wall": 1792705562.300968,
+    "end_mono": 375119.403444,
+    "raw_response": "{\"reasoning\": \"The claim is supported by the passage that describes Juventus Stadium as a football stadium in Turin, Italy, which is the home of Serie A club Juventus Football Club (P3).\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9912953125,
+     "load_duration": 13983458,
+     "prompt_eval_count": 962,
+     "prompt_eval_duration": 5323105584,
+     "eval_count": 69,
+     "eval_duration": 4406449412,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:02.298747Z"
+    },
+    "elapsed_s": 9.917,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 150,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Juventus_Stadium:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 171,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c3283041b052f4fb513ebb7f9395bf1d632f80c2350c2d2f15dac3168ad7d1ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792705551.2261639,
+      "end_wall": 1792705552.383977,
+      "error": null
+     }
+    ],
+    "start_wall": 1792705551.2261639,
+    "start_mono": 375108.328707666,
+    "end_wall": 1792705552.383977,
+    "end_mono": 375109.486513708,
+    "raw_response": "{\"query\": \"Juventus F.C. stadium Turin Italy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1153451709,
+     "load_duration": 97177792,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 417929583,
+     "eval_count": 15,
+     "eval_duration": 479132584,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:45:52.381649Z"
+    },
+    "elapsed_s": 1.158,
+    "query_used": "Juventus F.C. stadium Turin Italy",
+    "query_source": "json",
+    "query_arrival_seq": 151
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Juventus F.C. stadium Turin Italy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+       "score_q": 14875
+      },
+      {
+       "passage_key": "fever17:Juventus_Stadium:0",
+       "score_q": 14509
+      },
+      {
+       "passage_key": "fever17:Sports_in_Turin:0",
+       "score_q": 13857
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+       "score_q": 13844
+      },
+      {
+       "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+       "score_q": 12774
+      }
+     ],
+     "retrieval_sha256": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+      "content_sha256": "e193c0a0be9f6be6085af02f9f813ca4fe1683a32ea7e5b1c3ef279a433397dc",
+      "chars": 279
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Juventus_Stadium:0",
+      "content_sha256": "9b65e450557265a26da2607d3615c601d6987840ecca81aa29094f0a468dcfa5",
+      "chars": 900
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sports_in_Turin:0",
+      "content_sha256": "ccabe4261e64bb1981c4b9ecc378f2f2b5db410101ef42e18053668e202af096",
+      "chars": 404
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+      "content_sha256": "7c947b57e4cff420fe92356cc7b967e1a38bd8865c81038c847a12e0f4b1cdb8",
+      "chars": 626
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+      "content_sha256": "5eac2de54dabf9d5e7f8d20d7de887fcdc06982a1ed53d19577d94e3b7d75796",
+      "chars": 994
+     }
+    ],
+    "elapsed_s": 0.0126
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nEvidence passages from your search for \"Juventus F.C. stadium Turin Italy\":\n<<<PASSAGES\n[P1] Stadio di Corso Sebastopoli\nStadio di Corso Sebastopoli was a multi-use stadium in Turin , Italy . It was initially used as the stadium of Foot-Ball Club Juventus matches . It was replaced by Stadio di Corso Marsiglia in 1963 . The capacity of the stadium was 10,000 spectators .\n\n[P2] Juventus Stadium\nJuventus Stadium , sometimes simply known in Italy as the Stadium , is an all-seater football stadium in the Vallette borough of Turin , Italy , and the home of Serie A club Juventus Football Club . The stadium was built on the site of Juventus ' and Torino 's former home , the Stadio delle Alpi , and is one of only three club-owned football stadiums in Serie A , alongside Sassuolo 's Mapei Stadium and Udinese 's Stadio Friuli . It was opened at the start of the 2011 -- 12 season and has a capacity of just over 41,000 spectators . The stands are just 7.5 metres from the pitch , a major improvement from the Stadio delle Alpi . Juventus played the first match against the world 's oldest professional football club Notts County on 8 September 2011 in a friendly which ended 1 -- 1 . Veteran striker Luca Toni found the net after Fabio Quagliarella failed to convert a penalty .\n\n[P3] Sports in Turin\nSports in Turin have a rich heritage as the home to two historically significant football teams : Juventus F.C. ( founded in 1897 ) and Torino F.C. ( founded in 1906 ) . Juventus has the larger fan base , especially in southern Italy and worldwide , while Torino enjoys a more localised support . The two clubs contest the oldest derby in Italy , the Derby della Mole or the Turin derby .\n\n[P4] Stadio di Corso Marsiglia\nThe Stadio di Corso Marsiglia ( offic . Campo Juventus ) was a stadium located in Turin ( Italy ) . The first Italian sportive stadium with artificial light and built in reinforced concrete , it was home to Italian giants Foot-Ball Club Juventus between 1923 ( The first game played at Corso Marsiglia was between Juventus and Modena for the Federal Championship , which the Torinese side won 4 -- 0 ) and 1933 , the year in which Juventus transferred to Stadio Mussolini . During these years the club won four national titles , including winning three consecutively ( 1926 , 1931 , 1932 and 1933 ) .\n\n[P5] Stadio Olimpico Grande Torino\nThe Stadio Olimpico Grande Torino is a multi-purpose stadium located in Turin , Italy . It is the home ground of Serie A club Torino Football Club . The stadium is located in Piazzale Grande Torino , in the district of Santa Rita , in the south-central area of the city . The stadium is currently rated by UEFA as a Category 4 stadium , the highest ranking possible . Constructed in the 1930s , originally known as the `` Stadio Municipale '' and later the `` Stadio Comunale '' , it was the home of Juventus and Torino until 1990 , when it was abandoned in favour of the Stadio delle Alpi . After a sixteen-year stint without Serie A football , the stadium was renovated and renamed the `` Stadio Olimpico '' on the occasion of the 2006 Winter Olympics . In a reversal of 1990 , both Juventus and Torino moved back to the Olimpico , with Juventus using it until the end of the 2010 -- 11 season , and Torino retaining it as their home stadium to the present day .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3a023b7c2618d85a6a0fd54ddc80ee4f04847ae2225360fafbb271cb72b2eba1",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792705552.396935,
+      "end_wall": 1792705562.392718,
+      "error": null
+     }
+    ],
+    "arrival_seq": 151,
+    "start_wall": 1792705552.396935,
+    "start_mono": 375109.499472375,
+    "end_wall": 1792705562.392718,
+    "end_mono": 375119.495193791,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages show that Juventus Stadium is the current home of Juventus F.C. in Turin, Italy, built on the site of their former home, the Stadio delle Alpi, and opened at the start of the 2011-12 season.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9993299542,
+     "load_duration": 89348917,
+     "prompt_eval_count": 1056,
+     "prompt_eval_duration": 3758017291,
+     "eval_count": 93,
+     "eval_duration": 5188648374,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:02.391321Z"
+    },
+    "elapsed_s": 9.996,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 151,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Stadio_di_Corso_Sebastopoli:0",
+     "fever17:Juventus_Stadium:0",
+     "fever17:Stadio_Olimpico_Grande_Torino:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 212,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c3283041b052f4fb513ebb7f9395bf1d632f80c2350c2d2f15dac3168ad7d1ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792705551.2262778,
+      "end_wall": 1792705563.604702,
+      "error": null
+     }
+    ],
+    "start_wall": 1792705551.2262778,
+    "start_mono": 375108.328821708,
+    "end_wall": 1792705563.604702,
+    "end_mono": 375120.707170333,
+    "raw_response": "{\"query\": \"Juventus Stadium location Turin Italy\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12375271792,
+     "load_duration": 11773441750,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 222890167,
+     "eval_count": 12,
+     "eval_duration": 167521332,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:03.603517Z"
+    },
+    "elapsed_s": 12.378,
+    "query_used": "Juventus Stadium location Turin Italy",
+    "query_source": "json",
+    "query_arrival_seq": 154
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Juventus Stadium location Turin Italy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+       "score_q": 14875
+      },
+      {
+       "passage_key": "fever17:Juventus_Stadium:0",
+       "score_q": 14509
+      },
+      {
+       "passage_key": "fever17:Sports_in_Turin:0",
+       "score_q": 13857
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+       "score_q": 13844
+      },
+      {
+       "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+       "score_q": 12774
+      }
+     ],
+     "retrieval_sha256": "bcb28bd677610d2d2569f656552078f75ea8ce4ec92bade30aba85da3076067b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bcb28bd677610d2d2569f656552078f75ea8ce4ec92bade30aba85da3076067b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+      "content_sha256": "e193c0a0be9f6be6085af02f9f813ca4fe1683a32ea7e5b1c3ef279a433397dc",
+      "chars": 279
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Juventus_Stadium:0",
+      "content_sha256": "9b65e450557265a26da2607d3615c601d6987840ecca81aa29094f0a468dcfa5",
+      "chars": 900
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sports_in_Turin:0",
+      "content_sha256": "ccabe4261e64bb1981c4b9ecc378f2f2b5db410101ef42e18053668e202af096",
+      "chars": 404
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+      "content_sha256": "7c947b57e4cff420fe92356cc7b967e1a38bd8865c81038c847a12e0f4b1cdb8",
+      "chars": 626
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+      "content_sha256": "5eac2de54dabf9d5e7f8d20d7de887fcdc06982a1ed53d19577d94e3b7d75796",
+      "chars": 994
+     }
+    ],
+    "elapsed_s": 0.0152
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nEvidence passages from your search for \"Juventus Stadium location Turin Italy\":\n<<<PASSAGES\n[P1] Stadio di Corso Sebastopoli\nStadio di Corso Sebastopoli was a multi-use stadium in Turin , Italy . It was initially used as the stadium of Foot-Ball Club Juventus matches . It was replaced by Stadio di Corso Marsiglia in 1963 . The capacity of the stadium was 10,000 spectators .\n\n[P2] Juventus Stadium\nJuventus Stadium , sometimes simply known in Italy as the Stadium , is an all-seater football stadium in the Vallette borough of Turin , Italy , and the home of Serie A club Juventus Football Club . The stadium was built on the site of Juventus ' and Torino 's former home , the Stadio delle Alpi , and is one of only three club-owned football stadiums in Serie A , alongside Sassuolo 's Mapei Stadium and Udinese 's Stadio Friuli . It was opened at the start of the 2011 -- 12 season and has a capacity of just over 41,000 spectators . The stands are just 7.5 metres from the pitch , a major improvement from the Stadio delle Alpi . Juventus played the first match against the world 's oldest professional football club Notts County on 8 September 2011 in a friendly which ended 1 -- 1 . Veteran striker Luca Toni found the net after Fabio Quagliarella failed to convert a penalty .\n\n[P3] Sports in Turin\nSports in Turin have a rich heritage as the home to two historically significant football teams : Juventus F.C. ( founded in 1897 ) and Torino F.C. ( founded in 1906 ) . Juventus has the larger fan base , especially in southern Italy and worldwide , while Torino enjoys a more localised support . The two clubs contest the oldest derby in Italy , the Derby della Mole or the Turin derby .\n\n[P4] Stadio di Corso Marsiglia\nThe Stadio di Corso Marsiglia ( offic . Campo Juventus ) was a stadium located in Turin ( Italy ) . The first Italian sportive stadium with artificial light and built in reinforced concrete , it was home to Italian giants Foot-Ball Club Juventus between 1923 ( The first game played at Corso Marsiglia was between Juventus and Modena for the Federal Championship , which the Torinese side won 4 -- 0 ) and 1933 , the year in which Juventus transferred to Stadio Mussolini . During these years the club won four national titles , including winning three consecutively ( 1926 , 1931 , 1932 and 1933 ) .\n\n[P5] Stadio Olimpico Grande Torino\nThe Stadio Olimpico Grande Torino is a multi-purpose stadium located in Turin , Italy . It is the home ground of Serie A club Torino Football Club . The stadium is located in Piazzale Grande Torino , in the district of Santa Rita , in the south-central area of the city . The stadium is currently rated by UEFA as a Category 4 stadium , the highest ranking possible . Constructed in the 1930s , originally known as the `` Stadio Municipale '' and later the `` Stadio Comunale '' , it was the home of Juventus and Torino until 1990 , when it was abandoned in favour of the Stadio delle Alpi . After a sixteen-year stint without Serie A football , the stadium was renovated and renamed the `` Stadio Olimpico '' on the occasion of the 2006 Winter Olympics . In a reversal of 1990 , both Juventus and Torino moved back to the Olimpico , with Juventus using it until the end of the 2010 -- 11 season , and Torino retaining it as their home stadium to the present day .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e20e52b64c2168d8fa2ab6d88577e716be6a486f04f4db2288b68fb55dee094d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792705563.620236,
+      "end_wall": 1792705571.822798,
+      "error": null
+     }
+    ],
+    "arrival_seq": 152,
+    "start_wall": 1792705563.620236,
+    "start_mono": 375120.722705583,
+    "end_wall": 1792705571.822798,
+    "end_mono": 375128.925217,
+    "raw_response": "{\"reasoning\": \"The provided evidence passages clearly state that Juventus Stadium is the home of Juventus Football Club in Turin, Italy.  The other mentioned stadiums are not the home of the club. \", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"high\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8198222958,
+     "load_duration": 90105083,
+     "prompt_eval_count": 1061,
+     "prompt_eval_duration": 1338382500,
+     "eval_count": 58,
+     "eval_duration": 5708119039,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:11.819629Z"
+    },
+    "elapsed_s": 8.203,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 152,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 182,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c3283041b052f4fb513ebb7f9395bf1d632f80c2350c2d2f15dac3168ad7d1ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792705551.22602,
+      "end_wall": 1792705561.386008,
+      "error": null
+     }
+    ],
+    "start_wall": 1792705551.22602,
+    "start_mono": 375108.328563791,
+    "end_wall": 1792705561.386008,
+    "end_mono": 375118.488490666,
+    "raw_response": "{\"query\": \"Juventus F.C. stadium Turin Italy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10156552917,
+     "load_duration": 8770804500,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 403474500,
+     "eval_count": 15,
+     "eval_duration": 790336083,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:01.384889Z"
+    },
+    "elapsed_s": 10.16,
+    "query_used": "Juventus F.C. stadium Turin Italy",
+    "query_source": "json",
+    "query_arrival_seq": 153
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Juventus F.C. stadium Turin Italy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+       "score_q": 14875
+      },
+      {
+       "passage_key": "fever17:Juventus_Stadium:0",
+       "score_q": 14509
+      },
+      {
+       "passage_key": "fever17:Sports_in_Turin:0",
+       "score_q": 13857
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+       "score_q": 13844
+      },
+      {
+       "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+       "score_q": 12774
+      }
+     ],
+     "retrieval_sha256": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+      "content_sha256": "e193c0a0be9f6be6085af02f9f813ca4fe1683a32ea7e5b1c3ef279a433397dc",
+      "chars": 279
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Juventus_Stadium:0",
+      "content_sha256": "9b65e450557265a26da2607d3615c601d6987840ecca81aa29094f0a468dcfa5",
+      "chars": 900
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Sports_in_Turin:0",
+      "content_sha256": "ccabe4261e64bb1981c4b9ecc378f2f2b5db410101ef42e18053668e202af096",
+      "chars": 404
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+      "content_sha256": "7c947b57e4cff420fe92356cc7b967e1a38bd8865c81038c847a12e0f4b1cdb8",
+      "chars": 626
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+      "content_sha256": "5eac2de54dabf9d5e7f8d20d7de887fcdc06982a1ed53d19577d94e3b7d75796",
+      "chars": 994
+     }
+    ],
+    "elapsed_s": 0.0158
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nEvidence passages from your search for \"Juventus F.C. stadium Turin Italy\":\n<<<PASSAGES\n[P1] Stadio di Corso Sebastopoli\nStadio di Corso Sebastopoli was a multi-use stadium in Turin , Italy . It was initially used as the stadium of Foot-Ball Club Juventus matches . It was replaced by Stadio di Corso Marsiglia in 1963 . The capacity of the stadium was 10,000 spectators .\n\n[P2] Juventus Stadium\nJuventus Stadium , sometimes simply known in Italy as the Stadium , is an all-seater football stadium in the Vallette borough of Turin , Italy , and the home of Serie A club Juventus Football Club . The stadium was built on the site of Juventus ' and Torino 's former home , the Stadio delle Alpi , and is one of only three club-owned football stadiums in Serie A , alongside Sassuolo 's Mapei Stadium and Udinese 's Stadio Friuli . It was opened at the start of the 2011 -- 12 season and has a capacity of just over 41,000 spectators . The stands are just 7.5 metres from the pitch , a major improvement from the Stadio delle Alpi . Juventus played the first match against the world 's oldest professional football club Notts County on 8 September 2011 in a friendly which ended 1 -- 1 . Veteran striker Luca Toni found the net after Fabio Quagliarella failed to convert a penalty .\n\n[P3] Sports in Turin\nSports in Turin have a rich heritage as the home to two historically significant football teams : Juventus F.C. ( founded in 1897 ) and Torino F.C. ( founded in 1906 ) . Juventus has the larger fan base , especially in southern Italy and worldwide , while Torino enjoys a more localised support . The two clubs contest the oldest derby in Italy , the Derby della Mole or the Turin derby .\n\n[P4] Stadio di Corso Marsiglia\nThe Stadio di Corso Marsiglia ( offic . Campo Juventus ) was a stadium located in Turin ( Italy ) . The first Italian sportive stadium with artificial light and built in reinforced concrete , it was home to Italian giants Foot-Ball Club Juventus between 1923 ( The first game played at Corso Marsiglia was between Juventus and Modena for the Federal Championship , which the Torinese side won 4 -- 0 ) and 1933 , the year in which Juventus transferred to Stadio Mussolini . During these years the club won four national titles , including winning three consecutively ( 1926 , 1931 , 1932 and 1933 ) .\n\n[P5] Stadio Olimpico Grande Torino\nThe Stadio Olimpico Grande Torino is a multi-purpose stadium located in Turin , Italy . It is the home ground of Serie A club Torino Football Club . The stadium is located in Piazzale Grande Torino , in the district of Santa Rita , in the south-central area of the city . The stadium is currently rated by UEFA as a Category 4 stadium , the highest ranking possible . Constructed in the 1930s , originally known as the `` Stadio Municipale '' and later the `` Stadio Comunale '' , it was the home of Juventus and Torino until 1990 , when it was abandoned in favour of the Stadio delle Alpi . After a sixteen-year stint without Serie A football , the stadium was renovated and renamed the `` Stadio Olimpico '' on the occasion of the 2006 Winter Olympics . In a reversal of 1990 , both Juventus and Torino moved back to the Olimpico , with Juventus using it until the end of the 2010 -- 11 season , and Torino retaining it as their home stadium to the present day .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3a023b7c2618d85a6a0fd54ddc80ee4f04847ae2225360fafbb271cb72b2eba1",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792705561.402209,
+      "end_wall": 1792705574.315858,
+      "error": null
+     }
+    ],
+    "arrival_seq": 153,
+    "start_wall": 1792705561.402209,
+    "start_mono": 375118.504691833,
+    "end_wall": 1792705574.315858,
+    "end_mono": 375131.418261958,
+    "raw_response": "{\n    \"reasoning\": \"The evidence passages indicate that Juventus F.C. has used various stadiums in Turin, Italy. The most relevant passage is P2, which explicitly states that the Juventus Stadium is the home ground of Juventus F.C. in Turin, Italy, with a capacity of over 41,000 spectators. This directly supports the claim.\",\n    \"answer\": \"SUPPORTED\",\n    \"citations\": [\"P2\"],\n    \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12909270667,
+     "load_duration": 4506253084,
+     "prompt_eval_count": 1086,
+     "prompt_eval_duration": 3218924710,
+     "eval_count": 102,
+     "eval_duration": 4012380210,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:14.312689Z"
+    },
+    "elapsed_s": 12.914,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 153,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Juventus_Stadium:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 305,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c3283041b052f4fb513ebb7f9395bf1d632f80c2350c2d2f15dac3168ad7d1ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792705551.22637,
+      "end_wall": 1792705558.489117,
+      "error": null
+     }
+    ],
+    "start_wall": 1792705551.22637,
+    "start_mono": 375108.328914375,
+    "end_wall": 1792705558.489117,
+    "end_mono": 375115.591616625,
+    "raw_response": "{\"query\": \"Juventus F.C. home stadium Turin Italy\" }\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7260077791,
+     "load_duration": 1391248833,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 1624380542,
+     "eval_count": 23,
+     "eval_duration": 4188383331,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:45:58.488215Z"
+    },
+    "elapsed_s": 7.263,
+    "query_used": "Juventus F.C. home stadium Turin Italy",
+    "query_source": "json",
+    "query_arrival_seq": 152
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Juventus F.C. home stadium Turin Italy",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Juventus_Stadium:0",
+       "score_q": 16302
+      },
+      {
+       "passage_key": "fever17:Sports_in_Turin:0",
+       "score_q": 15598
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+       "score_q": 15290
+      },
+      {
+       "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+       "score_q": 14942
+      },
+      {
+       "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+       "score_q": 14875
+      }
+     ],
+     "retrieval_sha256": "d5c9643096f21adf3e2e677e54387e9cf3957aa9717669cbb4e46fbf9ba96af3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d5c9643096f21adf3e2e677e54387e9cf3957aa9717669cbb4e46fbf9ba96af3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Juventus_Stadium:0",
+      "content_sha256": "9b65e450557265a26da2607d3615c601d6987840ecca81aa29094f0a468dcfa5",
+      "chars": 900
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Sports_in_Turin:0",
+      "content_sha256": "ccabe4261e64bb1981c4b9ecc378f2f2b5db410101ef42e18053668e202af096",
+      "chars": 404
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Stadio_di_Corso_Marsiglia:0",
+      "content_sha256": "7c947b57e4cff420fe92356cc7b967e1a38bd8865c81038c847a12e0f4b1cdb8",
+      "chars": 626
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Stadio_Olimpico_Grande_Torino:0",
+      "content_sha256": "5eac2de54dabf9d5e7f8d20d7de887fcdc06982a1ed53d19577d94e3b7d75796",
+      "chars": 994
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Stadio_di_Corso_Sebastopoli:0",
+      "content_sha256": "e193c0a0be9f6be6085af02f9f813ca4fe1683a32ea7e5b1c3ef279a433397dc",
+      "chars": 279
+     }
+    ],
+    "elapsed_s": 0.0243
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Juventus F.C. competes at Juventus Stadium in Turin, Italy.\n\nEvidence passages from your search for \"Juventus F.C. home stadium Turin Italy\":\n<<<PASSAGES\n[P1] Juventus Stadium\nJuventus Stadium , sometimes simply known in Italy as the Stadium , is an all-seater football stadium in the Vallette borough of Turin , Italy , and the home of Serie A club Juventus Football Club . The stadium was built on the site of Juventus ' and Torino 's former home , the Stadio delle Alpi , and is one of only three club-owned football stadiums in Serie A , alongside Sassuolo 's Mapei Stadium and Udinese 's Stadio Friuli . It was opened at the start of the 2011 -- 12 season and has a capacity of just over 41,000 spectators . The stands are just 7.5 metres from the pitch , a major improvement from the Stadio delle Alpi . Juventus played the first match against the world 's oldest professional football club Notts County on 8 September 2011 in a friendly which ended 1 -- 1 . Veteran striker Luca Toni found the net after Fabio Quagliarella failed to convert a penalty .\n\n[P2] Sports in Turin\nSports in Turin have a rich heritage as the home to two historically significant football teams : Juventus F.C. ( founded in 1897 ) and Torino F.C. ( founded in 1906 ) . Juventus has the larger fan base , especially in southern Italy and worldwide , while Torino enjoys a more localised support . The two clubs contest the oldest derby in Italy , the Derby della Mole or the Turin derby .\n\n[P3] Stadio di Corso Marsiglia\nThe Stadio di Corso Marsiglia ( offic . Campo Juventus ) was a stadium located in Turin ( Italy ) . The first Italian sportive stadium with artificial light and built in reinforced concrete , it was home to Italian giants Foot-Ball Club Juventus between 1923 ( The first game played at Corso Marsiglia was between Juventus and Modena for the Federal Championship , which the Torinese side won 4 -- 0 ) and 1933 , the year in which Juventus transferred to Stadio Mussolini . During these years the club won four national titles , including winning three consecutively ( 1926 , 1931 , 1932 and 1933 ) .\n\n[P4] Stadio Olimpico Grande Torino\nThe Stadio Olimpico Grande Torino is a multi-purpose stadium located in Turin , Italy . It is the home ground of Serie A club Torino Football Club . The stadium is located in Piazzale Grande Torino , in the district of Santa Rita , in the south-central area of the city . The stadium is currently rated by UEFA as a Category 4 stadium , the highest ranking possible . Constructed in the 1930s , originally known as the `` Stadio Municipale '' and later the `` Stadio Comunale '' , it was the home of Juventus and Torino until 1990 , when it was abandoned in favour of the Stadio delle Alpi . After a sixteen-year stint without Serie A football , the stadium was renovated and renamed the `` Stadio Olimpico '' on the occasion of the 2006 Winter Olympics . In a reversal of 1990 , both Juventus and Torino moved back to the Olimpico , with Juventus using it until the end of the 2010 -- 11 season , and Torino retaining it as their home stadium to the present day .\n\n[P5] Stadio di Corso Sebastopoli\nStadio di Corso Sebastopoli was a multi-use stadium in Turin , Italy . It was initially used as the stadium of Foot-Ball Club Juventus matches . It was replaced by Stadio di Corso Marsiglia in 1963 . The capacity of the stadium was 10,000 spectators .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d6f887b4e4d7b6aae1123185f171ec899867f18f7ebce863ddbed320d730f238",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792705558.513794,
+      "end_wall": 1792705575.037129,
+      "error": null
+     }
+    ],
+    "arrival_seq": 154,
+    "start_wall": 1792705558.513794,
+    "start_mono": 375115.616293833,
+    "end_wall": 1792705575.037129,
+    "end_mono": 375132.139529333,
+    "raw_response": "{\n  \"reasoning\": \"The claim that Juventus F.C. competes at Juventus Stadium in Turin, Italy, is supported by the text. Passage P1 specifically names Juventus Stadium in Turin as the home of Juventus F.C., mentioning its capacity and seating improvement over the previous venue. The other passages (P2, P3, and P4) do not directly address the claim but confirm Juventus F.C.'s historical connection to Turin and its significant football clubs. P5, although discussing another stadium in Turin, does not counter the claim about Juventus F.C.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16519836875,
+     "load_duration": 6146724875,
+     "prompt_eval_count": 1226,
+     "prompt_eval_duration": 4007338499,
+     "eval_count": 184,
+     "eval_duration": 5914375794,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T21:46:15.034519Z"
+    },
+    "elapsed_s": 16.523,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 154,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Juventus_Stadium:0",
+     "fever17:Sports_in_Turin:0",
+     "fever17:Stadio_Olimpico_Grande_Torino:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 521,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "mistral": "cf7748ee1444c7b34dd12385653e86c38bf6ff03899ba53585b4672b2c668ea9",
+  "llama3.2:3b": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28",
+  "gemma2:2b": "bcb28bd677610d2d2569f656552078f75ea8ce4ec92bade30aba85da3076067b",
+  "qwen2.5:3b": "13855ad6c779b15f6af81157cd91cea96d6b2adc3ed39d2b07b62ef811c33c28",
+  "phi3:mini": "d5c9643096f21adf3e2e677e54387e9cf3957aa9717669cbb4e46fbf9ba96af3"
+ },
+ "item_start_wall": 1792705551.225666,
+ "item_wall_s": 23.811,
+ "ollama_ps_samples": [
+  [
+   1792705551.226,
+   [
+    "gemma2:2b",
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792705553.229,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792705555.235,
+   [
+    "mistral:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792705557.24,
+   [
+    "mistral:latest",
+    "llama3.2:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792705559.246,
+   [
+    "mistral:latest",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792705561.252,
+   [
+    "mistral:latest",
+    "llama3.2:3b",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792705563.258,
+   [
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792705565.265,
+   [
+    "phi3:mini",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792705567.268,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792705569.275,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792705571.277,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792705573.281,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "gemma2:2b"
+   ]
+  ]
+ ]
+}

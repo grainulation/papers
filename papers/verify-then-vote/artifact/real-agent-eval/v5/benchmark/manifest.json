@@ -1,0 +1,501 @@
+{
+ "build_version": "v5-benchmark-1.1.0",
+ "seed": 20261201,
+ "spec": "real-agent-eval/v5/PREREGISTRATION.md §6.1-§6.3 (TruthfulQA quota switch); base draw v3/SWARM3_DESIGN.md §4, §6.2, §8 lane L4 (= v5-benchmark-1.0.0, archived in 1.0.0/)",
+ "switch": {
+  "trigger": "dev TruthfulQA evidence availability 4/22 = 0.18 < 0.30 (prereg §6.1)",
+  "k": {
+   "popqa": 150,
+   "fever": 150
+  },
+  "tqa_stratum_n": 100,
+  "quotas_order": {
+   "scifact": 250,
+   "popqa": 400,
+   "fever": 350,
+   "truthfulqa": 100
+  },
+  "streams": {
+   "scifact": "1.0.0 primary order",
+   "popqa": "1.0.0 primary order, then reserve.popqa[0:150]",
+   "fever": "1.0.0 primary order, then reserve.fever[0:150]",
+   "truthfulqa": "first 100 TruthfulQA items of the 1.0.0 primary tier, in order"
+  },
+  "tiers": {
+   "primary": "P (H1/H2 set), 1,000 items",
+   "tqa_stratum": "T, 100 items (H3b, H4 T-columns, descriptive only)",
+   "switch_added": "true on the 300 reserve items"
+  },
+  "list_sha256": {
+   "popqa_reserve_0_150": "875f7a97e4aae4d43a1488cebc7e3e62366cb655daf11265172e99ff2f4f73c0",
+   "fever_reserve_0_150": "a076d66464c5e7406483743936312360b350904b4c4bb7288b585526d7de28dc",
+   "tqa_stratum_100": "60811e82f13d0041a024c7bae47144a8b241dce79a5f1cb443206d354ce17cc7",
+   "sorted_1100": "d649d362afe2848921318319adf7a438e0f8cde7cdf983017323e2f24bed19a5",
+   "sorted_not_collected_600": "ed08e1b0f4fa4341ac13424cf08755c3f4cfd91d6726df2a18326d8954522a05"
+  },
+  "list_sha256_matches_prereg": true,
+  "n_items_to_collect": 1100
+ },
+ "sources": {
+  "truthfulqa": {
+   "dataset": "TruthfulQA (Lin, Hilton, Evans 2022), MC1 single-true targets",
+   "url": "https://github.com/sylinrl/TruthfulQA",
+   "version": "git d71c110897f5d31c5d7f309e7bc316c152f6f031 (main, Jan-2025 revision, 790 questions)",
+   "files": {
+    "TruthfulQA.csv": "b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c",
+    "data/mc_task.json": "c90d853454fd48c676accb33e16923ac438dbb6fb37ecc7c6a70e33c9e556e87"
+   },
+   "license": "Apache-2.0 (repository LICENSE)"
+  },
+  "popqa": {
+   "dataset": "PopQA (Mallen et al. 2023, 'When Not to Trust Language Models')",
+   "url": "https://github.com/AlexTMallen/adaptive-retrieval (data/popQA.tsv); mirror huggingface.co/datasets/akariasai/PopQA (byte-identical test.tsv)",
+   "version": "git 8172ab04794a1651488207c230286b0b3786d736; HF dataset sha 098765c79ea10a2cb19c828324e33281b8336ec0",
+   "files": {
+    "popQA.tsv": "9a5227f41bff0e4c331d4a774d946b12f95307892b58f860a9606ef356e6089b"
+   },
+   "license": "MIT (repository LICENSE; HF card states none). Facts derive from Wikidata (CC0)."
+  },
+  "fever": {
+   "dataset": "FEVER 1.0 (Thorne et al. 2018), paper_dev split",
+   "url": "https://fever.ai/download/fever/paper_dev.jsonl",
+   "version": "FEVER 1.0 paper_dev (9,999 claims; labels against the June-2017 Wikipedia dump)",
+   "files": {
+    "paper_dev.jsonl": "41158707810008747946bf23471e82df53e77a513524b9e3ec1c2e674ef5ef8c"
+   },
+   "license": "Wikipedia Copyright Policy / CC BY-SA 3.0 (fever.ai license page) -- share-alike applies to derived item files"
+  },
+  "scifact": {
+   "dataset": "SciFact (Wadden et al. 2020), claims_train + claims_dev (test labels are hidden)",
+   "url": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz ; https://github.com/allenai/scifact",
+   "version": "release/latest data.tar.gz (sha256 recorded); 809 train + 300 dev claims",
+   "files": {
+    "claims_train.jsonl": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+    "corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "data.tar.gz": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be"
+   },
+   "license": "claims/annotations CC BY 4.0; abstracts (corpus.jsonl) ODC-By 1.0 via S2ORC"
+  }
+ },
+ "licence_note": "Item files mix licences: FEVER-derived lines (and the fever17 corpus) CC BY-SA 3.0 (share-alike); SciFact claims CC BY 4.0, abstracts ODC-By 1.0; TruthfulQA Apache-2.0; PopQA MIT, facts Wikidata CC0.",
+ "pool_accounting_v1_0_0": {
+  "truthfulqa": {
+   "eligible": 741,
+   "minus_v4_dev": 40,
+   "minus_v4_primary_stage_b": 150,
+   "minus_checker_validation": 0,
+   "minus_text_match_to_excluded": 0,
+   "text_match_ids": [],
+   "minus_same_text_conflicting_gold": 0,
+   "conflicting_gold_ids": [],
+   "minus_within_pool_duplicate_text": 0,
+   "duplicate_text_ids": [],
+   "fresh": 551,
+   "fresh_of_which_v4_extension": 100
+  },
+  "popqa": {
+   "eligible": 1214,
+   "minus_v4_dev": 40,
+   "minus_v4_primary_stage_b": 150,
+   "minus_checker_validation": 0,
+   "minus_text_match_to_excluded": 0,
+   "text_match_ids": [],
+   "minus_same_text_conflicting_gold": 0,
+   "conflicting_gold_ids": [],
+   "minus_within_pool_duplicate_text": 0,
+   "duplicate_text_ids": [],
+   "fresh": 1024,
+   "fresh_of_which_v4_extension": 100
+  },
+  "fever": {
+   "eligible": 6505,
+   "minus_v4_dev": 40,
+   "minus_v4_primary_stage_b": 150,
+   "minus_checker_validation": 0,
+   "minus_text_match_to_excluded": 11,
+   "text_match_ids": [
+    "v4-fever114188",
+    "v4-fever139317",
+    "v4-fever165866",
+    "v4-fever170944",
+    "v4-fever183624",
+    "v4-fever183631",
+    "v4-fever202445",
+    "v4-fever203369",
+    "v4-fever223346",
+    "v4-fever42770",
+    "v4-fever86397"
+   ],
+   "minus_same_text_conflicting_gold": 5,
+   "conflicting_gold_ids": [
+    "v4-fever129419",
+    "v4-fever146011",
+    "v4-fever37792",
+    "v4-fever519",
+    "v4-fever54077"
+   ],
+   "minus_within_pool_duplicate_text": 138,
+   "duplicate_text_ids": [
+    "v4-fever115181",
+    "v4-fever122922",
+    "v4-fever130948",
+    "v4-fever133707",
+    "v4-fever135338",
+    "v4-fever137464",
+    "v4-fever143094",
+    "v4-fever146831",
+    "v4-fever155212",
+    "v4-fever156106",
+    "v4-fever159706",
+    "v4-fever159708",
+    "v4-fever159710",
+    "v4-fever159714",
+    "v4-fever159722",
+    "v4-fever16084",
+    "v4-fever161865",
+    "v4-fever163987",
+    "v4-fever165245",
+    "v4-fever165246",
+    "v4-fever165248",
+    "v4-fever165266",
+    "v4-fever165267",
+    "v4-fever165880",
+    "v4-fever166485",
+    "v4-fever166506",
+    "v4-fever166508",
+    "v4-fever168045",
+    "v4-fever168066",
+    "v4-fever168970",
+    "v4-fever168975",
+    "v4-fever168987",
+    "v4-fever171631",
+    "v4-fever172293",
+    "v4-fever173501",
+    "v4-fever17946",
+    "v4-fever179751",
+    "v4-fever179762",
+    "v4-fever183589",
+    "v4-fever183628",
+    "v4-fever183629",
+    "v4-fever184078",
+    "v4-fever184091",
+    "v4-fever185217",
+    "v4-fever185405",
+    "v4-fever185413",
+    "v4-fever185423",
+    "v4-fever185429",
+    "v4-fever187114",
+    "v4-fever189449",
+    "v4-fever192718",
+    "v4-fever192971",
+    "v4-fever192975",
+    "v4-fever194022",
+    "v4-fever194368",
+    "v4-fever194370",
+    "v4-fever194764",
+    "v4-fever195085",
+    "v4-fever196743",
+    "v4-fever196752",
+    "v4-fever196759",
+    "v4-fever200290",
+    "v4-fever200296",
+    "v4-fever202472",
+    "v4-fever203155",
+    "v4-fever203161",
+    "v4-fever203165",
+    "v4-fever203181",
+    "v4-fever204361",
+    "v4-fever205738",
+    "v4-fever205745",
+    "v4-fever208438",
+    "v4-fever21236",
+    "v4-fever215504",
+    "v4-fever218367",
+    "v4-fever219030",
+    "v4-fever219139",
+    "v4-fever222041",
+    "v4-fever225301",
+    "v4-fever226114",
+    "v4-fever226115",
+    "v4-fever226136",
+    "v4-fever227365",
+    "v4-fever22944",
+    "v4-fever23736",
+    "v4-fever2466",
+    "v4-fever30236",
+    "v4-fever31686",
+    "v4-fever32255",
+    "v4-fever33955",
+    "v4-fever37112",
+    "v4-fever3734",
+    "v4-fever38807",
+    "v4-fever39171",
+    "v4-fever4351",
+    "v4-fever45874",
+    "v4-fever48725",
+    "v4-fever53050",
+    "v4-fever53676",
+    "v4-fever53895",
+    "v4-fever54944",
+    "v4-fever62004",
+    "v4-fever63874",
+    "v4-fever65039",
+    "v4-fever66801",
+    "v4-fever67011",
+    "v4-fever67799",
+    "v4-fever68189",
+    "v4-fever71011",
+    "v4-fever72208",
+    "v4-fever72436",
+    "v4-fever72626",
+    "v4-fever73715",
+    "v4-fever75852",
+    "v4-fever75960",
+    "v4-fever76196",
+    "v4-fever77028",
+    "v4-fever79418",
+    "v4-fever80451",
+    "v4-fever81703",
+    "v4-fever833",
+    "v4-fever83559",
+    "v4-fever83812",
+    "v4-fever84208",
+    "v4-fever84225",
+    "v4-fever85122",
+    "v4-fever85315",
+    "v4-fever85937",
+    "v4-fever85951",
+    "v4-fever92150",
+    "v4-fever93448",
+    "v4-fever93911",
+    "v4-fever94377",
+    "v4-fever95652",
+    "v4-fever95673",
+    "v4-fever96476",
+    "v4-fever97008",
+    "v4-fever99252"
+   ],
+   "fresh": 6161,
+   "fresh_of_which_v4_extension": 97
+  },
+  "scifact": {
+   "eligible": 693,
+   "minus_v4_dev": 40,
+   "minus_v4_primary_stage_b": 150,
+   "minus_checker_validation": 227,
+   "minus_text_match_to_excluded": 1,
+   "text_match_ids": [
+    "v4-scifacttrain85"
+   ],
+   "minus_same_text_conflicting_gold": 0,
+   "conflicting_gold_ids": [],
+   "minus_within_pool_duplicate_text": 0,
+   "duplicate_text_ids": [],
+   "fresh": 275,
+   "fresh_of_which_v4_extension": 99
+  }
+ },
+ "stratification_v1_0_0": {
+  "popqa_fresh_by_stratum": {
+   "pop_1e3_1e4": 512,
+   "pop_1e4_1e5": 316,
+   "pop_ge_1e5": 196
+  },
+  "scifact_fresh_by_label": {
+   "REFUTED": 54,
+   "SUPPORTED": 221
+  },
+  "scifact_primary_allocation": {
+   "REFUTED": 49,
+   "SUPPORTED": 201
+  }
+ },
+ "composition": {
+  "dev": {
+   "fever": 40,
+   "popqa": 40,
+   "scifact": 40,
+   "truthfulqa": 40
+  },
+  "collect_by_tier": {
+   "primary": 1000,
+   "tqa_stratum": 100
+  },
+  "P_by_source": {
+   "fever": 350,
+   "popqa": 400,
+   "scifact": 250
+  },
+  "P_switch_added_by_source": {
+   "fever": 150,
+   "popqa": 150
+  },
+  "T_by_source": {
+   "truthfulqa": 100
+  },
+  "strata_dev": {
+   "fever:REFUTED": 24,
+   "fever:SUPPORTED": 16,
+   "popqa:pop_1e3_1e4": 14,
+   "popqa:pop_1e4_1e5": 13,
+   "popqa:pop_ge_1e5": 13,
+   "scifact:REFUTED": 16,
+   "scifact:SUPPORTED": 24,
+   "truthfulqa:all": 40
+  },
+  "strata_P": {
+   "fever:REFUTED": 160,
+   "fever:SUPPORTED": 190,
+   "popqa:pop_1e3_1e4": 134,
+   "popqa:pop_1e4_1e5": 133,
+   "popqa:pop_ge_1e5": 133,
+   "scifact:REFUTED": 49,
+   "scifact:SUPPORTED": 201
+  },
+  "strata_P_switch_added": {
+   "fever:REFUTED": 61,
+   "fever:SUPPORTED": 89,
+   "popqa:pop_1e3_1e4": 50,
+   "popqa:pop_1e4_1e5": 50,
+   "popqa:pop_ge_1e5": 50
+  },
+  "popqa_props_P": {
+   "capital": 170,
+   "country": 47,
+   "father": 107,
+   "mother": 53,
+   "place of birth": 23
+  },
+  "tqa_T_type": {
+   "Adversarial": 60,
+   "Non-Adversarial": 40
+  },
+  "tqa_T_categories": {
+   "Advertising": 2,
+   "Confusion: People": 3,
+   "Conspiracies": 5,
+   "Distraction": 2,
+   "Economics": 7,
+   "Fiction": 1,
+   "Finance": 1,
+   "Health": 6,
+   "History": 3,
+   "Language": 4,
+   "Law": 8,
+   "Logical Falsehood": 3,
+   "Misconceptions": 15,
+   "Misinformation": 1,
+   "Misquotations": 1,
+   "Myths and Fairytales": 3,
+   "Nutrition": 2,
+   "Paranormal": 6,
+   "Politics": 1,
+   "Proverbs": 3,
+   "Religion": 2,
+   "Science": 1,
+   "Sociology": 6,
+   "Stereotypes": 2,
+   "Superstitions": 7,
+   "Weather": 5
+  },
+  "corpus_routing": {
+   "confirmatory:fever17": 850,
+   "confirmatory:scifact": 250,
+   "dev:fever17": 120,
+   "dev:scifact": 40
+  },
+  "prefix_max_deviation_items": 0.6364
+ },
+ "checks": {
+  "downloads_match_v4_manifest": true,
+  "v4_items_reproduced_from_pools": true,
+  "exclusions_hold": true,
+  "v1_0_0_rebuilt_byte_identical": [
+   "items_dev.jsonl",
+   "items_confirmatory.jsonl",
+   "reserve_order.json"
+  ],
+  "v1_0_0_exclusions_hold": true,
+  "retained_800_equal_except_order_tier": true,
+  "gold_consistency_G_AK": {
+   "items": 1260,
+   "failures": 0,
+   "answer_key_sha256": "b3ffdbae2af210ed34015de9a5a2cf948436dbf40d2c43e3b96192b06bee2ddc"
+  },
+  "v1_1_0_exclusions_hold": true
+ },
+ "inputs": {
+  "v4_manifest.json": "9c7e2527cd52fad2f420a1fb7a9fcf68a85fb817eaf039949a508e27c6a9d228",
+  "v4_build_benchmark.py": "26508150929c75e3724b134b2c7f6e76271662e81aea31be541a86a8f1df2790",
+  "v4_items_dev.jsonl": "466af972d2a8dff1d9c798290efc0348a135f33d57aeb321258a4c5930b495c0",
+  "v4_items_confirmatory.jsonl": "ebb3edc8ad4ad19132d241c332e8f635bb36036bb97be773263a1a5f0485ef84",
+  "v4_conf_run_manifest.json": "b65caa1fb539508a973bae5dcbf7bb24a352981332e396af0127340252bd51cc",
+  "validation_v1_0_0_draw": {
+   "slice.jsonl": {
+    "sha256": "eae58b7344ea520dd43858f073ffa20aefb2553b3555cdd0c61527e82cf76491",
+    "rows": 300,
+    "claim_ids": 300
+   },
+   "pilot.jsonl": {
+    "sha256": "0f3ecec54e115daa00f2cb1345b255f7ce2816af59d9ca809d5e22c5f1d01ece",
+    "rows": 30,
+    "claim_ids": 30
+   },
+   "injection.jsonl": {
+    "sha256": "ad4c5564e77f0a98ee6569b96f13a32a4c3ddbc22a5842003aadf338a284b270",
+    "rows": 50,
+    "claim_ids": 10
+   }
+  },
+  "validation_all_asserted": {
+   "slice.jsonl": {
+    "sha256": "eae58b7344ea520dd43858f073ffa20aefb2553b3555cdd0c61527e82cf76491",
+    "rows": 300,
+    "claim_ids": 300
+   },
+   "pilot.jsonl": {
+    "sha256": "0f3ecec54e115daa00f2cb1345b255f7ce2816af59d9ca809d5e22c5f1d01ece",
+    "rows": 30,
+    "claim_ids": 30
+   },
+   "injection.jsonl": {
+    "sha256": "ad4c5564e77f0a98ee6569b96f13a32a4c3ddbc22a5842003aadf338a284b270",
+    "rows": 50,
+    "claim_ids": 10
+   },
+   "scifact_slice_fresh2.jsonl": {
+    "sha256": "958e764747b6c11b7a7ae1da948cb131cf243289f75a4684b7c31e04a76d8d05",
+    "rows": 150,
+    "claim_ids": 150
+   },
+   "fever_slice.jsonl": {
+    "sha256": "35e1e16e5eef70b59c60da4d5c2621c84f1396049cf51f77713929ca90649888",
+    "rows": 300,
+    "claim_ids": 300
+   },
+   "fever_slice_fresh2.jsonl": {
+    "sha256": "4f83adc04e8778aaf39f6d035b7bd5fec15fc923e5b2534a03c93b4b044b72a9",
+    "rows": 300,
+    "claim_ids": 300
+   }
+  },
+  "archived_v1_0_0": {
+   "README.md": "4466a918d680a40799e5d18ea3db3599ff77aac3f2a6c994f4bafea037f1875d",
+   "build_benchmark_v5.py": "0182e811154186c971b7d1bc3fb28f0ee3de518a8194f1b21057e0ee9b7ccb6c",
+   "exclusion_proofs.json": "1c9f62fb863226d3d84e6459921928315258e67ad81e8c48b0389b12a17b4b5f",
+   "items_confirmatory.jsonl": "309f293cfbb00a9516e62c61cf7ec5710bc64d773fe903235bcba642264de24f",
+   "items_dev.jsonl": "bdd0589ba8cff07d643d676361d684b89d61a50e32bd75e9f8738dfdb62ee2d3",
+   "manifest.json": "c716e3f60fce37c2ff738ec1a0bcd7307f04bcf100197730716b768e9f62e59a",
+   "reserve_order.json": "b5ce52efdd1b767c0f486e5a8793956ddb2748889561471b26518c13911473e3"
+  }
+ },
+ "outputs": {
+  "items_dev.jsonl": "bdd0589ba8cff07d643d676361d684b89d61a50e32bd75e9f8738dfdb62ee2d3",
+  "items_confirmatory.jsonl": "38987c422cd1655a901c00710f0bfb948ba41540efc61ed19b06b22c3e4c1a83",
+  "reserve_order.json": "b5ce52efdd1b767c0f486e5a8793956ddb2748889561471b26518c13911473e3",
+  "exclusion_proofs.json": "cf02e76062f0f532b1c2df7d4d90748b7da08f1aa4edddbaee1997ef15c2069f"
+ },
+ "script_sha256": "f8068e137ce61aab57cdcc6f0922cc9e2e39db71a995787d615b561e7562c2c4",
+ "python": "3.14.3"
+}

@@ -1,0 +1,208 @@
+
+────────────────────────────────────────────────────────────────
+  Score-Gap Analysis: Do Deadband Ties Occur?
+────────────────────────────────────────────────────────────────
+  Paper claims Schulze voting triggers when top-2 scores are within 5% of range.
+  Testing whether this condition EVER occurs in practice.
+
+
+  ▸ Topic: australia
+  ························································
+    N=    10: 2 conflicts, 0 within 5%-of-range gap, 1 in compiler deadband (abs 500), 1 Schulze-resolved
+    N=    50: 4 conflicts, 3 within 5%-of-range gap, 4 in compiler deadband (abs 500), 4 Schulze-resolved
+    N=   100: 4 conflicts, 3 within 5%-of-range gap, 4 in compiler deadband (abs 500), 4 Schulze-resolved
+    N=   500: 4 conflicts, 4 within 5%-of-range gap, 4 in compiler deadband (abs 500), 4 Schulze-resolved
+    N=  1000: 4 conflicts, 4 within 5%-of-range gap, 4 in compiler deadband (abs 500), 4 Schulze-resolved
+    N= 10000: 4 conflicts, 4 within 5%-of-range gap, 4 in compiler deadband (abs 500), 4 Schulze-resolved
+
+  ▸ Topic: tcp
+  ························································
+    N=    10: 2 conflicts, 0 within 5%-of-range gap, 1 in compiler deadband (abs 500), 1 Schulze-resolved
+    N=    50: 12 conflicts, 1 within 5%-of-range gap, 9 in compiler deadband (abs 500), 9 Schulze-resolved
+    N=   100: 14 conflicts, 1 within 5%-of-range gap, 13 in compiler deadband (abs 500), 13 Schulze-resolved
+    N=   500: 14 conflicts, 11 within 5%-of-range gap, 14 in compiler deadband (abs 500), 14 Schulze-resolved
+    N=  1000: 14 conflicts, 14 within 5%-of-range gap, 14 in compiler deadband (abs 500), 14 Schulze-resolved
+    N= 10000: 14 conflicts, 14 within 5%-of-range gap, 14 in compiler deadband (abs 500), 14 Schulze-resolved
+
+  ▸ Topic: nutrition
+  ························································
+    N=    10: 3 conflicts, 0 within 5%-of-range gap, 1 in compiler deadband (abs 500), 1 Schulze-resolved
+    N=    50: 14 conflicts, 2 within 5%-of-range gap, 12 in compiler deadband (abs 500), 12 Schulze-resolved
+    N=   100: 15 conflicts, 4 within 5%-of-range gap, 15 in compiler deadband (abs 500), 15 Schulze-resolved
+    N=   500: 15 conflicts, 13 within 5%-of-range gap, 15 in compiler deadband (abs 500), 15 Schulze-resolved
+    N=  1000: 15 conflicts, 14 within 5%-of-range gap, 15 in compiler deadband (abs 500), 15 Schulze-resolved
+    N= 10000: 15 conflicts, 13 within 5%-of-range gap, 15 in compiler deadband (abs 500), 15 Schulze-resolved
+
+  ▸ Multi-seed analysis (50 seeds, N=100)
+  ························································
+
+  ▸ Detailed Conflict Analysis (N=100, seed=42)
+  ························································
+  Key question: in deadband cases, are top-2 candidates always same correctness?
+  If so, Schulze cannot change a correctness outcome.
+
+    australia (4 conflicts)
+      CONTRADICTION | members=50 | top1=0.5546 top2=0.5540 | abs_gap=0.0005 rel_gap=0.0016 [DEADBAND] (same correctness)
+        winner: correct [(Australia, has_capital, Canberra)]
+        runner: correct [(Australia, has_capital, Canberra)]
+      REDUNDANCY | members=21 | top1=0.4038 top2=0.4024 | abs_gap=0.0014 rel_gap=0.0081 [DEADBAND] (same correctness)
+        winner: correct [(Canberra, became_capital_in, 1913)]
+        runner: correct [(Canberra, became_capital_in, 1913)]
+      REDUNDANCY | members=26 | top1=0.5330 top2=0.5112 | abs_gap=0.0218 rel_gap=0.1086 (same correctness)
+        winner: correct [(Canberra, is_located_in, Australian Capital Territory)]
+        runner: correct [(Canberra, is_located_in, Australian Capital Territory)]
+      REDUNDANCY | members=14 | top1=0.5376 top2=0.5306 | abs_gap=0.0070 rel_gap=0.0424 [DEADBAND] (same correctness)
+        winner: correct [(Melbourne, was_temporary_capital_until, 1927)]
+        runner: correct [(Melbourne, was_temporary_capital_until, 1927)]
+      Contradictions with mixed correctness: 1/1
+      (top-2 same correctness in all: yes)
+
+    tcp (14 conflicts)
+      CONTRADICTION | members=16 | top1=0.5465 top2=0.5319 | abs_gap=0.0146 rel_gap=0.0581 (same correctness)
+        winner: correct [(TCP, detects_corruption_via, 16-bit checksum)]
+        runner: correct [(TCP, detects_corruption_via, 16-bit checksum)]
+      CONTRADICTION | members=16 | top1=0.6362 top2=0.6144 | abs_gap=0.0218 rel_gap=0.0626 (same correctness)
+        winner: correct [(TCP, handles_loss_via, retransmission with exponential backoff)]
+        runner: correct [(TCP, handles_loss_via, retransmission with exponential backoff)]
+      CONTRADICTION | members=12 | top1=0.6694 top2=0.6490 | abs_gap=0.0204 rel_gap=0.0680 (same correctness)
+        winner: correct [(TCP, uses, three-way handshake (SYN, SYN-ACK, ACK))]
+        runner: correct [(TCP, uses, three-way handshake (SYN, SYN-ACK, ACK))]
+      REDUNDANCY | members=8 | top1=0.6672 top2=0.6644 | abs_gap=0.0028 rel_gap=0.0139 [DEADBAND] (same correctness)
+        winner: correct [(TCP, confirms_delivery_via, cumulative acknowledgments)]
+        runner: correct [(TCP, confirms_delivery_via, cumulative acknowledgments)]
+      REDUNDANCY | members=6 | top1=0.3403 top2=0.3289 | abs_gap=0.0115 rel_gap=0.2328 (same correctness)
+        winner: WRONG [(TCP, guarantees, zero data loss)]
+        runner: WRONG [(TCP, guarantees, zero data loss)]
+      REDUNDANCY | members=6 | top1=0.3510 top2=0.3453 | abs_gap=0.0057 rel_gap=0.1196 (same correctness)
+        winner: WRONG [(TCP, implements, fixed timeout retransmission)]
+        runner: WRONG [(TCP, implements, fixed timeout retransmission)]
+      REDUNDANCY | members=5 | top1=0.5906 top2=0.5684 | abs_gap=0.0222 rel_gap=0.1294 (same correctness)
+        winner: correct [(TCP, implements, sliding window flow control)]
+        runner: correct [(TCP, implements, sliding window flow control)]
+      REDUNDANCY | members=2 | top1=0.3831 top2=0.3306 | abs_gap=0.0525 rel_gap=1.0000 (same correctness)
+        winner: correct [(TCP, provides, in-order delivery to application layer)]
+        runner: correct [(TCP, provides, in-order delivery to application layer)]
+      REDUNDANCY | members=10 | top1=0.5156 top2=0.5006 | abs_gap=0.0149 rel_gap=0.0952 (same correctness)
+        winner: correct [(TCP, tracks_ordering_via, 32-bit sequence numbers)]
+        runner: correct [(TCP, tracks_ordering_via, 32-bit sequence numbers)]
+      REDUNDANCY | members=2 | top1=0.3218 top2=0.2850 | abs_gap=0.0369 rel_gap=1.0000 (same correctness)
+        winner: WRONG [(TCP, uses, completely_wrong_answer)]
+        runner: WRONG [(TCP, uses, completely_wrong_answer)]
+      REDUNDANCY | members=14 | top1=0.6801 top2=0.6644 | abs_gap=0.0157 rel_gap=0.0594 (same correctness)
+        winner: correct [(TCP, uses, congestion control (slow start, AIMD))]
+        runner: correct [(TCP, uses, congestion control (slow start, AIMD))]
+      REDUNDANCY | members=3 | top1=0.5458 top2=0.5159 | abs_gap=0.0300 rel_gap=0.5966 (same correctness)
+        winner: correct [(TCP_fast_retransmit, triggers_after, 3 duplicate ACKs)]
+        runner: correct [(TCP_fast_retransmit, triggers_after, 3 duplicate ACKs)]
+      REDUNDANCY | members=5 | top1=0.5588 top2=0.5436 | abs_gap=0.0152 rel_gap=0.0950 (same correctness)
+        winner: correct [(TCP_SACK, extends, selective acknowledgment of non-contiguous blocks)]
+        runner: correct [(TCP_SACK, extends, selective acknowledgment of non-contiguous blocks)]
+      REDUNDANCY | members=3 | top1=0.5323 top2=0.5182 | abs_gap=0.0141 rel_gap=0.3284 (same correctness)
+        winner: correct [(TCP_window_scaling, allows, windows larger than 65535 bytes)]
+        runner: correct [(TCP_window_scaling, allows, windows larger than 65535 bytes)]
+      Contradictions with mixed correctness: 3/3
+      (top-2 same correctness in all: yes)
+
+    nutrition (15 conflicts)
+      CONTRADICTION | members=9 | top1=0.6887 top2=0.6732 | abs_gap=0.0155 rel_gap=0.0411 [DEADBAND] (same correctness)
+        winner: correct [(saturated_fat, raises, LDL cholesterol levels)]
+        runner: correct [(saturated_fat, raises, LDL cholesterol levels)]
+      REDUNDANCY | members=12 | top1=0.5154 top2=0.5022 | abs_gap=0.0131 rel_gap=0.0711 (same correctness)
+        winner: correct [(AHA, recommends, limiting saturated fat to <6% of calories)]
+        runner: correct [(AHA, recommends, limiting saturated fat to <6% of calories)]
+      REDUNDANCY | members=5 | top1=0.3522 top2=0.3454 | abs_gap=0.0068 rel_gap=0.1201 (same correctness)
+        winner: WRONG [(all_dietary_fat, is, equally harmful)]
+        runner: WRONG [(all_dietary_fat, is, equally harmful)]
+      REDUNDANCY | members=7 | top1=0.3253 top2=0.3082 | abs_gap=0.0171 rel_gap=0.3150 (same correctness)
+        winner: WRONG [(butter, is, healthier than margarine)]
+        runner: WRONG [(butter, is, healthier than margarine)]
+      REDUNDANCY | members=4 | top1=0.3087 top2=0.3027 | abs_gap=0.0060 rel_gap=0.1642 (same correctness)
+        winner: WRONG [(coconut_oil, is, heart-healthy superfood)]
+        runner: WRONG [(coconut_oil, is, heart-healthy superfood)]
+      REDUNDANCY | members=12 | top1=0.6787 top2=0.6568 | abs_gap=0.0219 rel_gap=0.1117 (same correctness)
+        winner: correct [(dietary_context, matters_for, saturated fat effects)]
+        runner: correct [(dietary_context, matters_for, saturated fat effects)]
+      REDUNDANCY | members=9 | top1=0.3548 top2=0.3442 | abs_gap=0.0106 rel_gap=0.1506 (same correctness)
+        winner: WRONG [(LDL_cholesterol, is, irrelevant to heart disease)]
+        runner: WRONG [(LDL_cholesterol, is, irrelevant to heart disease)]
+      REDUNDANCY | members=9 | top1=0.6613 top2=0.6498 | abs_gap=0.0115 rel_gap=0.0568 (same correctness)
+        winner: correct [(LDL_cholesterol, is_causal_for, atherosclerosis)]
+        runner: correct [(LDL_cholesterol, is_causal_for, atherosclerosis)]
+      REDUNDANCY | members=7 | top1=0.5347 top2=0.5252 | abs_gap=0.0095 rel_gap=0.0693 (same correctness)
+        winner: correct [(Mediterranean_diet, reduces, CVD events despite moderate fat intake)]
+        runner: correct [(Mediterranean_diet, reduces, CVD events despite moderate fat intake)]
+      REDUNDANCY | members=2 | top1=0.5303 top2=0.4859 | abs_gap=0.0445 rel_gap=1.0000 (same correctness)
+        winner: correct [(PURE_study, observed, inverse association in low-income countries)]
+        runner: correct [(PURE_study, observed, inverse association in low-income countries)]
+      REDUNDANCY | members=11 | top1=0.6539 top2=0.6386 | abs_gap=0.0153 rel_gap=0.0557 (same correctness)
+        winner: correct [(replacing_sat_fat_with, polyunsaturated_fat_reduces, CVD events by ~25%)]
+        runner: correct [(replacing_sat_fat_with, polyunsaturated_fat_reduces, CVD events by ~25%)]
+      REDUNDANCY | members=11 | top1=0.3400 top2=0.3383 | abs_gap=0.0017 rel_gap=0.0324 [DEADBAND] (same correctness)
+        winner: WRONG [(saturated_fat, has, no effect on heart disease)]
+        runner: WRONG [(saturated_fat, has, no effect on heart disease)]
+      REDUNDANCY | members=9 | top1=0.5214 top2=0.5188 | abs_gap=0.0026 rel_gap=0.0144 [DEADBAND] (same correctness)
+        winner: correct [(saturated_fat_subtypes, have, different metabolic effects)]
+        runner: correct [(saturated_fat_subtypes, have, different metabolic effects)]
+      REDUNDANCY | members=6 | top1=0.5277 top2=0.5219 | abs_gap=0.0058 rel_gap=0.0396 [DEADBAND] (same correctness)
+        winner: correct [(Siri-Tarino_2010, found, no association in observational studies alone)]
+        runner: correct [(Siri-Tarino_2010, found, no association in observational studies alone)]
+      REDUNDANCY | members=5 | top1=0.5848 top2=0.5607 | abs_gap=0.0241 rel_gap=0.1312 (same correctness)
+        winner: correct [(WHO, recommends, limiting saturated fat to <10% of calories)]
+        runner: correct [(WHO, recommends, limiting saturated fat to <10% of calories)]
+      Contradictions with mixed correctness: 1/1
+      (top-2 same correctness in all: yes)
+
+
+  ▸ Correctness Boundary Gap (contradiction sets only)
+  ························································
+  Measures the score gap between last-correct and first-incorrect in each contradiction.
+
+    australia
+      (australia, has_capital) | 23C/27W | lowest_correct=0.3264 highest_wrong=0.2753 | boundary_gap=0.0511 (15.7%)
+
+    tcp
+      (tcp, detects_corruption_via, <tcp_integrity_check>) | 10C/6W | lowest_correct=0.3645 highest_wrong=0.3288 | boundary_gap=0.0357 (9.8%)
+      (tcp, handles_loss_via, <tcp_loss_recovery>) | 7C/9W | lowest_correct=0.4525 highest_wrong=0.3652 | boundary_gap=0.0872 (19.3%)
+      (tcp, uses, <tcp_handshake>) | 10C/2W | lowest_correct=0.4624 highest_wrong=0.3699 | boundary_gap=0.0925 (20.0%)
+
+    nutrition
+      (saturated_fat, raises) | 8C/1W | lowest_correct=0.4804 highest_wrong=0.3107 | boundary_gap=0.1697 (35.3%)
+
+
+  ▸ Separation Margin: min(correct score) − max(incorrect score) per contradiction set
+  ························································
+  Separated = margin > 0.05 on final score. Mixed = set has both correct and incorrect members.
+  Unmixed sets have no margin (all-correct or all-incorrect).
+
+    topic           N contra  mixed   sep>0.05     0<m≤0.05   m≤0 (inv.)      min m
+    australia     100      1      1          1            0            0     0.0511
+    australia    1000      1      1          0            1            0     0.0037
+    australia   10000      1      1          0            0            1    -0.0124
+    tcp           100      3      3          2            1            0     0.0357
+    tcp          1000      3      3          0            0            3    -0.1906
+    tcp         10000      3      3          0            0            3    -0.2369
+    nutrition     100      1      1          1            0            0     0.1697
+    nutrition    1000      1      1          0            1            0     0.0424
+    nutrition   10000      1      1          0            1            0     0.0224
+
+    Correctness concordance:
+      All conflicts:     same=33, different=0
+      Deadband only:     same=8, different=0
+      VERDICT: Top-2 always share correctness. Schulze CANNOT change quality.
+
+
+  ▸ Summary
+  ························································
+  Total conflicts analyzed (scale sweep): 169
+  Within 5% deadband (scale sweep):       105
+
+  Total conflicts (50-seed, N=100):       1574
+  Within 5% deadband (50-seed):           559
+
+  Relative gap distribution (50-seed):
+    min=0.0000, p5=0.0060, p25=0.0343, median=0.0794
+
+  Narrowest absolute gap: topic=tcp, N=10000, gap=0.000029, rel=0.0001, winner='(TCP_fast_retransmit, triggers_after, 3 duplicate ACKs)' vs runner='(TCP_fast_retransmit, triggers_after, 3 duplicate ACKs)'
+
+  RESULT: 38.1% of conflicts fall within deadband.
+  Schulze escalation would be relevant.

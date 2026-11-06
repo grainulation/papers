@@ -1,0 +1,49 @@
+\section{Replay and Tamper Tests}
+\label{sec:replay-details}
+
+We tested \cref{guar:replay} at three levels on five synthetic topics (100 agents each, seed 42). In memory, all 500 recompilations (100 per topic) gave identical certificates, and 20 random permutations of the input order per topic (100 in all) left root hash, certificate, and winners unchanged. From file, each sealed set, policy, and output was written out, reloaded, verified against its hashes, reduced again, and compared. Across builds, four builds of the reducer (macOS arm64 native, macOS x86-64 translated, Linux arm64 in a container, and Linux x86-64 translated in a container) each produced and replayed every topic. They span two instruction sets, two operating systems, and two compiler patch releases, all on one physical host. The 20 dumps were byte-identical per topic across builds, and all 80 cross-replays passed (\cref{tab:crossbuild}).
+
+\begin{table}[t]
+  \centering
+  \caption{Cross-build replay matrix: topics passing out of five, for each replaying build (rows) and producing build (columns). Dumps were byte-identical across builds.}
+  \label{tab:crossbuild}
+  \small
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    & \multicolumn{4}{c}{producer} \\
+    \cmidrule(l){2-5}
+    replayer & macOS arm64 & \makecell{macOS x86-64\\(translated)} & Linux arm64 & \makecell{Linux x86-64\\(translated)} \\
+    \midrule
+    macOS arm64 & 5/5 & 5/5 & 5/5 & 5/5 \\
+    macOS x86-64 (translated) & 5/5 & 5/5 & 5/5 & 5/5 \\
+    Linux arm64 & 5/5 & 5/5 & 5/5 & 5/5 \\
+    Linux x86-64 (translated) & 5/5 & 5/5 & 5/5 & 5/5 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Tamper evidence is the other half of the boundary's value, measured against the stored certificate and outputs as the trusted reference (\cref{sec:why-seal}). Nine forgeries of one sealed topic, each replayed on all four builds, were all rejected identically (36 of 36; \cref{tab:tamper}). The informative cases are the consistent forgeries. An edited claim with a recomputed root hash fails because its identifier differs from its content hash. An inserted SYNTHESIS contribution with valid hashes fails validation, and an edit that recomputes every hash but keeps the stored outputs fails on output comparison. A forgery that also replaces the stored outputs and certificate is caught only against an independently held copy of the original certificate, which is why the certificate is recorded outside the bundle. Flipping a ground-truth label passes, as it should, because ground-truth labels lie outside the reducer's input.
+
+\begin{table}[t]
+  \centering
+  \caption{Tamper cases (each replayed on four builds; all 36 rejected identically).}
+  \label{tab:tamper}
+  \small
+  \begin{tabularx}{\linewidth}{@{}L>{\raggedright\arraybackslash}p{0.36\linewidth}@{}}
+    \toprule
+    Mutation & Outcome \\
+    \midrule
+    Edit a claim, keep identifier and root hash & root-hash mismatch \\
+    Edit a claim, recompute root hash, keep identifier & identifier differs from its content hash \\
+    Insert a SYNTHESIS contribution with valid identifier and root hash & rejected at validation \\
+    Edit a claim, recompute identifier and root hash, keep stored outputs & outputs differ \\
+    Change one contribution's arrival index & root-hash mismatch \\
+    Swap a stored winner & outputs differ \\
+    Change the deadband in the policy & policy mismatch, rejected before reduction \\
+    Remove the identifier scheme from the sealed set & root-hash mismatch \\
+    Relabel the artifact format & rejected as unsupported \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Further tests cover 12 other reducer-read fields (root hash changes), a changed weight or exclusivity entry (policy mismatch), and a changed policy with a rewritten hash (certificate mismatch). The \paperref{main-paper limitations section} states the scope of these results.

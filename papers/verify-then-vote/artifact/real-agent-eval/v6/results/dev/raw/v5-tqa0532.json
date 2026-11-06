@@ -1,0 +1,1290 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-tqa0532",
+ "order": 5,
+ "split": "dev",
+ "answer_format": "letter",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-tqa0532",
+  "order": 5,
+  "split": "dev",
+  "item_type": "multiple_choice",
+  "answer_format": "letter",
+  "answer_schema": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "China has more obesity than which other country?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "China has more obesity than Japan"
+   },
+   {
+    "letter": "B",
+    "text": "China has more obesity than France"
+   },
+   {
+    "letter": "C",
+    "text": "China has more obesity than Canada"
+   },
+   {
+    "letter": "D",
+    "text": "China has more obesity than the United States"
+   }
+  ]
+ },
+ "item_view_sha256": "0768c773da9dccbf35108e93cf0112c2a044bad99840aa538dfe2433ae46086d",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: China has more obesity than which other country?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c65220f5de8d772807784372ed597b7c5b0d365940992f0f014e25cbb56b243a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840154.4413629,
+      "end_wall": 1792840155.3468359,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840154.4413629,
+    "start_mono": 509711.273989791,
+    "end_wall": 1792840155.3468359,
+    "end_mono": 509712.1794685,
+    "raw_response": "{\"query\": \"China obesity other country\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 903322750,
+     "load_duration": 114946667,
+     "prompt_eval_count": 169,
+     "prompt_eval_duration": 354748125,
+     "eval_count": 11,
+     "eval_duration": 323986999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:15.346137Z"
+    },
+    "elapsed_s": 0.905,
+    "query_used": "China obesity other country",
+    "query_source": "json",
+    "query_arrival_seq": 25
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "China obesity other country",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Obesity_in_China:0",
+       "score_q": 11542
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Australia:0",
+       "score_q": 8807
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Pakistan:0",
+       "score_q": 8527
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Italy:0",
+       "score_q": 8160
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Austria:0",
+       "score_q": 8114
+      }
+     ],
+     "retrieval_sha256": "610e07584bdb000d1d7629b9b65898a04e013b27599f86d79b30ae7bded69f45"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "610e07584bdb000d1d7629b9b65898a04e013b27599f86d79b30ae7bded69f45",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Obesity_in_China:0",
+      "content_sha256": "76aebe4db43ee2a65d7f9ca3628ac651a432595652d9a713fc35e3c3090e69d6",
+      "chars": 660
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Obesity_in_Australia:0",
+      "content_sha256": "e2a91f5614ec672486cc6a54642070d943307a763a1d9f57f194d31fe3649539",
+      "chars": 516
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Obesity_in_Pakistan:0",
+      "content_sha256": "c82185e59f0e5f742be6843844a2b520415250f88e57e690e3edb85046bc7a61",
+      "chars": 998
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Obesity_in_Italy:0",
+      "content_sha256": "38ca39d7729c7d283537e1f41cd2d708a77ea6d97702b3dbff4a232a4636fc09",
+      "chars": 304
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Obesity_in_Austria:0",
+      "content_sha256": "d11e1a07201b4d8a20aef9119cbc965e643444d9179a285843093d7106d06116",
+      "chars": 410
+     }
+    ],
+    "elapsed_s": 0.0308
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: China has more obesity than which other country?\n\nOptions:\nA. China has more obesity than Japan\nB. China has more obesity than France\nC. China has more obesity than Canada\nD. China has more obesity than the United States\n\nEvidence passages from your search for \"China obesity other country\":\n<<<PASSAGES\n[P1] Obesity in China\nObesity in China is a major health concern according to the WHO , with overall rates of obesity below 5 % in the country , but greater than 20 % in some cities . This is a dramatic change from times when China experienced famine as a result from ineffective agriculturalization plans such as the Great Leap Forward . Currently , obesity in China is mostly confined to the cities where fast food culture and globalization have taken over , in comparison to poorer rural areas . Despite this concentration of obesity , the sheer size of China 's population means that over one fifth of all one billion obese people in the world come from China .\n\n[P2] Obesity in Australia\nObesity in Australia is an `` epidemic '' with `` increasing frequency . '' The Medical Journal of Australia found that obesity in Australia more than doubled in the two decades preceding 2003 , and the unprecedented rise in obesity has been compared to the same health crisis in America . The rise in obesity has been attributed to poor eating habits in the country closely related to the availability of fast food since the 1970s , sedentary lifestyles and a decrease in the labour workforce .\n\n[P3] Obesity in Pakistan\nObesity in Pakistan is a health issue that has attracted concern only in the past few years . Urbanisation and an unhealthy , energy-dense diet ( the high presence of oil and fats in Pakistani cooking ) , as well as changing lifestyles , are among the root causes contributing to obesity in the country . According to a list of the world 's `` fattest countries '' published on Forbes , Pakistan is ranked 165 ( out of 194 countries ) in terms of its overweight population , with 22.2 % of individuals over the age of 15 crossing the threshold of obesity . This ratio roughly corresponds with other studies , which state one-in-four Pakistani adults as being overweight . Research indicates that people living in large cities in Pakistan are more exposed to the risks of obesity as compared to those in the rural countryside . Women also naturally have higher rates of obesity as compared to men . Pakistan also has the highest percentage of people with diabetes in South Asia .\n\n[P4] Obesity in Italy\nObesity in Italy has been increasingly cited as a major health issue in recent years . Overall , the Italians , along with the French and the Swiss , are considered among the slimmest people in Europe on average . In Europe , Italy was the only country where the average weight dropped .\n\n[P5] Obesity in Austria\nObesity in Austria has been increasingly cited as a major health issue in recent years . Forty per cent of Austrians between 18 and 65 are considered overweight while eleven per cent of those overweight meet the definition of obesity . Forbes.com ranks Austria as the 52nd fattest country in the World with a rate of 57.1 % . Approximately 900,000 people are considered overweight or obese .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "670befb96f0db5a4902235ace956d50f3d17d93c1126cb08bb4f5cb4d54f3ce6",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840155.377953,
+      "end_wall": 1792840163.790465,
+      "error": null
+     }
+    ],
+    "arrival_seq": 25,
+    "start_wall": 1792840155.377953,
+    "start_mono": 509712.210588,
+    "end_wall": 1792840163.790465,
+    "end_mono": 509720.623139708,
+    "raw_response": "{\"reasoning\": \"China has the highest obesity rate among the listed countries, with more than 20% in some cities and accounting for over one-fifth of the world's obesity.\", \"answer\": \"A\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8408848917,
+     "load_duration": 60727125,
+     "prompt_eval_count": 984,
+     "prompt_eval_duration": 1876594209,
+     "eval_count": 69,
+     "eval_duration": 5773428794,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:23.787898Z"
+    },
+    "elapsed_s": 8.413,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 25,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Obesity_in_China:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 154,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: China has more obesity than which other country?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c65220f5de8d772807784372ed597b7c5b0d365940992f0f014e25cbb56b243a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840154.44091,
+      "end_wall": 1792840156.6164842,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840154.44091,
+    "start_mono": 509711.273536125,
+    "end_wall": 1792840156.6164842,
+    "end_mono": 509713.449127875,
+    "raw_response": "{\"query\": \"global obesity rates China comparison\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2173384375,
+     "load_duration": 60838166,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 475725625,
+     "eval_count": 12,
+     "eval_duration": 1550428334,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:16.615636Z"
+    },
+    "elapsed_s": 2.176,
+    "query_used": "global obesity rates China comparison",
+    "query_source": "json",
+    "query_arrival_seq": 26
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "global obesity rates China comparison",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Obesity_in_China:0",
+       "score_q": 15332
+      },
+      {
+       "passage_key": "fever17:Epidemiology_of_obesity:0",
+       "score_q": 10846
+      },
+      {
+       "passage_key": "fever17:World_Obesity_Day:0",
+       "score_q": 10495
+      },
+      {
+       "passage_key": "fever17:Australian_paradox:0",
+       "score_q": 9785
+      },
+      {
+       "passage_key": "fever17:Energy_customer_switching:1",
+       "score_q": 9581
+      }
+     ],
+     "retrieval_sha256": "435e09cf66e684d480c787a9561e7bf7f0cbdccc2af5e4f68505169e3e531a51"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "435e09cf66e684d480c787a9561e7bf7f0cbdccc2af5e4f68505169e3e531a51",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Obesity_in_China:0",
+      "content_sha256": "76aebe4db43ee2a65d7f9ca3628ac651a432595652d9a713fc35e3c3090e69d6",
+      "chars": 660
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Epidemiology_of_obesity:0",
+      "content_sha256": "9ed320731b024981bc4ce956ae331431f769c4bc1ecda20287d9e0a757d17264",
+      "chars": 954
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:World_Obesity_Day:0",
+      "content_sha256": "e1d9419bb71ed34f47d8472c9586612019bd4582d1a6de189ada77dcbad20120",
+      "chars": 642
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Australian_paradox:0",
+      "content_sha256": "e57bb0839f7963137093ed653f70956d1bb50ac541844235e3697c9504d4758f",
+      "chars": 778
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Energy_customer_switching:1",
+      "content_sha256": "7ef262d24c9ac89635be10822854e29958f9062b2a6bf5d1a690836575d02c83",
+      "chars": 610
+     }
+    ],
+    "elapsed_s": 0.0196
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: China has more obesity than which other country?\n\nOptions:\nA. China has more obesity than Japan\nB. China has more obesity than France\nC. China has more obesity than Canada\nD. China has more obesity than the United States\n\nEvidence passages from your search for \"global obesity rates China comparison\":\n<<<PASSAGES\n[P1] Obesity in China\nObesity in China is a major health concern according to the WHO , with overall rates of obesity below 5 % in the country , but greater than 20 % in some cities . This is a dramatic change from times when China experienced famine as a result from ineffective agriculturalization plans such as the Great Leap Forward . Currently , obesity in China is mostly confined to the cities where fast food culture and globalization have taken over , in comparison to poorer rural areas . Despite this concentration of obesity , the sheer size of China 's population means that over one fifth of all one billion obese people in the world come from China .\n\n[P2] Epidemiology of obesity\nObesity has been observed throughout human history . Many early depictions of the human form in art and sculpture appear obese . However , it was not until the 20th century that obesity became common -- so much so that in 1997 the World Health Organization ( WHO ) formally recognized obesity as a global epidemic . In June 2013 the American Medical Association classified obesity as a disease with much controversy . In 2013 , an estimated 2.1 billion adults were overweight as compared with 857 million in 1980 . The rate of obesity also increases with age at least up to 50 or 60 years old . Once considered a problem only of high-income countries , obesity rates are rising worldwide . These increases have been seen most in urban settings . The only remaining region of the world where obesity is not common is sub-Saharan Africa . It should also be noted that statistics on the epidemiology of obesity vary between sources .\n\n[P3] World Obesity Day\nWorld Obesity Day is observed globally on 11 October with the view of promoting practical solutions to end the global obesity crisis . It is organised by the World Obesity Federation , a non-profit body which is in official relations with the World Health Organisation and is a collaborating body on the Lancet Commission on Obesity . WOF states that its aim is to `` lead and drive global efforts to reduce , prevent and treat obesity . '' The first World Obesity Day took place in 2015 . The second took place in 2016 and focused on childhood obesity , aligning with the WHO Commission report on Ending Childhood Obesity .\n\n[P4] Australian paradox\nThe Australian Paradox is a term coined in 2011 to describe what its proponents claim are diverging trends in sugar consumption and obesity rates in Australia . The term was first used in a 2011 study published in Nutrients by Jennie Brand-Miller , in which she and co-author Alan Barclay reported that , in Australia , `` a substantial decline in refined sugars intake [ occurred ] over the same timeframe that obesity has increased . '' The `` paradox '' in its name refers to the fact that sugar consumption is often considered ( for example by Robert Lustig ) to be a significant contributor to rising obesity rates , and because ecological studies in the United States have found a positive relationship between sugar consumption and obesity prevalence .\n\n[P5] Energy customer switching\nSwitching is a key concept to understanding competition-related issues on the global energy markets as the switching level of a concrete market reveals the state of the competition ; High switching rates equals high level of competition and low switching rates equals limited competition . Thus measuring and assessing switching rates is necessary in order to have a correct impression of the energy markets . The action of switching is often done via a price comparison website or by the traditional door-to-door sales method , where a salesperson assists the customer in switching .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "50650e5b051fd7735a2f2b7ff541e9518a88fb5a4b765283269a72e1bc3cdccb",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840156.6366458,
+      "end_wall": 1792840177.020441,
+      "error": null
+     }
+    ],
+    "arrival_seq": 26,
+    "start_wall": 1792840156.6366458,
+    "start_mono": 509713.469290541,
+    "end_wall": 1792840177.020441,
+    "end_mono": 509733.853102375,
+    "raw_response": "{\"reasoning\": \"Based on global obesity statistics and China's population size, while obesity rates vary significantly within China itself—ranging from less than 5% overall to over 20% in some urban areas—China's sheer population contributes substantially to its global obesity burden. Compared to the options provided, the United States consistently ranks higher in total obesity prevalence globally due to both its larger population and historically higher obesity rates per capita. Therefore, considering global obesity numbers and prevalence, China does not surpass the United States in total obesity cases.\", \"answer\": \"D\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20378869208,
+     "load_duration": 45123750,
+     "prompt_eval_count": 1095,
+     "prompt_eval_duration": 4415423208,
+     "eval_count": 136,
+     "eval_duration": 14703656408,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:37.016687Z"
+    },
+    "elapsed_s": 20.384,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 26,
+   "parsed": {
+    "status": "ok",
+    "answer": "D",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Obesity_in_China:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 595,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: China has more obesity than which other country?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c65220f5de8d772807784372ed597b7c5b0d365940992f0f014e25cbb56b243a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840154.441615,
+      "end_wall": 1792840161.082422,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840154.441615,
+    "start_mono": 509711.274241375,
+    "end_wall": 1792840161.082422,
+    "end_mono": 509717.915088583,
+    "raw_response": "{\"query\": \"China obesity rate vs USA\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6638933291,
+     "load_duration": 1180412500,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 810796667,
+     "eval_count": 13,
+     "eval_duration": 4596290376,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:21.08156Z"
+    },
+    "elapsed_s": 6.641,
+    "query_used": "China obesity rate vs USA",
+    "query_source": "json",
+    "query_arrival_seq": 27
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "China obesity rate vs USA",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Laden_VS_USA:0",
+       "score_q": 11107
+      },
+      {
+       "passage_key": "fever17:Obesity_and_fertility:1",
+       "score_q": 10633
+      },
+      {
+       "passage_key": "fever17:2015_in_K-1:0",
+       "score_q": 10176
+      },
+      {
+       "passage_key": "fever17:Obesity_in_China:0",
+       "score_q": 10090
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Austria:0",
+       "score_q": 9040
+      }
+     ],
+     "retrieval_sha256": "13bd95f8d770be949ad16aeba509c6520e67b7add5d3f866fc19d40c2f5440f9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "13bd95f8d770be949ad16aeba509c6520e67b7add5d3f866fc19d40c2f5440f9",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Laden_VS_USA:0",
+      "content_sha256": "0d3ef6c9b4f590c6b2d564c6666cd107279677c3af026e4fb9cde5d0c05781b4",
+      "chars": 819
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Obesity_and_fertility:1",
+      "content_sha256": "8ab8b60109853f498de1e23352b0030d31ddd42c35b23f50f634896c8d78666c",
+      "chars": 432
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:2015_in_K-1:0",
+      "content_sha256": "bbba0851e9605a091ef44a4a3c6589c48eb17998df1f6d3f517d4547b34126a6",
+      "chars": 158
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Obesity_in_China:0",
+      "content_sha256": "76aebe4db43ee2a65d7f9ca3628ac651a432595652d9a713fc35e3c3090e69d6",
+      "chars": 660
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Obesity_in_Austria:0",
+      "content_sha256": "d11e1a07201b4d8a20aef9119cbc965e643444d9179a285843093d7106d06116",
+      "chars": 410
+     }
+    ],
+    "elapsed_s": 0.0146
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: China has more obesity than which other country?\n\nOptions:\nA. China has more obesity than Japan\nB. China has more obesity than France\nC. China has more obesity than Canada\nD. China has more obesity than the United States\n\nEvidence passages from your search for \"China obesity rate vs USA\":\n<<<PASSAGES\n[P1] Laden VS USA\nLaden VS USA ( Chinese : 本 · 拉登世紀大挑戰 ： Laden VS USA ; pinyin : Běn Lādēng shìjì dàtiǎozhàn ; lit . Bin Laden 's Challenge of the Century ) is a LCD handheld electronic game supposedly created by Chinese company Panyu Gaming Electronic Co. Ltd. . It is unknown if the company actually manufactured the game due to mass counterfeiting in China . Laden VS USA was also released in two different designs . The game is based on the 9/11 attacks and features pictures of the actual wreckage on the packaging . Laden VS USA also bears the marks of `` Made in China '' and `` Ages 5 and Up '' on the packaging . Laden VS USA has received negative reviews and is very controversial . The game has also been banned from two stores ; one in Warrington , Cheshire , England and the other in Brooklyn , New York , USA .\n\n[P2] Obesity and fertility\nIts major effects include a reduction in ovulation rate , a decline in oocyte quality , menstrual irregularities , a decreased pregnancy rate and a rise in miscarriages . Obesity can have particularly damaging effects in young women as they begin menstruating earlier than normal girls , essentially enhancing the defects associated with obesity and fertility . Obesity also has an impact on fertility in men .\n\n[P3] 2015 in K-1\nThe year 2015 is the 23rd year in the history of the K-1 . 2015 starts with K-1 China vs. USA , and ends with K-1 World GP 2015 The Championship .\n\n[P4] Obesity in China\nObesity in China is a major health concern according to the WHO , with overall rates of obesity below 5 % in the country , but greater than 20 % in some cities . This is a dramatic change from times when China experienced famine as a result from ineffective agriculturalization plans such as the Great Leap Forward . Currently , obesity in China is mostly confined to the cities where fast food culture and globalization have taken over , in comparison to poorer rural areas . Despite this concentration of obesity , the sheer size of China 's population means that over one fifth of all one billion obese people in the world come from China .\n\n[P5] Obesity in Austria\nObesity in Austria has been increasingly cited as a major health issue in recent years . Forty per cent of Austrians between 18 and 65 are considered overweight while eleven per cent of those overweight meet the definition of obesity . Forbes.com ranks Austria as the 52nd fattest country in the World with a rate of 57.1 % . Approximately 900,000 people are considered overweight or obese .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "eae3beb5591b78f967d9524aec0517a67443a739bd6b27da782f236b0dc3c378",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840161.097364,
+      "end_wall": 1792840179.284789,
+      "error": null
+     }
+    ],
+    "arrival_seq": 27,
+    "start_wall": 1792840161.097364,
+    "start_mono": 509717.930032125,
+    "end_wall": 1792840179.284789,
+    "end_mono": 509736.117442458,
+    "raw_response": "{\n  \"reasoning\": \"According to the passage [P4], China has a significant obesity problem, with overall rates below 5% but greater than 20% in some cities. Given the vast population of China, this translates to more than one fifth of the world's obese population, surpassing other countries like the United States despite the higher obesity rates in the US. Thus, China has more obesity than the United States.\",\n  \"answer\": \"D\",\n  \"citations\": [\"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18184454334,
+     "load_duration": 9176383584,
+     "prompt_eval_count": 1039,
+     "prompt_eval_duration": 2066978085,
+     "eval_count": 127,
+     "eval_duration": 6337555880,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:39.28268Z"
+    },
+    "elapsed_s": 18.187,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 27,
+   "parsed": {
+    "status": "ok",
+    "answer": "D",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Obesity_in_China:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 391,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: China has more obesity than which other country?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c65220f5de8d772807784372ed597b7c5b0d365940992f0f014e25cbb56b243a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840154.441107,
+      "end_wall": 1792840164.466509,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840154.441107,
+    "start_mono": 509711.273733208,
+    "end_wall": 1792840164.466509,
+    "end_mono": 509721.299184375,
+    "raw_response": "{\"query\": \"obesity rates china compared to other countries\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10022878917,
+     "load_duration": 8344610375,
+     "prompt_eval_count": 155,
+     "prompt_eval_duration": 700742250,
+     "eval_count": 14,
+     "eval_duration": 848045416,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:24.46535Z"
+    },
+    "elapsed_s": 10.025,
+    "query_used": "obesity rates china compared to other countries",
+    "query_source": "json",
+    "query_arrival_seq": 28
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "obesity rates china compared to other countries",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Obesity_in_Pakistan:0",
+       "score_q": 14478
+      },
+      {
+       "passage_key": "fever17:Obesity_in_China:0",
+       "score_q": 12689
+      },
+      {
+       "passage_key": "fever17:Epidemiology_of_obesity:0",
+       "score_q": 12466
+      },
+      {
+       "passage_key": "fever17:Longevity_in_Okinawa:1",
+       "score_q": 10486
+      },
+      {
+       "passage_key": "fever17:Management_of_obesity:1",
+       "score_q": 10479
+      }
+     ],
+     "retrieval_sha256": "2ba57031ff8fce876fd7ad42ec46bdb2471b0b1f92ce9530c6971c54fba58969"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2ba57031ff8fce876fd7ad42ec46bdb2471b0b1f92ce9530c6971c54fba58969",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Obesity_in_Pakistan:0",
+      "content_sha256": "c82185e59f0e5f742be6843844a2b520415250f88e57e690e3edb85046bc7a61",
+      "chars": 998
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Obesity_in_China:0",
+      "content_sha256": "76aebe4db43ee2a65d7f9ca3628ac651a432595652d9a713fc35e3c3090e69d6",
+      "chars": 660
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Epidemiology_of_obesity:0",
+      "content_sha256": "9ed320731b024981bc4ce956ae331431f769c4bc1ecda20287d9e0a757d17264",
+      "chars": 954
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Longevity_in_Okinawa:1",
+      "content_sha256": "a2e422457b0bbcab07384eba3b14c8b8376e04338bc954fbed44e4dbda3ee90c",
+      "chars": 454
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Management_of_obesity:1",
+      "content_sha256": "74240377d4db93fef94d4c2269c99fab6d5b64cb2c4acee2fe3fc6e41868c230",
+      "chars": 985
+     }
+    ],
+    "elapsed_s": 0.0324
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: China has more obesity than which other country?\n\nOptions:\nA. China has more obesity than Japan\nB. China has more obesity than France\nC. China has more obesity than Canada\nD. China has more obesity than the United States\n\nEvidence passages from your search for \"obesity rates china compared to other countries\":\n<<<PASSAGES\n[P1] Obesity in Pakistan\nObesity in Pakistan is a health issue that has attracted concern only in the past few years . Urbanisation and an unhealthy , energy-dense diet ( the high presence of oil and fats in Pakistani cooking ) , as well as changing lifestyles , are among the root causes contributing to obesity in the country . According to a list of the world 's `` fattest countries '' published on Forbes , Pakistan is ranked 165 ( out of 194 countries ) in terms of its overweight population , with 22.2 % of individuals over the age of 15 crossing the threshold of obesity . This ratio roughly corresponds with other studies , which state one-in-four Pakistani adults as being overweight . Research indicates that people living in large cities in Pakistan are more exposed to the risks of obesity as compared to those in the rural countryside . Women also naturally have higher rates of obesity as compared to men . Pakistan also has the highest percentage of people with diabetes in South Asia .\n\n[P2] Obesity in China\nObesity in China is a major health concern according to the WHO , with overall rates of obesity below 5 % in the country , but greater than 20 % in some cities . This is a dramatic change from times when China experienced famine as a result from ineffective agriculturalization plans such as the Great Leap Forward . Currently , obesity in China is mostly confined to the cities where fast food culture and globalization have taken over , in comparison to poorer rural areas . Despite this concentration of obesity , the sheer size of China 's population means that over one fifth of all one billion obese people in the world come from China .\n\n[P3] Epidemiology of obesity\nObesity has been observed throughout human history . Many early depictions of the human form in art and sculpture appear obese . However , it was not until the 20th century that obesity became common -- so much so that in 1997 the World Health Organization ( WHO ) formally recognized obesity as a global epidemic . In June 2013 the American Medical Association classified obesity as a disease with much controversy . In 2013 , an estimated 2.1 billion adults were overweight as compared with 857 million in 1980 . The rate of obesity also increases with age at least up to 50 or 60 years old . Once considered a problem only of high-income countries , obesity rates are rising worldwide . These increases have been seen most in urban settings . The only remaining region of the world where obesity is not common is sub-Saharan Africa . It should also be noted that statistics on the epidemiology of obesity vary between sources .\n\n[P4] Longevity in Okinawa\nOkinawa is known by specialists around the world for the longevity of its inhabitants . The main reason is that their food is nutritionally dense and low in calories . This is often compared to the Mediterranean diet as well . Many factors in the culinary cultures and customs of countries such as China , Korea and Japan contribute to the high life expectancy and low rates of diet related diseases such as cardiovascular diseases .\n\n[P5] Management of obesity\nWeight loss however is modest with an average of 2.9 kg at 1 to 4 years and there is little information on how these drugs affect longer-term complications of obesity . Its use is associated with high rates of gastrointestinal side effects . The most effective treatment for obesity is bariatric surgery . Surgery for severe obesity is associated with long-term weight loss and decreased overall mortality . One study found a weight loss of between 14 % and 25 % ( depending on the type of procedure performed ) at 10 years , and a 29 % reduction in all cause mortality when compared to standard weight loss measures . However , due to its cost and the risk of complications , researchers are searching for other effective yet less invasive treatments . A 2007 review concluded that certain subgroups such as those with type 2 diabetes and women show long term benefits in all cause mortality , while outcomes for men do not seem to be improved with weight loss .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a3cdc05baa0e9a5027e5d066f03362f86881957bb171de0a5dad5e2b2613d9ae",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840164.499306,
+      "end_wall": 1792840180.371103,
+      "error": null
+     }
+    ],
+    "arrival_seq": 28,
+    "start_wall": 1792840164.499306,
+    "start_mono": 509721.331982,
+    "end_wall": 1792840180.371103,
+    "end_mono": 509737.203752291,
+    "raw_response": "{\"reasoning\": \"Based on the evidence passages, China has a lower obesity rate compared to urban centers in some countries, but globally, it has one of the largest populations of obese individuals due to its immense population size. The passage P2 directly states that obesity in China is mostly confined to cities and is below 5% overall, while P3 confirms that obesity rates increase with age, which is consistent with worldwide trends. The passage P4 discusses the longevity in Okinawa, which is attributed to a nutritionally dense, low-calorie diet. This indicates that obesity is a problem in urban settings but\" ,\"answer\": \"B\", \"citations\": [\"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15867823708,
+     "load_duration": 52860792,
+     "prompt_eval_count": 1102,
+     "prompt_eval_duration": 4279182751,
+     "eval_count": 145,
+     "eval_duration": 10150644667,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:40.36785Z"
+    },
+    "elapsed_s": 15.872,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 28,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Obesity_in_China:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: China has more obesity than which other country?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "c65220f5de8d772807784372ed597b7c5b0d365940992f0f014e25cbb56b243a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792840154.441917,
+      "end_wall": 1792840169.0988438,
+      "error": null
+     }
+    ],
+    "start_wall": 1792840154.441917,
+    "start_mono": 509711.274543333,
+    "end_wall": 1792840169.0988438,
+    "end_mono": 509725.931521166,
+    "raw_response": "{\"query\": \"china obesity rate compare\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14654924500,
+     "load_duration": 11193538500,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 911183791,
+     "eval_count": 10,
+     "eval_duration": 2341017499,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:29.097696Z"
+    },
+    "elapsed_s": 14.657,
+    "query_used": "china obesity rate compare",
+    "query_source": "json",
+    "query_arrival_seq": 29
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "china obesity rate compare",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Obesity_and_fertility:1",
+       "score_q": 10633
+      },
+      {
+       "passage_key": "fever17:Obesity_in_China:0",
+       "score_q": 10090
+      },
+      {
+       "passage_key": "fever17:Obesity_in_Austria:0",
+       "score_q": 9040
+      },
+      {
+       "passage_key": "fever17:Epidemiology_of_obesity:0",
+       "score_q": 8898
+      },
+      {
+       "passage_key": "fever17:Annual_percentage_rate:1",
+       "score_q": 8805
+      }
+     ],
+     "retrieval_sha256": "127181ab0870bbeb8e7147c0ee2b659044137d0e78ea4dcfe0c78afdd4d10e41"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "127181ab0870bbeb8e7147c0ee2b659044137d0e78ea4dcfe0c78afdd4d10e41",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Obesity_and_fertility:1",
+      "content_sha256": "8ab8b60109853f498de1e23352b0030d31ddd42c35b23f50f634896c8d78666c",
+      "chars": 432
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Obesity_in_China:0",
+      "content_sha256": "76aebe4db43ee2a65d7f9ca3628ac651a432595652d9a713fc35e3c3090e69d6",
+      "chars": 660
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Obesity_in_Austria:0",
+      "content_sha256": "d11e1a07201b4d8a20aef9119cbc965e643444d9179a285843093d7106d06116",
+      "chars": 410
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Epidemiology_of_obesity:0",
+      "content_sha256": "9ed320731b024981bc4ce956ae331431f769c4bc1ecda20287d9e0a757d17264",
+      "chars": 954
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Annual_percentage_rate:1",
+      "content_sha256": "5197fb1ff125de1a3a8a350d3e834a0fd74f3ced1d574a827f5258a1f5111f92",
+      "chars": 118
+     }
+    ],
+    "elapsed_s": 0.0168
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: China has more obesity than which other country?\n\nOptions:\nA. China has more obesity than Japan\nB. China has more obesity than France\nC. China has more obesity than Canada\nD. China has more obesity than the United States\n\nEvidence passages from your search for \"china obesity rate compare\":\n<<<PASSAGES\n[P1] Obesity and fertility\nIts major effects include a reduction in ovulation rate , a decline in oocyte quality , menstrual irregularities , a decreased pregnancy rate and a rise in miscarriages . Obesity can have particularly damaging effects in young women as they begin menstruating earlier than normal girls , essentially enhancing the defects associated with obesity and fertility . Obesity also has an impact on fertility in men .\n\n[P2] Obesity in China\nObesity in China is a major health concern according to the WHO , with overall rates of obesity below 5 % in the country , but greater than 20 % in some cities . This is a dramatic change from times when China experienced famine as a result from ineffective agriculturalization plans such as the Great Leap Forward . Currently , obesity in China is mostly confined to the cities where fast food culture and globalization have taken over , in comparison to poorer rural areas . Despite this concentration of obesity , the sheer size of China 's population means that over one fifth of all one billion obese people in the world come from China .\n\n[P3] Obesity in Austria\nObesity in Austria has been increasingly cited as a major health issue in recent years . Forty per cent of Austrians between 18 and 65 are considered overweight while eleven per cent of those overweight meet the definition of obesity . Forbes.com ranks Austria as the 52nd fattest country in the World with a rate of 57.1 % . Approximately 900,000 people are considered overweight or obese .\n\n[P4] Epidemiology of obesity\nObesity has been observed throughout human history . Many early depictions of the human form in art and sculpture appear obese . However , it was not until the 20th century that obesity became common -- so much so that in 1997 the World Health Organization ( WHO ) formally recognized obesity as a global epidemic . In June 2013 the American Medical Association classified obesity as a disease with much controversy . In 2013 , an estimated 2.1 billion adults were overweight as compared with 857 million in 1980 . The rate of obesity also increases with age at least up to 50 or 60 years old . Once considered a problem only of high-income countries , obesity rates are rising worldwide . These increases have been seen most in urban settings . The only remaining region of the world where obesity is not common is sub-Saharan Africa . It should also be noted that statistics on the epidemiology of obesity vary between sources .\n\n[P5] Annual percentage rate\nThe ( effective ) APR has been intended to make it easier to compare lenders and loan options .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "650e38334c94f4c25242db5e7712da072d8171b615673242cd8c5ac55afd780e",
+    "format_sha256": "123a78efdb168f80a080124516b1786b096b2dfa53514566571b74589fff104c",
+    "attempts": [
+     {
+      "start_wall": 1792840169.115975,
+      "end_wall": 1792840184.854353,
+      "error": null
+     }
+    ],
+    "arrival_seq": 29,
+    "start_wall": 1792840169.115975,
+    "start_mono": 509725.948652958,
+    "end_wall": 1792840184.854353,
+    "end_mono": 509741.686984541,
+    "raw_response": "{\n  \"reasoning\": \"China has the highest obesity rate among the given options as it is home to the highest number of obese people in the world. According to the WHO, over one fifth of the world's obese population comes from China.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15734783458,
+     "load_duration": 11257720166,
+     "prompt_eval_count": 860,
+     "prompt_eval_duration": 1283594042,
+     "eval_count": 84,
+     "eval_duration": 1701101916,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:09:44.851665Z"
+    },
+    "elapsed_s": 15.738,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 29,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Obesity_in_China:0",
+     "fever17:Obesity_in_Austria:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 211,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "610e07584bdb000d1d7629b9b65898a04e013b27599f86d79b30ae7bded69f45",
+  "exaone3.5:7.8b": "435e09cf66e684d480c787a9561e7bf7f0cbdccc2af5e4f68505169e3e531a51",
+  "granite3.3:2b": "13bd95f8d770be949ad16aeba509c6520e67b7add5d3f866fc19d40c2f5440f9",
+  "olmo2:7b": "2ba57031ff8fce876fd7ad42ec46bdb2471b0b1f92ce9530c6971c54fba58969",
+  "nemotron-mini:4b": "127181ab0870bbeb8e7147c0ee2b659044137d0e78ea4dcfe0c78afdd4d10e41"
+ },
+ "item_start_wall": 1792840154.440541,
+ "item_wall_s": 30.414,
+ "ollama_ps_samples": [
+  [
+   1792840154.441,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840156.444,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840158.447,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840160.457,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840162.465,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792840164.473,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840166.484,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792840168.488,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792840170.496,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840172.506,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840174.511,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840176.513,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840178.523,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792840180.528,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840182.529,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792840184.532,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

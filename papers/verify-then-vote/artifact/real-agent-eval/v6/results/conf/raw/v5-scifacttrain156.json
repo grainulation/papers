@@ -1,0 +1,1318 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain156",
+ "order": 842,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain156",
+  "order": 842,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "BCL-2 promotes the apoptotic effects of c-Myc."
+ },
+ "item_view_sha256": "8343b30e6ac284455086027d6b1c37ff28adbb123e831fc4ae0900ec78e23e87",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a6688094210eb248beb63fe08f2c47a3a38daa6d165191c81fbaf12aa935d37a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792877216.873877,
+      "end_wall": 1792877218.191663,
+      "error": null
+     }
+    ],
+    "start_wall": 1792877216.873877,
+    "start_mono": 546773.524299791,
+    "end_wall": 1792877218.191663,
+    "end_mono": 546774.842075791,
+    "raw_response": "{\"query\": \"BCL-2 promotes apoptotic effects of c-Myc\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1315903333,
+     "load_duration": 111339750,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 359660083,
+     "eval_count": 19,
+     "eval_duration": 633427541,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:26:58.191013Z"
+    },
+    "elapsed_s": 1.318,
+    "query_used": "BCL-2 promotes apoptotic effects of c-Myc",
+    "query_source": "json",
+    "query_arrival_seq": 4210
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "BCL-2 promotes apoptotic effects of c-Myc",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4323425:1",
+       "score_q": 765
+      },
+      {
+       "passage_key": "scifact:4323425:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:37549932:0",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:34436231:0",
+       "score_q": 761
+      },
+      {
+       "passage_key": "scifact:34439544:0",
+       "score_q": 760
+      }
+     ],
+     "retrieval_sha256": "8e86632c1f1c43da5ac733a261e30ae07db85f53a36ff7582384ca6ad06b5bfd"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8e86632c1f1c43da5ac733a261e30ae07db85f53a36ff7582384ca6ad06b5bfd",
+    "query_embedding_sha256": "cabf75cb483aa8001f77091badd36f4fb564c08822ad684abff7b35e1dd151f1",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4323425:1",
+      "content_sha256": "cb3ccb032a1b0df3ad78135608a08fd96102371207f172c423b016e2aa8e9e7c",
+      "chars": 244
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4323425:0",
+      "content_sha256": "7cada5331de8e236c62af41ad2476cfdc096281ffe09e6a1a2863f1cdbabf776",
+      "chars": 1011
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:37549932:0",
+      "content_sha256": "9dd92fb96fd88619aabc7e9b89c2195b69d019ca26a7fc484577a23147d2c74a",
+      "chars": 914
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:34436231:0",
+      "content_sha256": "e91d1cc58108e0e2042179d86ef691c8bde32e810ba3b2c00e3ee7f46525348c",
+      "chars": 828
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:34439544:0",
+      "content_sha256": "6a5657aaeaa6681b3867d4a89f1a73656a2609e45a10b4dfc7f11255995e9c27",
+      "chars": 959
+     }
+    ],
+    "elapsed_s": 4.5142
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nEvidence passages from your search for \"BCL-2 promotes apoptotic effects of c-Myc\":\n<<<PASSAGES\n[P1] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nThese results establish a functional role for the BH1 and BH2 domains and suggest Bcl-2 exerts its action through heterodimerization with Bax.\n\n[P2] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nBCL-2 was isolated from the t(14;18) chromosomal breakpoint in follicular B-cell lymphoma1–3. Bcl-2 has the unique oncogenic role of extending cell survival by inhibiting a variety of apoptotic deaths4–13. An emerging family of Bcl-2 -related proteins share two highly conserved regions14–20 referred to here as Bcl-2 homology 1 and 2 (BH1 and BH2) domains (Fig. 1). This includes Bax which heterodimerizes with Bcl-2 and when overexpressed counteracts Bcl-214. We report here that site-specific mutagenesis of Bcl-2 establishes the two domains as novel dimerization motifs. Substitu-tion of Gly 145 in BHl domain or Trp 188 in BH2 domain completely abrogated Bcl-2's death-repressor activity in inter-leukin-3 deprivation, γ-irradiation and glucocorticoid-induced apoptosis. Mutations that affected Bcl-2's function also disrupted its heterodimerization with Bax, yet still permitted Bcl-2 homo-dimerization.\n\n[P3] Antiapoptotic BCL-2 is required for maintenance of a model leukemia.\nResistance to apoptosis, often achieved by the overexpression of antiapoptotic proteins, is common and perhaps required in the genesis of cancer. However, it remains uncertain whether apoptotic defects are essential for tumor maintenance. To test this, we generated mice expressing a conditional BCL-2 gene and constitutive c-myc that develop lymphoblastic leukemia. Eliminating BCL-2 yielded rapid loss of leukemic cells and significantly prolonged survival, formally validating BCL-2 as a rational target for cancer therapy. Loss of this single molecule resulted in cell death, despite or perhaps attributable to the presence of other oncogenic events. This suggests a generalizable model in which aberrations inherent to cancer generate tonic death signals that would otherwise kill the cell if not opposed by a requisite apoptotic defect(s).\n\n[P4] Role for c-myc in activation-induced apoptotic cell death in T cell hybridomas.\nImmature T cells and some T cell hybridomas undergo apoptotic cell death when activated through the T cell receptor complex, a phenomenon that is probably related to antigen induced negative selection of developing T cells. This activation-induced apoptosis depends on active protein and RNA synthesis in the dying cells, although none of the genes required for this process have previously been identified. Antisense oligonucleotides corresponding to c-myc block the constitutive expression of c-Myc protein in T cell hybridomas and interfere with all aspects of activation-induced apoptosis without affecting lymphokine production in these cells. These data indicate that c-myc expression is a necessary component of activation-induced apoptosis.\n\n[P5] Examining BCL-2 family function with large unilamellar vesicles.\nThe BCL-2 (B cell CLL/Lymphoma) family is comprised of approximately twenty proteins that collaborate to either maintain cell survival or initiate apoptosis(1). Following cellular stress (e.g., DNA damage), the pro-apoptotic BCL-2 family effectors BAK (BCL-2 antagonistic killer 1) and/or BAX (BCL-2 associated X protein) become activated and compromise the integrity of the outer mitochondrial membrane (OMM), though the process referred to as mitochondrial outer membrane permeabilization (MOMP)(1). After MOMP occurs, pro-apoptotic proteins (e.g., cytochrome c) gain access to the cytoplasm, promote caspase activation, and apoptosis rapidly ensues(2). In order for BAK/BAX to induce MOMP, they require transient interactions with members of another pro-apoptotic subset of the BCL-2 family, the BCL-2 homology domain 3 (BH3)-only proteins, such as BID (BH3-interacting domain agonist)(3-6).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "dfd759ded04366583c0f26ebaa4cdfcc63118efafba08bac9ebd4582ae6c10e0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792877222.706312,
+      "end_wall": 1792877239.427108,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4210,
+    "start_wall": 1792877222.706312,
+    "start_mono": 546779.356693208,
+    "end_wall": 1792877239.427108,
+    "end_mono": 546796.07737125,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that BCL-2 promotes the apoptotic effects of c-Myc by inhibiting apoptosis and counteracting its oncogenic role in maintaining cell survival.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P4\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 16717479000,
+     "load_duration": 5810887125,
+     "prompt_eval_count": 1233,
+     "prompt_eval_duration": 2901331751,
+     "eval_count": 71,
+     "eval_duration": 7238951631,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:19.425212Z"
+    },
+    "elapsed_s": 16.721,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4210,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:4323425:0",
+     "scifact:34436231:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 163,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a6688094210eb248beb63fe08f2c47a3a38daa6d165191c81fbaf12aa935d37a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792877216.874549,
+      "end_wall": 1792877221.763414,
+      "error": null
+     }
+    ],
+    "start_wall": 1792877216.874549,
+    "start_mono": 546773.524971,
+    "end_wall": 1792877221.763414,
+    "end_mono": 546778.413801708,
+    "raw_response": "{\"query\": \"BCL-2 c-Myc apoptosis\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4887497167,
+     "load_duration": 3640491500,
+     "prompt_eval_count": 165,
+     "prompt_eval_duration": 665658625,
+     "eval_count": 14,
+     "eval_duration": 458362959,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:01.762626Z"
+    },
+    "elapsed_s": 4.889,
+    "query_used": "BCL-2 c-Myc apoptosis",
+    "query_source": "json",
+    "query_arrival_seq": 4213
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "BCL-2 c-Myc apoptosis",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:37549932:0",
+       "score_q": 7811
+      },
+      {
+       "passage_key": "scifact:30580263:1",
+       "score_q": 7353
+      },
+      {
+       "passage_key": "scifact:30580263:0",
+       "score_q": 7044
+      },
+      {
+       "passage_key": "scifact:20738970:0",
+       "score_q": 6934
+      },
+      {
+       "passage_key": "scifact:10218447:1",
+       "score_q": 6865
+      }
+     ],
+     "retrieval_sha256": "99216d345f862d7a431dd75ef64744f52eaf8f5ba60335ea7c61e04d56de54b0"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "99216d345f862d7a431dd75ef64744f52eaf8f5ba60335ea7c61e04d56de54b0",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:37549932:0",
+      "content_sha256": "9dd92fb96fd88619aabc7e9b89c2195b69d019ca26a7fc484577a23147d2c74a",
+      "chars": 914
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:30580263:1",
+      "content_sha256": "c0ccc5db265233eb1fb4054f9411c2762b45c5812092ed8e220b84619ae40ea9",
+      "chars": 1061
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:30580263:0",
+      "content_sha256": "b133716ed89490647eb48736b5b08fa7b31162e94d2c7c6ad0cce5e83e6b160f",
+      "chars": 1088
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:20738970:0",
+      "content_sha256": "c6ed87eebf972c6bcd0373abaddc2986b27337f2c1ba7415efe80ceb81817bce",
+      "chars": 1022
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:10218447:1",
+      "content_sha256": "d1e5f02dd669e76be6e5c74e19896de17b442a37997ef58523d06de9dc9fac7e",
+      "chars": 1051
+     }
+    ],
+    "elapsed_s": 0.0012
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nEvidence passages from your search for \"BCL-2 c-Myc apoptosis\":\n<<<PASSAGES\n[P1] Antiapoptotic BCL-2 is required for maintenance of a model leukemia.\nResistance to apoptosis, often achieved by the overexpression of antiapoptotic proteins, is common and perhaps required in the genesis of cancer. However, it remains uncertain whether apoptotic defects are essential for tumor maintenance. To test this, we generated mice expressing a conditional BCL-2 gene and constitutive c-myc that develop lymphoblastic leukemia. Eliminating BCL-2 yielded rapid loss of leukemic cells and significantly prolonged survival, formally validating BCL-2 as a rational target for cancer therapy. Loss of this single molecule resulted in cell death, despite or perhaps attributable to the presence of other oncogenic events. This suggests a generalizable model in which aberrations inherent to cancer generate tonic death signals that would otherwise kill the cell if not opposed by a requisite apoptotic defect(s).\n\n[P2] Differential expression of bcl-2 in intestinal epithelia. Correlation with attenuation of apoptosis in colonic crypts and the incidence of colonic neoplasia.\nThe importance of the expression of bcl-2 to the attenuation of apoptosis in stem cells was confirmed by analysis of the levels of both spontaneous and induced apoptosis in homozygously bcl-2 null C57BL/6 mice: in colonic crypts the level of spontaneous apoptosis rose significantly, and selectively at the base of the crypt, in comparison with crypts from wild-type animals. In contrast, there was no rise in spontaneous apoptosis in the small intestinal crypts from the bcl-2 null animals. Analysis of sections of human colon and small intestine also showed that expression of bcl-2 was confined to the base of the colonic crypt. The attenuation of apoptosis by bcl-2 in the region of the stem cells of the colonic crypts may dispose these to neoplastic transformation. Indeed, analysis of human carcinomas revealed expression of bcl-2, which in some samples was reciprocal with the expression of p53.\n\n[P3] Differential expression of bcl-2 in intestinal epithelia. Correlation with attenuation of apoptosis in colonic crypts and the incidence of colonic neoplasia.\nThe cell-positional incidence of both spontaneous and damage-induced apoptosis of epithelial cells was assessed in longitudinal sections of the crypts of small intestine and colon of BDF1 mice. This was compared, using immunohistochemistry, with the pattern of expression of bcl-2, a suppressor of apoptosis. In the small intestine, apoptosis was maximal around cell position 4 from the base of the crypt; this closely corresponds to the position considered to contain the stem cells. In the colon, however, apoptosis was not confined to the area considered to harbour the stem cells (position 1 and 2). Instead, apoptosis was attenuated and distributed along the length of the crypt. Some cells at the base of murine colonic crypts expressed bcl-2 protein, whereas bcl-2 was absent in the crypts of the small intestine. Most pertinently, bcl-2 was absent from small intestinal crypt cells at positions 4-5 (the stem cell region).\n\n[P4] Non-receptor tyrosine kinase Etk is involved in the apoptosis of small cell lung cancer cells.\nEpithelial and endothelial tyrosine kinase (Etk), also known as Bmx (bone marrow X kinase) plays an important role in apoptosis of epithelial cells. The goal of this study was to investigate whether Etk is involved in apoptosis of small cell lung cancer (SCLC) cells and correlated with the expression levels of apoptosis-associated proteins such as Bcl-2, Bcl-X(L) and p53. One hundred and seventy-one cases of lung cancer specimens including seventy-one SCLCs and one hundred NSCLCs were immunostained for Etk, Bcl-2, Bcl-X(L) and p53. Parental SCLC H446 cell line, and its subline (H446-Etk) that overexpresses Etk, were used to study the role of Etk in apoptosis induced by doxorubicin. It was found that high expression of Etk occurs in 74.6% of SCLC cases, but only in 40% of NSCLC cases, and there is marked difference in the expression levels of Bcl-2, Bcl-X(L) and p53 between Etk-positive and Etk-negative SCLC cases.\n\n[P5] The flavonoid component isorhamnetin in vitro inhibits proliferation and induces apoptosis in Eca-109 cells.\nCompared with the negative control group, the treated group which was exposed to isorhamnetin had increased population in G(0)/G(1) phase from 74.6 to 84 while had a significant reduction in G(2)/M phase from 11.9 to 5.8. In addition to its cytostatic effect, isorhamnetin also showed stimulatory effect on apoptosis. Typical apoptotic morphology such as condensation and fragmentation of nuclei and blebbing membrane of the apoptotic cells could be observed through transmission electron microscope. Moreover, the sharp increase in apoptosis rate between the control and treated group were detected by FCM from 6.3 to 16.3. To explore the possible molecular mechanisms that underlie the growth inhibition and apoptosis stimulatory effects of isorhamnetin, the expressions of six proliferation- and death-related genes were detected by FCM. Expressions of bcl-2, c-myc and H-ras were downregulated whereas Bax, c-fos and p53 were upregulated.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "292a4eb0a9a6db3d48065663c8012f254970659829961763c55516aafbaec16e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792877221.765578,
+      "end_wall": 1792877248.67433,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4211,
+    "start_wall": 1792877221.765578,
+    "start_mono": 546778.415966041,
+    "end_wall": 1792877248.67433,
+    "end_mono": 546805.324530166,
+    "raw_response": "{\"reasoning\": \"The passages show that BCL-2 functions as an anti-apoptotic protein, particularly in the context of cancer and cell proliferation. In [P1], BCL-2 is described as necessary for maintaining a model leukemia, indicating it plays a role in resisting apoptosis. [P2] and [P3] discuss BCL-2's role in attenuating apoptosis in intestinal epithelia and its correlation with the incidence of colonic neoplasia, suggesting it aids in survival of potentially malignant cells. [P4] presents BCL-2 as a marker associated with certain types of cancer but does not directly address its interaction with c-Myc. [P5],\"\n\n  ,\"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26904527584,
+     "load_duration": 43946334,
+     "prompt_eval_count": 1431,
+     "prompt_eval_duration": 5388856834,
+     "eval_count": 165,
+     "eval_duration": 19860562248,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:28.671392Z"
+    },
+    "elapsed_s": 26.909,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4211,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a6688094210eb248beb63fe08f2c47a3a38daa6d165191c81fbaf12aa935d37a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792877216.873489,
+      "end_wall": 1792877218.842298,
+      "error": null
+     }
+    ],
+    "start_wall": 1792877216.873489,
+    "start_mono": 546773.523911916,
+    "end_wall": 1792877218.842298,
+    "end_mono": 546775.492704541,
+    "raw_response": "{\"query\": \"BCL-2 c-Myc apoptosis interaction\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1966017042,
+     "load_duration": 1189457083,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 336738791,
+     "eval_count": 18,
+     "eval_duration": 368179417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:26:58.841097Z"
+    },
+    "elapsed_s": 1.969,
+    "query_used": "BCL-2 c-Myc apoptosis interaction",
+    "query_source": "json",
+    "query_arrival_seq": 4212
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "BCL-2 c-Myc apoptosis interaction",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:34439544:0",
+       "score_q": 771
+      },
+      {
+       "passage_key": "scifact:34439544:1",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:34436231:0",
+       "score_q": 744
+      },
+      {
+       "passage_key": "scifact:4323425:0",
+       "score_q": 743
+      },
+      {
+       "passage_key": "scifact:4323425:1",
+       "score_q": 736
+      }
+     ],
+     "retrieval_sha256": "80a4dcdf90cc28f9f7612af2fff5e8ec9cb26707dd1a96a15aec8413859cc3ba"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "80a4dcdf90cc28f9f7612af2fff5e8ec9cb26707dd1a96a15aec8413859cc3ba",
+    "query_embedding_sha256": "b4203d9500b5f6f1aa2508bebc2a3f080bf875f219665e463395b391fc8f541c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:34439544:0",
+      "content_sha256": "6a5657aaeaa6681b3867d4a89f1a73656a2609e45a10b4dfc7f11255995e9c27",
+      "chars": 959
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:34439544:1",
+      "content_sha256": "387e0c3c901a0cdac9fa976e79c9a6806d9812c6ccbdcde1daab9ff3f786b9d3",
+      "chars": 960
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34436231:0",
+      "content_sha256": "e91d1cc58108e0e2042179d86ef691c8bde32e810ba3b2c00e3ee7f46525348c",
+      "chars": 828
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4323425:0",
+      "content_sha256": "7cada5331de8e236c62af41ad2476cfdc096281ffe09e6a1a2863f1cdbabf776",
+      "chars": 1011
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4323425:1",
+      "content_sha256": "cb3ccb032a1b0df3ad78135608a08fd96102371207f172c423b016e2aa8e9e7c",
+      "chars": 244
+     }
+    ],
+    "elapsed_s": 4.234
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nEvidence passages from your search for \"BCL-2 c-Myc apoptosis interaction\":\n<<<PASSAGES\n[P1] Examining BCL-2 family function with large unilamellar vesicles.\nThe BCL-2 (B cell CLL/Lymphoma) family is comprised of approximately twenty proteins that collaborate to either maintain cell survival or initiate apoptosis(1). Following cellular stress (e.g., DNA damage), the pro-apoptotic BCL-2 family effectors BAK (BCL-2 antagonistic killer 1) and/or BAX (BCL-2 associated X protein) become activated and compromise the integrity of the outer mitochondrial membrane (OMM), though the process referred to as mitochondrial outer membrane permeabilization (MOMP)(1). After MOMP occurs, pro-apoptotic proteins (e.g., cytochrome c) gain access to the cytoplasm, promote caspase activation, and apoptosis rapidly ensues(2). In order for BAK/BAX to induce MOMP, they require transient interactions with members of another pro-apoptotic subset of the BCL-2 family, the BCL-2 homology domain 3 (BH3)-only proteins, such as BID (BH3-interacting domain agonist)(3-6).\n\n[P2] Examining BCL-2 family function with large unilamellar vesicles.\nAnti-apoptotic BCL-2 family proteins (e.g., BCL-2 related gene, long isoform, BCL-xL; myeloid cell leukemia 1, MCL-1) regulate cellular survival by tightly controlling the interactions between BAK/BAX and the BH3-only proteins capable of directly inducing BAK/BAX activation(7,8). In addition, anti-apoptotic BCL-2 protein availability is also dictated by sensitizer/de-repressor BH3-only proteins, such as BAD (BCL-2 antagonist of cell death) or PUMA (p53 upregulated modulator of apoptosis), which bind and inhibit anti-apoptotic members(7,9). As most of the anti-apoptotic BCL-2 repertoire is localized to the OMM, the cellular decision to maintain survival or induce MOMP is dictated by multiple BCL-2 family interactions at this membrane. Large unilamellar vesicles (LUVs) are a biochemical model to explore relationships between BCL-2 family interactions and membrane permeabilization(10).\n\n[P3] Role for c-myc in activation-induced apoptotic cell death in T cell hybridomas.\nImmature T cells and some T cell hybridomas undergo apoptotic cell death when activated through the T cell receptor complex, a phenomenon that is probably related to antigen induced negative selection of developing T cells. This activation-induced apoptosis depends on active protein and RNA synthesis in the dying cells, although none of the genes required for this process have previously been identified. Antisense oligonucleotides corresponding to c-myc block the constitutive expression of c-Myc protein in T cell hybridomas and interfere with all aspects of activation-induced apoptosis without affecting lymphokine production in these cells. These data indicate that c-myc expression is a necessary component of activation-induced apoptosis.\n\n[P4] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nBCL-2 was isolated from the t(14;18) chromosomal breakpoint in follicular B-cell lymphoma1–3. Bcl-2 has the unique oncogenic role of extending cell survival by inhibiting a variety of apoptotic deaths4–13. An emerging family of Bcl-2 -related proteins share two highly conserved regions14–20 referred to here as Bcl-2 homology 1 and 2 (BH1 and BH2) domains (Fig. 1). This includes Bax which heterodimerizes with Bcl-2 and when overexpressed counteracts Bcl-214. We report here that site-specific mutagenesis of Bcl-2 establishes the two domains as novel dimerization motifs. Substitu-tion of Gly 145 in BHl domain or Trp 188 in BH2 domain completely abrogated Bcl-2's death-repressor activity in inter-leukin-3 deprivation, γ-irradiation and glucocorticoid-induced apoptosis. Mutations that affected Bcl-2's function also disrupted its heterodimerization with Bax, yet still permitted Bcl-2 homo-dimerization.\n\n[P5] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nThese results establish a functional role for the BH1 and BH2 domains and suggest Bcl-2 exerts its action through heterodimerization with Bax.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "875a3d75a38642fbef8b7a163c5b554049ab91ff78f48615e5c9c5ef6a1fbc87",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792877223.0771809,
+      "end_wall": 1792877250.315032,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4212,
+    "start_wall": 1792877223.0771809,
+    "start_mono": 546779.727560791,
+    "end_wall": 1792877250.315032,
+    "end_mono": 546806.96522025,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that BCL-2 promotes the apoptotic effects of c-Myc. However, the provided evidence passages primarily discuss the roles of BCL-2 as an anti-apoptotic protein and its interactions with BAX for cell survival, not with c-Myc or its apoptotic effects.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27233584625,
+     "load_duration": 17495453166,
+     "prompt_eval_count": 1475,
+     "prompt_eval_duration": 2926739209,
+     "eval_count": 112,
+     "eval_duration": 6282344832,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:30.312241Z"
+    },
+    "elapsed_s": 27.238,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4212,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:34439544:0",
+     "scifact:34439544:1",
+     "scifact:34436231:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 266,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 0,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a6688094210eb248beb63fe08f2c47a3a38daa6d165191c81fbaf12aa935d37a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792877216.874389,
+      "end_wall": 1792877218.639702,
+      "error": null
+     }
+    ],
+    "start_wall": 1792877216.874389,
+    "start_mono": 546773.524811,
+    "end_wall": 1792877218.639702,
+    "end_mono": 546775.290110958,
+    "raw_response": "{\"query\": \"BCL-2 interaction with c-Myc apoptosis studies\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1763447291,
+     "load_duration": 63392291,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 475976459,
+     "eval_count": 18,
+     "eval_duration": 1082464496,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:26:58.638586Z"
+    },
+    "elapsed_s": 1.765,
+    "query_used": "BCL-2 interaction with c-Myc apoptosis studies",
+    "query_source": "json",
+    "query_arrival_seq": 4211
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "BCL-2 interaction with c-Myc apoptosis studies",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:34439544:0",
+       "score_q": 770
+      },
+      {
+       "passage_key": "scifact:4323425:0",
+       "score_q": 767
+      },
+      {
+       "passage_key": "scifact:34439544:1",
+       "score_q": 765
+      },
+      {
+       "passage_key": "scifact:4323425:1",
+       "score_q": 764
+      },
+      {
+       "passage_key": "scifact:8496132:0",
+       "score_q": 752
+      }
+     ],
+     "retrieval_sha256": "1da4e65469d2fa7e9e4e686e8d0fb0036fbdd8a3fda14a648006d0c00a3ae7f1"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "1da4e65469d2fa7e9e4e686e8d0fb0036fbdd8a3fda14a648006d0c00a3ae7f1",
+    "query_embedding_sha256": "b6ad59c14d6781fe27dddced45fd01c9d2aef9e0632128564dc40cfb460cd77b",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:34439544:0",
+      "content_sha256": "6a5657aaeaa6681b3867d4a89f1a73656a2609e45a10b4dfc7f11255995e9c27",
+      "chars": 959
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4323425:0",
+      "content_sha256": "7cada5331de8e236c62af41ad2476cfdc096281ffe09e6a1a2863f1cdbabf776",
+      "chars": 1011
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:34439544:1",
+      "content_sha256": "387e0c3c901a0cdac9fa976e79c9a6806d9812c6ccbdcde1daab9ff3f786b9d3",
+      "chars": 960
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4323425:1",
+      "content_sha256": "cb3ccb032a1b0df3ad78135608a08fd96102371207f172c423b016e2aa8e9e7c",
+      "chars": 244
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:8496132:0",
+      "content_sha256": "8d93349ffc234a82e6dedcb0b8d8abb81aea9a71a258719967f3e7548291e379",
+      "chars": 1031
+     }
+    ],
+    "elapsed_s": 4.2822
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nEvidence passages from your search for \"BCL-2 interaction with c-Myc apoptosis studies\":\n<<<PASSAGES\n[P1] Examining BCL-2 family function with large unilamellar vesicles.\nThe BCL-2 (B cell CLL/Lymphoma) family is comprised of approximately twenty proteins that collaborate to either maintain cell survival or initiate apoptosis(1). Following cellular stress (e.g., DNA damage), the pro-apoptotic BCL-2 family effectors BAK (BCL-2 antagonistic killer 1) and/or BAX (BCL-2 associated X protein) become activated and compromise the integrity of the outer mitochondrial membrane (OMM), though the process referred to as mitochondrial outer membrane permeabilization (MOMP)(1). After MOMP occurs, pro-apoptotic proteins (e.g., cytochrome c) gain access to the cytoplasm, promote caspase activation, and apoptosis rapidly ensues(2). In order for BAK/BAX to induce MOMP, they require transient interactions with members of another pro-apoptotic subset of the BCL-2 family, the BCL-2 homology domain 3 (BH3)-only proteins, such as BID (BH3-interacting domain agonist)(3-6).\n\n[P2] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nBCL-2 was isolated from the t(14;18) chromosomal breakpoint in follicular B-cell lymphoma1–3. Bcl-2 has the unique oncogenic role of extending cell survival by inhibiting a variety of apoptotic deaths4–13. An emerging family of Bcl-2 -related proteins share two highly conserved regions14–20 referred to here as Bcl-2 homology 1 and 2 (BH1 and BH2) domains (Fig. 1). This includes Bax which heterodimerizes with Bcl-2 and when overexpressed counteracts Bcl-214. We report here that site-specific mutagenesis of Bcl-2 establishes the two domains as novel dimerization motifs. Substitu-tion of Gly 145 in BHl domain or Trp 188 in BH2 domain completely abrogated Bcl-2's death-repressor activity in inter-leukin-3 deprivation, γ-irradiation and glucocorticoid-induced apoptosis. Mutations that affected Bcl-2's function also disrupted its heterodimerization with Bax, yet still permitted Bcl-2 homo-dimerization.\n\n[P3] Examining BCL-2 family function with large unilamellar vesicles.\nAnti-apoptotic BCL-2 family proteins (e.g., BCL-2 related gene, long isoform, BCL-xL; myeloid cell leukemia 1, MCL-1) regulate cellular survival by tightly controlling the interactions between BAK/BAX and the BH3-only proteins capable of directly inducing BAK/BAX activation(7,8). In addition, anti-apoptotic BCL-2 protein availability is also dictated by sensitizer/de-repressor BH3-only proteins, such as BAD (BCL-2 antagonist of cell death) or PUMA (p53 upregulated modulator of apoptosis), which bind and inhibit anti-apoptotic members(7,9). As most of the anti-apoptotic BCL-2 repertoire is localized to the OMM, the cellular decision to maintain survival or induce MOMP is dictated by multiple BCL-2 family interactions at this membrane. Large unilamellar vesicles (LUVs) are a biochemical model to explore relationships between BCL-2 family interactions and membrane permeabilization(10).\n\n[P4] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nThese results establish a functional role for the BH1 and BH2 domains and suggest Bcl-2 exerts its action through heterodimerization with Bax.\n\n[P5] Regulation of Bcl-2 expression by HuR in HL60 leukemia cells and A431 carcinoma cells.\nOverexpression of the proto-oncogene bcl-2 promotes abnormal cell survival by inhibiting apoptosis. Expression of bcl-2 is determined, in part, by regulatory mechanisms that control the stability of bcl-2 mRNA. Elements in the 3'-untranslated region of bcl-2 mRNA have been shown to play a role in regulating the stability of the message. Previously, it was found that the RNA binding proteins nucleolin and Ebp1 have a role in stabilizing bcl-2 mRNA in HL60 cells. Here, we have identified HuR as a component of bcl-2 messenger ribonucleoprotein (mRNP) complexes. RNA coimmunoprecipitation assays showed that HuR binds to bcl-2 mRNA in vivo. We also observed an RNA-dependent coprecipitation of HuR and nucleolin, suggesting that the two proteins are present in common mRNP complexes. Moreover, nucleolin and HuR bind concurrently to bcl-2 AU-rich element (ARE) RNA in vitro, suggesting separate binding sites for these proteins on bcl-2 mRNA.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "54f55cae5a568d4edc81661a33eef4e533c83ddc70261f2c5d4f6dd65f5d441a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792877222.922563,
+      "end_wall": 1792877250.977779,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4213,
+    "start_wall": 1792877222.922563,
+    "start_mono": 546779.572943416,
+    "end_wall": 1792877250.977779,
+    "end_mono": 546807.627963583,
+    "raw_response": "{\"reasoning\": \"The provided passages primarily focus on the mechanisms and domains involved in BCL-2's anti-apoptotic functions and its interactions with other proteins like Bax and BH3-only proteins, without directly addressing BCL-2's interaction with c-Myc specifically in promoting apoptotic effects. However, given that BCL-2 typically functions as an anti-apoptotic protein, promoting apoptosis through interaction with c-Myc would be counterintuitive based on its known roles unless there are specific conditions or mechanisms not detailed here that could support such an interaction. Without explicit study-\"\n                 ,\"answer\": \"REFUTED\",\n                 \"citations\": [\"P1\", \"P3\"],\n                 \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28050999750,
+     "load_duration": 6522261083,
+     "prompt_eval_count": 1346,
+     "prompt_eval_duration": 6722183958,
+     "eval_count": 160,
+     "eval_duration": 13312956664,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:30.974662Z"
+    },
+    "elapsed_s": 28.055,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4213,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:34439544:0",
+     "scifact:34439544:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "a6688094210eb248beb63fe08f2c47a3a38daa6d165191c81fbaf12aa935d37a",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792877216.8741848,
+      "end_wall": 1792877227.045373,
+      "error": null
+     }
+    ],
+    "start_wall": 1792877216.8741848,
+    "start_mono": 546773.524607625,
+    "end_wall": 1792877227.045373,
+    "end_mono": 546783.695722875,
+    "raw_response": "{\"query\": \"BCL-2 promotes apoptosis through c-Myc\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10169023125,
+     "load_duration": 5208816583,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 921566750,
+     "eval_count": 16,
+     "eval_duration": 3715369999,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:07.044266Z"
+    },
+    "elapsed_s": 10.171,
+    "query_used": "BCL-2 promotes apoptosis through c-Myc",
+    "query_source": "json",
+    "query_arrival_seq": 4214
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "BCL-2 promotes apoptosis through c-Myc",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4323425:1",
+       "score_q": 7937
+      },
+      {
+       "passage_key": "scifact:10218447:1",
+       "score_q": 7835
+      },
+      {
+       "passage_key": "scifact:37549932:0",
+       "score_q": 7811
+      },
+      {
+       "passage_key": "scifact:20738970:1",
+       "score_q": 7641
+      },
+      {
+       "passage_key": "scifact:8496132:0",
+       "score_q": 7518
+      }
+     ],
+     "retrieval_sha256": "4f4b30be8f5416a951b91fae29e14e05b45ab23a78230a1ff001e59b91c37425"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4f4b30be8f5416a951b91fae29e14e05b45ab23a78230a1ff001e59b91c37425",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4323425:1",
+      "content_sha256": "cb3ccb032a1b0df3ad78135608a08fd96102371207f172c423b016e2aa8e9e7c",
+      "chars": 244
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:10218447:1",
+      "content_sha256": "d1e5f02dd669e76be6e5c74e19896de17b442a37997ef58523d06de9dc9fac7e",
+      "chars": 1051
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:37549932:0",
+      "content_sha256": "9dd92fb96fd88619aabc7e9b89c2195b69d019ca26a7fc484577a23147d2c74a",
+      "chars": 914
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:20738970:1",
+      "content_sha256": "c69f744db1513481228e1bde44dab05219b6e4e86498fd931ca30fe79a90015b",
+      "chars": 860
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:8496132:0",
+      "content_sha256": "8d93349ffc234a82e6dedcb0b8d8abb81aea9a71a258719967f3e7548291e379",
+      "chars": 1031
+     }
+    ],
+    "elapsed_s": 0.0016
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: BCL-2 promotes the apoptotic effects of c-Myc.\n\nEvidence passages from your search for \"BCL-2 promotes apoptosis through c-Myc\":\n<<<PASSAGES\n[P1] BH1 and BH2 domains of Bcl-2 are required for inhibition of apoptosis and heterodimerization with Bax\nThese results establish a functional role for the BH1 and BH2 domains and suggest Bcl-2 exerts its action through heterodimerization with Bax.\n\n[P2] The flavonoid component isorhamnetin in vitro inhibits proliferation and induces apoptosis in Eca-109 cells.\nCompared with the negative control group, the treated group which was exposed to isorhamnetin had increased population in G(0)/G(1) phase from 74.6 to 84 while had a significant reduction in G(2)/M phase from 11.9 to 5.8. In addition to its cytostatic effect, isorhamnetin also showed stimulatory effect on apoptosis. Typical apoptotic morphology such as condensation and fragmentation of nuclei and blebbing membrane of the apoptotic cells could be observed through transmission electron microscope. Moreover, the sharp increase in apoptosis rate between the control and treated group were detected by FCM from 6.3 to 16.3. To explore the possible molecular mechanisms that underlie the growth inhibition and apoptosis stimulatory effects of isorhamnetin, the expressions of six proliferation- and death-related genes were detected by FCM. Expressions of bcl-2, c-myc and H-ras were downregulated whereas Bax, c-fos and p53 were upregulated.\n\n[P3] Antiapoptotic BCL-2 is required for maintenance of a model leukemia.\nResistance to apoptosis, often achieved by the overexpression of antiapoptotic proteins, is common and perhaps required in the genesis of cancer. However, it remains uncertain whether apoptotic defects are essential for tumor maintenance. To test this, we generated mice expressing a conditional BCL-2 gene and constitutive c-myc that develop lymphoblastic leukemia. Eliminating BCL-2 yielded rapid loss of leukemic cells and significantly prolonged survival, formally validating BCL-2 as a rational target for cancer therapy. Loss of this single molecule resulted in cell death, despite or perhaps attributable to the presence of other oncogenic events. This suggests a generalizable model in which aberrations inherent to cancer generate tonic death signals that would otherwise kill the cell if not opposed by a requisite apoptotic defect(s).\n\n[P4] Non-receptor tyrosine kinase Etk is involved in the apoptosis of small cell lung cancer cells.\nFurthermore, the levels of Bcl-2 and Bcl-X(L) significantly increased in H446-Etk cells than that in H446 cells after doxorubicin treatment, and were positively associated with Etk expression. However, p53 did not correspond with Etk expression although its expression decreased greatly with apoptosis both in H446-Etk and H446 cells. After doxorubicin treatment, the cell viability was significantly higher in H446-Etk cells than in parental H446 cells. Downregulation of Etk by Etk siRNA sensitized H446 cells to doxorubicin. Our results indicate that upregulation of tyrosine kinase Etk may be a new mechanism involved in protection of SCLC cells from apoptosis. Bcl-2 and Bcl-X(L) but not p53 may contribute to doxorubicin-induced apoptosis through Etk pathway.\n\n[P5] Regulation of Bcl-2 expression by HuR in HL60 leukemia cells and A431 carcinoma cells.\nOverexpression of the proto-oncogene bcl-2 promotes abnormal cell survival by inhibiting apoptosis. Expression of bcl-2 is determined, in part, by regulatory mechanisms that control the stability of bcl-2 mRNA. Elements in the 3'-untranslated region of bcl-2 mRNA have been shown to play a role in regulating the stability of the message. Previously, it was found that the RNA binding proteins nucleolin and Ebp1 have a role in stabilizing bcl-2 mRNA in HL60 cells. Here, we have identified HuR as a component of bcl-2 messenger ribonucleoprotein (mRNP) complexes. RNA coimmunoprecipitation assays showed that HuR binds to bcl-2 mRNA in vivo. We also observed an RNA-dependent coprecipitation of HuR and nucleolin, suggesting that the two proteins are present in common mRNP complexes. Moreover, nucleolin and HuR bind concurrently to bcl-2 AU-rich element (ARE) RNA in vitro, suggesting separate binding sites for these proteins on bcl-2 mRNA.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "f704e9212f04fce16ee556e9b0817946ee2f94924ee3191ae87c6df027468535",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792877227.047408,
+      "end_wall": 1792877259.466274,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4214,
+    "start_wall": 1792877227.047408,
+    "start_mono": 546783.697759,
+    "end_wall": 1792877259.466274,
+    "end_mono": 546816.116398583,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that BCL-2 promotes apoptosis through its interaction with Bax, which is essential for its inhibitory effect on apoptosis. Additionally, the passage on isorhamnetin shows that BCL-2 plays a role in apoptosis, and the passage on BCL-2 in leukemia mice suggests that BCL-2 is required for tumor maintenance, which is consistent with the claim that BCL-2 promotes apoptosis through c-Myc.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 32413862083,
+     "load_duration": 25581797875,
+     "prompt_eval_count": 1212,
+     "prompt_eval_duration": 1878803291,
+     "eval_count": 123,
+     "eval_duration": 2613570920,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:27:39.462501Z"
+    },
+    "elapsed_s": 32.419,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4214,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:4323425:1",
+     "scifact:10218447:1",
+     "scifact:37549932:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 412,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "8e86632c1f1c43da5ac733a261e30ae07db85f53a36ff7582384ca6ad06b5bfd",
+  "olmo2:7b": "99216d345f862d7a431dd75ef64744f52eaf8f5ba60335ea7c61e04d56de54b0",
+  "granite3.3:2b": "80a4dcdf90cc28f9f7612af2fff5e8ec9cb26707dd1a96a15aec8413859cc3ba",
+  "exaone3.5:7.8b": "1da4e65469d2fa7e9e4e686e8d0fb0036fbdd8a3fda14a648006d0c00a3ae7f1",
+  "nemotron-mini:4b": "4f4b30be8f5416a951b91fae29e14e05b45ab23a78230a1ff001e59b91c37425"
+ },
+ "item_start_wall": 1792877216.8730528,
+ "item_wall_s": 42.593,
+ "ollama_ps_samples": [
+  [
+   1792877216.873,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792877218.883,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792877220.887,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792877222.894,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792877224.904,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792877226.915,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792877228.92,
+   [
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792877230.925,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792877232.934,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792877234.936,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792877236.946,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792877238.956,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792877240.963,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792877242.971,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792877244.979,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792877246.987,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792877248.991,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792877251.001,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792877253.012,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792877255.017,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792877257.021,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792877259.032,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

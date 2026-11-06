@@ -1,0 +1,1317 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev275",
+ "order": 318,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev275",
+  "order": 318,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors."
+ },
+ "item_view_sha256": "99ac3a46ea03c2eb78b35b4562c6fb6d1e849411371d88ebe8616d27950c3d58",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb4a8ffa8fe38c874e68e8939bd620b17c99db653496b984a37e309a77b2623d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861923.237576,
+      "end_wall": 1792861925.368778,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861923.237576,
+    "start_mono": 531479.993317791,
+    "end_wall": 1792861925.368778,
+    "end_mono": 531482.124524041,
+    "raw_response": "{\"query\": \"PI3K MEK inhibitors KRAS mutant tumors efficacy clinical trials\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2128798459,
+     "load_duration": 55526917,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 630423667,
+     "eval_count": 18,
+     "eval_duration": 1269805042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:05.367713Z"
+    },
+    "elapsed_s": 2.131,
+    "query_used": "PI3K MEK inhibitors KRAS mutant tumors efficacy clinical trials",
+    "query_source": "json",
+    "query_arrival_seq": 1590
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "PI3K MEK inhibitors KRAS mutant tumors efficacy clinical trials",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4961038:1",
+       "score_q": 792
+      },
+      {
+       "passage_key": "scifact:2272614:1",
+       "score_q": 783
+      },
+      {
+       "passage_key": "scifact:14241418:1",
+       "score_q": 768
+      },
+      {
+       "passage_key": "scifact:1389264:0",
+       "score_q": 755
+      },
+      {
+       "passage_key": "scifact:28334217:1",
+       "score_q": 753
+      }
+     ],
+     "retrieval_sha256": "265b95e4ec69fd9e118d092fe9d161de539b9f44874b6704e08eaa11f45a5ce2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "265b95e4ec69fd9e118d092fe9d161de539b9f44874b6704e08eaa11f45a5ce2",
+    "query_embedding_sha256": "2aa206c0ba229f2102c0084ed7b99c2a21476dc73f76ec3fef42775b512fc7ab",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4961038:1",
+      "content_sha256": "bf3c966f5e822d87343056df657d33af5ccb55ca166c1e14af8130a69e952362",
+      "chars": 888
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2272614:1",
+      "content_sha256": "b1af2528ef6a4b6c9b0edef2f1b908e66049c3a5ea09d5bc9a30ea5b8f787b1f",
+      "chars": 233
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14241418:1",
+      "content_sha256": "6229cd55b917128660e9926a44379a81174cfe3b4186d9633c2db32a93fb00e7",
+      "chars": 911
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:1389264:0",
+      "content_sha256": "7bc949c0288ce73d4c281ece198d81738107776b08bda2d091dc707a47af409b",
+      "chars": 1031
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:28334217:1",
+      "content_sha256": "78b0325c9bd619cd61693914ab89e9543ed9db2b49c4b56ba0e2c1a578db4df0",
+      "chars": 785
+     }
+    ],
+    "elapsed_s": 3.5033
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nEvidence passages from your search for \"PI3K MEK inhibitors KRAS mutant tumors efficacy clinical trials\":\n<<<PASSAGES\n[P1] Effective Use of PI3K and MEK Inhibitors to Treat Mutant K-Ras G12D and PIK3CA H1047R Murine Lung Cancers\nTreatment of these tumors with NVP-BEZ235, a dual pan-PI3K and mammalian target of rapamycin (mTOR) inhibitor in clinical development, led to marked tumor regression as shown by positron emission tomography-computed tomography, magnetic resonance imaging and microscopic examination. In contrast, mouse lung cancers driven by mutant Kras did not substantially respond to single-agent NVP-BEZ235. However, when NVP-BEZ235 was combined with a mitogen-activated protein kinase kinase (MEK) inhibitor, ARRY-142886, there was marked synergy in shrinking these Kras-mutant cancers. These in vivo studies suggest that inhibitors of the PI3K-mTOR pathway may be active in cancers with PIK3CA mutations and, when combined with MEK inhibitors, may effectively treat KRAS mutated lung cancers.\n\n[P2] Reduced NF1 expression confers resistance to EGFR inhibition in lung cancer.\nThese findings identify a subgroup of patients with EGFR-mutant lung adenocarcinoma who might benefit from combination therapy with EGFR and MEK inhibitors.\n\n[P3] NVP-BEZ235, a dual PI3K/mTOR inhibitor, prevents PI3K signaling and inhibits the growth of cancer cells with activating PI3K mutations.\nNVP-BEZ235 reversed the hyperactivation of the PI3K/mTOR pathway caused by the oncogenic mutations of p110-alpha, E545K, and H1047R, and inhibited the proliferation of HER2-amplified BT474 cells exogenously expressing these mutations that render them resistant to trastuzumab. In trastuzumab-resistant BT474 H1047R breast cancer xenografts, NVP-BEZ235 inhibited PI3K signaling and had potent antitumor activity. In treated animals, there was complete inhibition of PI3K signaling in the skin at pharmacologically active doses, suggesting that skin may serve as surrogate tissue for pharmacodynamic studies. In summary, NVP-BEZ235 inhibits the PI3K/mTOR axis and results in antiproliferative and antitumoral activity in cancer cells with both wild-type and mutated p110-alpha.\n\n[P4] Combination inhibition of PI3K and mTORC1 yields durable remissions in orthotopic patient-derived xenografts of HER2-positive breast cancer brain metastases\nBrain metastases represent the greatest clinical challenge in treating HER2-positive breast cancer. We report the development of orthotopic patient-derived xenografts (PDXs) of HER2-expressing breast cancer brain metastases (BCBM), and their use for the identification of targeted combination therapies. Combined inhibition of PI3K and mTOR resulted in durable tumor regressions in three of five PDXs, and therapeutic response was correlated with a reduction in the phosphorylation of 4EBP1, an mTORC1 effector. The two nonresponding PDXs showed hypermutated genomes with enrichment of mutations in DNA-repair genes, which suggests an association of genomic instability with therapeutic resistance. These findings suggest that a biomarker-driven clinical trial of PI3K inhibitor in combination with an mTOR inhibitor should be conducted for patients with HER2-positive BCBM.\n\n[P5] Targeted inhibition of tumor-specific glutaminase diminishes cell-autonomous tumorigenesis.\nIn mice harboring P493 tumor xenografts, BPTES treatment inhibited tumor cell growth; however, P493 xenografts expressing a BPTES-resistant GLS mutant (GLS-K325A) or overexpressing GLS were not affected by BPTES treatment. Moreover, a customized Vivo-Morpholino that targets human GLS mRNA markedly inhibited P493 xenograft growth without affecting mouse Gls expression. Conversely, a Vivo-Morpholino directed at mouse Gls had no antitumor activity in vivo. Collectively, our studies demonstrate that GLS is required for tumorigenesis and support small molecule and genetic inhibition of GLS as potential approaches for targeting the tumor cell-autonomous dependence on GLS for cancer therapy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "067a5e6ad09e974432a4584afbdb368cfea9644aa012d20c4b3fc4de8008729c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861928.872443,
+      "end_wall": 1792861951.627726,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1590,
+    "start_wall": 1792861928.872443,
+    "start_mono": 531485.628198333,
+    "end_wall": 1792861951.627726,
+    "end_mono": 531508.383538291,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from passages P1 and P3 specifically highlight studies demonstrating that combining PI3K inhibitors (such as NVP-BEZ235) with MEK inhibitors effectively suppresses tumor growth in KRAS mutant models, indicating synergistic antitumor activity. These findings directly support the efficacy of this combined approach for treating KRAS mutant tumors.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 22750903042,
+     "load_duration": 5632187042,
+     "prompt_eval_count": 1201,
+     "prompt_eval_duration": 7246162166,
+     "eval_count": 110,
+     "eval_duration": 8812504371,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:31.624734Z"
+    },
+    "elapsed_s": 22.755,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1590,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:4961038:1",
+     "scifact:14241418:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 359,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb4a8ffa8fe38c874e68e8939bd620b17c99db653496b984a37e309a77b2623d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861923.235422,
+      "end_wall": 1792861928.9431522,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861923.235422,
+    "start_mono": 531479.991163916,
+    "end_wall": 1792861928.9431522,
+    "end_mono": 531485.698907125,
+    "raw_response": "{\"query\": \"phosphatidylinositide 3-kinase MEK inhibitors KRAS mutant tumors\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5703967667,
+     "load_duration": 3654662792,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 692713625,
+     "eval_count": 25,
+     "eval_duration": 1133617168,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:08.942238Z"
+    },
+    "elapsed_s": 5.708,
+    "query_used": "phosphatidylinositide 3-kinase MEK inhibitors KRAS mutant tumors",
+    "query_source": "json",
+    "query_arrival_seq": 1593
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "phosphatidylinositide 3-kinase MEK inhibitors KRAS mutant tumors",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4961038:1",
+       "score_q": 16657
+      },
+      {
+       "passage_key": "scifact:85665741:0",
+       "score_q": 11745
+      },
+      {
+       "passage_key": "scifact:4920376:0",
+       "score_q": 11505
+      },
+      {
+       "passage_key": "scifact:36310858:1",
+       "score_q": 9108
+      },
+      {
+       "passage_key": "scifact:11200685:1",
+       "score_q": 9039
+      }
+     ],
+     "retrieval_sha256": "ebdcfa3baed919e664fbd341db495dc7d85c00f388742928dfe3b08598bb0379"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "ebdcfa3baed919e664fbd341db495dc7d85c00f388742928dfe3b08598bb0379",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4961038:1",
+      "content_sha256": "bf3c966f5e822d87343056df657d33af5ccb55ca166c1e14af8130a69e952362",
+      "chars": 888
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:85665741:0",
+      "content_sha256": "d8c8494d7a0b44f5874f82b468b5d5c3620df3ff5efef9d7454790a39f62236d",
+      "chars": 998
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4920376:0",
+      "content_sha256": "b1a8395bb0c4b3eb19077dc87eac140bac0e6f20f5e82d21259abe1c12d955f3",
+      "chars": 1024
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:36310858:1",
+      "content_sha256": "61aff3998f37f804ce3c5e5911f1d1b1512826002be5da6c1616e144cb69700f",
+      "chars": 682
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11200685:1",
+      "content_sha256": "78081a5719133f89e138d359d8490a4ae2c0a58840266a91cc9930c316a79726",
+      "chars": 906
+     }
+    ],
+    "elapsed_s": 0.0059
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nEvidence passages from your search for \"phosphatidylinositide 3-kinase MEK inhibitors KRAS mutant tumors\":\n<<<PASSAGES\n[P1] Effective Use of PI3K and MEK Inhibitors to Treat Mutant K-Ras G12D and PIK3CA H1047R Murine Lung Cancers\nTreatment of these tumors with NVP-BEZ235, a dual pan-PI3K and mammalian target of rapamycin (mTOR) inhibitor in clinical development, led to marked tumor regression as shown by positron emission tomography-computed tomography, magnetic resonance imaging and microscopic examination. In contrast, mouse lung cancers driven by mutant Kras did not substantially respond to single-agent NVP-BEZ235. However, when NVP-BEZ235 was combined with a mitogen-activated protein kinase kinase (MEK) inhibitor, ARRY-142886, there was marked synergy in shrinking these Kras-mutant cancers. These in vivo studies suggest that inhibitors of the PI3K-mTOR pathway may be active in cancers with PIK3CA mutations and, when combined with MEK inhibitors, may effectively treat KRAS mutated lung cancers.\n\n[P2] BRAF mutation predicts for MEK-dependence in non-small cell lung cancer (NSCLC).\n5247 Constitutive ERK signaling is common in human cancer and is often the result of activating mutations of BRAF, RAS and upstream receptor tyrosine kinases. Missense BRAF kinase domain mutations are frequently observed in melanoma, colon and thyroid cancers and less frequently in lung and other cancer types. The vast majority (>90%) involve a glutamic acid for valine substitution at codon 600 (V600E), which results in elevated BRAF kinase activity. BRAF kinase domain mutations with intermediate and impaired kinase activity have also been identified, most frequently in NSCLC. We have previously reported that tumors with V600E BRAF mutation are selectively sensitive to MEK inhibition. Using the potent and selective MEK1/2 inhibitor PD0325901 (Pfizer), we examined a panel of NSCLC cell lines with mutant EGFR, KRAS, and/or low, intermediate and high-activity BRAF kinase domain mutations for MEK dependence.\n\n[P3] Long-Term ERK Inhibition in KRAS-Mutant Pancreatic Cancer Is Associated with MYC Degradation and Senescence-like Growth Suppression.\nInduction of compensatory mechanisms and ERK reactivation has limited the effectiveness of Raf and MEK inhibitors in RAS-mutant cancers. We determined that direct pharmacologic inhibition of ERK suppressed the growth of a subset of KRAS-mutant pancreatic cancer cell lines and that concurrent phosphatidylinositol 3-kinase (PI3K) inhibition caused synergistic cell death. Additional combinations that enhanced ERK inhibitor action were also identified. Unexpectedly, long-term treatment of sensitive cell lines caused senescence, mediated in part by MYC degradation and p16 reactivation. Enhanced basal PI3K-AKT-mTOR signaling was associated with de novo resistance to ERK inhibitor, as were other protein kinases identified by kinome-wide siRNA screening and a genetic gain-of-function screen. Our findings reveal distinct consequences of inhibiting this kinase cascade at the level of ERK.\n\n[P4] Downstream of Mutant KRAS, the Transcription Regulator YAP Is Essential for Neoplastic Progression to Pancreatic Ductal Adenocarcinoma\nYap functioned as a critical transcriptional switch downstream of the oncogenic KRAS–mitogen-activated protein kinase (MAPK) pathway, promoting the expression of genes encoding secretory factors that cumulatively sustained neoplastic proliferation, a tumorigenic stromal response in the tumor microenvironment, and PDAC progression in Kras and Kras:Trp53 mutant pancreas tissue. Together, our findings identified Yap as a critical oncogenic KRAS effector and a promising therapeutic target for PDAC and possibly other types of KRAS-mutant cancers.\n\n[P5] Integrins regulate microtubule nucleating activity of centrosome through mitogen-activated protein kinase/extracellular signal-regulated kinase kinase/extracellular signal-regulated kinase (MEK/ERK) signaling.\nOur results indicate that the formation of the androgen receptor-Src complex and the activation of downstream pathways are significantly suppressed when cells are adhered by the mutant integrin. Inhibitor studies indicate that microtubule nucleation requires MEK/ERK but not PI3K/AKT signaling. Importantly, the expression of activated RAF-1 is sufficient to rescue microtubule nucleation inhibited by the mutant integrin by promoting the centrosomal accumulation of γ-tubulin. Our data define a novel paradigm of integrin signaling, where integrins regulate microtubule nucleation by promoting the formation of androgen receptor-Src signaling complexes to activate the MEK/ERK signaling pathway.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "67d8fa83587a8ce8a05268e54096dc366aaf6bbf8b5f4f605abf66c44f85f2b8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861928.949454,
+      "end_wall": 1792861953.932485,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1591,
+    "start_wall": 1792861928.949454,
+    "start_mono": 531485.7052095,
+    "end_wall": 1792861953.932485,
+    "end_mono": 531510.688302583,
+    "raw_response": "{\"reasoning\": \"Combining phosphatidylinositide 3-kinase (PI3K) and MEK 1/2 inhibitors shows promise in treating KRAS mutant tumors as evidenced by studies showing synergy in shrinking Kras-mutant cancers (P1) and MEK dependence in NSCLC with BRAF mutations (P2). However, P3 indicates that long-term ERK inhibition can induce senescence, which might limit efficacy. P4 highlights YAP as a critical oncogenic KRAS effector, suggesting potential therapeutic targets. P5 provides insight into integrin regulation of microtubule nucleation through MEK/ERK signaling, indicating that the interaction between integrins, a\"\n\n,\"answer\": \"SUPPORTED\",\n\n\"citations\": [\"P1\", \"P2\", \"P4\"],\n\n\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 24979700041,
+     "load_duration": 46906291,
+     "prompt_eval_count": 1297,
+     "prompt_eval_duration": 4542771208,
+     "eval_count": 178,
+     "eval_duration": 18465649080,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:33.929767Z"
+    },
+    "elapsed_s": 24.983,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1591,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:4961038:1",
+     "scifact:85665741:0",
+     "scifact:36310858:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb4a8ffa8fe38c874e68e8939bd620b17c99db653496b984a37e309a77b2623d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861923.235921,
+      "end_wall": 1792861925.72324,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861923.235921,
+    "start_mono": 531479.991663041,
+    "end_wall": 1792861925.72324,
+    "end_mono": 531482.478986083,
+    "raw_response": "{\"query\": \"Phosphatidylinositide 3-kinase MEK inhibitor KRAS tumor efficacy\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2483911667,
+     "load_duration": 924959750,
+     "prompt_eval_count": 201,
+     "prompt_eval_duration": 410846791,
+     "eval_count": 32,
+     "eval_duration": 993023000,
+     "done_reason": "length",
+     "created_at": "2026-10-24T17:12:05.722008Z"
+    },
+    "elapsed_s": 2.487,
+    "query_used": "Phosphatidylinositide 3-kinase MEK inhibitor KRAS tumor efficacy",
+    "query_source": "json",
+    "query_arrival_seq": 1592
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Phosphatidylinositide 3-kinase MEK inhibitor KRAS tumor efficacy",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:14241418:0",
+       "score_q": 787
+      },
+      {
+       "passage_key": "scifact:19752008:0",
+       "score_q": 777
+      },
+      {
+       "passage_key": "scifact:41325555:0",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:1285713:0",
+       "score_q": 772
+      },
+      {
+       "passage_key": "scifact:3078550:0",
+       "score_q": 772
+      }
+     ],
+     "retrieval_sha256": "88581782662409f1cf5466fbb5170695e30867a5e01d7d980ba2323f65072a00"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "88581782662409f1cf5466fbb5170695e30867a5e01d7d980ba2323f65072a00",
+    "query_embedding_sha256": "a0b3934a3c550000e2e2ade61393212779d1cf0af7c53a792dbfae2dda04bfe6",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:14241418:0",
+      "content_sha256": "fc4c64763b10572f2b9d807d5144d960dd3fac13f11f624329884bcce68d9399",
+      "chars": 1131
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19752008:0",
+      "content_sha256": "bf21635b5a94455991353be34a68551cc49c161f08f277e7c871b0b7e76deee7",
+      "chars": 997
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:41325555:0",
+      "content_sha256": "59c784b11f13729e9e6277b0441b41140a2371b230f89cb291558372497fb3bc",
+      "chars": 813
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:1285713:0",
+      "content_sha256": "e41f11a8917093d4ca0d929f265a56aafa947f10db90a330b87ad25fce74213b",
+      "chars": 1028
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:3078550:0",
+      "content_sha256": "cb60a5d01385ef8fa996288e3d902612bc5e8df011d2e56602b6d88345e77f76",
+      "chars": 1050
+     }
+    ],
+    "elapsed_s": 3.2239
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nEvidence passages from your search for \"Phosphatidylinositide 3-kinase MEK inhibitor KRAS tumor efficacy\":\n<<<PASSAGES\n[P1] NVP-BEZ235, a dual PI3K/mTOR inhibitor, prevents PI3K signaling and inhibits the growth of cancer cells with activating PI3K mutations.\nPhosphatidylinositol-3-kinase (PI3K) pathway deregulation is a common event in human cancer, either through inactivation of the tumor suppressor phosphatase and tensin homologue deleted from chromosome 10 or activating mutations of p110-alpha. These hotspot mutations result in oncogenic activity of the enzyme and contribute to therapeutic resistance to the anti-HER2 antibody trastuzumab. The PI3K pathway is, therefore, an attractive target for cancer therapy. We have studied NVP-BEZ235, a dual inhibitor of the PI3K and the downstream mammalian target of rapamycin (mTOR). NVP-BEZ235 inhibited the activation of the downstream effectors Akt, S6 ribosomal protein, and 4EBP1 in breast cancer cells. The antiproliferative activity of NVP-BEZ235 was superior to the allosteric selective mTOR complex inhibitor everolimus in a panel of 21 cancer cell lines of different origin and mutation status. The described Akt activation due to mTOR inhibition was prevented by higher doses of NVP-BEZ235.\n\n[P2] A specific inhibitor of phosphatidylinositol 3-kinase, 2-(4-morpholinyl)-8-phenyl-4H-1-benzopyran-4-one (LY294002).\nPhosphatidylinositol (PtdIns) 3-kinase is an enzyme implicated in growth factor signal transduction by associating with receptor and nonreceptor tyrosine kinases, including the platelet-derived growth factor receptor. Inhibitors of PtdIns 3-kinase could potentially give a better understanding of the function and regulatory mechanisms of the enzyme. Quercetin, a naturally occurring bioflavinoid, was previously shown to inhibit PtdIns 3-kinase with an IC50 of 1.3 microgram/ml (3.8 microM); inhibition appeared to be directed at the ATP-binding site of the kinase. Analogs of quercetin were investigated as PtdIns 3-kinase inhibitors, with the most potent ones exhibiting IC50 values in the range of 1.7-8.4 micrograms/ml. In contrast, genistein, a potent tyrosine kinase inhibitor of the isoflavone class, did not inhibit PtdIns 3-kinase significantly (IC50 > 30 micrograms/ml).\n\n[P3] Phosphoinositide 3-kinase signalling--which way to target?\nAbstract Phosphoinositide 3-kinases (PI3Ks) are central to the control of cell growth, proliferation and survival, and drive the progression of tumours by activating phosphoinositide-dependent kinase, protein kinase B and the target of rapamycin. Other downstream effectors link PI3K to cell motility and the control of cardiovascular parameters. Current knowledge indicates that PI3Ks might qualify as drug targets for the treatment of cancer, chronic inflammation, allergy and cardiovascular failure. However, PI3Ks also modulate vital processes such as metabolic control and nutrient uptake. Here, mechanistic data and mouse phenotypic analyses are summarised, and the possible success of therapeutic inhibition of distinct PI3K isoforms is discussed.\n\n[P4] Pharmacologic characterization of a potent inhibitor of class I phosphatidylinositide 3-kinases.\nExtensive evidence implicates activation of the lipid phosphatidylinositide 3-kinase (PI3K) pathway in the genesis and progression of various human cancers. PI3K inhibitors thus have considerable potential as molecular cancer therapeutics. Here, we detail the pharmacologic properties of a prototype of a new series of inhibitors of class I PI3K. PI103 is a potent inhibitor with low IC50 values against recombinant PI3K isoforms p110alpha (2 nmol/L), p110beta (3 nmol/L), p110delta (3 nmol/L), and p110gamma (15 nmol/L). PI103 also inhibited TORC1 by 83.9% at 0.5 micromol/L and exhibited an IC50 of 14 nmol/L against DNA-PK. A high degree of selectivity for the PI3K family was shown by the lack of activity of PI103 in a panel of 70 protein kinases. PI103 potently inhibited proliferation and invasion of a wide variety of human cancer cells in vitro and showed biomarker modulation consistent with inhibition of PI3K signaling.\n\n[P5] Wortmannin, a phosphoinositide 3-kinase inhibitor, selectively enhances cytotoxicity of receptor-directed-toxin chimeras in vitro and in vivo.\nBACKGROUND Generalized resistance of some neoplastic cell lines to treatment with ligand-toxin chimeras has been attributed to an increased rate of lysosomal uptake and degradation following endocytosis of the chimera-receptor complex. Because phosphoinositide 3-kinase (Pl 3-kinase) activity is known to play a role in intracellular trafficking, particularly from endosomes to lysosomes, we hypothesized that co-exposing cells to the Pl 3-kinase inhibitor, wortmannin, might enhance cytotoxicity of ligand-toxin chimeras. METHODS In vitro, cytotoxicity of five receptor directed-toxin chimeras (bFGF-SAP, bFGF-PE, aFGF-PE, HBEGF-SAP, bFGF-gelonin) and an immunotoxin (11A8-SAP) was examined in the presence or absence of this Pl 3-kinase inhibitor against a panel of human neoplastic cell lines: SK-MEL-5 (melanoma), PA-1 (ovarian teratocarcinoma), DU145 (prostatic carcinoma) and MCF-7 (breast carcinoma).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e7490fa99f87e055f82d17ef5762a9beafb7a00fc6ad5963ebb3bf9118cd2d1d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861928.947653,
+      "end_wall": 1792861954.134179,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1592,
+    "start_wall": 1792861928.947653,
+    "start_mono": 531485.703409041,
+    "end_wall": 1792861954.134179,
+    "end_mono": 531510.889997,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests combining PI3K and MEK inhibitors for treating KRAS mutant tumors. Several passages support this notion: P1 discusses NVP-BEZ235 as a dual PI3K/mTOR inhibitor, which effectively inhibits cancer cell growth; P4 details PI103 as a potent PI3K inhibitor that inhibits proliferation and invasion of various cancer cells; P3 discusses PI3Ks' role in cancer progression and their potential as drug targets. These findings collectively support the effectiveness of combining PI3K and MEK inhibitors for treating KRAS mutant tumors.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P4\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25181338708,
+     "load_duration": 6678607708,
+     "prompt_eval_count": 1907,
+     "prompt_eval_duration": 6715746376,
+     "eval_count": 196,
+     "eval_duration": 10757038913,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:34.131087Z"
+    },
+    "elapsed_s": 25.187,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1592,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:14241418:0",
+     "scifact:1285713:0",
+     "scifact:41325555:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 543,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb4a8ffa8fe38c874e68e8939bd620b17c99db653496b984a37e309a77b2623d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861923.236477,
+      "end_wall": 1792861925.4974248,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861923.236477,
+    "start_mono": 531479.99221925,
+    "end_wall": 1792861925.4974248,
+    "end_mono": 531482.253171,
+    "raw_response": "{\"query\": \"phosphatidylinositide 3-kinase inhibitors combining MEK 1/2 inhibitors treating KRAS mutant tumors\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2257780750,
+     "load_duration": 107755583,
+     "prompt_eval_count": 192,
+     "prompt_eval_duration": 442132542,
+     "eval_count": 30,
+     "eval_duration": 1305285332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:05.496591Z"
+    },
+    "elapsed_s": 2.261,
+    "query_used": "phosphatidylinositide 3-kinase inhibitors combining MEK 1/2 inhibitors treating KRAS mutant tumors",
+    "query_source": "json",
+    "query_arrival_seq": 1591
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "phosphatidylinositide 3-kinase inhibitors combining MEK 1/2 inhibitors treating KRAS mutant tumors",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:1285713:0",
+       "score_q": 796
+      },
+      {
+       "passage_key": "scifact:1285713:1",
+       "score_q": 795
+      },
+      {
+       "passage_key": "scifact:4961038:1",
+       "score_q": 793
+      },
+      {
+       "passage_key": "scifact:14819804:0",
+       "score_q": 791
+      },
+      {
+       "passage_key": "scifact:4920376:0",
+       "score_q": 783
+      }
+     ],
+     "retrieval_sha256": "115522c9e27fafcc0e70a3ede8b200cdd178b5e658c6dd7b75a0f059e5aee0c0"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "115522c9e27fafcc0e70a3ede8b200cdd178b5e658c6dd7b75a0f059e5aee0c0",
+    "query_embedding_sha256": "82aff1bcde7ceb03e7e4bf60a1195abec18b8f848cd3427b5b1847aa27e83be3",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:1285713:0",
+      "content_sha256": "e41f11a8917093d4ca0d929f265a56aafa947f10db90a330b87ad25fce74213b",
+      "chars": 1028
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:1285713:1",
+      "content_sha256": "aaacf2108ce2aa9cc9bc67a819d34fba990463fb4bd717717a8f50d47f1d9bb0",
+      "chars": 811
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4961038:1",
+      "content_sha256": "bf3c966f5e822d87343056df657d33af5ccb55ca166c1e14af8130a69e952362",
+      "chars": 888
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14819804:0",
+      "content_sha256": "8c7429bebb5c4356c92646adf6aa4a3d048da50562e1bd034b5147db376b953c",
+      "chars": 977
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4920376:0",
+      "content_sha256": "b1a8395bb0c4b3eb19077dc87eac140bac0e6f20f5e82d21259abe1c12d955f3",
+      "chars": 1024
+     }
+    ],
+    "elapsed_s": 3.4153
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nEvidence passages from your search for \"phosphatidylinositide 3-kinase inhibitors combining MEK 1/2 inhibitors treating KRAS mutant tumors\":\n<<<PASSAGES\n[P1] Pharmacologic characterization of a potent inhibitor of class I phosphatidylinositide 3-kinases.\nExtensive evidence implicates activation of the lipid phosphatidylinositide 3-kinase (PI3K) pathway in the genesis and progression of various human cancers. PI3K inhibitors thus have considerable potential as molecular cancer therapeutics. Here, we detail the pharmacologic properties of a prototype of a new series of inhibitors of class I PI3K. PI103 is a potent inhibitor with low IC50 values against recombinant PI3K isoforms p110alpha (2 nmol/L), p110beta (3 nmol/L), p110delta (3 nmol/L), and p110gamma (15 nmol/L). PI103 also inhibited TORC1 by 83.9% at 0.5 micromol/L and exhibited an IC50 of 14 nmol/L against DNA-PK. A high degree of selectivity for the PI3K family was shown by the lack of activity of PI103 in a panel of 70 protein kinases. PI103 potently inhibited proliferation and invasion of a wide variety of human cancer cells in vitro and showed biomarker modulation consistent with inhibition of PI3K signaling.\n\n[P2] Pharmacologic characterization of a potent inhibitor of class I phosphatidylinositide 3-kinases.\nPI103 was extensively metabolized, but distributed rapidly to tissues and tumors. This resulted in tumor growth delay in eight different human cancer xenograft models with various PI3K pathway abnormalities. Decreased phosphorylation of AKT was observed in U87MG gliomas, consistent with drug levels achieved. We also showed inhibition of invasion in orthotopic breast and ovarian cancer xenograft models and obtained evidence that PI103 has antiangiogenic potential. Despite its rapid in vivo metabolism, PI103 is a valuable tool compound for exploring the biological function of class I PI3K and importantly represents a lead for further optimization of this novel class of targeted molecular cancer therapeutic.\n\n[P3] Effective Use of PI3K and MEK Inhibitors to Treat Mutant K-Ras G12D and PIK3CA H1047R Murine Lung Cancers\nTreatment of these tumors with NVP-BEZ235, a dual pan-PI3K and mammalian target of rapamycin (mTOR) inhibitor in clinical development, led to marked tumor regression as shown by positron emission tomography-computed tomography, magnetic resonance imaging and microscopic examination. In contrast, mouse lung cancers driven by mutant Kras did not substantially respond to single-agent NVP-BEZ235. However, when NVP-BEZ235 was combined with a mitogen-activated protein kinase kinase (MEK) inhibitor, ARRY-142886, there was marked synergy in shrinking these Kras-mutant cancers. These in vivo studies suggest that inhibitors of the PI3K-mTOR pathway may be active in cancers with PIK3CA mutations and, when combined with MEK inhibitors, may effectively treat KRAS mutated lung cancers.\n\n[P4] Mutations in the phosphatidylinositol-3-kinase pathway predict for antitumor activity of the inhibitor PX-866 whereas oncogenic Ras is a dominant predictor for resistance.\nThe novel phosphatidylinositol-3-kinase (PI3K) inhibitor PX-866 was tested against 13 experimental human tumor xenografts derived from cell lines of various tissue origins. Mutant PI3K (PIK3CA) and loss of PTEN activity were sufficient, but not necessary, as predictors of sensitivity to the antitumor activity of the PI3K inhibitor PX-866 in the presence of wild-type Ras, whereas mutant oncogenic Ras was a dominant determinant of resistance, even in tumors with coexisting mutations in PIK3CA. The level of activation of PI3K signaling measured by tumor phosphorylated Ser(473)-Akt was insufficient to predict in vivo antitumor response to PX-866. Reverse-phase protein array revealed that the Ras-dependent downstream targets c-Myc and cyclin B were elevated in cell lines resistant to PX-866 in vivo.\n\n[P5] Long-Term ERK Inhibition in KRAS-Mutant Pancreatic Cancer Is Associated with MYC Degradation and Senescence-like Growth Suppression.\nInduction of compensatory mechanisms and ERK reactivation has limited the effectiveness of Raf and MEK inhibitors in RAS-mutant cancers. We determined that direct pharmacologic inhibition of ERK suppressed the growth of a subset of KRAS-mutant pancreatic cancer cell lines and that concurrent phosphatidylinositol 3-kinase (PI3K) inhibition caused synergistic cell death. Additional combinations that enhanced ERK inhibitor action were also identified. Unexpectedly, long-term treatment of sensitive cell lines caused senescence, mediated in part by MYC degradation and p16 reactivation. Enhanced basal PI3K-AKT-mTOR signaling was associated with de novo resistance to ERK inhibitor, as were other protein kinases identified by kinome-wide siRNA screening and a genetic gain-of-function screen. Our findings reveal distinct consequences of inhibiting this kinase cascade at the level of ERK.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ee1c5bf0b940806a8061799480f36745e1abe242a26df378ced438c1e477c157",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861928.913194,
+      "end_wall": 1792861961.610292,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1593,
+    "start_wall": 1792861928.913194,
+    "start_mono": 531485.668949833,
+    "end_wall": 1792861961.610292,
+    "end_mono": 531518.366129041,
+    "raw_response": "{\"reasoning\": \"The evidence passages describe the effectiveness of combining PI3K and MEK inhibitors in treating KRAS mutant tumors, providing strong support for the claim.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"] ,\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 32694119834,
+     "load_duration": 26671675625,
+     "prompt_eval_count": 1452,
+     "prompt_eval_duration": 2359384750,
+     "eval_count": 65,
+     "eval_duration": 3037259085,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:41.608523Z"
+    },
+    "elapsed_s": 32.697,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1593,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:4961038:1",
+     "scifact:14819804:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 157,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "eb4a8ffa8fe38c874e68e8939bd620b17c99db653496b984a37e309a77b2623d",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792861923.235141,
+      "end_wall": 1792861933.805759,
+      "error": null
+     }
+    ],
+    "start_wall": 1792861923.235141,
+    "start_mono": 531479.990882208,
+    "end_wall": 1792861933.805759,
+    "end_mono": 531490.561526041,
+    "raw_response": "{\"query\": \"combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors effective KRAS mutant tumors\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10566575292,
+     "load_duration": 5206389334,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 343441041,
+     "eval_count": 27,
+     "eval_duration": 4430428626,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:13.804557Z"
+    },
+    "elapsed_s": 10.571,
+    "query_used": "combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors effective KRAS mutant tumors",
+    "query_source": "json",
+    "query_arrival_seq": 1594
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors effective KRAS mutant tumors",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4961038:1",
+       "score_q": 18143
+      },
+      {
+       "passage_key": "scifact:85665741:0",
+       "score_q": 11745
+      },
+      {
+       "passage_key": "scifact:4920376:0",
+       "score_q": 11505
+      },
+      {
+       "passage_key": "scifact:4961038:0",
+       "score_q": 10342
+      },
+      {
+       "passage_key": "scifact:85665741:1",
+       "score_q": 10019
+      }
+     ],
+     "retrieval_sha256": "e577f00198b93cf13ca31d14112a913d60ad01dd13402ae879d9c29fb3698b24"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e577f00198b93cf13ca31d14112a913d60ad01dd13402ae879d9c29fb3698b24",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4961038:1",
+      "content_sha256": "bf3c966f5e822d87343056df657d33af5ccb55ca166c1e14af8130a69e952362",
+      "chars": 888
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:85665741:0",
+      "content_sha256": "d8c8494d7a0b44f5874f82b468b5d5c3620df3ff5efef9d7454790a39f62236d",
+      "chars": 998
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4920376:0",
+      "content_sha256": "b1a8395bb0c4b3eb19077dc87eac140bac0e6f20f5e82d21259abe1c12d955f3",
+      "chars": 1024
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4961038:0",
+      "content_sha256": "31c124d14611320ef7ac61388b43e6cc7832d55b0f2e0967804dd4c023cc73cd",
+      "chars": 825
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:85665741:1",
+      "content_sha256": "a7910a360f144755d64f9f3ffb28aa0780472ad50f8c815e105c22709211638c",
+      "chars": 952
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\n\nEvidence passages from your search for \"combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors effective KRAS mutant tumors\":\n<<<PASSAGES\n[P1] Effective Use of PI3K and MEK Inhibitors to Treat Mutant K-Ras G12D and PIK3CA H1047R Murine Lung Cancers\nTreatment of these tumors with NVP-BEZ235, a dual pan-PI3K and mammalian target of rapamycin (mTOR) inhibitor in clinical development, led to marked tumor regression as shown by positron emission tomography-computed tomography, magnetic resonance imaging and microscopic examination. In contrast, mouse lung cancers driven by mutant Kras did not substantially respond to single-agent NVP-BEZ235. However, when NVP-BEZ235 was combined with a mitogen-activated protein kinase kinase (MEK) inhibitor, ARRY-142886, there was marked synergy in shrinking these Kras-mutant cancers. These in vivo studies suggest that inhibitors of the PI3K-mTOR pathway may be active in cancers with PIK3CA mutations and, when combined with MEK inhibitors, may effectively treat KRAS mutated lung cancers.\n\n[P2] BRAF mutation predicts for MEK-dependence in non-small cell lung cancer (NSCLC).\n5247 Constitutive ERK signaling is common in human cancer and is often the result of activating mutations of BRAF, RAS and upstream receptor tyrosine kinases. Missense BRAF kinase domain mutations are frequently observed in melanoma, colon and thyroid cancers and less frequently in lung and other cancer types. The vast majority (>90%) involve a glutamic acid for valine substitution at codon 600 (V600E), which results in elevated BRAF kinase activity. BRAF kinase domain mutations with intermediate and impaired kinase activity have also been identified, most frequently in NSCLC. We have previously reported that tumors with V600E BRAF mutation are selectively sensitive to MEK inhibition. Using the potent and selective MEK1/2 inhibitor PD0325901 (Pfizer), we examined a panel of NSCLC cell lines with mutant EGFR, KRAS, and/or low, intermediate and high-activity BRAF kinase domain mutations for MEK dependence.\n\n[P3] Long-Term ERK Inhibition in KRAS-Mutant Pancreatic Cancer Is Associated with MYC Degradation and Senescence-like Growth Suppression.\nInduction of compensatory mechanisms and ERK reactivation has limited the effectiveness of Raf and MEK inhibitors in RAS-mutant cancers. We determined that direct pharmacologic inhibition of ERK suppressed the growth of a subset of KRAS-mutant pancreatic cancer cell lines and that concurrent phosphatidylinositol 3-kinase (PI3K) inhibition caused synergistic cell death. Additional combinations that enhanced ERK inhibitor action were also identified. Unexpectedly, long-term treatment of sensitive cell lines caused senescence, mediated in part by MYC degradation and p16 reactivation. Enhanced basal PI3K-AKT-mTOR signaling was associated with de novo resistance to ERK inhibitor, as were other protein kinases identified by kinome-wide siRNA screening and a genetic gain-of-function screen. Our findings reveal distinct consequences of inhibiting this kinase cascade at the level of ERK.\n\n[P4] Effective Use of PI3K and MEK Inhibitors to Treat Mutant K-Ras G12D and PIK3CA H1047R Murine Lung Cancers\nSomatic mutations that activate phosphoinositide 3-kinase (PI3K) have been identified in the p110-alpha catalytic subunit (encoded by PIK3CA). They are most frequently observed in two hotspots: the helical domain (E545K and E542K) and the kinase domain (H1047R). Although the p110-alpha mutants are transforming in vitro, their oncogenic potential has not been assessed in genetically engineered mouse models. Furthermore, clinical trials with PI3K inhibitors have recently been initiated, and it is unknown if their efficacy will be restricted to specific, genetically defined malignancies. In this study, we engineered a mouse model of lung adenocarcinomas initiated and maintained by expression of p110-alpha H1047R.\n\n[P5] BRAF mutation predicts for MEK-dependence in non-small cell lung cancer (NSCLC).\nIn all but one case, EGFR, KRAS and BRAF mutations were mutually exclusive with the exception being a cell line with concurrent NRAS and intermediate activity BRAF mutations. Consistent with our prior results, NSCLC cells with V600E BRAF mutation were exquisitely sensitive to MEK inhibition (PD0325901 IC50 of 2nM). The proliferation of cells with non-V600E mutations, including those with high (G469A), intermediate (L597V) and impaired (G466V) kinase activities, was also MEK dependent with IC50’s ranging between 2.7 and 80 nM. Inhibition of MEK in these cells resulted in downregulation of cyclin D1 and G1 growth arrest, with variable induction of apoptosis. Despite high basal ERK activity, NSCLC tumor cells with EGFR mutation were uniformly resistant to MEK inhibition (at doses of up to 500nM), despite effective and prolonged inhibition of ERK phosphorylation.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "74af6d6739f425c6b8c468a0179886e41e9950a39ad65cc2ece3cdde26455519",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792861933.806644,
+      "end_wall": 1792861964.9395049,
+      "error": null
+     }
+    ],
+    "arrival_seq": 1594,
+    "start_wall": 1792861933.806644,
+    "start_mono": 531490.562411458,
+    "end_wall": 1792861964.9395049,
+    "end_mono": 531521.695349875,
+    "raw_response": "{\"reasoning\": \"The claim is supported by evidence from P1 and P2. In P1, a combination of phosphatidylinositide 3-kinase (PI3K) and MEK 1/2 inhibitors was effective in treating mutant K-Ras G12D and PIK3CA H1047R lung cancers. In P2, it was found that BRAF mutation predicts for MEK-dependence in NSCLC.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 31127972375,
+     "load_duration": 23362626333,
+     "prompt_eval_count": 1379,
+     "prompt_eval_duration": 2731303542,
+     "eval_count": 117,
+     "eval_duration": 2764730791,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:12:44.935493Z"
+    },
+    "elapsed_s": 31.133,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 1594,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:4961038:1",
+     "scifact:85665741:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 288,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "exaone3.5:7.8b": "265b95e4ec69fd9e118d092fe9d161de539b9f44874b6704e08eaa11f45a5ce2",
+  "olmo2:7b": "ebdcfa3baed919e664fbd341db495dc7d85c00f388742928dfe3b08598bb0379",
+  "granite3.3:2b": "88581782662409f1cf5466fbb5170695e30867a5e01d7d980ba2323f65072a00",
+  "falcon3:3b": "115522c9e27fafcc0e70a3ede8b200cdd178b5e658c6dd7b75a0f059e5aee0c0",
+  "nemotron-mini:4b": "e577f00198b93cf13ca31d14112a913d60ad01dd13402ae879d9c29fb3698b24"
+ },
+ "item_start_wall": 1792861923.234763,
+ "item_wall_s": 41.705,
+ "ollama_ps_samples": [
+  [
+   1792861923.235,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861925.249,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861927.258,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861929.261,
+   [
+    "olmo2:7b",
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792861931.271,
+   [
+    "olmo2:7b",
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792861933.274,
+   [
+    "olmo2:7b",
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792861935.287,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792861937.297,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861939.301,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861941.313,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861943.321,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861945.332,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861947.338,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861949.34,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861951.345,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861953.348,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792861955.353,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861957.365,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861959.368,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861961.374,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792861963.384,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

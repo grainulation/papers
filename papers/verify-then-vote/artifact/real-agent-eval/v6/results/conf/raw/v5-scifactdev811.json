@@ -1,0 +1,1290 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev811",
+ "order": 10,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev811",
+  "order": 10,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals."
+ },
+ "item_view_sha256": "099418d58053c2237b03c4f6caca69c24ea5cb870ed5e57c1c8d04b7f35e5357",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "367df731c993ede90abe545f8acf1db72ea6a292a154a37a764e8ef7a75ef397",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853090.808579,
+      "end_wall": 1792853092.179463,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853090.808579,
+    "start_mono": 522647.510627541,
+    "end_wall": 1792853092.179463,
+    "end_mono": 522648.881506083,
+    "raw_response": "{\"query\": \"mutant mice lacking svct2 ascorbic acid levels brain adrenals\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1369195709,
+     "load_duration": 135322000,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 337072000,
+     "eval_count": 21,
+     "eval_duration": 642798250,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:44:52.178777Z"
+    },
+    "elapsed_s": 1.371,
+    "query_used": "mutant mice lacking svct2 ascorbic acid levels brain adrenals",
+    "query_source": "json",
+    "query_arrival_seq": 50
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mutant mice lacking svct2 ascorbic acid levels brain adrenals",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19799455:0",
+       "score_q": 708
+      },
+      {
+       "passage_key": "scifact:22682497:0",
+       "score_q": 704
+      },
+      {
+       "passage_key": "scifact:25969485:1",
+       "score_q": 696
+      },
+      {
+       "passage_key": "scifact:6492658:0",
+       "score_q": 696
+      },
+      {
+       "passage_key": "scifact:14663842:0",
+       "score_q": 692
+      }
+     ],
+     "retrieval_sha256": "d8a6d402d30a13c5cfcb88600b184634afd01ae52e21b80086daa8866fd9db16"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d8a6d402d30a13c5cfcb88600b184634afd01ae52e21b80086daa8866fd9db16",
+    "query_embedding_sha256": "462da3a193fb5946d252ae6c5efd4c175d2a51dbe8a910f99184333c3f070324",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19799455:0",
+      "content_sha256": "7826aca8d8d19ce13295681acd5aa52a06387651ba5cd104bdf8272201527d92",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22682497:0",
+      "content_sha256": "02621c07962f424e71fbd4fae7705b9aefa179db7f74f2a54a0183d00def9d61",
+      "chars": 1117
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:25969485:1",
+      "content_sha256": "3915e486f0d8a26557082e81dcce8cc36ab82d15dc488796c3b749b2e926d9d3",
+      "chars": 1141
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6492658:0",
+      "content_sha256": "629a8b10b36f7e1961a591145ec042db998c0ff75b3299864e68954351269be2",
+      "chars": 924
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14663842:0",
+      "content_sha256": "47e12dd806bb3ad4ecbdd9b0162002df386f060477d75685af06a74546c066f3",
+      "chars": 1017
+     }
+    ],
+    "elapsed_s": 7.8181
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nEvidence passages from your search for \"mutant mice lacking svct2 ascorbic acid levels brain adrenals\":\n<<<PASSAGES\n[P1] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nThe only proven requirement for ascorbic acid (vitamin C) is in preventing scurvy, presumably because it is a cofactor for hydroxylases required for post-translational modifications that stabilize collagen. We have created mice deficient in the mouse ortholog (solute carrier family 23 member 1 or Slc23a1) of a rat ascorbic-acid transporter, Svct2 (ref. 4). Cultured embryonic fibroblasts from homozygous Slc23a1−/− mice had less than 5% of normal ascorbic-acid uptake. Ascorbic-acid levels were undetectable or markedly reduced in the blood and tissues of Slc23a1−/− mice. Prenatal supplementation of pregnant females did not elevate blood ascorbic acid in Slc23a1−/− fetuses, suggesting Slc23a1 is important in placental ascorbic-acid transport. Slc23a1−/− mice died within a few minutes of birth with respiratory failure and intraparenchymal brain hemorrhage. Lungs showed no postnatal expansion but had normal surfactant protein B levels.\n\n[P2] Purkinje cell compartments in the reeler mutant mouse as revealed by Zebrin II and 90-acetylated glycolipid antigen expression\nThe cerebellum is organized into a series of parasagittally aligned bands that may be revealed histologically in the adult mouse by largely complementary immunostaining of Purkinje cell sets with the monoclonal antibodies Zebrin II (ZII; antigen:aldolase C) and P-path (PP; antigen:90-acetyl glycolipids). We compared the normal staining pattern using these markers and an antibody to calbindin with that found in the reeler mutants (rl/rl), in which most Purkinje cell migration is halted beneath the cerebellar white matter. The results revealed that Purkinje cells in reeler mutants, despite their ectopic location in large subcortical masses, show a clear tendency to distribute into alternating zones that either stain for Zebrin II or for P-path, with variable transition zones of mixed labeling. However, the estimated number of zones was fewer than in the normal adult cortex: roughly 7–9 zones are revealed per side in the mutant compared with 14 major divisions in wild type mice.\n\n[P3] Obesity due to melanocortin 4 receptor (MC4R) deficiency is associated with increased linear growth and final height, fasting hyperinsulinemia, and incompletely suppressed growth hormone secretion.\nFinal height (cm) was greater in MC4R-deficient men (mean ± SEM 173 ± 2.5 vs. 168 ± 2.1, P < 0.001) and women (mean 165 ± 2.1 vs. 158 ± 1.9, P < 0.001). Fasting IGF-I, IGF-II, acid-labile subunit, and IGFBP-3 concentrations were similar in the two groups. GH levels were markedly suppressed in obese controls, but pulsatile GH secretion was retained in MC4R deficiency. The mean maximal GH secretion rate per burst (P < 0.05) and mass per burst (P < 0.05) were increased in MC4R deficiency, consistent with increased pulsatile and total GH secretion. Fasting insulin levels were markedly elevated in MC4R-deficient children. CONCLUSIONS In MC4R deficiency, increased linear growth in childhood leads to increased adult final height, greater than predicted by obesity alone. GH pulsatility is maintained in MC4R deficiency, a finding consistent with animal studies, suggesting a role for MC4R in controlling hypothalamic somatostatinergic tone.\n\n[P4] A Null Mutation in Inositol Polyphosphate 4-Phosphatase Type I Causes Selective Neuronal Loss in Weeble Mutant Mice\nWeeble mutant mice have severe locomotor instability and significant neuronal loss in the cerebellum and in the hippocampal CA1 field. Genetic mapping was used to localize the mutation to the gene encoding inositol polyphosphate 4-phosphatase type I (Inpp4a), where a single nucleotide deletion results in a likely null allele. The substrates of INPP4A are intermediates in a pathway affecting intracellular Ca(2+) release but are also involved in cell cycle regulation through binding the Akt protooncogene; dysfunction in either may account for the neuronal loss of weeble mice. Although other mutations in phosphoinositide enzymes are associated with synaptic defects without neuronal loss, weeble shows that Inpp4a is critical for the survival of a subset of neurons during postnatal development in mice.\n\n[P5] IDH1 mutations alter citric acid cycle metabolism and increase dependence on oxidative mitochondrial metabolism.\nOncogenic mutations in isocitrate dehydrogenase 1 and 2 (IDH1/2) occur in several types of cancer, but the metabolic consequences of these genetic changes are not fully understood. In this study, we performed (13)C metabolic flux analysis on a panel of isogenic cell lines containing heterozygous IDH1/2 mutations. We observed that under hypoxic conditions, IDH1-mutant cells exhibited increased oxidative tricarboxylic acid metabolism along with decreased reductive glutamine metabolism, but not IDH2-mutant cells. However, selective inhibition of mutant IDH1 enzyme function could not reverse the defect in reductive carboxylation activity. Furthermore, this metabolic reprogramming increased the sensitivity of IDH1-mutant cells to hypoxia or electron transport chain inhibition in vitro. Lastly, IDH1-mutant cells also grew poorly as subcutaneous xenografts within a hypoxic in vivo microenvironment.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "31b2a63b6f4eefa552a8ec3937473ea5c20c56ce51037f4707402d55ac49d16a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853099.998199,
+      "end_wall": 1792853109.460779,
+      "error": null
+     }
+    ],
+    "arrival_seq": 50,
+    "start_wall": 1792853099.998199,
+    "start_mono": 522656.700213291,
+    "end_wall": 1792853109.460779,
+    "end_mono": 522666.162756583,
+    "raw_response": "{\"reasoning\": \"The claim is refuted because mutant mice lacking SVCT2 have markedly reduced ascorbic acid levels in both brain and adrenals, not increased levels as claimed.\", \"answer\": \"REFUTED\", \"citations\": [\"P1\", \"P2\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9459338292,
+     "load_duration": 1361937042,
+     "prompt_eval_count": 1546,
+     "prompt_eval_duration": 3814689791,
+     "eval_count": 77,
+     "eval_duration": 3278139619,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:09.458702Z"
+    },
+    "elapsed_s": 9.463,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 50,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:19799455:0",
+     "scifact:22682497:0",
+     "scifact:6492658:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 158,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 1,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "367df731c993ede90abe545f8acf1db72ea6a292a154a37a764e8ef7a75ef397",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853090.809192,
+      "end_wall": 1792853100.9622452,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853090.809192,
+    "start_mono": 522647.511240208,
+    "end_wall": 1792853100.9622452,
+    "end_mono": 522657.664254666,
+    "raw_response": "{\"query\": \"mutant mice lack svct2 brain adrenals ascorbic acid\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10151029291,
+     "load_duration": 8753641708,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 358384542,
+     "eval_count": 18,
+     "eval_duration": 557596624,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:00.961005Z"
+    },
+    "elapsed_s": 10.153,
+    "query_used": "mutant mice lack svct2 brain adrenals ascorbic acid",
+    "query_source": "json",
+    "query_arrival_seq": 54
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mutant mice lack svct2 brain adrenals ascorbic acid",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19799455:0",
+       "score_q": 16085
+      },
+      {
+       "passage_key": "scifact:19799455:1",
+       "score_q": 12573
+      },
+      {
+       "passage_key": "scifact:23868856:0",
+       "score_q": 6535
+      },
+      {
+       "passage_key": "scifact:17081238:0",
+       "score_q": 5507
+      },
+      {
+       "passage_key": "scifact:28441310:0",
+       "score_q": 5418
+      }
+     ],
+     "retrieval_sha256": "a4365746ba823db55b1f5f70693513979f6e49b36bc38ab7b87f71ee93ea89fc"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a4365746ba823db55b1f5f70693513979f6e49b36bc38ab7b87f71ee93ea89fc",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19799455:0",
+      "content_sha256": "7826aca8d8d19ce13295681acd5aa52a06387651ba5cd104bdf8272201527d92",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19799455:1",
+      "content_sha256": "08ca7c64a7bc772176914446fd4979595f80b5d428e564cebad26e1e8810386d",
+      "chars": 593
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23868856:0",
+      "content_sha256": "748e78fad51db2ff5e2de25dd343dff7baec9299f7b9a3d51317ca5017201c18",
+      "chars": 932
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:17081238:0",
+      "content_sha256": "b54f257097913e9847a9723842bf5e0bb56fd4c3f54ae6bdada03a23136ec944",
+      "chars": 893
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:28441310:0",
+      "content_sha256": "65d0f8e7d564a9b7f21da144895d9c5ba83fa4705aa9cf4e136a3f1f9bb97621",
+      "chars": 924
+     }
+    ],
+    "elapsed_s": 0.0011
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nEvidence passages from your search for \"mutant mice lack svct2 brain adrenals ascorbic acid\":\n<<<PASSAGES\n[P1] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nThe only proven requirement for ascorbic acid (vitamin C) is in preventing scurvy, presumably because it is a cofactor for hydroxylases required for post-translational modifications that stabilize collagen. We have created mice deficient in the mouse ortholog (solute carrier family 23 member 1 or Slc23a1) of a rat ascorbic-acid transporter, Svct2 (ref. 4). Cultured embryonic fibroblasts from homozygous Slc23a1−/− mice had less than 5% of normal ascorbic-acid uptake. Ascorbic-acid levels were undetectable or markedly reduced in the blood and tissues of Slc23a1−/− mice. Prenatal supplementation of pregnant females did not elevate blood ascorbic acid in Slc23a1−/− fetuses, suggesting Slc23a1 is important in placental ascorbic-acid transport. Slc23a1−/− mice died within a few minutes of birth with respiratory failure and intraparenchymal brain hemorrhage. Lungs showed no postnatal expansion but had normal surfactant protein B levels.\n\n[P2] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nBrain hemorrhage was unlikely to be simply a form of scurvy since Slc23a1−/− mice showed no hemorrhage in any other tissues and their skin had normal skin 4-hydroxyproline levels despite low ascorbic-acid content. We conclude that Slc23a1 is required for transport of ascorbic acid into many tissues and across the placenta. Deficiency of the transporter is lethal in newborn mice, thereby revealing a previously unrecognized requirement for ascorbic acid in the perinatal period.\n\n[P3] Downregulation of Superoxide Dismutase Activity and Gene Expression in Cultured Rat Brain Astrocytes after Incubation with Vitamin C\nReactive oxygen species have been linked with neuropathological changes in the central nervous system. Epidemiological studies supported the beneficial effect of supplementation of antioxidants. Superoxide dismutase (SOD) is an endogenous enzyme which can scavenge reactive oxygen species. This study investigated the effect of supplementation with ascorbic acid (vitamin C) on the changes of SOD in cultured neurological cells. Rat brain astrocytes (RBA-1 cells) were incubated with vitamin C and divided into four groups: a control group (without vitamin C) and three treatment groups with vitamin C at 40, 80, and 160 µmol/l. After short-term (2 days) and long-term (7 days) incubation, SOD activity, SOD mRNA level by Northern blotting, and SOD protein amounts by Western blotting were measured.\n\n[P4] Specific deficit of the ON response in visual transmission by targeted disruption of the mGIuR6 gene\nTaking advantage of the restricted expression of metabotropic glutamate receptor subtype 6 (mGluR6) in retinal ON bipolar cells, we generated knockout mice lacking mGluR6 expression. The homozygous mutant mice showed a loss of ON responses but unchanged OFF responses to light. The mutant mice displayed no obvious changes in retinal cell organization nor in the projection of optic fibers to the brain. Furthermore, the mGluR6-deficient mice showed visual behavioral responses to light stimulation as examined by shuttle box avoidance behavior experiments using light exposure as a conditioned stimulus. The results demonstrate that mGluR6 is essential in synaptic transmission to the ON bipolar cell and that the OFF response provides an important means for transmitting visual information.\n\n[P5] Mutation frequency and specificity with age in liver, bladder and brain of lacI transgenic mice.\nMutation frequency and specificity were determined as a function of age in nuclear DNA from liver, bladder, and brain of Big Blue lacI transgenic mice aged 1.5-25 months. Mutations accumulated with age in liver and accumulated more rapidly in bladder. In the brain a small initial increase in mutation frequency was observed in young animals; however, no further increase was observed in adult mice. To investigate the origin of mutations, the mutational spectra for each tissue and age were determined. DNA sequence analysis of mutant lacI transgenes revealed no significant changes in mutational specificity in any tissue at any age. The spectra of mutations found in aging animals were identical to those in younger animals, suggesting that they originated from a common set of DNA lesions manifested during DNA replication.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8ca5eaae212e5108b62d81dc0a247e585cc4081b09f7118bcbb672dc31d33dd5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853100.963834,
+      "end_wall": 1792853111.89185,
+      "error": null
+     }
+    ],
+    "arrival_seq": 51,
+    "start_wall": 1792853100.963834,
+    "start_mono": 522657.665844958,
+    "end_wall": 1792853111.89185,
+    "end_mono": 522668.593818166,
+    "raw_response": "{\"reasoning\": \"The passages provide evidence that mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals, supporting the claim. P2 states that Slc23a1 is required for transport of ascorbic acid into many tissues and across the placenta, indicating the importance of SVCT2 in vitamin C absorption.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10922342916,
+     "load_duration": 99278708,
+     "prompt_eval_count": 1205,
+     "prompt_eval_duration": 3763455333,
+     "eval_count": 94,
+     "eval_duration": 4671174459,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:11.887222Z"
+    },
+    "elapsed_s": 10.928,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 51,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:19799455:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 323,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "367df731c993ede90abe545f8acf1db72ea6a292a154a37a764e8ef7a75ef397",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853090.808797,
+      "end_wall": 1792853092.684048,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853090.808797,
+    "start_mono": 522647.510845916,
+    "end_wall": 1792853092.684048,
+    "end_mono": 522649.386088333,
+    "raw_response": "{\"query\": \"mutant mice SVCT2 ascorbic acid brain adrenals levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1872945708,
+     "load_duration": 79454792,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 486714500,
+     "eval_count": 19,
+     "eval_duration": 1149618165,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:44:52.682848Z"
+    },
+    "elapsed_s": 1.875,
+    "query_used": "mutant mice SVCT2 ascorbic acid brain adrenals levels",
+    "query_source": "json",
+    "query_arrival_seq": 51
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mutant mice SVCT2 ascorbic acid brain adrenals levels",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19799455:0",
+       "score_q": 17421
+      },
+      {
+       "passage_key": "scifact:19799455:1",
+       "score_q": 13772
+      },
+      {
+       "passage_key": "scifact:23868856:0",
+       "score_q": 6535
+      },
+      {
+       "passage_key": "scifact:7221410:0",
+       "score_q": 6139
+      },
+      {
+       "passage_key": "scifact:9748934:0",
+       "score_q": 5754
+      }
+     ],
+     "retrieval_sha256": "df22b4caaf08b810449fc13dd9c294ff1cbb581927d9a5c3ecc2ba6230b300ef"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "df22b4caaf08b810449fc13dd9c294ff1cbb581927d9a5c3ecc2ba6230b300ef",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19799455:0",
+      "content_sha256": "7826aca8d8d19ce13295681acd5aa52a06387651ba5cd104bdf8272201527d92",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:19799455:1",
+      "content_sha256": "08ca7c64a7bc772176914446fd4979595f80b5d428e564cebad26e1e8810386d",
+      "chars": 593
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:23868856:0",
+      "content_sha256": "748e78fad51db2ff5e2de25dd343dff7baec9299f7b9a3d51317ca5017201c18",
+      "chars": 932
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:7221410:0",
+      "content_sha256": "bd549f3b76b2cfb2e44bd504d31dc65482a87f2b2591c08ade97b849515ad176",
+      "chars": 1056
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9748934:0",
+      "content_sha256": "750256670353e82f83e98292b61d0c520e870d85ee6fd6905b271edf035dbeff",
+      "chars": 1042
+     }
+    ],
+    "elapsed_s": 0.0011
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nEvidence passages from your search for \"mutant mice SVCT2 ascorbic acid brain adrenals levels\":\n<<<PASSAGES\n[P1] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nThe only proven requirement for ascorbic acid (vitamin C) is in preventing scurvy, presumably because it is a cofactor for hydroxylases required for post-translational modifications that stabilize collagen. We have created mice deficient in the mouse ortholog (solute carrier family 23 member 1 or Slc23a1) of a rat ascorbic-acid transporter, Svct2 (ref. 4). Cultured embryonic fibroblasts from homozygous Slc23a1−/− mice had less than 5% of normal ascorbic-acid uptake. Ascorbic-acid levels were undetectable or markedly reduced in the blood and tissues of Slc23a1−/− mice. Prenatal supplementation of pregnant females did not elevate blood ascorbic acid in Slc23a1−/− fetuses, suggesting Slc23a1 is important in placental ascorbic-acid transport. Slc23a1−/− mice died within a few minutes of birth with respiratory failure and intraparenchymal brain hemorrhage. Lungs showed no postnatal expansion but had normal surfactant protein B levels.\n\n[P2] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nBrain hemorrhage was unlikely to be simply a form of scurvy since Slc23a1−/− mice showed no hemorrhage in any other tissues and their skin had normal skin 4-hydroxyproline levels despite low ascorbic-acid content. We conclude that Slc23a1 is required for transport of ascorbic acid into many tissues and across the placenta. Deficiency of the transporter is lethal in newborn mice, thereby revealing a previously unrecognized requirement for ascorbic acid in the perinatal period.\n\n[P3] Downregulation of Superoxide Dismutase Activity and Gene Expression in Cultured Rat Brain Astrocytes after Incubation with Vitamin C\nReactive oxygen species have been linked with neuropathological changes in the central nervous system. Epidemiological studies supported the beneficial effect of supplementation of antioxidants. Superoxide dismutase (SOD) is an endogenous enzyme which can scavenge reactive oxygen species. This study investigated the effect of supplementation with ascorbic acid (vitamin C) on the changes of SOD in cultured neurological cells. Rat brain astrocytes (RBA-1 cells) were incubated with vitamin C and divided into four groups: a control group (without vitamin C) and three treatment groups with vitamin C at 40, 80, and 160 µmol/l. After short-term (2 days) and long-term (7 days) incubation, SOD activity, SOD mRNA level by Northern blotting, and SOD protein amounts by Western blotting were measured.\n\n[P4] Alzheimer’s Disease Risk Gene CD33 Inhibits Microglial Uptake of Amyloid Beta\nThe transmembrane protein CD33 is a sialic acid-binding immunoglobulin-like lectin that regulates innate immunity but has no known functions in the brain. We have previously shown that the CD33 gene is a risk factor for Alzheimer's disease (AD). Here, we observed increased expression of CD33 in microglial cells in AD brain. The minor allele of the CD33 SNP rs3865444, which confers protection against AD, was associated with reductions in both CD33 expression and insoluble amyloid beta 42 (Aβ42) levels in AD brain. Furthermore, the numbers of CD33-immunoreactive microglia were positively correlated with insoluble Aβ42 levels and plaque burden in AD brain. CD33 inhibited uptake and clearance of Aβ42 in microglial cell cultures. Finally, brain levels of insoluble Aβ42 as well as amyloid plaque burden were markedly reduced in APP(Swe)/PS1(ΔE9)/CD33(-/-) mice. Therefore, CD33 inactivation mitigates Aβ pathology and CD33 inhibition could represent a novel therapy for AD.\n\n[P5] Alterations in microRNA-124 and AMPA receptors contribute to social behavioral deficits in frontotemporal dementia\nNeurodegenerative diseases, such as frontotemporal dementia (FTD), are often associated with behavioral deficits, but the underlying anatomical and molecular causes remain poorly understood. Here we show that forebrain-specific expression of FTD-associated mutant CHMP2B in mice causes several age-dependent neurodegenerative phenotypes, including social behavioral impairments. The social deficits were accompanied by a change in AMPA receptor (AMPAR) composition, leading to an imbalance between Ca(2+)-permeable and Ca(2+)-impermeable AMPARs. Expression of most AMPAR subunits was regulated by the brain-enriched microRNA miR-124, whose abundance was markedly decreased in the superficial layers of the cerebral cortex of mice expressing the mutant CHMP2B. We found similar changes in miR-124 and AMPAR levels in the frontal cortex and induced pluripotent stem cell-derived neurons from subjects with behavioral variant FTD.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "006f79ae0757287d7d3b34719c63d5890c3287a6e01d75751c029bcc024d253f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853092.685617,
+      "end_wall": 1792853112.869379,
+      "error": null
+     }
+    ],
+    "arrival_seq": 52,
+    "start_wall": 1792853092.685617,
+    "start_mono": 522649.387658916,
+    "end_wall": 1792853112.869379,
+    "end_mono": 522669.571343291,
+    "raw_response": "{\n  \"reasoning\": \"The provided evidence passages primarily discuss the role of Slc23a1 (mouse ortholog of Svct2) in vitamin C transport and its critical importance for perinatal survival, particularly noting reduced ascorbic acid levels in deficient mice without specific mention of increased levels in mutant mice lacking SVCT2 (Slc23a1). There is no direct evidence addressing mutant mice specifically lacking SVCT2 showing greatly increased ascorbic acid levels in brain and adrenal tissues as claimed. Therefore, based on the given information, there is insufficient support for the claim.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"medium\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 20175247875,
+     "load_duration": 62404583,
+     "prompt_eval_count": 1375,
+     "prompt_eval_duration": 6069009583,
+     "eval_count": 148,
+     "eval_duration": 12591331708,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:12.861867Z"
+    },
+    "elapsed_s": 20.184,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 52,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 575,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "367df731c993ede90abe545f8acf1db72ea6a292a154a37a764e8ef7a75ef397",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853090.8090189,
+      "end_wall": 1792853097.7036102,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853090.8090189,
+    "start_mono": 522647.511067375,
+    "end_wall": 1792853097.7036102,
+    "end_mono": 522654.405632375,
+    "raw_response": "{\"query\": \"mutant mice SVCT2 ascorbic acid levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6892647167,
+     "load_duration": 1469563500,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 332728291,
+     "eval_count": 18,
+     "eval_duration": 5003125043,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:44:57.70262Z"
+    },
+    "elapsed_s": 6.895,
+    "query_used": "mutant mice SVCT2 ascorbic acid levels",
+    "query_source": "json",
+    "query_arrival_seq": 52
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mutant mice SVCT2 ascorbic acid levels",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19799455:0",
+       "score_q": 740
+      },
+      {
+       "passage_key": "scifact:21878751:1",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:14934137:0",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:6492658:0",
+       "score_q": 727
+      },
+      {
+       "passage_key": "scifact:14663842:0",
+       "score_q": 725
+      }
+     ],
+     "retrieval_sha256": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38",
+    "query_embedding_sha256": "35a6f66e951d306af57aa359a4cda69d19c2cd4dc73d38afaf23200510b442e9",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19799455:0",
+      "content_sha256": "7826aca8d8d19ce13295681acd5aa52a06387651ba5cd104bdf8272201527d92",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:21878751:1",
+      "content_sha256": "34fb83b041fbb82c2112aa230765d230f769e1da582ab7e848976b128ab42d60",
+      "chars": 717
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14934137:0",
+      "content_sha256": "4685957d17353325802b7fe717e0c19e518213bef5a09cf830c2afbd7fc395a8",
+      "chars": 1014
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6492658:0",
+      "content_sha256": "629a8b10b36f7e1961a591145ec042db998c0ff75b3299864e68954351269be2",
+      "chars": 924
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14663842:0",
+      "content_sha256": "47e12dd806bb3ad4ecbdd9b0162002df386f060477d75685af06a74546c066f3",
+      "chars": 1017
+     }
+    ],
+    "elapsed_s": 2.3413
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nEvidence passages from your search for \"mutant mice SVCT2 ascorbic acid levels\":\n<<<PASSAGES\n[P1] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nThe only proven requirement for ascorbic acid (vitamin C) is in preventing scurvy, presumably because it is a cofactor for hydroxylases required for post-translational modifications that stabilize collagen. We have created mice deficient in the mouse ortholog (solute carrier family 23 member 1 or Slc23a1) of a rat ascorbic-acid transporter, Svct2 (ref. 4). Cultured embryonic fibroblasts from homozygous Slc23a1−/− mice had less than 5% of normal ascorbic-acid uptake. Ascorbic-acid levels were undetectable or markedly reduced in the blood and tissues of Slc23a1−/− mice. Prenatal supplementation of pregnant females did not elevate blood ascorbic acid in Slc23a1−/− fetuses, suggesting Slc23a1 is important in placental ascorbic-acid transport. Slc23a1−/− mice died within a few minutes of birth with respiratory failure and intraparenchymal brain hemorrhage. Lungs showed no postnatal expansion but had normal surfactant protein B levels.\n\n[P2] Mice deficient in CD4 T cells have only transiently diminished levels of IFN-gamma, yet succumb to tuberculosis.\nAt 2 wk postinfection, IFN-gamma production, assessed by RT-PCR and intracellular cytokine staining, in the mutant mice was reduced by >50% compared with that in wild-type mice. However, by 4 wk postinfection, both mutant and wild-type mice had similar levels of IFN-gamma mRNA and protein production. In CD4 T cell-deficient mice, IFN-gamma production was due to CD8 T cells. Thus, the importance of IFN-gamma production by CD4 T cells appears to be early in infection, lending support to the hypothesis that early events in M. tuberculosis infection are crucial determinants of the course of infection.\n\n[P3] Class Ia MHC-deficient BALB/c mice generate CD8+ T cell-mediated protective immunity against Listeria monocytogenes infection.\nCD8(+) T cells are required for protective immunity against intracellular pathogens such as Listeria monocytogenes. In this study, we used class Ia MHC-deficient mice, which have a severe reduction in circulating CD8(+) T cells, to determine the protective capacity of class Ib MHC-restricted T cells during L. monocytogenes infection. The K(b-/-)D(b-/-) mutation was backcrossed onto a C.B10 (BALB/c congenic at H-2 locus with C57BL/10) background, because BALB/c mice are more susceptible to Listeria infection than other commonly studied mouse strains such as C57BL/6. C.B10 K(b-/-)D(b-/-) mice immunized with a sublethal dose of L. monocytogenes were fully protected against a subsequent lethal infection. Adoptive transfer of Listeria-immune splenocyte subsets into naive K(b-/-)D(b-/-) mice indicated that CD8(+) T cells were the major component of this protective immune response.\n\n[P4] A Null Mutation in Inositol Polyphosphate 4-Phosphatase Type I Causes Selective Neuronal Loss in Weeble Mutant Mice\nWeeble mutant mice have severe locomotor instability and significant neuronal loss in the cerebellum and in the hippocampal CA1 field. Genetic mapping was used to localize the mutation to the gene encoding inositol polyphosphate 4-phosphatase type I (Inpp4a), where a single nucleotide deletion results in a likely null allele. The substrates of INPP4A are intermediates in a pathway affecting intracellular Ca(2+) release but are also involved in cell cycle regulation through binding the Akt protooncogene; dysfunction in either may account for the neuronal loss of weeble mice. Although other mutations in phosphoinositide enzymes are associated with synaptic defects without neuronal loss, weeble shows that Inpp4a is critical for the survival of a subset of neurons during postnatal development in mice.\n\n[P5] IDH1 mutations alter citric acid cycle metabolism and increase dependence on oxidative mitochondrial metabolism.\nOncogenic mutations in isocitrate dehydrogenase 1 and 2 (IDH1/2) occur in several types of cancer, but the metabolic consequences of these genetic changes are not fully understood. In this study, we performed (13)C metabolic flux analysis on a panel of isogenic cell lines containing heterozygous IDH1/2 mutations. We observed that under hypoxic conditions, IDH1-mutant cells exhibited increased oxidative tricarboxylic acid metabolism along with decreased reductive glutamine metabolism, but not IDH2-mutant cells. However, selective inhibition of mutant IDH1 enzyme function could not reverse the defect in reductive carboxylation activity. Furthermore, this metabolic reprogramming increased the sensitivity of IDH1-mutant cells to hypoxia or electron transport chain inhibition in vitro. Lastly, IDH1-mutant cells also grew poorly as subcutaneous xenografts within a hypoxic in vivo microenvironment.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fb474f2679e2cefb2877fa98588b1171c9f4d1a7ad50cda005c180e975419373",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853100.0455601,
+      "end_wall": 1792853127.5551958,
+      "error": null
+     }
+    ],
+    "arrival_seq": 53,
+    "start_wall": 1792853100.0455601,
+    "start_mono": 522656.747574416,
+    "end_wall": 1792853127.5551958,
+    "end_mono": 522684.257106625,
+    "raw_response": "{\n  \"reasoning\": \"The claim pertains to the effect of SVCT2 mutation on ascorbic acid levels in mutant mice. Passage [P4] discusses Weeble mice with a null mutation in Inositol polyphosphate 4-phosphatase type I (Inpp4a), leading to neuronal loss, which is unrelated to ascorbic acid levels. No direct evidence is found in the provided passages supporting the claim about SVCT2 mutant mice and ascorbic acid levels in brain and adrenals. However, the lack of supporting evidence does not fully refute the claim, as the specific interaction between SVCT2 mutation and ascorbic acid levels is not documented in the given\"\n\n,\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P4\"],\n  \"confidence\": \"low\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27505152958,
+     "load_duration": 13013377583,
+     "prompt_eval_count": 1708,
+     "prompt_eval_duration": 4831617126,
+     "eval_count": 190,
+     "eval_duration": 8777939214,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:27.551755Z"
+    },
+    "elapsed_s": 27.51,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 53,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:6492658:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "367df731c993ede90abe545f8acf1db72ea6a292a154a37a764e8ef7a75ef397",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792853090.808398,
+      "end_wall": 1792853099.242165,
+      "error": null
+     }
+    ],
+    "start_wall": 1792853090.808398,
+    "start_mono": 522647.510446916,
+    "end_wall": 1792853099.242165,
+    "end_mono": 522655.944181625,
+    "raw_response": "{\"query\": \"mutant mice SVCT2 ascorbic acid levels\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8431379708,
+     "load_duration": 2919155208,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 1565635833,
+     "eval_count": 17,
+     "eval_duration": 3779718418,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:44:59.241012Z"
+    },
+    "elapsed_s": 8.434,
+    "query_used": "mutant mice SVCT2 ascorbic acid levels",
+    "query_source": "json",
+    "query_arrival_seq": 53
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "mutant mice SVCT2 ascorbic acid levels",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19799455:0",
+       "score_q": 740
+      },
+      {
+       "passage_key": "scifact:21878751:1",
+       "score_q": 735
+      },
+      {
+       "passage_key": "scifact:14934137:0",
+       "score_q": 730
+      },
+      {
+       "passage_key": "scifact:6492658:0",
+       "score_q": 727
+      },
+      {
+       "passage_key": "scifact:14663842:0",
+       "score_q": 725
+      }
+     ],
+     "retrieval_sha256": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38",
+    "query_embedding_sha256": "35a6f66e951d306af57aa359a4cda69d19c2cd4dc73d38afaf23200510b442e9",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19799455:0",
+      "content_sha256": "7826aca8d8d19ce13295681acd5aa52a06387651ba5cd104bdf8272201527d92",
+      "chars": 1056
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:21878751:1",
+      "content_sha256": "34fb83b041fbb82c2112aa230765d230f769e1da582ab7e848976b128ab42d60",
+      "chars": 717
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:14934137:0",
+      "content_sha256": "4685957d17353325802b7fe717e0c19e518213bef5a09cf830c2afbd7fc395a8",
+      "chars": 1014
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6492658:0",
+      "content_sha256": "629a8b10b36f7e1961a591145ec042db998c0ff75b3299864e68954351269be2",
+      "chars": 924
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14663842:0",
+      "content_sha256": "47e12dd806bb3ad4ecbdd9b0162002df386f060477d75685af06a74546c066f3",
+      "chars": 1017
+     }
+    ],
+    "elapsed_s": 0.8351
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\n\nEvidence passages from your search for \"mutant mice SVCT2 ascorbic acid levels\":\n<<<PASSAGES\n[P1] Ascorbic-acid transporter Slc23a1 is essential for vitamin C transport into the brain and for perinatal survival\nThe only proven requirement for ascorbic acid (vitamin C) is in preventing scurvy, presumably because it is a cofactor for hydroxylases required for post-translational modifications that stabilize collagen. We have created mice deficient in the mouse ortholog (solute carrier family 23 member 1 or Slc23a1) of a rat ascorbic-acid transporter, Svct2 (ref. 4). Cultured embryonic fibroblasts from homozygous Slc23a1−/− mice had less than 5% of normal ascorbic-acid uptake. Ascorbic-acid levels were undetectable or markedly reduced in the blood and tissues of Slc23a1−/− mice. Prenatal supplementation of pregnant females did not elevate blood ascorbic acid in Slc23a1−/− fetuses, suggesting Slc23a1 is important in placental ascorbic-acid transport. Slc23a1−/− mice died within a few minutes of birth with respiratory failure and intraparenchymal brain hemorrhage. Lungs showed no postnatal expansion but had normal surfactant protein B levels.\n\n[P2] Mice deficient in CD4 T cells have only transiently diminished levels of IFN-gamma, yet succumb to tuberculosis.\nAt 2 wk postinfection, IFN-gamma production, assessed by RT-PCR and intracellular cytokine staining, in the mutant mice was reduced by >50% compared with that in wild-type mice. However, by 4 wk postinfection, both mutant and wild-type mice had similar levels of IFN-gamma mRNA and protein production. In CD4 T cell-deficient mice, IFN-gamma production was due to CD8 T cells. Thus, the importance of IFN-gamma production by CD4 T cells appears to be early in infection, lending support to the hypothesis that early events in M. tuberculosis infection are crucial determinants of the course of infection.\n\n[P3] Class Ia MHC-deficient BALB/c mice generate CD8+ T cell-mediated protective immunity against Listeria monocytogenes infection.\nCD8(+) T cells are required for protective immunity against intracellular pathogens such as Listeria monocytogenes. In this study, we used class Ia MHC-deficient mice, which have a severe reduction in circulating CD8(+) T cells, to determine the protective capacity of class Ib MHC-restricted T cells during L. monocytogenes infection. The K(b-/-)D(b-/-) mutation was backcrossed onto a C.B10 (BALB/c congenic at H-2 locus with C57BL/10) background, because BALB/c mice are more susceptible to Listeria infection than other commonly studied mouse strains such as C57BL/6. C.B10 K(b-/-)D(b-/-) mice immunized with a sublethal dose of L. monocytogenes were fully protected against a subsequent lethal infection. Adoptive transfer of Listeria-immune splenocyte subsets into naive K(b-/-)D(b-/-) mice indicated that CD8(+) T cells were the major component of this protective immune response.\n\n[P4] A Null Mutation in Inositol Polyphosphate 4-Phosphatase Type I Causes Selective Neuronal Loss in Weeble Mutant Mice\nWeeble mutant mice have severe locomotor instability and significant neuronal loss in the cerebellum and in the hippocampal CA1 field. Genetic mapping was used to localize the mutation to the gene encoding inositol polyphosphate 4-phosphatase type I (Inpp4a), where a single nucleotide deletion results in a likely null allele. The substrates of INPP4A are intermediates in a pathway affecting intracellular Ca(2+) release but are also involved in cell cycle regulation through binding the Akt protooncogene; dysfunction in either may account for the neuronal loss of weeble mice. Although other mutations in phosphoinositide enzymes are associated with synaptic defects without neuronal loss, weeble shows that Inpp4a is critical for the survival of a subset of neurons during postnatal development in mice.\n\n[P5] IDH1 mutations alter citric acid cycle metabolism and increase dependence on oxidative mitochondrial metabolism.\nOncogenic mutations in isocitrate dehydrogenase 1 and 2 (IDH1/2) occur in several types of cancer, but the metabolic consequences of these genetic changes are not fully understood. In this study, we performed (13)C metabolic flux analysis on a panel of isogenic cell lines containing heterozygous IDH1/2 mutations. We observed that under hypoxic conditions, IDH1-mutant cells exhibited increased oxidative tricarboxylic acid metabolism along with decreased reductive glutamine metabolism, but not IDH2-mutant cells. However, selective inhibition of mutant IDH1 enzyme function could not reverse the defect in reductive carboxylation activity. Furthermore, this metabolic reprogramming increased the sensitivity of IDH1-mutant cells to hypoxia or electron transport chain inhibition in vitro. Lastly, IDH1-mutant cells also grew poorly as subcutaneous xenografts within a hypoxic in vivo microenvironment.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fb474f2679e2cefb2877fa98588b1171c9f4d1a7ad50cda005c180e975419373",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792853100.0778089,
+      "end_wall": 1792853129.5680482,
+      "error": null
+     }
+    ],
+    "arrival_seq": 54,
+    "start_wall": 1792853100.0778089,
+    "start_mono": 522656.779823125,
+    "end_wall": 1792853129.5680482,
+    "end_mono": 522686.269951041,
+    "raw_response": "{\"reasoning\": \"The claim discusses mutant mice lacking SVCT2 having greatly increased ascorbic acid levels in both brain and adrenals. Passage P1 directly states that Slc23a1, which is relevant to ascorbic acid transport, is essential for ascorbic acid uptake in mice. The evidence from P1 supports the claim by indicating a critical role of Slc23a1 in maintaining ascorbic acid levels in the body, particularly in the brain and other tissues, which would suggest that its absence would lead to significantly elevated levels of ascorbic acid in those tissues. No passages explicitly refute this claim, and given the\" , \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29485789333,
+     "load_duration": 14435949125,
+     "prompt_eval_count": 1420,
+     "prompt_eval_duration": 6285674917,
+     "eval_count": 153,
+     "eval_duration": 7329896174,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T14:45:29.564666Z"
+    },
+    "elapsed_s": 29.49,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 54,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "d8a6d402d30a13c5cfcb88600b184634afd01ae52e21b80086daa8866fd9db16",
+  "nemotron-mini:4b": "a4365746ba823db55b1f5f70693513979f6e49b36bc38ab7b87f71ee93ea89fc",
+  "exaone3.5:7.8b": "df22b4caaf08b810449fc13dd9c294ff1cbb581927d9a5c3ecc2ba6230b300ef",
+  "granite3.3:2b": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38",
+  "olmo2:7b": "d3f09d10d7c6b456fee6cb96567133d9bbceaeddd9a2cdf15b4e37692c854b38"
+ },
+ "item_start_wall": 1792853090.808052,
+ "item_wall_s": 38.76,
+ "ollama_ps_samples": [
+  [
+   1792853090.808,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853092.814,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853094.823,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853096.834,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792853098.842,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853100.848,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853102.856,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853104.867,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853106.876,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853108.888,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853110.898,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853112.909,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792853114.92,
+   [
+    "granite3.3:2b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853116.925,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853118.937,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853120.948,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853122.96,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853124.965,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853126.972,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792853128.984,
+   [
+    "olmo2:7b",
+    "granite3.3:2b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

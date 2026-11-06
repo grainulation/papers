@@ -1,0 +1,1320 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain929",
+ "order": 890,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain929",
+  "order": 890,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum."
+ },
+ "item_view_sha256": "88439c96ca8afd0b769cb89b54a561a30c6dd1ea6775e333976e6aba62e686e3",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "41551b020da0d659cec353cdcc461ef0fadbe88f2bee13df0d0a7fdd0c6e98a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878589.9997718,
+      "end_wall": 1792878592.109771,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878589.9997718,
+    "start_mono": 548146.6983805,
+    "end_wall": 1792878592.109771,
+    "end_mono": 548148.808929125,
+    "raw_response": "{\"query\": \"microcytosis AND higher erythrocyte count AND resistance to severe malarial anaemia AND Plasmodium falciparum\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2107624500,
+     "load_duration": 103356417,
+     "prompt_eval_count": 193,
+     "prompt_eval_duration": 444477834,
+     "eval_count": 29,
+     "eval_duration": 1187139000,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:49:52.108701Z"
+    },
+    "elapsed_s": 2.111,
+    "query_used": "microcytosis AND higher erythrocyte count AND resistance to severe malarial anaemia AND",
+    "query_source": "json_cut12",
+    "query_arrival_seq": 4451
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "microcytosis AND higher erythrocyte count AND resistance to severe malarial anaemia AND",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18174210:2",
+       "score_q": 795
+      },
+      {
+       "passage_key": "scifact:2460304:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:18174210:1",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:2460304:1",
+       "score_q": 750
+      },
+      {
+       "passage_key": "scifact:27889071:0",
+       "score_q": 745
+      }
+     ],
+     "retrieval_sha256": "51faec6d7ca4c962bcb1da03d1dfb96f9b4e1164c43e4c66d62fda6d769a5c0b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "51faec6d7ca4c962bcb1da03d1dfb96f9b4e1164c43e4c66d62fda6d769a5c0b",
+    "query_embedding_sha256": "e0ad35b0d4b97c767d60e51a9e2cdfac111164c2716145ea27cf0fcf4711c4d0",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18174210:2",
+      "content_sha256": "d30a7360d44cf8127f4d0f1b3c06bbec0beeda8b1faf85f3de2a5649fbe10c56",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2460304:0",
+      "content_sha256": "59124911303c166b7ed84090c2aa944317c49610088631267c49a0e5893924a5",
+      "chars": 1055
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18174210:1",
+      "content_sha256": "e63abdc6234ccca419f523bc1cdcb9bac3c115c705977166c987282c7ed82f27",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2460304:1",
+      "content_sha256": "078058f621779329c9f84b85c219ea4fcb53cfe0dec5e723f5e43b2dbc061673",
+      "chars": 356
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27889071:0",
+      "content_sha256": "659e72b4148c576d270bcb9a101930eaa6bf2a5ba8d60cfd533f76252036b88c",
+      "chars": 898
+     }
+    ],
+    "elapsed_s": 4.2072
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nEvidence passages from your search for \"microcytosis AND higher erythrocyte count AND resistance to severe malarial anaemia AND\":\n<<<PASSAGES\n[P1] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe estimated that the haematological profile in children homozygous for alpha(+)-thalassaemia reduces the risk of SMA during acute malaria compared to children of normal genotype (relative risk 0.52; 95% confidence interval [CI] 0.24-1.12, p = 0.09). CONCLUSIONS The increased erythrocyte count and microcytosis in children homozygous for alpha(+)-thalassaemia may contribute substantially to their protection against SMA. A lower concentration of Hb per erythrocyte and a larger population of erythrocytes may be a biologically advantageous strategy against the significant reduction in erythrocyte count that occurs during acute infection with the malaria parasite Plasmodium falciparum. This haematological profile may reduce the risk of anaemia by other Plasmodium species, as well as other causes of anaemia. Other host polymorphisms that induce an increased erythrocyte count and microcytosis may confer a similar advantage.\n\n[P2] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nErythrocytes carrying a variant hemoglobin allele (HbS), which causes sickle cell disease and resists infection by the malaria parasite Plasmodium falciparum. The molecular basis of this resistance, which has long been recognized as multifactorial, remains incompletely understood. Here we show that the dysregulated microRNA (miRNA) composition, of either heterozygous HbAS or homozygous HbSS erythrocytes, contributes to resistance against P. falciparum. During the intraerythrocytic life cycle of P. falciparum, a subset of erythrocyte miRNAs translocate into the parasite. Two miRNAs, miR-451 and let-7i, were highly enriched in HbAS and HbSS erythrocytes, and these miRNAs, along with miR-223, negatively regulated parasite growth. Surprisingly, we found that miR-451 and let-7i integrated into essential parasite messenger RNAs and, via impaired ribosomal loading, resulted in translational inhibition.\n\n[P3] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe observed a reduction in median erythrocyte count of approximately 1.5 x 10(12)/l in all children with acute falciparum malaria relative to values in community children (p < 0.001). We developed a simple mathematical model of the linear relationship between Hb concentration and erythrocyte count. This model predicted that children homozygous for alpha(+)-thalassaemia lose less Hb than children of normal genotype for a reduction in erythrocyte count of >1.1 x 10(12)/l as a result of the reduced mean cell Hb in homozygous alpha(+)-thalassaemia. In addition, children homozygous for alpha(+)-thalassaemia require a 10% greater reduction in erythrocyte count than children of normal genotype (p = 0.02) for Hb concentration to fall to 50 g/l, the cutoff for SMA.\n\n[P4] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nHence, sickle cell erythrocytes exhibit cell-intrinsic resistance to malaria in part through an atypical miRNA activity, which may represent a unique host defense strategy against complex eukaryotic pathogens.\n\n[P5] Microcytosis, iron deficiency and thalassaemia in a multi-ethnic community: a pilot study.\nThe high prevalence of microcytosis (defined here as mean cell haemoglobin<27 pg) with no other abnormality is a principal cause of confusion in screening for haemoglobin disorders. Here we report the results of a small pilot study aiming to resolve this confusion by routinely proceeding to plasma ferritin and HPLC assay, using the original sequestrene blood sample, when microcytosis is detected. Participants comprised a random sample of 1,302 people referred for a full blood count by their General Practitioner (GP) to the laboratory of a North London district general hospital serving a multi-ethnic inner-city population. Ethnicity was established by questionnaire. In North Europeans, microcytosis was present in 3% of males (half were iron-deficient) and 11% of females (most were iron-deficient).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9517d0c485d32696909898a0b3bd211c3230a5c001fbc3cf4efb22436ef66706",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878596.31712,
+      "end_wall": 1792878615.069889,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4450,
+    "start_wall": 1792878596.31712,
+    "start_mono": 548153.017178291,
+    "end_wall": 1792878615.069889,
+    "end_mono": 548171.771992791,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that higher erythrocyte counts and microcytosis in patients with certain genetic conditions, like alpha(+)thalassaemia and sickle cell disease, confer resistance to severe malarial anaemia. This is due to the reduced Hb concentration and increased erythrocyte population, which may protect against malaria by reducing the risk of anaemia and lowering the parasite's ability to multiply.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\", \"P4\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18751624416,
+     "load_duration": 6443014750,
+     "prompt_eval_count": 1259,
+     "prompt_eval_duration": 4022673000,
+     "eval_count": 119,
+     "eval_duration": 6932130626,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:15.067663Z"
+    },
+    "elapsed_s": 18.755,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4450,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:2460304:0",
+     "scifact:18174210:1",
+     "scifact:2460304:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 408,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "41551b020da0d659cec353cdcc461ef0fadbe88f2bee13df0d0a7fdd0c6e98a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878590.000202,
+      "end_wall": 1792878591.9567292,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878590.000202,
+    "start_mono": 548146.698810333,
+    "end_wall": 1792878591.9567292,
+    "end_mono": 548148.655849416,
+    "raw_response": "{\"query\": \"microcytosis erythrocyte count malaria resistance Plasmodium falciparum\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1954115625,
+     "load_duration": 53897125,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 632469833,
+     "eval_count": 16,
+     "eval_duration": 1125150793,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:49:51.955241Z"
+    },
+    "elapsed_s": 1.957,
+    "query_used": "microcytosis erythrocyte count malaria resistance Plasmodium falciparum",
+    "query_source": "json",
+    "query_arrival_seq": 4450
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "microcytosis erythrocyte count malaria resistance Plasmodium falciparum",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:2460304:0",
+       "score_q": 793
+      },
+      {
+       "passage_key": "scifact:2460304:1",
+       "score_q": 788
+      },
+      {
+       "passage_key": "scifact:18174210:1",
+       "score_q": 772
+      },
+      {
+       "passage_key": "scifact:18174210:2",
+       "score_q": 758
+      },
+      {
+       "passage_key": "scifact:13959707:1",
+       "score_q": 753
+      }
+     ],
+     "retrieval_sha256": "fb7f7d39f91b525cf574a9bf5dd36a859d976796f9d32c529c5927bbc5c2f9a8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "fb7f7d39f91b525cf574a9bf5dd36a859d976796f9d32c529c5927bbc5c2f9a8",
+    "query_embedding_sha256": "e690ed0d976fbcc9f3dd442aa9e4ba97e586524271924a6c8143715d4e3865e4",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:2460304:0",
+      "content_sha256": "59124911303c166b7ed84090c2aa944317c49610088631267c49a0e5893924a5",
+      "chars": 1055
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2460304:1",
+      "content_sha256": "078058f621779329c9f84b85c219ea4fcb53cfe0dec5e723f5e43b2dbc061673",
+      "chars": 356
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18174210:1",
+      "content_sha256": "e63abdc6234ccca419f523bc1cdcb9bac3c115c705977166c987282c7ed82f27",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:18174210:2",
+      "content_sha256": "d30a7360d44cf8127f4d0f1b3c06bbec0beeda8b1faf85f3de2a5649fbe10c56",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13959707:1",
+      "content_sha256": "13f87c8fb298aa1b0911544e7a11470642c2f22c16e5e0057ec3d3091f8804f0",
+      "chars": 639
+     }
+    ],
+    "elapsed_s": 4.13
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nEvidence passages from your search for \"microcytosis erythrocyte count malaria resistance Plasmodium falciparum\":\n<<<PASSAGES\n[P1] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nErythrocytes carrying a variant hemoglobin allele (HbS), which causes sickle cell disease and resists infection by the malaria parasite Plasmodium falciparum. The molecular basis of this resistance, which has long been recognized as multifactorial, remains incompletely understood. Here we show that the dysregulated microRNA (miRNA) composition, of either heterozygous HbAS or homozygous HbSS erythrocytes, contributes to resistance against P. falciparum. During the intraerythrocytic life cycle of P. falciparum, a subset of erythrocyte miRNAs translocate into the parasite. Two miRNAs, miR-451 and let-7i, were highly enriched in HbAS and HbSS erythrocytes, and these miRNAs, along with miR-223, negatively regulated parasite growth. Surprisingly, we found that miR-451 and let-7i integrated into essential parasite messenger RNAs and, via impaired ribosomal loading, resulted in translational inhibition.\n\n[P2] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nHence, sickle cell erythrocytes exhibit cell-intrinsic resistance to malaria in part through an atypical miRNA activity, which may represent a unique host defense strategy against complex eukaryotic pathogens.\n\n[P3] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe observed a reduction in median erythrocyte count of approximately 1.5 x 10(12)/l in all children with acute falciparum malaria relative to values in community children (p < 0.001). We developed a simple mathematical model of the linear relationship between Hb concentration and erythrocyte count. This model predicted that children homozygous for alpha(+)-thalassaemia lose less Hb than children of normal genotype for a reduction in erythrocyte count of >1.1 x 10(12)/l as a result of the reduced mean cell Hb in homozygous alpha(+)-thalassaemia. In addition, children homozygous for alpha(+)-thalassaemia require a 10% greater reduction in erythrocyte count than children of normal genotype (p = 0.02) for Hb concentration to fall to 50 g/l, the cutoff for SMA.\n\n[P4] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe estimated that the haematological profile in children homozygous for alpha(+)-thalassaemia reduces the risk of SMA during acute malaria compared to children of normal genotype (relative risk 0.52; 95% confidence interval [CI] 0.24-1.12, p = 0.09). CONCLUSIONS The increased erythrocyte count and microcytosis in children homozygous for alpha(+)-thalassaemia may contribute substantially to their protection against SMA. A lower concentration of Hb per erythrocyte and a larger population of erythrocytes may be a biologically advantageous strategy against the significant reduction in erythrocyte count that occurs during acute infection with the malaria parasite Plasmodium falciparum. This haematological profile may reduce the risk of anaemia by other Plasmodium species, as well as other causes of anaemia. Other host polymorphisms that induce an increased erythrocyte count and microcytosis may confer a similar advantage.\n\n[P5] The Ratio of Monocytes to Lymphocytes in Peripheral Blood Correlates with Increased Susceptibility to Clinical Malaria in Kenyan Children\nThis association is evident among children with asymptomatic P. falciparum infection at the time the cell counts are measured (Hazard ratio (HR) = 2.7 (95% CI 1.42, 5.01, P = 0.002) but not in those without detectable parasitaemia (HR = 1.0 (95% CI 0.74, 1.42, P = 0.9). CONCLUSIONS We propose that the monocyte to lymphocyte ratio, which is easily derived from routine full differential blood counts, reflects an individual's capacity to mount an effective immune response to P. falciparum infection.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ed361dfb896677199a483e7d8cdc2a74d5d2da00c4f3cd5fb5ec1f33f0d6f5bd",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878596.086541,
+      "end_wall": 1792878622.7599292,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4451,
+    "start_wall": 1792878596.086541,
+    "start_mono": 548152.786557125,
+    "end_wall": 1792878622.7599292,
+    "end_mono": 548179.462383041,
+    "raw_response": "{\"reasoning\": \"While the provided evidence passages do not directly address microcytosis and erythrocyte count in relation to Plasmodium falciparum resistance, they do indicate that variations leading to increased erythrocyte count or altered erythrocyte properties (like in sickle cell trait) confer protection against severe malarial anemia. Passage P4 specifically mentions increased erythrocyte count and microcytosis in alpha(+)-thalassaemia contributing to protection against SMA, aligning closely with the claim's focus on erythrocyte count and microcytosis as protective factors against severe malaria. This\"\n, \"answer\": \"SUPPORTED\",\n\"citations\": [\"P3\", \"P4\"],\n\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26671116541,
+     "load_duration": 5220266875,
+     "prompt_eval_count": 1171,
+     "prompt_eval_duration": 6490047417,
+     "eval_count": 141,
+     "eval_duration": 13786982248,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:22.75658Z"
+    },
+    "elapsed_s": 26.676,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4451,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:18174210:1",
+     "scifact:18174210:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "41551b020da0d659cec353cdcc461ef0fadbe88f2bee13df0d0a7fdd0c6e98a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878589.999995,
+      "end_wall": 1792878595.318604,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878589.999995,
+    "start_mono": 548146.698603333,
+    "end_wall": 1792878595.318604,
+    "end_mono": 548152.018467625,
+    "raw_response": "{\"query\": \"microcytosis erythrocyte count malaria resistance\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5316557208,
+     "load_duration": 3918988541,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 686248959,
+     "eval_count": 17,
+     "eval_duration": 564595083,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:49:55.317234Z"
+    },
+    "elapsed_s": 5.32,
+    "query_used": "microcytosis erythrocyte count malaria resistance",
+    "query_source": "json",
+    "query_arrival_seq": 4453
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "microcytosis erythrocyte count malaria resistance",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18174210:2",
+       "score_q": 15809
+      },
+      {
+       "passage_key": "scifact:18174210:0",
+       "score_q": 14276
+      },
+      {
+       "passage_key": "scifact:18174210:1",
+       "score_q": 11205
+      },
+      {
+       "passage_key": "scifact:2460304:1",
+       "score_q": 9542
+      },
+      {
+       "passage_key": "scifact:2460304:0",
+       "score_q": 8591
+      }
+     ],
+     "retrieval_sha256": "a2924e812f229ed4ae4f8456df1b26a9b24c2098c52f1c2262eb3b2713e51117"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a2924e812f229ed4ae4f8456df1b26a9b24c2098c52f1c2262eb3b2713e51117",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18174210:2",
+      "content_sha256": "d30a7360d44cf8127f4d0f1b3c06bbec0beeda8b1faf85f3de2a5649fbe10c56",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18174210:0",
+      "content_sha256": "c2477cd2100c293f856d07dc9eff9e0c10aeae10185ec017cd2a231fccd4da56",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18174210:1",
+      "content_sha256": "e63abdc6234ccca419f523bc1cdcb9bac3c115c705977166c987282c7ed82f27",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2460304:1",
+      "content_sha256": "078058f621779329c9f84b85c219ea4fcb53cfe0dec5e723f5e43b2dbc061673",
+      "chars": 356
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2460304:0",
+      "content_sha256": "59124911303c166b7ed84090c2aa944317c49610088631267c49a0e5893924a5",
+      "chars": 1055
+     }
+    ],
+    "elapsed_s": 0.0037
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nEvidence passages from your search for \"microcytosis erythrocyte count malaria resistance\":\n<<<PASSAGES\n[P1] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe estimated that the haematological profile in children homozygous for alpha(+)-thalassaemia reduces the risk of SMA during acute malaria compared to children of normal genotype (relative risk 0.52; 95% confidence interval [CI] 0.24-1.12, p = 0.09). CONCLUSIONS The increased erythrocyte count and microcytosis in children homozygous for alpha(+)-thalassaemia may contribute substantially to their protection against SMA. A lower concentration of Hb per erythrocyte and a larger population of erythrocytes may be a biologically advantageous strategy against the significant reduction in erythrocyte count that occurs during acute infection with the malaria parasite Plasmodium falciparum. This haematological profile may reduce the risk of anaemia by other Plasmodium species, as well as other causes of anaemia. Other host polymorphisms that induce an increased erythrocyte count and microcytosis may confer a similar advantage.\n\n[P2] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nBACKGROUND The heritable haemoglobinopathy alpha(+)-thalassaemia is caused by the reduced synthesis of alpha-globin chains that form part of normal adult haemoglobin (Hb). Individuals homozygous for alpha(+)-thalassaemia have microcytosis and an increased erythrocyte count. Alpha(+)-thalassaemia homozygosity confers considerable protection against severe malaria, including severe malarial anaemia (SMA) (Hb concentration < 50 g/l), but does not influence parasite count. We tested the hypothesis that the erythrocyte indices associated with alpha(+)-thalassaemia homozygosity provide a haematological benefit during acute malaria. METHODS AND FINDINGS Data from children living on the north coast of Papua New Guinea who had participated in a case-control study of the protection afforded by alpha(+)-thalassaemia against severe malaria were reanalysed to assess the genotype-specific reduction in erythrocyte count and Hb levels associated with acute malarial disease.\n\n[P3] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe observed a reduction in median erythrocyte count of approximately 1.5 x 10(12)/l in all children with acute falciparum malaria relative to values in community children (p < 0.001). We developed a simple mathematical model of the linear relationship between Hb concentration and erythrocyte count. This model predicted that children homozygous for alpha(+)-thalassaemia lose less Hb than children of normal genotype for a reduction in erythrocyte count of >1.1 x 10(12)/l as a result of the reduced mean cell Hb in homozygous alpha(+)-thalassaemia. In addition, children homozygous for alpha(+)-thalassaemia require a 10% greater reduction in erythrocyte count than children of normal genotype (p = 0.02) for Hb concentration to fall to 50 g/l, the cutoff for SMA.\n\n[P4] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nHence, sickle cell erythrocytes exhibit cell-intrinsic resistance to malaria in part through an atypical miRNA activity, which may represent a unique host defense strategy against complex eukaryotic pathogens.\n\n[P5] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nErythrocytes carrying a variant hemoglobin allele (HbS), which causes sickle cell disease and resists infection by the malaria parasite Plasmodium falciparum. The molecular basis of this resistance, which has long been recognized as multifactorial, remains incompletely understood. Here we show that the dysregulated microRNA (miRNA) composition, of either heterozygous HbAS or homozygous HbSS erythrocytes, contributes to resistance against P. falciparum. During the intraerythrocytic life cycle of P. falciparum, a subset of erythrocyte miRNAs translocate into the parasite. Two miRNAs, miR-451 and let-7i, were highly enriched in HbAS and HbSS erythrocytes, and these miRNAs, along with miR-223, negatively regulated parasite growth. Surprisingly, we found that miR-451 and let-7i integrated into essential parasite messenger RNAs and, via impaired ribosomal loading, resulted in translational inhibition.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "98ee3d19d53a43cef4571a6e0cad6b92486c765b07b0e2fa1b442383de36c9b7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878595.324044,
+      "end_wall": 1792878622.7819111,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4452,
+    "start_wall": 1792878595.324044,
+    "start_mono": 548152.023911,
+    "end_wall": 1792878622.7819111,
+    "end_mono": 548179.484365875,
+    "raw_response": "{\"reasoning\": \"The passages [P1], [P2], and [P3] provide evidence that increased erythrocyte count and microcytosis in alpha(+)-thalassaemia homozygotes confer protection against severe malaria, including severe malarial anaemia caused by Plasmodium falciparum. These findings suggest that the combination of microcytosis and higher erythrocyte count may contribute to this resistance. Passage [P4] discusses a similar mechanism involving microRNAs in sickle cell erythrocytes, which also confer resistance to malaria. These findings collectively support the claim that patients with microcytosis and higher erythro\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 27456244958,
+     "load_duration": 47166042,
+     "prompt_eval_count": 1360,
+     "prompt_eval_duration": 5026473207,
+     "eval_count": 171,
+     "eval_duration": 20813466791,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:22.778658Z"
+    },
+    "elapsed_s": 27.46,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4452,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:18174210:2",
+     "scifact:18174210:0",
+     "scifact:18174210:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "41551b020da0d659cec353cdcc461ef0fadbe88f2bee13df0d0a7fdd0c6e98a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878590.000389,
+      "end_wall": 1792878592.2272341,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878590.000389,
+    "start_mono": 548146.698997291,
+    "end_wall": 1792878592.2272341,
+    "end_mono": 548148.926419125,
+    "raw_response": "{\"query\": \"microcytosis P. falciparum malaria resistance\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2224533042,
+     "load_duration": 1183058084,
+     "prompt_eval_count": 204,
+     "prompt_eval_duration": 411372875,
+     "eval_count": 19,
+     "eval_duration": 538528082,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:49:52.22582Z"
+    },
+    "elapsed_s": 2.227,
+    "query_used": "microcytosis P. falciparum malaria resistance",
+    "query_source": "json",
+    "query_arrival_seq": 4452
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "microcytosis P. falciparum malaria resistance",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:2460304:0",
+       "score_q": 767
+      },
+      {
+       "passage_key": "scifact:2460304:1",
+       "score_q": 761
+      },
+      {
+       "passage_key": "scifact:4336849:0",
+       "score_q": 749
+      },
+      {
+       "passage_key": "scifact:6503185:0",
+       "score_q": 745
+      },
+      {
+       "passage_key": "scifact:13959707:0",
+       "score_q": 744
+      }
+     ],
+     "retrieval_sha256": "34e22cd119f3e6effd334d24090fa1875c2135b37ce70babe3cce2e492c591ab"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "34e22cd119f3e6effd334d24090fa1875c2135b37ce70babe3cce2e492c591ab",
+    "query_embedding_sha256": "53c508dda4ef9c756d14a9911caae60bc0317d8b13280e212a3cba7fc98bc91c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:2460304:0",
+      "content_sha256": "59124911303c166b7ed84090c2aa944317c49610088631267c49a0e5893924a5",
+      "chars": 1055
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:2460304:1",
+      "content_sha256": "078058f621779329c9f84b85c219ea4fcb53cfe0dec5e723f5e43b2dbc061673",
+      "chars": 356
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:4336849:0",
+      "content_sha256": "121bd4453eb78bc8562dc0a6b29eb78695b85dcc929f4a32381b1891feba04df",
+      "chars": 942
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6503185:0",
+      "content_sha256": "ea3ff0b6907493ad2e733f10da1f6e1ea5de428964f90c4bc54c69d856167b77",
+      "chars": 981
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13959707:0",
+      "content_sha256": "35c97ecb5d6f4ccc29088fd400139228deb7ce0a4ac633834913072b34f3aff3",
+      "chars": 1026
+     }
+    ],
+    "elapsed_s": 4.253
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nEvidence passages from your search for \"microcytosis P. falciparum malaria resistance\":\n<<<PASSAGES\n[P1] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nErythrocytes carrying a variant hemoglobin allele (HbS), which causes sickle cell disease and resists infection by the malaria parasite Plasmodium falciparum. The molecular basis of this resistance, which has long been recognized as multifactorial, remains incompletely understood. Here we show that the dysregulated microRNA (miRNA) composition, of either heterozygous HbAS or homozygous HbSS erythrocytes, contributes to resistance against P. falciparum. During the intraerythrocytic life cycle of P. falciparum, a subset of erythrocyte miRNAs translocate into the parasite. Two miRNAs, miR-451 and let-7i, were highly enriched in HbAS and HbSS erythrocytes, and these miRNAs, along with miR-223, negatively regulated parasite growth. Surprisingly, we found that miR-451 and let-7i integrated into essential parasite messenger RNAs and, via impaired ribosomal loading, resulted in translational inhibition.\n\n[P2] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nHence, sickle cell erythrocytes exhibit cell-intrinsic resistance to malaria in part through an atypical miRNA activity, which may represent a unique host defense strategy against complex eukaryotic pathogens.\n\n[P3] Chloroquine resistance not linked to mdr-like genes in a Plasmodium falciparum cross\nCHLOROQUINE is thought to act against falciparum malaria by accumulating in the acid vesicles of the parasite and interfering with their function14. Parasites resistant to chloroquine expel the drug rapidly in an unaltered form, thereby reducing levels of accumulation in the vesicles5. The discovery that verapamil partially reverses chloroquine resistance in vitro 6 led to the proposal that efflux may involve an ATP-driven P-glycoprotein pump similar to that in mammalian multidrug-resistant (mdr) tumor cell lines. Indeed, Plasmodium falciparum contains at least two mdr-like genes7,8, one of which has been suggested to confer the chloroquine resistant (CQR) phenotype7,9,10. To determine if either of these genes is linked to chloroquine resistance, we performed a genetic cross between CQR and chloroquine-susceptible (CQS) clones of P. falciparum.\n\n[P4] Malaria biology and disease pathogenesis: insights for new treatments\nPlasmodium falciparum malaria, an infectious disease caused by a parasitic protozoan, claims the lives of nearly a million children each year in Africa alone and is a top public health concern. Evidence is accumulating that resistance to artemisinin derivatives, the frontline therapy for the asexual blood stage of the infection, is developing in southeast Asia. Renewed initiatives to eliminate malaria will benefit from an expanded repertoire of antimalarials, including new drugs that kill circulating P. falciparum gametocytes, thereby preventing transmission. Our current understanding of the biology of asexual blood-stage parasites and gametocytes and the ability to culture them in vitro lends optimism that high-throughput screenings of large chemical libraries will produce a new generation of antimalarial drugs. There is also a need for new therapies to reduce the high mortality of severe malaria.\n\n[P5] The Ratio of Monocytes to Lymphocytes in Peripheral Blood Correlates with Increased Susceptibility to Clinical Malaria in Kenyan Children\nBACKGROUND Plasmodium falciparum malaria remains a major cause of illness and death in sub-Saharan Africa. Young children bear the brunt of the disease and though older children and adults suffer relatively fewer clinical attacks, they remain susceptible to asymptomatic P. falciparum infection. A better understanding of the host factors associated with immunity to clinical malaria and the ability to sustain asymptomatic P. falciparum infection will aid the development of improved strategies for disease prevention. METHODS AND FINDINGS Here we investigate whether full differential blood counts can predict susceptibility to clinical malaria among Kenyan children sampled at five annual cross-sectional surveys. We find that the ratio of monocytes to lymphocytes, measured in peripheral blood at the time of survey, directly correlates with risk of clinical malaria during follow-up.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e1bcb5b621f8cd0352daa9ff39f92a1812314a8fd574648ff689644a7a1ae018",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878596.480036,
+      "end_wall": 1792878625.2940428,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4453,
+    "start_wall": 1792878596.480036,
+    "start_mono": 548153.180125,
+    "end_wall": 1792878625.2940428,
+    "end_mono": 548181.996581833,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests a link between microcytosis (smaller than normal red blood cells), higher erythrocyte count, and resistance to severe malarial anaemia caused by P. falciparum. However, the provided evidence passages focus more on sickle cell erythrocytes, microRNA function, chloroquine resistance, and monocyte-lymphocyte ratio concerning malaria susceptibility. None directly support the claimed relationship between microcytosis and higher erythrocyte count leading to resistance against P. falciparum infection.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P1\", \"P2\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28812473750,
+     "load_duration": 19748072458,
+     "prompt_eval_count": 1506,
+     "prompt_eval_duration": 3005886542,
+     "eval_count": 172,
+     "eval_duration": 5374096319,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:25.291389Z"
+    },
+    "elapsed_s": 28.816,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4453,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:2460304:0",
+     "scifact:2460304:1",
+     "scifact:13959707:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 518,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "41551b020da0d659cec353cdcc461ef0fadbe88f2bee13df0d0a7fdd0c6e98a8",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792878590.000556,
+      "end_wall": 1792878600.611295,
+      "error": null
+     }
+    ],
+    "start_wall": 1792878590.000556,
+    "start_mono": 548146.699164583,
+    "end_wall": 1792878600.611295,
+    "end_mono": 548157.312053083,
+    "raw_response": "{\"query\": \"microcytosis and higher erythrocyte count resistance Plasmodium falciparum severe malarial anemia\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10609987209,
+     "load_duration": 5465946292,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 953124625,
+     "eval_count": 20,
+     "eval_duration": 3749186249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:00.609896Z"
+    },
+    "elapsed_s": 10.613,
+    "query_used": "microcytosis and higher erythrocyte count resistance Plasmodium falciparum severe malarial anemia",
+    "query_source": "json",
+    "query_arrival_seq": 4454
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "microcytosis and higher erythrocyte count resistance Plasmodium falciparum severe malarial anemia",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:18174210:2",
+       "score_q": 23029
+      },
+      {
+       "passage_key": "scifact:18174210:0",
+       "score_q": 18747
+      },
+      {
+       "passage_key": "scifact:18174210:1",
+       "score_q": 16329
+      },
+      {
+       "passage_key": "scifact:2460304:0",
+       "score_q": 12992
+      },
+      {
+       "passage_key": "scifact:25938221:1",
+       "score_q": 12630
+      }
+     ],
+     "retrieval_sha256": "29a59a081ed50b1d52f00aedc067af895d0e23fb050cedf54528b3315b980571"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "29a59a081ed50b1d52f00aedc067af895d0e23fb050cedf54528b3315b980571",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:18174210:2",
+      "content_sha256": "d30a7360d44cf8127f4d0f1b3c06bbec0beeda8b1faf85f3de2a5649fbe10c56",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:18174210:0",
+      "content_sha256": "c2477cd2100c293f856d07dc9eff9e0c10aeae10185ec017cd2a231fccd4da56",
+      "chars": 1093
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18174210:1",
+      "content_sha256": "e63abdc6234ccca419f523bc1cdcb9bac3c115c705977166c987282c7ed82f27",
+      "chars": 887
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:2460304:0",
+      "content_sha256": "59124911303c166b7ed84090c2aa944317c49610088631267c49a0e5893924a5",
+      "chars": 1055
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:25938221:1",
+      "content_sha256": "fa7cf9f8f35abbd5e3014073f19f17f8268347cb28f756cd18be87ddb53bed91",
+      "chars": 616
+     }
+    ],
+    "elapsed_s": 0.0019
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anaemia when infected with Plasmodium falciparum.\n\nEvidence passages from your search for \"microcytosis and higher erythrocyte count resistance Plasmodium falciparum severe malarial anemia\":\n<<<PASSAGES\n[P1] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe estimated that the haematological profile in children homozygous for alpha(+)-thalassaemia reduces the risk of SMA during acute malaria compared to children of normal genotype (relative risk 0.52; 95% confidence interval [CI] 0.24-1.12, p = 0.09). CONCLUSIONS The increased erythrocyte count and microcytosis in children homozygous for alpha(+)-thalassaemia may contribute substantially to their protection against SMA. A lower concentration of Hb per erythrocyte and a larger population of erythrocytes may be a biologically advantageous strategy against the significant reduction in erythrocyte count that occurs during acute infection with the malaria parasite Plasmodium falciparum. This haematological profile may reduce the risk of anaemia by other Plasmodium species, as well as other causes of anaemia. Other host polymorphisms that induce an increased erythrocyte count and microcytosis may confer a similar advantage.\n\n[P2] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nBACKGROUND The heritable haemoglobinopathy alpha(+)-thalassaemia is caused by the reduced synthesis of alpha-globin chains that form part of normal adult haemoglobin (Hb). Individuals homozygous for alpha(+)-thalassaemia have microcytosis and an increased erythrocyte count. Alpha(+)-thalassaemia homozygosity confers considerable protection against severe malaria, including severe malarial anaemia (SMA) (Hb concentration < 50 g/l), but does not influence parasite count. We tested the hypothesis that the erythrocyte indices associated with alpha(+)-thalassaemia homozygosity provide a haematological benefit during acute malaria. METHODS AND FINDINGS Data from children living on the north coast of Papua New Guinea who had participated in a case-control study of the protection afforded by alpha(+)-thalassaemia against severe malaria were reanalysed to assess the genotype-specific reduction in erythrocyte count and Hb levels associated with acute malarial disease.\n\n[P3] Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia\nWe observed a reduction in median erythrocyte count of approximately 1.5 x 10(12)/l in all children with acute falciparum malaria relative to values in community children (p < 0.001). We developed a simple mathematical model of the linear relationship between Hb concentration and erythrocyte count. This model predicted that children homozygous for alpha(+)-thalassaemia lose less Hb than children of normal genotype for a reduction in erythrocyte count of >1.1 x 10(12)/l as a result of the reduced mean cell Hb in homozygous alpha(+)-thalassaemia. In addition, children homozygous for alpha(+)-thalassaemia require a 10% greater reduction in erythrocyte count than children of normal genotype (p = 0.02) for Hb concentration to fall to 50 g/l, the cutoff for SMA.\n\n[P4] Translocation of sickle cell erythrocyte microRNAs into Plasmodium falciparum inhibits parasite translation and contributes to malaria resistance.\nErythrocytes carrying a variant hemoglobin allele (HbS), which causes sickle cell disease and resists infection by the malaria parasite Plasmodium falciparum. The molecular basis of this resistance, which has long been recognized as multifactorial, remains incompletely understood. Here we show that the dysregulated microRNA (miRNA) composition, of either heterozygous HbAS or homozygous HbSS erythrocytes, contributes to resistance against P. falciparum. During the intraerythrocytic life cycle of P. falciparum, a subset of erythrocyte miRNAs translocate into the parasite. Two miRNAs, miR-451 and let-7i, were highly enriched in HbAS and HbSS erythrocytes, and these miRNAs, along with miR-223, negatively regulated parasite growth. Surprisingly, we found that miR-451 and let-7i integrated into essential parasite messenger RNAs and, via impaired ribosomal loading, resulted in translational inhibition.\n\n[P5] The spectrum of retinopathy in adults with Plasmodium falciparum malaria\nThe severity of retinal whitening correlated with admission venous plasma lactate (P=0.046), suggesting that retinal ischaemia represents systemic ischaemia. In conclusion, retinal changes related to microvascular obstruction were common in adults with severe falciparum malaria and correlated with disease severity and coma, suggesting that a compromised microcirculation has important pathophysiological significance in severe and cerebral malaria. Portable retinal photography has potential as a valuable tool to study malarial retinopathy.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a65431b7aa1df7ddd6b4b1fa136b6f619bf533c32f0a258a49eea816fa735b2c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792878600.613628,
+      "end_wall": 1792878631.592267,
+      "error": null
+     }
+    ],
+    "arrival_seq": 4454,
+    "start_wall": 1792878600.613628,
+    "start_mono": 548157.314387708,
+    "end_wall": 1792878631.592267,
+    "end_mono": 548188.294968041,
+    "raw_response": "{\"reasoning\": \"The evidence passages support the claim as they show that patients with microcytosis and higher erythrocyte count were more resistant to severe malarial anemia when infected with Plasmodium falciparum.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30975938583,
+     "load_duration": 26453518542,
+     "prompt_eval_count": 1239,
+     "prompt_eval_duration": 1914955999,
+     "eval_count": 69,
+     "eval_duration": 1424704171,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T21:50:31.588403Z"
+    },
+    "elapsed_s": 30.981,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 4454,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:18174210:2",
+     "scifact:18174210:0",
+     "scifact:18174210:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 201,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "51faec6d7ca4c962bcb1da03d1dfb96f9b4e1164c43e4c66d62fda6d769a5c0b",
+  "exaone3.5:7.8b": "fb7f7d39f91b525cf574a9bf5dd36a859d976796f9d32c529c5927bbc5c2f9a8",
+  "olmo2:7b": "a2924e812f229ed4ae4f8456df1b26a9b24c2098c52f1c2262eb3b2713e51117",
+  "granite3.3:2b": "34e22cd119f3e6effd334d24090fa1875c2135b37ce70babe3cce2e492c591ab",
+  "nemotron-mini:4b": "29a59a081ed50b1d52f00aedc067af895d0e23fb050cedf54528b3315b980571"
+ },
+ "item_start_wall": 1792878589.999375,
+ "item_wall_s": 41.597,
+ "ollama_ps_samples": [
+  [
+   1792878589.999,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792878592.01,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878594.021,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792878596.031,
+   [
+    "nemotron-mini:4b",
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878598.034,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792878600.039,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792878602.05,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878604.053,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878606.061,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878608.064,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878610.07,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878612.077,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878614.084,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792878616.091,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878618.092,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878620.103,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878622.111,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878624.115,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792878626.119,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878628.131,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792878630.133,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

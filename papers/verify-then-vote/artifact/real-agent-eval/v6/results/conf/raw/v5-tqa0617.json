@@ -1,0 +1,1318 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-tqa0617",
+ "order": 49,
+ "split": "confirmatory",
+ "answer_format": "letter",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-tqa0617",
+  "order": 49,
+  "split": "confirmatory",
+  "item_type": "multiple_choice",
+  "answer_format": "letter",
+  "answer_schema": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "You will lose money because your income will be taxed at a higher rate"
+   },
+   {
+    "letter": "B",
+    "text": "Your take-home earnings will decrease"
+   },
+   {
+    "letter": "C",
+    "text": "Your take-home earnings will increase overall"
+   },
+   {
+    "letter": "D",
+    "text": "You earn less money"
+   },
+   {
+    "letter": "E",
+    "text": "You will lose money overall"
+   }
+  ]
+ },
+ "item_view_sha256": "ce9823fc3c6faf03d36e688772fcd6d06cd54ed151fcdc3122bb594cb1d5d272",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "falcon3:3b",
+  "olmo2:7b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "5f622b0920767ea4b52af0233cc2045d18f8eba3454ab1dae3b2c51d25923844",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854244.336968,
+      "end_wall": 1792854245.573056,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854244.336968,
+    "start_mono": 523801.020702791,
+    "end_wall": 1792854245.573056,
+    "end_mono": 523802.256783666,
+    "raw_response": "{\"query\": \"income tax brackets us\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1233785583,
+     "load_duration": 156757833,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 427711292,
+     "eval_count": 11,
+     "eval_duration": 536655665,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:05.572462Z"
+    },
+    "elapsed_s": 1.236,
+    "query_used": "income tax brackets us",
+    "query_source": "json",
+    "query_arrival_seq": 245
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "income tax brackets us",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:U.S._tax_brackets:0",
+       "score_q": 16028
+      },
+      {
+       "passage_key": "fever17:Federal_income_tax_rates_of_the_United_States_by_year:0",
+       "score_q": 15279
+      },
+      {
+       "passage_key": "fever17:Tax_bracket:0",
+       "score_q": 14287
+      },
+      {
+       "passage_key": "fever17:Kansas_Senate_Bill_Substitute_HB_2117:2",
+       "score_q": 12739
+      },
+      {
+       "passage_key": "fever17:Tax_rates_in_Europe:0",
+       "score_q": 12507
+      }
+     ],
+     "retrieval_sha256": "992c99ab40ab23db939cb0d56e015da4b91a4bcf88c26c022f156f7b5abdb467"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "992c99ab40ab23db939cb0d56e015da4b91a4bcf88c26c022f156f7b5abdb467",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:U.S._tax_brackets:0",
+      "content_sha256": "6b877ffdf213d7ce92be99a4baee1d6d59927fd32bccc6c3eaa43577a1229916",
+      "chars": 124
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Federal_income_tax_rates_of_the_United_States_by_year:0",
+      "content_sha256": "9aa9686293713e69a71d60b2d83348af5fb349c9e2f10c27da9283f83758a37c",
+      "chars": 143
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Tax_bracket:0",
+      "content_sha256": "d25a7255fee228fe47c8d53cf1da2c8248c0c030bfafcf6c83a7a3c9939e10da",
+      "chars": 295
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kansas_Senate_Bill_Substitute_HB_2117:2",
+      "content_sha256": "ae63a98bd896c0919ddee0a8292040308eb5287e14c74919b46271fdee26bcdf",
+      "chars": 222
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Tax_rates_in_Europe:0",
+      "content_sha256": "d412855acf7b85aaaa830c832b16df82146f49420c384003d8375a0c997b9d88",
+      "chars": 336
+     }
+    ],
+    "elapsed_s": 0.0188
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nOptions:\nA. You will lose money because your income will be taxed at a higher rate\nB. Your take-home earnings will decrease\nC. Your take-home earnings will increase overall\nD. You earn less money\nE. You will lose money overall\n\nEvidence passages from your search for \"income tax brackets us\":\n<<<PASSAGES\n[P1] U.S. tax brackets\nFor information about U.S. Federal tax brackets , see : Income tax in the United States Tax Rate schedules\n\n[P2] Federal income tax rates of the United States by year\nThe following tables are tax rates and brackets of the United States income tax by year .\n\n[P3] Tax bracket\nTax brackets are the divisions at which tax rates change in a progressive tax system ( or an explicitly regressive tax system , although this is much rarer ) . Essentially , they are the cutoff values for taxable income -- income past a certain point will be taxed at a higher rate .\n\n[P4] Kansas Senate Bill Substitute HB 2117\nThe same bill also eliminated one of the three brackets in the state 's tax plan , as well as the entire income tax owed by hundreds of thousands of small businesses across the state .\n\n[P5] Tax rates in Europe\nThis is a list of the maximum potential tax rates around Europe for certain income brackets . It is focused on three types of taxes : corporate and individual taxes and value added taxes ( VAT ) . It is not intended to represent the true tax burden to either the corporation or the individual in the listed country .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "af9ef498734ef74d7fd915d05c2c32e50bc61eb020680f555e5fd34c277f02e9",
+    "format_sha256": "183d7b2a4b95b9b9b993e84845b52fa2a06268c8f43a3ac887f1f9dd1813c3e7",
+    "attempts": [
+     {
+      "start_wall": 1792854245.5920231,
+      "end_wall": 1792854259.662977,
+      "error": null
+     }
+    ],
+    "arrival_seq": 245,
+    "start_wall": 1792854245.5920231,
+    "start_mono": 523802.275751166,
+    "end_wall": 1792854259.662977,
+    "end_mono": 523816.346623375,
+    "raw_response": "{\"reasoning\": \"Taking into account the progressive nature of tax brackets, where higher income levels are taxed at higher rates, it's logical that if your income increases and you're bumped up a tax bracket, your take-home earnings will increase overall.\", \"answer\": \"C\", \"citations\": [\"P3\", \"P1\", \"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14069026834,
+     "load_duration": 63491042,
+     "prompt_eval_count": 628,
+     "prompt_eval_duration": 895610083,
+     "eval_count": 92,
+     "eval_duration": 12086352878,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:19.662026Z"
+    },
+    "elapsed_s": 14.071,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 245,
+   "parsed": {
+    "status": "ok",
+    "answer": "C",
+    "citations": [
+     "P3",
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Tax_bracket:0",
+     "fever17:U.S._tax_brackets:0",
+     "fever17:Federal_income_tax_rates_of_the_United_States_by_year:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 239,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "5f622b0920767ea4b52af0233cc2045d18f8eba3454ab1dae3b2c51d25923844",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854244.3369112,
+      "end_wall": 1792854247.007045,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854244.3369112,
+    "start_mono": 523801.020646708,
+    "end_wall": 1792854247.007045,
+    "end_mono": 523803.690764375,
+    "raw_response": "{\"query\": \"tax bracket increase impact on take-home pay USA\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2667151416,
+     "load_duration": 96984166,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 629581541,
+     "eval_count": 17,
+     "eval_duration": 1797918751,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:07.00584Z"
+    },
+    "elapsed_s": 2.67,
+    "query_used": "tax bracket increase impact on take-home pay USA",
+    "query_source": "json",
+    "query_arrival_seq": 246
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "tax bracket increase impact on take-home pay USA",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+       "score_q": 12523
+      },
+      {
+       "passage_key": "fever17:Steering_tax:1",
+       "score_q": 12198
+      },
+      {
+       "passage_key": "fever17:Tax_amnesty:0",
+       "score_q": 11408
+      },
+      {
+       "passage_key": "fever17:Making_Work_Pay_tax_credit:1",
+       "score_q": 11346
+      },
+      {
+       "passage_key": "fever17:List_of_countries_by_net_take-home_pay:0",
+       "score_q": 11070
+      }
+     ],
+     "retrieval_sha256": "e5f725f6e1d0c559bb27688af6a5e419f4b745ff7d52d6e2053917bc0fd07039"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e5f725f6e1d0c559bb27688af6a5e419f4b745ff7d52d6e2053917bc0fd07039",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+      "content_sha256": "e61931d9923d84abc894dcd33ff77f963da50665a349daba17f3f28568ebc9c2",
+      "chars": 1004
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Steering_tax:1",
+      "content_sha256": "274b4b9a779700b73473aa6f5e6f16c68cadb5b9a74a4eb5a306af500a0f3fc2",
+      "chars": 999
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Tax_amnesty:0",
+      "content_sha256": "80367a81223abe771965e87e37f58ca5a7de8ea49eb9784e45ccaeeaa6fd1bc7",
+      "chars": 746
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Making_Work_Pay_tax_credit:1",
+      "content_sha256": "7b2a2772f66dc5aa7bdc55b64422830e99fd35808d07fabd309f51895e1c0ed3",
+      "chars": 743
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:List_of_countries_by_net_take-home_pay:0",
+      "content_sha256": "48985485c9935e16fad89c789b59f550fe17ef5faecd79b963415e2eec05d629",
+      "chars": 512
+     }
+    ],
+    "elapsed_s": 0.0307
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nOptions:\nA. You will lose money because your income will be taxed at a higher rate\nB. Your take-home earnings will decrease\nC. Your take-home earnings will increase overall\nD. You earn less money\nE. You will lose money overall\n\nEvidence passages from your search for \"tax bracket increase impact on take-home pay USA\":\n<<<PASSAGES\n[P1] Making Work Pay tax credit\nThe Making Work Pay Tax Credit was a tax credit allowed by the Internal Revenue Service of the United States . It was authorized in the American Recovery and Reinvestment Act of 2009 . The credit was given at a rate of 6.2 percent of earned income up to a maximum of $ 400 for individuals or $ 800 for married taxpayers . Making Work Pay could be claimed by single filers making between $ 8,100 per year and $ 95,000 per year . Joint filers in the range of $ 8,100 and $ 190,000 could claim it annually . Typically employers reduced withholding to provide an increase in take-home pay without any effort required from taxpayers . If the taxpayer had multiple jobs or was self-employed , they needed to adjust withholding . However , if the worker had multiple jobs or was unemployed , they had the option to receive the credit via lump sum ( all $ 400 to $ 800 at once ) after tax day . The key thought behind the Making Work Pay tax credit was to stimulate consumer spending .\n\n[P2] Steering tax\nIt is formulated in such a way that there is an incentive to invest in a new car which is as low polluting as possible . Cars with larger pollutant emissions pay a high tax compared to less polluting cars . Electric cars are tax free . In Germany and Switzerland it is legally clarified that the tax revenues should be used to promulgate , or `` steer '' , the targeted behaviour change . The increase of earnings may be as long secondary aim as the rule has an objective earning relevance . This means that the tax may be as long be valid as a tax earning can be expected to take place and therefore the steering effect is justified . If the aim of steering the payer 's behaviour is successful , this means that the aim to increase tax revenues will be unsuccessful . The yield of tax revenue is reduced if the tax payers behave in the targeted way . For example , the consumption of cigarettes was quickly significantly reduced in Germany in 2004 by the increase of the tobacco tax .\n\n[P3] Tax amnesty\nTax amnesty is a limited-time opportunity for a specified group of taxpayers to pay a defined amount , in exchange for forgiveness of a tax liability ( including interest and penalties ) relating to a previous tax period or periods and without fear of criminal prosecution . It typically expires when some authority begins a tax investigation of the past-due tax . In some cases , legislation extending amnesty also imposes harsher penalties on those who are eligible for amnesty but do not take it . Tax amnesty is one of voluntary compliance strategies to increase tax base and tax revenue . Tax amnesty is different from other voluntary compliance strategies in part where tax amnesty usually waives the taxpayers ' tax liability .\n\n[P4] Making Work Pay tax credit\nIn fact , the credit was the key policy in President Barack Obama 's stimulus package in 2009 . Because Making Work Pay contributed to higher take home pay by reducing withholding , it was assumed that the recipients would spend the majority , if not all , of the credit . A group of economists have pointed to the positive impacts that the credit could have on the economy . They wish to have Making Work Pay extended , because consumer spending is such a huge part of the economy . The credit expired at the end of Tax Year 2010 ; it was only in effect for tax years 2009 and 2010 . The Democratic bill to extend the credit was defeated by the newly elected Republican controlled House of Representatives in 2010 .\n\n[P5] List of countries by net take-home pay\nThis is a list of countries by net take-home pay as published by the OECD . It is calculated from the annual national accounts . While GDP per capita is often used to measure how developed a country is , it includes components that do not contribute to a citizen 's standard of living . GDP per capita may increase while real incomes for the majority decline . However , measuring only net household income gives a more accurate picture of a country 's standard of living .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "02e2e96359b5fbee1e74bb94bd2cf1dc533d2a632a6e3fdc3b9664a47fe6e39b",
+    "format_sha256": "183d7b2a4b95b9b9b993e84845b52fa2a06268c8f43a3ac887f1f9dd1813c3e7",
+    "attempts": [
+     {
+      "start_wall": 1792854247.0382001,
+      "end_wall": 1792854270.190423,
+      "error": null
+     }
+    ],
+    "arrival_seq": 246,
+    "start_wall": 1792854247.0382001,
+    "start_mono": 523803.721920416,
+    "end_wall": 1792854270.190423,
+    "end_mono": 523826.874008833,
+    "raw_response": "{\"reasoning\": \"When your income increases and pushes you into a higher tax bracket in the U.S., only the portion of your income that falls within the new bracket is taxed at the higher rate. This means that while overall taxes might increase, the proportional increase in taxes on the additional earnings might not fully negate the increase in earnings, potentially leading to higher take-home pay depending on the specifics of the tax system and other deductions. However, among the given options, the closest accurate reflection based on typical scenarios is that you might lose a portion of the additional income\" , \"answer\": \"A\", \"citations\": [\"P4\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23147382833,
+     "load_duration": 48141875,
+     "prompt_eval_count": 1262,
+     "prompt_eval_duration": 5601219457,
+     "eval_count": 142,
+     "eval_duration": 16267038996,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:30.186786Z"
+    },
+    "elapsed_s": 23.152,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 246,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Making_Work_Pay_tax_credit:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "5f622b0920767ea4b52af0233cc2045d18f8eba3454ab1dae3b2c51d25923844",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854244.337049,
+      "end_wall": 1792854253.148488,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854244.337049,
+    "start_mono": 523801.020784125,
+    "end_wall": 1792854253.148488,
+    "end_mono": 523809.832172125,
+    "raw_response": "{\"query\": \"income tax bracket increase take-home pay\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8808787250,
+     "load_duration": 4442661041,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 1530377417,
+     "eval_count": 13,
+     "eval_duration": 2701926249,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:13.14748Z"
+    },
+    "elapsed_s": 8.811,
+    "query_used": "income tax bracket increase take-home pay",
+    "query_source": "json",
+    "query_arrival_seq": 248
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "income tax bracket increase take-home pay",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Income_tax_in_the_United_States:0",
+       "score_q": 15013
+      },
+      {
+       "passage_key": "fever17:Capital_gains_tax_in_the_United_States:0",
+       "score_q": 14694
+      },
+      {
+       "passage_key": "fever17:Tax_bracket:0",
+       "score_q": 14422
+      },
+      {
+       "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+       "score_q": 14381
+      },
+      {
+       "passage_key": "fever17:Progressivity_in_United_States_income_tax:0",
+       "score_q": 13839
+      }
+     ],
+     "retrieval_sha256": "37f2aa11a52f0b2081958de4219a2135b750f3afb4758209eb2d05fac639bc0b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "37f2aa11a52f0b2081958de4219a2135b750f3afb4758209eb2d05fac639bc0b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Income_tax_in_the_United_States:0",
+      "content_sha256": "4d73a7a61a6acbbdd2c95031dfb77594de8c4f4403d55b1d90d7a6955a12a10b",
+      "chars": 1001
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Capital_gains_tax_in_the_United_States:0",
+      "content_sha256": "376e05d870c9e5cde1f6c2c95909627a6fd7096271abc23dd89b84741194075e",
+      "chars": 545
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Tax_bracket:0",
+      "content_sha256": "d25a7255fee228fe47c8d53cf1da2c8248c0c030bfafcf6c83a7a3c9939e10da",
+      "chars": 295
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+      "content_sha256": "e61931d9923d84abc894dcd33ff77f963da50665a349daba17f3f28568ebc9c2",
+      "chars": 1004
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Progressivity_in_United_States_income_tax:0",
+      "content_sha256": "390f16759c1a3186ff303d62c744d734b06031e7579198561e3966348cceabb8",
+      "chars": 1027
+     }
+    ],
+    "elapsed_s": 0.0222
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nOptions:\nA. You will lose money because your income will be taxed at a higher rate\nB. Your take-home earnings will decrease\nC. Your take-home earnings will increase overall\nD. You earn less money\nE. You will lose money overall\n\nEvidence passages from your search for \"income tax bracket increase take-home pay\":\n<<<PASSAGES\n[P1] Income tax in the United States\nIn the United States , a tax is imposed on income by the federal government , most state governments , and many local governments . The income tax is determined by applying a tax rate , which may increase as income increases , to taxable income as defined . Individuals and corporations are directly taxable , and estates and trusts may be taxable on undistributed income . In the United States , the term ` payroll tax ' usually refers to ` FICA taxes ' that pay into Social Security and Medicare , while ` income tax ' refers to taxes that pay into state and federal general funds . Partnerships are not taxed , but their partners are taxed on their shares of partnership income . Residents and citizens are taxed on worldwide income , while nonresidents are taxed only on income within the jurisdiction . Several types of credits reduce tax , and some types of credits may exceed tax before credits . An alternative tax applies at the federal and some state levels .\n\n[P2] Capital gains tax in the United States\nIn the United States of America , individuals and corporations pay U.S. federal income tax on the net total of all their capital gains . The tax rate depends on both the investor 's tax bracket and the amount of time the investment was held . Short-term capital gains are taxed at the investor 's ordinary income tax rate and are defined as investments held for a year or less before being sold . Long-term capital gains , on dispositions of assets held for more than one year , are taxed at a lower rate .\n\n[P3] Tax bracket\nTax brackets are the divisions at which tax rates change in a progressive tax system ( or an explicitly regressive tax system , although this is much rarer ) . Essentially , they are the cutoff values for taxable income -- income past a certain point will be taxed at a higher rate .\n\n[P4] Making Work Pay tax credit\nThe Making Work Pay Tax Credit was a tax credit allowed by the Internal Revenue Service of the United States . It was authorized in the American Recovery and Reinvestment Act of 2009 . The credit was given at a rate of 6.2 percent of earned income up to a maximum of $ 400 for individuals or $ 800 for married taxpayers . Making Work Pay could be claimed by single filers making between $ 8,100 per year and $ 95,000 per year . Joint filers in the range of $ 8,100 and $ 190,000 could claim it annually . Typically employers reduced withholding to provide an increase in take-home pay without any effort required from taxpayers . If the taxpayer had multiple jobs or was self-employed , they needed to adjust withholding . However , if the worker had multiple jobs or was unemployed , they had the option to receive the credit via lump sum ( all $ 400 to $ 800 at once ) after tax day . The key thought behind the Making Work Pay tax credit was to stimulate consumer spending .\n\n[P5] Progressivity in United States income tax\nIn general , the United States federal income tax is progressive , as rates of tax generally increase as taxable income increases , at least with respect to individuals that earn wage income . As a group , the lowest earning workers , especially those with dependents , pay no income taxes and may actually receive a small subsidy from the federal government ( from child credits and the Earned Income Tax Credit ) . `` Progressivity '' as it pertains to tax is usually defined as meaning that the higher a person 's level of income , the higher a tax rate that person pays . In the mid-twentieth century , marginal tax rates ( the rate applied to the last bit of income ) in the United States and United Kingdom exceeded 90 % . As recently as the late 1970s , the top marginal tax rate in the U.S. was 70 % . In the words of Piketty and Saez , '' ... the progressivity of the U.S. federal tax system at the top of the income distribution has declined dramatically since the 1960s '' .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b2e2ec2767e78c9a6d206ad735f296dafe1f424b1081af8b1de9599ba3de5efc",
+    "format_sha256": "183d7b2a4b95b9b9b993e84845b52fa2a06268c8f43a3ac887f1f9dd1813c3e7",
+    "attempts": [
+     {
+      "start_wall": 1792854253.171058,
+      "end_wall": 1792854270.866751,
+      "error": null
+     }
+    ],
+    "arrival_seq": 247,
+    "start_wall": 1792854253.171058,
+    "start_mono": 523809.854743125,
+    "end_wall": 1792854270.866751,
+    "end_mono": 523827.550333666,
+    "raw_response": "{\"reasoning\": \"Income tax brackets in the U.S. are progressive, meaning that as your income increases, the amount of money you pay in taxes increases, but the rate at which those taxes are applied to the additional income remains the same or may decrease. This structure ensures that higher-income earners pay a higher percentage of their income in taxes compared to lower-income earners. The Making Work Pay tax credit was designed to provide a direct increase in take-home pay for individuals earning wages, specifically designed to stimulate consumer spending. Evidence passage P5 confirms the progressive nature\", \"answer\": \"B\", \"citations\": [\"P5\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17691980125,
+     "load_duration": 51835209,
+     "prompt_eval_count": 1135,
+     "prompt_eval_duration": 4487717666,
+     "eval_count": 134,
+     "eval_duration": 11918185994,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:30.864365Z"
+    },
+    "elapsed_s": 17.696,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 247,
+   "parsed": {
+    "status": "ok",
+    "answer": "B",
+    "citations": [
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Progressivity_in_United_States_income_tax:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "5f622b0920767ea4b52af0233cc2045d18f8eba3454ab1dae3b2c51d25923844",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854244.336823,
+      "end_wall": 1792854247.5950122,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854244.336823,
+    "start_mono": 523801.0205585,
+    "end_wall": 1792854247.5950122,
+    "end_mono": 523804.27872725,
+    "raw_response": "{\"query\": \"US income tax bracket increase effect on take-home pay\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3255416084,
+     "load_duration": 994307375,
+     "prompt_eval_count": 187,
+     "prompt_eval_duration": 425098750,
+     "eval_count": 17,
+     "eval_duration": 1748963210,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:07.59401Z"
+    },
+    "elapsed_s": 3.258,
+    "query_used": "US income tax bracket increase effect on take-home pay",
+    "query_source": "json",
+    "query_arrival_seq": 247
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "US income tax bracket increase effect on take-home pay",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Income_tax_in_the_United_States:0",
+       "score_q": 15013
+      },
+      {
+       "passage_key": "fever17:Capital_gains_tax_in_the_United_States:0",
+       "score_q": 14694
+      },
+      {
+       "passage_key": "fever17:Regressive_tax:0",
+       "score_q": 14624
+      },
+      {
+       "passage_key": "fever17:Tax_bracket:0",
+       "score_q": 14422
+      },
+      {
+       "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+       "score_q": 14381
+      }
+     ],
+     "retrieval_sha256": "00b7cc8c962982bb10057cee3e14541dad27a5596e977295f24eb609cefa5edb"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "00b7cc8c962982bb10057cee3e14541dad27a5596e977295f24eb609cefa5edb",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Income_tax_in_the_United_States:0",
+      "content_sha256": "4d73a7a61a6acbbdd2c95031dfb77594de8c4f4403d55b1d90d7a6955a12a10b",
+      "chars": 1001
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Capital_gains_tax_in_the_United_States:0",
+      "content_sha256": "376e05d870c9e5cde1f6c2c95909627a6fd7096271abc23dd89b84741194075e",
+      "chars": 545
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Regressive_tax:0",
+      "content_sha256": "ddceb764d4a8728359b04ff2e96f0512da6015da2164bd9ad0e90e9d3213fb2d",
+      "chars": 976
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Tax_bracket:0",
+      "content_sha256": "d25a7255fee228fe47c8d53cf1da2c8248c0c030bfafcf6c83a7a3c9939e10da",
+      "chars": 295
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Making_Work_Pay_tax_credit:0",
+      "content_sha256": "e61931d9923d84abc894dcd33ff77f963da50665a349daba17f3f28568ebc9c2",
+      "chars": 1004
+     }
+    ],
+    "elapsed_s": 0.0221
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nOptions:\nA. You will lose money because your income will be taxed at a higher rate\nB. Your take-home earnings will decrease\nC. Your take-home earnings will increase overall\nD. You earn less money\nE. You will lose money overall\n\nEvidence passages from your search for \"US income tax bracket increase effect on take-home pay\":\n<<<PASSAGES\n[P1] Income tax in the United States\nIn the United States , a tax is imposed on income by the federal government , most state governments , and many local governments . The income tax is determined by applying a tax rate , which may increase as income increases , to taxable income as defined . Individuals and corporations are directly taxable , and estates and trusts may be taxable on undistributed income . In the United States , the term ` payroll tax ' usually refers to ` FICA taxes ' that pay into Social Security and Medicare , while ` income tax ' refers to taxes that pay into state and federal general funds . Partnerships are not taxed , but their partners are taxed on their shares of partnership income . Residents and citizens are taxed on worldwide income , while nonresidents are taxed only on income within the jurisdiction . Several types of credits reduce tax , and some types of credits may exceed tax before credits . An alternative tax applies at the federal and some state levels .\n\n[P2] Capital gains tax in the United States\nIn the United States of America , individuals and corporations pay U.S. federal income tax on the net total of all their capital gains . The tax rate depends on both the investor 's tax bracket and the amount of time the investment was held . Short-term capital gains are taxed at the investor 's ordinary income tax rate and are defined as investments held for a year or less before being sold . Long-term capital gains , on dispositions of assets held for more than one year , are taxed at a lower rate .\n\n[P3] Regressive tax\nA regressive tax is a tax imposed in such a manner that the tax rate decreases as the amount subject to taxation increases . `` Regressive '' describes a distribution effect on income or expenditure , referring to the way the rate progresses from high to low , so that the average tax rate exceeds the marginal tax rate . In terms of individual income and wealth , a regressive tax imposes a greater burden ( relative to resources ) on the poor than on the rich : there is an inverse relationship between the tax rate and the taxpayer 's ability to pay , as measured by assets , consumption , or income . These taxes tend to reduce the tax burden of the people with a higher ability to pay , as they shift the relative burden increasingly to those with a lower ability to pay . The regressivity of a particular tax can also factor the propensity of the taxpayers to engage in the taxed activity relative to their resources ( the demographics of the tax base ) .\n\n[P4] Tax bracket\nTax brackets are the divisions at which tax rates change in a progressive tax system ( or an explicitly regressive tax system , although this is much rarer ) . Essentially , they are the cutoff values for taxable income -- income past a certain point will be taxed at a higher rate .\n\n[P5] Making Work Pay tax credit\nThe Making Work Pay Tax Credit was a tax credit allowed by the Internal Revenue Service of the United States . It was authorized in the American Recovery and Reinvestment Act of 2009 . The credit was given at a rate of 6.2 percent of earned income up to a maximum of $ 400 for individuals or $ 800 for married taxpayers . Making Work Pay could be claimed by single filers making between $ 8,100 per year and $ 95,000 per year . Joint filers in the range of $ 8,100 and $ 190,000 could claim it annually . Typically employers reduced withholding to provide an increase in take-home pay without any effort required from taxpayers . If the taxpayer had multiple jobs or was self-employed , they needed to adjust withholding . However , if the worker had multiple jobs or was unemployed , they had the option to receive the credit via lump sum ( all $ 400 to $ 800 at once ) after tax day . The key thought behind the Making Work Pay tax credit was to stimulate consumer spending .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ef4f54966f762cf40ff6b11ca4386af2fb7fa9308bad39d8b023c3e30a0f729a",
+    "format_sha256": "183d7b2a4b95b9b9b993e84845b52fa2a06268c8f43a3ac887f1f9dd1813c3e7",
+    "attempts": [
+     {
+      "start_wall": 1792854247.617491,
+      "end_wall": 1792854272.662773,
+      "error": null
+     }
+    ],
+    "arrival_seq": 248,
+    "start_wall": 1792854247.617491,
+    "start_mono": 523804.301207333,
+    "end_wall": 1792854272.662773,
+    "end_mono": 523829.346345,
+    "raw_response": "{\n  \"reasoning\": \"The U.S. tax system is progressive, meaning higher income tax brackets have higher tax rates. When a person's income is increased and they are bumped up a tax bracket, their take-home earnings will decrease because a larger portion of their income is taxed at a higher rate. This aligns with the concept of a regressive tax in terms of the tax burden shifting towards those with lower ability to pay. The passage [P4] explicitly explains tax brackets as divisions where tax rates change, indicating that higher income sections fall under higher tax rates.\",\n  \"answer\": \"E\",\n  \"citations\": [\"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25041888750,
+     "load_duration": 16672473292,
+     "prompt_eval_count": 1279,
+     "prompt_eval_duration": 2538393084,
+     "eval_count": 152,
+     "eval_duration": 5182181751,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:32.660338Z"
+    },
+    "elapsed_s": 25.045,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 248,
+   "parsed": {
+    "status": "ok",
+    "answer": "E",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Tax_bracket:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 555,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that answers this question.\nGive only the key search words; do not name a website, database or source to search.\n\nQuestion: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "5f622b0920767ea4b52af0233cc2045d18f8eba3454ab1dae3b2c51d25923844",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854244.336735,
+      "end_wall": 1792854263.116108,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854244.336735,
+    "start_mono": 523801.020470416,
+    "end_wall": 1792854263.116108,
+    "end_mono": 523819.799734541,
+    "raw_response": "{\"query\": \"income increase tax bracket U.S.\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18776224916,
+     "load_duration": 17172798708,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 414414959,
+     "eval_count": 14,
+     "eval_duration": 898394334,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:23.114905Z"
+    },
+    "elapsed_s": 18.779,
+    "query_used": "income increase tax bracket U.S.",
+    "query_source": "json",
+    "query_arrival_seq": 249
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "income increase tax bracket U.S.",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Tax_bracket:0",
+       "score_q": 14422
+      },
+      {
+       "passage_key": "fever17:Oregon_Ballot_Measure_30_-LRB-2004-RRB-:1",
+       "score_q": 13509
+      },
+      {
+       "passage_key": "fever17:War_Revenue_Act_of_1917:0",
+       "score_q": 13219
+      },
+      {
+       "passage_key": "fever17:Tax_buoyancy:0",
+       "score_q": 13156
+      },
+      {
+       "passage_key": "fever17:Income_tax:0",
+       "score_q": 12365
+      }
+     ],
+     "retrieval_sha256": "a13c6f89a9967327902fa066acd9dd923d1274349447d97f5befd71d82c4e3ea"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a13c6f89a9967327902fa066acd9dd923d1274349447d97f5befd71d82c4e3ea",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Tax_bracket:0",
+      "content_sha256": "d25a7255fee228fe47c8d53cf1da2c8248c0c030bfafcf6c83a7a3c9939e10da",
+      "chars": 295
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Oregon_Ballot_Measure_30_-LRB-2004-RRB-:1",
+      "content_sha256": "1a78b698af91de42b3e0d1c101c2c180d91166d2eee904f8bf9add45a7a7dab8",
+      "chars": 769
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:War_Revenue_Act_of_1917:0",
+      "content_sha256": "8628ef95a5e45c417b548c455f0a74334af732142586e845e0c46cbc7c11f2d4",
+      "chars": 378
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Tax_buoyancy:0",
+      "content_sha256": "b696d314733c7fa999409b496ed567ba378cdbb1460fe4487e7ee7b9fb582489",
+      "chars": 520
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Income_tax:0",
+      "content_sha256": "bec0ce9b71788aafa8ed943e851c2981fd1d089f6dcff37dfd8effeb69247dcf",
+      "chars": 921
+     }
+    ],
+    "elapsed_s": 0.0158
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Question: In the U.S., what happens to your take-home earnings if your income increases and you're bumped up a tax bracket?\n\nOptions:\nA. You will lose money because your income will be taxed at a higher rate\nB. Your take-home earnings will decrease\nC. Your take-home earnings will increase overall\nD. You earn less money\nE. You will lose money overall\n\nEvidence passages from your search for \"income increase tax bracket U.S.\":\n<<<PASSAGES\n[P1] Tax bracket\nTax brackets are the divisions at which tax rates change in a progressive tax system ( or an explicitly regressive tax system , although this is much rarer ) . Essentially , they are the cutoff values for taxable income -- income past a certain point will be taxed at a higher rate .\n\n[P2] Oregon Ballot Measure 30 (2004)\nThe main tax increase was a tax surcharge , in which taxpayers would be charged an additional percentage of their income tax liability , based on their tax bracket . However , anti-tax activists , collaborating with the state Republican and Libertarian parties , collected enough signatures to require a referendum to approve the law . Especially surprising to some observers was the margin by which the measure was defeated in Multnomah County . Measure 28 had passed in that county , but Measure 30 was defeated there with 58 percent voting no . Some claimed that this was because county voters had passed their own temporary income tax in the wake of Measure 28 's defeat and were not interested in bailing out the rest of the state .\n\n[P3] War Revenue Act of 1917\nThe United States War Revenue Act of 1917 greatly increased federal income tax rates while simultaneously lowering exemptions . The 2 % bracket had previously applied to income below $ 20,000 . That amount was lowered to $ 2,000 . The top bracket ( on income above $ 2 million ) was raised from 15 % to 67 % . The act was applicable to incomes for 1917 .\n\n[P4] Tax buoyancy\nTax buoyancy is an indicator to measure efficiency and responsiveness of revenue mobilization in response to growth in the Gross domestic product or National income . A tax is said to be buoyant if the tax revenues increase more than proportionately in response to a rise in national income or output . A tax is buoyant when revenues increase by more than 1 ( say ) per cent for a 1 per cent ( say ) increase in GDP . Usually , tax elasticity is considered a better indicator to measure tax responsiveness .\n\n[P5] Income tax\nAn income tax is a tax imposed on individuals or entities ( taxpayers ) that varies with the income or profits ( taxable income ) of the taxpayer . Details vary widely by jurisdiction . Many jurisdictions refer to income tax on business entities as companies tax or corporate tax . Partnerships generally are not taxed ; rather , the partners are taxed on their share of partnership items . Tax may be imposed by both a country and subdivisions . Most jurisdictions exempt locally organized charitable organizations from tax . Income tax generally is computed as the product of a tax rate times taxable income . The tax rate may increase as taxable income increases ( referred to as graduated or progressive rates ) . Taxation rates may vary by type or characteristics of the taxpayer . Capital gains may be taxed at different rates than other income . Credits of various sorts may be allowed that reduce tax .\nPASSAGES>>>\n\nInstructions:\n- Choose the single best option. \"answer\" is the letter of that option.\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7a0a058eb6e27e10607a297d7b09b06aa0a24c55fe97c49f63db5de117cc60aa",
+    "format_sha256": "183d7b2a4b95b9b9b993e84845b52fa2a06268c8f43a3ac887f1f9dd1813c3e7",
+    "attempts": [
+     {
+      "start_wall": 1792854263.13228,
+      "end_wall": 1792854278.8717198,
+      "error": null
+     }
+    ],
+    "arrival_seq": 249,
+    "start_wall": 1792854263.13228,
+    "start_mono": 523819.815907166,
+    "end_wall": 1792854278.8717198,
+    "end_mono": 523835.555256458,
+    "raw_response": "{\n  \"reasoning\": \"According to P1, tax brackets are the divisions at which tax rates change in a progressive tax system. If income increases and you are bumped up a tax bracket, your income will be taxed at a higher rate, which means you will lose money. Therefore, answer A is correct.\",\n  \"answer\": \"A\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15735257209,
+     "load_duration": 10569111584,
+     "prompt_eval_count": 953,
+     "prompt_eval_duration": 1447176833,
+     "eval_count": 93,
+     "eval_duration": 1942383082,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:04:38.868504Z"
+    },
+    "elapsed_s": 15.739,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 249,
+   "parsed": {
+    "status": "ok",
+    "answer": "A",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Tax_bracket:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 268,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "992c99ab40ab23db939cb0d56e015da4b91a4bcf88c26c022f156f7b5abdb467",
+  "exaone3.5:7.8b": "e5f725f6e1d0c559bb27688af6a5e419f4b745ff7d52d6e2053917bc0fd07039",
+  "olmo2:7b": "37f2aa11a52f0b2081958de4219a2135b750f3afb4758209eb2d05fac639bc0b",
+  "granite3.3:2b": "00b7cc8c962982bb10057cee3e14541dad27a5596e977295f24eb609cefa5edb",
+  "nemotron-mini:4b": "a13c6f89a9967327902fa066acd9dd923d1274349447d97f5befd71d82c4e3ea"
+ },
+ "item_start_wall": 1792854244.3365529,
+ "item_wall_s": 34.535,
+ "ollama_ps_samples": [
+  [
+   1792854244.337,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854246.341,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854248.342,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854250.346,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854252.353,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854254.365,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854256.369,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854258.372,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854260.377,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854262.381,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792854264.387,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854266.396,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854268.405,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854270.406,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854272.408,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854274.416,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854276.428,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854278.43,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

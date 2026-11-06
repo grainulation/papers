@@ -1,0 +1,1266 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain9",
+ "order": 72,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain9",
+  "order": 72,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "32% of liver transplantation programs required patients to discontinue methadone treatment in 2001."
+ },
+ "item_view_sha256": "a47f6bbb641596bd6b3cd0c7dbea13fe2a42c140c66e1a0de877ae7d4da53504",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "falcon3:3b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "86e3f683479c061df23d2fce17c9c4c6d94029ef45765fbdbc0e696112838880",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854904.9958558,
+      "end_wall": 1792854906.630452,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854904.9958558,
+    "start_mono": 524461.707381583,
+    "end_wall": 1792854906.630452,
+    "end_mono": 524463.341974875,
+    "raw_response": "{\"query\": \"32% liver transplantation programs required patients to discontinue methadone 2001\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1633146833,
+     "load_duration": 103203750,
+     "prompt_eval_count": 186,
+     "prompt_eval_duration": 352128417,
+     "eval_count": 23,
+     "eval_duration": 908973333,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:06.629797Z"
+    },
+    "elapsed_s": 1.635,
+    "query_used": "32% liver transplantation programs required patients to discontinue methadone 2001",
+    "query_source": "json",
+    "query_arrival_seq": 360
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "32% liver transplantation programs required patients to discontinue methadone 2001",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:44265107:1",
+       "score_q": 814
+      },
+      {
+       "passage_key": "scifact:44265107:2",
+       "score_q": 807
+      },
+      {
+       "passage_key": "scifact:44265107:0",
+       "score_q": 750
+      },
+      {
+       "passage_key": "scifact:24700152:0",
+       "score_q": 659
+      },
+      {
+       "passage_key": "scifact:21700295:0",
+       "score_q": 636
+      }
+     ],
+     "retrieval_sha256": "d93b1a44293512f150bf147aa10ed222b0b3522cde91f1701c836038a03035d2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d93b1a44293512f150bf147aa10ed222b0b3522cde91f1701c836038a03035d2",
+    "query_embedding_sha256": "f895e52d3ac1c1d4b3eabfcc72631aba3ff8eac214937493c00d13968fbe4b86",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:44265107:1",
+      "content_sha256": "491ce47e8adec64dd0ea81d78736a77f87513c76bedca12e9887d9c4f3009e47",
+      "chars": 849
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:44265107:2",
+      "content_sha256": "70d339c0fbf71079438e49558894fd157734c940a1dc6380bb0a85fd2846c60a",
+      "chars": 257
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44265107:0",
+      "content_sha256": "47da890b2482cf0808e3c9031138e318e067fc824e725efa4d10675f927495d5",
+      "chars": 1044
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24700152:0",
+      "content_sha256": "aae79b3fd8f459d8c12c8afaf90fa42d4475b3da6cc4c6b60577298fe0e64ee0",
+      "chars": 718
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:21700295:0",
+      "content_sha256": "36b64f06f308404175506f440e4383572d1e5b4a1552e22087187db2008e28e2",
+      "chars": 848
+     }
+    ],
+    "elapsed_s": 4.5027
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nEvidence passages from your search for \"32% liver transplantation programs required patients to discontinue methadone 2001\":\n<<<PASSAGES\n[P1] Liver transplantation and opioid dependence.\nEighty-eight percent of the responding programs require at least 6 months of abstinence from alcohol; 83% from illicit drugs. Ninety-four percent have addiction treatment requirements. Consultations from substance abuse specialists are obtained by 86%. Patients receiving methadone maintenance are accepted by 56% of the responding programs. Approximately 180 patients receiving methadone maintenance are reported to have undergone liver transplantation. ConclusionsMost liver transplantation programs have established policies for patients with substance use disorders. Opiate-dependent patients receiving opiate replacement therapy seem underrepresented in transplantation programs. Little anecdotal evidence for negative impact of opiate replacement therapy on liver transplantation outcome was found.\n\n[P2] Liver transplantation and opioid dependence.\nPolicies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies and potentially result in relapse of previously stable patients.\n\n[P3] Liver transplantation and opioid dependence.\nContextChronic hepatitis C is the leading cause for liver transplantation in the United States. Intravenous drug use, the major risk factor, accounts for approximately 60% of hepatitis C virus transmission. Information from the United Network of Organ Sharing (UNOS) does not address substance use among liver transplantation patients. ObjectiveTo identify addiction-related criteria for admission to the UNOS liver transplantation waiting list and posttransplantation problems experienced by patients who are prescribed maintenance methadone. Design, Setting, and ParticipantsMail survey of all 97 adult US liver transplantation programs (belonging to UNOS) in March 2000 with telephone follow-up conducted in May and June 2000.Main Outcome MeasuresPrograms' acceptance and management of patients with past or present substance use disorder. ResultsOf the 97 programs surveyed, 87 (90%) responded. All accept applicants with a history of alcoholism or other addictions, including heroin dependence.\n\n[P4] Linkage with methadone treatment upon release from incarceration: a promising opportunity.\nInjection drug users (IDUs) are at increased risk for HIV, viral hepatitis, and tuberculosis, and making up more than a quarter of the incarcerated population in the United States. Methadone maintenance treatment of opiate addiction is highly effective at reducing drug use, drug-related criminal activity, and risk of HIV transmission. Recently released inmates are at particularly high risk for overdose and disease transmission. Linkage to methadone treatment immediately upon release from incarceration is a promising opportunity to combat disease transmission, facilitate reentry into the community, and reduce recidivism.\n\n[P5] Chronic Hepatitis B Infection: A Review\nImportance More than 240 million individuals worldwide are infected with chronic hepatitis B virus (HBV). Among individuals with chronic HBV infection who are untreated, 15% to 40% progress to cirrhosis, which may lead to liver failure and liver cancer. Observations Pegylated interferon and nucleos(t)ide analogues (lamivudine, adefovir, entecavir, tenofovir disoproxil, and tenofovir alafenamide) suppress HBV DNA replication and improve liver inflammation and fibrosis. Long-term viral suppression is associated with regression of liver fibrosis and reduced risk of hepatocellular carcinoma in cohort studies. The cure (defined as hepatitis B surface antigen loss with undetectable HBV DNA) rates after treatment remain low (3%-7% with pegylated interferon and 1%-12% with nucleos[t]ide analogue therapy).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "62e673c7a8d386f0a935f72f9a1371cb10b9fc6327d969e711fdc7af221c6cec",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792854911.133517,
+      "end_wall": 1792854923.462021,
+      "error": null
+     }
+    ],
+    "arrival_seq": 360,
+    "start_wall": 1792854911.133517,
+    "start_mono": 524467.845037791,
+    "end_wall": 1792854923.462021,
+    "end_mono": 524480.173531416,
+    "raw_response": "{\"reasoning\": \"The evidence from P2 suggests that 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001, while P3 indicates that 87% of programs respond positively to applicants with a history of alcoholism or other addictions, including heroin dependence.\", \"answer\": \"REFUTED\", \"citations\": [\"P2\", \"P3\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12325530542,
+     "load_duration": 5331072792,
+     "prompt_eval_count": 1030,
+     "prompt_eval_duration": 2149206917,
+     "eval_count": 97,
+     "eval_duration": 3773579626,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:23.460412Z"
+    },
+    "elapsed_s": 12.328,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 360,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:44265107:2",
+     "scifact:44265107:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 286,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "86e3f683479c061df23d2fce17c9c4c6d94029ef45765fbdbc0e696112838880",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854904.99547,
+      "end_wall": 1792854910.351389,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854904.99547,
+    "start_mono": 524461.706995541,
+    "end_wall": 1792854910.351389,
+    "end_mono": 524467.062909125,
+    "raw_response": "{\"query\": \"liver transplantation programs methadone discontinuation 2001\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5353980291,
+     "load_duration": 3937947833,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 659604333,
+     "eval_count": 18,
+     "eval_duration": 595710583,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:10.350586Z"
+    },
+    "elapsed_s": 5.356,
+    "query_used": "liver transplantation programs methadone discontinuation 2001",
+    "query_source": "json",
+    "query_arrival_seq": 363
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "liver transplantation programs methadone discontinuation 2001",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:44265107:2",
+       "score_q": 17326
+      },
+      {
+       "passage_key": "scifact:44265107:1",
+       "score_q": 14774
+      },
+      {
+       "passage_key": "scifact:44265107:0",
+       "score_q": 12165
+      },
+      {
+       "passage_key": "scifact:8190282:2",
+       "score_q": 6430
+      },
+      {
+       "passage_key": "scifact:24700152:0",
+       "score_q": 5706
+      }
+     ],
+     "retrieval_sha256": "64aa9e132f9ed6988d5d07f31b034645ae8f62cfd93ab7966bb241aa806841ef"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "64aa9e132f9ed6988d5d07f31b034645ae8f62cfd93ab7966bb241aa806841ef",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:44265107:2",
+      "content_sha256": "70d339c0fbf71079438e49558894fd157734c940a1dc6380bb0a85fd2846c60a",
+      "chars": 257
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:44265107:1",
+      "content_sha256": "491ce47e8adec64dd0ea81d78736a77f87513c76bedca12e9887d9c4f3009e47",
+      "chars": 849
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44265107:0",
+      "content_sha256": "47da890b2482cf0808e3c9031138e318e067fc824e725efa4d10675f927495d5",
+      "chars": 1044
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8190282:2",
+      "content_sha256": "3ca5b56e0ab5e5c551528e07ed892b6f09fd3154d9bde080d05138389834264e",
+      "chars": 349
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:24700152:0",
+      "content_sha256": "aae79b3fd8f459d8c12c8afaf90fa42d4475b3da6cc4c6b60577298fe0e64ee0",
+      "chars": 718
+     }
+    ],
+    "elapsed_s": 0.0009
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nEvidence passages from your search for \"liver transplantation programs methadone discontinuation 2001\":\n<<<PASSAGES\n[P1] Liver transplantation and opioid dependence.\nPolicies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies and potentially result in relapse of previously stable patients.\n\n[P2] Liver transplantation and opioid dependence.\nEighty-eight percent of the responding programs require at least 6 months of abstinence from alcohol; 83% from illicit drugs. Ninety-four percent have addiction treatment requirements. Consultations from substance abuse specialists are obtained by 86%. Patients receiving methadone maintenance are accepted by 56% of the responding programs. Approximately 180 patients receiving methadone maintenance are reported to have undergone liver transplantation. ConclusionsMost liver transplantation programs have established policies for patients with substance use disorders. Opiate-dependent patients receiving opiate replacement therapy seem underrepresented in transplantation programs. Little anecdotal evidence for negative impact of opiate replacement therapy on liver transplantation outcome was found.\n\n[P3] Liver transplantation and opioid dependence.\nContextChronic hepatitis C is the leading cause for liver transplantation in the United States. Intravenous drug use, the major risk factor, accounts for approximately 60% of hepatitis C virus transmission. Information from the United Network of Organ Sharing (UNOS) does not address substance use among liver transplantation patients. ObjectiveTo identify addiction-related criteria for admission to the UNOS liver transplantation waiting list and posttransplantation problems experienced by patients who are prescribed maintenance methadone. Design, Setting, and ParticipantsMail survey of all 97 adult US liver transplantation programs (belonging to UNOS) in March 2000 with telephone follow-up conducted in May and June 2000.Main Outcome MeasuresPrograms' acceptance and management of patients with past or present substance use disorder. ResultsOf the 97 programs surveyed, 87 (90%) responded. All accept applicants with a history of alcoholism or other addictions, including heroin dependence.\n\n[P4] Noninvasive ventilation for treatment of acute respiratory failure in patients undergoing solid organ transplantation: a randomized trial.\nHospital mortality did not differ. CONCLUSIONS These results indicate that transplantation programs should consider NIV in the treatment of selected recipients of transplantation with acute respiratory failure.\n\n[P5] Linkage with methadone treatment upon release from incarceration: a promising opportunity.\nInjection drug users (IDUs) are at increased risk for HIV, viral hepatitis, and tuberculosis, and making up more than a quarter of the incarcerated population in the United States. Methadone maintenance treatment of opiate addiction is highly effective at reducing drug use, drug-related criminal activity, and risk of HIV transmission. Recently released inmates are at particularly high risk for overdose and disease transmission. Linkage to methadone treatment immediately upon release from incarceration is a promising opportunity to combat disease transmission, facilitate reentry into the community, and reduce recidivism.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6355b70aa0b4492961274e2ab5be32cf32b2d2cb9b3442a620ba05dc4bb0d4b9",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792854910.3526201,
+      "end_wall": 1792854924.108514,
+      "error": null
+     }
+    ],
+    "arrival_seq": 361,
+    "start_wall": 1792854910.3526201,
+    "start_mono": 524467.064141458,
+    "end_wall": 1792854924.108514,
+    "end_mono": 524480.820023458,
+    "raw_response": "{\"reasoning\": \"The claim suggests that 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001. Passage P2 indicates that 56% of responding programs accepted patients receiving methadone maintenance, with little anecdotal evidence for negative impact on liver transplantation outcomes. This suggests that the majority of programs did not require discontinuation of methadone. Therefore, the claim is refuted. No passages explicitly support the claim, hence citations are empty: [].\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13752925292,
+     "load_duration": 48036084,
+     "prompt_eval_count": 852,
+     "prompt_eval_duration": 3034128291,
+     "eval_count": 121,
+     "eval_duration": 9567936707,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:24.106206Z"
+    },
+    "elapsed_s": 13.756,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 361,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 509,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "86e3f683479c061df23d2fce17c9c4c6d94029ef45765fbdbc0e696112838880",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854904.996033,
+      "end_wall": 1792854907.2372549,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854904.996033,
+    "start_mono": 524461.707558666,
+    "end_wall": 1792854907.2372549,
+    "end_mono": 524463.948776166,
+    "raw_response": "{\"query\": \"32% liver transplant methadone discontinuation requirement 2001\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2239042459,
+     "load_duration": 1175643042,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 370899333,
+     "eval_count": 25,
+     "eval_duration": 536729086,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:07.235697Z"
+    },
+    "elapsed_s": 2.241,
+    "query_used": "32% liver transplant methadone discontinuation requirement 2001",
+    "query_source": "json",
+    "query_arrival_seq": 362
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "32% liver transplant methadone discontinuation requirement 2001",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:44265107:2",
+       "score_q": 14204
+      },
+      {
+       "passage_key": "scifact:44265107:1",
+       "score_q": 7696
+      },
+      {
+       "passage_key": "scifact:26105746:0",
+       "score_q": 6948
+      },
+      {
+       "passage_key": "scifact:14647747:0",
+       "score_q": 6540
+      },
+      {
+       "passage_key": "scifact:44265107:0",
+       "score_q": 6078
+      }
+     ],
+     "retrieval_sha256": "adace2ad860928c81e304f993c43e2450dcf7e02a150febcc14b406e4c07c43e"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "adace2ad860928c81e304f993c43e2450dcf7e02a150febcc14b406e4c07c43e",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:44265107:2",
+      "content_sha256": "70d339c0fbf71079438e49558894fd157734c940a1dc6380bb0a85fd2846c60a",
+      "chars": 257
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:44265107:1",
+      "content_sha256": "491ce47e8adec64dd0ea81d78736a77f87513c76bedca12e9887d9c4f3009e47",
+      "chars": 849
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:26105746:0",
+      "content_sha256": "055fb5bcd70b51f6b21948eed8d8689c8015637e808f255a238502349f63a2b7",
+      "chars": 852
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14647747:0",
+      "content_sha256": "641765d524638f6a2401bc7c278546c192f2fd0e61d352b1910364abe996f444",
+      "chars": 969
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:44265107:0",
+      "content_sha256": "47da890b2482cf0808e3c9031138e318e067fc824e725efa4d10675f927495d5",
+      "chars": 1044
+     }
+    ],
+    "elapsed_s": 0.0049
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nEvidence passages from your search for \"32% liver transplant methadone discontinuation requirement 2001\":\n<<<PASSAGES\n[P1] Liver transplantation and opioid dependence.\nPolicies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies and potentially result in relapse of previously stable patients.\n\n[P2] Liver transplantation and opioid dependence.\nEighty-eight percent of the responding programs require at least 6 months of abstinence from alcohol; 83% from illicit drugs. Ninety-four percent have addiction treatment requirements. Consultations from substance abuse specialists are obtained by 86%. Patients receiving methadone maintenance are accepted by 56% of the responding programs. Approximately 180 patients receiving methadone maintenance are reported to have undergone liver transplantation. ConclusionsMost liver transplantation programs have established policies for patients with substance use disorders. Opiate-dependent patients receiving opiate replacement therapy seem underrepresented in transplantation programs. Little anecdotal evidence for negative impact of opiate replacement therapy on liver transplantation outcome was found.\n\n[P3] Influenza A myocarditis developing in an adult liver transplant recipient despite vaccination: a case report and review of the literature.\nSolid organ transplant recipients receiving chronic immunosuppressive agents are at increased risk to acquire influenza virus despite vaccination. Myocarditis is a known but rare complication of influenza infection. We present the first adult liver transplant recipient who received prophylactic vaccination but developed influenza A myocarditis. This may occur in solid organ transplant recipients, because they have reduced response to protein vaccines, which may leave them vulnerable to infections. Studies are needed to evaluate if antiviral chemoprophylaxis in solid organ transplant recipients during influenza season would be an effective preventive therapy against influenza in this high-risk population.\n\n[P4] Successful expansion of functional and stable regulatory T cells for immunotherapy in liver transplantation\nStrategies to prevent organ transplant rejection whilst minimizing long-term immunosuppression are currently under intense investigation with regulatory T cells (Tregs) nearing clinical application. The clinical trial, ThRIL, recently commenced at King's College London, proposes to use Treg cell therapy to induce tolerance in liver transplant recipients, the success of which has the potential to revolutionize the management of these patients and enable a future of drug-free transplants. This is the first report of the manufacture of clinical grade Tregs from prospective liver transplant recipients via a CliniMACS-based GMP isolation technique and expanded using anti-CD3/CD28 beads, IL-2 and rapamycin. We report the enrichment of a pure, stable population of Tregs (>95% CD4(+)CD25(+)FOXP3(+)), reaching adequate numbers for their clinical application.\n\n[P5] Liver transplantation and opioid dependence.\nContextChronic hepatitis C is the leading cause for liver transplantation in the United States. Intravenous drug use, the major risk factor, accounts for approximately 60% of hepatitis C virus transmission. Information from the United Network of Organ Sharing (UNOS) does not address substance use among liver transplantation patients. ObjectiveTo identify addiction-related criteria for admission to the UNOS liver transplantation waiting list and posttransplantation problems experienced by patients who are prescribed maintenance methadone. Design, Setting, and ParticipantsMail survey of all 97 adult US liver transplantation programs (belonging to UNOS) in March 2000 with telephone follow-up conducted in May and June 2000.Main Outcome MeasuresPrograms' acceptance and management of patients with past or present substance use disorder. ResultsOf the 97 programs surveyed, 87 (90%) responded. All accept applicants with a history of alcoholism or other addictions, including heroin dependence.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7b31eb468f75588243e0185634c1cfc1c9305eb59393145c070f493b29f4d098",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792854907.24251,
+      "end_wall": 1792854925.736085,
+      "error": null
+     }
+    ],
+    "arrival_seq": 362,
+    "start_wall": 1792854907.24251,
+    "start_mono": 524463.954033916,
+    "end_wall": 1792854925.736085,
+    "end_mono": 524482.447594291,
+    "raw_response": "{\n  \"reasoning\": \"The claim suggests that 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001. However, the evidence passages do not support this specific claim directly. Instead, they focus on the acceptance and management of patients with substance use disorders in liver transplantation programs. According to the survey data (P3, P4, P5), 87 out of 97 responding programs accepted applicants with a history of alcoholism or other addictions, including heroin dependence. No specific data was found indicating 32% of programs required methadone discontinuation in 2001\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [\"P3\", \"P4\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18489910084,
+     "load_duration": 7773547334,
+     "prompt_eval_count": 1266,
+     "prompt_eval_duration": 2961032167,
+     "eval_count": 188,
+     "eval_duration": 6965898260,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:25.73359Z"
+    },
+    "elapsed_s": 18.494,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 362,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P3",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:26105746:0",
+     "scifact:14647747:0",
+     "scifact:44265107:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "86e3f683479c061df23d2fce17c9c4c6d94029ef45765fbdbc0e696112838880",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854904.99529,
+      "end_wall": 1792854913.855531,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854904.99529,
+    "start_mono": 524461.706815208,
+    "end_wall": 1792854913.855531,
+    "end_mono": 524470.5670485,
+    "raw_response": "{\"query\": \"liver transplantation 2001 methadone treatment discontinuation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8857159000,
+     "load_duration": 5508138417,
+     "prompt_eval_count": 183,
+     "prompt_eval_duration": 956331041,
+     "eval_count": 16,
+     "eval_duration": 2029565625,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:13.853767Z"
+    },
+    "elapsed_s": 8.86,
+    "query_used": "liver transplantation 2001 methadone treatment discontinuation",
+    "query_source": "json",
+    "query_arrival_seq": 364
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "liver transplantation 2001 methadone treatment discontinuation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:44265107:2",
+       "score_q": 14357
+      },
+      {
+       "passage_key": "scifact:44265107:1",
+       "score_q": 12160
+      },
+      {
+       "passage_key": "scifact:44265107:0",
+       "score_q": 9464
+      },
+      {
+       "passage_key": "scifact:24700152:0",
+       "score_q": 7260
+      },
+      {
+       "passage_key": "scifact:8190282:2",
+       "score_q": 5189
+      }
+     ],
+     "retrieval_sha256": "0a96cbec9f0833e45f3201f88db5d9e2b301c544b09740e531ae2391d0a501b4"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0a96cbec9f0833e45f3201f88db5d9e2b301c544b09740e531ae2391d0a501b4",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:44265107:2",
+      "content_sha256": "70d339c0fbf71079438e49558894fd157734c940a1dc6380bb0a85fd2846c60a",
+      "chars": 257
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:44265107:1",
+      "content_sha256": "491ce47e8adec64dd0ea81d78736a77f87513c76bedca12e9887d9c4f3009e47",
+      "chars": 849
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44265107:0",
+      "content_sha256": "47da890b2482cf0808e3c9031138e318e067fc824e725efa4d10675f927495d5",
+      "chars": 1044
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24700152:0",
+      "content_sha256": "aae79b3fd8f459d8c12c8afaf90fa42d4475b3da6cc4c6b60577298fe0e64ee0",
+      "chars": 718
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:8190282:2",
+      "content_sha256": "3ca5b56e0ab5e5c551528e07ed892b6f09fd3154d9bde080d05138389834264e",
+      "chars": 349
+     }
+    ],
+    "elapsed_s": 0.0004
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nEvidence passages from your search for \"liver transplantation 2001 methadone treatment discontinuation\":\n<<<PASSAGES\n[P1] Liver transplantation and opioid dependence.\nPolicies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies and potentially result in relapse of previously stable patients.\n\n[P2] Liver transplantation and opioid dependence.\nEighty-eight percent of the responding programs require at least 6 months of abstinence from alcohol; 83% from illicit drugs. Ninety-four percent have addiction treatment requirements. Consultations from substance abuse specialists are obtained by 86%. Patients receiving methadone maintenance are accepted by 56% of the responding programs. Approximately 180 patients receiving methadone maintenance are reported to have undergone liver transplantation. ConclusionsMost liver transplantation programs have established policies for patients with substance use disorders. Opiate-dependent patients receiving opiate replacement therapy seem underrepresented in transplantation programs. Little anecdotal evidence for negative impact of opiate replacement therapy on liver transplantation outcome was found.\n\n[P3] Liver transplantation and opioid dependence.\nContextChronic hepatitis C is the leading cause for liver transplantation in the United States. Intravenous drug use, the major risk factor, accounts for approximately 60% of hepatitis C virus transmission. Information from the United Network of Organ Sharing (UNOS) does not address substance use among liver transplantation patients. ObjectiveTo identify addiction-related criteria for admission to the UNOS liver transplantation waiting list and posttransplantation problems experienced by patients who are prescribed maintenance methadone. Design, Setting, and ParticipantsMail survey of all 97 adult US liver transplantation programs (belonging to UNOS) in March 2000 with telephone follow-up conducted in May and June 2000.Main Outcome MeasuresPrograms' acceptance and management of patients with past or present substance use disorder. ResultsOf the 97 programs surveyed, 87 (90%) responded. All accept applicants with a history of alcoholism or other addictions, including heroin dependence.\n\n[P4] Linkage with methadone treatment upon release from incarceration: a promising opportunity.\nInjection drug users (IDUs) are at increased risk for HIV, viral hepatitis, and tuberculosis, and making up more than a quarter of the incarcerated population in the United States. Methadone maintenance treatment of opiate addiction is highly effective at reducing drug use, drug-related criminal activity, and risk of HIV transmission. Recently released inmates are at particularly high risk for overdose and disease transmission. Linkage to methadone treatment immediately upon release from incarceration is a promising opportunity to combat disease transmission, facilitate reentry into the community, and reduce recidivism.\n\n[P5] Noninvasive ventilation for treatment of acute respiratory failure in patients undergoing solid organ transplantation: a randomized trial.\nHospital mortality did not differ. CONCLUSIONS These results indicate that transplantation programs should consider NIV in the treatment of selected recipients of transplantation with acute respiratory failure.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "41551a25d89d3efc4458d8ce81d9f5ee78379430eb903df01bc80a427de65f43",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792854913.856232,
+      "end_wall": 1792854937.700591,
+      "error": null
+     }
+    ],
+    "arrival_seq": 363,
+    "start_wall": 1792854913.856232,
+    "start_mono": 524470.567750916,
+    "end_wall": 1792854937.700591,
+    "end_mono": 524494.412089458,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not support the claim. The passage P1 mentions that methadone treatment is required in 32% of liver transplantation programs, not that patients are required to discontinue it. The passage P2 discusses the policies regarding methadone treatment in liver transplantation programs, but does not state that patients are required to discontinue it.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23840015459,
+     "load_duration": 15627286334,
+     "prompt_eval_count": 877,
+     "prompt_eval_duration": 3208236750,
+     "eval_count": 89,
+     "eval_duration": 3151676378,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:37.697201Z"
+    },
+    "elapsed_s": 23.844,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 363,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 368,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "86e3f683479c061df23d2fce17c9c4c6d94029ef45765fbdbc0e696112838880",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792854904.9956841,
+      "end_wall": 1792854906.952547,
+      "error": null
+     }
+    ],
+    "start_wall": 1792854904.9956841,
+    "start_mono": 524461.707209458,
+    "end_wall": 1792854906.952547,
+    "end_mono": 524463.664069791,
+    "raw_response": "{\"query\": \"liver transplant methadone discontinuation requirements 2001 statistics\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1954581208,
+     "load_duration": 54811583,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 482191875,
+     "eval_count": 20,
+     "eval_duration": 1216734919,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:06.951301Z"
+    },
+    "elapsed_s": 1.957,
+    "query_used": "liver transplant methadone discontinuation requirements 2001 statistics",
+    "query_source": "json",
+    "query_arrival_seq": 361
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "liver transplant methadone discontinuation requirements 2001 statistics",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:44265107:1",
+       "score_q": 799
+      },
+      {
+       "passage_key": "scifact:44265107:2",
+       "score_q": 788
+      },
+      {
+       "passage_key": "scifact:44265107:0",
+       "score_q": 742
+      },
+      {
+       "passage_key": "scifact:24700152:0",
+       "score_q": 650
+      },
+      {
+       "passage_key": "scifact:26124606:1",
+       "score_q": 649
+      }
+     ],
+     "retrieval_sha256": "6a883aa5eaa678cf4b377dfc5820506a9204179d7e8154fd0f979139a35f14a8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6a883aa5eaa678cf4b377dfc5820506a9204179d7e8154fd0f979139a35f14a8",
+    "query_embedding_sha256": "51f798b1d7844e839601aa20fcd4a6ab9da3fdb7de06f474a5f824b35a05bd3e",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:44265107:1",
+      "content_sha256": "491ce47e8adec64dd0ea81d78736a77f87513c76bedca12e9887d9c4f3009e47",
+      "chars": 849
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:44265107:2",
+      "content_sha256": "70d339c0fbf71079438e49558894fd157734c940a1dc6380bb0a85fd2846c60a",
+      "chars": 257
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:44265107:0",
+      "content_sha256": "47da890b2482cf0808e3c9031138e318e067fc824e725efa4d10675f927495d5",
+      "chars": 1044
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:24700152:0",
+      "content_sha256": "aae79b3fd8f459d8c12c8afaf90fa42d4475b3da6cc4c6b60577298fe0e64ee0",
+      "chars": 718
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:26124606:1",
+      "content_sha256": "19542fb7a0bb7a9535f0225d5a3261c8eb87f16330878187e3971f049149ba19",
+      "chars": 769
+     }
+    ],
+    "elapsed_s": 4.4057
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: 32% of liver transplantation programs required patients to discontinue methadone treatment in 2001.\n\nEvidence passages from your search for \"liver transplant methadone discontinuation requirements 2001 statistics\":\n<<<PASSAGES\n[P1] Liver transplantation and opioid dependence.\nEighty-eight percent of the responding programs require at least 6 months of abstinence from alcohol; 83% from illicit drugs. Ninety-four percent have addiction treatment requirements. Consultations from substance abuse specialists are obtained by 86%. Patients receiving methadone maintenance are accepted by 56% of the responding programs. Approximately 180 patients receiving methadone maintenance are reported to have undergone liver transplantation. ConclusionsMost liver transplantation programs have established policies for patients with substance use disorders. Opiate-dependent patients receiving opiate replacement therapy seem underrepresented in transplantation programs. Little anecdotal evidence for negative impact of opiate replacement therapy on liver transplantation outcome was found.\n\n[P2] Liver transplantation and opioid dependence.\nPolicies requiring discontinuation of methadone in 32% of all programs contradict the evidence base for efficacy of long-term replacement therapies and potentially result in relapse of previously stable patients.\n\n[P3] Liver transplantation and opioid dependence.\nContextChronic hepatitis C is the leading cause for liver transplantation in the United States. Intravenous drug use, the major risk factor, accounts for approximately 60% of hepatitis C virus transmission. Information from the United Network of Organ Sharing (UNOS) does not address substance use among liver transplantation patients. ObjectiveTo identify addiction-related criteria for admission to the UNOS liver transplantation waiting list and posttransplantation problems experienced by patients who are prescribed maintenance methadone. Design, Setting, and ParticipantsMail survey of all 97 adult US liver transplantation programs (belonging to UNOS) in March 2000 with telephone follow-up conducted in May and June 2000.Main Outcome MeasuresPrograms' acceptance and management of patients with past or present substance use disorder. ResultsOf the 97 programs surveyed, 87 (90%) responded. All accept applicants with a history of alcoholism or other addictions, including heroin dependence.\n\n[P4] Linkage with methadone treatment upon release from incarceration: a promising opportunity.\nInjection drug users (IDUs) are at increased risk for HIV, viral hepatitis, and tuberculosis, and making up more than a quarter of the incarcerated population in the United States. Methadone maintenance treatment of opiate addiction is highly effective at reducing drug use, drug-related criminal activity, and risk of HIV transmission. Recently released inmates are at particularly high risk for overdose and disease transmission. Linkage to methadone treatment immediately upon release from incarceration is a promising opportunity to combat disease transmission, facilitate reentry into the community, and reduce recidivism.\n\n[P5] Interferon alpha for the treatment of chronic hepatitis C in patients infected with human immunodeficiency virus. Hepatitis-HIV Spanish Study Group.\nOne hundred seven patients completed the study; the level of aminotransferases returned to normal and sera became negative (complete response) for HCV RNA in 26 (32.5%) of 80 HIV-infected patients and 10 (37.0%) of 27 non-HIV-infected patients (P = .666) after completion of the treatment. Two variables were independently associated with a response in HIV-infected patients: a CD4+ T lymphocyte count of > 500 x 10(6)/L and a baseline HCV viremia level of < 10(7) copies/mL. In the 12 months following treatment, relapses occurred in 30.8% of the HIV-infected patients and 12.5% of non-HIV-infected patients (P = .403).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "56212d538cfff02e44e92e3021942c35af6384b64308f97249d275f4ee35cc0c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792854911.3589828,
+      "end_wall": 1792854937.873974,
+      "error": null
+     }
+    ],
+    "arrival_seq": 364,
+    "start_wall": 1792854911.3589828,
+    "start_mono": 524468.0705035,
+    "end_wall": 1792854937.873974,
+    "end_mono": 524494.585473166,
+    "raw_response": "{\n  \"reasoning\": \"Passage P2 directly states that 'Policies requiring discontinuation of methadone in 32% of all programs' aligns with the claim made. This statistic directly supports the percentage given in the claim without contradiction from other passages.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 26509923292,
+     "load_duration": 16050890500,
+     "prompt_eval_count": 1072,
+     "prompt_eval_duration": 5274028918,
+     "eval_count": 88,
+     "eval_duration": 4510857456,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:15:37.869938Z"
+    },
+    "elapsed_s": 26.515,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 364,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:44265107:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 242,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "d93b1a44293512f150bf147aa10ed222b0b3522cde91f1701c836038a03035d2",
+  "olmo2:7b": "64aa9e132f9ed6988d5d07f31b034645ae8f62cfd93ab7966bb241aa806841ef",
+  "granite3.3:2b": "adace2ad860928c81e304f993c43e2450dcf7e02a150febcc14b406e4c07c43e",
+  "nemotron-mini:4b": "0a96cbec9f0833e45f3201f88db5d9e2b301c544b09740e531ae2391d0a501b4",
+  "exaone3.5:7.8b": "6a883aa5eaa678cf4b377dfc5820506a9204179d7e8154fd0f979139a35f14a8"
+ },
+ "item_start_wall": 1792854904.994946,
+ "item_wall_s": 32.879,
+ "ollama_ps_samples": [
+  [
+   1792854904.995,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854906.998,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854909.003,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792854911.014,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792854913.026,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792854915.028,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792854917.035,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854919.042,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854921.054,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854923.065,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854925.068,
+   [
+    "olmo2:7b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792854927.075,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792854929.078,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792854931.086,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792854933.088,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792854935.098,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792854937.109,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

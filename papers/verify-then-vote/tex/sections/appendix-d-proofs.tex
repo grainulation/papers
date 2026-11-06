@@ -1,0 +1,41 @@
+\section{Proof Catalog and Hash Definitions}
+\label[appendix]{app:proofs}
+
+All statements of \cref{sec:selection} and of the gate (\paperref{main-paper rule}) are proved in Lean~4 \citep{moura2021lean4} with Mathlib \citep{mathlib2020}; the build contains no \code{sorry}. In Lean, features are indexed from 0 (0 = ev, 1 = conf, 2 = cs, 3 = rec, 4 = ca), one less than in \cref{sec:selection}; results stated for an arbitrary score function over any linear ordered field apply to the reducer's idealized exact-arithmetic score model. The quantized-score results require the stated rounding-error bounds; floating-point arithmetic before quantization remains outside the formalization.
+
+\setcounter{tabsave}{\value{table}}%
+{\small
+\begin{xltabular}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}L@{}}
+  \toprule
+  Statement & Lean theorem & Notes \\
+  \midrule
+  \endhead
+  Score difference equals $w^\top d$; $d \in [-1,1]^5$ & \lean{score_sub_eq_dot}, \lean{dvec_mem_Icc} & the second assumes features and $\lambda$ in $[0, 1]$ \\
+  \Cref{def:separation} and its min/max form & \lean{Separated}, \lean{separated_iff_min_sub_max} & needs both classes non-empty \\
+  \Cref{prop:homogeneity} (i) & \lean{prop1_i} & every maximizer; needs $\delta \geq 0$ and a non-empty correct class \\
+  \Cref{prop:homogeneity} (ii), non-strict and strict deadband & \lean{prop1_ii}, \lean{prop1_ii_strict}, \lean{inDeadbandStrict_imp} & \\
+  Necessity of $\delta \geq 0$ and of a non-empty correct class & \lean{prop1_i_needs_nonneg_delta}, \lean{prop1_needs_nonempty_pos} & counterexamples \\
+  \Cref{lem:neutrality}, general and with the strict deadband set & \lean{lemma1}, \lean{lemma1_strict} & also needs $X$ non-empty and $T(X) \in X$ \\
+  \Cref{prop:evidence} & \lean{prop2} & any lower bound $\gamma$ and upper bounds $\beta$ \\
+  Unit-$\beta$ form; default weights require $\gamma > 2.0$ & \lean{prop2_condition_unit_beta}, \lean{default_condition_iff_gamma_gt_two} & the second at $\delta = 0.05$ \\
+  No $\gamma \leq 1$ suffices under default weights; even a maximal evidence gap fails to separate & \lean{default_weights_no_gamma}, \lean{default_max_evidence_gap_not_separated} & every $\delta \geq 0$ \\
+  \Cref{cor:robustness} & \lean{cor1} & both directions, any generating set $V$ \\
+  Full-simplex robustness iff every feature separates & \lean{simplex_robust_iff} & \\
+  \Cref{prop:homogeneity} on $\times 10{,}000$ quantized scores & \lean{prop1_i_quantized}, \lean{prop1_ii_quantized}, \lean{quantized_gap} & assumes rounding error at most $\tfrac12$ \\
+  A non-strict quantized deadband is unsafe & \lean{quantized_nonstrict_fails} & margin 0.05004 rounds to a gap of 500 \\
+  Counterexample: scores, evidence gap, incorrect wins, unseparated, an evidence gap above $\delta$ does not imply separation, \cref{prop:evidence} condition fails & \lean{score_cPlus}, \lean{score_cMinus}, \lean{old_condition_holds}, \lean{incorrect_wins}, \lean{within_deadband}, \lean{not_separated}, \lean{old_prop1_false}, \lean{prop2_quantities} & computed over $\mathbb{Q}$ \\
+  Swapping correctness labels selects correctly without separation & \lean{mirror_correct_but_not_separated} & swapping only recency values gives margin 0.085, which is separated (\lean{recency_swap_is_separated}) \\
+  \paperref{Main-paper harm proposition}: a correct default lost by the gate implies a verified incorrect value & \lean{Gate.gate_harm} & needs only selection closure, $\mathrm{sel}(S) \in S$ for non-empty $S$; correctness is a function of the value \\
+  The gated winner is verified whenever any value is & \lean{Gate.gate_winner_verified} & \\
+  \paperref{Main-paper harm corollary}, counting form $c_D \leq F$ & \lean{Gate.gate_cD_le_F} & slot data and selector may differ per item \\
+  \paperref{Main-paper harm corollary}, no-loss, and its exact characterization & \lean{Gate.gate_no_loss}, \lean{Gate.gate_correct_iff} & when no incorrect value is verified \\
+  The plurality set is non-empty; the default and gated winners are slot values & \lean{Gate.P_nonempty}, \lean{Gate.D_mem_P}, \lean{Gate.gated_mem_vals} & needs a non-empty slot \\
+  \bottomrule
+\end{xltabular}}
+\setcounter{table}{\value{tabsave}}%
+
+Outside the formalization: floating-point error before quantization (the model uses exact arithmetic), Schulze itself (\cref{lem:neutrality} holds for any selector returning a member of its input), and the remark that false-positive counts are nonlinear in the weights.
+
+\paragraph{Policy hash.} SHA-256, truncated to 128 bits, over a canonical JSON object with two sections, sorted by key and written without whitespace: \code{config} (every configurable field, including the exclusivity table with each group's objects sorted and de-duplicated) and \code{constants} (score scale, lowering factors, evidence-type weights, verification table, and the sorted functional predicates). Floats use shortest round-trip decimal form; non-finite floats are rejected. Optional fields are serialized only when they differ from their defaults, so setting any of them changes the policy hash and therefore the certificate.
+
+\paragraph{Root hash and certificate.} The root hash is SHA-256, truncated to 128 bits, over the canonical serialization of $A$, including the identifier-scheme tag. The certificate is SHA-256, truncated to 64 bits, over the root hash, the policy hash, and the admitted identifiers in admission order.

@@ -1,0 +1,28 @@
+% Total-score margin of every decisive conflict set in the free-text
+% study (lexical grader). Data: fig3-*.dat.
+\begin{tikzpicture}
+  \begin{axis}[
+      scale only axis, width=0.80\linewidth, height=3.6cm,
+      xmin=-0.20, xmax=0.10, ymin=-0.65, ymax=1.25,
+      xtick={-0.20,-0.15,...,0.10},
+      xticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=2},
+      ytick={0,1}, yticklabels={Collection 2, Collection 1},
+      y axis line style={draw=none}, ytick style={draw=none},
+      axis x line*=bottom, tick align=outside,
+      xlabel={total-score margin $\Delta$ (min correct score $-$ max incorrect score)},
+      font=\footnotesize, clip=false]
+    \fill[green!10] (axis cs:0.05,-0.65) rectangle (axis cs:0.10,1.25);
+    \draw[black!40,dash pattern=on 3pt off 3pt] (axis cs:0,-0.65) -- (axis cs:0,1.25);
+    \draw[green!45!black] (axis cs:0.05,-0.65) -- (axis cs:0.05,1.25);
+    \node[align=center,text=green!45!black,anchor=north] at (axis cs:0.075,1.22)
+      {separated\\($\Delta > \delta$)};
+    \addplot[only marks,mark=*,mark size=2.6pt,draw=black,fill=black]
+      table[x=margin,y=y]{figures/fig3-c1-correct.dat};
+    \addplot[only marks,mark=*,mark size=2.6pt,draw=black,fill=white]
+      table[x=margin,y=y]{figures/fig3-c1-incorrect.dat};
+    \addplot[only marks,mark=*,mark size=2.6pt,draw=black,fill=black]
+      table[x=margin,y=y]{figures/fig3-c2-correct.dat};
+    \addplot[only marks,mark=*,mark size=2.6pt,draw=black,fill=white]
+      table[x=margin,y=y]{figures/fig3-c2-incorrect.dat};
+  \end{axis}
+\end{tikzpicture}

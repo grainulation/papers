@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Labeling</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1d1d1f; --muted: #5f6368; --line: #d0d4d9; --panel: #f5f6f8;
+  --accent: #1a5fb4; --on: #1a5fb4; --on-fg: #ffffff; --warn: #9a5b00; --ok: #2e7d32;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17181a; --fg: #e8e8ea; --muted: #a0a4aa; --line: #3a3d42; --panel: #222428;
+    --accent: #7fb0f0; --on: #7fb0f0; --on-fg: #111111; --warn: #e0a040; --ok: #7bc47f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17181a; --fg: #e8e8ea; --muted: #a0a4aa; --line: #3a3d42; --panel: #222428;
+  --accent: #7fb0f0; --on: #7fb0f0; --on-fg: #111111; --warn: #e0a040; --ok: #7bc47f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width: 900px; margin: 0 auto; padding: 16px; }
+header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+header h1 { font-size: 18px; margin: 0; flex: 1 1 auto; }
+input[type=text], textarea { font: inherit; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+textarea { width: 100%; min-height: 60px; resize: vertical; }
+button { font: inherit; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button.on { background: var(--on); color: var(--on-fg); border-color: var(--on); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.muted { color: var(--muted); font-size: 14px; }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 12px 0; }
+.label { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; }
+.claim { font-size: 18px; }
+table.triple { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.triple th, table.triple td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+table.triple th { width: 7em; color: var(--muted); font-weight: 600; }
+ol.gold { margin: 0; padding-left: 22px; }
+ol.gold li { overflow-wrap: anywhere; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.row .name { min-width: 13em; font-weight: 600; }
+kbd { font: 12px ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; color: var(--muted); }
+.progress { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.progress > div { height: 100%; background: var(--accent); width: 0; }
+.status-ok { color: var(--ok); } .status-warn { color: var(--warn); }
+#reveal { border-style: dashed; }
+#reveal dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 0; }
+#reveal dt { color: var(--muted); }
+.nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+details summary { cursor: pointer; }
+@media (max-width: 600px) { .row .name { min-width: 100%; } table.triple th { width: 5.5em; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Claim labeling</h1>
+  <label class="muted">Labeler id <input type="text" id="labeler" size="10" placeholder="e.g. aid"></label>
+  <button id="theme" title="Toggle light/dark">Theme</button>
+</header>
+<div id="setup" class="box" hidden>
+  <p>Enter your labeler id above to begin. Labels are saved in this browser under that id and can be exported as CSV.</p>
+</div>
+<div id="app" hidden>
+  <div class="nav" style="margin-top:12px">
+    <div><strong id="pos"></strong> <span class="muted" id="done"></span> <span id="saved" class="muted"></span></div>
+    <div class="row" style="margin:0">
+      <button id="prev">&larr; Prev</button>
+      <button id="next">Next &rarr;</button>
+      <button id="nextOpen" title="Next unlabeled item (x)">Next unlabeled</button>
+    </div>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+
+  <div class="box">
+    <div class="label">Question <span id="qid" class="muted"></span></div>
+    <div id="question"></div>
+  </div>
+  <div class="box">
+    <div class="label">Gold triples</div>
+    <ol class="gold" id="gold"></ol>
+  </div>
+  <div class="box">
+    <div class="label">Claim (raw sentence) <span class="muted" id="meta"></span></div>
+    <div class="claim" id="claim"></div>
+  </div>
+  <div class="box">
+    <div class="label">Extracted triple</div>
+    <table class="triple">
+      <tr><th>subject</th><td id="ts"></td></tr>
+      <tr><th>predicate</th><td id="tp"></td></tr>
+      <tr><th>object</th><td id="to"></td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <div class="row"><span class="name">correct</span>
+      <button data-f="correct" data-v="true">true <kbd>t</kbd></button>
+      <button data-f="correct" data-v="false">false <kbd>f</kbd></button>
+      <button data-f="correct" data-v="partially">partially <kbd>p</kbd></button>
+      <button data-f="correct" data-v="unclear">unclear <kbd>u</kbd></button>
+    </div>
+    <div class="row"><span class="name">matches_gold</span>
+      <button data-f="matches_gold" data-v="yes">yes <kbd>y</kbd></button>
+      <button data-f="matches_gold" data-v="no">no <kbd>n</kbd></button>
+    </div>
+    <div class="row"><span class="name">well_formed_extraction</span>
+      <button data-f="well_formed_extraction" data-v="yes">yes <kbd>g</kbd></button>
+      <button data-f="well_formed_extraction" data-v="no">no <kbd>b</kbd></button>
+    </div>
+    <div class="label" style="margin-top:8px">notes <span class="muted">(<kbd>/</kbd> to focus, <kbd>Esc</kbd> to leave)</span></div>
+    <textarea id="notes"></textarea>
+    <p class="muted" style="margin:6px 0 0">Keys: <kbd>t</kbd><kbd>f</kbd><kbd>p</kbd><kbd>u</kbd> correct,
+      <kbd>y</kbd><kbd>n</kbd> matches_gold, <kbd>g</kbd><kbd>b</kbd> extraction,
+      <kbd>&larr;</kbd><kbd>&rarr;</kbd> or <kbd>j</kbd><kbd>k</kbd> move, <kbd>Enter</kbd> next, <kbd>x</kbd> next unlabeled.
+      A complete item moves on automatically once all three fields are set (toggle below).</p>
+    <label class="muted"><input type="checkbox" id="autoadv" checked> auto-advance when complete</label>
+  </div>
+
+  <div class="box">
+    <div class="row">
+      <button id="export">Export CSV</button>
+      <label class="muted">Import CSV <input type="file" id="import" accept=".csv,text/csv"></label>
+    </div>
+    <details>
+      <summary class="muted">Reveal grader verdicts (discussion mode, after labeling)</summary>
+      <p class="muted">Available only when every item is labeled. Once revealed, any later change to an item is
+        flagged <code>edited_after_reveal=1</code> in the export.</p>
+      <button id="revealBtn" disabled>Reveal verdicts</button>
+      <span id="revealState" class="muted"></span>
+    </details>
+  </div>
+  <div class="box" id="reveal" hidden>
+    <div class="label">Grader verdicts for this item (not shown during blind labeling)</div>
+    <dl id="revealDl"></dl>
+  </div>
+  <p class="muted">Sample <span id="sha"></span>. Guide: GUIDE.md next to this file.</p>
+</div>
+</main>
+
+<script type="application/json" id="sample-data">/*__SAMPLE__*/null</script>
+<script type="application/json" id="reveal-data">/*__REVEAL__*/null</script>
+<script>
+(function () {
+  "use strict";
+  var SAMPLE = JSON.parse(document.getElementById("sample-data").textContent);
+  var items = SAMPLE.items;
+  var FIELDS = ["correct", "matches_gold", "well_formed_extraction"];
+  var KEYS = { t: ["correct", "true"], f: ["correct", "false"], p: ["correct", "partially"], u: ["correct", "unclear"],
+               y: ["matches_gold", "yes"], n: ["matches_gold", "no"],
+               g: ["well_formed_extraction", "yes"], b: ["well_formed_extraction", "no"] };
+  var state = { labeler: "", idx: 0, labels: {}, revealed: false };
+
+  function $(id) { return document.getElementById(id); }
+  function storeGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function storeSet(k, v) { try { window.localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+  function key() { return "bran-labels:" + SAMPLE.sample_sha + ":" + state.labeler; }
+
+  function save() {
+    var ok = storeSet(key(), JSON.stringify({ idx: state.idx, labels: state.labels, revealed: state.revealed }));
+    $("saved").textContent = ok ? "saved" : "NOT saved (browser storage unavailable; export CSV to keep work)";
+    $("saved").className = ok ? "muted status-ok" : "status-warn";
+  }
+  function load() {
+    state.labels = {}; state.idx = 0; state.revealed = false;
+    var raw = storeGet(key());
+    if (raw) {
+      try {
+        var d = JSON.parse(raw);
+        state.labels = d.labels || {}; state.idx = Math.min(d.idx || 0, items.length - 1); state.revealed = !!d.revealed;
+      } catch (e) { /* ignore corrupt entry */ }
+    }
+  }
+  function lab(id) {
+    if (!state.labels[id]) state.labels[id] = { correct: "", matches_gold: "", well_formed_extraction: "", notes: "", labeled_at: "", edited_after_reveal: 0 };
+    return state.labels[id];
+  }
+  function complete(id) {
+    var l = state.labels[id];
+    return !!l && FIELDS.every(function (f) { return l[f]; });
+  }
+  function nDone() { return items.filter(function (it) { return complete(it.item_id); }).length; }
+
+  function render() {
+    var it = items[state.idx], l = lab(it.item_id);
+    $("pos").textContent = "Item " + (state.idx + 1) + " / " + items.length;
+    var d = nDone();
+    $("done").textContent = "(" + d + " complete)";
+    $("bar").style.width = (100 * d / items.length) + "%";
+    $("qid").textContent = it.question_id;
+    $("question").textContent = it.question;
+    var ol = $("gold"); ol.textContent = "";
+    it.gold.forEach(function (g) {
+      var li = document.createElement("li");
+      li.textContent = "(" + g[0] + " | " + g[1] + " | " + g[2] + ")";
+      ol.appendChild(li);
+    });
+    $("claim").textContent = it.claim_text;
+    if (it.claim_text.length >= 200) {
+      var cut = document.createElement("span");
+      cut.className = "muted";
+      cut.textContent = " [stored sentence cut at 200 characters; see the object below]";
+      $("claim").appendChild(cut);
+    }
+    $("meta").textContent = "item " + it.item_id + " · " + it.datasets.join(", ") + " · " + it.agents.join(", ");
+    $("ts").textContent = it.triple.subject;
+    $("tp").textContent = it.triple.predicate;
+    $("to").textContent = it.triple.object;
+    Array.prototype.forEach.call(document.querySelectorAll("button[data-f]"), function (b) {
+      b.classList.toggle("on", l[b.getAttribute("data-f")] === b.getAttribute("data-v"));
+    });
+    if (document.activeElement !== $("notes")) $("notes").value = l.notes || "";
+    $("prev").disabled = state.idx === 0;
+    $("next").disabled = state.idx === items.length - 1;
+    $("revealBtn").disabled = state.revealed || d < items.length;
+    $("revealState").textContent = state.revealed ? "revealed" : (d < items.length ? (items.length - d) + " items left" : "");
+    renderReveal(it);
+  }
+  function renderReveal(it) {
+    var box = $("reveal");
+    if (!state.revealed) { box.hidden = true; return; }
+    var R = JSON.parse(document.getElementById("reveal-data").textContent)[it.item_id] || {};
+    var dl = $("revealDl"); dl.textContent = "";
+    [["v1 grader (token overlap)", R.v1_match], ["v2 grader (stricter)", R.v2_match], ["v2 furthest stage", R.v2_reason],
+     ["heuristic category", R.heuristic_category], ["in precision sheet", (R.in_precision_sheet || []).join(", ") || "none"],
+     ["stratum", R.stratum], ["all flags", (R.strata_all || []).join(", ")]].forEach(function (p) {
+      var dt = document.createElement("dt"); dt.textContent = p[0];
+      var dd = document.createElement("dd"); dd.textContent = String(p[1]);
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    box.hidden = false;
+  }
+  function setField(f, v) {
+    var it = items[state.idx], l = lab(it.item_id);
+    var wasComplete = complete(it.item_id);
+    l[f] = (l[f] === v) ? "" : v;
+    l.labeled_at = new Date().toISOString();
+    if (state.revealed) l.edited_after_reveal = 1;
+    save(); render();
+    if (!wasComplete && complete(it.item_id) && $("autoadv").checked && state.idx < items.length - 1) {
+      setTimeout(function () { go(state.idx + 1); }, 150);
+    }
+  }
+  function go(i) {
+    state.idx = Math.max(0, Math.min(items.length - 1, i));
+    save(); render(); window.scrollTo(0, 0);
+  }
+  function nextOpen() {
+    for (var k = 1; k <= items.length; k++) {
+      var j = (state.idx + k) % items.length;
+      if (!complete(items[j].item_id)) { go(j); return; }
+    }
+  }
+
+  function csvCell(v) {
+    v = v == null ? "" : String(v);
+    return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  }
+  var COLS = ["labeler_id", "sample_sha", "item_id", "order", "question_id", "correct", "matches_gold",
+              "well_formed_extraction", "notes", "labeled_at", "edited_after_reveal", "revealed"];
+  function exportCsv() {
+    var lines = [COLS.join(",")];
+    items.forEach(function (it) {
+      var l = state.labels[it.item_id] || {};
+      lines.push([state.labeler, SAMPLE.sample_sha, it.item_id, it.order, it.question_id, l.correct || "",
+                  l.matches_gold || "", l.well_formed_extraction || "", l.notes || "", l.labeled_at || "",
+                  l.edited_after_reveal || 0, state.revealed ? 1 : 0].map(csvCell).join(","));
+    });
+    var blob = new Blob([lines.join("\n") + "\n"], { type: "text/csv" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "labels_" + state.labeler.replace(/[^A-Za-z0-9_-]/g, "_") + ".csv";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+  function parseCsv(text) {
+    var rows = [], row = [], cell = "", q = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (q) {
+        if (ch === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; }
+        else cell += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === ",") { row.push(cell); cell = ""; }
+      else if (ch === "\n" || ch === "\r") {
+        if (ch === "\r" && text[i + 1] === "\n") i++;
+        row.push(cell); rows.push(row); row = []; cell = "";
+      } else cell += ch;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function importCsv(file) {
+    var r = new FileReader();
+    r.onload = function () {
+      var rows = parseCsv(String(r.result)), head = rows.shift() || [], n = 0;
+      var ix = {}; head.forEach(function (h, i) { ix[h] = i; });
+      if (!("item_id" in ix)) { alert("Not a label CSV (no item_id column)."); return; }
+      var shaCol = ix.sample_sha;
+      if (shaCol !== undefined && rows.length && rows[0][shaCol] && rows[0][shaCol] !== SAMPLE.sample_sha &&
+          !confirm("This CSV was exported from a different sample (" + rows[0][shaCol] + "). Import matching item ids anyway?")) return;
+      var known = {}; items.forEach(function (it) { known[it.item_id] = 1; });
+      rows.forEach(function (c) {
+        var id = c[ix.item_id]; if (!known[id]) return;
+        var l = lab(id);
+        ["correct", "matches_gold", "well_formed_extraction", "notes", "labeled_at"].forEach(function (f) {
+          if (ix[f] !== undefined && c[ix[f]] !== undefined) l[f] = c[ix[f]];
+        });
+        if (ix.edited_after_reveal !== undefined) l.edited_after_reveal = +c[ix.edited_after_reveal] || 0;
+        n++;
+      });
+      save(); render(); alert("Imported " + n + " rows.");
+    };
+    r.readAsText(file);
+  }
+
+  function start() {
+    state.labeler = $("labeler").value.trim();
+    storeSet("bran-labels:last-labeler", state.labeler);
+    if (!state.labeler) { $("setup").hidden = false; $("app").hidden = true; return; }
+    $("setup").hidden = true; $("app").hidden = false;
+    load(); render();
+  }
+
+  // theme toggle (per-viewer convenience)
+  function applyTheme(t) { if (t) document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); }
+  applyTheme(storeGet("bran-labels:theme"));
+  $("theme").addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var dark = cur ? cur === "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var t = dark ? "light" : "dark"; applyTheme(t); storeSet("bran-labels:theme", t);
+  });
+
+  $("sha").textContent = SAMPLE.sample_sha + " · " + items.length + " items";
+  $("labeler").value = storeGet("bran-labels:last-labeler") || "";
+  $("labeler").addEventListener("change", start);
+  Array.prototype.forEach.call(document.querySelectorAll("button[data-f]"), function (b) {
+    b.addEventListener("click", function () { setField(b.getAttribute("data-f"), b.getAttribute("data-v")); });
+  });
+  $("prev").addEventListener("click", function () { go(state.idx - 1); });
+  $("next").addEventListener("click", function () { go(state.idx + 1); });
+  $("nextOpen").addEventListener("click", nextOpen);
+  $("notes").addEventListener("input", function () {
+    var l = lab(items[state.idx].item_id);
+    l.notes = $("notes").value; if (state.revealed) l.edited_after_reveal = 1; save();
+  });
+  $("export").addEventListener("click", exportCsv);
+  $("import").addEventListener("change", function (e) { if (e.target.files[0]) importCsv(e.target.files[0]); e.target.value = ""; });
+  $("revealBtn").addEventListener("click", function () {
+    if (nDone() < items.length) return;
+    if (!confirm("Reveal grader verdicts? Export your blind labels first; later edits will be flagged.")) return;
+    state.revealed = true; save(); render();
+  });
+  document.addEventListener("keydown", function (e) {
+    if ($("app").hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (e.target.tagName || "").toLowerCase();
+    if (tag === "textarea" || tag === "input") { if (e.key === "Escape") e.target.blur(); return; }
+    var k = e.key;
+    if (KEYS[k.toLowerCase()]) { setField(KEYS[k.toLowerCase()][0], KEYS[k.toLowerCase()][1]); e.preventDefault(); }
+    else if (k === "ArrowRight" || k === "j" || k === "Enter") { go(state.idx + 1); e.preventDefault(); }
+    else if (k === "ArrowLeft" || k === "k") { go(state.idx - 1); e.preventDefault(); }
+    else if (k === "x") { nextOpen(); e.preventDefault(); }
+    else if (k === "/") { $("notes").focus(); e.preventDefault(); }
+  });
+  start();
+})();
+</script>
+</body>
+</html>

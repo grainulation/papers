@@ -1,0 +1,37 @@
+\RequirePackage{iftex}
+\ifPDFTeX\pdfoutput=1\fi
+\documentclass[11pt]{article}
+\input{preamble}
+\hypersetup{pdftitle={Verify, Then Vote: Supporting Material},pdfauthor={Grainulation},pdfkeywords={supporting material, methods, proofs, artifacts, reproducibility}}
+\title{Verify, Then Vote\\Supporting Material}
+\author{Grainulation}
+\date{November 2026}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\crefname{appendix}{Section}{Sections}
+\Crefname{appendix}{Section}{Sections}
+\begin{document}
+\maketitle
+\input{sections/supplement-introduction}
+\begingroup
+\makeatletter
+\let\original@section\l@section
+\renewcommand{\l@section}[2]{\begingroup\renewcommand{\numberline}[1]{\hb@xt@2em{##1\hfil}}\original@section{#1}{#2}\endgroup}
+\makeatother
+\tableofcontents
+\endgroup
+\clearpage
+\input{sections/appendix-a-background}
+\input{sections/appendix-b-reducer}
+\input{sections/appendix-c-schema}
+\input{sections/appendix-d-proofs}
+\input{sections/appendix-e-workload}
+\input{sections/appendix-f-freetext}
+\input{sections/appendix-g-artifact}
+\input{sections/appendix-h-methods}
+\input{sections/04-evidence}
+\input{sections/supplement-replay}
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

@@ -1,0 +1,1300 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain1366",
+ "order": 132,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain1366",
+  "order": 132,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus."
+ },
+ "item_view_sha256": "ce44a463aa50a547936ba19db82380116ecec37149aaf722fe0c8e0fccea6a17",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "42c05e5a5725417e7a100f729d8c982af97ee7dfc7bddf701add8a10e1a584ea",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792843714.335923,
+      "end_wall": 1792843716.250154,
+      "error": null
+     }
+    ],
+    "start_wall": 1792843714.335923,
+    "start_mono": 513271.068272958,
+    "end_wall": 1792843716.250154,
+    "end_mono": 513272.982470666,
+    "raw_response": "{\"query\": \"VgrG (Tssl) protein punctures membranes spike tip tube apparatus\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1911668666,
+     "load_duration": 119794541,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 445487625,
+     "eval_count": 23,
+     "eval_duration": 1049460167,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:36.249245Z"
+    },
+    "elapsed_s": 1.914,
+    "query_used": "VgrG (Tssl) protein punctures membranes spike tip tube apparatus",
+    "query_source": "json",
+    "query_arrival_seq": 661
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "VgrG (Tssl) protein punctures membranes spike tip tube apparatus",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 707
+      },
+      {
+       "passage_key": "scifact:4406819:1",
+       "score_q": 676
+      },
+      {
+       "passage_key": "scifact:7451607:0",
+       "score_q": 661
+      },
+      {
+       "passage_key": "scifact:13992047:0",
+       "score_q": 660
+      },
+      {
+       "passage_key": "scifact:13411519:1",
+       "score_q": 657
+      }
+     ],
+     "retrieval_sha256": "526ac859e82d36aa4c305be566c08bbe6b097e85ab553f01efaa7d7d3c64fbe9"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "526ac859e82d36aa4c305be566c08bbe6b097e85ab553f01efaa7d7d3c64fbe9",
+    "query_embedding_sha256": "c31fa55e083455d715c202e92e854602af32ad2000f6d3aacb0b551907c33303",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4406819:1",
+      "content_sha256": "1037efa6bbe1b9f4d7a02341a0d5ef17b946ac3affe9c8e7e64cb83c5f395e89",
+      "chars": 602
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7451607:0",
+      "content_sha256": "1bdcac1d77c37fd2b52c6bcf17101cbbbbdec54b366c09937592aad127fff4d0",
+      "chars": 1086
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:13992047:0",
+      "content_sha256": "4e136eafb2cf737ff88aca70002994eeb92e532cc8f1abb9e261193c79a6de94",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:13411519:1",
+      "content_sha256": "4515a50fac3d0eaac3b215ebff795eb99afb907148b3097f0d08bc7aaa53626c",
+      "chars": 1006
+     }
+    ],
+    "elapsed_s": 4.1484
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nEvidence passages from your search for \"VgrG (Tssl) protein punctures membranes spike tip tube apparatus\":\n<<<PASSAGES\n[P1] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P2] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe crystal structures of two PAAR-repeat proteins bound to VgrG-like partners show that these proteins sharpen the tip of the T6SS spike complex. We demonstrate that PAAR proteins are essential for T6SS-mediated secretion and target cell killing by Vibrio cholerae and Acinetobacter baylyi. Our results indicate a new model of the T6SS organelle in which the VgrG-PAAR spike complex is decorated with multiple effectors that are delivered simultaneously into target cells in a single contraction-driven translocation event.\n\n[P3] Monitoring spatiotemporal biogenesis of macromolecular assemblies by pulse-chase epitope labeling.\nMany cellular proteins perform their roles within macromolecular assemblies. Hence, an understanding of how these multiprotein complexes form is a fundamental question in cell biology. We developed a translation-controlled pulse-chase system that allows time-resolved isolation of newly forming multiprotein complexes in chemical quantities suitable for biochemical and cell biological analysis. The \"pulse\" is triggered by an unnatural amino acid, which induces immediate translation of an amber stop codon repressed mRNA encoding the protein of interest with a built-in tag for detection and purification. The \"chase\" is elicited by stopping translation of this bait via a riboswitch in the respective mRNA. Over the course of validating our method, we discovered a distinct time-resolved assembly step during NPC biogenesis and could directly monitor the spatiotemporal maturation of preribosomes via immunofluorescence detection and purification of a pulse-labeled ribosomal protein.\n\n[P4] Directed Actin Polymerization Is the Driving Force for Epithelial Cell–Cell Adhesion\nWe have found that epithelial cells engage in a process of cadherin-mediated intercellular adhesion that utilizes calcium and actin polymerization in unexpected ways. Calcium stimulates filopodia, which penetrate and embed into neighboring cells. E-cadherin complexes cluster at filopodia tips, generating a two-rowed zipper of embedded puncta. Opposing cell surfaces are clamped by desmosomes, while vinculin, zyxin, VASP, and Mena are recruited to adhesion zippers by a mechanism that requires alpha-catenin. Actin reorganizes and polymerizes to merge puncta into a single row and seal cell borders. In keratinocytes either null for alpha-catenin or blocked in VASP/Mena function, filopodia embed, but actin reorganization/polymerization is prevented, and membranes cannot seal. Taken together, a dynamic mechanism for intercellular adhesion is unveiled involving calcium-activated filopodia penetration and VASP/Mena-dependent actin reorganization/polymerization.\n\n[P5] Gq protein alpha subunits Galphaq and Galpha11 are localized at postsynaptic extra-junctional membrane of cerebellar Purkinje cells and hippocampal pyramidal cells.\nImmunoparticles were distributed along the extra-junctional cell membrane of spines, dendrites and somata, but were almost excluded from the junctional membrane. By double immunofluorescence, Galphaq/Galpha11 was extensively colocalized with metabotropic glutamate receptor mGluR1alpha in dendritic spines of PCs and with mGluR5 in those of hippocampal pyramidal cells. Together with concentrated localization of mGluR1alpha and mGluR5 in a peri-junctional annulus on PC and pyramidal cell synapses (Baude et al. 1993, Neuron, 11, 771-787; Luján et al. 1996, Eur. J. Neurosci., 8, 1488-1500), the present molecular-anatomical findings suggest that peri-junctional stimulation of the group I metabotropic glutamate receptors is mediated by Galphaq and/or Galpha11, leading to the activation of the intracellular effector, phospholipase Cbeta.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b8f5cb822d4ca1972fd5222e004d15282af30e10d2ec961019c4fa9f3afda07d",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792843720.399246,
+      "end_wall": 1792843734.128594,
+      "error": null
+     }
+    ],
+    "arrival_seq": 660,
+    "start_wall": 1792843720.399246,
+    "start_mono": 513277.131498416,
+    "end_wall": 1792843734.128594,
+    "end_mono": 513290.860625208,
+    "raw_response": "{\"reasoning\": \"The passage P4 explains how epithelial cells use actin polymerization for cell-cell adhesion, which does not involve a spike protein.\", \"answer\": \"REFUTED\", \"citations\": [\"P4\"] , \"confidence\": \"low\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13725591000,
+     "load_duration": 4090893833,
+     "prompt_eval_count": 1333,
+     "prompt_eval_duration": 4255613500,
+     "eval_count": 61,
+     "eval_duration": 4713954500,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:54.126392Z"
+    },
+    "elapsed_s": 13.729,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 660,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:13992047:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "low",
+    "reasoning_chars": 133,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "42c05e5a5725417e7a100f729d8c982af97ee7dfc7bddf701add8a10e1a584ea",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792843714.336242,
+      "end_wall": 1792843716.203687,
+      "error": null
+     }
+    ],
+    "start_wall": 1792843714.336242,
+    "start_mono": 513271.068591791,
+    "end_wall": 1792843716.203687,
+    "end_mono": 513272.936004958,
+    "raw_response": "{\"query\": \"VgrG spike mechanism membrane puncture\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1864528542,
+     "load_duration": 70084125,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 636073708,
+     "eval_count": 14,
+     "eval_duration": 1035643458,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:36.202169Z"
+    },
+    "elapsed_s": 1.867,
+    "query_used": "VgrG spike mechanism membrane puncture",
+    "query_source": "json",
+    "query_arrival_seq": 660
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "VgrG spike mechanism membrane puncture",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:13992047:0",
+       "score_q": 664
+      },
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 661
+      },
+      {
+       "passage_key": "scifact:6936141:0",
+       "score_q": 660
+      },
+      {
+       "passage_key": "scifact:8903143:0",
+       "score_q": 660
+      },
+      {
+       "passage_key": "scifact:11254556:0",
+       "score_q": 654
+      }
+     ],
+     "retrieval_sha256": "a2ded449bd215ed0e864417bf70de8d1b2c86eb66d1be1c428c2b98b578a29ad"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a2ded449bd215ed0e864417bf70de8d1b2c86eb66d1be1c428c2b98b578a29ad",
+    "query_embedding_sha256": "06f445c60a98ed8daf4905bbdc6939b442617e77eb29c3967536acd097f26d9f",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:13992047:0",
+      "content_sha256": "4e136eafb2cf737ff88aca70002994eeb92e532cc8f1abb9e261193c79a6de94",
+      "chars": 1051
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:6936141:0",
+      "content_sha256": "b13aa28a08cc57188f45d2ed9be0e7f983fec51bc20631a70c9abeffc2fb359e",
+      "chars": 944
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8903143:0",
+      "content_sha256": "3bae7c1f0eccf0c4157b9a2f4c563889978c4ba37e1e7b91f51e578a8381104f",
+      "chars": 1081
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:11254556:0",
+      "content_sha256": "14592e4d375c6c56799a6454524a73b02ad2b2d675de9feca3a2a8bbda5786b2",
+      "chars": 926
+     }
+    ],
+    "elapsed_s": 4.1319
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nEvidence passages from your search for \"VgrG spike mechanism membrane puncture\":\n<<<PASSAGES\n[P1] Directed Actin Polymerization Is the Driving Force for Epithelial Cell–Cell Adhesion\nWe have found that epithelial cells engage in a process of cadherin-mediated intercellular adhesion that utilizes calcium and actin polymerization in unexpected ways. Calcium stimulates filopodia, which penetrate and embed into neighboring cells. E-cadherin complexes cluster at filopodia tips, generating a two-rowed zipper of embedded puncta. Opposing cell surfaces are clamped by desmosomes, while vinculin, zyxin, VASP, and Mena are recruited to adhesion zippers by a mechanism that requires alpha-catenin. Actin reorganizes and polymerizes to merge puncta into a single row and seal cell borders. In keratinocytes either null for alpha-catenin or blocked in VASP/Mena function, filopodia embed, but actin reorganization/polymerization is prevented, and membranes cannot seal. Taken together, a dynamic mechanism for intercellular adhesion is unveiled involving calcium-activated filopodia penetration and VASP/Mena-dependent actin reorganization/polymerization.\n\n[P2] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P3] Nef is physically recruited into the immunological synapse and potentiates T cell activation early after TCR engagement.\nThe HIV-1 protein Nef enhances viral pathogenicity and accelerates disease progression in vivo. Nef potentiates T cell activation by an unknown mechanism, probably by optimizing the intracellular environment for HIV replication. Using a new T cell reporter system, we have found that Nef more than doubles the number of cells expressing the transcription factors NF-kappaB and NFAT after TCR stimulation. This Nef-induced priming of TCR signaling pathways occurred independently of calcium signaling and involved a very proximal step before protein kinase C activation. Engagement of the TCR by MHC-bound Ag triggers the formation of the immunological synapse by recruiting detergent-resistant membrane microdomains, termed lipid rafts. Approximately 5-10% of the total cellular pool of Nef is localized within lipid rafts.\n\n[P4] Basic residues in the T-cell receptor ζ cytoplasmic domain mediate membrane association and modulate signaling.\nThe T-cell receptor (TCR) consists of a TCRαβ heterodimer, a TCRζ homodimer, and CD3γε and CD3δε heterodimers. The precise mechanism of T-cell triggering following TCR ligand engagement remains elusive. Previous studies reported that the cytoplasmic tail of CD3ε binds to the plasma membrane through a basic residue-rich stretch (BRS) and proposed that dissociation from the membrane is required for phosphorylation thereof. In this report we show that BRS motifs within the cytoplasmic tail of TCRζ mediate association with the plasma membrane and that TCR engagement results in TCRζ dissociation from the membrane. This dissociation requires phosphorylation of the TCRζ immunoreceptor tyrosine-based activation motifs by lymphocyte cell-specificprotein tyrosine kinase (Lck) but not ζ-chain-associated protein kinase 70 binding. Mutations of the TCRζ BRS motifs that disrupt this membrane association attenuate proximal and distal responses induced by TCR engagement.\n\n[P5] Presynaptically Localized Cyclic GMP-Dependent Protein Kinase 1 Is a Key Determinant of Spinal Synaptic Potentiation and Pain Hypersensitivity\nSynaptic long-term potentiation (LTP) at spinal neurons directly communicating pain-specific inputs from the periphery to the brain has been proposed to serve as a trigger for pain hypersensitivity in pathological states. Previous studies have functionally implicated the NMDA receptor-NO pathway and the downstream second messenger, cGMP, in these processes. Because cGMP can broadly influence diverse ion-channels, kinases, and phosphodiesterases, pre- as well as post-synaptically, the precise identity of cGMP targets mediating spinal LTP, their mechanisms of action, and their locus in the spinal circuitry are still unclear. Here, we found that Protein Kinase G1 (PKG-I) localized presynaptically in nociceptor terminals plays an essential role in the expression of spinal LTP.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "722ac6bb9f5e5988cf89838e73b395c59e7f932d01f0357fa387cc92a1983e78",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792843720.3368409,
+      "end_wall": 1792843743.863678,
+      "error": null
+     }
+    ],
+    "arrival_seq": 661,
+    "start_wall": 1792843720.3368409,
+    "start_mono": 513277.0690945,
+    "end_wall": 1792843743.863678,
+    "end_mono": 513300.595552916,
+    "raw_response": "{\"reasoning\": \"Passage P2 discusses the bacterial Type VI secretion system (T6SS) and mentions that the VgrG spike, which is part of this system, forms a sharp conical extension involved in penetrating membranes and attaching effector domains. This aligns with the claim that VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the apparatus, indicating a mechanism consistent with membrane penetration through spike formation.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 23521524833,
+     "load_duration": 2951796416,
+     "prompt_eval_count": 1321,
+     "prompt_eval_duration": 7730530500,
+     "eval_count": 118,
+     "eval_duration": 11748219493,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:09:03.859666Z"
+    },
+    "elapsed_s": 23.526,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 661,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:4406819:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 433,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "42c05e5a5725417e7a100f729d8c982af97ee7dfc7bddf701add8a10e1a584ea",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792843714.336461,
+      "end_wall": 1792843719.4148211,
+      "error": null
+     }
+    ],
+    "start_wall": 1792843714.336461,
+    "start_mono": 513271.068810125,
+    "end_wall": 1792843719.4148211,
+    "end_mono": 513276.14708775,
+    "raw_response": "{\"query\": \"VgrG protein membrane puncture\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5076119375,
+     "load_duration": 3795895375,
+     "prompt_eval_count": 174,
+     "prompt_eval_duration": 716342875,
+     "eval_count": 13,
+     "eval_duration": 449424374,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:39.413863Z"
+    },
+    "elapsed_s": 5.078,
+    "query_used": "VgrG protein membrane puncture",
+    "query_source": "json",
+    "query_arrival_seq": 663
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "VgrG protein membrane puncture",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 6040
+      },
+      {
+       "passage_key": "scifact:4406819:1",
+       "score_q": 5547
+      },
+      {
+       "passage_key": "scifact:38830961:1",
+       "score_q": 4493
+      },
+      {
+       "passage_key": "scifact:6788835:1",
+       "score_q": 4370
+      },
+      {
+       "passage_key": "scifact:7643848:0",
+       "score_q": 4297
+      }
+     ],
+     "retrieval_sha256": "c395ec13a49736eeb6b54f3735ac37e83ce956fb3202dc4a43ba60b470396f14"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c395ec13a49736eeb6b54f3735ac37e83ce956fb3202dc4a43ba60b470396f14",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:4406819:1",
+      "content_sha256": "1037efa6bbe1b9f4d7a02341a0d5ef17b946ac3affe9c8e7e64cb83c5f395e89",
+      "chars": 602
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:38830961:1",
+      "content_sha256": "a126213ab4ad0c077b3c4f7d37b5b74d5b7196178afffe561b0f8be285b7f440",
+      "chars": 741
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6788835:1",
+      "content_sha256": "c2bcd2abc7f1fa88ef246c6071556da725cba918a9b5a822088233ec8ab0f25e",
+      "chars": 444
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7643848:0",
+      "content_sha256": "b1dc6a5fa5a901a3f00ab750c24536dd28a05959a15ac86241da1abb2f3f86ea",
+      "chars": 771
+     }
+    ],
+    "elapsed_s": 0.0025
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nEvidence passages from your search for \"VgrG protein membrane puncture\":\n<<<PASSAGES\n[P1] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P2] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe crystal structures of two PAAR-repeat proteins bound to VgrG-like partners show that these proteins sharpen the tip of the T6SS spike complex. We demonstrate that PAAR proteins are essential for T6SS-mediated secretion and target cell killing by Vibrio cholerae and Acinetobacter baylyi. Our results indicate a new model of the T6SS organelle in which the VgrG-PAAR spike complex is decorated with multiple effectors that are delivered simultaneously into target cells in a single contraction-driven translocation event.\n\n[P3] Interaction of TNF with TNF receptor type 2 promotes expansion and function of mouse CD4+CD25+ T regulatory cells.\nUnlike TNF, IL-1beta and IL-6 did not up-regulate FoxP3-expressing Tregs. Furthermore, the number of Tregs increased in wild-type mice, but not in TNFR2(-/-) mice following sublethal cecal ligation and puncture. Depletion of Tregs significantly decreased mortality following cecal ligation and puncture. Thus, the stimulatory effect of TNF on Tregs resembles the reported costimulatory effects of TNF on Teffs, but is even more pronounced because of the higher expression of TNFR2 by Tregs. Moreover, our study suggests that the slower response of Tregs than Teffs to TNF results in delayed immunosuppressive feedback effects.\n\n[P4] Dislocation of a type I membrane protein requires interactions between membrane-spanning segments within the lipid bilayer.\nThe failure of US11 TMD mutants to catalyze dislocation is a unique instance in which a polar residue in the TMD of a type I membrane protein is required for that protein's function. Targeting of MHCI heavy chains for dislocation by US11 thus requires the formation of interhelical hydrogen bonds within the ER membrane.\n\n[P5] Membrane topology of the 60-kDa Oxa1p homologue from Escherichia coli.\nWe have characterized the membrane topology of a 60-kDa inner membrane protein from Escherichia coli that is homologous to the recently identified Oxa1p protein in Saccharomyces cerevisiae mitochondria implicated in the assembly of mitochondrial inner membrane proteins. Hydrophobicity and alkaline phosphatase fusion analyses suggest a membrane topology with six transmembrane segments, including an N-terminal signal-anchor sequence not present in mitochondrial Oxa1p. In contrast to partial N-terminal fusion protein constructs, the full-length protein folds into a protease-resistant conformation, suggesting that important folding determinants are present in the C-terminal part of the molecule.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9ccf2504623b538251ce12fa2abc9138f6a1a01779362d53036791ae707f197f",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792843719.417639,
+      "end_wall": 1792843745.414525,
+      "error": null
+     }
+    ],
+    "arrival_seq": 662,
+    "start_wall": 1792843719.417639,
+    "start_mono": 513276.149906875,
+    "end_wall": 1792843745.414525,
+    "end_mono": 513302.146374208,
+    "raw_response": "{\"reasoning\": \"The claim that VgrG protein punctures membranes by forming a spike at the tip of the tube apparatus is supported by passages P1 and P2. Passage P1 mentions that the T6SS organelle, which uses the VgrG spike, is responsible for penetrating cells. Passage P2 presents crystal structures showing that PAAR-repeat proteins sharpen the tip of the VgrG spike complex, indicating that the spike has a function in penetrating membranes. No passages refute the claim, and my own knowledge supports the idea that VgrG is designed to puncture membranes, consistent with the role of a bacterial toxin delivery sy\" ,\"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25992946834,
+     "load_duration": 47301875,
+     "prompt_eval_count": 1049,
+     "prompt_eval_duration": 4258433792,
+     "eval_count": 158,
+     "eval_duration": 20109343627,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:09:05.41205Z"
+    },
+    "elapsed_s": 25.996,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 662,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "scifact:4406819:0",
+     "scifact:4406819:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "42c05e5a5725417e7a100f729d8c982af97ee7dfc7bddf701add8a10e1a584ea",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792843714.336108,
+      "end_wall": 1792843716.440543,
+      "error": null
+     }
+    ],
+    "start_wall": 1792843714.336108,
+    "start_mono": 513271.068457291,
+    "end_wall": 1792843716.440543,
+    "end_mono": 513273.172857583,
+    "raw_response": "{\"query\": \"VgrG protein membrane puncture mechanism\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2101541625,
+     "load_duration": 1187131667,
+     "prompt_eval_count": 194,
+     "prompt_eval_duration": 425248250,
+     "eval_count": 16,
+     "eval_duration": 399344668,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:36.439243Z"
+    },
+    "elapsed_s": 2.104,
+    "query_used": "VgrG protein membrane puncture mechanism",
+    "query_source": "json",
+    "query_arrival_seq": 662
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "VgrG protein membrane puncture mechanism",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27438378:1",
+       "score_q": 717
+      },
+      {
+       "passage_key": "scifact:5436081:0",
+       "score_q": 705
+      },
+      {
+       "passage_key": "scifact:11661377:0",
+       "score_q": 691
+      },
+      {
+       "passage_key": "scifact:13992047:0",
+       "score_q": 691
+      },
+      {
+       "passage_key": "scifact:27438378:0",
+       "score_q": 689
+      }
+     ],
+     "retrieval_sha256": "04401e68cb123444e5103b177854bac2d7aa14b3d2d88b157c0134834ae7b772"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "04401e68cb123444e5103b177854bac2d7aa14b3d2d88b157c0134834ae7b772",
+    "query_embedding_sha256": "9c8d5b40b4ea405ee9e016f27d5c118ed3db82039abf5839e51f5404e1deb718",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27438378:1",
+      "content_sha256": "0a22ec4190781332862da4fb236068f22168eed0e2b2a23739cd06298de65299",
+      "chars": 924
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:5436081:0",
+      "content_sha256": "3c93dbdc43e4c261ced8082ab2fdfee29efa19fd4e493d290d56a2455e2d41b2",
+      "chars": 903
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:11661377:0",
+      "content_sha256": "548723547c3e6f1df2e84a4c7abf69cb7b2c99ce5f3aa4829cb8218b588e1d1b",
+      "chars": 492
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:13992047:0",
+      "content_sha256": "4e136eafb2cf737ff88aca70002994eeb92e532cc8f1abb9e261193c79a6de94",
+      "chars": 1051
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27438378:0",
+      "content_sha256": "28f013f13f99c3cc9ab1ff197a8f9590dd816957d3291e851da27c7080c7c227",
+      "chars": 990
+     }
+    ],
+    "elapsed_s": 4.0468
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nEvidence passages from your search for \"VgrG protein membrane puncture mechanism\":\n<<<PASSAGES\n[P1] Misread protein creates membrane channels: an essential step in the bactericidal action of aminoglycosides.\nThis mechanism can account for several previously unexplained observations: that streptomycin uptake requires protein synthesis during, but not after, the lag before the membrane damage; that streptomycin-resistant cells, which fail to take up streptomycin, can do so after treatment by another aminoglycoside; and that puromycin at moderate concentrations accelerates streptomycin uptake, while high concentrations (which release shorter chains) prevent it. In addition, puromycin, prematurely releasing polypeptides of normal sequence, also evidently creates channels, since it is reported to promote streptomycin uptake even in streptomycin-resistant cells. These findings imply that normal membrane proteins must be selected not only for a hydrophobic anchoring surface, but also for a tight fit in the membrane.\n\n[P2] MG53 nucleates assembly of cell membrane repair machinery\nDynamic membrane repair and remodelling is an elemental process that maintains cell integrity and mediates efficient cellular function. Here we report that MG53, a muscle-specific tripartite motif family protein (TRIM72), is a component of the sarcolemmal membrane-repair machinery. MG53 interacts with phosphatidylserine to associate with intracellular vesicles that traffic to and fuse with sarcolemmal membranes. Mice null for MG53 show progressive myopathy and reduced exercise capability, associated with defective membrane-repair capacity. Injury of the sarcolemmal membrane leads to entry of the extracellular oxidative environment and MG53 oligomerization, resulting in recruitment of MG53-containing vesicles to the injury site. After vesicle translocation, entry of extracellular Ca2+ facilitates vesicle fusion to reseal the membrane.\n\n[P3] SNAREs — engines for membrane fusion\nSince the discovery of SNARE proteins in the late 1980s, SNAREs have been recognized as key components of protein complexes that drive membrane fusion. Despite considerable sequence divergence among SNARE proteins, their mechanism seems to be conserved and is adaptable for fusion reactions as diverse as those involved in cell growth, membrane repair, cytokinesis and synaptic transmission. A fascinating picture of these robust nanomachines is emerging.\n\n[P4] Directed Actin Polymerization Is the Driving Force for Epithelial Cell–Cell Adhesion\nWe have found that epithelial cells engage in a process of cadherin-mediated intercellular adhesion that utilizes calcium and actin polymerization in unexpected ways. Calcium stimulates filopodia, which penetrate and embed into neighboring cells. E-cadherin complexes cluster at filopodia tips, generating a two-rowed zipper of embedded puncta. Opposing cell surfaces are clamped by desmosomes, while vinculin, zyxin, VASP, and Mena are recruited to adhesion zippers by a mechanism that requires alpha-catenin. Actin reorganizes and polymerizes to merge puncta into a single row and seal cell borders. In keratinocytes either null for alpha-catenin or blocked in VASP/Mena function, filopodia embed, but actin reorganization/polymerization is prevented, and membranes cannot seal. Taken together, a dynamic mechanism for intercellular adhesion is unveiled involving calcium-activated filopodia penetration and VASP/Mena-dependent actin reorganization/polymerization.\n\n[P5] Misread protein creates membrane channels: an essential step in the bactericidal action of aminoglycosides.\nAmong the pleiotropic effects of aminoglycosides, their irreversible uptake and their blockade of initiating ribosomes have appeared to explain their bactericidal action, while the contributions of translational misreading and membrane damage and the mechanism of that damage have remained uncertain. We now present evidence that incorporation of misread proteins into the membrane can account for the membrane damage. The bactericidal action thus appears to result from the following sequence, in which each step is essential: slight initial entry of the antibiotic; interaction with chain-elongating ribosomes, resulting in misreading; incorporation of misread protein into the membrane, creating abnormal channels; increased (and irreversible) entry through these channels, and hence increased misreading and formation of channels; and, finally, blockade of initiating ribosomes.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b540f7b4bb2bf9830c4cd974b412b640e8bb4e93be881a809e26ca5b8d69343b",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792843720.4884748,
+      "end_wall": 1792843745.662266,
+      "error": null
+     }
+    ],
+    "arrival_seq": 663,
+    "start_wall": 1792843720.4884748,
+    "start_mono": 513277.220725541,
+    "end_wall": 1792843745.662266,
+    "end_mono": 513302.394111041,
+    "raw_response": "{\n  \"reasoning\": \"The claim specifies that the VgrG (Tssl) protein forms a spike at the tip of the tube apparatus to puncture membranes. While the evidence passages primarily discuss protein functions in cellular processes unrelated to membrane puncture directly, passage [P1] discusses misread proteins (including VgrG) creating membrane channels in the context of aminoglycoside action. This aligns with the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 25169452209,
+     "load_duration": 14790876959,
+     "prompt_eval_count": 1433,
+     "prompt_eval_duration": 2916789584,
+     "eval_count": 130,
+     "eval_duration": 6835289510,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:09:05.659662Z"
+    },
+    "elapsed_s": 25.173,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 663,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:27438378:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 398,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "42c05e5a5725417e7a100f729d8c982af97ee7dfc7bddf701add8a10e1a584ea",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792843714.336832,
+      "end_wall": 1792843722.595501,
+      "error": null
+     }
+    ],
+    "start_wall": 1792843714.336832,
+    "start_mono": 513271.069181583,
+    "end_wall": 1792843722.595501,
+    "end_mono": 513279.327716541,
+    "raw_response": "{\"query\": \"spike protein punctures membranes\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8256818958,
+     "load_duration": 5380246292,
+     "prompt_eval_count": 185,
+     "prompt_eval_duration": 916477500,
+     "eval_count": 12,
+     "eval_duration": 1714881584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:08:42.594427Z"
+    },
+    "elapsed_s": 8.259,
+    "query_used": "spike protein punctures membranes",
+    "query_source": "json",
+    "query_arrival_seq": 664
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "spike protein punctures membranes",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:4406819:0",
+       "score_q": 6235
+      },
+      {
+       "passage_key": "scifact:15482274:0",
+       "score_q": 5402
+      },
+      {
+       "passage_key": "scifact:15482274:1",
+       "score_q": 5326
+      },
+      {
+       "passage_key": "scifact:4406819:1",
+       "score_q": 5160
+      },
+      {
+       "passage_key": "scifact:34846352:1",
+       "score_q": 4876
+      }
+     ],
+     "retrieval_sha256": "c8f09f25a0756de5f86fefde1f6679dde9720819ee09a4806d50d65a1c66dcb3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "c8f09f25a0756de5f86fefde1f6679dde9720819ee09a4806d50d65a1c66dcb3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:4406819:0",
+      "content_sha256": "4c5312a6a6647eddcd44461d872066b02c4a048365c9a7c355aa57e95131aa4d",
+      "chars": 964
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:15482274:0",
+      "content_sha256": "687ed8725e6b3f1dc65de64ede4f2da0543cf8164704776bb3c7dc8c6c41fe43",
+      "chars": 1033
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:15482274:1",
+      "content_sha256": "50ea3930f18b933ed8eaa64f87963fe7e1de3ad06a7e1e29bca692ff2fa3be16",
+      "chars": 1068
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:4406819:1",
+      "content_sha256": "1037efa6bbe1b9f4d7a02341a0d5ef17b946ac3affe9c8e7e64cb83c5f395e89",
+      "chars": 602
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:34846352:1",
+      "content_sha256": "eb4e15f9ad92b087cbb6d149b8b6ad465fa6fcc7d73d0175faaaef11d58991e6",
+      "chars": 801
+     }
+    ],
+    "elapsed_s": 0.0009
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: VgrG (Tssl) protein punctures membranes by forming a spike at the tip of the tube apparatus.\n\nEvidence passages from your search for \"spike protein punctures membranes\":\n<<<PASSAGES\n[P1] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe bacterial type VI secretion system (T6SS) is a large multicomponent, dynamic macromolecular machine that has an important role in the ecology of many Gram-negative bacteria. T6SS is responsible for translocation of a wide range of toxic effector molecules, allowing predatory cells to kill both prokaryotic as well as eukaryotic prey cells. The T6SS organelle is functionally analogous to contractile tails of bacteriophages and is thought to attack cells by initially penetrating them with a trimeric protein complex called the VgrG spike. Neither the exact protein composition of the T6SS organelle nor the mechanisms of effector selection and delivery are known. Here we report that proteins from the PAAR (proline-alanine-alanine-arginine) repeat superfamily form a sharp conical extension on the VgrG spike, which is further involved in attaching effector domains to the spike.\n\n[P2] Ultrasound imaging for lumbar punctures and epidural catheterisations: systematic review and meta-analysis.\nOBJECTIVE To determine whether ultrasound imaging can reduce the risk of failed lumbar punctures or epidural catheterisations, when compared with standard palpation methods, and whether ultrasound imaging can reduce traumatic procedures, insertion attempts, and needle redirections. DESIGN Systematic review and meta-analysis of randomised controlled trials. DATA SOURCES Ovid Medline, Embase, and Cochrane Central Register of Controlled Trials up to May 2012, without restriction by language or publication status. REVIEW METHODS Randomised trials that compared ultrasound imaging with standard methods (no imaging) in the performance of a lumbar puncture or epidural catheterisation were identified. RESULTS 14 studies with a total of 1334 patients were included (674 patients assigned to the ultrasound group, 660 to the control group). Five studies evaluated lumbar punctures and nine evaluated epidural catheterisations.\n\n[P3] Ultrasound imaging for lumbar punctures and epidural catheterisations: systematic review and meta-analysis.\nSix of 624 procedures conducted in the ultrasound group failed; 44 of 610 procedures in the control group failed. Ultrasound imaging reduced the risk of failed procedures (risk ratio 0.21 (95% confidence interval 0.10 to 0.43), P<0.001). Risk reduction was similar when subgroup analysis was performed for lumbar punctures (risk ratio 0.19 (0.07 to 0.56), P=0.002) or epidural catheterisations (0.23 (0.09 to 0.60), P=0.003). Ultrasound imaging also significantly reduced the risk of traumatic procedures (risk ratio 0.27 (0.11 to 0.67), P=0.005), the number of insertion attempts (mean difference -0.44 (-0.64 to -0.24), P<0.001), and the number of needle redirections (mean difference -1.00 (-1.24 to -0.75), P<0.001). CONCLUSIONS Ultrasound imaging can reduce the risk of failed or traumatic lumbar punctures and epidural catheterisations, as well as the number of needle insertions and redirections. Ultrasound may be a useful adjunct for these procedures.\n\n[P4] PAAR-repeat proteins sharpen and diversify the Type VI secretion system spike\nThe crystal structures of two PAAR-repeat proteins bound to VgrG-like partners show that these proteins sharpen the tip of the T6SS spike complex. We demonstrate that PAAR proteins are essential for T6SS-mediated secretion and target cell killing by Vibrio cholerae and Acinetobacter baylyi. Our results indicate a new model of the T6SS organelle in which the VgrG-PAAR spike complex is decorated with multiple effectors that are delivered simultaneously into target cells in a single contraction-driven translocation event.\n\n[P5] Identification and characterization of a widely expressed form of adenylyl cyclase.\nAC9 mRNA is found throughout rat brain but is particularly abundant in hippocampus, cerebellum, and neocortex. An antiserum directed against the carboxyl terminus of the type 9 adenylyl cyclase detects native and expressed recombinant AC9 protein in tissue and cell membranes. Levels of the AC9 protein are highest in mouse brain membranes. Characterization of expressed recombinant AC9 reveals that the protein is a functional adenylyl cyclase that is stimulated by Mg2+, forskolin, and mutationally activated Gsalpha. AC9 activity is not affected by Ca2+/calmodulin or by G protein betagamma-subunits. Thus AC9 represents a functional G protein-regulated adenylyl cyclase found in brain and in most somatic tissues.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9751feebffc3ddf973179642847b7a376f579591fb9f38695bc2139b59cd652e",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792843722.596871,
+      "end_wall": 1792843753.182864,
+      "error": null
+     }
+    ],
+    "arrival_seq": 664,
+    "start_wall": 1792843722.596871,
+    "start_mono": 513279.329087833,
+    "end_wall": 1792843753.182864,
+    "end_mono": 513309.914589291,
+    "raw_response": "{\"reasoning\": \"The evidence passages support the claim as they describe the role of VgrG in puncturing membranes through the spike of the T6SS. The passages also mention the PAAR proteins, which contribute to the sharpness of the VgrG spike.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 30581271833,
+     "load_duration": 25095869333,
+     "prompt_eval_count": 1293,
+     "prompt_eval_duration": 2088386959,
+     "eval_count": 85,
+     "eval_duration": 1855230589,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T12:09:13.179269Z"
+    },
+    "elapsed_s": 30.586,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 664,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:4406819:0",
+     "scifact:15482274:0",
+     "scifact:15482274:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 226,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "526ac859e82d36aa4c305be566c08bbe6b097e85ab553f01efaa7d7d3c64fbe9",
+  "exaone3.5:7.8b": "a2ded449bd215ed0e864417bf70de8d1b2c86eb66d1be1c428c2b98b578a29ad",
+  "olmo2:7b": "c395ec13a49736eeb6b54f3735ac37e83ce956fb3202dc4a43ba60b470396f14",
+  "granite3.3:2b": "04401e68cb123444e5103b177854bac2d7aa14b3d2d88b157c0134834ae7b772",
+  "nemotron-mini:4b": "c8f09f25a0756de5f86fefde1f6679dde9720819ee09a4806d50d65a1c66dcb3"
+ },
+ "item_start_wall": 1792843714.335469,
+ "item_wall_s": 38.847,
+ "ollama_ps_samples": [
+  [
+   1792843714.336,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792843716.338,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843718.34,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792843720.342,
+   [
+    "nemotron-mini:4b",
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792843722.348,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792843724.357,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792843726.364,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792843728.372,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792843730.383,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792843732.386,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792843734.397,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792843736.403,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843738.415,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843740.427,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843742.437,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843744.446,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792843746.457,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792843748.47,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792843750.471,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792843752.479,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

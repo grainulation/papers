@@ -1,0 +1,1291 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain726",
+ "order": 723,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain726",
+  "order": 723,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes."
+ },
+ "item_view_sha256": "1668b2b143d160fbbeee7fe05e6483b94a2eb14ee85f5b87e089954e692db2ac",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b",
+  "falcon3:3b",
+  "nemotron-mini:4b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "64c086da7b3ccc9d27929a3b4a84ee2167fe15d508df40ce180d85b38453abb2",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792873846.206366,
+      "end_wall": 1792873847.510339,
+      "error": null
+     }
+    ],
+    "start_wall": 1792873846.206366,
+    "start_mono": 543402.864984291,
+    "end_wall": 1792873847.510339,
+    "end_mono": 543404.168936125,
+    "raw_response": "{\"query\": \"Ly6C hi monocytes inflammatory capacity Ly6C lo monocytes\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1301647792,
+     "load_duration": 105349667,
+     "prompt_eval_count": 182,
+     "prompt_eval_duration": 356621667,
+     "eval_count": 19,
+     "eval_duration": 624420540,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:30:47.509667Z"
+    },
+    "elapsed_s": 1.304,
+    "query_used": "Ly6C hi monocytes inflammatory capacity Ly6C lo monocytes",
+    "query_source": "json",
+    "query_arrival_seq": 3615
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ly6C hi monocytes inflammatory capacity Ly6C lo monocytes",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:36444198:1",
+       "score_q": 786
+      },
+      {
+       "passage_key": "scifact:8317408:0",
+       "score_q": 765
+      },
+      {
+       "passage_key": "scifact:8317408:1",
+       "score_q": 762
+      },
+      {
+       "passage_key": "scifact:14492339:0",
+       "score_q": 760
+      },
+      {
+       "passage_key": "scifact:36444198:0",
+       "score_q": 758
+      }
+     ],
+     "retrieval_sha256": "20343063665b3324362f8246b2321700cbf0c394d3b9d7632d4482533513f9b7"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "20343063665b3324362f8246b2321700cbf0c394d3b9d7632d4482533513f9b7",
+    "query_embedding_sha256": "b67007fb56f124bdf249ab46c2bb6891174164214ddcc9b2bc5ca43ec278e377",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:36444198:1",
+      "content_sha256": "aa284618b1b7daadb716c124a3759963d127caa20cdd7acb6f38e366734f7983",
+      "chars": 779
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:8317408:0",
+      "content_sha256": "18895982f954915a78cdb0b948b7d5328148aaa88e3f274273d1de2b82bc31c0",
+      "chars": 1066
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:8317408:1",
+      "content_sha256": "fa5fb3c57c19a34354f81c86c40a0d3d6e439059ce8d33d1961cc3764c2b3fc9",
+      "chars": 408
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14492339:0",
+      "content_sha256": "cb154ae0771bfb2e2f9816c706c485e92b50e8b789d459b1e0148fabd924b41f",
+      "chars": 908
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:36444198:0",
+      "content_sha256": "65b096444aa12aab55eb6717b0b83518816d055dfaa6389887ec81b291c37b21",
+      "chars": 1064
+     }
+    ],
+    "elapsed_s": 4.6945
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nEvidence passages from your search for \"Ly6C hi monocytes inflammatory capacity Ly6C lo monocytes\":\n<<<PASSAGES\n[P1] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nSerial flow cytometric analyses of newly released Ly-6C(high) monocytes showed that Ly-6C expression on these cells was down-regulated while in circulation. Under inflammatory conditions elicited either by acute infection with Listeria monocytogenes or chronic infection with Leishmania major, there was a significant increase in immature Ly-6C(high) monocytes, resembling the inflammatory left shift of granulocytes. In addition, acute peritoneal inflammation recruited preferentially Ly-6C(med-high) monocytes. Taken together, these data identify distinct subpopulations of mouse blood monocytes that differ in maturation stage and capacity to become recruited to inflammatory sites.\n\n[P2] Human monocyte characteristics are altered in hypercholesterolaemia.\nPeripheral blood monocytes are involved during atherogenesis in adhering to endothelium, migrating into the subendothelial space and taking-up lipoproteins to become macrophage/foam cells. We have assessed whether peripheral blood monocyte characteristics are altered in human hyperlipidaemia in age/sex/smoking status matched pairs of patients and controls. Monocytes from the hypercholesterolaemic patients, as opposed to the controls, were more sensitive to stimulation by the agonist, N-formyl-methionyl-leucyl-phenylalanine, with respect to chemokinesis (stimulation index 1.48 +/- 0.17 vs. 1.10 +/- 0.14), chemotaxis (4.05 +/- 0.55 vs. 2.72 +/- 0.24) and adhesion to porcine aortic endothelial monolayers (1.26 +/- 0.05 vs. 1.17 +/- 0.06). The patients' monocyte total surface expression of the adhesion glycoprotein CD11b/CD18 (37.5 +/- 7.1 vs. 36.0 +/- 7.1), but not CD11c/CD18 (31.6 +/- 7.2 vs. 31.4 +/- 6.8), was increased; however, the monocytes in hyperlipidaemia were larger (9.15 +/-\n\n[P3] Human monocyte characteristics are altered in hypercholesterolaemia.\n0.11 microns vs. 8.98 +/- 0.11 microns) such that the surface density of CD11b/CD18 was not altered (0.144 +/- 0.029 vs. 0.142 +/- 0.029). The data suggest that circulating monocytes are functionally different in hypercholesterolaemia. This may explain the increased involvement by monocytes in hypercholesterolaemia-related atherogenesis.\n\n[P4] Blood monocytes consist of two principal subsets with distinct migratory properties\nPeripheral blood monocytes are a heterogeneous population of circulating leukocytes. Using a murine adoptive transfer system to probe monocyte homing and differentiation in vivo, we identified two functional subsets among murine blood monocytes: a short-lived CX(3)CR1(lo)CCR2(+)Gr1(+) subset that is actively recruited to inflamed tissues and a CX(3)CR1(hi)CCR2(-)Gr1(-) subset characterized by CX(3)CR1-dependent recruitment to noninflamed tissues. Both subsets have the potential to differentiate into dendritic cells in vivo. The level of CX(3)CR1 expression also defines the two major human monocyte subsets, the CD14(+)CD16(-) and CD14(lo)CD16(+) monocytes, which share phenotype and homing potential with the mouse subsets. These findings raise the potential for novel therapeutic strategies in inflammatory diseases.\n\n[P5] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nBlood monocytes are well-characterized precursors for macrophages and dendritic cells. Subsets of human monocytes with differential representation in various disease states are well known. In contrast, mouse monocyte subsets have been characterized minimally. In this study we identify three subpopulations of mouse monocytes that can be distinguished by differential expression of Ly-6C, CD43, CD11c, MBR, and CD62L. The subsets share the characteristics of extensive phagocytosis, similar expression of M-CSF receptor (CD115), and development into macrophages upon M-CSF stimulation. By eliminating blood monocytes with dichloromethylene-bisphosphonate-loaded liposomes and monitoring their repopulation, we showed a developmental relationship between the subsets. Monocytes were maximally depleted 18 h after liposome application and subsequently reappeared in the circulation. These cells were exclusively of the Ly-6C(high) subset, resembling bone marrow monocytes.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "2156dc8c6d496a4e5a5be1b11e93ff2bcd7542a9df286304f5567f9006e7a0dd",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792873852.205339,
+      "end_wall": 1792873865.785616,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3615,
+    "start_wall": 1792873852.205339,
+    "start_mono": 543408.86386725,
+    "end_wall": 1792873865.785616,
+    "end_mono": 543422.443971333,
+    "raw_response": "{\"reasoning\": \"The evidence provided suggests that Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes. This is evident from the observation that Ly6C hi monocytes are recruited to inflammatory sites, particularly in the context of acute infections and peritoneal inflammation, indicating a stronger inflammatory response.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P4\", \"P5\"],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13576513834,
+     "load_duration": 5649477792,
+     "prompt_eval_count": 1326,
+     "prompt_eval_duration": 2893161874,
+     "eval_count": 98,
+     "eval_duration": 3920110206,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:31:05.783586Z"
+    },
+    "elapsed_s": 13.58,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3615,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P4",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:36444198:1",
+     "scifact:14492339:0",
+     "scifact:36444198:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 332,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "64c086da7b3ccc9d27929a3b4a84ee2167fe15d508df40ce180d85b38453abb2",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792873846.2059798,
+      "end_wall": 1792873851.018375,
+      "error": null
+     }
+    ],
+    "start_wall": 1792873846.2059798,
+    "start_mono": 543402.864598666,
+    "end_wall": 1792873851.018375,
+    "end_mono": 543407.676919083,
+    "raw_response": "{\"query\": \"Ly6C hi monocytes inflammation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4809252625,
+     "load_duration": 3571765458,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 698619125,
+     "eval_count": 13,
+     "eval_duration": 423323791,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:30:51.017481Z"
+    },
+    "elapsed_s": 4.812,
+    "query_used": "Ly6C hi monocytes inflammation",
+    "query_source": "json",
+    "query_arrival_seq": 3618
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ly6C hi monocytes inflammation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22406695:0",
+       "score_q": 13462
+      },
+      {
+       "passage_key": "scifact:7521113:1",
+       "score_q": 10022
+      },
+      {
+       "passage_key": "scifact:7948486:0",
+       "score_q": 6658
+      },
+      {
+       "passage_key": "scifact:14492339:0",
+       "score_q": 6296
+      },
+      {
+       "passage_key": "scifact:7489663:0",
+       "score_q": 5685
+      }
+     ],
+     "retrieval_sha256": "bb33da0ab4ee4aa6383e0e275720dd7e9b62446034349296b66c97fbb88d1681"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "bb33da0ab4ee4aa6383e0e275720dd7e9b62446034349296b66c97fbb88d1681",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22406695:0",
+      "content_sha256": "2b5cc405eb07fd23a3694fe42138c09305fbb1867eae2cce40c84010824a1f92",
+      "chars": 924
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7521113:1",
+      "content_sha256": "90ee1eb276e6a475eaf588279da7a4ade45ecbad157c1ec1d451b7e6d37f2915",
+      "chars": 356
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7948486:0",
+      "content_sha256": "7c3a3fafc83c8953394050e9b37a29d514fdc606b83078256e918217b22aedc1",
+      "chars": 953
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14492339:0",
+      "content_sha256": "cb154ae0771bfb2e2f9816c706c485e92b50e8b789d459b1e0148fabd924b41f",
+      "chars": 908
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7489663:0",
+      "content_sha256": "998514170b78e1f37a08a81f94063887af8dbc46e14ce02b9250a8e4df4e3eb2",
+      "chars": 892
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nEvidence passages from your search for \"Ly6C hi monocytes inflammation\":\n<<<PASSAGES\n[P1] Origin and functions of tissue macrophages.\nMacrophages are distributed in tissues throughout the body and contribute to both homeostasis and disease. Recently, it has become evident that most adult tissue macrophages originate during embryonic development and not from circulating monocytes. Each tissue has its own composition of embryonically derived and adult-derived macrophages, but it is unclear whether macrophages of distinct origins are functionally interchangeable or have unique roles at steady state. This new understanding also prompts reconsideration of the function of circulating monocytes. Classical Ly6c(hi) monocytes patrol the extravascular space in resting organs, and Ly6c(lo) nonclassical monocytes patrol the vasculature. Inflammation triggers monocytes to differentiate into macrophages, but whether resident and newly recruited macrophages possess similar functions during inflammation is unclear.\n\n[P2] Fate mapping reveals origins and dynamics of monocytes and tissue macrophages under homeostasis.\nFurthermore, we have established that short-lived Ly6C(+) monocytes constitute obligatory steady-state precursors of blood-resident Ly6C(-) cells and that the abundance of Ly6C(+) blood monocytes dynamically controls the circulation lifespan of their progeny.\n\n[P3] Kruppel-like factor 2 (KLF2) regulates monocyte differentiation and functions in mBSA and IL-1β-induced arthritis.\nKruppel-like factor 2 (KLF2) plays an important role in the regulation of a variety of immune cells, including monocytes. We have previously shown that KLF2 inhibits proinflammatory activation of monocytes. However, the role of KLF2 in arthritis is yet to be investigated. In the current study, we show that recruitment of significantly greater numbers of inflammatory subset of CD11b(+)F4/80(+)Ly6C+ monocytes to the inflammatory sites in KLF2 hemizygous mice compared to the wild type littermate controls. In parallel, inflammatory mediators, MCP-1, Cox-2 and PAI-1 were significantly up-regulated in bone marrow-derived monocytes isolated from KLF2 hemizygous mice, in comparison to wild-type controls. Methylated-BSA and IL-1β-induced arthritis was more severe in KLF2 hemizygous mice as compared to the littermate wild type controls.\n\n[P4] Blood monocytes consist of two principal subsets with distinct migratory properties\nPeripheral blood monocytes are a heterogeneous population of circulating leukocytes. Using a murine adoptive transfer system to probe monocyte homing and differentiation in vivo, we identified two functional subsets among murine blood monocytes: a short-lived CX(3)CR1(lo)CCR2(+)Gr1(+) subset that is actively recruited to inflamed tissues and a CX(3)CR1(hi)CCR2(-)Gr1(-) subset characterized by CX(3)CR1-dependent recruitment to noninflamed tissues. Both subsets have the potential to differentiate into dendritic cells in vivo. The level of CX(3)CR1 expression also defines the two major human monocyte subsets, the CD14(+)CD16(-) and CD14(lo)CD16(+) monocytes, which share phenotype and homing potential with the mouse subsets. These findings raise the potential for novel therapeutic strategies in inflammatory diseases.\n\n[P5] Identification of splenic reservoir monocytes and their deployment to inflammatory sites.\nA current paradigm states that monocytes circulate freely and patrol blood vessels but differentiate irreversibly into dendritic cells (DCs) or macrophages upon tissue entry. Here we show that bona fide undifferentiated monocytes reside in the spleen and outnumber their equivalents in circulation. The reservoir monocytes assemble in clusters in the cords of the subcapsular red pulp and are distinct from macrophages and DCs. In response to ischemic myocardial injury, splenic monocytes increase their motility, exit the spleen en masse, accumulate in injured tissue, and participate in wound healing. These observations uncover a role for the spleen as a site for storage and rapid deployment of monocytes and identify splenic monocytes as a resource that the body exploits to regulate inflammation.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "86f6a2ce56a0e169b0336633ef99709f7fc8cf96ee29333a027f046b0e807bac",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792873851.01901,
+      "end_wall": 1792873868.3561459,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3616,
+    "start_wall": 1792873851.01901,
+    "start_mono": 543407.677554791,
+    "end_wall": 1792873868.3561459,
+    "end_mono": 543425.014469916,
+    "raw_response": "{\"reasoning\": \"Ly6C hi monocytes and Ly6C lo monocytes have different inflammatory capacities. Passage P3 indicates that KLF2, a regulator, inhibits proinflammatory activation of monocytes. This suggests that Ly6C hi monocytes might be more susceptible to proinflammatory activation and thus have a higher inflammatory capacity than Ly6C lo monocytes. Additionally, Passage P4 differentiates between two subsets of monocytes with different migratory properties, implying functional differences. Lastly, Passage P5 describes splenic monocytes as a reservoir, which can be deployed in inflammatory sites, indicating a\", \"answer\": \"SUPPORTED\", \"citations\": [], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17332749208,
+     "load_duration": 46185500,
+     "prompt_eval_count": 1144,
+     "prompt_eval_duration": 4241034750,
+     "eval_count": 145,
+     "eval_duration": 11646525668,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:31:08.35304Z"
+    },
+    "elapsed_s": 17.337,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3616,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "64c086da7b3ccc9d27929a3b4a84ee2167fe15d508df40ce180d85b38453abb2",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792873846.206115,
+      "end_wall": 1792873848.104927,
+      "error": null
+     }
+    ],
+    "start_wall": 1792873846.206115,
+    "start_mono": 543402.864733083,
+    "end_wall": 1792873848.104927,
+    "end_mono": 543404.763513583,
+    "raw_response": "{\"query\": \"Ly6C high monocytes inflammatory capacity\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1895568000,
+     "load_duration": 1166574416,
+     "prompt_eval_count": 190,
+     "prompt_eval_duration": 341374000,
+     "eval_count": 19,
+     "eval_duration": 312949750,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:30:48.103682Z"
+    },
+    "elapsed_s": 1.899,
+    "query_used": "Ly6C high monocytes inflammatory capacity",
+    "query_source": "json",
+    "query_arrival_seq": 3617
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ly6C high monocytes inflammatory capacity",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:7521113:1",
+       "score_q": 10022
+      },
+      {
+       "passage_key": "scifact:36444198:1",
+       "score_q": 9787
+      },
+      {
+       "passage_key": "scifact:7948486:0",
+       "score_q": 8860
+      },
+      {
+       "passage_key": "scifact:22406695:0",
+       "score_q": 8450
+      },
+      {
+       "passage_key": "scifact:36444198:0",
+       "score_q": 6233
+      }
+     ],
+     "retrieval_sha256": "0a9e7526f241fed740e5fd4f316084a5e6fd5464444736bddc0c58a1112c5c86"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0a9e7526f241fed740e5fd4f316084a5e6fd5464444736bddc0c58a1112c5c86",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:7521113:1",
+      "content_sha256": "90ee1eb276e6a475eaf588279da7a4ade45ecbad157c1ec1d451b7e6d37f2915",
+      "chars": 356
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:36444198:1",
+      "content_sha256": "aa284618b1b7daadb716c124a3759963d127caa20cdd7acb6f38e366734f7983",
+      "chars": 779
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7948486:0",
+      "content_sha256": "7c3a3fafc83c8953394050e9b37a29d514fdc606b83078256e918217b22aedc1",
+      "chars": 953
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:22406695:0",
+      "content_sha256": "2b5cc405eb07fd23a3694fe42138c09305fbb1867eae2cce40c84010824a1f92",
+      "chars": 924
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:36444198:0",
+      "content_sha256": "65b096444aa12aab55eb6717b0b83518816d055dfaa6389887ec81b291c37b21",
+      "chars": 1064
+     }
+    ],
+    "elapsed_s": 0.0039
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nEvidence passages from your search for \"Ly6C high monocytes inflammatory capacity\":\n<<<PASSAGES\n[P1] Fate mapping reveals origins and dynamics of monocytes and tissue macrophages under homeostasis.\nFurthermore, we have established that short-lived Ly6C(+) monocytes constitute obligatory steady-state precursors of blood-resident Ly6C(-) cells and that the abundance of Ly6C(+) blood monocytes dynamically controls the circulation lifespan of their progeny.\n\n[P2] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nSerial flow cytometric analyses of newly released Ly-6C(high) monocytes showed that Ly-6C expression on these cells was down-regulated while in circulation. Under inflammatory conditions elicited either by acute infection with Listeria monocytogenes or chronic infection with Leishmania major, there was a significant increase in immature Ly-6C(high) monocytes, resembling the inflammatory left shift of granulocytes. In addition, acute peritoneal inflammation recruited preferentially Ly-6C(med-high) monocytes. Taken together, these data identify distinct subpopulations of mouse blood monocytes that differ in maturation stage and capacity to become recruited to inflammatory sites.\n\n[P3] Kruppel-like factor 2 (KLF2) regulates monocyte differentiation and functions in mBSA and IL-1β-induced arthritis.\nKruppel-like factor 2 (KLF2) plays an important role in the regulation of a variety of immune cells, including monocytes. We have previously shown that KLF2 inhibits proinflammatory activation of monocytes. However, the role of KLF2 in arthritis is yet to be investigated. In the current study, we show that recruitment of significantly greater numbers of inflammatory subset of CD11b(+)F4/80(+)Ly6C+ monocytes to the inflammatory sites in KLF2 hemizygous mice compared to the wild type littermate controls. In parallel, inflammatory mediators, MCP-1, Cox-2 and PAI-1 were significantly up-regulated in bone marrow-derived monocytes isolated from KLF2 hemizygous mice, in comparison to wild-type controls. Methylated-BSA and IL-1β-induced arthritis was more severe in KLF2 hemizygous mice as compared to the littermate wild type controls.\n\n[P4] Origin and functions of tissue macrophages.\nMacrophages are distributed in tissues throughout the body and contribute to both homeostasis and disease. Recently, it has become evident that most adult tissue macrophages originate during embryonic development and not from circulating monocytes. Each tissue has its own composition of embryonically derived and adult-derived macrophages, but it is unclear whether macrophages of distinct origins are functionally interchangeable or have unique roles at steady state. This new understanding also prompts reconsideration of the function of circulating monocytes. Classical Ly6c(hi) monocytes patrol the extravascular space in resting organs, and Ly6c(lo) nonclassical monocytes patrol the vasculature. Inflammation triggers monocytes to differentiate into macrophages, but whether resident and newly recruited macrophages possess similar functions during inflammation is unclear.\n\n[P5] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nBlood monocytes are well-characterized precursors for macrophages and dendritic cells. Subsets of human monocytes with differential representation in various disease states are well known. In contrast, mouse monocyte subsets have been characterized minimally. In this study we identify three subpopulations of mouse monocytes that can be distinguished by differential expression of Ly-6C, CD43, CD11c, MBR, and CD62L. The subsets share the characteristics of extensive phagocytosis, similar expression of M-CSF receptor (CD115), and development into macrophages upon M-CSF stimulation. By eliminating blood monocytes with dichloromethylene-bisphosphonate-loaded liposomes and monitoring their repopulation, we showed a developmental relationship between the subsets. Monocytes were maximally depleted 18 h after liposome application and subsequently reappeared in the circulation. These cells were exclusively of the Ly-6C(high) subset, resembling bone marrow monocytes.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7b8a52817181f0665cb82aae1352cec2f2eeda51c28e1dbd5c25815b90dbd011",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792873848.110452,
+      "end_wall": 1792873869.629906,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3617,
+    "start_wall": 1792873848.110452,
+    "start_mono": 543404.769041166,
+    "end_wall": 1792873869.629906,
+    "end_mono": 543426.288215833,
+    "raw_response": "{\n  \"reasoning\": \"The passage [P1] explicitly states that short-lived Ly6C(+) monocytes are obligatory precursors of blood-resident Ly6C(-) cells, indicating a difference in functional capacity or lifespan. Passage [P2] highlights that Ly6C(high) monocytes have a distinct inflammatory response compared to Ly6C(low) monocytes under various conditions, suggesting higher inflammatory capacity for Ly6C(high) monocytes. Passage [P4] also emphasizes that classical Ly6C(hi) monocytes have a different function compared to Ly6C(lo) nonclassical monocytes during inflammation, reinforcing the notion of differing capacites\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21515510583,
+     "load_duration": 8296932625,
+     "prompt_eval_count": 1457,
+     "prompt_eval_duration": 3556604875,
+     "eval_count": 221,
+     "eval_duration": 8654704455,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:31:09.627183Z"
+    },
+    "elapsed_s": 21.519,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3617,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:7521113:1",
+     "scifact:36444198:1",
+     "scifact:22406695:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "64c086da7b3ccc9d27929a3b4a84ee2167fe15d508df40ce180d85b38453abb2",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792873846.206469,
+      "end_wall": 1792873855.247804,
+      "error": null
+     }
+    ],
+    "start_wall": 1792873846.206469,
+    "start_mono": 543402.865087458,
+    "end_wall": 1792873855.247804,
+    "end_mono": 543411.906288833,
+    "raw_response": "{\"query\": \"ly6c hi monocytes inflammation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 9038521375,
+     "load_duration": 5392668917,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 966386625,
+     "eval_count": 12,
+     "eval_duration": 2447216666,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:30:55.246755Z"
+    },
+    "elapsed_s": 9.041,
+    "query_used": "ly6c hi monocytes inflammation",
+    "query_source": "json",
+    "query_arrival_seq": 3619
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "ly6c hi monocytes inflammation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:22406695:0",
+       "score_q": 13462
+      },
+      {
+       "passage_key": "scifact:7521113:1",
+       "score_q": 10022
+      },
+      {
+       "passage_key": "scifact:7948486:0",
+       "score_q": 6658
+      },
+      {
+       "passage_key": "scifact:14492339:0",
+       "score_q": 6296
+      },
+      {
+       "passage_key": "scifact:7489663:0",
+       "score_q": 5685
+      }
+     ],
+     "retrieval_sha256": "b02621e581deccc561f0e2cf305bb639b1a2e8247ba53ced061dcf25e7f28397"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b02621e581deccc561f0e2cf305bb639b1a2e8247ba53ced061dcf25e7f28397",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:22406695:0",
+      "content_sha256": "2b5cc405eb07fd23a3694fe42138c09305fbb1867eae2cce40c84010824a1f92",
+      "chars": 924
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:7521113:1",
+      "content_sha256": "90ee1eb276e6a475eaf588279da7a4ade45ecbad157c1ec1d451b7e6d37f2915",
+      "chars": 356
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:7948486:0",
+      "content_sha256": "7c3a3fafc83c8953394050e9b37a29d514fdc606b83078256e918217b22aedc1",
+      "chars": 953
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:14492339:0",
+      "content_sha256": "cb154ae0771bfb2e2f9816c706c485e92b50e8b789d459b1e0148fabd924b41f",
+      "chars": 908
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:7489663:0",
+      "content_sha256": "998514170b78e1f37a08a81f94063887af8dbc46e14ce02b9250a8e4df4e3eb2",
+      "chars": 892
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nEvidence passages from your search for \"ly6c hi monocytes inflammation\":\n<<<PASSAGES\n[P1] Origin and functions of tissue macrophages.\nMacrophages are distributed in tissues throughout the body and contribute to both homeostasis and disease. Recently, it has become evident that most adult tissue macrophages originate during embryonic development and not from circulating monocytes. Each tissue has its own composition of embryonically derived and adult-derived macrophages, but it is unclear whether macrophages of distinct origins are functionally interchangeable or have unique roles at steady state. This new understanding also prompts reconsideration of the function of circulating monocytes. Classical Ly6c(hi) monocytes patrol the extravascular space in resting organs, and Ly6c(lo) nonclassical monocytes patrol the vasculature. Inflammation triggers monocytes to differentiate into macrophages, but whether resident and newly recruited macrophages possess similar functions during inflammation is unclear.\n\n[P2] Fate mapping reveals origins and dynamics of monocytes and tissue macrophages under homeostasis.\nFurthermore, we have established that short-lived Ly6C(+) monocytes constitute obligatory steady-state precursors of blood-resident Ly6C(-) cells and that the abundance of Ly6C(+) blood monocytes dynamically controls the circulation lifespan of their progeny.\n\n[P3] Kruppel-like factor 2 (KLF2) regulates monocyte differentiation and functions in mBSA and IL-1β-induced arthritis.\nKruppel-like factor 2 (KLF2) plays an important role in the regulation of a variety of immune cells, including monocytes. We have previously shown that KLF2 inhibits proinflammatory activation of monocytes. However, the role of KLF2 in arthritis is yet to be investigated. In the current study, we show that recruitment of significantly greater numbers of inflammatory subset of CD11b(+)F4/80(+)Ly6C+ monocytes to the inflammatory sites in KLF2 hemizygous mice compared to the wild type littermate controls. In parallel, inflammatory mediators, MCP-1, Cox-2 and PAI-1 were significantly up-regulated in bone marrow-derived monocytes isolated from KLF2 hemizygous mice, in comparison to wild-type controls. Methylated-BSA and IL-1β-induced arthritis was more severe in KLF2 hemizygous mice as compared to the littermate wild type controls.\n\n[P4] Blood monocytes consist of two principal subsets with distinct migratory properties\nPeripheral blood monocytes are a heterogeneous population of circulating leukocytes. Using a murine adoptive transfer system to probe monocyte homing and differentiation in vivo, we identified two functional subsets among murine blood monocytes: a short-lived CX(3)CR1(lo)CCR2(+)Gr1(+) subset that is actively recruited to inflamed tissues and a CX(3)CR1(hi)CCR2(-)Gr1(-) subset characterized by CX(3)CR1-dependent recruitment to noninflamed tissues. Both subsets have the potential to differentiate into dendritic cells in vivo. The level of CX(3)CR1 expression also defines the two major human monocyte subsets, the CD14(+)CD16(-) and CD14(lo)CD16(+) monocytes, which share phenotype and homing potential with the mouse subsets. These findings raise the potential for novel therapeutic strategies in inflammatory diseases.\n\n[P5] Identification of splenic reservoir monocytes and their deployment to inflammatory sites.\nA current paradigm states that monocytes circulate freely and patrol blood vessels but differentiate irreversibly into dendritic cells (DCs) or macrophages upon tissue entry. Here we show that bona fide undifferentiated monocytes reside in the spleen and outnumber their equivalents in circulation. The reservoir monocytes assemble in clusters in the cords of the subcapsular red pulp and are distinct from macrophages and DCs. In response to ischemic myocardial injury, splenic monocytes increase their motility, exit the spleen en masse, accumulate in injured tissue, and participate in wound healing. These observations uncover a role for the spleen as a site for storage and rapid deployment of monocytes and identify splenic monocytes as a resource that the body exploits to regulate inflammation.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3769d1c3f911cb79c89f335f9a106944b04d5ec1d3c4117c91a75718c92f9245",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792873855.24847,
+      "end_wall": 1792873883.648366,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3618,
+    "start_wall": 1792873855.24847,
+    "start_mono": 543411.906956041,
+    "end_wall": 1792873883.648366,
+    "end_mono": 543440.306524375,
+    "raw_response": "{\"reasoning\": \"The passages suggest that Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes, as passage P3 reports that KLF2 regulates monocyte differentiation and functions in mBSA and IL-1β-induced arthritis, where Ly6C hi monocytes are more pronounced. Passage P4 also mentions two principal subsets of blood monocytes, one of which is more inflammatory than the other.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P3\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28394669291,
+     "load_duration": 17623443541,
+     "prompt_eval_count": 1094,
+     "prompt_eval_duration": 4470526708,
+     "eval_count": 112,
+     "eval_duration": 4003545876,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:31:23.644415Z"
+    },
+    "elapsed_s": 28.4,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3618,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:7948486:0",
+     "scifact:14492339:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 383,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 4,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "64c086da7b3ccc9d27929a3b4a84ee2167fe15d508df40ce180d85b38453abb2",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792873846.206249,
+      "end_wall": 1792873847.7981281,
+      "error": null
+     }
+    ],
+    "start_wall": 1792873846.206249,
+    "start_mono": 543402.864867791,
+    "end_wall": 1792873847.7981281,
+    "end_mono": 543404.456720541,
+    "raw_response": "{\"query\": \"Ly6C hi monocytes inflammatory capacity comparison\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1588947125,
+     "load_duration": 56586792,
+     "prompt_eval_count": 183,
+     "prompt_eval_duration": 473867792,
+     "eval_count": 15,
+     "eval_duration": 941566083,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:30:47.797089Z"
+    },
+    "elapsed_s": 1.592,
+    "query_used": "Ly6C hi monocytes inflammatory capacity comparison",
+    "query_source": "json",
+    "query_arrival_seq": 3616
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Ly6C hi monocytes inflammatory capacity comparison",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:36444198:1",
+       "score_q": 771
+      },
+      {
+       "passage_key": "scifact:8317408:1",
+       "score_q": 757
+      },
+      {
+       "passage_key": "scifact:36444198:0",
+       "score_q": 737
+      },
+      {
+       "passage_key": "scifact:8317408:0",
+       "score_q": 736
+      },
+      {
+       "passage_key": "scifact:14492339:0",
+       "score_q": 722
+      }
+     ],
+     "retrieval_sha256": "40529748e1f3ced1a5086cc3792c03dd830580802de7913ab5759e719d692446"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "40529748e1f3ced1a5086cc3792c03dd830580802de7913ab5759e719d692446",
+    "query_embedding_sha256": "71b4e76e3cf701e596872459f9080b0b5548812e049f7ad64a02c50eace75759",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:36444198:1",
+      "content_sha256": "aa284618b1b7daadb716c124a3759963d127caa20cdd7acb6f38e366734f7983",
+      "chars": 779
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:8317408:1",
+      "content_sha256": "fa5fb3c57c19a34354f81c86c40a0d3d6e439059ce8d33d1961cc3764c2b3fc9",
+      "chars": 408
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:36444198:0",
+      "content_sha256": "65b096444aa12aab55eb6717b0b83518816d055dfaa6389887ec81b291c37b21",
+      "chars": 1064
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:8317408:0",
+      "content_sha256": "18895982f954915a78cdb0b948b7d5328148aaa88e3f274273d1de2b82bc31c0",
+      "chars": 1066
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:14492339:0",
+      "content_sha256": "cb154ae0771bfb2e2f9816c706c485e92b50e8b789d459b1e0148fabd924b41f",
+      "chars": 908
+     }
+    ],
+    "elapsed_s": 4.6317
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Ly6C hi monocytes have a higher inflammatory capacity than Ly6C lo monocytes.\n\nEvidence passages from your search for \"Ly6C hi monocytes inflammatory capacity comparison\":\n<<<PASSAGES\n[P1] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nSerial flow cytometric analyses of newly released Ly-6C(high) monocytes showed that Ly-6C expression on these cells was down-regulated while in circulation. Under inflammatory conditions elicited either by acute infection with Listeria monocytogenes or chronic infection with Leishmania major, there was a significant increase in immature Ly-6C(high) monocytes, resembling the inflammatory left shift of granulocytes. In addition, acute peritoneal inflammation recruited preferentially Ly-6C(med-high) monocytes. Taken together, these data identify distinct subpopulations of mouse blood monocytes that differ in maturation stage and capacity to become recruited to inflammatory sites.\n\n[P2] Human monocyte characteristics are altered in hypercholesterolaemia.\n0.11 microns vs. 8.98 +/- 0.11 microns) such that the surface density of CD11b/CD18 was not altered (0.144 +/- 0.029 vs. 0.142 +/- 0.029). The data suggest that circulating monocytes are functionally different in hypercholesterolaemia. This may explain the increased involvement by monocytes in hypercholesterolaemia-related atherogenesis.\n\n[P3] Subpopulations of mouse blood monocytes differ in maturation stage and inflammatory response.\nBlood monocytes are well-characterized precursors for macrophages and dendritic cells. Subsets of human monocytes with differential representation in various disease states are well known. In contrast, mouse monocyte subsets have been characterized minimally. In this study we identify three subpopulations of mouse monocytes that can be distinguished by differential expression of Ly-6C, CD43, CD11c, MBR, and CD62L. The subsets share the characteristics of extensive phagocytosis, similar expression of M-CSF receptor (CD115), and development into macrophages upon M-CSF stimulation. By eliminating blood monocytes with dichloromethylene-bisphosphonate-loaded liposomes and monitoring their repopulation, we showed a developmental relationship between the subsets. Monocytes were maximally depleted 18 h after liposome application and subsequently reappeared in the circulation. These cells were exclusively of the Ly-6C(high) subset, resembling bone marrow monocytes.\n\n[P4] Human monocyte characteristics are altered in hypercholesterolaemia.\nPeripheral blood monocytes are involved during atherogenesis in adhering to endothelium, migrating into the subendothelial space and taking-up lipoproteins to become macrophage/foam cells. We have assessed whether peripheral blood monocyte characteristics are altered in human hyperlipidaemia in age/sex/smoking status matched pairs of patients and controls. Monocytes from the hypercholesterolaemic patients, as opposed to the controls, were more sensitive to stimulation by the agonist, N-formyl-methionyl-leucyl-phenylalanine, with respect to chemokinesis (stimulation index 1.48 +/- 0.17 vs. 1.10 +/- 0.14), chemotaxis (4.05 +/- 0.55 vs. 2.72 +/- 0.24) and adhesion to porcine aortic endothelial monolayers (1.26 +/- 0.05 vs. 1.17 +/- 0.06). The patients' monocyte total surface expression of the adhesion glycoprotein CD11b/CD18 (37.5 +/- 7.1 vs. 36.0 +/- 7.1), but not CD11c/CD18 (31.6 +/- 7.2 vs. 31.4 +/- 6.8), was increased; however, the monocytes in hyperlipidaemia were larger (9.15 +/-\n\n[P5] Blood monocytes consist of two principal subsets with distinct migratory properties\nPeripheral blood monocytes are a heterogeneous population of circulating leukocytes. Using a murine adoptive transfer system to probe monocyte homing and differentiation in vivo, we identified two functional subsets among murine blood monocytes: a short-lived CX(3)CR1(lo)CCR2(+)Gr1(+) subset that is actively recruited to inflamed tissues and a CX(3)CR1(hi)CCR2(-)Gr1(-) subset characterized by CX(3)CR1-dependent recruitment to noninflamed tissues. Both subsets have the potential to differentiate into dendritic cells in vivo. The level of CX(3)CR1 expression also defines the two major human monocyte subsets, the CD14(+)CD16(-) and CD14(lo)CD16(+) monocytes, which share phenotype and homing potential with the mouse subsets. These findings raise the potential for novel therapeutic strategies in inflammatory diseases.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "10ef3c9fd4696e9002c63c5fed7fb885bf024c6bd13c9a3cacc1d3e000a21ba5",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792873852.43037,
+      "end_wall": 1792873883.8642728,
+      "error": null
+     }
+    ],
+    "arrival_seq": 3619,
+    "start_wall": 1792873852.43037,
+    "start_mono": 543409.088895916,
+    "end_wall": 1792873883.8642728,
+    "end_mono": 543440.52242775,
+    "raw_response": "{\"reasoning\": \"Several passages indicate that Ly6C high monocytes exhibit distinct characteristics under inflammatory conditions, showing a significant increase in these cells during inflammation and preferential recruitment to inflammatory sites compared to other monocyte subsets. This suggests a higher inflammatory capacity associated with Ly6C high monocytes (P1, P3). Although specific direct comparison statements are not exhaustive, the evidence strongly implies their enhanced role in inflammatory responses.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 31427655583,
+     "load_duration": 18371684125,
+     "prompt_eval_count": 1290,
+     "prompt_eval_duration": 6430762667,
+     "eval_count": 113,
+     "eval_duration": 5720361715,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T20:31:23.85945Z"
+    },
+    "elapsed_s": 31.434,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 3619,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:36444198:1",
+     "scifact:36444198:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 502,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "20343063665b3324362f8246b2321700cbf0c394d3b9d7632d4482533513f9b7",
+  "olmo2:7b": "bb33da0ab4ee4aa6383e0e275720dd7e9b62446034349296b66c97fbb88d1681",
+  "granite3.3:2b": "0a9e7526f241fed740e5fd4f316084a5e6fd5464444736bddc0c58a1112c5c86",
+  "nemotron-mini:4b": "b02621e581deccc561f0e2cf305bb639b1a2e8247ba53ced061dcf25e7f28397",
+  "exaone3.5:7.8b": "40529748e1f3ced1a5086cc3792c03dd830580802de7913ab5759e719d692446"
+ },
+ "item_start_wall": 1792873846.205746,
+ "item_wall_s": 37.659,
+ "ollama_ps_samples": [
+  [
+   1792873846.206,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792873848.216,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792873850.223,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792873852.232,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792873854.244,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792873856.245,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873858.252,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873860.258,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873862.268,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873864.271,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873866.274,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873868.283,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792873870.291,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792873872.303,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873874.314,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873876.321,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873878.332,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873880.336,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792873882.339,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

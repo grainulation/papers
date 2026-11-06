@@ -1,0 +1,1304 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifactdev1130",
+ "order": 415,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifactdev1130",
+  "order": 415,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation."
+ },
+ "item_view_sha256": "2a57b64d074b59059cde6d23ff0c05d0e13ba7ad5804732b1fe74d3ad60e0104",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "dense",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "olmo2:7b",
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6d28f9b42d11870843f08ba36e51d3c7656666122fc28309f5c8a43675de2564",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864738.290748,
+      "end_wall": 1792864740.3002188,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864738.290748,
+    "start_mono": 534295.0177995,
+    "end_wall": 1792864740.3002188,
+    "end_mono": 534297.027259125,
+    "raw_response": "{\"query\": \"T regulatory cells lacking alpha v beta 8 more suppress pathogenic T-cell responses during inflammation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2007317875,
+     "load_duration": 110894750,
+     "prompt_eval_count": 194,
+     "prompt_eval_duration": 452002292,
+     "eval_count": 25,
+     "eval_duration": 1127655291,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:00.29927Z"
+    },
+    "elapsed_s": 2.009,
+    "query_used": "T regulatory cells lacking alpha v beta 8 more suppress pathogenic T-cell",
+    "query_source": "json_cut12",
+    "query_arrival_seq": 2075
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "T regulatory cells lacking alpha v beta 8 more suppress pathogenic T-cell",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17997584:0",
+       "score_q": 790
+      },
+      {
+       "passage_key": "scifact:41877386:1",
+       "score_q": 754
+      },
+      {
+       "passage_key": "scifact:41877386:0",
+       "score_q": 747
+      },
+      {
+       "passage_key": "scifact:6913227:0",
+       "score_q": 746
+      },
+      {
+       "passage_key": "scifact:29347970:0",
+       "score_q": 735
+      }
+     ],
+     "retrieval_sha256": "e06b542302e27698e2a76efce1e26257299e83644a537ebd55eeca4f267ccbdc"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e06b542302e27698e2a76efce1e26257299e83644a537ebd55eeca4f267ccbdc",
+    "query_embedding_sha256": "44f02082fac7ca0d6fee9b512775454439e1a12ba236fcc0a17b2e2830daa96c",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17997584:0",
+      "content_sha256": "6f3748955450ecf36d06a5ef83c8fe83dde38fcfb6fc5381cb28f38c3aa73cf2",
+      "chars": 1097
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:41877386:1",
+      "content_sha256": "7acad2a01be0fa09f14cfa9c7afc3fc313e8cc0fca644ee3fe0a14cd572b76ef",
+      "chars": 997
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:41877386:0",
+      "content_sha256": "4553b8f88307df5742edbbf363291335d80dcb56c0a313852b4cd7eda1667122",
+      "chars": 1080
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6913227:0",
+      "content_sha256": "3e6294c57f66d711d141f81003d7d00ff04a8749ddab6ed18f7b80468c8999cc",
+      "chars": 932
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:29347970:0",
+      "content_sha256": "936626397f443a38fd5bfe4c3a049ed641e1506b041d5eec56859ab934720d9e",
+      "chars": 1008
+     }
+    ],
+    "elapsed_s": 4.4433
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nEvidence passages from your search for \"T regulatory cells lacking alpha v beta 8 more suppress pathogenic T-cell\":\n<<<PASSAGES\n[P1] Integrin αvβ8-Mediated TGF-β Activation by Effector Regulatory T Cells Is Essential for Suppression of T-Cell-Mediated Inflammation\nRegulatory T (Treg) cells play a pivotal role in suppressing self-harmful T cell responses, but how Treg cells mediate suppression to maintain immune homeostasis and limit responses during inflammation is unclear. Here we show that effector Treg cells express high amounts of the integrin αvβ8, which enables them to activate latent transforming growth factor-β (TGF-β). Treg-cell-specific deletion of integrin αvβ8 did not result in a spontaneous inflammatory phenotype, suggesting that this pathway is not important in Treg-cell-mediated maintenance of immune homeostasis. However, Treg cells lacking expression of integrin αvβ8 were unable to suppress pathogenic T cell responses during active inflammation. Thus, our results identify a mechanism by which Treg cells suppress exuberant immune responses, highlighting a key role for effector Treg-cell-mediated activation of latent TGF-β in suppression of self-harmful T cell responses during active inflammation.\n\n[P2] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nSurprisingly, KLF10(-/-) T reg cells have reduced suppressor function, independent of Foxp3 expression, with decreased expression and elaboration of TGF-beta1, an effect completely rescued by exogenous treatment with TGF-beta1. Mechanistic studies demonstrate that in response to TGF-beta1, KLF10 can transactivate both TGF-beta1 and Foxp3 promoters, implicating KLF10 in a positive feedback loop that may promote cell-intrinsic control of T cell activation. Finally, KLF10(-/-) CD4(+)CD25(-) T cells promoted atherosclerosis by approximately 2-fold in ApoE(-/-)/scid/scid mice with increased leukocyte accumulation and peripheral pro-inflammatory cytokines. Thus, KLF10 is a critical regulator in the transcriptional network controlling TGF-beta1 in both CD4(+)CD25(-) T cells and T regs and plays an important role in regulating atherosclerotic lesion formation in mice.\n\n[P3] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nCD4(+)CD25(+) regulatory T cells (T regs) play a major role in the maintenance of self-tolerance and immune suppression, although the mechanisms controlling T reg development and suppressor function remain incompletely understood. Herein, we provide evidence that Kruppel-like factor 10 (KLF10/TIEG1) constitutes an important regulator of T regulatory cell suppressor function and CD4(+)CD25(-) T cell activation through distinct mechanisms involving transforming growth factor (TGF)-beta1 and Foxp3. KLF10 overexpressing CD4(+)CD25(-) T cells induced both TGF-beta1 and Foxp3 expression, an effect associated with reduced T-Bet (Th1 marker) and Gata3 (Th2 marker) mRNA expression. Consistently, KLF10(-/-) CD4(+)CD25(-) T cells have enhanced differentiation along both Th1 and Th2 pathways and elaborate higher levels of Th1 and Th2 cytokines. Furthermore, KLF10(-/-) CD4(+)CD25(-) T cell effectors cannot be appropriately suppressed by wild-type T regs.\n\n[P4] MicroRNA-Containing T-Regulatory-Cell-Derived Exosomes Suppress Pathogenic T Helper 1 Cells\nFoxp3(+) T regulatory (Treg) cells prevent inflammatory disease but the mechanistic basis of suppression is not understood completely. Gene silencing by RNA interference can act in a cell-autonomous and non-cell-autonomous manner, providing mechanisms of intercellular regulation. Here, we demonstrate that non-cell-autonomous gene silencing, mediated by miRNA-containing exosomes, is a mechanism employed by Treg cells to suppress T-cell-mediated disease. Treg cells transferred microRNAs (miRNA) to various immune cells, including T helper 1 (Th1) cells, suppressing Th1 cell proliferation and cytokine secretion. Use of Dicer-deficient or Rab27a and Rab27b double-deficient Treg cells to disrupt miRNA biogenesis or the exosomal pathway, respectively, established a requirement for miRNAs and exosomes for Treg-cell-mediated suppression.\n\n[P5] CCR6 regulates the migration of inflammatory and regulatory T cells.\nTh17 and regulatory T (Treg) cells play opposite roles in autoimmune diseases. However, the mechanisms underlying their proper migration to inflammatory tissues are unclear. In this study, we report that these two T cell subsets both express CCR6. CCR6 expression in Th17 cells is regulated by TGF-beta and requires two nuclear receptors, RORalpha and RORgamma. Th17 cells also express the CCR6 ligand CCL20, which is induced synergistically by TGF-beta and IL-6, which requires STAT3, RORgamma and IL-21. Th17 cells, by producing CCL20, promote migration of Th17 and Treg cells in vitro in a CCR6-dependent manner. Lack of CCR6 in Th17 cells reduces the severity of experimental autoimmune encephalomyelitis and Th17 and Treg recruitment into inflammatory tissues. Similarly, CCR6 on Treg cells is also important for their recruitment into inflammatory tissues. Our data indicate an important role of CCR6 in Treg and Th17 cell migration.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "8f12231e8043fea031a3c86c7ebee60840a8138ecd3af77249424c42edd4d456",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864744.744489,
+      "end_wall": 1792864758.3450618,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2075,
+    "start_wall": 1792864744.744489,
+    "start_mono": 534301.471520541,
+    "end_wall": 1792864758.3450618,
+    "end_mono": 534315.072049166,
+    "raw_response": "{\"reasoning\": \"T regulatory cells lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P3\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13597117250,
+     "load_duration": 6646596333,
+     "prompt_eval_count": 1518,
+     "prompt_eval_duration": 3560717334,
+     "eval_count": 66,
+     "eval_duration": 2720146124,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:18.343155Z"
+    },
+    "elapsed_s": 13.601,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2075,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:17997584:0",
+     "scifact:41877386:0",
+     "scifact:6913227:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 117,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6d28f9b42d11870843f08ba36e51d3c7656666122fc28309f5c8a43675de2564",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864738.291384,
+      "end_wall": 1792864740.645716,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864738.291384,
+    "start_mono": 534295.018434875,
+    "end_wall": 1792864740.645716,
+    "end_mono": 534297.372757916,
+    "raw_response": "{\"query\": \"tTregs αvβ8 deficiency inflammation suppression\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2352222541,
+     "load_duration": 1175289333,
+     "prompt_eval_count": 197,
+     "prompt_eval_duration": 417446791,
+     "eval_count": 20,
+     "eval_duration": 656583666,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:00.644391Z"
+    },
+    "elapsed_s": 2.354,
+    "query_used": "tTregs αvβ8 deficiency inflammation suppression",
+    "query_source": "json",
+    "query_arrival_seq": 2077
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "tTregs αvβ8 deficiency inflammation suppression",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17997584:0",
+       "score_q": 11575
+      },
+      {
+       "passage_key": "scifact:20501163:0",
+       "score_q": 5321
+      },
+      {
+       "passage_key": "scifact:18956141:0",
+       "score_q": 5056
+      },
+      {
+       "passage_key": "scifact:6171953:0",
+       "score_q": 4811
+      },
+      {
+       "passage_key": "scifact:25738896:0",
+       "score_q": 4760
+      }
+     ],
+     "retrieval_sha256": "8fe3b2c88f5a5a579cf912cb13dc083363bd879820198a98fd3067ce62f66a52"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8fe3b2c88f5a5a579cf912cb13dc083363bd879820198a98fd3067ce62f66a52",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17997584:0",
+      "content_sha256": "6f3748955450ecf36d06a5ef83c8fe83dde38fcfb6fc5381cb28f38c3aa73cf2",
+      "chars": 1097
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:20501163:0",
+      "content_sha256": "64b48689f650979bf27b882caeaaf12c3da0cd9dd611dd96492054b3beaba362",
+      "chars": 1032
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:18956141:0",
+      "content_sha256": "0ffe5ff2f57d88ee982f8d6d8a552aedbca177a05b26ed8273d93a368568f445",
+      "chars": 1021
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6171953:0",
+      "content_sha256": "cdd9f647be9a340bc4768ac9a7d8fdfb193bd08ac1e418be995654c05ed138de",
+      "chars": 910
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:25738896:0",
+      "content_sha256": "9c53691fc62e24b7d751151fe7c4ec9ba1d9c51241f00a20d9f6b2bd50db617d",
+      "chars": 1016
+     }
+    ],
+    "elapsed_s": 0.0022
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nEvidence passages from your search for \"tTregs αvβ8 deficiency inflammation suppression\":\n<<<PASSAGES\n[P1] Integrin αvβ8-Mediated TGF-β Activation by Effector Regulatory T Cells Is Essential for Suppression of T-Cell-Mediated Inflammation\nRegulatory T (Treg) cells play a pivotal role in suppressing self-harmful T cell responses, but how Treg cells mediate suppression to maintain immune homeostasis and limit responses during inflammation is unclear. Here we show that effector Treg cells express high amounts of the integrin αvβ8, which enables them to activate latent transforming growth factor-β (TGF-β). Treg-cell-specific deletion of integrin αvβ8 did not result in a spontaneous inflammatory phenotype, suggesting that this pathway is not important in Treg-cell-mediated maintenance of immune homeostasis. However, Treg cells lacking expression of integrin αvβ8 were unable to suppress pathogenic T cell responses during active inflammation. Thus, our results identify a mechanism by which Treg cells suppress exuberant immune responses, highlighting a key role for effector Treg-cell-mediated activation of latent TGF-β in suppression of self-harmful T cell responses during active inflammation.\n\n[P2] Tumor-Induced IL-6 Reprograms Host Metabolism to Suppress Anti-tumor Immunity\nIn patients with cancer, the wasting syndrome, cachexia, is associated with caloric deficiency. Here, we describe tumor-induced alterations of the host metabolic response to caloric deficiency that cause intratumoral immune suppression. In pre-cachectic mice with transplanted colorectal cancer or autochthonous pancreatic ductal adenocarcinoma (PDA), we find that IL-6 reduces the hepatic ketogenic potential through suppression of PPARalpha, the transcriptional master regulator of ketogenesis. When these mice are challenged with caloric deficiency, the resulting relative hypoketonemia triggers a marked rise in glucocorticoid levels. Multiple intratumoral immune pathways are suppressed by this hormonal stress response. Moreover, administering corticosterone to elevate plasma corticosterone to a level that is lower than that occurring in cachectic mice abolishes the response of mouse PDA to an immunotherapy that has advanced to clinical trials.\n\n[P3] NEMO Prevents RIP Kinase 1-Mediated Epithelial Cell Death and Chronic Intestinal Inflammation by NF-κB-Dependent and -Independent Functions\nIntestinal epithelial cells (IECs) regulate gut immune homeostasis, and impaired epithelial responses are implicated in the pathogenesis of inflammatory bowel diseases (IBD). IEC-specific ablation of nuclear factor κB (NF-κB) essential modulator (NEMO) caused Paneth cell apoptosis and impaired antimicrobial factor expression in the ileum, as well as colonocyte apoptosis and microbiota-driven chronic inflammation in the colon. Combined RelA, c-Rel, and RelB deficiency in IECs caused Paneth cell apoptosis but not colitis, suggesting that NEMO prevents colon inflammation by NF-κB-independent functions. Inhibition of receptor-interacting protein kinase 1 (RIPK1) kinase activity or combined deficiency of Fas-associated via death domain protein (FADD) and RIPK3 prevented epithelial cell death, Paneth cell loss, and colitis development in mice with epithelial NEMO deficiency.\n\n[P4] Sirtuin-1 is a nutrient-dependent modulator of inflammation\nInflammation accompanies obesity and its comorbidities-type 2 diabetes, non-alcoholic fatty liver disease and atherosclerosis, among others-and may contribute to their pathogenesis. Yet the cellular machinery that links nutrient sensing to inflammation remains incompletely characterized. The protein deacetylase sirtuin-1 (SirT1) is activated by energy depletion and plays a critical role in the mammalian response to fasting. More recently it has been implicated in the repression of inflammation. SirT1 mRNA and protein expression are suppressed in obese rodent and human white adipose tissue, while experimental reduction of SirT1 in adipocytes and macrophages causes low-grade inflammation that mimics that observed in obesity. Thus suppression of SirT1 during overnutrition may be critical to the development of obesity-associated inflammation.\n\n[P5] Aire deficiency promotes TRP-1-specific immune rejection of melanoma.\nThe thymic transcription factor autoimmune regulator (Aire) prevents autoimmunity in part by promoting expression of tissue-specific self-antigens, which include many cancer antigens. For example, AIRE-deficient patients are predisposed to vitiligo, an autoimmune disease of melanocytes that is often triggered by efficacious immunotherapies against melanoma. Therefore, we hypothesized that Aire deficiency in mice may elevate immune responses to cancer and provide insights into how such responses might be triggered. In this study, we show that Aire deficiency decreases thymic expression of TRP-1 (TYRP1), which is a self-antigen in melanocytes and a cancer antigen in melanomas. Aire deficiency resulted in defective negative selection of TRP-1-specific T cells without affecting thymic numbers of regulatory T cells. Aire-deficient mice displayed elevated T-cell immune responses that were associated with suppression of melanoma outgrowth.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "4c777fc0a2afc2f36360068116e75535a242b5ea7780eb7241ccd16cc85cf132",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864740.648448,
+      "end_wall": 1792864762.546361,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2076,
+    "start_wall": 1792864740.648448,
+    "start_mono": 534297.375491833,
+    "end_wall": 1792864762.546361,
+    "end_mono": 534319.273335583,
+    "raw_response": "{\n  \"reasoning\": \"The claim specifies that tTregs lacking αvβ8 are more effective at suppressing pathogenic T-cell responses during active inflammation. Passage [P1] directly supports this claim, stating that treg cells expressing high amounts of integrin αvβ8 can suppress pathogenic T cell responses during inflammation. Deletion of αvβ8 in effector tregs leads to their inability to suppress such responses. Other passages [P2], [P3], and [P4] discuss different aspects of immune response and metabolic changes, neither of which directly contradicts the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21893014625,
+     "load_duration": 9290650375,
+     "prompt_eval_count": 1704,
+     "prompt_eval_duration": 4662485333,
+     "eval_count": 167,
+     "eval_duration": 7219461285,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:22.542694Z"
+    },
+    "elapsed_s": 21.898,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2076,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17997584:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 545,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6d28f9b42d11870843f08ba36e51d3c7656666122fc28309f5c8a43675de2564",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864738.2904892,
+      "end_wall": 1792864743.893586,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864738.2904892,
+    "start_mono": 534295.017540708,
+    "end_wall": 1792864743.893586,
+    "end_mono": 534300.620618833,
+    "raw_response": "{\"query\": \"tTregs αvβ8 inflammation suppression\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5600962500,
+     "load_duration": 4294653125,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 683778833,
+     "eval_count": 15,
+     "eval_duration": 493948042,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:03.892619Z"
+    },
+    "elapsed_s": 5.603,
+    "query_used": "tTregs αvβ8 inflammation suppression",
+    "query_source": "json",
+    "query_arrival_seq": 2078
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "tTregs αvβ8 inflammation suppression",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17997584:0",
+       "score_q": 11575
+      },
+      {
+       "passage_key": "scifact:6171953:0",
+       "score_q": 4811
+      },
+      {
+       "passage_key": "scifact:15879931:0",
+       "score_q": 4647
+      },
+      {
+       "passage_key": "scifact:10889845:1",
+       "score_q": 4483
+      },
+      {
+       "passage_key": "scifact:44562058:0",
+       "score_q": 4379
+      }
+     ],
+     "retrieval_sha256": "9b823e0667297a565ec8e263666735b61469d759106614cf22de026e6ef8b02f"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9b823e0667297a565ec8e263666735b61469d759106614cf22de026e6ef8b02f",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17997584:0",
+      "content_sha256": "6f3748955450ecf36d06a5ef83c8fe83dde38fcfb6fc5381cb28f38c3aa73cf2",
+      "chars": 1097
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6171953:0",
+      "content_sha256": "cdd9f647be9a340bc4768ac9a7d8fdfb193bd08ac1e418be995654c05ed138de",
+      "chars": 910
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:15879931:0",
+      "content_sha256": "63d1617c072059f0c7b7e330d81e1652f53492e2850284a2d87c46467ec13354",
+      "chars": 1030
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:10889845:1",
+      "content_sha256": "c9ac2d907f6c3b3c868f8606c8f2bce8085a90792bcdb882eba5899a4c1267f0",
+      "chars": 678
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:44562058:0",
+      "content_sha256": "49b787c3163ad495952fe0a21956c86d9a333a7751fc4f66c1a978f3f2627158",
+      "chars": 1020
+     }
+    ],
+    "elapsed_s": 0.0006
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nEvidence passages from your search for \"tTregs αvβ8 inflammation suppression\":\n<<<PASSAGES\n[P1] Integrin αvβ8-Mediated TGF-β Activation by Effector Regulatory T Cells Is Essential for Suppression of T-Cell-Mediated Inflammation\nRegulatory T (Treg) cells play a pivotal role in suppressing self-harmful T cell responses, but how Treg cells mediate suppression to maintain immune homeostasis and limit responses during inflammation is unclear. Here we show that effector Treg cells express high amounts of the integrin αvβ8, which enables them to activate latent transforming growth factor-β (TGF-β). Treg-cell-specific deletion of integrin αvβ8 did not result in a spontaneous inflammatory phenotype, suggesting that this pathway is not important in Treg-cell-mediated maintenance of immune homeostasis. However, Treg cells lacking expression of integrin αvβ8 were unable to suppress pathogenic T cell responses during active inflammation. Thus, our results identify a mechanism by which Treg cells suppress exuberant immune responses, highlighting a key role for effector Treg-cell-mediated activation of latent TGF-β in suppression of self-harmful T cell responses during active inflammation.\n\n[P2] Sirtuin-1 is a nutrient-dependent modulator of inflammation\nInflammation accompanies obesity and its comorbidities-type 2 diabetes, non-alcoholic fatty liver disease and atherosclerosis, among others-and may contribute to their pathogenesis. Yet the cellular machinery that links nutrient sensing to inflammation remains incompletely characterized. The protein deacetylase sirtuin-1 (SirT1) is activated by energy depletion and plays a critical role in the mammalian response to fasting. More recently it has been implicated in the repression of inflammation. SirT1 mRNA and protein expression are suppressed in obese rodent and human white adipose tissue, while experimental reduction of SirT1 in adipocytes and macrophages causes low-grade inflammation that mimics that observed in obesity. Thus suppression of SirT1 during overnutrition may be critical to the development of obesity-associated inflammation.\n\n[P3] Regulated Accumulation of Desmosterol Integrates Macrophage Lipid Metabolism and Inflammatory Responses\nInflammation and macrophage foam cells are characteristic features of atherosclerotic lesions, but the mechanisms linking cholesterol accumulation to inflammation and LXR-dependent response pathways are poorly understood. To investigate this relationship, we utilized lipidomic and transcriptomic methods to evaluate the effect of diet and LDL receptor genotype on macrophage foam cell formation within the peritoneal cavities of mice. Foam cell formation was associated with significant changes in hundreds of lipid species and unexpected suppression, rather than activation, of inflammatory gene expression. We provide evidence that regulated accumulation of desmosterol underlies many of the homeostatic responses, including activation of LXR target genes, inhibition of SREBP target genes, selective reprogramming of fatty acid metabolism, and suppression of inflammatory-response genes, observed in macrophage foam cells.\n\n[P4] Blockade of class IB phosphoinositide-3 kinase ameliorates obesity-induced inflammation and insulin resistance.\nIn adipose tissues and livers of obese Pik3cg(-/-) mice, the numbers of infiltrated proinflammatory macrophages were markedly reduced, leading to suppression of inflammatory reactions in these tissues. Furthermore, bone marrow-specific deletion and pharmacological blockade of PI3Kγ also ameliorated obesity-induced macrophage infiltration and insulin resistance. These data suggest that PI3Kγ plays a crucial role in the development of both obesity-induced inflammation and systemic insulin resistance and that PI3Kγ can be a therapeutic target for type 2 diabetes.\n\n[P5] Immune activation and HIV persistence: implications for curative approaches to HIV infection.\nDespite complete or near-complete suppression of human immunodeficiency virus (HIV) replication with combination antiretroviral therapy, both HIV and chronic inflammation/immune dysfunction persist indefinitely. Untangling the association between the virus and the host immune environment during therapy might lead to novel interventions aimed at either curing the infection or preventing the development of inflammation-associated end-organ disease. Chronic inflammation and immune dysfunction might lead to HIV persistence by causing virus production, generating new target cells, enabling infecting of activated and resting target cells, altering the migration patterns of susceptible target cells, increasing the proliferation of infected cells, and preventing normal HIV-specific clearance mechanisms from function. Chronic HIV production or replication might contribute to persistent inflammation and immune dysfunction.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "b89a3f326b58f923c06206b2797a75d53b6ceca9b063e075922e01b6ba7d2a9a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864743.894625,
+      "end_wall": 1792864762.818723,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2077,
+    "start_wall": 1792864743.894625,
+    "start_mono": 534300.621658625,
+    "end_wall": 1792864762.818723,
+    "end_mono": 534319.545696958,
+    "raw_response": "{\"reasoning\": \"The claim suggests that tTregs lacking \\u03b28 are more adept at suppressing pathogenic T-cell responses during active inflammation. Passage P1 supports this claim by describing how tTregs lacking \\u03b28 are unable to suppress pathogenic T cell responses during active inflammation. This passage shows that integrin \\u03b28 is essential for Treg cells to activate latent TGF-\\u03b2, which is crucial for suppressing self-harmful T cell responses during inflammation. Therefore, the claim is SUPPORTED. There are no other passages that directly refute this claim, and my own knowledge of the immune system supports the-1\" , \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18919880625,
+     "load_duration": 47623500,
+     "prompt_eval_count": 1194,
+     "prompt_eval_duration": 4404354750,
+     "eval_count": 164,
+     "eval_duration": 13057698576,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:22.815731Z"
+    },
+    "elapsed_s": 18.924,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2077,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17997584:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6d28f9b42d11870843f08ba36e51d3c7656666122fc28309f5c8a43675de2564",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864738.290269,
+      "end_wall": 1792864748.7718122,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864738.290269,
+    "start_mono": 534295.01732075,
+    "end_wall": 1792864748.7718122,
+    "end_mono": 534305.498828583,
+    "raw_response": "{\"query\": \"pathogenic t-cells suppression t-regs alpha v beta 8 inflammation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10478738833,
+     "load_duration": 5839364958,
+     "prompt_eval_count": 189,
+     "prompt_eval_duration": 994406167,
+     "eval_count": 21,
+     "eval_duration": 3204508710,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:08.770344Z"
+    },
+    "elapsed_s": 10.482,
+    "query_used": "pathogenic t-cells suppression t-regs alpha v beta 8 inflammation",
+    "query_source": "json",
+    "query_arrival_seq": 2079
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "pathogenic t-cells suppression t-regs alpha v beta 8 inflammation",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17997584:0",
+       "score_q": 8221
+      },
+      {
+       "passage_key": "scifact:41877386:0",
+       "score_q": 7250
+      },
+      {
+       "passage_key": "scifact:26731863:0",
+       "score_q": 7154
+      },
+      {
+       "passage_key": "scifact:6913227:1",
+       "score_q": 6913
+      },
+      {
+       "passage_key": "scifact:4311206:0",
+       "score_q": 6627
+      }
+     ],
+     "retrieval_sha256": "580d3a18a7726b1d54dccf0e89263d2038b5743c5860afcec8aec1c90b28b1a2"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "580d3a18a7726b1d54dccf0e89263d2038b5743c5860afcec8aec1c90b28b1a2",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17997584:0",
+      "content_sha256": "6f3748955450ecf36d06a5ef83c8fe83dde38fcfb6fc5381cb28f38c3aa73cf2",
+      "chars": 1097
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:41877386:0",
+      "content_sha256": "4553b8f88307df5742edbbf363291335d80dcb56c0a313852b4cd7eda1667122",
+      "chars": 1080
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:26731863:0",
+      "content_sha256": "ba97c68a5d23b8375f72bc48beb23185c38682af32b8911a420122fe156e11b8",
+      "chars": 962
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6913227:1",
+      "content_sha256": "e9d1366cdaa2c06528df0df603476bd5086dd7ef0e761d50a0caebdfee5ce523",
+      "chars": 389
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:4311206:0",
+      "content_sha256": "f4bed84ba591810d97c95d15f08985c4fe509683ac99287db4e2ed6a1dca9e34",
+      "chars": 1032
+     }
+    ],
+    "elapsed_s": 0.0031
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nEvidence passages from your search for \"pathogenic t-cells suppression t-regs alpha v beta 8 inflammation\":\n<<<PASSAGES\n[P1] Integrin αvβ8-Mediated TGF-β Activation by Effector Regulatory T Cells Is Essential for Suppression of T-Cell-Mediated Inflammation\nRegulatory T (Treg) cells play a pivotal role in suppressing self-harmful T cell responses, but how Treg cells mediate suppression to maintain immune homeostasis and limit responses during inflammation is unclear. Here we show that effector Treg cells express high amounts of the integrin αvβ8, which enables them to activate latent transforming growth factor-β (TGF-β). Treg-cell-specific deletion of integrin αvβ8 did not result in a spontaneous inflammatory phenotype, suggesting that this pathway is not important in Treg-cell-mediated maintenance of immune homeostasis. However, Treg cells lacking expression of integrin αvβ8 were unable to suppress pathogenic T cell responses during active inflammation. Thus, our results identify a mechanism by which Treg cells suppress exuberant immune responses, highlighting a key role for effector Treg-cell-mediated activation of latent TGF-β in suppression of self-harmful T cell responses during active inflammation.\n\n[P2] Kruppel-like factor KLF10 targets transforming growth factor-beta1 to regulate CD4(+)CD25(-) T cells and T regulatory cells.\nCD4(+)CD25(+) regulatory T cells (T regs) play a major role in the maintenance of self-tolerance and immune suppression, although the mechanisms controlling T reg development and suppressor function remain incompletely understood. Herein, we provide evidence that Kruppel-like factor 10 (KLF10/TIEG1) constitutes an important regulator of T regulatory cell suppressor function and CD4(+)CD25(-) T cell activation through distinct mechanisms involving transforming growth factor (TGF)-beta1 and Foxp3. KLF10 overexpressing CD4(+)CD25(-) T cells induced both TGF-beta1 and Foxp3 expression, an effect associated with reduced T-Bet (Th1 marker) and Gata3 (Th2 marker) mRNA expression. Consistently, KLF10(-/-) CD4(+)CD25(-) T cells have enhanced differentiation along both Th1 and Th2 pathways and elaborate higher levels of Th1 and Th2 cytokines. Furthermore, KLF10(-/-) CD4(+)CD25(-) T cell effectors cannot be appropriately suppressed by wild-type T regs.\n\n[P3] Distinct and essential roles of transcription factors IRF-3 and IRF-7 in response to viruses for IFN-alpha/beta gene induction.\nInduction of the interferon (IFN)-alpha/beta gene transcription in virus-infected cells is an event central to innate immunity. Mice lacking the transcription factor IRF-3 are more vulnerable to virus infection. In embryonic fibroblasts, virus-induced IFN-alpha/beta gene expression levels are reduced and the spectrum of the IFN-alpha mRNA subspecies altered. Furthermore, cells additionally defective in IRF-7 expression totally fail to induce these genes in response to infections by any of the virus types tested. In these cells, a normal profile of IFN-alpha/beta mRNA induction can be achieved by coexpressing both IRF-3 and IRF-7. These results demonstrate the essential and distinct roles of thetwo factors, which together ensure the transcriptional efficiency and diversity of IFN-alpha/beta genes for the antiviral response.\n\n[P4] MicroRNA-Containing T-Regulatory-Cell-Derived Exosomes Suppress Pathogenic T Helper 1 Cells\nTranscriptional analysis and miRNA inhibitor studies showed that exosome-mediated transfer of Let-7d from Treg cell to Th1 cells contributed to suppression and prevention of systemic disease. These studies reveal a mechanism of Treg-cell-mediated suppression mediated by miRNA-containing exosomes.\n\n[P5] Conversion of Adult Pancreatic α-cells to β-cells After Extreme β-cell Loss\nPancreatic insulin-producing beta-cells have a long lifespan, such that in healthy conditions they replicate little during a lifetime. Nevertheless, they show increased self-duplication after increased metabolic demand or after injury (that is, beta-cell loss). It is not known whether adult mammals can differentiate (regenerate) new beta-cells after extreme, total beta-cell loss, as in diabetes. This would indicate differentiation from precursors or another heterologous (non-beta-cell) source. Here we show beta-cell regeneration in a transgenic model of diphtheria-toxin-induced acute selective near-total beta-cell ablation. If given insulin, the mice survived and showed beta-cell mass augmentation with time. Lineage-tracing to label the glucagon-producing alpha-cells before beta-cell ablation tracked large fractions of regenerated beta-cells as deriving from alpha-cells, revealing a previously disregarded degree of pancreatic cell plasticity.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "9fee505138e3a9330b1c998376a02cb36a9629c422867c93ec6ad9a864cd6825",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864748.77619,
+      "end_wall": 1792864776.8887281,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2078,
+    "start_wall": 1792864748.77619,
+    "start_mono": 534305.503208458,
+    "end_wall": 1792864776.8887281,
+    "end_mono": 534333.61565675,
+    "raw_response": "{\"reasoning\": \"The evidence shows that tTregs lacking αvβ8 are less effective at suppressing pathogenic T-cell responses during active inflammation, as the passage P1 states. This claim is supported by the evidence, as tTregs expressing αvβ8 are found to be essential for suppressing T-cell-mediated inflammation.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 28107000333,
+     "load_duration": 18274325166,
+     "prompt_eval_count": 1294,
+     "prompt_eval_duration": 4539309667,
+     "eval_count": 92,
+     "eval_duration": 3367867871,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:36.884137Z"
+    },
+    "elapsed_s": 28.112,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2078,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17997584:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 298,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6d28f9b42d11870843f08ba36e51d3c7656666122fc28309f5c8a43675de2564",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792864738.291122,
+      "end_wall": 1792864740.546751,
+      "error": null
+     }
+    ],
+    "start_wall": 1792864738.291122,
+    "start_mono": 534295.018173625,
+    "end_wall": 1792864740.546751,
+    "end_mono": 534297.273789375,
+    "raw_response": "{\"query\": \"αvβ8 integrin αvβ8 deficiency Treg suppressive function inflammation\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2253030542,
+     "load_duration": 65442625,
+     "prompt_eval_count": 194,
+     "prompt_eval_duration": 633864250,
+     "eval_count": 21,
+     "eval_duration": 1362438666,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:00.545186Z"
+    },
+    "elapsed_s": 2.256,
+    "query_used": "αvβ8 integrin αvβ8 deficiency Treg suppressive function inflammation",
+    "query_source": "json",
+    "query_arrival_seq": 2076
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "αvβ8 integrin αvβ8 deficiency Treg suppressive function inflammation",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:17997584:0",
+       "score_q": 833
+      },
+      {
+       "passage_key": "scifact:22972632:0",
+       "score_q": 697
+      },
+      {
+       "passage_key": "scifact:10530014:0",
+       "score_q": 690
+      },
+      {
+       "passage_key": "scifact:22972632:1",
+       "score_q": 689
+      },
+      {
+       "passage_key": "scifact:2405259:1",
+       "score_q": 689
+      }
+     ],
+     "retrieval_sha256": "8c8c61238e7b534c0d53e39b5154dc48f5078ee8b2961eb861aef94347c4ec69"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8c8c61238e7b534c0d53e39b5154dc48f5078ee8b2961eb861aef94347c4ec69",
+    "query_embedding_sha256": "520c53d3119459033a464441527a56fbddaf7d5ab0057a82a26ce1a8739564b8",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:17997584:0",
+      "content_sha256": "6f3748955450ecf36d06a5ef83c8fe83dde38fcfb6fc5381cb28f38c3aa73cf2",
+      "chars": 1097
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:22972632:0",
+      "content_sha256": "14d5e6a925998b837ad62e5f861a8192fc93de9cdfa8d4815bbe8f0510139e34",
+      "chars": 981
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:10530014:0",
+      "content_sha256": "0a66a519cea3b309fa2f34e39751726f46b4406f59c93f5a22e886c1568ad6bd",
+      "chars": 1066
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:22972632:1",
+      "content_sha256": "00e071ec090e523203ed3c4c0624834cba35ccbd83471ce60f9f8e7086814150",
+      "chars": 340
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:2405259:1",
+      "content_sha256": "205087129ea02e6fbc8e2a5ac6cf948c90e1c34da1a68428c4cb498f92d92c08",
+      "chars": 906
+     }
+    ],
+    "elapsed_s": 4.4066
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\n\nEvidence passages from your search for \"αvβ8 integrin αvβ8 deficiency Treg suppressive function inflammation\":\n<<<PASSAGES\n[P1] Integrin αvβ8-Mediated TGF-β Activation by Effector Regulatory T Cells Is Essential for Suppression of T-Cell-Mediated Inflammation\nRegulatory T (Treg) cells play a pivotal role in suppressing self-harmful T cell responses, but how Treg cells mediate suppression to maintain immune homeostasis and limit responses during inflammation is unclear. Here we show that effector Treg cells express high amounts of the integrin αvβ8, which enables them to activate latent transforming growth factor-β (TGF-β). Treg-cell-specific deletion of integrin αvβ8 did not result in a spontaneous inflammatory phenotype, suggesting that this pathway is not important in Treg-cell-mediated maintenance of immune homeostasis. However, Treg cells lacking expression of integrin αvβ8 were unable to suppress pathogenic T cell responses during active inflammation. Thus, our results identify a mechanism by which Treg cells suppress exuberant immune responses, highlighting a key role for effector Treg-cell-mediated activation of latent TGF-β in suppression of self-harmful T cell responses during active inflammation.\n\n[P2] Enhanced pathological angiogenesis in mice lacking β3 integrin or β3 and β5 integrins\nInhibition of αvβ3 or αvβ5 integrin function has been reported to suppress neovascularization and tumor growth, suggesting that these integrins are critical modulators of angiogenesis. Here we report that mice lacking β3 integrins or both β3 and β5 integrins not only support tumorigenesis, but have enhanced tumor growth as well. Moreover, the tumors in these integrin-deficient mice display enhanced angiogenesis, strongly suggesting that neither β3 nor β5 integrins are essential for neovascularization. We also observed that angiogenic responses to hypoxia and vascular endothelial growth factor (VEGF) are augmented significantly in the absence of β3 integrins. We found no evidence that the expression or functions of other integrins were altered as a consequence of the β3 deficiency, but we did observe elevated levels of VEGF receptor-2 (also called Flk-1) in β3-null endothelial cells.\n\n[P3] A point mutation in KINDLIN3 ablates activation of three integrin subfamilies in humans\nMonogenic deficiency diseases provide unique opportunities to define the contributions of individual molecules to human physiology and to identify pathologies arising from their dysfunction. Here we describe a deficiency disease in two human siblings that presented with severe bleeding, frequent infections and osteopetrosis at an early age. These symptoms are consistent with but more severe than those reported for people with leukocyte adhesion deficiency III (LAD-III). Mechanistically, these symptoms arose from an inability to activate the integrins expressed on hematopoietic cells, including platelets and leukocytes. Immortalized lymphocyte cell lines isolated from the two individuals showed integrin activation defects. Several proteins previously implicated in integrin activation, including Ras-associated protein-1 (RAP1) and calcium and diacylglycerol-regulated guanine nucleotide exchange factor-1 (CALDAG-GEF1), were present and functional in these cell lines.\n\n[P4] Enhanced pathological angiogenesis in mice lacking β3 integrin or β3 and β5 integrins\nThese data indicate that αvβ3 and αvβ5 integrins are not essential for vascular development or pathological angiogenesis and highlight the need for further evaluation of the mechanisms of action of αv-integrin antagonists in anti-angiogenic therapeutics.\n\n[P5] Tet2 is required to resolve inflammation by recruiting Hdac2 to specifically repress IL-6\nTet2-deficient mice were more susceptible to endotoxin shock and dextran-sulfate-sodium-induced colitis, displaying a more severe inflammatory phenotype and increased IL-6 production compared to wild-type mice. IκBζ, an IL-6-specific transcription factor, mediated specific targeting of Tet2 to the Il6 promoter, further indicating opposite regulatory roles of IκBζ at initial and resolution phases of inflammation. For the repression mechanism, independent of DNA methylation and hydroxymethylation, Tet2 recruited Hdac2 and repressed transcription of Il6 via histone deacetylation. We provide mechanistic evidence for the gene-specific transcription repression activity of Tet2 via histone deacetylation and for the prevention of constant transcription activation at the chromatin level for resolving inflammation.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "56bc6b3e0449605b2a5324adb70faaea6b42441f728ba82b81fc40fa091fe70a",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792864744.954064,
+      "end_wall": 1792864779.5814478,
+      "error": null
+     }
+    ],
+    "arrival_seq": 2079,
+    "start_wall": 1792864744.954064,
+    "start_mono": 534301.681094708,
+    "end_wall": 1792864779.5814478,
+    "end_mono": 534336.308369791,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passage P1 directly supports the claim by demonstrating that Treg cells lacking αvβ8 integrin are unable to suppress pathogenic T cell responses during active inflammation, indicating that these Treg cells are less effective in such conditions compared to those expressing αvβ8. This aligns with the claim that Treg cells lacking αvβ8 are more adept at suppression under specific circumstances, though the phrasing suggests an inverse relationship which might be misleading without context; however, based strictly on suppression capability noted in inflammation, the core assertion is v\" ,\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 34622467958,
+     "load_duration": 20045348166,
+     "prompt_eval_count": 1201,
+     "prompt_eval_duration": 6100073584,
+     "eval_count": 148,
+     "eval_duration": 7303022800,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T17:59:39.577882Z"
+    },
+    "elapsed_s": 34.627,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 2079,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "scifact:17997584:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "e06b542302e27698e2a76efce1e26257299e83644a537ebd55eeca4f267ccbdc",
+  "granite3.3:2b": "8fe3b2c88f5a5a579cf912cb13dc083363bd879820198a98fd3067ce62f66a52",
+  "olmo2:7b": "9b823e0667297a565ec8e263666735b61469d759106614cf22de026e6ef8b02f",
+  "nemotron-mini:4b": "580d3a18a7726b1d54dccf0e89263d2038b5743c5860afcec8aec1c90b28b1a2",
+  "exaone3.5:7.8b": "8c8c61238e7b534c0d53e39b5154dc48f5078ee8b2961eb861aef94347c4ec69"
+ },
+ "item_start_wall": 1792864738.2898471,
+ "item_wall_s": 41.292,
+ "ollama_ps_samples": [
+  [
+   1792864738.29,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792864740.302,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864742.306,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864744.315,
+   [
+    "nomic-embed-text:latest",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864746.323,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792864748.333,
+   [
+    "nomic-embed-text:latest",
+    "olmo2:7b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792864750.339,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864752.348,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864754.356,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864756.364,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864758.37,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864760.376,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864762.38,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792864764.386,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792864766.394,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864768.401,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864770.405,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864772.411,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864774.418,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864776.425,
+   [
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792864778.426,
+   [
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}

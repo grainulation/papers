@@ -1,0 +1,1241 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever201112",
+ "order": 136,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever201112",
+  "order": 136,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Marcus Bentley is a British voice-over artist."
+ },
+ "item_view_sha256": "3c886882db4b242b44b465a1c4cc0a6d1c6406d58b0b9f76b796d0f321126f38",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Marcus Bentley is a British voice-over artist.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f3e191e0f9abb5c44e7a905c9050a3f56dd8c939412d92a86ec625fc93fc9748",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792856744.3858519,
+      "end_wall": 1792856745.379848,
+      "error": null
+     }
+    ],
+    "start_wall": 1792856744.3858519,
+    "start_mono": 526301.129784375,
+    "end_wall": 1792856745.379848,
+    "end_mono": 526302.123784125,
+    "raw_response": "{\"query\": \"Marcus Bentley voice-over artist\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 992380084,
+     "load_duration": 106516709,
+     "prompt_eval_count": 175,
+     "prompt_eval_duration": 355125292,
+     "eval_count": 13,
+     "eval_duration": 392475084,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:45.37919Z"
+    },
+    "elapsed_s": 0.994,
+    "query_used": "Marcus Bentley voice-over artist",
+    "query_source": "json",
+    "query_arrival_seq": 680
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Marcus Bentley voice-over artist",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Marcus_Bentley:0",
+       "score_q": 15228
+      },
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+       "score_q": 14402
+      },
+      {
+       "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+       "score_q": 13432
+      },
+      {
+       "passage_key": "fever17:The_Water_Boatman:0",
+       "score_q": 11017
+      },
+      {
+       "passage_key": "fever17:Rachel_Marcus:0",
+       "score_q": 10730
+      }
+     ],
+     "retrieval_sha256": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Marcus_Bentley:0",
+      "content_sha256": "ed6c439333d2b80420ac934505eaae56e9ca61bf8f17136aa6568111f949bb92",
+      "chars": 724
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+      "content_sha256": "000e40def0fe01fea8c0bef84b587da8b551117da9f8b26d33b5c8522ce153e0",
+      "chars": 990
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+      "content_sha256": "312a9fffa6b7a87c1af89be958f2e8aad112e6f9ee273ea8ee5a7c6b360f0999",
+      "chars": 183
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Water_Boatman:0",
+      "content_sha256": "5f0af9810da27464de5f7378c5e09c8bc11aba993bb6ded998fdaf60b7a1c6e2",
+      "chars": 293
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Rachel_Marcus:0",
+      "content_sha256": "23b19432db3a6ef7ecc74661050873fe40dd56225dee9178d1973330fe6f9b66",
+      "chars": 189
+     }
+    ],
+    "elapsed_s": 0.0428
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Marcus Bentley is a British voice-over artist.\n\nEvidence passages from your search for \"Marcus Bentley voice-over artist\":\n<<<PASSAGES\n[P1] Marcus Bentley\nMarcus Morgan Bentley ( born 4 October 1967 ) is a British actor , broadcaster and voice-over artist . Bentley is most famous for narrating the United Kingdom 's version of the Dutch reality television programme Big Brother since its inception in 2000 . He also did other continuity announcements for Channel 4 until he left in July 2011 to continue narrating the revived Big Brother on Channel 5 . Bentley 's voice-over work and Geordie accent has led to him becoming one of Britain 's most recognised voices . Bentley has also appeared on stage and in The Bill and London 's Burning . Although he rarely makes public appearances , his public profile has been raised since Big Brothers revival on Channel 5 .\n\n[P2] Bentley (surname)\nJon Bentley ( computer scientist ) , American computer scientist Jon Bentley ( TV presenter ) , English television presenter Ken Bentley , British director Kenneth W. Bentley , chemist for whom were named the Bentley compounds Lester W. Bentley , American artist from Wisconsin Marcus Bentley , British actor , broadcaster and voice-over artist Mark Bentley , English football player/manager Matt Bentley , professional wrestler Max Bentley , Canadian ice hockey player Naomi Bentley , British actress Nicolas Bentley , British author and illustrator Phyllis Bentley , English novelist Richard Bentley , classical scholar Richard Bentley ( publisher ) ( 1794 -- 1871 ) , English printer and publisher of Bentley 's Miscellany Robert Bentley ( disambiguation ) , various people Roy Bentley , English football player Thomas Bentley , English film director Wes Bentley , actor Wilson Bentley , artist-scientist W. O. Bentley , founder of Bentley Motors Fictional characters :\n\n[P3] Dirty Money (show)\nDirty Money was a United Kingdom game show broadcast on Sky One from 15 April to 28 May 2002 . It was narrated by Marcus Bentley , a voice over , similar to 100 % .\n\n[P4] The Water Boatman\nThe Waterboatman is a 2016 British horror and thriller film , directed by Chris R Wright . The film stars Charlie Mills as failed musician , Neil , along with Rachel Teate as Liv and the voice of Big Brother , Marcus Bentley . The film was shot in Bournemouth and Hampshire .\n\n[P5] Rachel Marcus\nRachel Marcus is a Canadian actress and voice artist best known for her role as Beatrice ` Booky ' Thomson in Booky and the Secret Santa ( 2007 ) and Booky 's Crush ( 2009 ) .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "66492d698e6f99460f55660d9af4008ddc6ccdd7da7f91c3da65ad9efdbe9598",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792856745.4229472,
+      "end_wall": 1792856751.650321,
+      "error": null
+     }
+    ],
+    "arrival_seq": 680,
+    "start_wall": 1792856745.4229472,
+    "start_mono": 526302.166884708,
+    "end_wall": 1792856751.650321,
+    "end_mono": 526308.394285,
+    "raw_response": "{\"reasoning\": \"Marcus Bentley is recognized as a British actor, broadcaster, and voice-over artist, most notably for narrating Big Brother.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6225068625,
+     "load_duration": 59424167,
+     "prompt_eval_count": 894,
+     "prompt_eval_duration": 2243519917,
+     "eval_count": 58,
+     "eval_duration": 3366483418,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:51.649058Z"
+    },
+    "elapsed_s": 6.227,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 680,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1"
+    ],
+    "citation_keys": [
+     "fever17:Marcus_Bentley:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 124,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 2,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Marcus Bentley is a British voice-over artist.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f3e191e0f9abb5c44e7a905c9050a3f56dd8c939412d92a86ec625fc93fc9748",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792856744.38598,
+      "end_wall": 1792856746.072534,
+      "error": null
+     }
+    ],
+    "start_wall": 1792856744.38598,
+    "start_mono": 526301.129913,
+    "end_wall": 1792856746.072534,
+    "end_mono": 526302.816473416,
+    "raw_response": "{\"query\": \"British voice actor Marcus Bentley\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1684520416,
+     "load_duration": 56806875,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 485882917,
+     "eval_count": 12,
+     "eval_duration": 1052161668,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:46.071411Z"
+    },
+    "elapsed_s": 1.687,
+    "query_used": "British voice actor Marcus Bentley",
+    "query_source": "json",
+    "query_arrival_seq": 681
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "British voice actor Marcus Bentley",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+       "score_q": 15173
+      },
+      {
+       "passage_key": "fever17:Marcus_Bentley:0",
+       "score_q": 14828
+      },
+      {
+       "passage_key": "fever17:The_Water_Boatman:0",
+       "score_q": 12761
+      },
+      {
+       "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+       "score_q": 11693
+      },
+      {
+       "passage_key": "fever17:Marcus_Gilbert:0",
+       "score_q": 11154
+      }
+     ],
+     "retrieval_sha256": "8b8c7c7adff80babfec63f111192174bcd5515e9a134ecadee414f7a1daa8123"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8b8c7c7adff80babfec63f111192174bcd5515e9a134ecadee414f7a1daa8123",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+      "content_sha256": "000e40def0fe01fea8c0bef84b587da8b551117da9f8b26d33b5c8522ce153e0",
+      "chars": 990
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Marcus_Bentley:0",
+      "content_sha256": "ed6c439333d2b80420ac934505eaae56e9ca61bf8f17136aa6568111f949bb92",
+      "chars": 724
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:The_Water_Boatman:0",
+      "content_sha256": "5f0af9810da27464de5f7378c5e09c8bc11aba993bb6ded998fdaf60b7a1c6e2",
+      "chars": 293
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+      "content_sha256": "312a9fffa6b7a87c1af89be958f2e8aad112e6f9ee273ea8ee5a7c6b360f0999",
+      "chars": 183
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Marcus_Gilbert:0",
+      "content_sha256": "3a0033f5fcf7e0c38bfebb0e08ee9538f9b488aba09e917d1aedce7fa29faefe",
+      "chars": 180
+     }
+    ],
+    "elapsed_s": 0.0244
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Marcus Bentley is a British voice-over artist.\n\nEvidence passages from your search for \"British voice actor Marcus Bentley\":\n<<<PASSAGES\n[P1] Bentley (surname)\nJon Bentley ( computer scientist ) , American computer scientist Jon Bentley ( TV presenter ) , English television presenter Ken Bentley , British director Kenneth W. Bentley , chemist for whom were named the Bentley compounds Lester W. Bentley , American artist from Wisconsin Marcus Bentley , British actor , broadcaster and voice-over artist Mark Bentley , English football player/manager Matt Bentley , professional wrestler Max Bentley , Canadian ice hockey player Naomi Bentley , British actress Nicolas Bentley , British author and illustrator Phyllis Bentley , English novelist Richard Bentley , classical scholar Richard Bentley ( publisher ) ( 1794 -- 1871 ) , English printer and publisher of Bentley 's Miscellany Robert Bentley ( disambiguation ) , various people Roy Bentley , English football player Thomas Bentley , English film director Wes Bentley , actor Wilson Bentley , artist-scientist W. O. Bentley , founder of Bentley Motors Fictional characters :\n\n[P2] Marcus Bentley\nMarcus Morgan Bentley ( born 4 October 1967 ) is a British actor , broadcaster and voice-over artist . Bentley is most famous for narrating the United Kingdom 's version of the Dutch reality television programme Big Brother since its inception in 2000 . He also did other continuity announcements for Channel 4 until he left in July 2011 to continue narrating the revived Big Brother on Channel 5 . Bentley 's voice-over work and Geordie accent has led to him becoming one of Britain 's most recognised voices . Bentley has also appeared on stage and in The Bill and London 's Burning . Although he rarely makes public appearances , his public profile has been raised since Big Brothers revival on Channel 5 .\n\n[P3] The Water Boatman\nThe Waterboatman is a 2016 British horror and thriller film , directed by Chris R Wright . The film stars Charlie Mills as failed musician , Neil , along with Rachel Teate as Liv and the voice of Big Brother , Marcus Bentley . The film was shot in Bournemouth and Hampshire .\n\n[P4] Dirty Money (show)\nDirty Money was a United Kingdom game show broadcast on Sky One from 15 April to 28 May 2002 . It was narrated by Marcus Bentley , a voice over , similar to 100 % .\n\n[P5] Marcus Gilbert\nMarcus Gilbert may refer to : Marcus Gilbert ( actor ) ( born 1958 ) , British actor Marcus Gilbert ( American football ) ( born 1988 ) Marcus Gilbert ( basketball )\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "a71677ada197f1db78476701c0b9ed3db6337283ebdb65b24a072202678fa531",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792856746.097334,
+      "end_wall": 1792856759.217768,
+      "error": null
+     }
+    ],
+    "arrival_seq": 681,
+    "start_wall": 1792856746.097334,
+    "start_mono": 526302.8412745,
+    "end_wall": 1792856759.217768,
+    "end_mono": 526315.961764583,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages, particularly P2 and P4, clearly identify Marcus Bentley as a British voice-over artist known for narrating Big Brother and narrating other shows, supporting the claim directly.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13117190125,
+     "load_duration": 46448208,
+     "prompt_eval_count": 834,
+     "prompt_eval_duration": 3734009709,
+     "eval_count": 85,
+     "eval_duration": 8703438247,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:59.215558Z"
+    },
+    "elapsed_s": 13.12,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 681,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Marcus_Bentley:0",
+     "fever17:Dirty_Money_-LRB-show-RRB-:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 199,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Marcus Bentley is a British voice-over artist.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f3e191e0f9abb5c44e7a905c9050a3f56dd8c939412d92a86ec625fc93fc9748",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792856744.386218,
+      "end_wall": 1792856750.0988648,
+      "error": null
+     }
+    ],
+    "start_wall": 1792856744.386218,
+    "start_mono": 526301.130151125,
+    "end_wall": 1792856750.0988648,
+    "end_mono": 526306.84282175,
+    "raw_response": "{\"query\": \"Marcus Bentley nationality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5710547541,
+     "load_duration": 1181974541,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 1119829209,
+     "eval_count": 13,
+     "eval_duration": 3351485458,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:50.097507Z"
+    },
+    "elapsed_s": 5.713,
+    "query_used": "Marcus Bentley nationality",
+    "query_source": "json",
+    "query_arrival_seq": 682
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Marcus Bentley nationality",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+       "score_q": 9543
+      },
+      {
+       "passage_key": "fever17:Marcus_Bentley:0",
+       "score_q": 9492
+      },
+      {
+       "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+       "score_q": 8643
+      },
+      {
+       "passage_key": "fever17:The_Water_Boatman:0",
+       "score_q": 8143
+      },
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:0",
+       "score_q": 7335
+      }
+     ],
+     "retrieval_sha256": "d6456d186fee282b956a8f6bf4fa62153747ee5a445663f414a76a2297f495e3"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "d6456d186fee282b956a8f6bf4fa62153747ee5a445663f414a76a2297f495e3",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+      "content_sha256": "000e40def0fe01fea8c0bef84b587da8b551117da9f8b26d33b5c8522ce153e0",
+      "chars": 990
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Marcus_Bentley:0",
+      "content_sha256": "ed6c439333d2b80420ac934505eaae56e9ca61bf8f17136aa6568111f949bb92",
+      "chars": 724
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+      "content_sha256": "312a9fffa6b7a87c1af89be958f2e8aad112e6f9ee273ea8ee5a7c6b360f0999",
+      "chars": 183
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Water_Boatman:0",
+      "content_sha256": "5f0af9810da27464de5f7378c5e09c8bc11aba993bb6ded998fdaf60b7a1c6e2",
+      "chars": 293
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:0",
+      "content_sha256": "116e8f15e34bad65cb617c4d7ec4f8921ba1d5959c664ff15321774a49c00749",
+      "chars": 1002
+     }
+    ],
+    "elapsed_s": 0.0137
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Marcus Bentley is a British voice-over artist.\n\nEvidence passages from your search for \"Marcus Bentley nationality\":\n<<<PASSAGES\n[P1] Bentley (surname)\nJon Bentley ( computer scientist ) , American computer scientist Jon Bentley ( TV presenter ) , English television presenter Ken Bentley , British director Kenneth W. Bentley , chemist for whom were named the Bentley compounds Lester W. Bentley , American artist from Wisconsin Marcus Bentley , British actor , broadcaster and voice-over artist Mark Bentley , English football player/manager Matt Bentley , professional wrestler Max Bentley , Canadian ice hockey player Naomi Bentley , British actress Nicolas Bentley , British author and illustrator Phyllis Bentley , English novelist Richard Bentley , classical scholar Richard Bentley ( publisher ) ( 1794 -- 1871 ) , English printer and publisher of Bentley 's Miscellany Robert Bentley ( disambiguation ) , various people Roy Bentley , English football player Thomas Bentley , English film director Wes Bentley , actor Wilson Bentley , artist-scientist W. O. Bentley , founder of Bentley Motors Fictional characters :\n\n[P2] Marcus Bentley\nMarcus Morgan Bentley ( born 4 October 1967 ) is a British actor , broadcaster and voice-over artist . Bentley is most famous for narrating the United Kingdom 's version of the Dutch reality television programme Big Brother since its inception in 2000 . He also did other continuity announcements for Channel 4 until he left in July 2011 to continue narrating the revived Big Brother on Channel 5 . Bentley 's voice-over work and Geordie accent has led to him becoming one of Britain 's most recognised voices . Bentley has also appeared on stage and in The Bill and London 's Burning . Although he rarely makes public appearances , his public profile has been raised since Big Brothers revival on Channel 5 .\n\n[P3] Dirty Money (show)\nDirty Money was a United Kingdom game show broadcast on Sky One from 15 April to 28 May 2002 . It was narrated by Marcus Bentley , a voice over , similar to 100 % .\n\n[P4] The Water Boatman\nThe Waterboatman is a 2016 British horror and thriller film , directed by Chris R Wright . The film stars Charlie Mills as failed musician , Neil , along with Rachel Teate as Liv and the voice of Big Brother , Marcus Bentley . The film was shot in Bournemouth and Hampshire .\n\n[P5] Bentley (surname)\nBentley or Bently is an English surname . Notable people with the surname include : Arthur F. Bentley , American political scientist Bill Bentley , English footballer Bill Bentley ( producer ) , record company executive and record producer Christine Bentley , CFTO Cy Bentley , Major League Baseball pitcher David Bentley , English footballer Derek Bentley , subject of a controversial court case Dierks Bentley , country music singer Donald E. Bently , American engineer Doug Bentley , Canadian ice hockey player Edmund Clerihew Bentley , British author and humorist Elizabeth Bentley , American spy for the Soviet Union Eric Bentley , critic , playwright , singer , editor and translator Fonzworth Bentley , entertainer and designer , former assistant to Diddy Greg Bentley , Australian football player Helen Delich Bentley , American politician Jack Bentley ( disambiguation ) , various people Jay Bentley , bassist for Bad Religion John Bentley ( disambiguation ) , various people\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "984130c14a27fe6ff11833d6a56efa406c0cfb2a87dc48ebadba13c734be64f6",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792856750.112931,
+      "end_wall": 1792856763.510581,
+      "error": null
+     }
+    ],
+    "arrival_seq": 682,
+    "start_wall": 1792856750.112931,
+    "start_mono": 526306.856888583,
+    "end_wall": 1792856763.510581,
+    "end_mono": 526320.254596041,
+    "raw_response": "{\n  \"reasoning\": \"Marcus Bentley is identified as a British actor, broadcaster, and voice-over artist in multiple passages, specifically [P1] and [P2]. These sources directly state that Marcus Bentley is British.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13393965625,
+     "load_duration": 8136176917,
+     "prompt_eval_count": 1209,
+     "prompt_eval_duration": 2150896208,
+     "eval_count": 87,
+     "eval_duration": 2778674967,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:46:03.507781Z"
+    },
+    "elapsed_s": 13.398,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 682,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Bentley_-LRB-surname-RRB-:1",
+     "fever17:Marcus_Bentley:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 194,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Marcus Bentley is a British voice-over artist.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f3e191e0f9abb5c44e7a905c9050a3f56dd8c939412d92a86ec625fc93fc9748",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792856744.385629,
+      "end_wall": 1792856753.376843,
+      "error": null
+     }
+    ],
+    "start_wall": 1792856744.385629,
+    "start_mono": 526301.129561708,
+    "end_wall": 1792856753.376843,
+    "end_mono": 526310.120814,
+    "raw_response": "{\"query\": \"Marcus Bentley voice-over artist\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8988915750,
+     "load_duration": 7660694917,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 629994209,
+     "eval_count": 11,
+     "eval_duration": 607370208,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:53.375681Z"
+    },
+    "elapsed_s": 8.991,
+    "query_used": "Marcus Bentley voice-over artist",
+    "query_source": "json",
+    "query_arrival_seq": 683
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Marcus Bentley voice-over artist",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Marcus_Bentley:0",
+       "score_q": 15228
+      },
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+       "score_q": 14402
+      },
+      {
+       "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+       "score_q": 13432
+      },
+      {
+       "passage_key": "fever17:The_Water_Boatman:0",
+       "score_q": 11017
+      },
+      {
+       "passage_key": "fever17:Rachel_Marcus:0",
+       "score_q": 10730
+      }
+     ],
+     "retrieval_sha256": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Marcus_Bentley:0",
+      "content_sha256": "ed6c439333d2b80420ac934505eaae56e9ca61bf8f17136aa6568111f949bb92",
+      "chars": 724
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+      "content_sha256": "000e40def0fe01fea8c0bef84b587da8b551117da9f8b26d33b5c8522ce153e0",
+      "chars": 990
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+      "content_sha256": "312a9fffa6b7a87c1af89be958f2e8aad112e6f9ee273ea8ee5a7c6b360f0999",
+      "chars": 183
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Water_Boatman:0",
+      "content_sha256": "5f0af9810da27464de5f7378c5e09c8bc11aba993bb6ded998fdaf60b7a1c6e2",
+      "chars": 293
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Rachel_Marcus:0",
+      "content_sha256": "23b19432db3a6ef7ecc74661050873fe40dd56225dee9178d1973330fe6f9b66",
+      "chars": 189
+     }
+    ],
+    "elapsed_s": 0.0235
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Marcus Bentley is a British voice-over artist.\n\nEvidence passages from your search for \"Marcus Bentley voice-over artist\":\n<<<PASSAGES\n[P1] Marcus Bentley\nMarcus Morgan Bentley ( born 4 October 1967 ) is a British actor , broadcaster and voice-over artist . Bentley is most famous for narrating the United Kingdom 's version of the Dutch reality television programme Big Brother since its inception in 2000 . He also did other continuity announcements for Channel 4 until he left in July 2011 to continue narrating the revived Big Brother on Channel 5 . Bentley 's voice-over work and Geordie accent has led to him becoming one of Britain 's most recognised voices . Bentley has also appeared on stage and in The Bill and London 's Burning . Although he rarely makes public appearances , his public profile has been raised since Big Brothers revival on Channel 5 .\n\n[P2] Bentley (surname)\nJon Bentley ( computer scientist ) , American computer scientist Jon Bentley ( TV presenter ) , English television presenter Ken Bentley , British director Kenneth W. Bentley , chemist for whom were named the Bentley compounds Lester W. Bentley , American artist from Wisconsin Marcus Bentley , British actor , broadcaster and voice-over artist Mark Bentley , English football player/manager Matt Bentley , professional wrestler Max Bentley , Canadian ice hockey player Naomi Bentley , British actress Nicolas Bentley , British author and illustrator Phyllis Bentley , English novelist Richard Bentley , classical scholar Richard Bentley ( publisher ) ( 1794 -- 1871 ) , English printer and publisher of Bentley 's Miscellany Robert Bentley ( disambiguation ) , various people Roy Bentley , English football player Thomas Bentley , English film director Wes Bentley , actor Wilson Bentley , artist-scientist W. O. Bentley , founder of Bentley Motors Fictional characters :\n\n[P3] Dirty Money (show)\nDirty Money was a United Kingdom game show broadcast on Sky One from 15 April to 28 May 2002 . It was narrated by Marcus Bentley , a voice over , similar to 100 % .\n\n[P4] The Water Boatman\nThe Waterboatman is a 2016 British horror and thriller film , directed by Chris R Wright . The film stars Charlie Mills as failed musician , Neil , along with Rachel Teate as Liv and the voice of Big Brother , Marcus Bentley . The film was shot in Bournemouth and Hampshire .\n\n[P5] Rachel Marcus\nRachel Marcus is a Canadian actress and voice artist best known for her role as Beatrice ` Booky ' Thomson in Booky and the Secret Santa ( 2007 ) and Booky 's Crush ( 2009 ) .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "66492d698e6f99460f55660d9af4008ddc6ccdd7da7f91c3da65ad9efdbe9598",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792856753.40065,
+      "end_wall": 1792856765.1695821,
+      "error": null
+     }
+    ],
+    "arrival_seq": 683,
+    "start_wall": 1792856753.40065,
+    "start_mono": 526310.144622541,
+    "end_wall": 1792856765.1695821,
+    "end_mono": 526321.913604666,
+    "raw_response": "{\"reasoning\": \"The claim states that Marcus Bentley is a British voice-over artist. The evidence passages P1, P2, and P4 provide explicit confirmation that Marcus Bentley is known for his voice-over work, including narrating Big Brother and appearing in additional voice-over roles. Passage P5 mentions Rachel Marcus, a voice artist who worked with Bentley, further supporting the claim. Thus, the claim is SUPPORTED by the evidence provided.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11765784750,
+     "load_duration": 46910250,
+     "prompt_eval_count": 764,
+     "prompt_eval_duration": 3040440083,
+     "eval_count": 119,
+     "eval_duration": 7696119918,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:46:05.16768Z"
+    },
+    "elapsed_s": 11.769,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 683,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Marcus_Bentley:0",
+     "fever17:Bentley_-LRB-surname-RRB-:1",
+     "fever17:The_Water_Boatman:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 427,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Marcus Bentley is a British voice-over artist.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f3e191e0f9abb5c44e7a905c9050a3f56dd8c939412d92a86ec625fc93fc9748",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792856744.385731,
+      "end_wall": 1792856757.0770218,
+      "error": null
+     }
+    ],
+    "start_wall": 1792856744.385731,
+    "start_mono": 526301.129663625,
+    "end_wall": 1792856757.0770218,
+    "end_mono": 526313.821009083,
+    "raw_response": "{\"query\": \"British voice-over artist Marcus Bentley\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 12689093167,
+     "load_duration": 9454029459,
+     "prompt_eval_count": 172,
+     "prompt_eval_duration": 910879875,
+     "eval_count": 13,
+     "eval_duration": 2040858956,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:45:57.075728Z"
+    },
+    "elapsed_s": 12.691,
+    "query_used": "British voice-over artist Marcus Bentley",
+    "query_source": "json",
+    "query_arrival_seq": 684
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "British voice-over artist Marcus Bentley",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+       "score_q": 16449
+      },
+      {
+       "passage_key": "fever17:Marcus_Bentley:0",
+       "score_q": 16347
+      },
+      {
+       "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+       "score_q": 13432
+      },
+      {
+       "passage_key": "fever17:The_Water_Boatman:0",
+       "score_q": 12761
+      },
+      {
+       "passage_key": "fever17:Rachel_Marcus:0",
+       "score_q": 10730
+      }
+     ],
+     "retrieval_sha256": "2a3a64db1b8e450825425e27ac59f94dbdb9b443d03fb9252e742753f81499ff"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2a3a64db1b8e450825425e27ac59f94dbdb9b443d03fb9252e742753f81499ff",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Bentley_-LRB-surname-RRB-:1",
+      "content_sha256": "000e40def0fe01fea8c0bef84b587da8b551117da9f8b26d33b5c8522ce153e0",
+      "chars": 990
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Marcus_Bentley:0",
+      "content_sha256": "ed6c439333d2b80420ac934505eaae56e9ca61bf8f17136aa6568111f949bb92",
+      "chars": 724
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dirty_Money_-LRB-show-RRB-:0",
+      "content_sha256": "312a9fffa6b7a87c1af89be958f2e8aad112e6f9ee273ea8ee5a7c6b360f0999",
+      "chars": 183
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:The_Water_Boatman:0",
+      "content_sha256": "5f0af9810da27464de5f7378c5e09c8bc11aba993bb6ded998fdaf60b7a1c6e2",
+      "chars": 293
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Rachel_Marcus:0",
+      "content_sha256": "23b19432db3a6ef7ecc74661050873fe40dd56225dee9178d1973330fe6f9b66",
+      "chars": 189
+     }
+    ],
+    "elapsed_s": 0.0288
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Marcus Bentley is a British voice-over artist.\n\nEvidence passages from your search for \"British voice-over artist Marcus Bentley\":\n<<<PASSAGES\n[P1] Bentley (surname)\nJon Bentley ( computer scientist ) , American computer scientist Jon Bentley ( TV presenter ) , English television presenter Ken Bentley , British director Kenneth W. Bentley , chemist for whom were named the Bentley compounds Lester W. Bentley , American artist from Wisconsin Marcus Bentley , British actor , broadcaster and voice-over artist Mark Bentley , English football player/manager Matt Bentley , professional wrestler Max Bentley , Canadian ice hockey player Naomi Bentley , British actress Nicolas Bentley , British author and illustrator Phyllis Bentley , English novelist Richard Bentley , classical scholar Richard Bentley ( publisher ) ( 1794 -- 1871 ) , English printer and publisher of Bentley 's Miscellany Robert Bentley ( disambiguation ) , various people Roy Bentley , English football player Thomas Bentley , English film director Wes Bentley , actor Wilson Bentley , artist-scientist W. O. Bentley , founder of Bentley Motors Fictional characters :\n\n[P2] Marcus Bentley\nMarcus Morgan Bentley ( born 4 October 1967 ) is a British actor , broadcaster and voice-over artist . Bentley is most famous for narrating the United Kingdom 's version of the Dutch reality television programme Big Brother since its inception in 2000 . He also did other continuity announcements for Channel 4 until he left in July 2011 to continue narrating the revived Big Brother on Channel 5 . Bentley 's voice-over work and Geordie accent has led to him becoming one of Britain 's most recognised voices . Bentley has also appeared on stage and in The Bill and London 's Burning . Although he rarely makes public appearances , his public profile has been raised since Big Brothers revival on Channel 5 .\n\n[P3] Dirty Money (show)\nDirty Money was a United Kingdom game show broadcast on Sky One from 15 April to 28 May 2002 . It was narrated by Marcus Bentley , a voice over , similar to 100 % .\n\n[P4] The Water Boatman\nThe Waterboatman is a 2016 British horror and thriller film , directed by Chris R Wright . The film stars Charlie Mills as failed musician , Neil , along with Rachel Teate as Liv and the voice of Big Brother , Marcus Bentley . The film was shot in Bournemouth and Hampshire .\n\n[P5] Rachel Marcus\nRachel Marcus is a Canadian actress and voice artist best known for her role as Beatrice ` Booky ' Thomson in Booky and the Secret Santa ( 2007 ) and Booky 's Crush ( 2009 ) .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "d4ab3518b8bb823d763217f7fa8030872d9b0990c98aa3d574833f6c40b31449",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792856757.10613,
+      "end_wall": 1792856768.987252,
+      "error": null
+     }
+    ],
+    "arrival_seq": 684,
+    "start_wall": 1792856757.10613,
+    "start_mono": 526313.850118833,
+    "end_wall": 1792856768.987252,
+    "end_mono": 526325.731290958,
+    "raw_response": "{\"reasoning\": \"The evidence shows that Marcus Bentley is a British actor, broadcaster, and voice-over artist, and he has been narrating Big Brother since its inception in 2000. The passage that supports this claim is P2.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11876911250,
+     "load_duration": 7702871042,
+     "prompt_eval_count": 815,
+     "prompt_eval_duration": 1274380416,
+     "eval_count": 76,
+     "eval_duration": 1536651542,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T15:46:08.984239Z"
+    },
+    "elapsed_s": 11.881,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 684,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Marcus_Bentley:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 205,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 1,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97",
+  "exaone3.5:7.8b": "8b8c7c7adff80babfec63f111192174bcd5515e9a134ecadee414f7a1daa8123",
+  "granite3.3:2b": "d6456d186fee282b956a8f6bf4fa62153747ee5a445663f414a76a2297f495e3",
+  "olmo2:7b": "7a9cff2f80ebdb760028bfbeaf21c61615f1b1c234d75ded20bee2b970a15e97",
+  "nemotron-mini:4b": "2a3a64db1b8e450825425e27ac59f94dbdb9b443d03fb9252e742753f81499ff"
+ },
+ "item_start_wall": 1792856744.385372,
+ "item_wall_s": 24.602,
+ "ollama_ps_samples": [
+  [
+   1792856744.385,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792856746.397,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792856748.403,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792856750.411,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792856752.423,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792856754.434,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792856756.446,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792856758.458,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792856760.469,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792856762.477,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792856764.484,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792856766.494,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792856768.504,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

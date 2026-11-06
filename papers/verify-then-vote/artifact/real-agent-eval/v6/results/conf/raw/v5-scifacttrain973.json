@@ -1,0 +1,1328 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-scifacttrain973",
+ "order": 1075,
+ "split": "confirmatory",
+ "answer_format": "supported_refuted",
+ "corpus": "scifact",
+ "item_view": {
+  "id": "v5-scifacttrain973",
+  "order": 1075,
+  "split": "confirmatory",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "scifact",
+  "question": "Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology."
+ },
+ "item_view_sha256": "14f75e6c31711ed40facefa7a48208abc07b47f7622af64d9fd90274d28c75f7",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "dense",
+  "olmo2:7b": "dense",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "dense"
+ },
+ "dispatch_order": [
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b",
+  "olmo2:7b",
+  "granite3.3:2b",
+  "falcon3:3b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "exaone3.5:7.8b",
+  "granite3.3:2b",
+  "nemotron-mini:4b",
+  "olmo2:7b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "96a51d9fc8625bdb736a091a9d9bdb81aa72daf4e7efee1e195b34ba0a33fb56",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792883972.966593,
+      "end_wall": 1792883974.7050502,
+      "error": null
+     }
+    ],
+    "start_wall": 1792883972.966593,
+    "start_mono": 553529.580134458,
+    "end_wall": 1792883974.7050502,
+    "end_mono": 553531.318579875,
+    "raw_response": "{\"query\": \"primary cervical cytology HPV detection longitudinal sensitivity severe cervical intraepithelial neoplasia\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1736999708,
+     "load_duration": 119301666,
+     "prompt_eval_count": 191,
+     "prompt_eval_duration": 379361166,
+     "eval_count": 22,
+     "eval_duration": 956484580,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:34.704412Z"
+    },
+    "elapsed_s": 1.738,
+    "query_used": "primary cervical cytology HPV detection longitudinal sensitivity severe cervical intraepithelial neoplasia",
+    "query_source": "json",
+    "query_arrival_seq": 5375
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "primary cervical cytology HPV detection longitudinal sensitivity severe cervical intraepithelial neoplasia",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6561200:1",
+       "score_q": 796
+      },
+      {
+       "passage_key": "scifact:27446873:0",
+       "score_q": 794
+      },
+      {
+       "passage_key": "scifact:27446873:2",
+       "score_q": 785
+      },
+      {
+       "passage_key": "scifact:9764256:0",
+       "score_q": 781
+      },
+      {
+       "passage_key": "scifact:27873158:0",
+       "score_q": 775
+      }
+     ],
+     "retrieval_sha256": "9e9e5c1c209f1ff3c056a5301a49c2ab8929e6b5ad953eeedbd144a23c49556d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "9e9e5c1c209f1ff3c056a5301a49c2ab8929e6b5ad953eeedbd144a23c49556d",
+    "query_embedding_sha256": "1e7aec7eb79900d4394eb7b2adfab22682cff905dae753e064f24712fc272c22",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6561200:1",
+      "content_sha256": "7a688d87733b5aed375a17289fc1c7b202f8c45b9c69ad4ad91e6070c232e518",
+      "chars": 1003
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:27446873:0",
+      "content_sha256": "975f320d163fd2ac649908bc7765d4f71e0626b932a3e402d8371054dbcc1307",
+      "chars": 1083
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27446873:2",
+      "content_sha256": "04d62326b2fe61ad7ffbc2e2168b8c0193df2e2cbd8cb2ee28b946c84f4a5a29",
+      "chars": 425
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9764256:0",
+      "content_sha256": "81897ffc78f4db6bb71fb809428bebdcc709873959d366aca37cf040a844f10d",
+      "chars": 1028
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27873158:0",
+      "content_sha256": "b358e4046e4fb0c753d9a4ac62b51fb003b8502ca0fee3c10d0af322b4d11d2a",
+      "chars": 1151
+     }
+    ],
+    "elapsed_s": 6.1692
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nEvidence passages from your search for \"primary cervical cytology HPV detection longitudinal sensitivity severe cervical intraepithelial neoplasia\":\n<<<PASSAGES\n[P1] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nThe main outcome measures were sensitivity for detection of cervical intraepithelial neoplasia grade 3 or worse (CIN3+) within 6 months of enrollment or at colposcopy for women with a persistent type-specific HPV infection and the number of screening tests and positive predictive value (PPV) for each screening strategy. All statistical tests were two-sided. RESULTS Compared with screening by cytology alone, double testing with cytology and for type-specific HPV persistence resulted in a 35% (95% confidence interval [CI] = 15% to 60%) increase in sensitivity to detect CIN3+, without a statistically significant reduction in the PPV (relative PPV = 0.76, 95% CI = 0.52 to 1.10), but with more than twice as many screening tests needed. Several strategies that incorporated screening for high-risk HPV subtypes were explored, but they resulted in reduced PPV compared with cytology.\n\n[P2] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nOBJECTIVE To assess the performance and impact of primary human papillomavirus (HPV) DNA screening with cytology triage compared with conventional cytology on cervical cancer and severe pre-cancerous lesions. DESIGN Randomised trial. SETTING Population based screening programme for cervical cancer in southern Finland in 2003-5. PARTICIPANTS 58 076 women, aged 30-60, invited to the routine population based screening programme for cervical cancer. INTERVENTIONS Primary HPV DNA test (hybrid capture II) with cytology triage if the result was positive or conventional cytological screening (reference). MAIN OUTCOME MEASURES Rate of cervical cancer, cervical intraepithelial neoplasia (CIN) grade III, and adenocarcinoma in situ (as a composite outcome referred to as CIN III+) during 2003-7 through record linkage between files from the screening registry and the national cancer registry.\n\n[P3] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nThe number of cases of cervical cancer was small, but considering the high probability of progression of CIN III the findings are of importance regarding cancer prevention. TRIAL REGISTRATION Current Controlled Trials ISRCTN23885553.\n\n[P4] Human papillomavirus testing for the detection of high-grade cervical intraepithelial neoplasia and cancer: final results of the POBASCAM randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is more sensitive for the detection of high-grade cervical lesions than is cytology, but detection of HPV by DNA screening in two screening rounds 5 years apart has not been assessed. The aim of this study was to assess whether HPV DNA testing in the first screen decreases detection of cervical intraepithelial neoplasia (CIN) grade 3 or worse, CIN grade 2 or worse, and cervical cancer in the second screening. METHODS In this randomised trial, women aged 29-56 years participating in the cervical screening programme in the Netherlands were randomly assigned to receive HPV DNA (GP5+/6+-PCR method) and cytology co-testing or cytology testing alone, from January, 1999, to September, 2002. Randomisation (in a 1:1 ratio) was done with computer-generated random numbers after the cervical specimen had been taken.\n\n[P5] Efficacy of human papillomavirus testing for the detection of invasive cervical cancers and cervical intraepithelial neoplasia: a randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is known to be more sensitive, but less specific than cytology for detecting cervical intraepithelial neoplasia (CIN). We assessed the efficacy of cervical-cancer screening policies that are based on HPV testing. METHODS Between March, 2004, and December, 2004, in two separate recruitment phases, women aged 25-60 years were randomly assigned to conventional cytology or to HPV testing in combination with liquid-based cytology (first phase) or alone (second phase). Randomisation was done by computer in two screening centres and by sequential opening of numbered sealed envelopes in the remaining seven centres. During phase one, women who were HPV-positive and aged 35-60 years were referred to colposcopy, whereas women aged 25-34 years were referred to colposcopy only if cytology was also abnormal or HPV testing was persistently positive. During phase two, women in the HPV group were referred for colposcopy if the HPV test was positive.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e63fb44c546b457e985bb7848824a03e8deba1ebf2a50a861dcad4359589a903",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792883980.875267,
+      "end_wall": 1792883995.195185,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5375,
+    "start_wall": 1792883980.875267,
+    "start_mono": 553537.488760416,
+    "end_wall": 1792883995.195185,
+    "end_mono": 553551.808588833,
+    "raw_response": "{\"reasoning\": \"The evidence suggests that HPV DNA testing with cytology triage increases sensitivity for detecting severe cervical intraepithelial neoplasia without significantly reducing the positive predictive value. However, this increase in sensitivity comes with more screening tests required, which may not always be cost-effective or desirable.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P4\"] , \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14316132375,
+     "load_duration": 4801424208,
+     "prompt_eval_count": 1356,
+     "prompt_eval_duration": 2784672917,
+     "eval_count": 98,
+     "eval_duration": 5640903917,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:55.193188Z"
+    },
+    "elapsed_s": 14.32,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5375,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:6561200:1",
+     "scifact:27446873:0",
+     "scifact:9764256:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 336,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "dense"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "96a51d9fc8625bdb736a091a9d9bdb81aa72daf4e7efee1e195b34ba0a33fb56",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792883972.9661891,
+      "end_wall": 1792883979.996282,
+      "error": null
+     }
+    ],
+    "start_wall": 1792883972.9661891,
+    "start_mono": 553529.579730791,
+    "end_wall": 1792883979.996282,
+    "end_mono": 553536.609779916,
+    "raw_response": "{\"query\": \"comparison sensitivity cervical cytology HPV primary screening severe CIN\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7027930042,
+     "load_duration": 5505876542,
+     "prompt_eval_count": 188,
+     "prompt_eval_duration": 735341709,
+     "eval_count": 17,
+     "eval_duration": 645022290,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:39.995265Z"
+    },
+    "elapsed_s": 7.03,
+    "query_used": "comparison sensitivity cervical cytology HPV primary screening severe CIN",
+    "query_source": "json",
+    "query_arrival_seq": 5378
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "comparison sensitivity cervical cytology HPV primary screening severe CIN",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27446873:0",
+       "score_q": 21711
+      },
+      {
+       "passage_key": "scifact:27446873:1",
+       "score_q": 20524
+      },
+      {
+       "passage_key": "scifact:27446873:2",
+       "score_q": 19572
+      },
+      {
+       "passage_key": "scifact:6561200:2",
+       "score_q": 18819
+      },
+      {
+       "passage_key": "scifact:27873158:1",
+       "score_q": 17688
+      }
+     ],
+     "retrieval_sha256": "a76c301fab7f34a134f447e458d147fa518825770c8cc0a715f082b58278487b"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "a76c301fab7f34a134f447e458d147fa518825770c8cc0a715f082b58278487b",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27446873:0",
+      "content_sha256": "975f320d163fd2ac649908bc7765d4f71e0626b932a3e402d8371054dbcc1307",
+      "chars": 1083
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:27446873:1",
+      "content_sha256": "e68e86dfd8daad8fcbe90b705193dd1dc4fa04b854d73d74b8732be11f8da8cb",
+      "chars": 1060
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27446873:2",
+      "content_sha256": "04d62326b2fe61ad7ffbc2e2168b8c0193df2e2cbd8cb2ee28b946c84f4a5a29",
+      "chars": 425
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6561200:2",
+      "content_sha256": "b42e81890a02f8fbec41a2346c25c4a77e38343d0774e3f5c4b9fe9bd0ac0494",
+      "chars": 691
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27873158:1",
+      "content_sha256": "8d7eb4302759f73144b12c88a819c50791f2cf3c19f87308b8adf3caf8c6d2fc",
+      "chars": 1082
+     }
+    ],
+    "elapsed_s": 0.0023
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nEvidence passages from your search for \"comparison sensitivity cervical cytology HPV primary screening severe CIN\":\n<<<PASSAGES\n[P1] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nOBJECTIVE To assess the performance and impact of primary human papillomavirus (HPV) DNA screening with cytology triage compared with conventional cytology on cervical cancer and severe pre-cancerous lesions. DESIGN Randomised trial. SETTING Population based screening programme for cervical cancer in southern Finland in 2003-5. PARTICIPANTS 58 076 women, aged 30-60, invited to the routine population based screening programme for cervical cancer. INTERVENTIONS Primary HPV DNA test (hybrid capture II) with cytology triage if the result was positive or conventional cytological screening (reference). MAIN OUTCOME MEASURES Rate of cervical cancer, cervical intraepithelial neoplasia (CIN) grade III, and adenocarcinoma in situ (as a composite outcome referred to as CIN III+) during 2003-7 through record linkage between files from the screening registry and the national cancer registry.\n\n[P2] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nRESULTS In the HPV and conventional arms there were 95 600 and 95 700 woman years of follow-up and 76 and 53 cases of CIN III+, respectively (of which six and eight were cervical cancers). The relative rate of CIN III+ in the HPV arm versus the conventional arm was 1.44 (95% confidence interval 1.01 to 2.05) among all women invited for screening and 1.77 (1.16 to 2.74) among those who attended. Among women with a normal or negative test result, the relative rate of subsequent CIN III+ was 0.28 (0.04 to 1.17). The rate of cervical cancer between arms was 0.75 (0.25 to 2.16) among women invited for screening and 1.98 (0.52 to 9.38) among those who attended. CONCLUSIONS When incorporated into a well established organised screening programme, primary HPV screening with cytology triage was more sensitive than conventional cytology in detecting CIN III+ lesions.\n\n[P3] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nThe number of cases of cervical cancer was small, but considering the high probability of progression of CIN III the findings are of importance regarding cancer prevention. TRIAL REGISTRATION Current Controlled Trials ISRCTN23885553.\n\n[P4] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nCompared with cytology, primary screening with HPV DNA testing followed by cytological triage and repeat HPV DNA testing of HPV DNA-positive women with normal cytology increased the CIN3+ sensitivity by 30% (95% CI = 9% to 54%), maintained a high PPV (relative PPV = 0.87, 95% CI = 0.60 to 1.26), and resulted in a mere 12% increase in the number of screening tests (from 6,257 to 7,019 tests). CONCLUSIONS Primary HPV DNA-based screening with cytology triage and repeat HPV DNA testing of cytology-negative women appears to be the most feasible cervical screening strategy.\n\n[P5] Efficacy of human papillomavirus testing for the detection of invasive cervical cancers and cervical intraepithelial neoplasia: a randomised controlled trial.\nTwo rounds of screening occurred in each phase, and all women had cytology testing only at the second round. The primary endpoint was the detection of grade 2 and 3 CIN, and of invasive cervical cancers during the first and second screening rounds. Analysis was done by intention to screen. This trial is registered, number ISRCTN81678807. FINDINGS In total for both phases, 47,001 women were randomly assigned to the cytology group and 47,369 to HPV testing. 33,851 women from the cytology group and 32,998 from the HPV-testing group had a second round of screening. We also retrieved the histological diagnoses from screening done elsewhere. The detection of invasive cervical cancers was similar for the two groups in the first round of screening (nine in the cytology group vs seven in the HPV group, p=0.62); no cases were detected in the HPV group during round two, compared with nine in the cytology group (p=0.004).\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ab3fc4d3350c38ae359263f4fb521bd1c3b71489fe74b490d08217a1c55d8ebb",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792883979.999042,
+      "end_wall": 1792883997.660588,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5376,
+    "start_wall": 1792883979.999042,
+    "start_mono": 553536.612540166,
+    "end_wall": 1792883997.660588,
+    "end_mono": 553554.2739755,
+    "raw_response": "{\n  \"reasoning\": \"The evidence from multiple studies, particularly [P2] and [P4], indicates that primary HPV DNA screening with cytology triage demonstrates higher sensitivity in detecting severe cervical intraepithelial neoplasia (CIN III+) compared to conventional cytology alone. These studies show statistically significant increases in detection rates for CIN III+ lesions when using HPV detection methods, supporting the claim.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P4\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17656357208,
+     "load_duration": 45571583,
+     "prompt_eval_count": 1325,
+     "prompt_eval_duration": 5260174791,
+     "eval_count": 116,
+     "eval_duration": 11399263751,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:57.656715Z"
+    },
+    "elapsed_s": 17.661,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5376,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "scifact:27446873:1",
+     "scifact:6561200:2"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 415,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "96a51d9fc8625bdb736a091a9d9bdb81aa72daf4e7efee1e195b34ba0a33fb56",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792883972.96642,
+      "end_wall": 1792883975.013182,
+      "error": null
+     }
+    ],
+    "start_wall": 1792883972.96642,
+    "start_mono": 553529.57996125,
+    "end_wall": 1792883975.013182,
+    "end_mono": 553531.626710083,
+    "raw_response": "{\"query\": \"HPV cervical screening sensitivity vs conventional\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2044661042,
+     "load_duration": 934557375,
+     "prompt_eval_count": 203,
+     "prompt_eval_duration": 418445875,
+     "eval_count": 17,
+     "eval_duration": 610467417,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:35.01212Z"
+    },
+    "elapsed_s": 2.047,
+    "query_used": "HPV cervical screening sensitivity vs conventional",
+    "query_source": "json",
+    "query_arrival_seq": 5376
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HPV cervical screening sensitivity vs conventional",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:19140422:2",
+       "score_q": 751
+      },
+      {
+       "passage_key": "scifact:6561200:2",
+       "score_q": 718
+      },
+      {
+       "passage_key": "scifact:19140422:1",
+       "score_q": 717
+      },
+      {
+       "passage_key": "scifact:6561200:1",
+       "score_q": 710
+      },
+      {
+       "passage_key": "scifact:9764256:0",
+       "score_q": 710
+      }
+     ],
+     "retrieval_sha256": "8e58e3611dd08c430d4f4c65b0d1ebd9c1382eec1e602c42a4dac726fc04c6c5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8e58e3611dd08c430d4f4c65b0d1ebd9c1382eec1e602c42a4dac726fc04c6c5",
+    "query_embedding_sha256": "769098f7d718945c1f8ebcba567ab82cebca5b3908377c1fda9579f17c428ed2",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:19140422:2",
+      "content_sha256": "d9341f7601978501157ecdc0c249905762540495b0db1884d64bc47353ce346d",
+      "chars": 973
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6561200:2",
+      "content_sha256": "b42e81890a02f8fbec41a2346c25c4a77e38343d0774e3f5c4b9fe9bd0ac0494",
+      "chars": 691
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:19140422:1",
+      "content_sha256": "06ccd357048976b621d6ff4c67e5f2e842ca117dfa98afcbed3c65191fd6c89b",
+      "chars": 1140
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6561200:1",
+      "content_sha256": "7a688d87733b5aed375a17289fc1c7b202f8c45b9c69ad4ad91e6070c232e518",
+      "chars": 1003
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:9764256:0",
+      "content_sha256": "81897ffc78f4db6bb71fb809428bebdcc709873959d366aca37cf040a844f10d",
+      "chars": 1028
+     }
+    ],
+    "elapsed_s": 6.024
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nEvidence passages from your search for \"HPV cervical screening sensitivity vs conventional\":\n<<<PASSAGES\n[P1] Evaluation of human papillomavirus testing in primary screening for cervical abnormalities: comparison of sensitivity, specificity, and frequency of referral.\nCompared with referral for colposcopy of all women with ASCUS or higher, signal amplification testing of women with ASCUS and referral of those with a positive result was about as sensitive (61.3% vs 60.3%, respectively) and significantly more specific (82.4% vs 88.9%, respectively). The strategy requiring repeat positive PCR tests on 2 visits had a sensitivity of 84.2% (75.3%-91.0%) and a specificity of 86.2% (85.1%-87.3%). All tests were more specific and less sensitive in older (> or = 30 years) vs younger women. CONCLUSIONS Testing for HPV has higher sensitivity but lower specificity than thin-layer Pap screening. In some settings, particularly where screening intervals are long or haphazard, screening for HPV DNA may be a reasonable alternative to cytology-based screening of reproductive-age women.\n\n[P2] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nCompared with cytology, primary screening with HPV DNA testing followed by cytological triage and repeat HPV DNA testing of HPV DNA-positive women with normal cytology increased the CIN3+ sensitivity by 30% (95% CI = 9% to 54%), maintained a high PPV (relative PPV = 0.87, 95% CI = 0.60 to 1.26), and resulted in a mere 12% increase in the number of screening tests (from 6,257 to 7,019 tests). CONCLUSIONS Primary HPV DNA-based screening with cytology triage and repeat HPV DNA testing of cytology-negative women appears to be the most feasible cervical screening strategy.\n\n[P3] Evaluation of human papillomavirus testing in primary screening for cervical abnormalities: comparison of sensitivity, specificity, and frequency of referral.\nAdditionally, a random sample of women with negative screening test results was referred for colposcopy. Based on individual and combined thin-layer Pap, HPV PCR, and HPV signal amplification test results from the screening and the colposcopy visits, 7 colposcopy triage strategies were defined and evaluated. MAIN OUTCOME MEASURE Sensitivity and specificity for detecting cervical lesions graded CIN 3 or higher for each of the 7 triage strategies. RESULTS The estimated prevalence of CIN 3 or higher was 3.2%. The sensitivity (95% confidence interval) of thin-layer Pap (with a result of > or = ASCUS) for identifying women with CIN 3 or higher was only 61.3% (48.5%-70.9%) compared with 88.2% (78.9%-93.8%) for HPV testing by PCR and 90.8% (83.1%-95.8%) by signal amplification. Differences in specificities were also observed: 82.4% (81.8%-83.1%) for thin-layer Pap (with a result of > or = ASCUS), 78.8% (77.9%-79.7%) for PCR, and 72.6% (69.4%-75.0%) for signal amplification.\n\n[P4] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nThe main outcome measures were sensitivity for detection of cervical intraepithelial neoplasia grade 3 or worse (CIN3+) within 6 months of enrollment or at colposcopy for women with a persistent type-specific HPV infection and the number of screening tests and positive predictive value (PPV) for each screening strategy. All statistical tests were two-sided. RESULTS Compared with screening by cytology alone, double testing with cytology and for type-specific HPV persistence resulted in a 35% (95% confidence interval [CI] = 15% to 60%) increase in sensitivity to detect CIN3+, without a statistically significant reduction in the PPV (relative PPV = 0.76, 95% CI = 0.52 to 1.10), but with more than twice as many screening tests needed. Several strategies that incorporated screening for high-risk HPV subtypes were explored, but they resulted in reduced PPV compared with cytology.\n\n[P5] Human papillomavirus testing for the detection of high-grade cervical intraepithelial neoplasia and cancer: final results of the POBASCAM randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is more sensitive for the detection of high-grade cervical lesions than is cytology, but detection of HPV by DNA screening in two screening rounds 5 years apart has not been assessed. The aim of this study was to assess whether HPV DNA testing in the first screen decreases detection of cervical intraepithelial neoplasia (CIN) grade 3 or worse, CIN grade 2 or worse, and cervical cancer in the second screening. METHODS In this randomised trial, women aged 29-56 years participating in the cervical screening programme in the Netherlands were randomly assigned to receive HPV DNA (GP5+/6+-PCR method) and cytology co-testing or cytology testing alone, from January, 1999, to September, 2002. Randomisation (in a 1:1 ratio) was done with computer-generated random numbers after the cervical specimen had been taken.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7e490ee5125bc42c02cf8e7046dd53b82a83183f80e69f27d10dfba2c712a098",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792883981.037892,
+      "end_wall": 1792883999.4268532,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5377,
+    "start_wall": 1792883981.037892,
+    "start_mono": 553537.65138375,
+    "end_wall": 1792883999.4268532,
+    "end_mono": 553556.04023025,
+    "raw_response": "{\n  \"reasoning\": \"The provided passages support the claim that primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia (CIN) compared to conventional cytology. Several studies, such as [P1], [P3], and [P5], indicate higher sensitivity of HPV testing (PCR and signal amplification) for identifying CIN3 or higher (30-88.9%) compared to thin-layer Pap (60.3-61.3%) and cytology (78.9-88.2%). Additionally, HPV testing with cytology triage and/or repeat HPV DNA testing increased the sensitivity for CIN3+ by 30% compared to cytology-\",\"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P3\", \"P5\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18384282917,
+     "load_duration": 5764088750,
+     "prompt_eval_count": 1711,
+     "prompt_eval_duration": 4273789333,
+     "eval_count": 214,
+     "eval_duration": 7416865078,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:59.423792Z"
+    },
+    "elapsed_s": 18.389,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5377,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3",
+     "P5"
+    ],
+    "citation_keys": [
+     "scifact:19140422:2",
+     "scifact:19140422:1",
+     "scifact:9764256:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "dense"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "96a51d9fc8625bdb736a091a9d9bdb81aa72daf4e7efee1e195b34ba0a33fb56",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792883972.966058,
+      "end_wall": 1792883984.715054,
+      "error": null
+     }
+    ],
+    "start_wall": 1792883972.966058,
+    "start_mono": 553529.5796,
+    "end_wall": 1792883984.715054,
+    "end_mono": 553541.32852225,
+    "raw_response": "{\"query\": \"HPV detection AND cervical cytology screening AND sensitivity AND longitudinal\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11746340167,
+     "load_duration": 7349758084,
+     "prompt_eval_count": 184,
+     "prompt_eval_duration": 932607625,
+     "eval_count": 16,
+     "eval_duration": 3145553332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:44.713886Z"
+    },
+    "elapsed_s": 11.749,
+    "query_used": "HPV detection AND cervical cytology screening AND sensitivity AND longitudinal",
+    "query_source": "json",
+    "query_arrival_seq": 5379
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HPV detection AND cervical cytology screening AND sensitivity AND longitudinal",
+     "corpus_id": "scifact",
+     "index_sha256": "e275eb2c7df53f9e9dc1fd24add5a31ef5b4588e70ef60d8bb8d7821840bd248",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:6561200:1",
+       "score_q": 17783
+      },
+      {
+       "passage_key": "scifact:9764256:0",
+       "score_q": 17126
+      },
+      {
+       "passage_key": "scifact:27873158:1",
+       "score_q": 16991
+      },
+      {
+       "passage_key": "scifact:6561200:2",
+       "score_q": 16794
+      },
+      {
+       "passage_key": "scifact:6561200:0",
+       "score_q": 15605
+      }
+     ],
+     "retrieval_sha256": "4364441e7ef62be71a2d1b631abb595167059fc157c388bd032a96662fcc2538"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4364441e7ef62be71a2d1b631abb595167059fc157c388bd032a96662fcc2538",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:6561200:1",
+      "content_sha256": "7a688d87733b5aed375a17289fc1c7b202f8c45b9c69ad4ad91e6070c232e518",
+      "chars": 1003
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:9764256:0",
+      "content_sha256": "81897ffc78f4db6bb71fb809428bebdcc709873959d366aca37cf040a844f10d",
+      "chars": 1028
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27873158:1",
+      "content_sha256": "8d7eb4302759f73144b12c88a819c50791f2cf3c19f87308b8adf3caf8c6d2fc",
+      "chars": 1082
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:6561200:2",
+      "content_sha256": "b42e81890a02f8fbec41a2346c25c4a77e38343d0774e3f5c4b9fe9bd0ac0494",
+      "chars": 691
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:6561200:0",
+      "content_sha256": "d997015720013d267295e1fb2c294549cf8a28fd7a23e3271634cae4856dfc21",
+      "chars": 876
+     }
+    ],
+    "elapsed_s": 0.0003
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nEvidence passages from your search for \"HPV detection AND cervical cytology screening AND sensitivity AND longitudinal\":\n<<<PASSAGES\n[P1] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nThe main outcome measures were sensitivity for detection of cervical intraepithelial neoplasia grade 3 or worse (CIN3+) within 6 months of enrollment or at colposcopy for women with a persistent type-specific HPV infection and the number of screening tests and positive predictive value (PPV) for each screening strategy. All statistical tests were two-sided. RESULTS Compared with screening by cytology alone, double testing with cytology and for type-specific HPV persistence resulted in a 35% (95% confidence interval [CI] = 15% to 60%) increase in sensitivity to detect CIN3+, without a statistically significant reduction in the PPV (relative PPV = 0.76, 95% CI = 0.52 to 1.10), but with more than twice as many screening tests needed. Several strategies that incorporated screening for high-risk HPV subtypes were explored, but they resulted in reduced PPV compared with cytology.\n\n[P2] Human papillomavirus testing for the detection of high-grade cervical intraepithelial neoplasia and cancer: final results of the POBASCAM randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is more sensitive for the detection of high-grade cervical lesions than is cytology, but detection of HPV by DNA screening in two screening rounds 5 years apart has not been assessed. The aim of this study was to assess whether HPV DNA testing in the first screen decreases detection of cervical intraepithelial neoplasia (CIN) grade 3 or worse, CIN grade 2 or worse, and cervical cancer in the second screening. METHODS In this randomised trial, women aged 29-56 years participating in the cervical screening programme in the Netherlands were randomly assigned to receive HPV DNA (GP5+/6+-PCR method) and cytology co-testing or cytology testing alone, from January, 1999, to September, 2002. Randomisation (in a 1:1 ratio) was done with computer-generated random numbers after the cervical specimen had been taken.\n\n[P3] Efficacy of human papillomavirus testing for the detection of invasive cervical cancers and cervical intraepithelial neoplasia: a randomised controlled trial.\nTwo rounds of screening occurred in each phase, and all women had cytology testing only at the second round. The primary endpoint was the detection of grade 2 and 3 CIN, and of invasive cervical cancers during the first and second screening rounds. Analysis was done by intention to screen. This trial is registered, number ISRCTN81678807. FINDINGS In total for both phases, 47,001 women were randomly assigned to the cytology group and 47,369 to HPV testing. 33,851 women from the cytology group and 32,998 from the HPV-testing group had a second round of screening. We also retrieved the histological diagnoses from screening done elsewhere. The detection of invasive cervical cancers was similar for the two groups in the first round of screening (nine in the cytology group vs seven in the HPV group, p=0.62); no cases were detected in the HPV group during round two, compared with nine in the cytology group (p=0.004).\n\n[P4] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nCompared with cytology, primary screening with HPV DNA testing followed by cytological triage and repeat HPV DNA testing of HPV DNA-positive women with normal cytology increased the CIN3+ sensitivity by 30% (95% CI = 9% to 54%), maintained a high PPV (relative PPV = 0.87, 95% CI = 0.60 to 1.26), and resulted in a mere 12% increase in the number of screening tests (from 6,257 to 7,019 tests). CONCLUSIONS Primary HPV DNA-based screening with cytology triage and repeat HPV DNA testing of cytology-negative women appears to be the most feasible cervical screening strategy.\n\n[P5] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nBACKGROUND Primary cervical screening with both human papillomavirus (HPV) DNA testing and cytological examination of cervical cells with a Pap test (cytology) has been evaluated in randomized clinical trials. Because the vast majority of women with positive cytology are also HPV DNA positive, screening strategies that use HPV DNA testing as the primary screening test may be more effective. METHODS We used the database from the intervention arm (n = 6,257 women) of a population-based randomized trial of double screening with cytology and HPV DNA testing to evaluate the efficacy of 11 possible cervical screening strategies that are based on HPV DNA testing alone, cytology alone, and HPV DNA testing combined with cytology among women aged 32-38 years.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "84d34b468b8b16e4ab72d324a78b9350c864b8498ac44b2640590fcc40027a77",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792883984.7158232,
+      "end_wall": 1792884014.254209,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5378,
+    "start_wall": 1792883984.7158232,
+    "start_mono": 553541.329292166,
+    "end_wall": 1792884014.254209,
+    "end_mono": 553570.867495291,
+    "raw_response": "{\"reasoning\": \"The evidence passages support the claim by reporting that double testing with HPV DNA persistence and cytology results in a 35% increase in sensitivity to detect CIN3+, without a statistically significant reduction in the PPV, but with more than twice as many screening tests needed. This suggests that primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 29533044334,
+     "load_duration": 17679491875,
+     "prompt_eval_count": 1341,
+     "prompt_eval_duration": 5163855417,
+     "eval_count": 114,
+     "eval_duration": 4321823788,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:20:14.250178Z"
+    },
+    "elapsed_s": 29.538,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5378,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:6561200:1",
+     "scifact:9764256:0",
+     "scifact:27873158:1"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 473,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "96a51d9fc8625bdb736a091a9d9bdb81aa72daf4e7efee1e195b34ba0a33fb56",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792883972.9662971,
+      "end_wall": 1792883975.0276392,
+      "error": null
+     }
+    ],
+    "start_wall": 1792883972.9662971,
+    "start_mono": 553529.579838125,
+    "end_wall": 1792883975.0276392,
+    "end_mono": 553531.6411675,
+    "raw_response": "{\"query\": \"HPV primary screening sensitivity cervical intraepithelial neoplasia\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2059290708,
+     "load_duration": 69228458,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 495479584,
+     "eval_count": 20,
+     "eval_duration": 1303050251,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:19:35.026833Z"
+    },
+    "elapsed_s": 2.061,
+    "query_used": "HPV primary screening sensitivity cervical intraepithelial neoplasia",
+    "query_source": "json",
+    "query_arrival_seq": 5377
+   },
+   "retrieval": {
+    "retriever": "dense",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "HPV primary screening sensitivity cervical intraepithelial neoplasia",
+     "corpus_id": "scifact",
+     "index_sha256": "0bed778458ccffc7508899355f976fb5519f6f44eea10a07e76204d1ec3a1535",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "scifact:27446873:2",
+       "score_q": 774
+      },
+      {
+       "passage_key": "scifact:6561200:1",
+       "score_q": 773
+      },
+      {
+       "passage_key": "scifact:27446873:0",
+       "score_q": 766
+      },
+      {
+       "passage_key": "scifact:9764256:0",
+       "score_q": 763
+      },
+      {
+       "passage_key": "scifact:27873158:0",
+       "score_q": 756
+      }
+     ],
+     "retrieval_sha256": "47412c4ecad9a0dcaf7d5fee32ec9d6793f07171063de569bf7527e946007e65"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "47412c4ecad9a0dcaf7d5fee32ec9d6793f07171063de569bf7527e946007e65",
+    "query_embedding_sha256": "7a524810d3d8f32dd9d2c3d78b256ff788c8970f0d2753429f3ea14e3ef41c3b",
+    "query_embedding_f32_b64": "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",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "scifact:27446873:2",
+      "content_sha256": "04d62326b2fe61ad7ffbc2e2168b8c0193df2e2cbd8cb2ee28b946c84f4a5a29",
+      "chars": 425
+     },
+     {
+      "label": "P2",
+      "passage_key": "scifact:6561200:1",
+      "content_sha256": "7a688d87733b5aed375a17289fc1c7b202f8c45b9c69ad4ad91e6070c232e518",
+      "chars": 1003
+     },
+     {
+      "label": "P3",
+      "passage_key": "scifact:27446873:0",
+      "content_sha256": "975f320d163fd2ac649908bc7765d4f71e0626b932a3e402d8371054dbcc1307",
+      "chars": 1083
+     },
+     {
+      "label": "P4",
+      "passage_key": "scifact:9764256:0",
+      "content_sha256": "81897ffc78f4db6bb71fb809428bebdcc709873959d366aca37cf040a844f10d",
+      "chars": 1028
+     },
+     {
+      "label": "P5",
+      "passage_key": "scifact:27873158:0",
+      "content_sha256": "b358e4046e4fb0c753d9a4ac62b51fb003b8502ca0fee3c10d0af322b4d11d2a",
+      "chars": 1151
+     }
+    ],
+    "elapsed_s": 6.1574
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Primary cervical cytology screening with HPV detection has higher longitudinal sensitivity to detect severe cervical intraepithelial neoplasia than conventional cytology.\n\nEvidence passages from your search for \"HPV primary screening sensitivity cervical intraepithelial neoplasia\":\n<<<PASSAGES\n[P1] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nThe number of cases of cervical cancer was small, but considering the high probability of progression of CIN III the findings are of importance regarding cancer prevention. TRIAL REGISTRATION Current Controlled Trials ISRCTN23885553.\n\n[P2] Efficacy of HPV DNA testing with cytology triage and/or repeat HPV DNA testing in primary cervical cancer screening.\nThe main outcome measures were sensitivity for detection of cervical intraepithelial neoplasia grade 3 or worse (CIN3+) within 6 months of enrollment or at colposcopy for women with a persistent type-specific HPV infection and the number of screening tests and positive predictive value (PPV) for each screening strategy. All statistical tests were two-sided. RESULTS Compared with screening by cytology alone, double testing with cytology and for type-specific HPV persistence resulted in a 35% (95% confidence interval [CI] = 15% to 60%) increase in sensitivity to detect CIN3+, without a statistically significant reduction in the PPV (relative PPV = 0.76, 95% CI = 0.52 to 1.10), but with more than twice as many screening tests needed. Several strategies that incorporated screening for high-risk HPV subtypes were explored, but they resulted in reduced PPV compared with cytology.\n\n[P3] Rate of cervical cancer, severe intraepithelial neoplasia, and adenocarcinoma in situ in primary HPV DNA screening with cytology triage: randomised study within organised screening programme.\nOBJECTIVE To assess the performance and impact of primary human papillomavirus (HPV) DNA screening with cytology triage compared with conventional cytology on cervical cancer and severe pre-cancerous lesions. DESIGN Randomised trial. SETTING Population based screening programme for cervical cancer in southern Finland in 2003-5. PARTICIPANTS 58 076 women, aged 30-60, invited to the routine population based screening programme for cervical cancer. INTERVENTIONS Primary HPV DNA test (hybrid capture II) with cytology triage if the result was positive or conventional cytological screening (reference). MAIN OUTCOME MEASURES Rate of cervical cancer, cervical intraepithelial neoplasia (CIN) grade III, and adenocarcinoma in situ (as a composite outcome referred to as CIN III+) during 2003-7 through record linkage between files from the screening registry and the national cancer registry.\n\n[P4] Human papillomavirus testing for the detection of high-grade cervical intraepithelial neoplasia and cancer: final results of the POBASCAM randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is more sensitive for the detection of high-grade cervical lesions than is cytology, but detection of HPV by DNA screening in two screening rounds 5 years apart has not been assessed. The aim of this study was to assess whether HPV DNA testing in the first screen decreases detection of cervical intraepithelial neoplasia (CIN) grade 3 or worse, CIN grade 2 or worse, and cervical cancer in the second screening. METHODS In this randomised trial, women aged 29-56 years participating in the cervical screening programme in the Netherlands were randomly assigned to receive HPV DNA (GP5+/6+-PCR method) and cytology co-testing or cytology testing alone, from January, 1999, to September, 2002. Randomisation (in a 1:1 ratio) was done with computer-generated random numbers after the cervical specimen had been taken.\n\n[P5] Efficacy of human papillomavirus testing for the detection of invasive cervical cancers and cervical intraepithelial neoplasia: a randomised controlled trial.\nBACKGROUND Human papillomavirus (HPV) testing is known to be more sensitive, but less specific than cytology for detecting cervical intraepithelial neoplasia (CIN). We assessed the efficacy of cervical-cancer screening policies that are based on HPV testing. METHODS Between March, 2004, and December, 2004, in two separate recruitment phases, women aged 25-60 years were randomly assigned to conventional cytology or to HPV testing in combination with liquid-based cytology (first phase) or alone (second phase). Randomisation was done by computer in two screening centres and by sequential opening of numbered sealed envelopes in the remaining seven centres. During phase one, women who were HPV-positive and aged 35-60 years were referred to colposcopy, whereas women aged 25-34 years were referred to colposcopy only if cytology was also abnormal or HPV testing was persistently positive. During phase two, women in the HPV group were referred for colposcopy if the HPV test was positive.\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "7ca9b313bd74fd6ba419c74acb0f7c05f91a5291da2c7b566c6a470a83f89908",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792883981.1859279,
+      "end_wall": 1792884016.7570229,
+      "error": null
+     }
+    ],
+    "arrival_seq": 5379,
+    "start_wall": 1792883981.1859279,
+    "start_mono": 553537.799419458,
+    "end_wall": 1792884016.7570229,
+    "end_mono": 553573.370294416,
+    "raw_response": "{\"reasoning\": \"The passages [P1], [P2], and [P3] provide evidence that primary HPV screening with cytology triage has higher sensitivity to detect severe cervical intraepithelial neoplasia compared to conventional cytology alone. Passage [P1] shows a significant increase in sensitivity with HPV primary screening. Passage [P2] compares double testing with cytology and HPV persistence and finds that it results in a 35% increase in sensitivity without reducing the positive predictive value. Passage [P3] reports a rate of CIN III+ that is higher with HPV screening, indicating higher sensitivity. No passages refu\"\n,\"answer\": \"SUPPORTED\",\n\"citations\": [\"P1\", \"P2\", \"P3\"],\n\"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 35566317083,
+     "load_duration": 19407425583,
+     "prompt_eval_count": 1315,
+     "prompt_eval_duration": 6897498332,
+     "eval_count": 161,
+     "eval_duration": 7876659373,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T23:20:16.754204Z"
+    },
+    "elapsed_s": 35.571,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 5379,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "scifact:27446873:2",
+     "scifact:6561200:1",
+     "scifact:27446873:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 600,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "dense"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "9e9e5c1c209f1ff3c056a5301a49c2ab8929e6b5ad953eeedbd144a23c49556d",
+  "exaone3.5:7.8b": "a76c301fab7f34a134f447e458d147fa518825770c8cc0a715f082b58278487b",
+  "granite3.3:2b": "8e58e3611dd08c430d4f4c65b0d1ebd9c1382eec1e602c42a4dac726fc04c6c5",
+  "nemotron-mini:4b": "4364441e7ef62be71a2d1b631abb595167059fc157c388bd032a96662fcc2538",
+  "olmo2:7b": "47412c4ecad9a0dcaf7d5fee32ec9d6793f07171063de569bf7527e946007e65"
+ },
+ "item_start_wall": 1792883972.965833,
+ "item_wall_s": 43.791,
+ "ollama_ps_samples": [
+  [
+   1792883972.966,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792883974.97,
+   [
+    "falcon3:3b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883976.982,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792883978.994,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792883981.003,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792883983.014,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:7.8b",
+    "nemotron-mini:4b"
+   ]
+  ],
+  [
+   1792883985.02,
+   [
+    "nomic-embed-text:latest",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792883987.023,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883989.034,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883991.037,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883993.045,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883995.047,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883997.055,
+   [
+    "falcon3:3b",
+    "exaone3.5:7.8b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792883999.063,
+   [
+    "exaone3.5:7.8b",
+    "falcon3:3b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792884001.067,
+   [
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884003.078,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884005.09,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884007.102,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884009.111,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884011.119,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884013.131,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b",
+    "exaone3.5:7.8b"
+   ]
+  ],
+  [
+   1792884015.134,
+   [
+    "olmo2:7b",
+    "nemotron-mini:4b",
+    "exaone3.5:7.8b"
+   ]
+  ]
+ ]
+}

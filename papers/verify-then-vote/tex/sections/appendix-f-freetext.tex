@@ -1,0 +1,58 @@
+\section{Free-Text Measurements}
+\label[appendix]{app:freetext}
+
+\paragraph{Results.} The five models answered the 55 questions twice: Collection~1 dispatched requests sequentially in a fixed model order, and Collection~2 concurrently in seeded random order with arrival recorded. \Cref{tab:freetext} gives every method on both collections under both graders, and \cref{fig:margins} the total-score margin of every decisive set. A question-clustered bootstrap (10,000 resamples) of the reducer's accuracy minus majority's gives $-0.15$ [$-0.32$, 0.00] on Collection~2 and 0.33 [0.09, 0.57] on Collection~1 under the lexical grader, and 0.00 [$-0.22$, 0.27] and 0.06 [$-0.18$, 0.33] under the polarity-aware grader. On the concurrent collection, 9 of 14 decisive sets fell in the deadband and the latest arrival won 7 of those 9. Sealing left every selection unchanged across all 926 conflict sets of the sequential collection: the boundary is accuracy-neutral by design.
+
+\begin{table}[t]
+  \centering
+  \caption{Correct selections over eligible $\cdot$ decisive conflict sets. ``vs maj.'' gives the discordant pairs b/c against majority vote and the exact McNemar $p$. Column headers give the eligible / decisive counts.}
+  \label{tab:freetext}
+  \footnotesize
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    & \multicolumn{3}{c}{Collection 2} & \multicolumn{3}{c}{Collection 1} \\
+    \cmidrule(lr){2-4}\cmidrule(l){5-7}
+    & lexical & & polarity-aware & lexical & & polarity-aware \\
+    Method & (26 / 14) & vs maj. & (16 / 9) & (24 / 15) & vs maj. & (17 / 9) \\
+    \midrule
+    Reducer, default policy & 18 $\cdot$ 6 & 2/6, 0.29 & 12 $\cdot$ 5 & 20 $\cdot$ 11 & 9/1, 0.021 & 12 $\cdot$ 4 \\
+    Recency weight 0 & 18 $\cdot$ 6 & 2/6, 0.29 & 12 $\cdot$ 5 & 20 $\cdot$ 11 & 9/1, 0.021 & 12 $\cdot$ 4 \\
+    Recency weight 0, no deadband & 19 $\cdot$ 7 & 0/3, 0.25 & 11 $\cdot$ 4 & 15 $\cdot$ 6 & 4/1, 0.38 & 12 $\cdot$ 4 \\
+    Evidence only & 19 $\cdot$ 7 & 0/3, 0.25 & 11 $\cdot$ 4 & 15 $\cdot$ 6 & 4/1, 0.38 & 12 $\cdot$ 4 \\
+    Majority vote & 22 $\cdot$ 10 & --- & 12 $\cdot$ 5 & 12 $\cdot$ 3 & --- & 11 $\cdot$ 3 \\
+    First member (earliest arrival) & 22 $\cdot$ 10 & --- & 12 $\cdot$ 5 & 13 $\cdot$ 4 & --- & 11 $\cdot$ 3 \\
+    Last member (latest arrival) & 16 $\cdot$ 4 & --- & 11 $\cdot$ 4 & 16 $\cdot$ 7 & --- & 11 $\cdot$ 3 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \input{figures/fig3-margins}
+  \caption{Total-score margin of every decisive conflict set in the free-text study (lexical grader). Filled: the reducer selected correctly; open: incorrectly. Every set lies below the separation region; many correct selections have negative margins. Synthetic margins are in \cref{tab:margins-synth}.}
+  \label{fig:margins}
+\end{figure}
+
+\paragraph{Graders.} The lexical grader matches by token overlap with the concatenated gold-triple text, checks predicates only when object overlap is below 0.6, and ignores polarity, so ``Pluto is not classified as a planet'' matches \code{(Pluto, is\_classified\_as, dwarf planet)}. The polarity-aware grader requires subject, object, one of 17 predicate synonym groups, and matching polarity, scoped per clause; it has its own misses, for example ``299,792 km/s.''
+
+\paragraph{Evaluation-harness cross-check.} Collection~1 was also evaluated with a separate Python harness of the same scoring form but different details: a flat source factor instead of verification and reachability, criterion alignment and critique survival fixed at 1, calibration read from the responses, recency from model-list position, polarity ignored, and selection without deadband or Schulze. Its selections score 20 of 24 under the lexical grader and 12 of 17 under the polarity-aware grader, the figures of \cref{sec:freetext}; disabling its context-aware citation association removed a further 3 of the 20 correct selections, and that association changed the selection in 8 of 926 sets. The sealing control covered the reducer, evidence-only scoring, and majority vote alike. A Python re-implementation of the implemented reducer's detection and selection matched the Rust binary on all 55 questions; the harness and the implemented reducer agreed on 791 of 860 Collection~2 conflict sets and 861 of 926 Collection~1 sets, and every disagreement had an identified cause (rejection of LOW-only singletons, non-functional predicates, and one deadband tie-break per collection).
+
+\paragraph{Failure analysis and precision.} In the harness's four incorrect selections on Collection~1, all five claims carried reasoning-only evidence (vaccines); 11 single-agent claims tied on evidence and recency picked the last (goldfish); the correct claim had MEDIUM lowering (an evolution question); or the subject was malformed. Only one set had cited evidence on both sides. Macro precision was low for every method (lexical: reducer 0.216, majority 0.199; polarity-aware: 0.087 and 0.082). A heuristic sort of the 871 reducer winners failing the polarity-aware grader gave 439 extra-but-true, 354 extraction errors, 77 grader misses, and 1 incorrect, itself a grader miss; these categories are unadjudicated, so low precision may reflect incorrect outputs, incomplete gold, or grading errors in unknown proportion.
+
+\paragraph{Canonicalization.} The gold-blind object canonicalizer normalizes markdown, case, punctuation, articles, plurals, number formats, units, and approximation hedges, with a two-entry synonym table as its only semantic step. It dissolved 3 of 66 Collection~2 contradiction sets (2 of 63 in Collection~1), none decisive; on Collection~2 eligible sets fell from 26 to 23 and decisive sets stayed at 14, with majority equal to first-member on 23 of 23 and 14 of 14; decisive sets whose top object occurs more than once rose only from 1 to 2. Across all eight table, grader, and collection cells, a single decisive outcome changed.
+
+\paragraph{Value-level candidates.} Treating each distinct value of a slot as one candidate, aggregated by best member or by evidence pooled across distinct agents, changed almost nothing: best-member left every winning value unchanged on both collections, pooling changed one or two, and \cref{tab:freetext} accuracies were unchanged except one extra correct pooled selection on Collection~1 under the polarity-aware grader. Only about 10\% of slots contain a repeated value. On the synthetic workload, value mode matched or underperformed member mode: best-member lost 1 of 3 TCP conflicts at $N = 10{,}000$, and pooling lost all 3 at $N = 1{,}000$ and $N = 10{,}000$, because the capped evidence sum saturates for both values.
+
+\subsection{Four requirements for evaluating arbitration}
+\label{sec:freetext}
+
+Score-based arbitration can look better or worse than it is for reasons unrelated to its decisions. We identify four such distortions and the protocol element that removes each. Each was measured on the same five models answering 55 factual, technical, contested, and misconception questions in free prose with sources and confidence (\cref{app:freetext}). OVERTURN meets all four, and they apply to any evaluation of arbitration, ours included.
+
+\paragraph{Selection must be order-free.} A per-feature tie-break lets arrival order vote even at zero recency weight, because each feature votes regardless of its weight. Of 308 deadband slots, removing recency from the voters changed the winner in 236, and with concurrent dispatch the latest arrival won 7 of 9 decisive deadband sets. The order-free policy sets recency weight to zero, removes it from the voters, and orders residual ties by identifier. Under it every OVERTURN decision is independent of arrival order. Breaking majority ties by earliest arrival instead of at random leaves the result at 90 corrections against 11.
+
+\paragraph{Answers must share a closed space.} Free-text objects rarely repeat verbatim, so majority vote reduces to the first-seen answer: its correctness equalled first-member's on all 26 eligible sets, with or without gold-blind canonicalization. An answer line over a closed space, canonicalized gold-blind, makes the majority count real agreement, so the baseline is the strong one.
+
+\paragraph{Citations must be checkable.} Open citations mostly cannot be verified. Of 275 responses, 129 cite 332 unique identifiers. Of these, 166 (50\%) fail to resolve, 109 (33\%) yield checkable text, and 3.8\% occur in the sentence of the claim they would support. A fixed corpus with citations restricted to retrieved passages makes evidence checkable. On 84\% of decisive conflicts from SciFact, PopQA, and FEVER, the retrieved passages include one the checker labels as supporting the gold answer. Score separation over all of a question's answers holds in 229 of the 595 decisive conflicts of P and T, against none of 29 on free text (\cref{fig:margins}). The tie-break lemma covers 467 of the 595 actual gated decisions (\cref{sec:evidence-weights}).
+
+\paragraph{Grading must respect polarity.} A token-overlap grader that ignores polarity counts ``Pluto is not classified as a planet'' as matching the gold claim that Pluto is a dwarf planet. It manufactures an apparent advantage: 20 of 24 eligible sets for an evidence-weighted reducer against 12 for majority vote ($p = 0.021$). A polarity-aware grader reduces this to 12 against 11 of 17. OVERTURN grades against dataset gold with an answer key, exact match or PopQA's published alias rule, which two model annotators blind to its verdicts matched on 162 of 169 answers ($\kappa = 0.917$).

@@ -1,0 +1,1234 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever118071",
+ "order": 115,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever118071",
+  "order": 115,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Nuuk is in Sermersooq."
+ },
+ "item_view_sha256": "60a621197bd18f51f190b26bd3c20ef742ad361ca0ee4c0ee24e3d3b18c97799",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "phi3:mini",
+  "qwen2.5:3b",
+  "gemma2:2b",
+  "llama3.2:3b",
+  "mistral"
+ ],
+ "arrival_order": [
+  "phi3:mini",
+  "llama3.2:3b",
+  "mistral",
+  "qwen2.5:3b",
+  "gemma2:2b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: Nuuk is in Sermersooq.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f945bf49af28d217e5a2e2f25f0ff3f3c6f822c211e12448ea783e76a1995cbd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693026.341975,
+      "end_wall": 1792693027.8059452,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693026.341975,
+    "start_mono": 362583.535465833,
+    "end_wall": 1792693027.8059452,
+    "end_mono": 362584.999443125,
+    "raw_response": "{\"query\": \"Is Nuuk in Sermersooq municipality?\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1460579250,
+     "load_duration": 20904708,
+     "prompt_eval_count": 178,
+     "prompt_eval_duration": 535353292,
+     "eval_count": 17,
+     "eval_duration": 846550791,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:07.804869Z"
+    },
+    "elapsed_s": 1.464,
+    "query_used": "Is Nuuk in Sermersooq municipality?",
+    "query_source": "json",
+    "query_arrival_seq": 65
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Is Nuuk in Sermersooq municipality?",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sermersooq:0",
+       "score_q": 17385
+      },
+      {
+       "passage_key": "fever17:Nuuk_Municipality:0",
+       "score_q": 16176
+      },
+      {
+       "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+       "score_q": 15189
+      },
+      {
+       "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+       "score_q": 15189
+      },
+      {
+       "passage_key": "fever17:Nuuk:0",
+       "score_q": 15035
+      }
+     ],
+     "retrieval_sha256": "09cc7f257fe2ae6e3c2f12fa9bc6d200710ab6a6cf570baa070abb8531859f54"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "09cc7f257fe2ae6e3c2f12fa9bc6d200710ab6a6cf570baa070abb8531859f54",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sermersooq:0",
+      "content_sha256": "1ae90c46d83f12103a26fa4222cef71c0b7fa01d90b230e63f827b2f87a54c80",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Nuuk_Municipality:0",
+      "content_sha256": "c2f1f87f290a0dc4d40d7d3b7d3e54ef11dc569e36dd48be64b9474ba9138cf3",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+      "content_sha256": "8752d1dbc6719f89292b5338f172028750689bad69125abe9fcea54a201ff777",
+      "chars": 231
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+      "content_sha256": "9573df2ee10090a77899d727b3aca70e1a094ff28b0a19da778224e6dfc3832c",
+      "chars": 225
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Nuuk:0",
+      "content_sha256": "be066181de2cd5fdce90fa590ce539299cf86d43da965361fb06cb1a7364497f",
+      "chars": 929
+     }
+    ],
+    "elapsed_s": 0.0193
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Nuuk is in Sermersooq.\n\nEvidence passages from your search for \"Is Nuuk in Sermersooq municipality?\":\n<<<PASSAGES\n[P1] Sermersooq\nSermersooq ( Kommuneqarfik Sermersooq , `` Place of Much Ice '' ) is a new municipality in Greenland , operational from 1 January 2009 . It is home to Nuuk ( formerly called Godthåb ) , the capital of Greenland , and is the most populous municipality in the country , with 21,868 inhabitants as of January 2013 . The municipality consists of former municipalities of eastern and southwestern Greenland , each named after the largest settlement at the time of formation : Ammassalik Municipality Ittoqqortoormiit Municipality Ivittuut Municipality Nuuk Municipality Paamiut Municipality\n\n[P2] Nuuk Municipality\nNuuk Municipality was one of the municipalities of Greenland until 31 December 2008 . On 1 January 2009 , it was merged with four other former municipalities into the new Sermersooq municipality . The central town was Nuuk . Other settlements within its borders were Kangerluarsoruseq ( now abandoned ) , Kapisillit and Qeqertarsuatsiaat . Category : Former municipalities of Greenland\n\n[P3] Kangerluarsunnguaq Fjord\nKangerluarsunnguaq Fjord ( Kobbefjord ) is a small fjord in the Sermersooq municipality in southwestern Greenland . `` Nuuk Basic '' , a research station , erected in 2008 , is located on the fjord shores .\n\n[P4] Qeqertarsuaq Island (Nuuk)\nQeqertarsuaq , meaning ` The Large Island ' in the Greenlandic language ( Storø meaning ` big island ' as well ) , is an uninhabited island in the Sermersooq municipality in southwestern Greenland .\n\n[P5] Nuuk\nNuuk ( [ nuːk ] ; Godthåb ) is the capital and largest city of Greenland and the municipality of Sermersooq . It is the seat of government and the country 's largest cultural and economic centre . The major cities closest to the capital are Iqaluit and St. John 's in Canada and Reykjavík in Iceland . Nuuk contains almost a third of Greenland 's population , and also has the tallest building in Greenland . Nuuk is the seat of government for the Sermersooq municipality . In January 2016 , it had a population of 17,316 , making it one of the smallest capital cities in the world by population . Nuuk is the Kalaallisut word for `` cape '' . It is so named because of its position at the end of the Nuup Kangerlua fjord on the eastern shore of the Labrador Sea . Its latitude , at 64 ° 10 ' N , makes it the world 's northernmost capital , located only a few kilometres farther north than the Icelandic capital Reykjavík .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "01a12a4491f9a57c551c17108f6f5ed7b6854f823b55b614b97de96af56c1203",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693027.825645,
+      "end_wall": 1792693039.216321,
+      "error": null
+     }
+    ],
+    "arrival_seq": 65,
+    "start_wall": 1792693027.825645,
+    "start_mono": 362585.019144375,
+    "end_wall": 1792693039.216321,
+    "end_mono": 362596.409879541,
+    "raw_response": "{\n  \"reasoning\": \"Nuuk is the capital and largest city of Greenland, which is located in the Sermersooq municipality, as stated in the passages.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\", \"P5\"]\n  ,\n  \"confidence\": \"high\"\n}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11387738416,
+     "load_duration": 15765625,
+     "prompt_eval_count": 996,
+     "prompt_eval_duration": 3223529625,
+     "eval_count": 86,
+     "eval_duration": 7918675170,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:19.214295Z"
+    },
+    "elapsed_s": 11.391,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 65,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P5"
+    ],
+    "citation_keys": [
+     "fever17:Sermersooq:0",
+     "fever17:Nuuk_Municipality:0",
+     "fever17:Nuuk:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 126,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: Nuuk is in Sermersooq.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f945bf49af28d217e5a2e2f25f0ff3f3c6f822c211e12448ea783e76a1995cbd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693026.342674,
+      "end_wall": 1792693034.8007271,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693026.342674,
+    "start_mono": 362583.536164625,
+    "end_wall": 1792693034.8007271,
+    "end_mono": 362591.994262583,
+    "raw_response": "{\"query\": \"Nuuk in Sermersooq or Nuuk municipality Sermersooq Greenland\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8455239875,
+     "load_duration": 4311687917,
+     "prompt_eval_count": 168,
+     "prompt_eval_duration": 983123333,
+     "eval_count": 24,
+     "eval_duration": 2827159833,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:14.799919Z"
+    },
+    "elapsed_s": 8.458,
+    "query_used": "Nuuk in Sermersooq or Nuuk municipality Sermersooq Greenland",
+    "query_source": "json",
+    "query_arrival_seq": 68
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Nuuk in Sermersooq or Nuuk municipality Sermersooq Greenland",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sermersooq:0",
+       "score_q": 36754
+      },
+      {
+       "passage_key": "fever17:Nuuk_Municipality:0",
+       "score_q": 34502
+      },
+      {
+       "passage_key": "fever17:Nuuk:0",
+       "score_q": 32714
+      },
+      {
+       "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+       "score_q": 32613
+      },
+      {
+       "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+       "score_q": 32613
+      }
+     ],
+     "retrieval_sha256": "0279c77fa327da1a1e661f07e0ca97c98c63051bf2426b3cfe2a27137d37c4a8"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0279c77fa327da1a1e661f07e0ca97c98c63051bf2426b3cfe2a27137d37c4a8",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sermersooq:0",
+      "content_sha256": "1ae90c46d83f12103a26fa4222cef71c0b7fa01d90b230e63f827b2f87a54c80",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Nuuk_Municipality:0",
+      "content_sha256": "c2f1f87f290a0dc4d40d7d3b7d3e54ef11dc569e36dd48be64b9474ba9138cf3",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Nuuk:0",
+      "content_sha256": "be066181de2cd5fdce90fa590ce539299cf86d43da965361fb06cb1a7364497f",
+      "chars": 929
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+      "content_sha256": "8752d1dbc6719f89292b5338f172028750689bad69125abe9fcea54a201ff777",
+      "chars": 231
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+      "content_sha256": "9573df2ee10090a77899d727b3aca70e1a094ff28b0a19da778224e6dfc3832c",
+      "chars": 225
+     }
+    ],
+    "elapsed_s": 0.0188
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Nuuk is in Sermersooq.\n\nEvidence passages from your search for \"Nuuk in Sermersooq or Nuuk municipality Sermersooq Greenland\":\n<<<PASSAGES\n[P1] Sermersooq\nSermersooq ( Kommuneqarfik Sermersooq , `` Place of Much Ice '' ) is a new municipality in Greenland , operational from 1 January 2009 . It is home to Nuuk ( formerly called Godthåb ) , the capital of Greenland , and is the most populous municipality in the country , with 21,868 inhabitants as of January 2013 . The municipality consists of former municipalities of eastern and southwestern Greenland , each named after the largest settlement at the time of formation : Ammassalik Municipality Ittoqqortoormiit Municipality Ivittuut Municipality Nuuk Municipality Paamiut Municipality\n\n[P2] Nuuk Municipality\nNuuk Municipality was one of the municipalities of Greenland until 31 December 2008 . On 1 January 2009 , it was merged with four other former municipalities into the new Sermersooq municipality . The central town was Nuuk . Other settlements within its borders were Kangerluarsoruseq ( now abandoned ) , Kapisillit and Qeqertarsuatsiaat . Category : Former municipalities of Greenland\n\n[P3] Nuuk\nNuuk ( [ nuːk ] ; Godthåb ) is the capital and largest city of Greenland and the municipality of Sermersooq . It is the seat of government and the country 's largest cultural and economic centre . The major cities closest to the capital are Iqaluit and St. John 's in Canada and Reykjavík in Iceland . Nuuk contains almost a third of Greenland 's population , and also has the tallest building in Greenland . Nuuk is the seat of government for the Sermersooq municipality . In January 2016 , it had a population of 17,316 , making it one of the smallest capital cities in the world by population . Nuuk is the Kalaallisut word for `` cape '' . It is so named because of its position at the end of the Nuup Kangerlua fjord on the eastern shore of the Labrador Sea . Its latitude , at 64 ° 10 ' N , makes it the world 's northernmost capital , located only a few kilometres farther north than the Icelandic capital Reykjavík .\n\n[P4] Kangerluarsunnguaq Fjord\nKangerluarsunnguaq Fjord ( Kobbefjord ) is a small fjord in the Sermersooq municipality in southwestern Greenland . `` Nuuk Basic '' , a research station , erected in 2008 , is located on the fjord shores .\n\n[P5] Qeqertarsuaq Island (Nuuk)\nQeqertarsuaq , meaning ` The Large Island ' in the Greenlandic language ( Storø meaning ` big island ' as well ) , is an uninhabited island in the Sermersooq municipality in southwestern Greenland .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "5f3195d818828e73cdbf02124b27df04b08ba507c8e8e5f0fb41a17e79da5ab0",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693034.81995,
+      "end_wall": 1792693039.822287,
+      "error": null
+     }
+    ],
+    "arrival_seq": 66,
+    "start_wall": 1792693034.81995,
+    "start_mono": 362592.013486333,
+    "end_wall": 1792693039.822287,
+    "end_mono": 362597.01584925,
+    "raw_response": "{\"reasoning\": \"The evidence passages show that Nuuk is the capital of Greenland and is located within the Sermersooq municipality.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4999737875,
+     "load_duration": 91811625,
+     "prompt_eval_count": 899,
+     "prompt_eval_duration": 1604764250,
+     "eval_count": 55,
+     "eval_duration": 2718396964,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:19.820982Z"
+    },
+    "elapsed_s": 5.002,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 66,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Sermersooq:0",
+     "fever17:Nuuk:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 115,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: Nuuk is in Sermersooq.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f945bf49af28d217e5a2e2f25f0ff3f3c6f822c211e12448ea783e76a1995cbd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693026.342886,
+      "end_wall": 1792693028.951199,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693026.342886,
+    "start_mono": 362583.536376875,
+    "end_wall": 1792693028.951199,
+    "end_mono": 362586.144703125,
+    "raw_response": "{\"query\": \"Nuuk location in Sermersooq\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 2605529208,
+     "load_duration": 21486000,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 661953208,
+     "eval_count": 16,
+     "eval_duration": 1868693667,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:08.95039Z"
+    },
+    "elapsed_s": 2.608,
+    "query_used": "Nuuk location in Sermersooq",
+    "query_source": "json",
+    "query_arrival_seq": 66
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Nuuk location in Sermersooq",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sermersooq:0",
+       "score_q": 14027
+      },
+      {
+       "passage_key": "fever17:Nuuk_Municipality:0",
+       "score_q": 13257
+      },
+      {
+       "passage_key": "fever17:Nuuk:0",
+       "score_q": 13054
+      },
+      {
+       "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+       "score_q": 12842
+      },
+      {
+       "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+       "score_q": 12842
+      }
+     ],
+     "retrieval_sha256": "6315a20349234b11be17ea16fa3a9779695d7b9fc7afedf56404ca64b1e22ac5"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "6315a20349234b11be17ea16fa3a9779695d7b9fc7afedf56404ca64b1e22ac5",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sermersooq:0",
+      "content_sha256": "1ae90c46d83f12103a26fa4222cef71c0b7fa01d90b230e63f827b2f87a54c80",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Nuuk_Municipality:0",
+      "content_sha256": "c2f1f87f290a0dc4d40d7d3b7d3e54ef11dc569e36dd48be64b9474ba9138cf3",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Nuuk:0",
+      "content_sha256": "be066181de2cd5fdce90fa590ce539299cf86d43da965361fb06cb1a7364497f",
+      "chars": 929
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+      "content_sha256": "8752d1dbc6719f89292b5338f172028750689bad69125abe9fcea54a201ff777",
+      "chars": 231
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+      "content_sha256": "9573df2ee10090a77899d727b3aca70e1a094ff28b0a19da778224e6dfc3832c",
+      "chars": 225
+     }
+    ],
+    "elapsed_s": 0.0143
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Nuuk is in Sermersooq.\n\nEvidence passages from your search for \"Nuuk location in Sermersooq\":\n<<<PASSAGES\n[P1] Sermersooq\nSermersooq ( Kommuneqarfik Sermersooq , `` Place of Much Ice '' ) is a new municipality in Greenland , operational from 1 January 2009 . It is home to Nuuk ( formerly called Godthåb ) , the capital of Greenland , and is the most populous municipality in the country , with 21,868 inhabitants as of January 2013 . The municipality consists of former municipalities of eastern and southwestern Greenland , each named after the largest settlement at the time of formation : Ammassalik Municipality Ittoqqortoormiit Municipality Ivittuut Municipality Nuuk Municipality Paamiut Municipality\n\n[P2] Nuuk Municipality\nNuuk Municipality was one of the municipalities of Greenland until 31 December 2008 . On 1 January 2009 , it was merged with four other former municipalities into the new Sermersooq municipality . The central town was Nuuk . Other settlements within its borders were Kangerluarsoruseq ( now abandoned ) , Kapisillit and Qeqertarsuatsiaat . Category : Former municipalities of Greenland\n\n[P3] Nuuk\nNuuk ( [ nuːk ] ; Godthåb ) is the capital and largest city of Greenland and the municipality of Sermersooq . It is the seat of government and the country 's largest cultural and economic centre . The major cities closest to the capital are Iqaluit and St. John 's in Canada and Reykjavík in Iceland . Nuuk contains almost a third of Greenland 's population , and also has the tallest building in Greenland . Nuuk is the seat of government for the Sermersooq municipality . In January 2016 , it had a population of 17,316 , making it one of the smallest capital cities in the world by population . Nuuk is the Kalaallisut word for `` cape '' . It is so named because of its position at the end of the Nuup Kangerlua fjord on the eastern shore of the Labrador Sea . Its latitude , at 64 ° 10 ' N , makes it the world 's northernmost capital , located only a few kilometres farther north than the Icelandic capital Reykjavík .\n\n[P4] Kangerluarsunnguaq Fjord\nKangerluarsunnguaq Fjord ( Kobbefjord ) is a small fjord in the Sermersooq municipality in southwestern Greenland . `` Nuuk Basic '' , a research station , erected in 2008 , is located on the fjord shores .\n\n[P5] Qeqertarsuaq Island (Nuuk)\nQeqertarsuaq , meaning ` The Large Island ' in the Greenlandic language ( Storø meaning ` big island ' as well ) , is an uninhabited island in the Sermersooq municipality in southwestern Greenland .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1dc704d35826383576b7ea04192f6469ec887600341a1d79736edae122ee4dfe",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693028.965924,
+      "end_wall": 1792693043.141581,
+      "error": null
+     }
+    ],
+    "arrival_seq": 67,
+    "start_wall": 1792693028.965924,
+    "start_mono": 362586.159428708,
+    "end_wall": 1792693043.141581,
+    "end_mono": 362600.335161458,
+    "raw_response": "{\"reasoning\": \"The provided passages confirm that Nuuk is the capital and largest city of the Sermersooq municipality (P3). Moreover, the Sermersooq municipality is described as the one that Nuuk was merged into on January 1, 2009 (P2). This evidence supports the claim that Nuuk is in Sermersooq.\",\n\"answer\": \"SUPPORTED\",\n\"citations\": [\"P3\", \"P2\"],\n\"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 14172405208,
+     "load_duration": 12420541,
+     "prompt_eval_count": 988,
+     "prompt_eval_duration": 4712549458,
+     "eval_count": 115,
+     "eval_duration": 9125525134,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:23.139495Z"
+    },
+    "elapsed_s": 14.176,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 67,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P3",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Nuuk:0",
+     "fever17:Nuuk_Municipality:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 282,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 4,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: Nuuk is in Sermersooq.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f945bf49af28d217e5a2e2f25f0ff3f3c6f822c211e12448ea783e76a1995cbd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693026.3422441,
+      "end_wall": 1792693029.376708,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693026.3422441,
+    "start_mono": 362583.535735375,
+    "end_wall": 1792693029.376708,
+    "end_mono": 362586.570214125,
+    "raw_response": "{\"query\": \"Wikipedia Sermersooq Nuuk location\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 3031530875,
+     "load_duration": 79886083,
+     "prompt_eval_count": 157,
+     "prompt_eval_duration": 546579750,
+     "eval_count": 16,
+     "eval_duration": 2179927873,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:09.375724Z"
+    },
+    "elapsed_s": 3.034,
+    "query_used": "Wikipedia Sermersooq Nuuk location",
+    "query_source": "json",
+    "query_arrival_seq": 67
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Wikipedia Sermersooq Nuuk location",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sermersooq:0",
+       "score_q": 14027
+      },
+      {
+       "passage_key": "fever17:Nuuk_Municipality:0",
+       "score_q": 13257
+      },
+      {
+       "passage_key": "fever17:Nuuk:0",
+       "score_q": 13054
+      },
+      {
+       "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+       "score_q": 12842
+      },
+      {
+       "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+       "score_q": 12842
+      }
+     ],
+     "retrieval_sha256": "4f4f1df5bf90dcf6cddba55d9fbbbe68d43adf89e59f2507db33159a8a06cb1c"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "4f4f1df5bf90dcf6cddba55d9fbbbe68d43adf89e59f2507db33159a8a06cb1c",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sermersooq:0",
+      "content_sha256": "1ae90c46d83f12103a26fa4222cef71c0b7fa01d90b230e63f827b2f87a54c80",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Nuuk_Municipality:0",
+      "content_sha256": "c2f1f87f290a0dc4d40d7d3b7d3e54ef11dc569e36dd48be64b9474ba9138cf3",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Nuuk:0",
+      "content_sha256": "be066181de2cd5fdce90fa590ce539299cf86d43da965361fb06cb1a7364497f",
+      "chars": 929
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+      "content_sha256": "8752d1dbc6719f89292b5338f172028750689bad69125abe9fcea54a201ff777",
+      "chars": 231
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+      "content_sha256": "9573df2ee10090a77899d727b3aca70e1a094ff28b0a19da778224e6dfc3832c",
+      "chars": 225
+     }
+    ],
+    "elapsed_s": 0.0096
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Nuuk is in Sermersooq.\n\nEvidence passages from your search for \"Wikipedia Sermersooq Nuuk location\":\n<<<PASSAGES\n[P1] Sermersooq\nSermersooq ( Kommuneqarfik Sermersooq , `` Place of Much Ice '' ) is a new municipality in Greenland , operational from 1 January 2009 . It is home to Nuuk ( formerly called Godthåb ) , the capital of Greenland , and is the most populous municipality in the country , with 21,868 inhabitants as of January 2013 . The municipality consists of former municipalities of eastern and southwestern Greenland , each named after the largest settlement at the time of formation : Ammassalik Municipality Ittoqqortoormiit Municipality Ivittuut Municipality Nuuk Municipality Paamiut Municipality\n\n[P2] Nuuk Municipality\nNuuk Municipality was one of the municipalities of Greenland until 31 December 2008 . On 1 January 2009 , it was merged with four other former municipalities into the new Sermersooq municipality . The central town was Nuuk . Other settlements within its borders were Kangerluarsoruseq ( now abandoned ) , Kapisillit and Qeqertarsuatsiaat . Category : Former municipalities of Greenland\n\n[P3] Nuuk\nNuuk ( [ nuːk ] ; Godthåb ) is the capital and largest city of Greenland and the municipality of Sermersooq . It is the seat of government and the country 's largest cultural and economic centre . The major cities closest to the capital are Iqaluit and St. John 's in Canada and Reykjavík in Iceland . Nuuk contains almost a third of Greenland 's population , and also has the tallest building in Greenland . Nuuk is the seat of government for the Sermersooq municipality . In January 2016 , it had a population of 17,316 , making it one of the smallest capital cities in the world by population . Nuuk is the Kalaallisut word for `` cape '' . It is so named because of its position at the end of the Nuup Kangerlua fjord on the eastern shore of the Labrador Sea . Its latitude , at 64 ° 10 ' N , makes it the world 's northernmost capital , located only a few kilometres farther north than the Icelandic capital Reykjavík .\n\n[P4] Kangerluarsunnguaq Fjord\nKangerluarsunnguaq Fjord ( Kobbefjord ) is a small fjord in the Sermersooq municipality in southwestern Greenland . `` Nuuk Basic '' , a research station , erected in 2008 , is located on the fjord shores .\n\n[P5] Qeqertarsuaq Island (Nuuk)\nQeqertarsuaq , meaning ` The Large Island ' in the Greenlandic language ( Storø meaning ` big island ' as well ) , is an uninhabited island in the Sermersooq municipality in southwestern Greenland .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "87599ba2ee1f65491138441baf192846bea4ec1928ce0a41f0a1ff2f9cf028e8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693029.386635,
+      "end_wall": 1792693047.2437172,
+      "error": null
+     }
+    ],
+    "arrival_seq": 68,
+    "start_wall": 1792693029.386635,
+    "start_mono": 362586.58014275,
+    "end_wall": 1792693047.2437172,
+    "end_mono": 362604.437319541,
+    "raw_response": "{\n  \"reasoning\": \"The passages confirm that Nuuk is in Sermersooq, as Sermersooq is described as home to Nuuk, the capital and largest city of Greenland.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [ \"P1\", \"P2\", \"P3\" ],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 17853280208,
+     "load_duration": 12911194666,
+     "prompt_eval_count": 903,
+     "prompt_eval_duration": 2071553167,
+     "eval_count": 79,
+     "eval_duration": 2016350459,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:27.240895Z"
+    },
+    "elapsed_s": 17.857,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 68,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Sermersooq:0",
+     "fever17:Nuuk_Municipality:0",
+     "fever17:Nuuk:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 135,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nThe query will be run against a keyword search engine over Wikipedia article introductions.\n\nClaim: Nuuk is in Sermersooq.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "f945bf49af28d217e5a2e2f25f0ff3f3c6f822c211e12448ea783e76a1995cbd",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792693026.342463,
+      "end_wall": 1792693041.8326771,
+      "error": null
+     }
+    ],
+    "start_wall": 1792693026.342463,
+    "start_mono": 362583.535953375,
+    "end_wall": 1792693041.8326771,
+    "end_mono": 362599.026250375,
+    "raw_response": "{\"query\": \"Nuuk Sermersooq location Wikipedia\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 15486884917,
+     "load_duration": 14453377959,
+     "prompt_eval_count": 163,
+     "prompt_eval_duration": 267051541,
+     "eval_count": 15,
+     "eval_duration": 466445250,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:21.831586Z"
+    },
+    "elapsed_s": 15.49,
+    "query_used": "Nuuk Sermersooq location Wikipedia",
+    "query_source": "json",
+    "query_arrival_seq": 69
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Nuuk Sermersooq location Wikipedia",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Sermersooq:0",
+       "score_q": 14027
+      },
+      {
+       "passage_key": "fever17:Nuuk_Municipality:0",
+       "score_q": 13257
+      },
+      {
+       "passage_key": "fever17:Nuuk:0",
+       "score_q": 13054
+      },
+      {
+       "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+       "score_q": 12842
+      },
+      {
+       "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+       "score_q": 12842
+      }
+     ],
+     "retrieval_sha256": "3681ca0293f8da30a93b4c8e69d8e658f1b15d09a8440882068e9acaa172b134"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "3681ca0293f8da30a93b4c8e69d8e658f1b15d09a8440882068e9acaa172b134",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Sermersooq:0",
+      "content_sha256": "1ae90c46d83f12103a26fa4222cef71c0b7fa01d90b230e63f827b2f87a54c80",
+      "chars": 596
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Nuuk_Municipality:0",
+      "content_sha256": "c2f1f87f290a0dc4d40d7d3b7d3e54ef11dc569e36dd48be64b9474ba9138cf3",
+      "chars": 403
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Nuuk:0",
+      "content_sha256": "be066181de2cd5fdce90fa590ce539299cf86d43da965361fb06cb1a7364497f",
+      "chars": 929
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Kangerluarsunnguaq_Fjord:0",
+      "content_sha256": "8752d1dbc6719f89292b5338f172028750689bad69125abe9fcea54a201ff777",
+      "chars": 231
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Qeqertarsuaq_Island_-LRB-Nuuk-RRB-:0",
+      "content_sha256": "9573df2ee10090a77899d727b3aca70e1a094ff28b0a19da778224e6dfc3832c",
+      "chars": 225
+     }
+    ],
+    "elapsed_s": 0.0137
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Nuuk is in Sermersooq.\n\nEvidence passages from your search for \"Nuuk Sermersooq location Wikipedia\":\n<<<PASSAGES\n[P1] Sermersooq\nSermersooq ( Kommuneqarfik Sermersooq , `` Place of Much Ice '' ) is a new municipality in Greenland , operational from 1 January 2009 . It is home to Nuuk ( formerly called Godthåb ) , the capital of Greenland , and is the most populous municipality in the country , with 21,868 inhabitants as of January 2013 . The municipality consists of former municipalities of eastern and southwestern Greenland , each named after the largest settlement at the time of formation : Ammassalik Municipality Ittoqqortoormiit Municipality Ivittuut Municipality Nuuk Municipality Paamiut Municipality\n\n[P2] Nuuk Municipality\nNuuk Municipality was one of the municipalities of Greenland until 31 December 2008 . On 1 January 2009 , it was merged with four other former municipalities into the new Sermersooq municipality . The central town was Nuuk . Other settlements within its borders were Kangerluarsoruseq ( now abandoned ) , Kapisillit and Qeqertarsuatsiaat . Category : Former municipalities of Greenland\n\n[P3] Nuuk\nNuuk ( [ nuːk ] ; Godthåb ) is the capital and largest city of Greenland and the municipality of Sermersooq . It is the seat of government and the country 's largest cultural and economic centre . The major cities closest to the capital are Iqaluit and St. John 's in Canada and Reykjavík in Iceland . Nuuk contains almost a third of Greenland 's population , and also has the tallest building in Greenland . Nuuk is the seat of government for the Sermersooq municipality . In January 2016 , it had a population of 17,316 , making it one of the smallest capital cities in the world by population . Nuuk is the Kalaallisut word for `` cape '' . It is so named because of its position at the end of the Nuup Kangerlua fjord on the eastern shore of the Labrador Sea . Its latitude , at 64 ° 10 ' N , makes it the world 's northernmost capital , located only a few kilometres farther north than the Icelandic capital Reykjavík .\n\n[P4] Kangerluarsunnguaq Fjord\nKangerluarsunnguaq Fjord ( Kobbefjord ) is a small fjord in the Sermersooq municipality in southwestern Greenland . `` Nuuk Basic '' , a research station , erected in 2008 , is located on the fjord shores .\n\n[P5] Qeqertarsuaq Island (Nuuk)\nQeqertarsuaq , meaning ` The Large Island ' in the Greenlandic language ( Storø meaning ` big island ' as well ) , is an uninhabited island in the Sermersooq municipality in southwestern Greenland .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "16dd1d9022151e3068e7dda0343fe4fb50b5734a46a4353e6d32ea6022ee9751",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792693041.846698,
+      "end_wall": 1792693047.289532,
+      "error": null
+     }
+    ],
+    "arrival_seq": 69,
+    "start_wall": 1792693041.846698,
+    "start_mono": 362599.040272541,
+    "end_wall": 1792693047.289532,
+    "end_mono": 362604.4831355,
+    "raw_response": "{\"reasoning\": \"The evidence clearly states that Nuuk is the capital of Greenland and is located within the Sermersooq municipality. It is directly stated that Nuuk is the capital and largest city of Greenland. \", \"answer\": \"SUPPORTED\", \"citations\": [\"P1\", \"P2\", \"P3\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5439259167,
+     "load_duration": 90362500,
+     "prompt_eval_count": 871,
+     "prompt_eval_duration": 1831633582,
+     "eval_count": 73,
+     "eval_duration": 2184694996,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T18:17:27.28707Z"
+    },
+    "elapsed_s": 5.443,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 69,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Sermersooq:0",
+     "fever17:Nuuk_Municipality:0",
+     "fever17:Nuuk:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 195,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "phi3:mini": "09cc7f257fe2ae6e3c2f12fa9bc6d200710ab6a6cf570baa070abb8531859f54",
+  "llama3.2:3b": "0279c77fa327da1a1e661f07e0ca97c98c63051bf2426b3cfe2a27137d37c4a8",
+  "mistral": "6315a20349234b11be17ea16fa3a9779695d7b9fc7afedf56404ca64b1e22ac5",
+  "qwen2.5:3b": "4f4f1df5bf90dcf6cddba55d9fbbbe68d43adf89e59f2507db33159a8a06cb1c",
+  "gemma2:2b": "3681ca0293f8da30a93b4c8e69d8e658f1b15d09a8440882068e9acaa172b134"
+ },
+ "item_start_wall": 1792693026.341572,
+ "item_wall_s": 20.948,
+ "ollama_ps_samples": [
+  [
+   1792693026.342,
+   [
+    "mistral:latest",
+    "qwen2.5:3b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693028.348,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693030.352,
+   [
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693032.356,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693034.363,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693036.367,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693038.372,
+   [
+    "llama3.2:3b",
+    "mistral:latest",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792693040.375,
+   [
+    "llama3.2:3b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693042.378,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792693044.38,
+   [
+    "qwen2.5:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792693046.386,
+   [
+    "qwen2.5:3b",
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ]
+ ]
+}

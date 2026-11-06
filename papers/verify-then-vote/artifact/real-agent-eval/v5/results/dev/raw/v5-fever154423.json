@@ -1,0 +1,1190 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever154423",
+ "order": 108,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever154423",
+  "order": 108,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Bessie Smith was a heavy metal singer."
+ },
+ "item_view_sha256": "14e7e275f5d12813cc73d2b825c51b83b9613100734a19f9268c5ef6856bef16",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "llama3.2:3b": "bm25",
+  "mistral": "bm25",
+  "gemma2:2b": "bm25",
+  "phi3:mini": "bm25",
+  "qwen2.5:3b": "bm25"
+ },
+ "dispatch_order": [
+  "phi3:mini",
+  "mistral",
+  "qwen2.5:3b",
+  "llama3.2:3b",
+  "gemma2:2b"
+ ],
+ "arrival_order": [
+  "gemma2:2b",
+  "mistral",
+  "llama3.2:3b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "list_order": [
+  "llama3.2:3b",
+  "mistral",
+  "gemma2:2b",
+  "phi3:mini",
+  "qwen2.5:3b"
+ ],
+ "responses": [
+  {
+   "model": "gemma2:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bessie Smith was a heavy metal singer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bb7b123a3d26bc0534acd79ca04024f8799c1dd4d1ddd037bebb5997cb1cf0ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792695791.944893,
+      "end_wall": 1792695792.9975271,
+      "error": null
+     }
+    ],
+    "start_wall": 1792695791.944893,
+    "start_mono": 365349.222657833,
+    "end_wall": 1792695792.9975271,
+    "end_mono": 365350.27530525,
+    "raw_response": "{\"query\": \"Bessie Smith heavy metal music\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1050650417,
+     "load_duration": 96143292,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 343428750,
+     "eval_count": 13,
+     "eval_duration": 377800541,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:12.996324Z"
+    },
+    "elapsed_s": 1.053,
+    "query_used": "Bessie Smith heavy metal music",
+    "query_source": "json",
+    "query_arrival_seq": 540
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bessie Smith heavy metal music",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+       "score_q": 11423
+      },
+      {
+       "passage_key": "fever17:Heavy_metal:0",
+       "score_q": 11059
+      },
+      {
+       "passage_key": "fever17:Hard_metal:0",
+       "score_q": 11017
+      },
+      {
+       "passage_key": "fever17:Art_metal:0",
+       "score_q": 10972
+      },
+      {
+       "passage_key": "fever17:Heavy_metal_music_before_1970:0",
+       "score_q": 10873
+      }
+     ],
+     "retrieval_sha256": "e319a7327a98539e34a84b7cf1a4e6806c8c9ced5941d14f75eec2db53a86675"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e319a7327a98539e34a84b7cf1a4e6806c8c9ced5941d14f75eec2db53a86675",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+      "content_sha256": "d39840eaf570b4ba5b61c409e5624915c6d8e8448f3efc3d1ad66c2787bd4a79",
+      "chars": 716
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Heavy_metal:0",
+      "content_sha256": "36335c4c99122fa35822faf69f2efe69694271a088ffa3f9f047e7df8d1cb9b4",
+      "chars": 283
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Hard_metal:0",
+      "content_sha256": "324aafc97006ad13b70330de53fa71d2dc7593233ba0316f9a7909aa16653e49",
+      "chars": 192
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Art_metal:0",
+      "content_sha256": "382cdfe070f396f323901484e493a0d4e4c2918058dd5cff297531de84dd1f89",
+      "chars": 479
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Heavy_metal_music_before_1970:0",
+      "content_sha256": "3c031a77264da03e2283b271d19f31c1d0d6bb91840e1dce126461574ab36f6b",
+      "chars": 116
+     }
+    ],
+    "elapsed_s": 0.0396
+   },
+   "answer_turn": {
+    "model": "gemma2:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bessie Smith was a heavy metal singer.\n\nEvidence passages from your search for \"Bessie Smith heavy metal music\":\n<<<PASSAGES\n[P1] Dinah Sings Bessie Smith\nDinah Sings Bessie Smith is a 1958 album by blues , R&B and jazz singer Dinah Washington released on the Emarcy label , and reissued by Verve Records in 1999 as The Bessie Smith Songbook . The album arrangements are headed by Robare Edmondson and Ernie Wilkins , and the songs are associated with American blues singer Bessie Smith . Allmusic details the album in its review as saying : `` It was only natural that the `` Queen of the Blues '' should record songs associated with the `` Empress of the Blues . '' The performances by the septet/octet do not sound like the 1920s and the purposely ricky-tick drumming is insulting , but Dinah Washington sounds quite at home on this music '' .\n\n[P2] Heavy metal\nHeavy metal may refer to : Heavy metals , a loose category of relatively dense metals and metalloids Toxic heavy metal , any heavy metal chemical element of environmental concern Heavy metal music Heavy metal genres Heavy Metal ( magazine ) , an American fantasy magazine\n\n[P3] Hard metal\nHard metal may refer to : Cemented carbide ( widia ) , hard material used for machining Heavy metal music , music genre Hard Metal , Yugoslav magazine dedicated to heavy metal music\n\n[P4] Art metal\nArt metal may refer to : Avant-garde metal , heavy metal music that emphasises experimentation and unconventional techniques Neoclassical metal , heavy metal strongly influenced by classical music Post-metal , a fusion of heavy metal with post-rock and shoegazing Progressive metal , a fusion of heavy metal with progressive rock Art Metal ( band ) , a Swedish band led by Jonas Hellborg Art Metal ( album ) , the band 's debut album Art rock , a subgenre of rock music\n\n[P5] Heavy metal music before 1970\nThis is a timeline documenting the formative events in heavy metal music before 1970 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "ca90ea0619769f4e15bc64fe8e1073f25415d0f2deef3e0ab9a2a7b5b9202f76",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792695793.037388,
+      "end_wall": 1792695800.3939369,
+      "error": null
+     }
+    ],
+    "arrival_seq": 540,
+    "start_wall": 1792695793.037388,
+    "start_mono": 365350.315168208,
+    "end_wall": 1792695800.3939369,
+    "end_mono": 365357.671819833,
+    "raw_response": "{\"reasoning\": \"Bessie Smith was a blues singer, not a heavy metal singer.  Heavy metal emerged in the 1970s.\", \"answer\": \"REFUTED\", \"citations\": [], \"confidence\": \"high\"} ",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7353184542,
+     "load_duration": 87518708,
+     "prompt_eval_count": 665,
+     "prompt_eval_duration": 2434304792,
+     "eval_count": 51,
+     "eval_duration": 3913970963,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:20.391257Z"
+    },
+    "elapsed_s": 7.357,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 540,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 93,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "gemma2_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "mistral",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bessie Smith was a heavy metal singer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bb7b123a3d26bc0534acd79ca04024f8799c1dd4d1ddd037bebb5997cb1cf0ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792695791.944274,
+      "end_wall": 1792695793.068109,
+      "error": null
+     }
+    ],
+    "start_wall": 1792695791.944274,
+    "start_mono": 365349.222039,
+    "end_wall": 1792695793.068109,
+    "end_mono": 365350.345889166,
+    "raw_response": "{\"query\": \"Bessie Smith heavy metal singer history\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1121959333,
+     "load_duration": 36969250,
+     "prompt_eval_count": 170,
+     "prompt_eval_duration": 441211333,
+     "eval_count": 14,
+     "eval_duration": 609278081,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:13.067372Z"
+    },
+    "elapsed_s": 1.124,
+    "query_used": "Bessie Smith heavy metal singer history",
+    "query_source": "json",
+    "query_arrival_seq": 541
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bessie Smith heavy metal singer history",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+       "score_q": 12390
+      },
+      {
+       "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+       "score_q": 12378
+      },
+      {
+       "passage_key": "fever17:Bessie_Smith:0",
+       "score_q": 12322
+      },
+      {
+       "passage_key": "fever17:Ruby_Smith:0",
+       "score_q": 11886
+      },
+      {
+       "passage_key": "fever17:The_History_of_Heavy_Metal:0",
+       "score_q": 11874
+      }
+     ],
+     "retrieval_sha256": "2b0275b8be0f96c64617a620bdf795a884ca0c270fcc606b653235d6081a8660"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "2b0275b8be0f96c64617a620bdf795a884ca0c270fcc606b653235d6081a8660",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+      "content_sha256": "36ee14237970a48b4960ca3c3d8882c8e5116624eca49abb365bc1853965040b",
+      "chars": 455
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+      "content_sha256": "d39840eaf570b4ba5b61c409e5624915c6d8e8448f3efc3d1ad66c2787bd4a79",
+      "chars": 716
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Bessie_Smith:0",
+      "content_sha256": "c750075b18e9d352d00d1fdaf757d4ae286c827dadd2d1d2b8ebdcc7c63b84e2",
+      "chars": 320
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ruby_Smith:0",
+      "content_sha256": "de83f26a69e8792d791d3700dc62a99355cf30d09f1e8aa5a531c08079f73125",
+      "chars": 419
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:The_History_of_Heavy_Metal:0",
+      "content_sha256": "3f1437e6c39743879a4aa062fedfb89f1df8bbb3193e2ae9ff24e936576f07f5",
+      "chars": 738
+     }
+    ],
+    "elapsed_s": 0.0207
+   },
+   "answer_turn": {
+    "model": "mistral",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bessie Smith was a heavy metal singer.\n\nEvidence passages from your search for \"Bessie Smith heavy metal singer history\":\n<<<PASSAGES\n[P1] The Death of Bessie Smith\nThe Death of Bessie Smith is a one-act play by American playwright Edward Albee , written in 1959 and premiered in West Berlin the following year . The play consists of a series of conversations between Bernie and his friend Jack , Jack and an off-stage Bessie , and black and white staff of a ` whites-only ' hospital in Memphis , Tennessee on the death date of the famous blues singer , Bessie Smith , who died in a car wreck .\n\n[P2] Dinah Sings Bessie Smith\nDinah Sings Bessie Smith is a 1958 album by blues , R&B and jazz singer Dinah Washington released on the Emarcy label , and reissued by Verve Records in 1999 as The Bessie Smith Songbook . The album arrangements are headed by Robare Edmondson and Ernie Wilkins , and the songs are associated with American blues singer Bessie Smith . Allmusic details the album in its review as saying : `` It was only natural that the `` Queen of the Blues '' should record songs associated with the `` Empress of the Blues . '' The performances by the septet/octet do not sound like the 1920s and the purposely ricky-tick drumming is insulting , but Dinah Washington sounds quite at home on this music '' .\n\n[P3] Bessie Smith\nBessie Smith ( April 15 , 1894 -- September 26 , 1937 ) was an American blues singer . Nicknamed the Empress of the Blues , she was the most popular female blues singer of the 1920s and 1930s . She is often regarded as one of the greatest singers of her era and was a major influence on other jazz singers .\n\n[P4] Ruby Smith\nRuby Smith ( August 24 , 1903 -- March 24 , 1977 ) was an American classic female blues singer . She was a niece , by marriage , of the better-known Bessie Smith , who discouraged Ruby from pursuing a recording career . Nevertheless , following Bessie 's death in 1937 , Ruby recorded twenty-one sides between 1938 and 1947 . She is also known for her candid observations on her own and Bessie 's lifestyle .\n\n[P5] The History of Heavy Metal\nThe History of Heavy Metal ( Hårdrockens historia ) is a Swedish 2001 documentary movie made for TV spanning through the timeline of heavy metal music . It starts with the roots of heavy metal and ends with the metal of present times . Through interviews and archive material , the movie tries to give answers on many questions , including `` which was the first heavy metal band ? '' . It was produced by Malik Bendjelloul and edited by Mikael Björnsson and Johan Larsson for Barracuda Film & TV . The documentary also focuses on the three `` enemies '' of heavy metal including punk rock , glam metal and grunge . The movie was presented in TV by Backyard Babies singer Dregen and TV host Per Sinding-Larsen .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "652f322492fb334bd7d5b9bb5e625c872945a986ac29361d28c899c102950eb2",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792695793.08932,
+      "end_wall": 1792695801.949673,
+      "error": null
+     }
+    ],
+    "arrival_seq": 541,
+    "start_wall": 1792695793.08932,
+    "start_mono": 365350.367101166,
+    "end_wall": 1792695801.949673,
+    "end_mono": 365359.227578291,
+    "raw_response": "{\"reasoning\": \"The evidence passages do not provide any information that supports the claim that Bessie Smith was a heavy metal singer. Instead, they discuss her career as a blues singer and a play about her death. The term 'heavy metal' is not mentioned in any of the passages.\", \"answer\": \"REFUTED\", \"citations\": [],\"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8856979541,
+     "load_duration": 14573791,
+     "prompt_eval_count": 1004,
+     "prompt_eval_duration": 4607983250,
+     "eval_count": 84,
+     "eval_duration": 4028965884,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:21.946983Z"
+    },
+    "elapsed_s": 8.86,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 541,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 263,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 1,
+   "list_index": 1,
+   "agent": "mistral",
+   "retriever": "bm25"
+  },
+  {
+   "model": "llama3.2:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bessie Smith was a heavy metal singer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bb7b123a3d26bc0534acd79ca04024f8799c1dd4d1ddd037bebb5997cb1cf0ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792695791.944702,
+      "end_wall": 1792695802.9106612,
+      "error": null
+     }
+    ],
+    "start_wall": 1792695791.944702,
+    "start_mono": 365349.22246625,
+    "end_wall": 1792695802.9106612,
+    "end_mono": 365360.18857825,
+    "raw_response": "{\"query\": \"Bessie Smith heavy metal singer\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 10964252708,
+     "load_duration": 10307164792,
+     "prompt_eval_count": 171,
+     "prompt_eval_duration": 310724667,
+     "eval_count": 13,
+     "eval_duration": 215139126,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:22.909624Z"
+    },
+    "elapsed_s": 10.966,
+    "query_used": "Bessie Smith heavy metal singer",
+    "query_source": "json",
+    "query_arrival_seq": 544
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bessie Smith heavy metal singer",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+       "score_q": 12390
+      },
+      {
+       "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+       "score_q": 12378
+      },
+      {
+       "passage_key": "fever17:Bessie_Smith:0",
+       "score_q": 12322
+      },
+      {
+       "passage_key": "fever17:Ruby_Smith:0",
+       "score_q": 11886
+      },
+      {
+       "passage_key": "fever17:Bessie_-LRB-film-RRB-:0",
+       "score_q": 11591
+      }
+     ],
+     "retrieval_sha256": "0af620b8c6187e923f94f4aaa15339049fc2aece77b1327e6d01d9d7bd9ef866"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0af620b8c6187e923f94f4aaa15339049fc2aece77b1327e6d01d9d7bd9ef866",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+      "content_sha256": "36ee14237970a48b4960ca3c3d8882c8e5116624eca49abb365bc1853965040b",
+      "chars": 455
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+      "content_sha256": "d39840eaf570b4ba5b61c409e5624915c6d8e8448f3efc3d1ad66c2787bd4a79",
+      "chars": 716
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Bessie_Smith:0",
+      "content_sha256": "c750075b18e9d352d00d1fdaf757d4ae286c827dadd2d1d2b8ebdcc7c63b84e2",
+      "chars": 320
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ruby_Smith:0",
+      "content_sha256": "de83f26a69e8792d791d3700dc62a99355cf30d09f1e8aa5a531c08079f73125",
+      "chars": 419
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bessie_-LRB-film-RRB-:0",
+      "content_sha256": "ceaa78bd20293c64eb9cd173eca45451f1ed5a8be7aaee2244f7fc5a0ece55da",
+      "chars": 632
+     }
+    ],
+    "elapsed_s": 0.032
+   },
+   "answer_turn": {
+    "model": "llama3.2:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bessie Smith was a heavy metal singer.\n\nEvidence passages from your search for \"Bessie Smith heavy metal singer\":\n<<<PASSAGES\n[P1] The Death of Bessie Smith\nThe Death of Bessie Smith is a one-act play by American playwright Edward Albee , written in 1959 and premiered in West Berlin the following year . The play consists of a series of conversations between Bernie and his friend Jack , Jack and an off-stage Bessie , and black and white staff of a ` whites-only ' hospital in Memphis , Tennessee on the death date of the famous blues singer , Bessie Smith , who died in a car wreck .\n\n[P2] Dinah Sings Bessie Smith\nDinah Sings Bessie Smith is a 1958 album by blues , R&B and jazz singer Dinah Washington released on the Emarcy label , and reissued by Verve Records in 1999 as The Bessie Smith Songbook . The album arrangements are headed by Robare Edmondson and Ernie Wilkins , and the songs are associated with American blues singer Bessie Smith . Allmusic details the album in its review as saying : `` It was only natural that the `` Queen of the Blues '' should record songs associated with the `` Empress of the Blues . '' The performances by the septet/octet do not sound like the 1920s and the purposely ricky-tick drumming is insulting , but Dinah Washington sounds quite at home on this music '' .\n\n[P3] Bessie Smith\nBessie Smith ( April 15 , 1894 -- September 26 , 1937 ) was an American blues singer . Nicknamed the Empress of the Blues , she was the most popular female blues singer of the 1920s and 1930s . She is often regarded as one of the greatest singers of her era and was a major influence on other jazz singers .\n\n[P4] Ruby Smith\nRuby Smith ( August 24 , 1903 -- March 24 , 1977 ) was an American classic female blues singer . She was a niece , by marriage , of the better-known Bessie Smith , who discouraged Ruby from pursuing a recording career . Nevertheless , following Bessie 's death in 1937 , Ruby recorded twenty-one sides between 1938 and 1947 . She is also known for her candid observations on her own and Bessie 's lifestyle .\n\n[P5] Bessie (film)\nBessie is an HBO TV film about legendary American blues singer Bessie Smith , and focuses on her transformation as a struggling young singer into `` The Empress of the Blues '' . The film is directed by Dee Rees , with a screenplay by Rees , Christopher Cleveland and Bettina Gilois . Queen Latifah stars as Smith , and supporting roles are played by Michael Kenneth Williams as Smith 's first husband Jack Gee , and Mo'Nique as Ma Rainey . The film premiered on May 16 , 2015 . The film received mostly positive reviews from critics , and received four Primetime Emmy Awards , including Outstanding Television Movie .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "1dfe0a72a7cd805ca258337a9d37eedd5d92bd7f46645f013ab66a131a6b36d8",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792695802.9430342,
+      "end_wall": 1792695810.714825,
+      "error": null
+     }
+    ],
+    "arrival_seq": 542,
+    "start_wall": 1792695802.9430342,
+    "start_mono": 365360.220955416,
+    "end_wall": 1792695810.714825,
+    "end_mono": 365367.9928545,
+    "raw_response": "{\n  \"reasoning\": \"The claim is refuted because none of the evidence passages mention heavy metal music, and Bessie Smith is well-known for her work in blues and jazz music.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 7769501500,
+     "load_duration": 80949500,
+     "prompt_eval_count": 890,
+     "prompt_eval_duration": 2064475001,
+     "eval_count": 64,
+     "eval_duration": 4991506165,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:30.713613Z"
+    },
+    "elapsed_s": 7.772,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 542,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 154,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 0,
+   "agent": "llama3.2_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "phi3:mini",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bessie Smith was a heavy metal singer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bb7b123a3d26bc0534acd79ca04024f8799c1dd4d1ddd037bebb5997cb1cf0ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792695791.944104,
+      "end_wall": 1792695798.050113,
+      "error": null
+     }
+    ],
+    "start_wall": 1792695791.944104,
+    "start_mono": 365349.221869,
+    "end_wall": 1792695798.050113,
+    "end_mono": 365355.327963416,
+    "raw_response": "{\"query\": \"Bessie Smith biography heavy metal music career\"}\n\n",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6103914791,
+     "load_duration": 1390250666,
+     "prompt_eval_count": 182,
+     "prompt_eval_duration": 1378171333,
+     "eval_count": 18,
+     "eval_duration": 3289162332,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:18.049275Z"
+    },
+    "elapsed_s": 6.106,
+    "query_used": "Bessie Smith biography heavy metal music career",
+    "query_source": "json",
+    "query_arrival_seq": 542
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bessie Smith biography heavy metal music career",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Bessie_-LRB-disambiguation-RRB-:0",
+       "score_q": 13136
+      },
+      {
+       "passage_key": "fever17:Ruby_Smith:0",
+       "score_q": 11758
+      },
+      {
+       "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+       "score_q": 11423
+      },
+      {
+       "passage_key": "fever17:Heavy_metal:0",
+       "score_q": 11059
+      },
+      {
+       "passage_key": "fever17:Hard_metal:0",
+       "score_q": 11017
+      }
+     ],
+     "retrieval_sha256": "e0c88a51d55ab5329e0e48eac9ec84bd06d3d94aee299d8856ce81983e2931aa"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "e0c88a51d55ab5329e0e48eac9ec84bd06d3d94aee299d8856ce81983e2931aa",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Bessie_-LRB-disambiguation-RRB-:0",
+      "content_sha256": "906cd576c31ce084a6a7c052bf5d5cefb1269fef77f0fac041aa2e8c426bf341",
+      "chars": 736
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Ruby_Smith:0",
+      "content_sha256": "de83f26a69e8792d791d3700dc62a99355cf30d09f1e8aa5a531c08079f73125",
+      "chars": 419
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+      "content_sha256": "d39840eaf570b4ba5b61c409e5624915c6d8e8448f3efc3d1ad66c2787bd4a79",
+      "chars": 716
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Heavy_metal:0",
+      "content_sha256": "36335c4c99122fa35822faf69f2efe69694271a088ffa3f9f047e7df8d1cb9b4",
+      "chars": 283
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Hard_metal:0",
+      "content_sha256": "324aafc97006ad13b70330de53fa71d2dc7593233ba0316f9a7909aa16653e49",
+      "chars": 192
+     }
+    ],
+    "elapsed_s": 0.0264
+   },
+   "answer_turn": {
+    "model": "phi3:mini",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bessie Smith was a heavy metal singer.\n\nEvidence passages from your search for \"Bessie Smith biography heavy metal music career\":\n<<<PASSAGES\n[P1] Bessie (disambiguation)\nBessie is a feminine given name . It may also refer to : Alvah Bessie ( 1904-1985 ) , American novelist , journalist and screenwriter blacklisted as one of the Hollywood Ten Bessie , a stuffed Beanie Baby cow toy Bessie ( lake monster ) , a lake monster in Lake Erie Bessie ( narrowboat ) , a boat in the West Country Living Museum , England Bessie Awards in dance , the New York Dance and Performance Awards `` Bessie '' , a 1972 biography of Bessie Smith written by American journalist Chris Albertson Bessie , a 2015 biographical film based on the life of Bessie Smith Bessie , Oklahoma , United States , a town Besant Nagar , a neighborhood of the Indian city of Chennai sometimes referred to as `` Bessie ''\n\n[P2] Ruby Smith\nRuby Smith ( August 24 , 1903 -- March 24 , 1977 ) was an American classic female blues singer . She was a niece , by marriage , of the better-known Bessie Smith , who discouraged Ruby from pursuing a recording career . Nevertheless , following Bessie 's death in 1937 , Ruby recorded twenty-one sides between 1938 and 1947 . She is also known for her candid observations on her own and Bessie 's lifestyle .\n\n[P3] Dinah Sings Bessie Smith\nDinah Sings Bessie Smith is a 1958 album by blues , R&B and jazz singer Dinah Washington released on the Emarcy label , and reissued by Verve Records in 1999 as The Bessie Smith Songbook . The album arrangements are headed by Robare Edmondson and Ernie Wilkins , and the songs are associated with American blues singer Bessie Smith . Allmusic details the album in its review as saying : `` It was only natural that the `` Queen of the Blues '' should record songs associated with the `` Empress of the Blues . '' The performances by the septet/octet do not sound like the 1920s and the purposely ricky-tick drumming is insulting , but Dinah Washington sounds quite at home on this music '' .\n\n[P4] Heavy metal\nHeavy metal may refer to : Heavy metals , a loose category of relatively dense metals and metalloids Toxic heavy metal , any heavy metal chemical element of environmental concern Heavy metal music Heavy metal genres Heavy Metal ( magazine ) , an American fantasy magazine\n\n[P5] Hard metal\nHard metal may refer to : Cemented carbide ( widia ) , hard material used for machining Heavy metal music , music genre Hard Metal , Yugoslav magazine dedicated to heavy metal music\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "25c3c300107292664637bdfa2d7494ae50e1e9a756e58c5027b81be61f47b3d7",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792695798.076829,
+      "end_wall": 1792695811.6427698,
+      "error": null
+     }
+    ],
+    "arrival_seq": 543,
+    "start_wall": 1792695798.076829,
+    "start_mono": 365355.354681208,
+    "end_wall": 1792695811.6427698,
+    "end_mono": 365368.920813666,
+    "raw_response": "{\n  \"reasoning\": \"The claim that Bessie Smith was a heavy metal singer is refuted. Bessie Smith, also known as the 'Queen of the Blues,' was a renowned blues singer. There is no evidence in the provided passages to support the claim that she was a heavy metal singer.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": []\n  ,\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13562799333,
+     "load_duration": 5585399083,
+     "prompt_eval_count": 962,
+     "prompt_eval_duration": 3320417834,
+     "eval_count": 101,
+     "eval_duration": 4409490755,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:31.640381Z"
+    },
+    "elapsed_s": 13.566,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 543,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 249,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 0,
+   "list_index": 3,
+   "agent": "phi3_mini",
+   "retriever": "bm25"
+  },
+  {
+   "model": "qwen2.5:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Bessie Smith was a heavy metal singer.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "bb7b123a3d26bc0534acd79ca04024f8799c1dd4d1ddd037bebb5997cb1cf0ce",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792695791.94443,
+      "end_wall": 1792695800.464422,
+      "error": null
+     }
+    ],
+    "start_wall": 1792695791.94443,
+    "start_mono": 365349.222194666,
+    "end_wall": 1792695800.464422,
+    "end_mono": 365357.7423055,
+    "raw_response": "{\"query\": \"Bessie Smith heavy metal singer false\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8517749916,
+     "load_duration": 7366515750,
+     "prompt_eval_count": 160,
+     "prompt_eval_duration": 343102291,
+     "eval_count": 14,
+     "eval_duration": 636868294,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:20.463135Z"
+    },
+    "elapsed_s": 8.52,
+    "query_used": "Bessie Smith heavy metal singer false",
+    "query_source": "json",
+    "query_arrival_seq": 543
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Bessie Smith heavy metal singer false",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+       "score_q": 12390
+      },
+      {
+       "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+       "score_q": 12378
+      },
+      {
+       "passage_key": "fever17:Bessie_Smith:0",
+       "score_q": 12322
+      },
+      {
+       "passage_key": "fever17:Ruby_Smith:0",
+       "score_q": 11886
+      },
+      {
+       "passage_key": "fever17:Bessie_-LRB-film-RRB-:0",
+       "score_q": 11591
+      }
+     ],
+     "retrieval_sha256": "85a1a8a422d36566fd1cee78d938654f332f6a720f02a86f74211a20697f8550"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "85a1a8a422d36566fd1cee78d938654f332f6a720f02a86f74211a20697f8550",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:The_Death_of_Bessie_Smith:0",
+      "content_sha256": "36ee14237970a48b4960ca3c3d8882c8e5116624eca49abb365bc1853965040b",
+      "chars": 455
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Dinah_Sings_Bessie_Smith:0",
+      "content_sha256": "d39840eaf570b4ba5b61c409e5624915c6d8e8448f3efc3d1ad66c2787bd4a79",
+      "chars": 716
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Bessie_Smith:0",
+      "content_sha256": "c750075b18e9d352d00d1fdaf757d4ae286c827dadd2d1d2b8ebdcc7c63b84e2",
+      "chars": 320
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:Ruby_Smith:0",
+      "content_sha256": "de83f26a69e8792d791d3700dc62a99355cf30d09f1e8aa5a531c08079f73125",
+      "chars": 419
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Bessie_-LRB-film-RRB-:0",
+      "content_sha256": "ceaa78bd20293c64eb9cd173eca45451f1ed5a8be7aaee2244f7fc5a0ece55da",
+      "chars": 632
+     }
+    ],
+    "elapsed_s": 0.026
+   },
+   "answer_turn": {
+    "model": "qwen2.5:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Bessie Smith was a heavy metal singer.\n\nEvidence passages from your search for \"Bessie Smith heavy metal singer false\":\n<<<PASSAGES\n[P1] The Death of Bessie Smith\nThe Death of Bessie Smith is a one-act play by American playwright Edward Albee , written in 1959 and premiered in West Berlin the following year . The play consists of a series of conversations between Bernie and his friend Jack , Jack and an off-stage Bessie , and black and white staff of a ` whites-only ' hospital in Memphis , Tennessee on the death date of the famous blues singer , Bessie Smith , who died in a car wreck .\n\n[P2] Dinah Sings Bessie Smith\nDinah Sings Bessie Smith is a 1958 album by blues , R&B and jazz singer Dinah Washington released on the Emarcy label , and reissued by Verve Records in 1999 as The Bessie Smith Songbook . The album arrangements are headed by Robare Edmondson and Ernie Wilkins , and the songs are associated with American blues singer Bessie Smith . Allmusic details the album in its review as saying : `` It was only natural that the `` Queen of the Blues '' should record songs associated with the `` Empress of the Blues . '' The performances by the septet/octet do not sound like the 1920s and the purposely ricky-tick drumming is insulting , but Dinah Washington sounds quite at home on this music '' .\n\n[P3] Bessie Smith\nBessie Smith ( April 15 , 1894 -- September 26 , 1937 ) was an American blues singer . Nicknamed the Empress of the Blues , she was the most popular female blues singer of the 1920s and 1930s . She is often regarded as one of the greatest singers of her era and was a major influence on other jazz singers .\n\n[P4] Ruby Smith\nRuby Smith ( August 24 , 1903 -- March 24 , 1977 ) was an American classic female blues singer . She was a niece , by marriage , of the better-known Bessie Smith , who discouraged Ruby from pursuing a recording career . Nevertheless , following Bessie 's death in 1937 , Ruby recorded twenty-one sides between 1938 and 1947 . She is also known for her candid observations on her own and Bessie 's lifestyle .\n\n[P5] Bessie (film)\nBessie is an HBO TV film about legendary American blues singer Bessie Smith , and focuses on her transformation as a struggling young singer into `` The Empress of the Blues '' . The film is directed by Dee Rees , with a screenplay by Rees , Christopher Cleveland and Bettina Gilois . Queen Latifah stars as Smith , and supporting roles are played by Michael Kenneth Williams as Smith 's first husband Jack Gee , and Mo'Nique as Ma Rainey . The film premiered on May 16 , 2015 . The film received mostly positive reviews from critics , and received four Primetime Emmy Awards , including Outstanding Television Movie .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "3be57f99ac2ebecae3cb38549bf29378363bb7e82acd3806f039a7bfca767e2c",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792695800.4907598,
+      "end_wall": 1792695811.869044,
+      "error": null
+     }
+    ],
+    "arrival_seq": 544,
+    "start_wall": 1792695800.4907598,
+    "start_mono": 365357.768645833,
+    "end_wall": 1792695811.869044,
+    "end_mono": 365369.147091541,
+    "raw_response": "{\n  \"reasoning\": \"The evidence passages consistently describe Bessie Smith as a blues singer, not a heavy metal singer. There is no support for the claim in any of the provided passages. Given this, the claim is likely to be false.\",\n  \"answer\": \"REFUTED\",\n  \"citations\": [],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11374384209,
+     "load_duration": 4664896709,
+     "prompt_eval_count": 914,
+     "prompt_eval_duration": 2545098583,
+     "eval_count": 76,
+     "eval_duration": 3286291711,
+     "done_reason": "stop",
+     "created_at": "2026-10-22T19:03:31.865707Z"
+    },
+    "elapsed_s": 11.378,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 544,
+   "parsed": {
+    "status": "ok",
+    "answer": "REFUTED",
+    "citations": [],
+    "citation_keys": [],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 213,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 2,
+   "list_index": 4,
+   "agent": "qwen2.5_3b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "gemma2:2b": "e319a7327a98539e34a84b7cf1a4e6806c8c9ced5941d14f75eec2db53a86675",
+  "mistral": "2b0275b8be0f96c64617a620bdf795a884ca0c270fcc606b653235d6081a8660",
+  "llama3.2:3b": "0af620b8c6187e923f94f4aaa15339049fc2aece77b1327e6d01d9d7bd9ef866",
+  "phi3:mini": "e0c88a51d55ab5329e0e48eac9ec84bd06d3d94aee299d8856ce81983e2931aa",
+  "qwen2.5:3b": "85a1a8a422d36566fd1cee78d938654f332f6a720f02a86f74211a20697f8550"
+ },
+ "item_start_wall": 1792695791.9437609,
+ "item_wall_s": 19.926,
+ "ollama_ps_samples": [
+  [
+   1792695791.944,
+   [
+    "qwen2.5:3b",
+    "gemma2:2b",
+    "mistral:latest"
+   ]
+  ],
+  [
+   1792695793.953,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792695795.958,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792695797.968,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "phi3:mini"
+   ]
+  ],
+  [
+   1792695799.979,
+   [
+    "mistral:latest",
+    "gemma2:2b",
+    "qwen2.5:3b"
+   ]
+  ],
+  [
+   1792695801.987,
+   [
+    "mistral:latest",
+    "gemma2:2b"
+   ]
+  ],
+  [
+   1792695803.999,
+   [
+    "phi3:mini",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792695806.0,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792695808.006,
+   [
+    "phi3:mini",
+    "qwen2.5:3b",
+    "llama3.2:3b"
+   ]
+  ],
+  [
+   1792695810.008,
+   [
+    "qwen2.5:3b",
+    "phi3:mini",
+    "llama3.2:3b"
+   ]
+  ]
+ ]
+}

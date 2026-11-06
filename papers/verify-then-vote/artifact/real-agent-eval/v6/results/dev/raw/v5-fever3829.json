@@ -1,0 +1,1250 @@
+{
+ "schema": "bran-v5-raw/1",
+ "id": "v5-fever3829",
+ "order": 106,
+ "split": "dev",
+ "answer_format": "supported_refuted",
+ "corpus": "fever17",
+ "item_view": {
+  "id": "v5-fever3829",
+  "order": 106,
+  "split": "dev",
+  "item_type": "binary_claim",
+  "answer_format": "supported_refuted",
+  "answer_schema": {
+   "enum": [
+    "SUPPORTED",
+    "REFUTED"
+   ]
+  },
+  "corpus": "fever17",
+  "question": "Matthew Gray Gubler is a citizen of the United States of America."
+ },
+ "item_view_sha256": "1d76578470f9e1293814c82c588170df036be637db5c2d34151586222dcbd8a5",
+ "arm": "grounded",
+ "closed_book_models": [],
+ "retriever_assignment": {
+  "falcon3:3b": "bm25",
+  "olmo2:7b": "bm25",
+  "exaone3.5:7.8b": "bm25",
+  "nemotron-mini:4b": "bm25",
+  "granite3.3:2b": "bm25"
+ },
+ "dispatch_order": [
+  "falcon3:3b",
+  "granite3.3:2b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "exaone3.5:7.8b"
+ ],
+ "arrival_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "nemotron-mini:4b",
+  "granite3.3:2b",
+  "exaone3.5:7.8b"
+ ],
+ "list_order": [
+  "falcon3:3b",
+  "olmo2:7b",
+  "exaone3.5:7.8b",
+  "nemotron-mini:4b",
+  "granite3.3:2b"
+ ],
+ "responses": [
+  {
+   "model": "falcon3:3b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Matthew Gray Gubler is a citizen of the United States of America.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e4d1dc048197568cc79a1c1416fd553ed3681d301e185bff4a95ab37ef4bfa9",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792842911.0739992,
+      "end_wall": 1792842912.160604,
+      "error": null
+     }
+    ],
+    "start_wall": 1792842911.0739992,
+    "start_mono": 512467.839703916,
+    "end_wall": 1792842912.160604,
+    "end_mono": 512468.926294083,
+    "raw_response": "{\"query\": \"Matthew Gray Gubler citizenship United States\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1084290333,
+     "load_duration": 115724041,
+     "prompt_eval_count": 180,
+     "prompt_eval_duration": 317274166,
+     "eval_count": 15,
+     "eval_duration": 490807584,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:12.159739Z"
+    },
+    "elapsed_s": 1.087,
+    "query_used": "Matthew Gray Gubler citizenship United States",
+    "query_source": "json",
+    "query_arrival_seq": 530
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Matthew Gray Gubler citizenship United States",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gubler:0",
+       "score_q": 16107
+      },
+      {
+       "passage_key": "fever17:Matthew_Gray_Gubler:0",
+       "score_q": 15522
+      },
+      {
+       "passage_key": "fever17:Laura_Dahl:0",
+       "score_q": 14789
+      },
+      {
+       "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+       "score_q": 12564
+      },
+      {
+       "passage_key": "fever17:Newness:0",
+       "score_q": 12119
+      }
+     ],
+     "retrieval_sha256": "b46a88cc2a7cb842aa660cb9a8d802e89f9314dedb6784c60c7d2899ba1f4713"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b46a88cc2a7cb842aa660cb9a8d802e89f9314dedb6784c60c7d2899ba1f4713",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gubler:0",
+      "content_sha256": "eaad1102a99e926a23102ee76baecc433c4415d7ad0b2c76f921c810fe9cc4f3",
+      "chars": 384
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Matthew_Gray_Gubler:0",
+      "content_sha256": "eb4547d7a6c5224ec5136fd8772035c0ae3dbed1c68b72223cbbfc06f263631c",
+      "chars": 500
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Laura_Dahl:0",
+      "content_sha256": "44ebc972f71238e177c72ac4e63303a009fa8acfd3229ae21a1ee83f0ce275d4",
+      "chars": 358
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+      "content_sha256": "474c10c0ea092abf01e43bfa20abcb0b1a88e8aa39c04de4dae0fea859c0969c",
+      "chars": 285
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Newness:0",
+      "content_sha256": "bccc17042401ddecade8ba9230cf87c4e7a801641296cff516fcc5f614817e8a",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0412
+   },
+   "answer_turn": {
+    "model": "falcon3:3b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Matthew Gray Gubler is a citizen of the United States of America.\n\nEvidence passages from your search for \"Matthew Gray Gubler citizenship United States\":\n<<<PASSAGES\n[P1] Gubler\nAdolphe-Marie Gubler ( 1821 -- 1879 ) , French physician and pharmacologist Millard -- Gubler syndrome Eduard Gubler ( 1891 -- 1971 ) , Swiss painter Matthew Gray Gubler ( born March 9 , 1980 ) , American actor and former fashion model Max Gubler ( 1898 - 1973 ) , Swiss artist Nellie Gubler ( 1908-2007 ) , Mormon historian focusing on Santa Clara , Utah . Category : Surnames\n\n[P2] Matthew Gray Gubler\nMatthew Gray Gubler ( born March 9 , 1980 ) is an American actor , director , fashion model and painter . He is best known for his role as criminal profiler Dr. Spencer Reid in the CBS television show Criminal Minds ( 2005 -- present ) , of which he has also directed ten episodes . Gubler has appeared in The Life Aquatic with Steve Zissou , ( 500 ) Days of Summer , Life After Beth , Suburban Gothic , and as the voice of Simon in Alvin and the Chipmunks and its three sequels .\n\n[P3] Laura Dahl\nLaura Dahl ( born 1974 ) is an American fashion designer . A native of Las Vegas , NV , she attended the University of Arizona in Tucson , Arizona and continued her studies at the Fashion Institute of Technology in New York City . She 's married to Timothy Dahl and has a brother named Matthew Gray Gubler and half-brother named John Gray Gubler .\n\n[P4] How to Be a Serial Killer\nHow to Be a Serial Killer is a 2008 American black comedy film about a young serial killer who imparts his knowledge to an eager pupil . Written and directed by Luke Ricci , the film stars Dameon Clarke , Matthew Gray Gubler , Laura Regan , and George Wyner .\n\n[P5] Newness\nNewness is a 2017 American drama romance film directed by Drake Doremus from a screenplay by Ben York Jones . It stars Nicholas Hoult , Laia Costa , Danny Huston , Courtney Eaton , Matthew Gray Gubler and Albert Hammond Jr. . . It had its world premiere at the Sundance Film Festival on January 25 , 2017 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "56882ab1d3c049408c7a2f90676379cc549640922a814d5d38580a9191869791",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792842912.202128,
+      "end_wall": 1792842924.0316658,
+      "error": null
+     }
+    ],
+    "arrival_seq": 530,
+    "start_wall": 1792842912.202128,
+    "start_mono": 512468.967818666,
+    "end_wall": 1792842924.0316658,
+    "end_mono": 512480.797204458,
+    "raw_response": "{\"reasoning\": \"Matthew Gray Gubler is an American actor and former fashion model, best known for his role as criminal profiler Dr. Spencer Reid in Criminal Minds.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P3\", \"P4\"] , \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 11826882000,
+     "load_duration": 5832570625,
+     "prompt_eval_count": 872,
+     "prompt_eval_duration": 2239328167,
+     "eval_count": 74,
+     "eval_duration": 3019040077,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:24.030247Z"
+    },
+    "elapsed_s": 11.829,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 530,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Matthew_Gray_Gubler:0",
+     "fever17:Laura_Dahl:0",
+     "fever17:How_to_Be_a_Serial_Killer:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 147,
+    "violations": []
+   },
+   "arrival_rank": 0,
+   "dispatch_index": 0,
+   "list_index": 0,
+   "agent": "falcon3_3b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "olmo2:7b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Matthew Gray Gubler is a citizen of the United States of America.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e4d1dc048197568cc79a1c1416fd553ed3681d301e185bff4a95ab37ef4bfa9",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792842911.0743198,
+      "end_wall": 1792842912.354222,
+      "error": null
+     }
+    ],
+    "start_wall": 1792842911.0743198,
+    "start_mono": 512467.840025125,
+    "end_wall": 1792842912.354222,
+    "end_mono": 512469.119910083,
+    "raw_response": "{\"query\": \"Matthew Gray Gubler citizenship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 1278181833,
+     "load_duration": 65629000,
+     "prompt_eval_count": 166,
+     "prompt_eval_duration": 487882625,
+     "eval_count": 12,
+     "eval_duration": 630189583,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:12.353473Z"
+    },
+    "elapsed_s": 1.28,
+    "query_used": "Matthew Gray Gubler citizenship",
+    "query_source": "json",
+    "query_arrival_seq": 531
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Matthew Gray Gubler citizenship",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gubler:0",
+       "score_q": 16107
+      },
+      {
+       "passage_key": "fever17:Matthew_Gray_Gubler:0",
+       "score_q": 15522
+      },
+      {
+       "passage_key": "fever17:Laura_Dahl:0",
+       "score_q": 14789
+      },
+      {
+       "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+       "score_q": 12564
+      },
+      {
+       "passage_key": "fever17:Newness:0",
+       "score_q": 12119
+      }
+     ],
+     "retrieval_sha256": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gubler:0",
+      "content_sha256": "eaad1102a99e926a23102ee76baecc433c4415d7ad0b2c76f921c810fe9cc4f3",
+      "chars": 384
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Matthew_Gray_Gubler:0",
+      "content_sha256": "eb4547d7a6c5224ec5136fd8772035c0ae3dbed1c68b72223cbbfc06f263631c",
+      "chars": 500
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Laura_Dahl:0",
+      "content_sha256": "44ebc972f71238e177c72ac4e63303a009fa8acfd3229ae21a1ee83f0ce275d4",
+      "chars": 358
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+      "content_sha256": "474c10c0ea092abf01e43bfa20abcb0b1a88e8aa39c04de4dae0fea859c0969c",
+      "chars": 285
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Newness:0",
+      "content_sha256": "bccc17042401ddecade8ba9230cf87c4e7a801641296cff516fcc5f614817e8a",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0087
+   },
+   "answer_turn": {
+    "model": "olmo2:7b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Matthew Gray Gubler is a citizen of the United States of America.\n\nEvidence passages from your search for \"Matthew Gray Gubler citizenship\":\n<<<PASSAGES\n[P1] Gubler\nAdolphe-Marie Gubler ( 1821 -- 1879 ) , French physician and pharmacologist Millard -- Gubler syndrome Eduard Gubler ( 1891 -- 1971 ) , Swiss painter Matthew Gray Gubler ( born March 9 , 1980 ) , American actor and former fashion model Max Gubler ( 1898 - 1973 ) , Swiss artist Nellie Gubler ( 1908-2007 ) , Mormon historian focusing on Santa Clara , Utah . Category : Surnames\n\n[P2] Matthew Gray Gubler\nMatthew Gray Gubler ( born March 9 , 1980 ) is an American actor , director , fashion model and painter . He is best known for his role as criminal profiler Dr. Spencer Reid in the CBS television show Criminal Minds ( 2005 -- present ) , of which he has also directed ten episodes . Gubler has appeared in The Life Aquatic with Steve Zissou , ( 500 ) Days of Summer , Life After Beth , Suburban Gothic , and as the voice of Simon in Alvin and the Chipmunks and its three sequels .\n\n[P3] Laura Dahl\nLaura Dahl ( born 1974 ) is an American fashion designer . A native of Las Vegas , NV , she attended the University of Arizona in Tucson , Arizona and continued her studies at the Fashion Institute of Technology in New York City . She 's married to Timothy Dahl and has a brother named Matthew Gray Gubler and half-brother named John Gray Gubler .\n\n[P4] How to Be a Serial Killer\nHow to Be a Serial Killer is a 2008 American black comedy film about a young serial killer who imparts his knowledge to an eager pupil . Written and directed by Luke Ricci , the film stars Dameon Clarke , Matthew Gray Gubler , Laura Regan , and George Wyner .\n\n[P5] Newness\nNewness is a 2017 American drama romance film directed by Drake Doremus from a screenplay by Ben York Jones . It stars Nicholas Hoult , Laia Costa , Danny Huston , Courtney Eaton , Matthew Gray Gubler and Albert Hammond Jr. . . It had its world premiere at the Sundance Film Festival on January 25 , 2017 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6b83020afa19ec977b6877e687b7e645ab977ccff36e1d33830f8a504ee1cc31",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792842912.363163,
+      "end_wall": 1792842925.7318678,
+      "error": null
+     }
+    ],
+    "arrival_seq": 531,
+    "start_wall": 1792842912.363163,
+    "start_mono": 512469.128855166,
+    "end_wall": 1792842925.7318678,
+    "end_mono": 512482.497384333,
+    "raw_response": "{\"reasoning\": \"Matthew Gray Gubler was born in the United States and has been an American actor and fashion model. He has taken on roles in American films and television shows, and has been part of the production team for some of these projects. His family connections and educational background also suggest U.S. citizenship. Therefore, based on the information provided and the context of the passages, it is reasonable to conclude that the claim is supported.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\"], \"confidence\": \"medium\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 13365660958,
+     "load_duration": 45979166,
+     "prompt_eval_count": 746,
+     "prompt_eval_duration": 2670412501,
+     "eval_count": 112,
+     "eval_duration": 9686604293,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:25.729727Z"
+    },
+    "elapsed_s": 13.369,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 531,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Matthew_Gray_Gubler:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "medium",
+    "reasoning_chars": 447,
+    "violations": []
+   },
+   "arrival_rank": 1,
+   "dispatch_index": 2,
+   "list_index": 1,
+   "agent": "olmo2_7b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "nemotron-mini:4b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Matthew Gray Gubler is a citizen of the United States of America.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e4d1dc048197568cc79a1c1416fd553ed3681d301e185bff4a95ab37ef4bfa9",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792842911.074463,
+      "end_wall": 1792842917.799999,
+      "error": null
+     }
+    ],
+    "start_wall": 1792842911.074463,
+    "start_mono": 512467.840168,
+    "end_wall": 1792842917.799999,
+    "end_mono": 512474.565618083,
+    "raw_response": "{\"query\": \"Matthew Gray Gubler US citizenship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 6723259417,
+     "load_duration": 5717172125,
+     "prompt_eval_count": 176,
+     "prompt_eval_duration": 352678458,
+     "eval_count": 12,
+     "eval_duration": 403901833,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:17.798815Z"
+    },
+    "elapsed_s": 6.725,
+    "query_used": "Matthew Gray Gubler US citizenship",
+    "query_source": "json",
+    "query_arrival_seq": 534
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Matthew Gray Gubler US citizenship",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gubler:0",
+       "score_q": 16107
+      },
+      {
+       "passage_key": "fever17:Matthew_Gray_Gubler:0",
+       "score_q": 15522
+      },
+      {
+       "passage_key": "fever17:Laura_Dahl:0",
+       "score_q": 14789
+      },
+      {
+       "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+       "score_q": 12564
+      },
+      {
+       "passage_key": "fever17:Newness:0",
+       "score_q": 12119
+      }
+     ],
+     "retrieval_sha256": "0fa5266234f7f878d952a4430781d64e7c4a0dd45d66f0dbc5e5b339f1f80172"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "0fa5266234f7f878d952a4430781d64e7c4a0dd45d66f0dbc5e5b339f1f80172",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gubler:0",
+      "content_sha256": "eaad1102a99e926a23102ee76baecc433c4415d7ad0b2c76f921c810fe9cc4f3",
+      "chars": 384
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Matthew_Gray_Gubler:0",
+      "content_sha256": "eb4547d7a6c5224ec5136fd8772035c0ae3dbed1c68b72223cbbfc06f263631c",
+      "chars": 500
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Laura_Dahl:0",
+      "content_sha256": "44ebc972f71238e177c72ac4e63303a009fa8acfd3229ae21a1ee83f0ce275d4",
+      "chars": 358
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+      "content_sha256": "474c10c0ea092abf01e43bfa20abcb0b1a88e8aa39c04de4dae0fea859c0969c",
+      "chars": 285
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Newness:0",
+      "content_sha256": "bccc17042401ddecade8ba9230cf87c4e7a801641296cff516fcc5f614817e8a",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0162
+   },
+   "answer_turn": {
+    "model": "nemotron-mini:4b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Matthew Gray Gubler is a citizen of the United States of America.\n\nEvidence passages from your search for \"Matthew Gray Gubler US citizenship\":\n<<<PASSAGES\n[P1] Gubler\nAdolphe-Marie Gubler ( 1821 -- 1879 ) , French physician and pharmacologist Millard -- Gubler syndrome Eduard Gubler ( 1891 -- 1971 ) , Swiss painter Matthew Gray Gubler ( born March 9 , 1980 ) , American actor and former fashion model Max Gubler ( 1898 - 1973 ) , Swiss artist Nellie Gubler ( 1908-2007 ) , Mormon historian focusing on Santa Clara , Utah . Category : Surnames\n\n[P2] Matthew Gray Gubler\nMatthew Gray Gubler ( born March 9 , 1980 ) is an American actor , director , fashion model and painter . He is best known for his role as criminal profiler Dr. Spencer Reid in the CBS television show Criminal Minds ( 2005 -- present ) , of which he has also directed ten episodes . Gubler has appeared in The Life Aquatic with Steve Zissou , ( 500 ) Days of Summer , Life After Beth , Suburban Gothic , and as the voice of Simon in Alvin and the Chipmunks and its three sequels .\n\n[P3] Laura Dahl\nLaura Dahl ( born 1974 ) is an American fashion designer . A native of Las Vegas , NV , she attended the University of Arizona in Tucson , Arizona and continued her studies at the Fashion Institute of Technology in New York City . She 's married to Timothy Dahl and has a brother named Matthew Gray Gubler and half-brother named John Gray Gubler .\n\n[P4] How to Be a Serial Killer\nHow to Be a Serial Killer is a 2008 American black comedy film about a young serial killer who imparts his knowledge to an eager pupil . Written and directed by Luke Ricci , the film stars Dameon Clarke , Matthew Gray Gubler , Laura Regan , and George Wyner .\n\n[P5] Newness\nNewness is a 2017 American drama romance film directed by Drake Doremus from a screenplay by Ben York Jones . It stars Nicholas Hoult , Laia Costa , Danny Huston , Courtney Eaton , Matthew Gray Gubler and Albert Hammond Jr. . . It had its world premiere at the Sundance Film Festival on January 25 , 2017 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "e2fc3143b8795b6bc3b94a61cd4dac795e978e733d7a464c1d65e80cee5a7764",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792842917.816441,
+      "end_wall": 1792842925.9945989,
+      "error": null
+     }
+    ],
+    "arrival_seq": 532,
+    "start_wall": 1792842917.816441,
+    "start_mono": 512474.582060791,
+    "end_wall": 1792842925.9945989,
+    "end_mono": 512482.760112083,
+    "raw_response": "{\"reasoning\": \"The passage P2 states that Matthew Gray Gubler is an American actor, director, fashion model, and painter, while P4 shows that he is in a film about a serial killer. These indicate that he is an American, not a citizen of any other country.\", \"answer\": \"SUPPORTED\", \"citations\": [\"P2\", \"P4\"], \"confidence\": \"high\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 8174084625,
+     "load_duration": 91137792,
+     "prompt_eval_count": 779,
+     "prompt_eval_duration": 2370623416,
+     "eval_count": 86,
+     "eval_duration": 3976522005,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:25.991503Z"
+    },
+    "elapsed_s": 8.178,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 532,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P4"
+    ],
+    "citation_keys": [
+     "fever17:Matthew_Gray_Gubler:0",
+     "fever17:How_to_Be_a_Serial_Killer:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 240,
+    "violations": []
+   },
+   "arrival_rank": 2,
+   "dispatch_index": 3,
+   "list_index": 3,
+   "agent": "nemotron-mini_4b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "granite3.3:2b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Matthew Gray Gubler is a citizen of the United States of America.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e4d1dc048197568cc79a1c1416fd553ed3681d301e185bff4a95ab37ef4bfa9",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792842911.0741398,
+      "end_wall": 1792842915.264191,
+      "error": null
+     }
+    ],
+    "start_wall": 1792842911.0741398,
+    "start_mono": 512467.839845208,
+    "end_wall": 1792842915.264191,
+    "end_mono": 512472.029840208,
+    "raw_response": "{\"query\": \"Matthew Gray Gubler nationality\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 4187777625,
+     "load_duration": 1183433292,
+     "prompt_eval_count": 179,
+     "prompt_eval_duration": 655622417,
+     "eval_count": 14,
+     "eval_duration": 2286126457,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:15.263047Z"
+    },
+    "elapsed_s": 4.19,
+    "query_used": "Matthew Gray Gubler nationality",
+    "query_source": "json",
+    "query_arrival_seq": 532
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Matthew Gray Gubler nationality",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gubler:0",
+       "score_q": 16107
+      },
+      {
+       "passage_key": "fever17:Matthew_Gray_Gubler:0",
+       "score_q": 15522
+      },
+      {
+       "passage_key": "fever17:Laura_Dahl:0",
+       "score_q": 14789
+      },
+      {
+       "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+       "score_q": 12564
+      },
+      {
+       "passage_key": "fever17:Newness:0",
+       "score_q": 12119
+      }
+     ],
+     "retrieval_sha256": "8b0fb8d5016aa2b9c296a8abeb9f39599b19f4844c6281bf1e3f5b8bb1002b64"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "8b0fb8d5016aa2b9c296a8abeb9f39599b19f4844c6281bf1e3f5b8bb1002b64",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gubler:0",
+      "content_sha256": "eaad1102a99e926a23102ee76baecc433c4415d7ad0b2c76f921c810fe9cc4f3",
+      "chars": 384
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Matthew_Gray_Gubler:0",
+      "content_sha256": "eb4547d7a6c5224ec5136fd8772035c0ae3dbed1c68b72223cbbfc06f263631c",
+      "chars": 500
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Laura_Dahl:0",
+      "content_sha256": "44ebc972f71238e177c72ac4e63303a009fa8acfd3229ae21a1ee83f0ce275d4",
+      "chars": 358
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+      "content_sha256": "474c10c0ea092abf01e43bfa20abcb0b1a88e8aa39c04de4dae0fea859c0969c",
+      "chars": 285
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Newness:0",
+      "content_sha256": "bccc17042401ddecade8ba9230cf87c4e7a801641296cff516fcc5f614817e8a",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0255
+   },
+   "answer_turn": {
+    "model": "granite3.3:2b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Matthew Gray Gubler is a citizen of the United States of America.\n\nEvidence passages from your search for \"Matthew Gray Gubler nationality\":\n<<<PASSAGES\n[P1] Gubler\nAdolphe-Marie Gubler ( 1821 -- 1879 ) , French physician and pharmacologist Millard -- Gubler syndrome Eduard Gubler ( 1891 -- 1971 ) , Swiss painter Matthew Gray Gubler ( born March 9 , 1980 ) , American actor and former fashion model Max Gubler ( 1898 - 1973 ) , Swiss artist Nellie Gubler ( 1908-2007 ) , Mormon historian focusing on Santa Clara , Utah . Category : Surnames\n\n[P2] Matthew Gray Gubler\nMatthew Gray Gubler ( born March 9 , 1980 ) is an American actor , director , fashion model and painter . He is best known for his role as criminal profiler Dr. Spencer Reid in the CBS television show Criminal Minds ( 2005 -- present ) , of which he has also directed ten episodes . Gubler has appeared in The Life Aquatic with Steve Zissou , ( 500 ) Days of Summer , Life After Beth , Suburban Gothic , and as the voice of Simon in Alvin and the Chipmunks and its three sequels .\n\n[P3] Laura Dahl\nLaura Dahl ( born 1974 ) is an American fashion designer . A native of Las Vegas , NV , she attended the University of Arizona in Tucson , Arizona and continued her studies at the Fashion Institute of Technology in New York City . She 's married to Timothy Dahl and has a brother named Matthew Gray Gubler and half-brother named John Gray Gubler .\n\n[P4] How to Be a Serial Killer\nHow to Be a Serial Killer is a 2008 American black comedy film about a young serial killer who imparts his knowledge to an eager pupil . Written and directed by Luke Ricci , the film stars Dameon Clarke , Matthew Gray Gubler , Laura Regan , and George Wyner .\n\n[P5] Newness\nNewness is a 2017 American drama romance film directed by Drake Doremus from a screenplay by Ben York Jones . It stars Nicholas Hoult , Laia Costa , Danny Huston , Courtney Eaton , Matthew Gray Gubler and Albert Hammond Jr. . . It had its world premiere at the Sundance Film Festival on January 25 , 2017 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "fab7e104dc1253d2f9df9bb3395756f3223a5027231160b5309252bc5080c475",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792842915.2899551,
+      "end_wall": 1792842933.779364,
+      "error": null
+     }
+    ],
+    "arrival_seq": 533,
+    "start_wall": 1792842915.2899551,
+    "start_mono": 512472.055606333,
+    "end_wall": 1792842933.779364,
+    "end_mono": 512490.544778875,
+    "raw_response": "{\n  \"reasoning\": \"Matthew Gray Gubler's nationality is explicitly stated in several passages. He is identified as an American actor, born in the United States and residing in the country. No evidence contradicts this information.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P1\", \"P2\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 18486141958,
+     "load_duration": 12110387000,
+     "prompt_eval_count": 919,
+     "prompt_eval_duration": 1341890583,
+     "eval_count": 83,
+     "eval_duration": 4706900539,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:33.777026Z"
+    },
+    "elapsed_s": 18.489,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 533,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P1",
+     "P2"
+    ],
+    "citation_keys": [
+     "fever17:Gubler:0",
+     "fever17:Matthew_Gray_Gubler:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 211,
+    "violations": []
+   },
+   "arrival_rank": 3,
+   "dispatch_index": 1,
+   "list_index": 4,
+   "agent": "granite3.3_2b",
+   "retriever": "bm25"
+  },
+  {
+   "model": "exaone3.5:7.8b",
+   "mode": "grounded",
+   "query_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 32,
+     "num_ctx": 4096
+    },
+    "prompt": "Write one search query (at most 12 words) for evidence that shows whether this claim is true or false.\nGive only the key search words; do not name a website, database or source to search.\n\nClaim: Matthew Gray Gubler is a citizen of the United States of America.\n\nReply with JSON of the form {\"query\": \"<your search query>\"}.\n",
+    "prompt_sha256": "6e4d1dc048197568cc79a1c1416fd553ed3681d301e185bff4a95ab37ef4bfa9",
+    "format_sha256": "7d1be042c81d50b21b2c5255b9a7fbf81e34cdaece13b8d9819408eb32a46b39",
+    "attempts": [
+     {
+      "start_wall": 1792842911.0745878,
+      "end_wall": 1792842916.719778,
+      "error": null
+     }
+    ],
+    "start_wall": 1792842911.0745878,
+    "start_mono": 512467.840293375,
+    "end_wall": 1792842916.719778,
+    "end_mono": 512473.485408708,
+    "raw_response": "{\"query\": \"Matthew Gray Gubler citizenship\"}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 5642645583,
+     "load_duration": 3892875083,
+     "prompt_eval_count": 181,
+     "prompt_eval_duration": 860019500,
+     "eval_count": 13,
+     "eval_duration": 785697624,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:16.718185Z"
+    },
+    "elapsed_s": 5.645,
+    "query_used": "Matthew Gray Gubler citizenship",
+    "query_source": "json",
+    "query_arrival_seq": 533
+   },
+   "retrieval": {
+    "retriever": "bm25",
+    "record": {
+     "schema": "bran-retrieval/1",
+     "query": "Matthew Gray Gubler citizenship",
+     "corpus_id": "fever17",
+     "index_sha256": "42bc67e833e6ba80828b14d03fb045c482a99dbc4496ba72460c01b9914be781",
+     "k": 5,
+     "results": [
+      {
+       "passage_key": "fever17:Gubler:0",
+       "score_q": 16107
+      },
+      {
+       "passage_key": "fever17:Matthew_Gray_Gubler:0",
+       "score_q": 15522
+      },
+      {
+       "passage_key": "fever17:Laura_Dahl:0",
+       "score_q": 14789
+      },
+      {
+       "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+       "score_q": 12564
+      },
+      {
+       "passage_key": "fever17:Newness:0",
+       "score_q": 12119
+      }
+     ],
+     "retrieval_sha256": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d"
+    },
+    "record_verified": true,
+    "retrieval_sha256": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d",
+    "passages": [
+     {
+      "label": "P1",
+      "passage_key": "fever17:Gubler:0",
+      "content_sha256": "eaad1102a99e926a23102ee76baecc433c4415d7ad0b2c76f921c810fe9cc4f3",
+      "chars": 384
+     },
+     {
+      "label": "P2",
+      "passage_key": "fever17:Matthew_Gray_Gubler:0",
+      "content_sha256": "eb4547d7a6c5224ec5136fd8772035c0ae3dbed1c68b72223cbbfc06f263631c",
+      "chars": 500
+     },
+     {
+      "label": "P3",
+      "passage_key": "fever17:Laura_Dahl:0",
+      "content_sha256": "44ebc972f71238e177c72ac4e63303a009fa8acfd3229ae21a1ee83f0ce275d4",
+      "chars": 358
+     },
+     {
+      "label": "P4",
+      "passage_key": "fever17:How_to_Be_a_Serial_Killer:0",
+      "content_sha256": "474c10c0ea092abf01e43bfa20abcb0b1a88e8aa39c04de4dae0fea859c0969c",
+      "chars": 285
+     },
+     {
+      "label": "P5",
+      "passage_key": "fever17:Newness:0",
+      "content_sha256": "bccc17042401ddecade8ba9230cf87c4e7a801641296cff516fcc5f614817e8a",
+      "chars": 314
+     }
+    ],
+    "elapsed_s": 0.0295
+   },
+   "answer_turn": {
+    "model": "exaone3.5:7.8b",
+    "request_seed": 42,
+    "options": {
+     "temperature": 0.7,
+     "seed": 42,
+     "num_predict": 512,
+     "num_ctx": 4096
+    },
+    "prompt": "Claim: Matthew Gray Gubler is a citizen of the United States of America.\n\nEvidence passages from your search for \"Matthew Gray Gubler citizenship\":\n<<<PASSAGES\n[P1] Gubler\nAdolphe-Marie Gubler ( 1821 -- 1879 ) , French physician and pharmacologist Millard -- Gubler syndrome Eduard Gubler ( 1891 -- 1971 ) , Swiss painter Matthew Gray Gubler ( born March 9 , 1980 ) , American actor and former fashion model Max Gubler ( 1898 - 1973 ) , Swiss artist Nellie Gubler ( 1908-2007 ) , Mormon historian focusing on Santa Clara , Utah . Category : Surnames\n\n[P2] Matthew Gray Gubler\nMatthew Gray Gubler ( born March 9 , 1980 ) is an American actor , director , fashion model and painter . He is best known for his role as criminal profiler Dr. Spencer Reid in the CBS television show Criminal Minds ( 2005 -- present ) , of which he has also directed ten episodes . Gubler has appeared in The Life Aquatic with Steve Zissou , ( 500 ) Days of Summer , Life After Beth , Suburban Gothic , and as the voice of Simon in Alvin and the Chipmunks and its three sequels .\n\n[P3] Laura Dahl\nLaura Dahl ( born 1974 ) is an American fashion designer . A native of Las Vegas , NV , she attended the University of Arizona in Tucson , Arizona and continued her studies at the Fashion Institute of Technology in New York City . She 's married to Timothy Dahl and has a brother named Matthew Gray Gubler and half-brother named John Gray Gubler .\n\n[P4] How to Be a Serial Killer\nHow to Be a Serial Killer is a 2008 American black comedy film about a young serial killer who imparts his knowledge to an eager pupil . Written and directed by Luke Ricci , the film stars Dameon Clarke , Matthew Gray Gubler , Laura Regan , and George Wyner .\n\n[P5] Newness\nNewness is a 2017 American drama romance film directed by Drake Doremus from a screenplay by Ben York Jones . It stars Nicholas Hoult , Laia Costa , Danny Huston , Courtney Eaton , Matthew Gray Gubler and Albert Hammond Jr. . . It had its world premiere at the Sundance Film Festival on January 25 , 2017 .\nPASSAGES>>>\n\nInstructions:\n- Decide whether the claim is supported or refuted. \"answer\" is \"SUPPORTED\" or \"REFUTED\".\n- In \"citations\", list only the labels (P1 to P5) of passages whose text supports your answer, at most 3. If no passage helps, still give your best answer from your own knowledge and leave \"citations\" empty: [].\n- Reply with one JSON object whose fields come in this order: \"reasoning\" (your brief reasoning, at most 600 characters), \"answer\", \"citations\" (a list of passage labels), \"confidence\" (\"high\", \"medium\" or \"low\").\n",
+    "prompt_sha256": "6b83020afa19ec977b6877e687b7e645ab977ccff36e1d33830f8a504ee1cc31",
+    "format_sha256": "ca94a8dbf237a9b7646ec0975bed812e02bf3f36bbcd4fe4379f2edca94437e9",
+    "attempts": [
+     {
+      "start_wall": 1792842916.749631,
+      "end_wall": 1792842937.913585,
+      "error": null
+     }
+    ],
+    "arrival_seq": 534,
+    "start_wall": 1792842916.749631,
+    "start_mono": 512473.515263916,
+    "end_wall": 1792842937.913585,
+    "end_mono": 512494.678947833,
+    "raw_response": "{\n  \"reasoning\": \"Multiple sources, particularly [P2] and [P3], explicitly refer to Matthew Gray Gubler as American, indicating his citizenship in the United States. [P3] also provides additional context supporting his American background by mentioning his connection to Las Vegas and education in Arizona.\",\n  \"answer\": \"SUPPORTED\",\n  \"citations\": [\"P2\", \"P3\"],\n  \"confidence\": \"high\"\n}",
+    "error": null,
+    "n_attempts": 1,
+    "ollama_meta": {
+     "total_duration": 21160504458,
+     "load_duration": 12884153333,
+     "prompt_eval_count": 830,
+     "prompt_eval_duration": 3291450458,
+     "eval_count": 102,
+     "eval_duration": 4259850332,
+     "done_reason": "stop",
+     "created_at": "2026-10-24T11:55:37.911567Z"
+    },
+    "elapsed_s": 21.164,
+    "schema": {
+     "type": "object",
+     "required": [
+      "reasoning",
+      "answer",
+      "citations",
+      "confidence"
+     ],
+     "properties": {
+      "reasoning": {
+       "type": "string",
+       "maxLength": 600
+      },
+      "answer": {
+       "enum": [
+        "SUPPORTED",
+        "REFUTED"
+       ]
+      },
+      "citations": {
+       "type": "array",
+       "maxItems": 3,
+       "items": {
+        "enum": [
+         "P1",
+         "P2",
+         "P3",
+         "P4",
+         "P5"
+        ]
+       }
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      }
+     }
+    }
+   },
+   "arrival_seq": 534,
+   "parsed": {
+    "status": "ok",
+    "answer": "SUPPORTED",
+    "citations": [
+     "P2",
+     "P3"
+    ],
+    "citation_keys": [
+     "fever17:Matthew_Gray_Gubler:0",
+     "fever17:Laura_Dahl:0"
+    ],
+    "invalid_citations": [],
+    "confidence": "high",
+    "reasoning_chars": 288,
+    "violations": []
+   },
+   "arrival_rank": 4,
+   "dispatch_index": 4,
+   "list_index": 2,
+   "agent": "exaone3.5_7.8b",
+   "retriever": "bm25"
+  }
+ ],
+ "retrieval_record_ids": {
+  "falcon3:3b": "b46a88cc2a7cb842aa660cb9a8d802e89f9314dedb6784c60c7d2899ba1f4713",
+  "olmo2:7b": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d",
+  "nemotron-mini:4b": "0fa5266234f7f878d952a4430781d64e7c4a0dd45d66f0dbc5e5b339f1f80172",
+  "granite3.3:2b": "8b0fb8d5016aa2b9c296a8abeb9f39599b19f4844c6281bf1e3f5b8bb1002b64",
+  "exaone3.5:7.8b": "b7d481eb3f8ae1d5e67099dd250b2b04ba03e0e0da769f24e12ed0506872e38d"
+ },
+ "item_start_wall": 1792842911.073739,
+ "item_wall_s": 26.84,
+ "ollama_ps_samples": [
+  [
+   1792842911.074,
+   [
+    "nemotron-mini:4b",
+    "falcon3:3b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842913.077,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842915.082,
+   [
+    "exaone3.5:7.8b",
+    "olmo2:7b",
+    "granite3.3:2b"
+   ]
+  ],
+  [
+   1792842917.093,
+   [
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842919.097,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842921.108,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842923.114,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842925.123,
+   [
+    "falcon3:3b",
+    "nemotron-mini:4b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842927.134,
+   [
+    "olmo2:7b",
+    "falcon3:3b"
+   ]
+  ],
+  [
+   1792842929.146,
+   [
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842931.158,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842933.17,
+   [
+    "granite3.3:2b",
+    "exaone3.5:7.8b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842935.173,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ],
+  [
+   1792842937.185,
+   [
+    "exaone3.5:7.8b",
+    "granite3.3:2b",
+    "olmo2:7b"
+   ]
+  ]
+ ]
+}
