@@ -2,9 +2,13 @@
 
 The repository is preparing its first public release. After publication, changes to a paper are recorded as corrections; study inputs and protocol freezes remain preserved throughout preparation.
 
-- **Errata.** Open an issue that names the paper, the section or table, the claim and the evidence. If a correction is needed, it is made in place, noted in the paper's README and recorded in [history.md](history.md).
-- **Reproduction reports.** Reports of successful or failed reproductions are welcome as issues. Include the platform, the toolchain versions and the exact command.
+- **Errata.** Describe a proposed correction in a pull request, naming the paper, section or table, claim and supporting evidence. Authors make scientific revisions in place, note them in the paper's README and record them in [history.md](history.md).
+- **Reproduction fixes.** Propose a concrete build, portability or documentation fix through a pull request. Include the platform, toolchain versions, exact command and observed result.
 - **Pull requests.** Fixes to build scripts, documentation and portability are welcome. Changes to a paper's text, data or frozen preregistration files are made by the authors only.
+
+Issues and Discussions are disabled. Pull requests are the public contribution
+route; do not change frozen scientific inputs merely to open one. Sensitive
+execution vulnerabilities use the private route in [SECURITY.md](SECURITY.md).
 
 Frozen study inputs are verified by hash. Preserve original freeze maps and scientific data. If publication requires a path or metadata redaction, record the exact original and published hashes and the scope in the artifact's `FROZEN_REDACTIONS.md`; verify reconstruction against the original results. Never silently re-freeze edited files.
 

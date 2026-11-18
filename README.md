@@ -71,7 +71,7 @@ This builds the main paper and supplement. Add the `arxiv` target to create a so
 
 The collection is being prepared for its **first public release**. Study freezes record when analyses were specified; they are not earlier publications. After publication, tagged releases and the [history](history.md) will record corrections and revisions.
 
-For a correction or reproduction report, [open an issue](https://github.com/grainulation/papers/issues) with the paper, section, claim, and supporting evidence or commands. See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution and release process.
+For a correction or reproduction fix, [propose a pull request](https://github.com/grainulation/papers/pulls) with the paper, section, claim, and supporting evidence or commands. Issues and Discussions are disabled. See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution and release process; sensitive execution vulnerabilities use [SECURITY.md](SECURITY.md).
 
 ## Licensing
 
