@@ -6,10 +6,10 @@ and choose **Report a vulnerability**. Include the affected revision, platform,
 command and a minimal redacted reproduction. Keep credentials and private logs
 out of public pull requests.
 
-Scientific disagreements, citation corrections and ordinary reproduction fixes
-belong in the [contribution process](CONTRIBUTING.md), rather than a private
-vulnerability report. Issues and Discussions are disabled; public changes are
-proposed through pull requests, with scientific revisions handled by the authors.
+Scientific disagreements, citation corrections and ordinary reproduction findings
+are publication-maintenance matters handled by the authors according to
+[CONTRIBUTING.md](CONTRIBUTING.md), rather than private vulnerability reports.
+The private security route does not create a general public submission channel.
 
 Research code runs with the invoking user's permissions. Review commands and
 inputs before executing them; toolchain pins and checksums do not make an
