@@ -16,7 +16,9 @@ jobs:
     outputs:
       slugs: ${{ steps.slugs.outputs.slugs }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Check the collection layout
         run: python3 scripts/check_repo.py
       - name: Check public release files
@@ -38,17 +40,23 @@ jobs:
       matrix:
         slug: ${{ fromJSON(needs.catalogue.outputs.slugs) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Install PDF text extraction
         run: |
           sudo apt-get update
           sudo apt-get install --yes poppler-utils
       - name: Install Tectonic
         run: |
-          curl -fsSL -o tectonic.tar.gz \
+          set -euo pipefail
+          curl -fsSL -o "$RUNNER_TEMP/tectonic.tar.gz" \
             "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/tectonic-0.17.0-x86_64-unknown-linux-musl.tar.gz"
-          tar xzf tectonic.tar.gz
-          sudo install -m 0755 tectonic /usr/local/bin/tectonic
+          # Digest from the official tectonic@0.17.0 release asset metadata.
+          printf '%s  %s\n' '8533d07f9ccbd7a65824b9e0459041bca34af1eb33daba48f59215593753a3b7' "$RUNNER_TEMP/tectonic.tar.gz" | sha256sum --check --strict
+          mkdir "$RUNNER_TEMP/tectonic-0.17.0"
+          tar xzf "$RUNNER_TEMP/tectonic.tar.gz" -C "$RUNNER_TEMP/tectonic-0.17.0"
+          sudo install -m 0755 "$RUNNER_TEMP/tectonic-0.17.0/tectonic" /usr/local/bin/tectonic
           tectonic --version
       - name: Test source archive packaging
         working-directory: papers/${{ matrix.slug }}/tex

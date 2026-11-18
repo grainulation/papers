@@ -17,12 +17,14 @@ jobs:
   rust:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Install Rust 1.93.0
         run: |
           rustup toolchain install 1.93.0 --profile minimal
           rustup default 1.93.0
-      - uses: actions/cache@v4
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             ~/.cargo/registry
@@ -39,11 +41,20 @@ jobs:
   lean:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Install elan
         run: |
-          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
-            | sh -s -- -y --default-toolchain none
+          set -euo pipefail
+          # Elan 4.4.0: upstream commit 3cc76985a1becb3c03cd65c1c5007e6f186ae474.
+          # Pin the executable archive too; the shell bootstrap fetches latest.
+          curl -fsSL -o "$RUNNER_TEMP/elan.tar.gz" \
+            "https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz"
+          printf '%s  %s\n' '0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2' "$RUNNER_TEMP/elan.tar.gz" | sha256sum --check --strict
+          mkdir "$RUNNER_TEMP/elan-4.4.0"
+          tar xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan-4.4.0"
+          "$RUNNER_TEMP/elan-4.4.0/elan-init" -y --default-toolchain none --no-modify-path
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Fetch the Mathlib cache
         working-directory: ${{ env.ART }}/lean
@@ -65,8 +76,10 @@ jobs:
   python:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
       - name: Install the pinned packages
@@ -84,8 +97,10 @@ jobs:
         os: [ubuntu-24.04, macos-15]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
       - name: Install build tools
@@ -110,8 +125,10 @@ jobs:
   reanalysis:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
       - name: Install Rust

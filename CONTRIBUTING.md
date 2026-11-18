@@ -20,6 +20,24 @@ Frozen study inputs are verified by hash. Preserve original freeze maps and scie
 
 Each paper is self-contained: it has its own toolchain pins, its own `artifact/` layout and its own licenses. Nothing outside `papers/<slug>/` (apart from the index files and its workflow) depends on it.
 
+## CI bootstrap inputs
+
+Workflow actions use immutable commit references, with their existing resolved
+versions recorded in comments. The document build keeps Tectonic 0.17.0; the
+proof job installs Elan 4.4.0 directly instead of using a shell bootstrap that
+selects the latest release. Both executable archives are checked against the
+SHA-256 published in their official GitHub release asset metadata before
+extraction or execution:
+
+- [Tectonic 0.17.0 release](https://github.com/tectonic-typesetting/tectonic/releases/tag/tectonic%400.17.0)
+- [Elan 4.4.0 release](https://github.com/leanprover/elan/releases/tag/v4.4.0)
+
+When updating a bootstrap input, review its upstream revision and release digest
+and check the downloaded bytes. These pins establish selected-byte integrity;
+they are not a claim of a publisher signature. Keep the artifact's Lean/Mathlib
+pins, evaluated dependencies, freeze maps and recorded results unchanged during
+workflow maintenance.
+
 ## Work in progress
 
 Drafts are not kept in this repository, because its history is public. Work on a draft in a private repository with the same `papers/<slug>/` layout. When the paper is released, add it here in a single commit.
